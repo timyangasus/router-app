@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="ASUS Router">
+  <meta name="theme-color" content="#4F63F0">
+  <link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIkFTVVMgUm91dGVyIiwgInNob3J0X25hbWUiOiAiUm91dGVyIiwgImRlc2NyaXB0aW9uIjogIkFTVVMgUm91dGVyIEFwcCIsICJzdGFydF91cmwiOiAiLiIsICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLCAib3JpZW50YXRpb24iOiAicG9ydHJhaXQiLCAiYmFja2dyb3VuZF9jb2xvciI6ICIjZmZmZmZmIiwgInRoZW1lX2NvbG9yIjogIiM0RjYzRjAiLCAiaWNvbnMiOiBbeyJzcmMiOiAiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCNGJXeHVjejBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01DOXpkbWNpSUhkcFpIUm9QU0kxTVRJaUlHaGxhV2RvZEQwaU5URXlJaUIyYVdWM1FtOTRQU0l3SURBZ05URXlJRFV4TWlJK0NpQWdQR1JsWm5NK0NpQWdJQ0E4YkdsdVpXRnlSM0poWkdsbGJuUWdhV1E5SW1jaUlIZ3hQU0l3SWlCNU1UMGlNQ0lnZURJOUlqRWlJSGt5UFNJeElqNEtJQ0FnSUNBZ1BITjBiM0FnYjJabWMyVjBQU0l3SWlCemRHOXdMV052Ykc5eVBTSWpPRUZCUWtZM0lpOCtDaUFnSUNBZ0lEeHpkRzl3SUc5bVpuTmxkRDBpTUM0ek5TSWdjM1J2Y0MxamIyeHZjajBpSXpaQ09FVkdNQ0l2UGdvZ0lDQWdJQ0E4YzNSdmNDQnZabVp6WlhROUlqQXVOeUlnYzNSdmNDMWpiMnh2Y2owaUl6VkJOa1pGT0NJdlBnb2dJQ0FnSUNBOGMzUnZjQ0J2Wm1aelpYUTlJakVpSUhOMGIzQXRZMjlzYjNJOUlpTTBNelUxUkRRaUx6NEtJQ0FnSUR3dmJHbHVaV0Z5UjNKaFpHbGxiblErQ2lBZ1BDOWtaV1p6UGdvZ0lEeHlaV04wSUhkcFpIUm9QU0kxTVRJaUlHaGxhV2RvZEQwaU5URXlJaUJ5ZUQwaU1URXlJaUJtYVd4c1BTSjNhR2wwWlNJdlBnb2dJRHh6ZG1jZ2VEMGlOalFpSUhrOUlqWTBJaUIzYVdSMGFEMGlNemcwSWlCb1pXbG5hSFE5SWpNNE5DSWdkbWxsZDBKdmVEMGlNQ0F0T1RZd0lEazJNQ0E1TmpBaVBnb2dJQ0FnUEhCaGRHZ2daRDBpVFRFeU1TMHhNakZ4TFRReExUUXhMVFF4TFRrNWREUXhMVGs1Y1RReExUUXhJRGs1TFRReElERTRJREFnTXpVZ05DNDFkRE15SURFeUxqVnNNVFV6TFRFMU0zWXRNVEV3Y1MwME5DMHhNeTAzTWkwME9TNDFWRE0wTUMwM05EQnhNQzAxT0NBME1TMDVPWFE1T1MwME1YRTFPQ0F3SURrNUlEUXhkRFF4SURrNWNUQWdORGd0TWpnZ09EUXVOVlExTWpBdE5qQTJkakV4TUd3eE5UUWdNVFV6Y1RFMUxUZ2dNekV1TlMweE1pNDFWRGMwTUMwek5qQnhOVGdnTUNBNU9TQTBNWFEwTVNBNU9YRXdJRFU0TFRReElEazVkQzA1T1NBME1YRXROVGdnTUMwNU9TMDBNWFF0TkRFdE9UbHhNQzB4T0NBMExqVXRNelYwTVRJdU5TMHpNa3cwT0RBdE5ESTBJRE0wTXkweU9EZHhPQ0F4TlNBeE1pNDFJRE15ZERRdU5TQXpOWEV3SURVNExUUXhJRGs1ZEMwNU9TQTBNWEV0TlRnZ01DMDVPUzAwTVZwdE5qWXhMalV0TlRZdU5WRTRNREF0TVRrMUlEZ3dNQzB5TWpCMExURTNMalV0TkRJdU5WRTNOalV0TWpnd0lEYzBNQzB5T0RCMExUUXlMalVnTVRjdU5WRTJPREF0TWpRMUlEWTRNQzB5TWpCME1UY3VOU0EwTWk0MVVUY3hOUzB4TmpBZ056UXdMVEUyTUhRME1pNDFMVEUzTGpWYWJTMHlOakF0TlRJd1VUVTBNQzAzTVRVZ05UUXdMVGMwTUhRdE1UY3VOUzAwTWk0MVVUVXdOUzA0TURBZ05EZ3dMVGd3TUhRdE5ESXVOU0F4Tnk0MVVUUXlNQzAzTmpVZ05ESXdMVGMwTUhReE55NDFJRFF5TGpWUk5EVTFMVFk0TUNBME9EQXROamd3ZERReUxqVXRNVGN1TlZwdExUSTJNQ0ExTWpCUk1qZ3dMVEU1TlNBeU9EQXRNakl3ZEMweE55NDFMVFF5TGpWUk1qUTFMVEk0TUNBeU1qQXRNamd3ZEMwME1pNDFJREUzTGpWUk1UWXdMVEkwTlNBeE5qQXRNakl3ZERFM0xqVWdOREl1TlZFeE9UVXRNVFl3SURJeU1DMHhOakIwTkRJdU5TMHhOeTQxV2lJZ1ptbHNiRDBpZFhKc0tDTm5LU0l2UGdvZ0lEd3ZjM1puUGdvOEwzTjJaejQ9IiwgInNpemVzIjogIjUxMng1MTIiLCAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwgInB1cnBvc2UiOiAiYW55IG1hc2thYmxlIn1dfQ==">
+  <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjOEFBQkY3Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMC4zNSIgc3RvcC1jb2xvcj0iIzZCOEVGMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjAuNyIgc3RvcC1jb2xvcj0iIzVBNkZFOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM0MzU1RDQiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iMTEyIiBmaWxsPSJ3aGl0ZSIvPgogIDxzdmcgeD0iNjQiIHk9IjY0IiB3aWR0aD0iMzg0IiBoZWlnaHQ9IjM4NCIgdmlld0JveD0iMCAtOTYwIDk2MCA5NjAiPgogICAgPHBhdGggZD0iTTEyMS0xMjFxLTQxLTQxLTQxLTk5dDQxLTk5cTQxLTQxIDk5LTQxIDE4IDAgMzUgNC41dDMyIDEyLjVsMTUzLTE1M3YtMTEwcS00NC0xMy03Mi00OS41VDM0MC03NDBxMC01OCA0MS05OXQ5OS00MXE1OCAwIDk5IDQxdDQxIDk5cTAgNDgtMjggODQuNVQ1MjAtNjA2djExMGwxNTQgMTUzcTE1LTggMzEuNS0xMi41VDc0MC0zNjBxNTggMCA5OSA0MXQ0MSA5OXEwIDU4LTQxIDk5dC05OSA0MXEtNTggMC05OS00MXQtNDEtOTlxMC0xOCA0LjUtMzV0MTIuNS0zMkw0ODAtNDI0IDM0My0yODdxOCAxNSAxMi41IDMydDQuNSAzNXEwIDU4LTQxIDk5dC05OSA0MXEtNTggMC05OS00MVptNjYxLjUtNTYuNVE4MDAtMTk1IDgwMC0yMjB0LTE3LjUtNDIuNVE3NjUtMjgwIDc0MC0yODB0LTQyLjUgMTcuNVE2ODAtMjQ1IDY4MC0yMjB0MTcuNSA0Mi41UTcxNS0xNjAgNzQwLTE2MHQ0Mi41LTE3LjVabS0yNjAtNTIwUTU0MC03MTUgNTQwLTc0MHQtMTcuNS00Mi41UTUwNS04MDAgNDgwLTgwMHQtNDIuNSAxNy41UTQyMC03NjUgNDIwLTc0MHQxNy41IDQyLjVRNDU1LTY4MCA0ODAtNjgwdDQyLjUtMTcuNVptLTI2MCA1MjBRMjgwLTE5NSAyODAtMjIwdC0xNy41LTQyLjVRMjQ1LTI4MCAyMjAtMjgwdC00Mi41IDE3LjVRMTYwLTI0NSAxNjAtMjIwdDE3LjUgNDIuNVExOTUtMTYwIDIyMC0xNjB0NDIuNS0xNy41WiIgZmlsbD0idXJsKCNnKSIvPgogIDwvc3ZnPgo8L3N2Zz4=">
+
+<meta charset="UTF-8">
+<title>ASUS Router</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#F4F6FB;--w:#fff;--s2:#F0F2F8;--s3:#E6E9F4;
+  --bd:#E4E8F2;--bd2:#CDD3E8;
+  --tx:#0C1120;--t2:#46526E;--t3:#8A93AA;
+  --ac:#4F63F0;--abg:#EDF0FE;
+  --gn:#18B87A;--gbg:#E4F7EF;
+  --or:#E89C1A;--obg:#FDF3DC;
+  --rd:#E53E3E;
+  --ib:#E8EEFF;--is:#1E3A8A;
+  --r:16px;--r2:12px;
+  --f:'DM Sans',sans-serif;--m:'DM Mono',monospace;
+  --sh:0 2px 16px rgba(0,0,0,.06);
+}
+html,body{width:100%;height:100%;overflow:hidden;background:#D8DCE8;font-family:var(--f)}
+body{display:flex;align-items:center;justify-content:center}
+/* ── iPhone shell ── */
+.phone{width:393px;height:852px;background:var(--w);border-radius:54px;overflow:hidden;position:relative;display:flex;flex-direction:column;box-shadow:0 32px 80px rgba(0,0,0,.28),inset 0 0 0 1px rgba(255,255,255,.6);flex-shrink:0}
+.phone::before{content:'';position:absolute;left:-3px;top:160px;width:3px;height:52px;background:#B0B4BF;border-radius:2px 0 0 2px;z-index:1}
+.phone::after{content:'';position:absolute;left:-3px;top:228px;width:3px;height:52px;background:#B0B4BF;border-radius:2px 0 0 2px;z-index:1}
+.side-btn{position:absolute;right:-3px;top:156px;width:3px;height:84px;background:#B0B4BF;border-radius:0 2px 2px 0;z-index:1}
+/* status bar */
+.sb{height:58px;background:var(--w);display:flex;align-items:flex-end;justify-content:space-between;padding:0 28px 10px;flex-shrink:0;position:relative;z-index:2}
+.di{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:126px;height:37px;background:#111;border-radius:20px}
+.sb-t{font-size:15px;font-weight:600;color:var(--tx)}
+.sb-r{display:flex;gap:6px;align-items:center}
+/* scroll area */
+.ct{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;background:var(--bg)}
+.ct::-webkit-scrollbar{display:none}
+/* pages */
+.pg{display:none;padding-bottom:88px}
+.pg.on{display:block}
+/* tab bar */
+.tb{height:84px;background:var(--w);border-top:1px solid var(--bd);display:flex;padding:0 4px 26px;flex-shrink:0;position:relative;z-index:2}
+.ti{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.ti svg{width:25px;height:25px;stroke:var(--t3);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.ti span{font-size:10px;font-weight:500;color:var(--t3)}
+.ti.on svg{stroke:var(--ac)}
+.ti.on span{color:var(--ac);font-weight:600}
+/* sub pages — full overlay inside .phone */
+.sub{display:none;position:absolute;inset:0;z-index:10;flex-direction:column;background:var(--bg)}
+.sub.on{display:flex}
+/* overlay sheets */
+.ov{display:none;position:absolute;inset:0;z-index:20;background:rgba(12,17,32,.5);align-items:flex-end}
+.ov.on{display:flex}
+.sheet{background:var(--w);border-radius:24px 24px 0 0;width:100%;padding:20px 20px 48px;max-height:86%;overflow-y:auto}
+.sheet::-webkit-scrollbar{display:none}
+.hdl{width:36px;height:4px;background:var(--bd2);border-radius:2px;margin:0 auto 18px}
+/* common */
+.sl{font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.9px;text-transform:uppercase;padding:10px 20px 6px;display:block}
+.card{background:var(--w);border-radius:var(--r);margin:0 16px 8px;box-shadow:var(--sh);overflow:hidden}
+.ic{width:36px;height:36px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ic svg{width:17px;height:17px;stroke:var(--is);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.bk{width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+.bk svg{width:17px;height:17px;stroke:var(--tx);fill:none;stroke-width:2;stroke-linecap:round}
+.tg{width:44px;height:26px;background:var(--bd2);border-radius:13px;position:relative;cursor:pointer;flex-shrink:0;transition:background .2s}
+.tg.on{background:var(--ac)}
+.tg::after{content:'';position:absolute;width:20px;height:20px;background:#fff;border-radius:50%;top:3px;left:3px;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.tg.on::after{transform:translateX(18px)}
+.bg{height:18px;padding:0 7px;border-radius:9px;font-size:10px;font-weight:600;display:inline-flex;align-items:center}
+.bgg{background:var(--gbg);color:var(--gn)}
+.bgo{background:var(--obg);color:var(--or)}
+.bgb{background:var(--abg);color:var(--ac)}
+.bgx{background:var(--s2);color:var(--t3)}
+/* status card */
+.sc{margin:8px 16px 8px;border-radius:var(--r);background:linear-gradient(140deg,#3D54E8,#5B6EF5,#8AA4FF);color:#fff;box-shadow:0 4px 24px rgba(79,99,240,.18);overflow:hidden;position:relative}
+.sc::before{content:'';position:absolute;top:-40px;right:-20px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.07)}
+.sci{padding:10px 14px;position:relative;z-index:1}
+.sp{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border-radius:20px;padding:4px 12px;font-size:12px;font-weight:500}
+.dot{width:7px;height:7px;border-radius:50%;background:#4ADE80;animation:pl 2s infinite}
+@keyframes pl{0%,100%{opacity:1}50%{opacity:.4}}
+.sm{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(255,255,255,.14);padding-top:10px;margin-top:10px}
+.smi{text-align:center}
+/* quick actions */
+.qa{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:0 16px}
+.qb{background:var(--w);border-radius:var(--r2);padding:12px 6px;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;box-shadow:var(--sh)}
+.qi{width:36px;height:36px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center}
+.qi svg{width:17px;height:17px;stroke:var(--is);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+/* settings rows */
+.sr{display:flex;align-items:center;padding:12px 20px;background:var(--w);border-bottom:1px solid var(--bd)}
+.sic{width:32px;height:32px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;margin-right:13px;flex-shrink:0}
+.sic svg{width:16px;height:16px;stroke:var(--is);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+/* pro */
+.phd{padding:16px 20px 20px;background:linear-gradient(160deg,#1A2448,#243066,#2E3E80);position:relative;overflow:hidden;flex-shrink:0}
+.phd::before{content:'';position:absolute;top:-70px;right:-40px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.05)}
+.pbk{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;cursor:pointer;margin-bottom:12px}
+.pbk svg{width:17px;height:17px;stroke:rgba(255,255,255,.85);fill:none;stroke-width:2;stroke-linecap:round}
+.ptabs{display:flex;gap:6px;padding:10px 16px;background:var(--w);border-bottom:1px solid var(--bd);overflow-x:auto;flex-shrink:0;scrollbar-width:none}
+.ptabs::-webkit-scrollbar{display:none}
+.pt{height:30px;padding:0 14px;border-radius:15px;font-size:12px;font-weight:500;white-space:nowrap;cursor:pointer;border:1px solid var(--bd);background:var(--w);color:var(--t2);display:flex;align-items:center}
+.pt.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.pcn{flex:1;min-height:0;overflow-y:auto;background:var(--bg)}
+.pcn::-webkit-scrollbar{display:none}
+.pitem{display:flex;align-items:center;padding:14px 20px;background:var(--w);border-bottom:1px solid var(--bd);cursor:pointer}
+.pit{font-size:16px;font-weight:500;color:var(--tx);letter-spacing:-.1px}
+.pis{font-size:13px;color:var(--t3);margin-top:2px}
+.pic{width:30px;height:30px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;margin-right:14px;flex-shrink:0}
+.pic svg{width:14px;height:14px;stroke:var(--is);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ptb{height:84px;background:var(--w);border-top:1px solid var(--bd);display:flex;padding:0 4px 26px;flex-shrink:0}
+.pti{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer}
+.pti svg{width:25px;height:25px;stroke:var(--t3);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.pti span{font-size:10px;font-weight:500;color:var(--t3)}
+.pti.on svg{stroke:var(--ac)}
+.pti.on span{color:var(--ac);font-weight:600}
+/* device list */
+.di2{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--w);border-bottom:1px solid var(--bd);cursor:pointer}
+.da{width:42px;height:42px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
+.da svg{width:20px;height:20px;stroke:var(--is);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.dd{position:absolute;bottom:1px;right:1px;width:10px;height:10px;border-radius:50%;border:2px solid var(--w)}
+/* family */
+.mg{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px 10px}
+.mc{background:var(--w);border-radius:var(--r);padding:14px 12px;box-shadow:var(--sh);text-align:center;cursor:pointer}
+.ma{width:48px;height:48px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;margin:0 auto 8px}
+.ma svg{width:24px;height:24px;stroke:var(--is);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+/* pro entry */
+.pe{background:linear-gradient(135deg,#0D1B3E,#172456,#1E2E6E);border-radius:var(--r);margin:0 16px 20px;padding:15px 18px;display:flex;align-items:center;gap:13px;cursor:pointer;box-shadow:0 6px 24px rgba(13,27,62,.3)}
+.pei{width:44px;height:44px;background:rgba(255,255,255,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pei svg{width:21px;height:21px;stroke:rgba(255,255,255,.9);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+/* insight */
+.ins{border-radius:var(--r);background:var(--w);margin:0 16px 8px;padding:14px 16px;box-shadow:var(--sh)}
+
+.df{background:var(--w);color:var(--t2);border:1px solid var(--bd)}
+.df.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.df[data-filter="unk"]{color:var(--or);border-color:var(--or)}
+.df[data-filter="unk"].on{background:var(--or);color:#fff;border-color:var(--or)}
+
+.drawer{position:absolute;top:0;left:0;bottom:0;width:100%;z-index:90;display:none}
+.drawer.on{display:flex}
+.drawer-bg{position:absolute;inset:0;background:rgba(12,17,32,.4)}
+.drawer-panel{position:absolute;top:0;left:0;bottom:0;width:82%;background:var(--w);display:flex;flex-direction:column;overflow:hidden}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="side-btn"></div>
+  <!-- Status Bar -->
+  <div class="sb">
+    <div class="di"></div>
+    <div class="sb-t">9:41</div>
+    <div class="sb-r">
+      <svg width="17" height="12" viewBox="0 0 17 12" fill="var(--tx)"><rect x="0" y="3.5" width="3" height="8.5" rx="1"/><rect x="4.5" y="2" width="3" height="10" rx="1"/><rect x="9" y=".5" width="3" height="11.5" rx="1"/><rect x="13.5" y=".5" width="3" height="11.5" rx="1" opacity=".25"/></svg>
+      <svg width="16" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--tx)" stroke-width="1.5" stroke-linecap="round"><path d="M5 12.55a11 11 0 0114.1 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1.5" fill="var(--tx)" stroke="none"/></svg>
+      <svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/><path d="M24 4.5c.8.3 1.5 1 1.5 2s-.7 1.7-1.5 2V4.5Z" fill="var(--tx)" opacity=".4"/></svg>
+    </div>
+  </div>
+  <!-- Scroll container -->
+  <div class="ct" id="ct">
+
+    <!-- ═══ HOME ═══ -->
+    <div class="pg on" id="pg-home">
+      <!-- Header -->
+      <div style="padding:12px 20px 10px;background:var(--w);border-bottom:1px solid var(--bd)">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:38px;height:38px;border-radius:50%;background:#f1f3f4;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;box-shadow:0 1px 4px rgba(0,0,0,.1)" id="h-avatar">
+              <svg width="22" height="22" viewBox="0 0 48 48"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg>
+            </div>
+            <div>
+                <div style="font-size:24px;font-weight:600;color:var(--tx);letter-spacing:-.5px">我家網路</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:9px">
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;cursor:pointer" id="h-add">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="4" x2="12" y2="20"/><line x1="4" y1="12" x2="20" y2="12"/></svg>
+            </div>
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative" id="h-notif">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+              <div style="position:absolute;top:6px;right:6px;width:8px;height:8px;background:var(--rd);border-radius:50%;border:2px solid var(--w)"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Status Card -->
+      <div class="sc">
+        <canvas id="banner-canvas" style="position:absolute;inset:0;width:100%;height:100%;border-radius:var(--r)"></canvas>
+        <div class="sci" style="position:relative;z-index:1">
+          <div style="display:flex;gap:4px;align-items:flex-start;margin-bottom:8px">
+            <!-- 路由器圖片 -->
+            <div style="width:110px;flex-shrink:0;margin-top:16px">
+              <img src="data:image/png;base64,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" style="width:100px;height:100px;object-fit:contain;display:block;margin:0 auto;filter:drop-shadow(0 8px 16px rgba(0,0,0,.25)) drop-shadow(0 2px 6px rgba(0,0,0,.15))"/>
+            </div>
+            <!-- 右側狀態 -->
+            <div style="flex:1;min-width:0;text-align:right;padding-top:32px">
+              <div style="display:flex;justify-content:flex-end;margin-bottom:14px"><div class="sp"><div class="dot"></div>一切正常</div></div>
+              <div style="font-size:11px;opacity:.7;margin-bottom:3px">下載速度</div>
+              <div style="font-size:36px;font-weight:300;letter-spacing:-1px;line-height:1">512<span style="font-size:14px;opacity:.85"> Mbps</span></div>
+            </div>
+          </div>
+          <!-- Wi-Fi row -->
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;cursor:pointer" id="h-wifirow">
+            <div>
+              <div style="font-size:13px;font-weight:600;opacity:.95">ASUS_Home_5G</div>
+              <div style="font-size:11px;opacity:.6;margin-top:1px">主要網路 · 5 GHz / 2.4 GHz</div>
+            </div>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <!-- Stats row -->
+          <div class="sm">
+            <div class="smi"><div style="font-size:16px;font-weight:600">14</div><div style="font-size:10px;opacity:.6;margin-top:2px">連線裝置</div></div>
+            <div class="smi"><div style="font-size:16px;font-weight:600;color:#fff">2</div><div style="font-size:10px;opacity:.6;margin-top:2px">Mesh 節點</div></div>
+            <div class="smi"><div style="font-size:16px;font-weight:600;color:#4ADE80">安全</div><div style="font-size:10px;opacity:.6;margin-top:2px">安全狀態</div></div>
+          </div>
+        </div>
+      </div>
+      <!-- AiMesh -->
+      <span class="sl">AiMesh 狀態</span>
+      <div class="card">
+        <div style="padding:20px 16px 10px;display:flex;align-items:flex-start">
+          <!-- Internet / 主路由器 -->
+          <div style="text-align:center;flex:1">
+            <div style="width:38px;height:38px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;margin:0 auto 5px">
+              <svg width="20" height="20" viewBox="0 -960 960 960" fill="var(--is)"><path d="M340-148.42q-65.69-28.43-114.42-77.16-48.73-48.73-77.16-114.42Q120-405.69 120-480.12q0-74.42 28.42-140 28.43-65.57 77.16-114.3 48.73-48.73 114.42-77.16Q405.69-840 480.12-840q74.42 0 140 28.42 65.57 28.43 114.3 77.16 48.73 48.73 77.16 114.3 28.42 65.58 28.42 140 0 74.43-28.42 140.12-28.43 65.69-77.16 114.42-48.73 48.73-114.3 77.16-65.58 28.42-140 28.42-74.43 0-140.12-28.42Zm140-11.27q35.23-45.23 58.08-88.85 22.84-43.61 37.15-97.61H384.77q15.85 57.07 37.92 100.69 22.08 43.61 57.31 85.77Zm-50.92-6q-28-33-51.12-81.58-23.11-48.58-34.42-98.88H190.15q34.39 74.61 97.5 122.38 63.12 47.77 141.43 58.08Zm101.84 0q78.31-10.31 141.43-58.08 63.11-47.77 97.5-122.38H616.46q-15.15 51.07-38.27 99.65-23.11 48.58-47.27 80.81ZM173.85-386.15h161.38q-4.54-24.62-6.42-47.97-1.89-23.34-1.89-45.88 0-22.54 1.89-45.88 1.88-23.35 6.42-47.97H173.85q-6.54 20.77-10.2 45.27Q160-504.08 160-480t3.65 48.58q3.66 24.5 10.2 45.27Zm201.38 0h209.54q4.54-24.62 6.42-47.2 1.89-22.57 1.89-46.65t-1.89-46.65q-1.88-22.58-6.42-47.2H375.23q-4.54 24.62-6.42 47.2-1.89 22.57-1.89 46.65t1.89 46.65q1.88 22.58 6.42 47.2Zm249.54 0h161.38q6.54-20.77 10.2-45.27Q800-455.92 800-480t-3.65-48.58q-3.66-24.5-10.2-45.27H624.77q4.54 24.62 6.42 47.97 1.89 23.34 1.89 45.88 0 22.54-1.89 45.88-1.88 23.35-6.42 47.97Zm-8.31-227.7h153.39Q734.69-690 673.5-736.23q-61.19-46.23-142.58-58.85 28 36.85 50.35 84.27 22.35 47.43 35.19 96.96Zm-231.69 0h190.46q-15.85-56.3-39.08-101.84-23.23-45.54-56.15-84.62-32.92 39.08-56.15 84.62-23.23 45.54-39.08 101.84Zm-194.62 0h153.39q12.84-49.53 35.19-96.96 22.35-47.42 50.35-84.27-82.16 12.62-142.96 59.23-60.81 46.62-95.97 122Z"/></svg>
+            </div>
+            <div style="font-size:11px;font-weight:600;color:var(--tx)">Internet</div>
+          </div>
+          <div style="flex:1;height:1.5px;background:var(--ac);opacity:.25;margin-top:19px"></div>
+          <!-- 客廳：藍紫色圓，選取狀態 -->
+          <div style="text-align:center;flex:1">
+            <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(140deg,#3D54E8,#5B6EF5,#8AA4FF);display:flex;align-items:center;justify-content:center;margin:0 auto 5px;box-shadow:0 2px 10px rgba(79,99,240,.35)">
+              <svg width="20" height="20" viewBox="0 -960 960 960" fill="#fff"><path d="M224.62-160q-27.62 0-46.12-18.5Q160-197 160-224.62v-110.76q0-27.62 18.5-46.12Q197-400 224.62-400H620v-160h40v160h75.38q27.62 0 46.12 18.5Q800-363 800-335.38v110.76q0 27.62-18.5 46.12Q763-160 735.38-160H224.62Zm0-40h510.76q10.77 0 17.7-6.92 6.92-6.93 6.92-17.7v-110.76q0-10.77-6.92-17.7-6.93-6.92-17.7-6.92H224.62q-10.77 0-17.7 6.92-6.92 6.93-6.92 17.7v110.76q0 10.77 6.92 17.7 6.93 6.92 17.7 6.92Zm77.34-58.04q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm140 0q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm140 0q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm-25.81-365.81-28.77-28.77q26-24 53.39-35.69Q608.15-700 640-700q31.85 0 59.23 11.69 27.39 11.69 53.39 35.69l-28.77 28.77q-17.08-17.07-37.66-26.61Q665.62-660 640-660q-25.62 0-46.19 9.54-20.58 9.54-37.66 26.61Zm-100-100-28.3-28.3q41.69-41.7 95.46-64.77Q577.08-840 640-840q62.92 0 116.69 23.08 53.77 23.07 95.46 64.77l-28.3 28.3q-33-33-79.58-54.57Q697.69-800 640-800t-104.27 21.58q-46.58 21.57-79.58 54.57ZM200-200V-360-200Z"/></svg>
+            </div>
+            <div style="font-size:11px;font-weight:600;color:var(--tx)">客廳</div>
+            <div style="font-size:10px;color:var(--gn);margin-top:1px">● 良好</div>
+          </div>
+          <div style="flex:1;height:1.5px;background:var(--ac);opacity:.25;margin-top:19px"></div>
+          <!-- 臥室：淺藍底 -->
+          <div style="text-align:center;flex:1">
+            <div style="width:38px;height:38px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;margin:0 auto 5px">
+              <svg width="20" height="20" viewBox="0 -960 960 960" fill="var(--is)"><path d="M224.62-160q-27.62 0-46.12-18.5Q160-197 160-224.62v-110.76q0-27.62 18.5-46.12Q197-400 224.62-400H620v-160h40v160h75.38q27.62 0 46.12 18.5Q800-363 800-335.38v110.76q0 27.62-18.5 46.12Q763-160 735.38-160H224.62Zm0-40h510.76q10.77 0 17.7-6.92 6.92-6.93 6.92-17.7v-110.76q0-10.77-6.92-17.7-6.93-6.92-17.7-6.92H224.62q-10.77 0-17.7 6.92-6.92 6.93-6.92 17.7v110.76q0 10.77 6.92 17.7 6.93 6.92 17.7 6.92Zm77.34-58.04q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm140 0q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm140 0q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm-25.81-365.81-28.77-28.77q26-24 53.39-35.69Q608.15-700 640-700q31.85 0 59.23 11.69 27.39 11.69 53.39 35.69l-28.77 28.77q-17.08-17.07-37.66-26.61Q665.62-660 640-660q-25.62 0-46.19 9.54-20.58 9.54-37.66 26.61Zm-100-100-28.3-28.3q41.69-41.7 95.46-64.77Q577.08-840 640-840q62.92 0 116.69 23.08 53.77 23.07 95.46 64.77l-28.3 28.3q-33-33-79.58-54.57Q697.69-800 640-800t-104.27 21.58q-46.58 21.57-79.58 54.57ZM200-200V-360-200Z"/></svg>
+            </div>
+            <div style="font-size:11px;font-weight:600;color:var(--tx)">臥室</div>
+            <div style="font-size:10px;color:var(--gn);margin-top:1px">● 良好</div>
+          </div>
+        </div>
+        <div style="padding:8px 16px 10px;border-top:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center">
+          <div style="font-size:12px;color:var(--t3)">2 個節點・全部正常</div>
+          <div style="font-size:12px;color:var(--ac);font-weight:500;cursor:pointer" id="h-mesh-detail">查看詳細 ›</div>
+        </div>
+      </div>
+      <!-- Quick Actions -->
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 20px 6px">
+        <span style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.9px;text-transform:uppercase">快速操作</span>
+        <div style="width:28px;height:28px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;cursor:pointer" id="qa-edit-btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </div>
+      </div>
+      <div id="qa-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:0 16px"></div>
+    </div>
+
+    <!-- ═══ DEVICES ═══ -->
+    <div class="pg" id="pg-devices">
+      <div style="padding:14px 20px 12px;background:var(--w);border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between">
+        <div><div style="font-size:24px;font-weight:600;color:var(--tx);letter-spacing:-.5px">裝置</div><div style="font-size:13px;color:var(--t3);margin-top:2px">14 線上 · 2 離線</div></div>
+        <div style="display:flex;gap:8px">
+          <div style="width:34px;height:34px;background:var(--ib);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer" id="d-sort-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="9" y1="18" x2="15" y2="18"/></svg>
+          </div>
+          <div style="width:34px;height:34px;background:var(--ib);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer" id="d-search-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          </div>
+        </div>
+      </div>
+      <div id="d-search-bar" style="display:none;align-items:center;gap:8px;background:var(--w);border-bottom:1px solid var(--bd);padding:8px 16px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg><input placeholder="搜尋裝置名稱…" style="border:none;outline:none;background:transparent;font-size:14px;color:var(--tx);flex:1;font-family:var(--f)"/><div style="font-size:13px;color:var(--ac);cursor:pointer" id="d-search-cancel">取消</div></div>
+      <div style="display:flex;gap:6px;padding:4px 16px 8px;overflow-x:auto;scrollbar-width:none" id="dev-filters">
+        <div class="df on" data-filter="all"  style="height:26px;padding:0 11px;border-radius:13px;font-size:12px;font-weight:500;white-space:nowrap;cursor:pointer;display:flex;align-items:center">全部(5)</div>
+        <div class="df"    data-filter="on"   style="height:26px;padding:0 11px;border-radius:13px;font-size:12px;font-weight:500;white-space:nowrap;cursor:pointer;display:flex;align-items:center">線上(3)</div>
+        <div class="df"    data-filter="off"  style="height:26px;padding:0 11px;border-radius:13px;font-size:12px;font-weight:500;white-space:nowrap;cursor:pointer;display:flex;align-items:center">離線(1)</div>
+        <div class="df"    data-filter="unk"  style="height:26px;padding:0 11px;border-radius:13px;font-size:12px;font-weight:500;white-space:nowrap;cursor:pointer;display:flex;align-items:center">⚠ 陌生(1)</div>
+      </div>
+<div style="background:var(--w);margin-top:4px">
+        <div class="di2" id="d-unknown" style="border-left:3px solid var(--or)"><div class="da"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg><div class="dd" style="background:var(--or)"></div></div><div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:600;color:var(--tx)">未知裝置</div><div style="font-size:12px;color:var(--t3);margin-top:1px">MAC: 8C:85:90:FF · 2.4GHz</div></div><span class="bg bgo">陌生</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-left:8px"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="di2" id="d-laptop"><div class="da"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg><div class="dd" style="background:var(--gn)"></div></div><div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:600;color:var(--tx)">Tim\'s MacBook Pro</div><div style="font-size:12px;color:var(--t3);margin-top:1px">Tim · 5GHz · 客廳節點</div></div><div style="display:flex;align-items:flex-end;gap:2px;height:14px"><div style="width:3px;height:5px;border-radius:1.5px;background:var(--ac)"></div><div style="width:3px;height:8px;border-radius:1.5px;background:var(--ac)"></div><div style="width:3px;height:11px;border-radius:1.5px;background:var(--ac)"></div><div style="width:3px;height:14px;border-radius:1.5px;background:var(--ac)"></div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-left:8px"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="di2" id="d-iphone"><div class="da"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg><div class="dd" style="background:var(--gn)"></div></div><div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:600;color:var(--tx)">Tim\'s iPhone</div><div style="font-size:12px;color:var(--t3);margin-top:1px">Tim · 5GHz · 主路由器</div></div><div style="display:flex;align-items:flex-end;gap:2px;height:14px"><div style="width:3px;height:5px;border-radius:1.5px;background:var(--ac)"></div><div style="width:3px;height:8px;border-radius:1.5px;background:var(--ac)"></div><div style="width:3px;height:11px;border-radius:1.5px;background:var(--ac)"></div><div style="width:3px;height:14px;border-radius:1.5px;background:var(--ac)"></div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-left:8px"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="di2" id="d-appletv"><div class="da"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg><div class="dd" style="background:var(--gn)"></div></div><div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:600;color:var(--tx)">客廳 Apple TV</div><div style="font-size:12px;color:var(--t3);margin-top:1px">乙太網路 · 客廳節點</div></div><span class="bg bgg">有線</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-left:8px"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="di2" id="d-ipad" style="opacity:.5"><div class="da"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg><div class="dd" style="background:var(--t3)"></div></div><div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:600;color:var(--tx)">舊 iPad</div><div style="font-size:12px;color:var(--t3);margin-top:1px">離線 · 最後上線 2 小時前</div></div><span class="bg bgx">離線</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-left:8px"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+    </div>
+
+    <!-- ═══ INSIGHT ═══ -->
+    <div class="pg" id="pg-insight">
+      <div style="padding:14px 20px 12px;background:var(--w);border-bottom:1px solid var(--bd)"><div style="font-size:24px;font-weight:600;color:var(--tx);letter-spacing:-.5px">洞察</div><div style="font-size:13px;color:var(--t3);margin-top:2px">主動建議 · 今日更新</div></div>
+      <span class="sl">今日摘要</span>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 16px 10px">
+        <div style="background:var(--w);border-radius:var(--r2);padding:12px;box-shadow:var(--sh)"><div style="font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:5px">網路狀態</div><div style="font-size:18px;font-weight:600;color:var(--gn)">正常</div></div>
+        <div style="background:var(--w);border-radius:var(--r2);padding:12px;box-shadow:var(--sh)"><div style="font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:5px">待處理</div><div style="font-size:18px;font-weight:600;color:var(--or)">2 項</div></div>
+        <div style="background:var(--w);border-radius:var(--r2);padding:12px;box-shadow:var(--sh)"><div style="font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:5px">裝置狀態</div><div style="font-size:18px;font-weight:600;color:var(--tx)">14 線上</div></div>
+        <div style="background:var(--w);border-radius:var(--r2);padding:12px;box-shadow:var(--sh)"><div style="font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:5px">安全狀態</div><div style="font-size:18px;font-weight:600;color:var(--gn)">安全</div></div>
+      </div>
+      <span class="sl">建議</span>
+      <div class="ins"><div style="display:flex;gap:10px;align-items:flex-start"><div class="ic"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2.5"/></svg></div><div><div style="font-size:13px;font-weight:600;color:var(--tx);margin-bottom:3px">偵測到陌生裝置</div><div style="font-size:12px;color:var(--t3);line-height:1.5">MAC: 8C:85:90:FF:12:34 已連接，請確認或封鎖。</div><div style="display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:6px;background:var(--abg);color:var(--ac);font-size:11px;font-weight:600;margin-top:8px;cursor:pointer" id="i-unknown">立即處理 ›</div></div></div></div>
+      <div class="ins"><div style="display:flex;gap:10px;align-items:flex-start"><div class="ic"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2.5"/></svg></div><div><div style="font-size:13px;font-weight:600;color:var(--tx);margin-bottom:3px">2.4GHz 頻道有干擾</div><div style="font-size:12px;color:var(--t3);line-height:1.5">頻道 6 偵測到干擾，建議切換至頻道 11。</div><div style="display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:6px;background:var(--abg);color:var(--ac);font-size:11px;font-weight:600;margin-top:8px;cursor:pointer" id="i-pro">前往 Pro 設定 ›</div></div></div></div>
+      <div class="ins"><div style="display:flex;gap:10px;align-items:flex-start"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div><div><div style="font-size:13px;font-weight:600;color:var(--tx);margin-bottom:3px">AiProtection 運作中</div><div style="font-size:12px;color:var(--t3);line-height:1.5">昨日攔截 12 則威脅，網路安全。</div></div></div></div>
+    </div>
+
+    <!-- ═══ FAMILY ═══ -->
+    <div class="pg" id="pg-family">
+      <div style="padding:14px 20px 12px;background:var(--w);border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between"><div><div style="font-size:24px;font-weight:600;color:var(--tx);letter-spacing:-.5px">家庭管理</div><div style="font-size:13px;color:var(--t3);margin-top:2px">2 位成員</div></div><div style="width:34px;height:34px;background:var(--ac);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer" id="f-add"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="4" x2="12" y2="20"/><line x1="4" y1="12" x2="20" y2="12"/></svg></div></div>
+      <span class="sl">家庭成員</span>
+      <div class="mg">
+        <div class="mc" id="f-ming"><div class="ma"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div style="font-size:14px;font-weight:600;color:var(--tx)">小明</div><div style="font-size:11px;color:var(--t3);margin-top:2px">青少年 · 12 歲</div><div style="font-size:11px;color:var(--t3);margin-top:6px">● 1 台連線</div><div style="margin-top:7px"><span class="bg bgo">4.5h 今日</span></div></div>
+        <div class="mc" id="f-mei"><div class="ma"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div style="font-size:14px;font-weight:600;color:var(--tx)">小美</div><div style="font-size:11px;color:var(--t3);margin-top:2px">學童 · 8 歲</div><div style="font-size:11px;color:var(--t3);margin-top:6px">● 目前離線</div><div style="margin-top:7px"><span class="bg bgg">1.2h 今日</span></div></div>
+      </div>
+      <span class="sl">今日報告</span>
+      <div class="card"><div style="padding:14px 16px">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px">
+          <div style="background:var(--s2);border-radius:8px;padding:10px;text-align:center"><div style="font-size:17px;font-weight:600;color:var(--tx)">5.7h</div><div style="font-size:10px;color:var(--t3);margin-top:2px">家庭總計</div></div>
+          <div style="background:var(--s2);border-radius:8px;padding:10px;text-align:center"><div style="font-size:17px;font-weight:600;color:var(--rd)">3</div><div style="font-size:10px;color:var(--t3);margin-top:2px">被封鎖</div></div>
+          <div style="background:var(--s2);border-radius:8px;padding:10px;text-align:center"><div style="font-size:17px;font-weight:600;color:var(--gn)">安全</div><div style="font-size:10px;color:var(--t3);margin-top:2px">今日狀態</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px"><div style="font-size:12px;color:var(--t2);width:30px">小美</div><div style="flex:1;height:6px;background:var(--s3);border-radius:3px;overflow:hidden"><div style="height:100%;width:24%;background:var(--gn);border-radius:3px"></div></div><div style="font-size:11px;color:var(--t3);width:24px;text-align:right">1.2h</div></div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px"><div style="font-size:12px;color:var(--t2);width:30px">小明</div><div style="flex:1;height:6px;background:var(--s3);border-radius:3px;overflow:hidden"><div style="height:100%;width:90%;background:var(--or);border-radius:3px"></div></div><div style="font-size:11px;color:var(--or);width:24px;text-align:right;font-weight:600">4.5h</div></div>
+        
+      </div></div>
+    </div>
+
+    <!-- ═══ SETTINGS ═══ -->
+    <div class="pg" id="pg-settings" style="padding-bottom:20px">
+      <div style="padding:14px 20px 12px;background:var(--w);border-bottom:1px solid var(--bd)"><div style="font-size:24px;font-weight:600;color:var(--tx);letter-spacing:-.5px">設定</div><div style="font-size:13px;color:var(--t3);margin-top:2px">ASUS RT-BE96U · 3.0.0.4.386</div></div>
+      <span class="sl">Wi-Fi 設定</span>
+      <div style="background:var(--w)">
+        <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:14px;font-weight:500;color:var(--tx)">主 Wi-Fi</div><div style="font-size:12px;color:var(--t3);margin-top:1px">ASUS_Home_5G</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div style="flex:1"><div style="font-size:14px;font-weight:500;color:var(--tx)">訪客網路</div><div style="font-size:12px;color:var(--t3);margin-top:1px">已停用</div></div><div class="tg" id="tg1"></div></div>
+        <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div style="flex:1"><div style="font-size:14px;font-weight:500;color:var(--tx)">IoT 網路</div><div style="font-size:12px;color:var(--t3);margin-top:1px">ASUS_IoT · 啟用中</div></div><div class="tg on" id="tg2"></div></div>
+      </div>
+      <span class="sl">安全與隱私</span>
+      <div style="background:var(--w)">
+        <div class="sr" id="s-aip" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div style="flex:1"><div style="font-size:14px;font-weight:500;color:var(--tx)">AiProtection</div><div style="font-size:12px;color:var(--t3);margin-top:1px">即時保護 · 啟用中</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <span class="sl">系統維護</span>
+      <div style="background:var(--w)">
+        <div class="sr" id="s-fw" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/></svg></div><div style="flex:1"><div style="font-size:14px;font-weight:500;color:var(--tx)">韌體更新</div><div style="font-size:12px;color:var(--t3);margin-top:1px">3.0.0.4.388 可用</div></div><span class="bg bgb" style="margin-right:6px">更新</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg></div><div style="flex:1"><div style="font-size:14px;font-weight:500;color:var(--tx)">路由器重開機</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg></div><div style="flex:1"><div style="font-size:14px;font-weight:500;color:var(--tx)">LED 燈號</div></div><div class="tg on" id="tg5"></div></div>
+      </div>
+      <span class="sl">App 與帳號</span>
+      <div style="background:var(--w)">
+        <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div style="flex:1"><div style="font-size:14px;font-weight:500;color:var(--tx)">帳號</div><div style="font-size:12px;color:var(--t3);margin-top:1px">tim@asus.com</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div style="flex:1"><div style="font-size:14px;font-weight:500;color:var(--tx)">Face ID / 密碼鎖</div></div><div class="tg on" id="tg6"></div></div>
+        <div class="sr" style="border:none"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16" stroke-width="2.5"/></svg></div><div style="flex:1"><div style="font-size:14px;font-weight:500;color:var(--tx)">App 版本</div><div style="font-size:12px;color:var(--t3);margin-top:1px">v5.1.2.3</div></div></div>
+      </div>
+      <div style="height:10px"></div>
+      <div style="padding:0 16px 20px">
+        <div class="pe" id="s-pro">
+          <div class="pei"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a1 1 0 00-1.41 0l-1.06 1.06a7 7 0 00-9.2 0L6.34 4.93a1 1 0 00-1.41 1.41l1.06 1.06a7 7 0 000 9.2l-1.06 1.06a1 1 0 001.41 1.41l1.06-1.06a7 7 0 009.2 0l1.06 1.06a1 1 0 001.41-1.41l-1.06-1.06a7 7 0 000-9.2l1.06-1.06a1 1 0 000-1.41z"/></svg></div>
+          <div style="flex:1"><div style="font-size:15px;font-weight:600;color:#fff">Pro Mode</div><div style="font-size:11px;color:rgba(255,255,255,.45);margin-top:2px">進階設定 · LAN / WAN / VPN / System</div></div>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end ct -->
+
+  <!-- Tab Bar -->
+  <div class="tb">
+    <div class="ti on" id="tab-home"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首頁</span></div>
+    <div class="ti" id="tab-devices"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg><span>裝置</span></div>
+    <div class="ti" id="tab-insight"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span>洞察</span></div>
+    <div class="ti" id="tab-family"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg><span>家庭</span></div>
+    <div class="ti" id="tab-settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a1 1 0 00-1.41 0l-.71.71a7 7 0 00-9.9 0l-.71-.71a1 1 0 00-1.41 1.41l.71.71a7 7 0 000 9.9l-.71.71a1 1 0 001.41 1.41l.71-.71a7 7 0 009.9 0l.71.71a1 1 0 001.41-1.41l-.71-.71a7 7 0 000-9.9l.71-.71a1 1 0 000-1.41z"/></svg><span>設定</span></div>
+  </div>
+
+  <!-- SUB: PRO MODE -->
+  <div class="sub" id="sub-pro">
+    <div class="sb"><div class="di"></div><div class="sb-t">9:41</div><div class="sb-r"><svg width="17" height="12" viewBox="0 0 17 12" fill="var(--tx)"><rect x="0" y="3.5" width="3" height="8.5" rx="1"/><rect x="4.5" y="2" width="3" height="10" rx="1"/><rect x="9" y=".5" width="3" height="11.5" rx="1"/><rect x="13.5" y=".5" width="3" height="11.5" rx="1" opacity=".25"/></svg><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
+    <div class="phd"><div class="pbk" id="pro-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div style="font-size:26px;font-weight:700;color:#fff;letter-spacing:-.5px">Pro Mode</div><div style="font-size:13px;color:rgba(255,255,255,.45);margin-top:4px">進階設定 · 適合專業使用者</div></div>
+    <div class="ptabs"><div class="pt on" id="ptab-net">Network</div><div class="pt" id="ptab-wl">Wireless</div><div class="pt" id="ptab-vpn">VPN</div><div class="pt" id="ptab-sys">System</div><div class="pt" id="ptab-int">Integration</div></div>
+    <div class="pcn" id="pro-cnt"></div>
+    <div class="ptb">
+      <div class="pti" id="ptb-home"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首頁</span></div>
+      <div class="pti" id="ptb-dev"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg><span>裝置</span></div>
+      <div class="pti" id="ptb-ins"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span>洞察</span></div>
+      <div class="pti" id="ptb-fam"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg><span>家庭</span></div>
+      <div class="pti on" id="ptb-set"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a1 1 0 00-1.41 0l-.71.71a7 7 0 00-9.9 0l-.71-.71a1 1 0 00-1.41 1.41l.71.71a7 7 0 000 9.9l-.71.71a1 1 0 001.41 1.41l.71-.71a7 7 0 009.9 0l.71.71a1 1 0 001.41-1.41l-.71-.71a7 7 0 000-9.9l.71-.71a1 1 0 000-1.41z"/></svg><span>設定</span></div>
+    </div>
+  </div>
+
+  <!-- SUB: DEVICE DETAIL -->
+  <div class="sub" id="sub-dev">
+    <div class="sb"><div class="di"></div><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0"><div class="bk" id="dev-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div style="font-size:17px;font-weight:600;color:var(--tx)" id="dev-title">裝置詳情</div></div>
+    <div style="flex:1;min-height:0;overflow-y:auto;background:var(--bg)" id="dev-body"></div>
+  </div>
+
+  <!-- SUB: NOTIFICATIONS -->
+  <div class="sub" id="sub-notif">
+    <div class="sb"><div class="di"></div><div class="sb-t">9:41</div><div class="sb-r"><svg width="17" height="12" viewBox="0 0 17 12" fill="var(--tx)"><rect x="0" y="3.5" width="3" height="8.5" rx="1"/><rect x="4.5" y="2" width="3" height="10" rx="1"/><rect x="9" y=".5" width="3" height="11.5" rx="1"/><rect x="13.5" y=".5" width="3" height="11.5" rx="1" opacity=".25"/></svg><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0"><div style="display:flex;align-items:center;gap:12px"><div class="bk" id="notif-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div style="font-size:18px;font-weight:600;color:var(--tx)">通知</div></div><div style="font-size:13px;color:var(--ac);font-weight:500;cursor:pointer">全部已讀</div></div>
+    <div style="flex:1;min-height:0;overflow-y:auto;background:var(--bg);padding-bottom:20px">
+      <div style="background:var(--w);margin:12px 16px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden">
+        <!-- 未讀 -->
+        <div style="display:flex;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bd);cursor:pointer" id="notif-unk">
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--ac);flex-shrink:0;margin-top:4px"></div>
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--obg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2.5"/></svg></div>
+          <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--tx)">偵測到陌生裝置</div><div style="font-size:10px;color:var(--t3);flex-shrink:0">05/21 14:32</div></div><div style="font-size:12px;color:var(--t2);line-height:1.5">未知裝置已連上網路，請確認或封鎖。</div><div style="display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:6px;background:var(--abg);color:var(--ac);font-size:11px;font-weight:600;margin-top:7px;cursor:pointer" id="notif-unk-cta">立即處理 ›</div></div>
+        </div>
+        <div style="display:flex;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bd)">
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--ac);flex-shrink:0;margin-top:4px"></div>
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--abg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/></svg></div>
+          <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--tx)">韌體更新可用</div><div style="font-size:10px;color:var(--t3);flex-shrink:0">05/21 14:10</div></div><div style="font-size:12px;color:var(--t2);line-height:1.5">新版本 3.0.0.4.388，提升安全性。</div></div>
+        </div>
+        <div style="display:flex;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bd)">
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--ac);flex-shrink:0;margin-top:4px"></div>
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--obg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 10-16 0"/></svg></div>
+          <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--tx)">小明上網超時</div><div style="font-size:10px;color:var(--t3);flex-shrink:0">05/21 06:00</div></div><div style="font-size:12px;color:var(--t2);line-height:1.5">小明已達 3 小時上限，已暫停網路。</div></div>
+        </div>
+        <!-- 已讀 -->
+        <div style="display:flex;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bd)">
+          <div style="width:8px;height:8px;flex-shrink:0;margin-top:4px"></div>
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+          <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:500;color:var(--t2)">安全掃描完成</div><div style="font-size:10px;color:var(--t3);flex-shrink:0">05/21 08:30</div></div><div style="font-size:12px;color:var(--t3);line-height:1.5">未發現威脅，網路安全狀態良好。</div></div>
+        </div>
+        <div style="display:flex;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bd)">
+          <div style="width:8px;height:8px;flex-shrink:0;margin-top:4px"></div>
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--t3)" stroke="none"/></svg></div>
+          <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:500;color:var(--t2)">新裝置連線</div><div style="font-size:10px;color:var(--t3);flex-shrink:0">05/21 07:12</div></div><div style="font-size:12px;color:var(--t3);line-height:1.5">Tim's iPhone 已連上 ASUS_Home_5G。</div></div>
+        </div>
+        <div style="display:flex;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bd)">
+          <div style="width:8px;height:8px;flex-shrink:0;margin-top:4px"></div>
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:500;color:var(--t2)">AiProtection 攔截威脅</div><div style="font-size:10px;color:var(--t3);flex-shrink:0">05/20 22:14</div></div><div style="font-size:12px;color:var(--t3);line-height:1.5">攔截 12 則惡意網站存取嘗試。</div></div>
+        </div>
+        <div style="display:flex;gap:10px;padding:13px 16px">
+          <div style="width:8px;height:8px;flex-shrink:0;margin-top:4px"></div>
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:500;color:var(--t2)">Mesh 最佳化完成</div><div style="font-size:10px;color:var(--t3);flex-shrink:0">05/20 03:00</div></div><div style="font-size:12px;color:var(--t3);line-height:1.5">自動最佳化完成，節點連線品質良好。</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERLAYS -->
+  <div class="ov" id="ov-wifi"><div class="sheet"><div class="hdl"></div><div style="font-size:18px;font-weight:600;color:var(--tx);text-align:center;margin-bottom:18px">分享 Wi-Fi</div><div style="width:156px;height:156px;background:var(--s2);border-radius:14px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:60px;border:1px solid var(--bd)">🔲</div><div style="text-align:center;margin-bottom:18px"><div style="font-size:15px;font-weight:600;color:var(--tx)">ASUS_Home_5G</div><div style="font-family:var(--m);font-size:13px;color:var(--t3);margin-top:4px">Tim@home2024</div></div><div style="display:flex;gap:10px"><div style="flex:1;height:46px;background:var(--ac);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:500;cursor:pointer">儲存圖片</div><div style="flex:1;height:46px;background:var(--s2);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--t2);font-size:14px;font-weight:500;cursor:pointer" id="ov-wifi-close">關閉</div></div></div></div>
+  <div class="ov" id="ov-diag"><div class="sheet"><div class="hdl"></div><div style="font-size:18px;font-weight:600;color:var(--tx);text-align:center;margin-bottom:16px">一鍵網路診斷</div><div style="display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--bd)"><div style="width:28px;height:28px;border-radius:50%;background:var(--gbg);display:flex;align-items:center;justify-content:center;font-size:14px">✅</div><div><div style="font-size:13px;font-weight:600;color:var(--tx)">網際網路連線</div><div style="font-size:12px;color:var(--t3)">正常 · 512 Mbps</div></div></div><div style="display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--bd)"><div style="width:28px;height:28px;border-radius:50%;background:var(--gbg);display:flex;align-items:center;justify-content:center;font-size:14px">✅</div><div><div style="font-size:13px;font-weight:600;color:var(--tx)">DNS 解析</div><div style="font-size:12px;color:var(--t3)">正常 · 8 ms</div></div></div><div style="display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--bd)"><div style="width:28px;height:28px;border-radius:50%;background:var(--gbg);display:flex;align-items:center;justify-content:center;font-size:14px">✅</div><div><div style="font-size:13px;font-weight:600;color:var(--tx)">Mesh 節點通訊</div><div style="font-size:12px;color:var(--t3)">全部正常</div></div></div><div style="display:flex;gap:12px;align-items:center;padding:10px 0"><div style="width:28px;height:28px;border-radius:50%;background:var(--obg);display:flex;align-items:center;justify-content:center;font-size:14px">⚠️</div><div><div style="font-size:13px;font-weight:600;color:var(--tx)">2.4GHz 頻道干擾</div><div style="font-size:12px;color:var(--or)">頻道 6 有干擾，建議切換</div></div></div><div style="display:flex;gap:8px;margin-top:16px"><div style="flex:1;height:46px;background:var(--ac);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:500;cursor:pointer" id="ov-diag-close">完成</div><div style="flex:1;height:46px;background:var(--s2);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--t2);font-size:14px;font-weight:500;cursor:pointer" id="ov-diag-pro">前往 Pro ›</div></div></div></div>
+  <div class="ov" id="ov-add"><div class="sheet"><div class="hdl"></div><div style="font-size:18px;font-weight:600;color:var(--tx);text-align:center;margin-bottom:18px">新增家庭成員</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px"><div style="padding:14px;background:var(--s2);border-radius:var(--r2);text-align:center;cursor:pointer;border:2px solid transparent" id="age1" onclick="selAge(this)"><div style="font-size:24px;margin-bottom:5px">👶</div><div style="font-size:13px;font-weight:500;color:var(--tx)">幼童</div><div style="font-size:11px;color:var(--t3)">0–6 歲</div></div><div style="padding:14px;background:var(--s2);border-radius:var(--r2);text-align:center;cursor:pointer;border:2px solid transparent" id="age2" onclick="selAge(this)"><div style="font-size:24px;margin-bottom:5px">🧒</div><div style="font-size:13px;font-weight:500;color:var(--tx)">學童</div><div style="font-size:11px;color:var(--t3)">7–12 歲</div></div><div style="padding:14px;background:var(--s2);border-radius:var(--r2);text-align:center;cursor:pointer;border:2px solid transparent" id="age3" onclick="selAge(this)"><div style="font-size:24px;margin-bottom:5px">🧑</div><div style="font-size:13px;font-weight:500;color:var(--tx)">青少年</div><div style="font-size:11px;color:var(--t3)">13–17 歲</div></div><div style="padding:14px;background:var(--s2);border-radius:var(--r2);text-align:center;cursor:pointer;border:2px solid transparent" id="age4" onclick="selAge(this)"><div style="font-size:24px;margin-bottom:5px">🧑‍💼</div><div style="font-size:13px;font-weight:500;color:var(--tx)">成人</div><div style="font-size:11px;color:var(--t3)">18+ 歲</div></div></div><input placeholder="輸入名稱…" style="width:100%;height:44px;border:1px solid var(--bd);border-radius:var(--r2);padding:0 14px;font-size:14px;font-family:var(--f);color:var(--tx);outline:none;background:var(--s2);margin-bottom:14px"/><div style="display:flex;gap:8px"><div style="flex:1;height:46px;background:var(--ac);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:500;cursor:pointer" id="ov-add-ok">建立成員</div><div style="width:46px;height:46px;background:var(--s2);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--t2);font-size:18px" id="ov-add-x">✕</div></div></div></div>
+  <div class="ov" id="ov-mei"><div class="sheet"><div class="hdl"></div><div style="text-align:center;margin-bottom:16px"><div style="width:58px;height:58px;border-radius:50%;background:var(--gbg);font-size:26px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px">👧</div><div style="font-size:17px;font-weight:600;color:var(--tx)">小美</div><div style="font-size:13px;color:var(--t3)">學童 · 8 歲</div></div><div style="background:var(--s2);border-radius:var(--r2);padding:12px;margin-bottom:14px"><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">今日上網</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">1.2 小時</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">連線裝置</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">目前離線</div></div><div style="display:flex;justify-content:space-between;padding:9px 0"><div style="font-size:13px;color:var(--t3)">每日上限</div><div style="font-size:13px;font-weight:500;color:var(--ac);font-family:var(--m)">2 小時</div></div></div><div style="margin-bottom:10px">
+          <div style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.7px;text-transform:uppercase;margin-bottom:6px">排程設定</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 14px;background:var(--s2);border-radius:var(--r2);cursor:pointer" id="ov-mei-sched">
+            <div style="display:flex;align-items:center;gap:8px">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span style="font-size:13px;color:var(--t3)">尚未設定排程</span>
+            </div>
+            <div style="font-size:12px;color:var(--ac);font-weight:600">設定 ›</div>
+          </div>
+        </div>
+        <div style="height:46px;background:var(--s2);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--t2);font-size:14px;font-weight:500;cursor:pointer" id="ov-mei-close">關閉</div></div></div>
+  <div class="ov" id="ov-ming"><div class="sheet"><div class="hdl"></div><div style="text-align:center;margin-bottom:16px"><div style="width:58px;height:58px;border-radius:50%;background:var(--obg);font-size:26px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px">👦</div><div style="font-size:17px;font-weight:600;color:var(--tx)">小明</div><div style="font-size:13px;color:var(--t3)">青少年 · 12 歲</div></div><div style="background:var(--obg);border-radius:var(--r2);padding:12px;text-align:center;margin-bottom:12px"><div style="font-size:24px;font-weight:600;color:var(--or)">4.5 小時</div><div style="font-size:12px;color:var(--or);margin-top:1px">今日上網（超過建議 3h）</div></div><div style="margin-bottom:10px">
+          <div style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.7px;text-transform:uppercase;margin-bottom:6px">排程設定</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 14px;background:var(--w);border:1px solid var(--bd);border-radius:var(--r2);cursor:pointer" id="ov-ming-sched">
+            <div>
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span style="font-size:13px;font-weight:600;color:var(--tx)">睡覺時間</span>
+                <span style="font-size:11px;background:var(--gbg);color:var(--gn);padding:1px 6px;border-radius:8px;font-weight:600">啟用中</span>
+              </div>
+              <div style="font-size:12px;color:var(--t3);padding-left:19px">20:00 – 06:00 ‧ 週一至週五</div>
+            </div>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px"><div style="height:44px;background:var(--rd);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:500;cursor:pointer" id="ov-ming-close">⏸ 暫停網路</div><div style="height:44px;background:var(--gbg);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--gn);font-size:13px;font-weight:500;cursor:pointer">+ 給予延長</div></div><div style="background:var(--s2);border-radius:var(--r2);padding:12px"><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">每日上限</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">3 小時</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">上床時間</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">22:00</div></div><div style="display:flex;justify-content:space-between;padding:9px 0"><div style="font-size:13px;color:var(--t3)">週末規則</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">+1 小時</div></div></div></div></div>
+
+
+  <!-- SUB: QUICK ACTION EDITOR -->
+  <div class="sub" id="sub-qaedit">
+    <div class="sb"><div class="di"></div><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="bk" id="qaedit-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+        <div style="font-size:17px;font-weight:600;color:var(--tx)">編輯快速操作</div>
+      </div>
+      <div style="font-size:13px;color:var(--ac);font-weight:500;cursor:pointer" id="qaedit-done">完成</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg);padding-bottom:20px" id="qaedit-body"></div>
+  </div>
+  <div class="ov" id="ov-sort"><div class="sheet"><div class="hdl"></div>
+    <div style="font-size:16px;font-weight:600;color:var(--tx);margin-bottom:16px">排序方式</div>
+    <div id="sort-list">
+      <div class="sort-opt on" data-sort="status" style="display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--bd);cursor:pointer"><span style="font-size:14px;color:var(--tx)">連線狀態</span><svg class="sort-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="sort-opt" data-sort="name" style="display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--bd);cursor:pointer"><span style="font-size:14px;color:var(--tx)">名稱 A–Z</span></div>
+      <div class="sort-opt" data-sort="signal" style="display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--bd);cursor:pointer"><span style="font-size:14px;color:var(--tx)">訊號強度</span></div>
+      <div class="sort-opt" data-sort="band" style="display:flex;align-items:center;justify-content:space-between;padding:13px 0;cursor:pointer"><span style="font-size:14px;color:var(--tx)">頻段</span></div>
+    </div>
+    <div style="height:46px;background:var(--s2);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--t2);font-size:14px;font-weight:500;cursor:pointer;margin-top:16px" id="ov-sort-close">完成</div>
+  </div></div>
+  <!-- SUB: SCHEDULE -->
+  <div class="sub" id="sub-sched">
+    <div class="sb"><div class="di"></div><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="bk" id="sched-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+        <div style="font-size:17px;font-weight:600;color:var(--tx)" id="sched-title">上網排程</div>
+      </div>
+      <div style="font-size:14px;color:var(--ac);font-weight:600;cursor:pointer" id="sched-save">儲存</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <div style="font-size:14px;color:var(--t2);line-height:1.7;padding:16px 20px 8px">排程可自動在睡覺或吃飯時暫停網路，平日與週末可設定不同規則。</div>
+
+      <!-- Schedule toggle -->
+      <div style="background:var(--w);margin:8px 16px;border-radius:var(--r);box-shadow:var(--sh)">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px">
+          <div style="font-size:15px;font-weight:500;color:var(--tx)">啟用排程</div>
+          <div class="tg on" id="tg-sched"></div>
+        </div>
+      </div>
+
+      <!-- Schedule name -->
+      <div style="font-size:12px;font-weight:600;color:var(--t3);padding:12px 20px 6px;letter-spacing:.5px">排程名稱</div>
+      <div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh)">
+        <div style="display:flex;align-items:center;padding:12px 16px">
+          <input id="sched-name" value="睡覺時間" style="flex:1;border:none;outline:none;font-size:15px;color:var(--tx);font-family:var(--f);background:transparent"/>
+          <div style="width:22px;height:22px;border-radius:50%;background:var(--t3);display:flex;align-items:center;justify-content:center;cursor:pointer" onclick="document.getElementById('sched-name').value=''">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Time range -->
+      <div style="background:var(--w);margin:10px 16px;border-radius:var(--r);box-shadow:var(--sh)">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--bd)">
+          <div style="font-size:15px;font-weight:500;color:var(--tx)">開始時間</div>
+          <div data-time="start" style="background:var(--s2);border-radius:8px;padding:6px 14px;font-size:16px;font-weight:600;color:var(--tx);font-family:var(--m);cursor:pointer">20:00</div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px">
+          <div style="font-size:15px;font-weight:500;color:var(--tx)">結束時間</div>
+          <div data-time="end" style="background:var(--s2);border-radius:8px;padding:6px 14px;font-size:16px;font-weight:600;color:var(--tx);font-family:var(--m);cursor:pointer">06:00</div>
+        </div>
+      </div>
+
+      <!-- Frequency -->
+      <div style="font-size:12px;font-weight:600;color:var(--t3);padding:4px 20px 6px;letter-spacing:.5px">重複頻率</div>
+      <div style="background:var(--w);margin:0 16px 20px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden" id="sched-days">
+        <div class="sched-day on" data-d="mon" style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd);cursor:pointer"><span style="font-size:15px;color:var(--tx)">週一</span><div style="width:24px;height:24px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="sched-day on" data-d="tue" style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd);cursor:pointer"><span style="font-size:15px;color:var(--tx)">週二</span><div style="width:24px;height:24px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="sched-day on" data-d="wed" style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd);cursor:pointer"><span style="font-size:15px;color:var(--tx)">週三</span><div style="width:24px;height:24px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="sched-day on" data-d="thu" style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd);cursor:pointer"><span style="font-size:15px;color:var(--tx)">週四</span><div style="width:24px;height:24px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="sched-day on" data-d="fri" style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd);cursor:pointer"><span style="font-size:15px;color:var(--tx)">週五</span><div style="width:24px;height:24px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="sched-day" data-d="sat" style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd);cursor:pointer"><span style="font-size:15px;color:var(--tx)">週六</span><div style="width:24px;height:24px;border-radius:50%;background:var(--bd2);display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="sched-day" data-d="sun" style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;cursor:pointer"><span style="font-size:15px;color:var(--tx)">週日</span><div style="width:24px;height:24px;border-radius:50%;background:var(--bd2);display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUB: 韌體更新 -->
+  <div class="sub" id="sub-fw">
+    <div class="sb"><div class="di"></div><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="fw-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">韌體更新</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg);padding-bottom:24px">
+      <!-- 目前狀態 -->
+      <div style="background:var(--w);margin:12px 16px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden">
+        <div style="padding:16px;display:flex;align-items:center;gap:14px">
+          <div style="width:48px;height:48px;border-radius:50%;background:var(--abg);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/></svg>
+          </div>
+          <div>
+            <div style="font-size:15px;font-weight:600;color:var(--tx)">新版本可用</div>
+            <div style="font-size:13px;color:var(--t3);margin-top:3px">3.0.0.4.388 → <span style="color:var(--ac);font-weight:600">3.0.0.4.390</span></div>
+          </div>
+        </div>
+        <div style="padding:0 16px 14px">
+          <div style="background:var(--s2);border-radius:var(--r2);padding:12px 14px;font-size:12px;color:var(--t2);line-height:1.7;margin-bottom:12px">
+            <div style="font-weight:600;color:var(--tx);margin-bottom:6px">更新內容</div>
+            <div>• 修正 AiMesh 節點連線穩定性問題</div>
+            <div>• 強化 WPA3 安全性</div>
+            <div>• 改善 Wi-Fi 6E 在 6GHz 頻段的效能</div>
+            <div>• 修正多項已知安全漏洞</div>
+          </div>
+          <div style="height:46px;background:var(--ac);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:600;cursor:pointer;gap:8px" id="fw-update-btn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/></svg>
+            立即更新
+          </div>
+        </div>
+      </div>
+      <!-- 目前版本 -->
+      <span class="sl">目前版本</span>
+      <div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh)">
+        <div style="display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--bd)">
+          <div style="font-size:14px;color:var(--t3)">韌體版本</div>
+          <div style="font-size:14px;font-weight:500;color:var(--tx);font-family:var(--m)">3.0.0.4.388</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--bd)">
+          <div style="font-size:14px;color:var(--t3)">型號</div>
+          <div style="font-size:14px;font-weight:500;color:var(--tx)">ASUS RT-BE96U</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:12px 16px">
+          <div style="font-size:14px;color:var(--t3)">上次更新</div>
+          <div style="font-size:14px;font-weight:500;color:var(--tx)">2025/12/04</div>
+        </div>
+      </div>
+      <!-- 自動更新 -->
+      <span class="sl">設定</span>
+      <div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh)">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd)">
+          <div>
+            <div style="font-size:14px;font-weight:500;color:var(--tx)">自動更新</div>
+            <div style="font-size:12px;color:var(--t3);margin-top:1px">每週自動安裝最新安全更新</div>
+          </div>
+          <div class="tg on" id="tg-autoupdate"></div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px">
+          <div>
+            <div style="font-size:14px;font-weight:500;color:var(--tx)">預約更新時間</div>
+            <div style="font-size:12px;color:var(--t3);margin-top:1px">凌晨 03:00（低用量時段）</div>
+          </div>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUB: AiProtection -->
+  <div class="sub" id="sub-aip">
+    <div class="sb"><div class="di"></div><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="aip-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">AiProtection</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg);padding-bottom:24px">
+      <!-- 狀態卡片 -->
+      <div style="background:linear-gradient(140deg,#1BBFAA,#18B87A);margin:12px 16px;border-radius:var(--r);padding:18px;box-shadow:0 4px 20px rgba(24,184,122,.2);position:relative;overflow:hidden">
+        <div style="position:absolute;top:-30px;right:-20px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.07)"></div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+          <div style="width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <div>
+            <div style="font-size:16px;font-weight:600;color:#fff">網路安全</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.75);margin-top:2px">AiProtection 運作中</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0">
+          <div style="text-align:center">
+            <div style="font-size:24px;font-weight:600;color:#fff">12</div>
+            <div style="font-size:10px;color:rgba(255,255,255,.65);margin-top:2px">今日攔截</div>
+          </div>
+          <div style="text-align:center;border-left:1px solid rgba(255,255,255,.2);border-right:1px solid rgba(255,255,255,.2)">
+            <div style="font-size:24px;font-weight:600;color:#fff">348</div>
+            <div style="font-size:10px;color:rgba(255,255,255,.65);margin-top:2px">本月攔截</div>
+          </div>
+          <div style="text-align:center">
+            <div style="font-size:24px;font-weight:600;color:#fff">0</div>
+            <div style="font-size:10px;color:rgba(255,255,255,.65);margin-top:2px">安全警報</div>
+          </div>
+        </div>
+      </div>
+      <!-- 主開關 -->
+      <div style="background:var(--w);margin:12px 16px 0;border-radius:var(--r);box-shadow:var(--sh)">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:16px">
+          <div>
+            <div style="font-size:15px;font-weight:600;color:var(--tx)">AiProtection</div>
+            <div style="font-size:12px;color:var(--t3);margin-top:2px">啟用後顯示各項保護細節</div>
+          </div>
+          <div class="tg on" id="tg-aip-master"></div>
+        </div>
+      </div>
+      <!-- 細項（只在 master on 時顯示） -->
+      <div id="aip-details">
+        <span class="sl">保護功能</span>
+        <div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh)">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd)">
+            <div><div style="font-size:14px;font-weight:500;color:var(--tx)">即時網路防護</div><div style="font-size:12px;color:var(--t3);margin-top:1px">攔截惡意網站與入侵嘗試</div></div>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd)">
+            <div><div style="font-size:14px;font-weight:500;color:var(--tx)">惡意網站封鎖</div><div style="font-size:12px;color:var(--t3);margin-top:1px">防止釣魚與詐騙網站</div></div>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd)">
+            <div><div style="font-size:14px;font-weight:500;color:var(--tx)">雙向 IPS</div><div style="font-size:12px;color:var(--t3);margin-top:1px">偵測並阻止入侵行為</div></div>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd)">
+            <div><div style="font-size:14px;font-weight:500;color:var(--tx)">受感染裝置偵測</div><div style="font-size:12px;color:var(--t3);margin-top:1px">偵測網路內已感染的裝置</div></div>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px">
+            <div><div style="font-size:14px;font-weight:500;color:var(--tx)">廣告攔截</div><div style="font-size:12px;color:var(--t3);margin-top:1px">攔截追蹤器與廣告請求</div></div>
+            <div class="tg on" id="tg-adblock"></div>
+          </div>
+        </div>
+      </div>
+      <!-- 最近攔截 -->
+      <span class="sl">最近攔截記錄</span>
+      <div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh)">
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--bd)">
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--rd);flex-shrink:0"></div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:13px;font-weight:500;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">malware-site.ru</div>
+            <div style="font-size:11px;color:var(--t3);margin-top:1px">惡意程式下載 · Tim's iPhone</div>
+          </div>
+          <div style="font-size:11px;color:var(--t3);flex-shrink:0">14:22</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--bd)">
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--or);flex-shrink:0"></div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:13px;font-weight:500;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">phishing-login.net</div>
+            <div style="font-size:11px;color:var(--t3);margin-top:1px">釣魚網站 · Tim's MacBook Pro</div>
+          </div>
+          <div style="font-size:11px;color:var(--t3);flex-shrink:0">11:08</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 16px">
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--rd);flex-shrink:0"></div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:13px;font-weight:500;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">botnet-cc.xyz</div>
+            <div style="font-size:11px;color:var(--t3);margin-top:1px">殭屍網路 · 未知裝置</div>
+          </div>
+          <div style="font-size:11px;color:var(--t3);flex-shrink:0">昨天</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DRAWER -->
+  <div class="drawer" id="drawer">
+    <div class="drawer-bg" id="drawer-bg"></div>
+    <div class="drawer-panel">
+      <!-- Account -->
+      <div style="padding:52px 20px 16px;border-bottom:1px solid var(--bd)">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="width:48px;height:48px;border-radius:50%;background:#f1f3f4;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 1px 4px rgba(0,0,0,.1)">
+            <svg width="28" height="28" viewBox="0 0 48 48"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg>
+          </div>
+          <div>
+            <div style="font-size:15px;font-weight:600;color:var(--tx)">asus1234</div>
+            <div style="font-size:12px;color:var(--t3);margin-top:1px">asus1234@gmail.com</div>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="margin-left:auto"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+      <!-- Router profiles -->
+      <div style="flex:1;overflow-y:auto">
+        <div style="padding:10px 0">
+          <div style="display:flex;align-items:center;gap:12px;padding:11px 20px;cursor:pointer;background:var(--abg)" id="dr-r1">
+            <div style="width:38px;height:38px;border-radius:10px;background:var(--w);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 1px 4px rgba(0,0,0,.08)">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='%231E3A8A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='14' width='20' height='6' rx='1'/%3E%3Cpath d='M8 17h.01M12 17h.01'/%3E%3Cpath d='M12 14V8M8 11l4-4 4 4'/%3E%3C/svg%3E" width="24" height="24"/>
+            </div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:14px;font-weight:600;color:var(--ac)">timmmbt7</div>
+              <div style="font-size:11px;color:var(--ac);opacity:.7;margin-top:1px">Home · 目前連線</div>
+            </div>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:11px 20px;cursor:pointer" id="dr-r2">
+            <div style="width:38px;height:38px;border-radius:10px;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='%238A93AA' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='14' width='20' height='6' rx='1'/%3E%3Cpath d='M8 17h.01M12 17h.01'/%3E%3Cpath d='M12 14V8M8 11l4-4 4 4'/%3E%3C/svg%3E" width="24" height="24"/>
+            </div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:14px;font-weight:500;color:var(--tx)">ZenWiFi BT6</div>
+              <div style="font-size:11px;color:var(--t3);margin-top:1px">Home</div>
+            </div>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:11px 20px;cursor:pointer" id="dr-r3">
+            <div style="width:38px;height:38px;border-radius:10px;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='%238A93AA' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='14' width='20' height='6' rx='1'/%3E%3Cpath d='M8 17h.01M12 17h.01'/%3E%3Cpath d='M12 14V8M8 11l4-4 4 4'/%3E%3C/svg%3E" width="24" height="24"/>
+            </div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:14px;font-weight:500;color:var(--tx)">ZenWiFi ET8</div>
+              <div style="font-size:11px;color:var(--t3);margin-top:1px">Office</div>
+            </div>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+        <!-- Divider -->
+        <div style="height:1px;background:var(--bd);margin:4px 0"></div>
+        <!-- More -->
+        <div style="padding:6px 0 20px">
+          <div style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.8px;padding:10px 20px 4px;text-transform:uppercase">More</div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 20px;cursor:pointer;border-bottom:1px solid var(--bd)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--t2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            <span style="font-size:14px;color:var(--tx)">Theme</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="margin-left:auto"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 20px;cursor:pointer;border-bottom:1px solid var(--bd)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--t2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16" stroke-width="2.5"/></svg>
+            <span style="font-size:14px;color:var(--tx)">About</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="margin-left:auto"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 20px;cursor:pointer;border-bottom:1px solid var(--bd)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--t2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            <span style="font-size:14px;color:var(--tx)">Feedback</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="margin-left:auto"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 20px;cursor:pointer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--t2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2.5"/></svg>
+            <span style="font-size:14px;color:var(--tx)">FAQ</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="margin-left:auto"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUB: THEME -->
+  <div class="sub" id="sub-theme">
+    <div class="sb"><div class="di"></div><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="bk" id="theme-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+        <div style="font-size:17px;font-weight:600;color:var(--tx)">Theme</div>
+      </div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--w);padding-bottom:24px">
+      <div style="font-size:13px;color:var(--t3);padding:14px 20px 10px">Theme</div>
+      <!-- Themes list -->
+      <div id="theme-list">
+        <div class="theme-item" data-t="techno" style="display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--bd);cursor:pointer">
+          <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2);display:flex;align-items:center;justify-content:center;flex-shrink:0" id="tr-techno"></div>
+          <div style="width:68px;height:100px;border-radius:8px;background:linear-gradient(160deg,#0D1B2A,#1A3A5C,#0A2444);overflow:hidden;flex-shrink:0;position:relative">
+            <div style="height:16px;background:rgba(0,100,200,.4);display:flex;align-items:center;padding:0 5px;gap:3px"><div style="width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.4)"></div><div style="flex:1;height:2px;background:rgba(255,255,255,.15);border-radius:1px"></div></div>
+            <div style="display:flex;justify-content:center;padding-top:10px"><div style="width:20px;height:20px;border-radius:50%;border:1px solid #4A90D9;display:flex;align-items:center;justify-content:center"><div style="width:8px;height:8px;border-radius:50%;background:#4A90D9"></div></div></div>
+            <div style="display:flex;justify-content:space-around;padding-top:8px"><div style="width:16px;height:16px;border-radius:50%;border:1px solid #4A90D9;opacity:.7"></div><div style="width:16px;height:16px;border-radius:50%;border:1px solid #4A90D9;opacity:.7"></div></div>
+            <div style="position:absolute;bottom:0;left:0;right:0;height:20px;background:rgba(0,50,120,.6);display:flex;justify-content:space-around;align-items:center;padding:0 4px"><div style="width:10px;height:10px;opacity:.5;font-size:8px">⌂</div><div style="width:10px;height:10px;opacity:.5;font-size:8px">▣</div><div style="width:10px;height:10px;opacity:.5;font-size:8px">◈</div></div>
+          </div>
+          <div style="font-size:15px;font-weight:500;color:var(--tx)">Techno Blue</div>
+        </div>
+        <div class="theme-item" data-t="gaming" style="display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--bd);cursor:pointer">
+          <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2);display:flex;align-items:center;justify-content:center;flex-shrink:0" id="tr-gaming"></div>
+          <div style="width:68px;height:100px;border-radius:8px;background:linear-gradient(160deg,#1A0000,#3D0000,#1A0505);overflow:hidden;flex-shrink:0;position:relative">
+            <div style="height:16px;background:rgba(180,0,0,.5);display:flex;align-items:center;padding:0 5px;gap:3px"><div style="width:4px;height:4px;border-radius:50%;background:rgba(255,100,100,.5)"></div><div style="flex:1;height:2px;background:rgba(255,100,100,.2);border-radius:1px"></div></div>
+            <div style="display:flex;justify-content:center;padding-top:10px"><div style="width:20px;height:20px;border-radius:50%;border:1px solid #E53E3E;display:flex;align-items:center;justify-content:center"><div style="width:8px;height:8px;border-radius:50%;background:#E53E3E"></div></div></div>
+            <div style="display:flex;justify-content:space-around;padding-top:8px"><div style="width:16px;height:16px;border-radius:50%;border:1px solid #E53E3E;opacity:.7"></div><div style="width:16px;height:16px;border-radius:50%;border:1px solid #E53E3E;opacity:.7"></div></div>
+            <div style="position:absolute;bottom:0;left:0;right:0;height:20px;background:rgba(80,0,0,.7);display:flex;justify-content:space-around;align-items:center"></div>
+          </div>
+          <div style="font-size:15px;font-weight:500;color:var(--tx)">Gaming Red</div>
+        </div>
+        <div class="theme-item on" data-t="white" style="display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--bd);cursor:pointer">
+          <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--ac);background:var(--ac);display:flex;align-items:center;justify-content:center;flex-shrink:0" id="tr-white"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div style="width:68px;height:100px;border-radius:8px;background:#F4F6FB;overflow:hidden;flex-shrink:0;border:1px solid var(--bd);position:relative">
+            <div style="height:16px;background:#fff;border-bottom:1px solid var(--bd);display:flex;align-items:center;padding:0 5px"><div style="width:30px;height:4px;border-radius:2px;background:#111;margin:0 auto"></div></div>
+            <div style="display:flex;justify-content:center;padding-top:8px"><div style="width:20px;height:20px;border-radius:50%;background:#4F63F0;display:flex;align-items:center;justify-content:center"></div></div>
+            <div style="display:flex;justify-content:space-around;padding-top:6px"><div style="width:16px;height:16px;border-radius:50%;background:var(--ib)"></div><div style="width:16px;height:16px;border-radius:50%;background:var(--ib)"></div></div>
+            <div style="position:absolute;bottom:0;left:0;right:0;height:20px;background:#fff;border-top:1px solid var(--bd);display:flex;justify-content:space-around;align-items:center"></div>
+          </div>
+          <div style="font-size:15px;font-weight:600;color:var(--tx)">Simplicity White</div>
+        </div>
+        <div class="theme-item" data-t="oled" style="display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--bd);cursor:pointer">
+          <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2);display:flex;align-items:center;justify-content:center;flex-shrink:0" id="tr-oled"></div>
+          <div style="width:68px;height:100px;border-radius:8px;background:#000;overflow:hidden;flex-shrink:0;border:1px solid #222;position:relative">
+            <div style="height:16px;background:#111;display:flex;align-items:center;padding:0 5px"><div style="width:30px;height:4px;border-radius:2px;background:#333;margin:0 auto"></div></div>
+            <div style="display:flex;justify-content:center;padding-top:8px"><div style="width:20px;height:20px;border-radius:50%;border:1px solid #4F63F0;display:flex;align-items:center;justify-content:center"><div style="width:8px;height:8px;border-radius:50%;background:#4F63F0"></div></div></div>
+            <div style="display:flex;justify-content:space-around;padding-top:6px"><div style="width:16px;height:16px;border-radius:50%;border:1px solid #333"></div><div style="width:16px;height:16px;border-radius:50%;border:1px solid #333"></div></div>
+            <div style="position:absolute;bottom:0;left:0;right:0;height:20px;background:#111;display:flex;justify-content:space-around;align-items:center"></div>
+          </div>
+          <div style="font-size:15px;font-weight:500;color:var(--tx)">OLED Black</div>
+        </div>
+        <div class="theme-item" data-t="default" style="display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--bd);cursor:pointer">
+          <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2);flex-shrink:0" id="tr-default"></div>
+          <div style="font-size:15px;font-weight:500;color:var(--tx)">Default Theme</div>
+        </div>
+        <div class="theme-item" data-t="system" style="display:flex;align-items:center;gap:16px;padding:14px 20px;cursor:pointer">
+          <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2);flex-shrink:0" id="tr-system"></div>
+          <div><div style="font-size:15px;font-weight:500;color:var(--tx)">System</div><div style="font-size:12px;color:var(--ac);margin-top:2px">Adjust your theme based on your device's system settings.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUB: FEEDBACK -->
+  <div class="sub" id="sub-feedback">
+    <div class="sb"><div class="di"></div><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="bk" id="fb-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+        <div style="font-size:17px;font-weight:600;color:var(--tx)">Feedback</div>
+      </div>
+      <div style="height:32px;padding:0 16px;background:var(--ac);border-radius:16px;display:flex;align-items:center;font-size:13px;font-weight:600;color:#fff;cursor:pointer">送出</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg);padding-bottom:30px">
+
+      <span class="sl">聯絡資訊</span>
+      <div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden">
+        <div style="display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid var(--bd)">
+          <div style="font-size:14px;color:var(--t3);width:72px;flex-shrink:0">地區</div>
+          <div style="flex:1;font-size:14px;font-weight:500;color:var(--tx)">Taiwan</div>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div style="display:flex;align-items:center;padding:12px 16px">
+          <div style="font-size:14px;color:var(--t3);width:72px;flex-shrink:0">Email</div>
+          <input value="asus1234@gmail.com" style="flex:1;border:none;outline:none;background:transparent;font-size:14px;color:var(--tx);font-family:var(--f)"/>
+        </div>
+      </div>
+
+      <span class="sl">問題分類</span>
+      <div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--bd);cursor:pointer">
+          <div>
+            <div style="font-size:14px;font-weight:500;color:var(--tx)">問題類型</div>
+            <div style="font-size:12px;color:var(--t3);margin-top:2px">Please select</div>
+          </div>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;cursor:pointer">
+          <div>
+            <div style="font-size:14px;font-weight:500;color:var(--tx)">問題描述</div>
+            <div style="font-size:12px;color:var(--t3);margin-top:2px">Please select</div>
+          </div>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+
+      <span class="sl">意見內容</span>
+      <div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden">
+        <div style="padding:12px 16px;border-bottom:1px solid var(--bd)">
+          <textarea placeholder="請輸入您的意見或建議…" id="fb-comment" style="width:100%;border:none;outline:none;background:transparent;font-size:14px;color:var(--tx);font-family:var(--f);resize:none;min-height:120px;line-height:1.6;display:block" oninput="var c=document.getElementById('fb-count');if(c)c.textContent=this.value.length+'/2000'"></textarea>
+          <div style="text-align:right;font-size:11px;color:var(--t3)" id="fb-count">0/2000</div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;cursor:pointer">
+          <div style="display:flex;align-items:center;gap:10px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span style="font-size:14px;font-weight:500;color:var(--tx)">附加圖片</span>
+          </div>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- OV: ADD / PLUS -->
+  <div class="ov" id="ov-plus"><div class="sheet" style="padding-bottom:48px">
+    <div class="hdl"></div>
+    <div style="font-size:13px;font-weight:600;color:var(--ac);margin-bottom:4px;letter-spacing:.3px">Set up new device</div>
+    <div style="display:flex;align-items:center;gap:14px;padding:11px 0;cursor:pointer"><div style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><span style="font-size:15px;color:var(--tx);font-weight:500">Set up a new network</span></div><div style="display:flex;align-items:center;gap:14px;padding:11px 0;cursor:pointer"><div style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="12" y1="8" x2="5" y2="16"/><line x1="12" y1="8" x2="19" y2="16"/></svg></div><span style="font-size:15px;color:var(--tx);font-weight:500">Add AiMesh node</span></div>    <div style="height:1px;background:var(--bd);margin:8px 0"></div>
+    <div style="font-size:13px;font-weight:600;color:var(--ac);margin-bottom:4px;letter-spacing:.3px">Create Guest Network</div>
+    <div style="display:flex;align-items:center;gap:14px;padding:11px 0;cursor:pointer"><div style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><span style="font-size:15px;color:var(--tx);font-weight:500">Guest Network</span></div><div style="display:flex;align-items:center;gap:14px;padding:11px 0;cursor:pointer"><div style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><span style="font-size:15px;color:var(--tx);font-weight:500">Kid's Network</span></div><div style="display:flex;align-items:center;gap:14px;padding:11px 0;cursor:pointer"><div style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><span style="font-size:15px;color:var(--tx);font-weight:500">IoT Network</span></div>  </div></div>
+
+
+  <!-- OV: AIMESH DETAIL -->
+  <div class="ov" id="ov-mesh"><div class="sheet" style="padding-bottom:40px;max-height:92%">
+    <div class="hdl"></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">AiMesh WiFi System</div>
+      <div style="font-size:13px;color:var(--t3);cursor:pointer" id="ov-mesh-close">關閉</div>
+    </div>
+
+    <!-- Topology -->
+    <div style="display:flex;flex-direction:column;align-items:center;padding:10px 0 20px">
+      <!-- Internet -->
+      <div style="text-align:center;margin-bottom:4px">
+        <div style="width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,#E8EEFF,#C8D4FF);display:flex;align-items:center;justify-content:center;margin:0 auto;box-shadow:0 4px 16px rgba(79,99,240,.15)">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <div style="font-size:13px;font-weight:500;color:var(--tx);margin-top:7px">Internet</div>
+      </div>
+      <div style="width:3px;height:36px;background:linear-gradient(180deg,var(--ac),#7384FF);border-radius:2px;opacity:.5"></div>
+      <!-- Main router -->
+      <div style="text-align:center;margin-bottom:4px">
+        <div style="width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,#4F63F0,#7384FF);display:flex;align-items:center;justify-content:center;margin:0 auto;box-shadow:0 6px 20px rgba(79,99,240,.3)">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1.5" fill="#fff" stroke="none"/></svg>
+        </div>
+        <div style="font-size:13px;font-weight:600;color:var(--tx);margin-top:7px">主路由器</div>
+        <div style="font-size:11px;color:var(--gn);margin-top:2px">● 主節點</div>
+      </div>
+      <!-- Two lines -->
+      <div style="display:flex;gap:72px">
+        <div style="width:3px;height:36px;background:linear-gradient(180deg,#7384FF,#A5B4FC);border-radius:2px;opacity:.4;margin-left:6px"></div>
+        <div style="width:3px;height:36px;background:linear-gradient(180deg,#7384FF,#A5B4FC);border-radius:2px;opacity:.4;margin-right:6px"></div>
+      </div>
+      <!-- Two child nodes -->
+      <div style="display:flex;gap:44px">
+        <div style="text-align:center">
+          <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#4F63F0,#7384FF);display:flex;align-items:center;justify-content:center;margin:0 auto;box-shadow:0 4px 14px rgba(79,99,240,.25)">
+            <svg width="24" height="24" viewBox="0 -960 960 960" fill="#fff"><path d="M224.62-160q-27.62 0-46.12-18.5Q160-197 160-224.62v-110.76q0-27.62 18.5-46.12Q197-400 224.62-400H620v-160h40v160h75.38q27.62 0 46.12 18.5Q800-363 800-335.38v110.76q0 27.62-18.5 46.12Q763-160 735.38-160H224.62Zm0-40h510.76q10.77 0 17.7-6.92 6.92-6.93 6.92-17.7v-110.76q0-10.77-6.92-17.7-6.93-6.92-17.7-6.92H224.62q-10.77 0-17.7 6.92-6.92 6.93-6.92 17.7v110.76q0 10.77 6.92 17.7 6.93 6.92 17.7 6.92Zm77.34-58.04q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm140 0q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm140 0q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81ZM200-200V-360-200Z"/></svg>
+          </div>
+          <div style="font-size:12px;font-weight:600;color:var(--tx);margin-top:7px">客廳</div>
+          <div style="font-size:10px;color:var(--gn);margin-top:2px">● 良好</div>
+        </div>
+        <div style="text-align:center">
+          <div style="width:56px;height:56px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;margin:0 auto;box-shadow:0 2px 10px rgba(79,99,240,.1)">
+            <svg width="24" height="24" viewBox="0 -960 960 960" fill="var(--is)"><path d="M224.62-160q-27.62 0-46.12-18.5Q160-197 160-224.62v-110.76q0-27.62 18.5-46.12Q197-400 224.62-400H620v-160h40v160h75.38q27.62 0 46.12 18.5Q800-363 800-335.38v110.76q0 27.62-18.5 46.12Q763-160 735.38-160H224.62Zm0-40h510.76q10.77 0 17.7-6.92 6.92-6.93 6.92-17.7v-110.76q0-10.77-6.92-17.7-6.93-6.92-17.7-6.92H224.62q-10.77 0-17.7 6.92-6.92 6.93-6.92 17.7v110.76q0 10.77 6.92 17.7 6.93 6.92 17.7 6.92Zm77.34-58.04q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm140 0q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm140 0q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81ZM200-200V-360-200Z"/></svg>
+          </div>
+          <div style="font-size:12px;font-weight:600;color:var(--tx);margin-top:7px">臥室</div>
+          <div style="font-size:10px;color:var(--gn);margin-top:2px">● 良好</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom actions -->
+    <div style="background:var(--s2);border-radius:40px;height:46px;display:flex;align-items:center;justify-content:center;margin-top:8px">
+      <div style="flex:1;display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="12" y1="8" x2="5" y2="16"/><line x1="12" y1="8" x2="19" y2="16"/></svg>
+        <span style="font-size:14px;font-weight:500;color:var(--ac)">Add Node</span>
+      </div>
+      <div style="width:1px;height:18px;background:var(--bd2)"></div>
+      <div style="flex:1;display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span style="font-size:14px;font-weight:500;color:var(--ac)">Optimization</span>
+      </div>
+    </div>
+  </div></div>
+
+</div><!-- end phone -->
+<script>
+
+var TABS=['home','devices','insight','family','settings'];
+var PRO={
+  net:[{t:'LAN 設定',s:'192.168.1.1 / 255.255.255.0'},{t:'WAN 設定',s:'PPPoE · 動態 IP'},{t:'DNS Settings',s:'8.8.8.8 / 1.1.1.1'},{t:'DDNS',s:'your-home.asuscomm.com · 啟用'},{t:'Dual WAN',s:'容錯備援 · 停用'},{t:'Port Forwarding',s:'3 條規則已啟用'},{t:'IP Binding',s:'5 個裝置已綁定'}],
+  wl:[{t:'Channel',s:'5GHz: Ch149 · 2.4GHz: Ch6'},{t:'Bandwidth',s:'5GHz: 160MHz · 2.4GHz: 40MHz'},{t:'PSC',s:'6GHz: PSC Ch37'},{t:'MLO 詳細設定',s:'Multi-Link Operation · 啟用'}],
+  vpn:[{t:'VPN Server',s:'OpenVPN · 啟用中 · 1 個連線'},{t:'VPN Fusion',s:'2 個設定檔'},{t:'Instant Guard',s:'一鍵 VPN 保護'}],
+  sys:[{t:'System Monitor',s:'CPU 12% · RAM 38%'},{t:'System Log',s:'查看完整系統紀錄'},{t:'Setting Backup',s:'上次備份：3 天前'},{t:'Reboot Scheduler',s:'每週日 03:00'},{t:'Wake-On-LAN',s:'2 台裝置已設定'}],
+  int:[{t:'Voice Assistant',s:'Alexa · Google Assistant · 已連結'},{t:'Related Apps',s:'AURA Sync · AiCloud'},{t:'Account Binding',s:'ASUS ID · 已驗證'}]
+};
+function g(id){return document.getElementById(id)}
+function show(id){var e=g(id);if(e)e.classList.add('on')}
+function hide(id){var e=g(id);if(e)e.classList.remove('on')}
+function bind(id,fn){var e=g(id);if(e)e.addEventListener('click',fn)}
+function goTab(t){
+  TABS.forEach(function(x){
+    var p=g('pg-'+x),tb=g('tab-'+x);
+    if(p)p.classList.remove('on');
+    if(tb)tb.classList.remove('on');
+  });
+  var p=g('pg-'+t),tb=g('tab-'+t);
+  if(p)p.classList.add('on');
+  if(tb)tb.classList.add('on');
+  var ct=g('ct');
+  if(ct){
+    ct.scrollTop=0;
+    if(t==='home'){
+      // allow scroll only if content taller than container
+      setTimeout(function(){
+        ct.style.overflowY = p.scrollHeight > ct.clientHeight ? 'auto' : 'hidden';
+      },0);
+    } else {
+      ct.style.overflowY='auto';
+    }
+  }
+  ['sub-pro','sub-dev','sub-notif'].forEach(hide);
+}
+function openPro(){
+  show('sub-pro');
+  renderPro('net','ptab-net');
+}
+function renderPro(key,tabId){
+  document.querySelectorAll('.pt').forEach(function(e){e.classList.remove('on')});
+  var tab=g(tabId);if(tab)tab.classList.add('on');
+  var items=PRO[key]||[];
+  var cnt=g('pro-cnt');if(!cnt)return;
+  cnt.innerHTML='<div>'+items.map(function(it){
+    return '<div class="pitem"><div class="pic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a1 1 0 00-1.41 0l-.5.5a7 7 0 00-9.32 0l-.5-.5a1 1 0 00-1.41 1.41l.5.5a7 7 0 000 9.32l-.5.5a1 1 0 001.41 1.41l.5-.5a7 7 0 009.32 0l.5.5a1 1 0 001.41-1.41l-.5-.5a7 7 0 000-9.32l.5-.5a1 1 0 000-1.41z"/></svg></div><div style="flex:1"><div class="pit">'+it.t+'</div><div class="pis">'+it.s+'</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>';
+  }).join('')+'</div>';
+}
+function openDev(type){
+  show('sub-dev');
+  var title=g('dev-title'),body=g('dev-body');
+  if(type==='unknown'){
+    if(title)title.textContent='陌生裝置';
+    if(body)body.innerHTML='<div style="padding:20px"><div style="background:var(--obg);border-radius:var(--r);padding:14px;margin-bottom:18px"><div style="font-size:14px;font-weight:600;color:var(--tx);margin-bottom:5px">⚠️ 偵測到陌生裝置</div><div style="font-size:12px;color:var(--or)">這台裝置連上了您的網路，您認識它嗎？</div></div><div style="background:var(--w);border-radius:var(--r);padding:14px;margin-bottom:14px;box-shadow:var(--sh)"><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">MAC 位址</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">8C:85:90:FF:12:34</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">IP 位址</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">192.168.1.108</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">連線頻段</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">2.4 GHz</div></div><div style="display:flex;justify-content:space-between;padding:9px 0"><div style="font-size:13px;color:var(--t3)">連線節點</div><div style="font-size:13px;font-weight:500;color:var(--tx)">主路由器</div></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px"><div style="height:46px;background:var(--rd);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:500;cursor:pointer" onclick="hide(\'sub-dev\')">🚫 封鎖裝置</div><div style="height:46px;background:var(--s2);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--t2);font-size:13px;font-weight:500;cursor:pointer">✏️ 重新命名</div></div><div style="height:46px;background:var(--w);border:1px solid var(--bd);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--ac);font-size:13px;font-weight:500;cursor:pointer">👋 這是訪客，允許連線</div></div>';
+  } else if(type==='iphone'){
+    if(title)title.textContent="Tim's iPhone";
+    if(body)body.innerHTML='<div style="padding:20px"><div style="text-align:center;margin-bottom:20px"><div style="width:66px;height:66px;border-radius:18px;background:var(--ib);font-size:34px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px">📱</div><div style="font-size:17px;font-weight:600;color:var(--tx)">Tim\'s iPhone</div><div style="display:inline-flex;align-items:center;gap:5px;margin-top:4px"><span style="width:7px;height:7px;border-radius:50%;background:var(--gn);display:inline-block"></span><span style="font-size:13px;color:var(--t3)">線上中</span></div></div><div style="background:var(--w);border-radius:var(--r);padding:14px;margin-bottom:14px;box-shadow:var(--sh)"><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">IP 位址</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">192.168.1.102</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">MAC 位址</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">F8:4D:89:3A:22:1C</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">連線頻段</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">5 GHz</div></div><div style="display:flex;justify-content:space-between;padding:9px 0"><div style="font-size:13px;color:var(--t3)">連線節點</div><div style="font-size:13px;font-weight:500;color:var(--tx)">主路由器</div></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="height:46px;background:var(--obg);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--or);font-size:13px;font-weight:500;cursor:pointer">⏸ 暫停網路</div><div style="height:46px;background:var(--ib);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--is);font-size:13px;font-weight:500;cursor:pointer">⭐ 高優先權</div></div></div>';
+  } else if(type==='appletv'){
+    if(title)title.textContent='客廳 Apple TV';
+    if(body)body.innerHTML='<div style="padding:20px"><div style="text-align:center;margin-bottom:20px"><div style="width:66px;height:66px;border-radius:18px;background:var(--ib);font-size:34px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px">📺</div><div style="font-size:17px;font-weight:600;color:var(--tx)">客廳 Apple TV</div><div style="display:inline-flex;align-items:center;gap:5px;margin-top:4px"><span style="width:7px;height:7px;border-radius:50%;background:var(--gn);display:inline-block"></span><span style="font-size:13px;color:var(--t3)">線上中</span></div></div><div style="background:var(--w);border-radius:var(--r);padding:14px;margin-bottom:14px;box-shadow:var(--sh)"><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">IP 位址</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">192.168.1.110</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">連線方式</div><div style="font-size:13px;font-weight:500;color:var(--tx)">乙太網路</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">MAC 位址</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">DC:56:E7:44:AB:02</div></div><div style="display:flex;justify-content:space-between;padding:9px 0"><div style="font-size:13px;color:var(--t3)">連線節點</div><div style="font-size:13px;font-weight:500;color:var(--tx)">客廳節點</div></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="height:46px;background:var(--obg);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--or);font-size:13px;font-weight:500;cursor:pointer">⏸ 暫停網路</div><div style="height:46px;background:var(--ib);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--is);font-size:13px;font-weight:500;cursor:pointer">⭐ 高優先權</div></div></div>';
+  } else if(type==='ipad'){
+    if(title)title.textContent='舊 iPad';
+    if(body)body.innerHTML='<div style="padding:20px"><div style="text-align:center;margin-bottom:20px"><div style="width:66px;height:66px;border-radius:18px;background:var(--s2);font-size:34px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;opacity:.6">📱</div><div style="font-size:17px;font-weight:600;color:var(--tx)">舊 iPad</div><div style="display:inline-flex;align-items:center;gap:5px;margin-top:4px"><span style="width:7px;height:7px;border-radius:50%;background:var(--t3);display:inline-block"></span><span style="font-size:13px;color:var(--t3)">離線中</span></div></div><div style="background:var(--w);border-radius:var(--r);padding:14px;margin-bottom:14px;box-shadow:var(--sh)"><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">最後 IP</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">192.168.1.115</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">MAC 位址</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">B8:78:2E:11:CC:44</div></div><div style="display:flex;justify-content:space-between;padding:9px 0"><div style="font-size:13px;color:var(--t3)">最後上線</div><div style="font-size:13px;font-weight:500;color:var(--tx)">2 小時前</div></div></div><div style="height:46px;background:var(--s2);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--t2);font-size:13px;font-weight:500;cursor:pointer">🗑 從清單移除</div></div>';
+  } else {
+    if(title)title.textContent="Tim's MacBook Pro";
+    if(body)body.innerHTML='<div style="padding:20px"><div style="text-align:center;margin-bottom:20px"><div style="width:66px;height:66px;border-radius:18px;background:var(--ib);font-size:34px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px">💻</div><div style="font-size:17px;font-weight:600;color:var(--tx)">Tim\'s MacBook Pro</div><div style="display:inline-flex;align-items:center;gap:5px;margin-top:4px"><span style="width:7px;height:7px;border-radius:50%;background:var(--gn);display:inline-block"></span><span style="font-size:13px;color:var(--t3)">線上中</span></div></div><div style="background:var(--w);border-radius:var(--r);padding:14px;margin-bottom:14px;box-shadow:var(--sh)"><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">IP 位址</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">192.168.1.101</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">MAC 位址</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">A4:CF:99:E2:11:08</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">連線頻段</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">5 GHz</div></div><div style="display:flex;justify-content:space-between;padding:9px 0"><div style="font-size:13px;color:var(--t3)">連線節點</div><div style="font-size:13px;font-weight:500;color:var(--tx)">客廳節點</div></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="height:46px;background:var(--obg);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--or);font-size:13px;font-weight:500;cursor:pointer">⏸ 暫停網路</div><div style="height:46px;background:var(--ib);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--is);font-size:13px;font-weight:500;cursor:pointer">⭐ 高優先權</div></div></div>';
+  }
+}
+function selAge(el){
+  ['age1','age2','age3','age4'].forEach(function(id){var e=g(id);if(e){e.style.borderColor='transparent';e.style.background='var(--s2)';}});
+  el.style.borderColor='var(--ac)';el.style.background='var(--abg)';
+}
+
+// ── Quick Action definitions ──
+var QA_ALL = [
+  // 網路
+  {id:'qa-wifi',   icon:'wifi',   label:'分享\nWi-Fi',   group:'網路',   action:'wifi'},
+  {id:'qa-diag',   icon:'search', label:'網路\n診斷',    group:'網路',   action:'diag'},
+  {id:'qa-guest',  icon:'users',  label:'訪客\n網路',    group:'網路',   action:''},
+  {id:'qa-devs',   icon:'phone',  label:'連線\n裝置',    group:'網路',   action:'devs'},
+  {id:'qa-adddev', icon:'plus',   label:'新增\n裝置',    group:'網路',   action:''},
+  {id:'qa-wifiset',icon:'wifi2',  label:'Wi-Fi\n設定',   group:'網路',   action:''},
+  {id:'qa-pass',   icon:'lock',   label:'查看\n密碼',    group:'網路',   action:'wifi'},
+  {id:'qa-pause',  icon:'pause',  label:'暫停\n裝置',    group:'網路',   action:''},
+  // 家庭
+  {id:'qa-parental',icon:'child', label:'家長\n控制',    group:'家庭',   action:'family'},
+  {id:'qa-kids',   icon:'stop',   label:'暫停兒童\n網路', group:'家庭',  action:''},
+  {id:'qa-sched',  icon:'clock',  label:'上網\n排程',    group:'家庭',   action:''},
+  {id:'qa-alert',  icon:'bell',   label:'陌生裝置\n提醒', group:'家庭',  action:''},
+  // 維護
+  {id:'qa-fw',     icon:'upload', label:'韌體\n更新',    group:'維護',   action:''},
+  {id:'qa-scan',   icon:'shield', label:'安全\n掃描',    group:'維護',   action:''},
+  {id:'qa-mesh',   icon:'mesh',   label:'Mesh\n最佳化',  group:'維護',   action:''},
+  {id:'qa-reboot', icon:'reboot', label:'重新\n開機',    group:'維護',   action:''},
+];
+
+// Default selected (first 4)
+var QA_SELECTED = ['qa-wifi','qa-diag','qa-guest','qa-devs'];
+
+function qaSvg(icon, color) {
+  color = color || 'var(--is)';
+  var paths = {
+    wifi:    '<path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1.5" fill="'+color+'" stroke="none"/>',
+    wifi2:   '<path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1.5" fill="'+color+'" stroke="none"/>',
+    search:  '<circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>',
+    users:   '<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>',
+    phone:   '<rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/>',
+    plus:    '<circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="12" y1="8" x2="5" y2="16"/><line x1="12" y1="8" x2="19" y2="16"/>',
+    lock:    '<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>',
+    pause:   '<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>',
+    child:   '<path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+    stop:    '<circle cx="12" cy="12" r="10"/><rect x="9" y="9" width="6" height="6" rx="1"/>',
+    clock:   '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+    bell:    '<path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/>',
+    upload:  '<polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/>',
+    shield:  '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>',
+    mesh:    '<circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="12" y1="8" x2="5" y2="16"/><line x1="12" y1="8" x2="19" y2="16"/>',
+    reboot:  '<polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/>',
+  };
+  var sz = '17';
+  return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="none" stroke="'+color+'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+(paths[icon]||'')+'</svg>';
+}
+
+function renderQAGrid() {
+  var grid = document.getElementById('qa-grid');
+  if (!grid) return;
+  var html = '';
+  QA_SELECTED.forEach(function(id) {
+    var item = QA_ALL.find(function(x){return x.id===id;});
+    if (!item) return;
+    html += '<div class="qb" data-action="'+item.action+'" style="cursor:pointer">'
+      + '<div class="qi">'+qaSvg(item.icon)+'</div>'
+      + '<div style="font-size:10px;color:var(--t2);font-weight:500;text-align:center;line-height:1.3">'+item.label.replace('\n','<br>')+'</div>'
+      + '</div>';
+  });
+  grid.innerHTML = html;
+  // bind actions
+  grid.querySelectorAll('[data-action]').forEach(function(el) {
+    el.addEventListener('click', function() {
+      var act = el.getAttribute('data-action');
+      if (act==='wifi') show('ov-wifi');
+      else if (act==='diag') show('ov-diag');
+      else if (act==='devs') goTab('devices');
+      else if (act==='family') goTab('family');
+    });
+  });
+  // re-check home scroll after grid update
+  var ct=g('ct');
+  var ph=g('pg-home');
+  if(ct&&ph&&ph.classList.contains('on')){
+    ct.style.overflowY = ph.scrollHeight > ct.clientHeight ? 'auto' : 'hidden';
+  }
+}
+
+function renderQAEditor() {
+  var body = document.getElementById('qaedit-body');
+  if (!body) return;
+  var groups = {};
+  QA_ALL.forEach(function(item) {
+    if (!groups[item.group]) groups[item.group] = [];
+    groups[item.group].push(item);
+  });
+  var html = '<div style="padding-bottom:20px">';
+  var groupNames = ['網路','家庭','維護'];
+  groupNames.forEach(function(g) {
+    html += '<div style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.9px;text-transform:uppercase;padding:14px 20px 8px">'+g+'</div>';
+    html += '<div style="background:var(--w)">';
+    (groups[g]||[]).forEach(function(item, idx, arr) {
+      var sel = QA_SELECTED.indexOf(item.id) !== -1;
+      var border = idx < arr.length-1 ? 'border-bottom:1px solid var(--bd);' : '';
+      html += '<div style="display:flex;align-items:center;padding:12px 20px;'+border+'cursor:pointer" data-qaid="'+item.id+'" id="qaedit-row-'+item.id+'">'
+        + '<div style="width:34px;height:34px;border-radius:50%;overflow:hidden;background:'+(sel?'var(--ac)':'var(--ib)')
+        + ';display:flex;align-items:center;justify-content:center;margin-right:14px;flex-shrink:0;transition:background .2s">'
+        + qaSvg(item.icon, sel?'#fff':'var(--is)')
+        + '</div>'
+        + '<div style="flex:1;font-size:14px;font-weight:500;color:var(--tx)">'+item.label.replace('\n',' ')+'</div>'
+        + (sel ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' : '')
+        + '</div>';
+    });
+    html += '</div>';
+  });
+  html += '</div>';
+  body.innerHTML = html;
+  // bind toggle
+  body.querySelectorAll('[data-qaid]').forEach(function(el) {
+    el.addEventListener('click', function() {
+      var id = el.getAttribute('data-qaid');
+      var idx = QA_SELECTED.indexOf(id);
+      if (idx !== -1) {
+        if (QA_SELECTED.length > 1) QA_SELECTED.splice(idx, 1);
+      } else {
+        QA_SELECTED.push(id);
+      }
+      renderQAEditor();
+      renderQAGrid();
+  // Draw banner canvas
+  (function(){
+    var canvas = document.getElementById('banner-canvas');
+    if(!canvas) return;
+    // Set actual pixel size
+    var rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = Math.round(rect.width * window.devicePixelRatio || 361);
+    canvas.height = Math.round(rect.height * window.devicePixelRatio || 280);
+    var w = canvas.width, h = canvas.height;
+    var ctx = canvas.getContext('2d');
+    var grd = ctx.createLinearGradient(0, 0, w, h);
+    grd.addColorStop(0,    '#8AABF7');
+    grd.addColorStop(0.35, '#6B8EF0');
+    grd.addColorStop(0.7,  '#5A6FE8');
+    grd.addColorStop(1,    '#4355D4');
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, 0, w, h);
+    var img = ctx.getImageData(0, 0, w, h);
+    var d = img.data;
+    for(var y = 0; y < h; y++){
+      var factor = Math.pow(y / h, 1.8);
+      var strength = 48 * factor;
+      for(var x = 0; x < w; x++){
+        var n = (Math.random() - 0.5) * 2 * strength;
+        var i = (y * w + x) * 4;
+        d[i]   = Math.min(255, Math.max(0, d[i]   + n));
+        d[i+1] = Math.min(255, Math.max(0, d[i+1] + n * 0.4));
+        d[i+2] = Math.min(255, Math.max(0, d[i+2] + n * 0.7));
+      }
+    }
+    ctx.putImageData(img, 0, 0);
+  })();
+    });
+  });
+}
+
+
+// Device filter data
+var DEV_DATA = [
+  {id:'d-unknown', filter:'unk'},
+  {id:'d-laptop',  filter:'on'},
+  {id:'d-iphone',  filter:'on'},
+  {id:'d-appletv', filter:'on'},
+  {id:'d-ipad',    filter:'off'},
+];
+function applyDevFilter(f){
+  DEV_DATA.forEach(function(d){
+    var el=g(d.id);
+    if(!el)return;
+    var show = f==='all' || d.filter===f;
+    el.style.display = show ? 'flex' : 'none';
+  });
+  document.querySelectorAll('.df').forEach(function(btn){
+    btn.classList.toggle('on', btn.getAttribute('data-filter')===f);
+  });
+}
+
+window.addEventListener('load',function(){
+  renderQAGrid();
+  bind('h-avatar',function(){show('drawer');});
+  bind('h-add',function(){show('ov-plus');});
+  bind('ov-plus',function(e){if(e.target===g('ov-plus'))hide('ov-plus');});
+  bind('drawer-bg',function(){hide('drawer');});
+  bind('qa-edit-btn',function(){show('sub-qaedit');renderQAEditor();});
+  bind('qaedit-back',function(){hide('sub-qaedit');});
+  bind('qaedit-done',function(){hide('sub-qaedit');});
+  // init home no-scroll
+  // tabs
+  TABS.forEach(function(t){bind('tab-'+t,function(){goTab(t);});});
+  // pro
+  bind('s-pro',openPro);
+  bind('pro-back',function(){hide('sub-pro');});
+  [['ptb-home','home'],['ptb-dev','devices'],['ptb-ins','insight'],['ptb-fam','family'],['ptb-set','settings']].forEach(function(p){bind(p[0],function(){hide('sub-pro');goTab(p[1]);});});
+  [['ptab-net','net'],['ptab-wl','wl'],['ptab-vpn','vpn'],['ptab-sys','sys'],['ptab-int','int']].forEach(function(p){bind(p[0],function(){renderPro(p[1],p[0]);});});
+  // devices
+  bind('dev-back',function(){hide('sub-dev');});
+  // device filters
+  document.querySelectorAll('.df').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      applyDevFilter(btn.getAttribute('data-filter'));
+    });
+  });
+  bind('d-sort-btn',function(){show('ov-sort');});
+  bind('ov-sort-close',function(){hide('ov-sort');});
+  bind('ov-sort',function(e){if(e.target===g('ov-sort'))hide('ov-sort');});
+  document.querySelectorAll('.sort-opt').forEach(function(el){
+    el.addEventListener('click',function(){
+      document.querySelectorAll('.sort-opt').forEach(function(o){
+        o.classList.remove('on');
+        var chk=o.querySelector('.sort-check');if(chk)chk.remove();
+      });
+      el.classList.add('on');
+      var chk=document.createElement('span');
+      chk.className='sort-check';
+      chk.style.cssText='display:inline-flex;align-items:center';
+      chk.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/><\/svg>';
+      el.appendChild(chk);
+    });
+  });
+  bind('d-search-btn',function(){
+    var bar=g('d-search-bar');
+    bar.style.display=bar.style.display==='flex'?'none':'flex';
+    if(bar.style.display==='flex'){var inp=bar.querySelector('input');if(inp)inp.focus();}
+  });
+  bind('d-search-cancel',function(){
+    var bar=g('d-search-bar');if(bar)bar.style.display='none';
+  });
+  bind('d-unknown',function(){openDev('unknown');});
+  bind('d-laptop',function(){openDev('laptop');});
+  bind('d-iphone',function(){openDev('iphone');});
+  bind('d-appletv',function(){openDev('appletv');});
+  bind('d-ipad',function(){openDev('ipad');});
+  // home
+  bind('h-wifi',function(){show('ov-wifi');});
+  bind('h-wifirow',function(){show('ov-wifi');});
+  bind('h-diag',function(){show('ov-diag');});
+  bind('h-devs',function(){goTab('devices');});
+  bind('h-notif',function(){show('sub-notif');});
+  bind('h-mesh-detail',function(){show('ov-mesh');});
+  bind('ov-mesh-close',function(){hide('ov-mesh');});
+  bind('ov-mesh',function(e){if(e.target===g('ov-mesh'))hide('ov-mesh');});
+  // notif
+  bind('notif-back',function(){hide('sub-notif');});
+  bind('notif-unk',function(){hide('sub-notif');openDev('unknown');});
+  bind('notif-unk-cta',function(){hide('sub-notif');openDev('unknown');});
+  // insight
+  bind('i-unknown',function(){openDev('unknown');});
+  bind('i-pro',openPro);
+  // family
+  bind('f-add',function(){show('ov-add');});
+  bind('f-mei',function(){show('ov-mei');});
+  bind('f-ming',function(){show('ov-ming');});
+  function openSched(name){
+    hide('ov-tim');hide('ov-ming');
+    g('sched-title').textContent=name+'的排程';
+    show('sub-sched');
+    document.querySelectorAll('.sched-day').forEach(function(el){
+      el.onclick=function(){
+        var on=el.classList.toggle('on');
+        var dot=el.querySelector('div');
+        if(dot)dot.style.background=on?'var(--ac)':'var(--bd2)';
+      };
+    });
+  }
+  bind('ov-mei-sched',function(){openSched('小美');});
+  bind('ov-ming-sched',function(){openSched('小明');});
+  bind('sched-save',function(){
+    // Read current schedule values
+    var name = (g('sched-name')||{}).value || '睡覺時間';
+    var startEl = document.querySelector('#sub-sched [data-time="start"]');
+    var endEl   = document.querySelector('#sub-sched [data-time="end"]');
+    var start = startEl ? startEl.textContent : '20:00';
+    var end   = endEl   ? endEl.textContent   : '06:00';
+    var enabled = g('tg-sched') && g('tg-sched').classList.contains('on');
+
+    // Build days summary
+    var dayMap = {mon:'一',tue:'二',wed:'三',thu:'四',fri:'五',sat:'六',sun:'日'};
+    var sel = [];
+    document.querySelectorAll('.sched-day.on').forEach(function(el){
+      var d = el.getAttribute('data-d');
+      if(d && dayMap[d]) sel.push('週'+dayMap[d]);
+    });
+    var dayStr = sel.length===7 ? '每天' : sel.length===5 && !sel.includes('週六') && !sel.includes('週日') ? '週一至週五' : sel.join('、');
+
+    // Who is this schedule for?
+    var who = (g('sched-title')||{}).textContent || '';
+
+    // Update the matching overlay schedule row
+    function buildRow(ovId, schedId) {
+      var row = g(schedId);
+      if(!row) return;
+      if(enabled) {
+        row.innerHTML =
+          '<div>' +
+          '<div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">' +
+          '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' +
+          '<span style="font-size:13px;font-weight:600;color:var(--tx)">'+name+'</span>' +
+          '<span style="font-size:11px;background:var(--gbg);color:var(--gn);padding:1px 6px;border-radius:8px;font-weight:600">啟用中</span>' +
+          '</div>' +
+          '<div style="font-size:12px;color:var(--t3);padding-left:19px">'+start+' – '+end+' ‧ '+dayStr+'</div>' +
+          '</div>' +
+          '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>';
+        row.style.background = 'var(--w)';
+        row.style.border = '1px solid var(--bd)';
+      } else {
+        row.innerHTML =
+          '<div style="display:flex;align-items:center;gap:8px">' +
+          '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' +
+          '<span style="font-size:13px;color:var(--t3)">尚未設定排程</span>' +
+          '</div>' +
+          '<div style="font-size:12px;color:var(--ac);font-weight:600">設定 ›</div>';
+        row.style.background = 'var(--s2)';
+        row.style.border = 'none';
+      }
+    }
+
+    if(who.indexOf('小美') !== -1) {
+      buildRow('ov-mei','ov-mei-sched');
+      hide('sub-sched'); show('ov-mei');
+    } else {
+      buildRow('ov-ming','ov-ming-sched');
+      hide('sub-sched'); show('ov-ming');
+    }
+  });
+  bind('sched-back',function(){hide('sub-sched');});
+  // Theme
+  bind('theme-back',function(){hide('sub-theme');show('drawer');});
+  document.querySelectorAll('.theme-item').forEach(function(el){
+    el.addEventListener('click',function(){
+      document.querySelectorAll('.theme-item').forEach(function(o){
+        o.classList.remove('on');
+        var dot=o.querySelector('[id^="tr-"]');
+        if(dot){dot.innerHTML='';dot.style.background='';dot.style.border='2px solid var(--bd2)';}
+      });
+      el.classList.add('on');
+      var dot=el.querySelector('[id^="tr-"]');
+      if(dot){
+        dot.style.background='var(--ac)';dot.style.border='2px solid var(--ac)';
+        dot.innerHTML='<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/><\/svg>';
+      }
+    });
+  });
+  // Feedback
+  bind('fb-back',function(){hide('sub-feedback');show('drawer');});
+  // Drawer more items
+  document.querySelectorAll('#drawer .drawer-panel div[style*="cursor:pointer"]').forEach(function(el){
+    var txt=el.textContent.trim();
+    if(txt==='Theme'){el.addEventListener('click',function(){hide('drawer');show('sub-theme');});}
+    else if(txt==='Feedback'){el.addEventListener('click',function(){hide('drawer');show('sub-feedback');});}
+  });
+  bind('s-fw',function(){show('sub-fw');});
+  bind('fw-back',function(){hide('sub-fw');});
+  bind('s-aip',function(){show('sub-aip');});
+  bind('aip-back',function(){hide('sub-aip');});
+  bind('tg-autoupdate',function(){g('tg-autoupdate').classList.toggle('on');});
+  bind('tg-adblock',function(){var e=g('tg-adblock');if(e)e.classList.toggle('on');});
+  bind('tg-aip-master',function(){
+    var tg=g('tg-aip-master');
+    tg.classList.toggle('on');
+    var on=tg.classList.contains('on');
+    var det=g('aip-details');
+    if(det) det.style.display=on?'block':'none';
+    // sync settings row subtitle
+    var sub=document.querySelector('#s-aip .sbd div:last-child, #s-aip div[style*="font-size:12px"]');
+    var rows=document.querySelectorAll('#s-aip div');
+    rows.forEach(function(el){
+      if(el.textContent==='即時保護 · 啟用中'||el.textContent==='尚未啟用'){
+        el.textContent=on?'即時保護 · 啟用中':'尚未啟用';
+      }
+    });
+  });
+  bind('fw-update-btn',function(){
+    var btn=g('fw-update-btn');
+    if(btn){btn.textContent='更新中…';btn.style.background='var(--t3)';btn.style.cursor='default';}
+  });
+  // overlays
+  ['ov-wifi','ov-diag','ov-add','ov-mei','ov-ming'].forEach(function(id){
+    bind(id,function(e){if(e.target===g(id))hide(id);});
+  });
+  bind('ov-wifi-close',function(){hide('ov-wifi');});
+  bind('ov-diag-close',function(){hide('ov-diag');});
+  bind('ov-diag-pro',function(){hide('ov-diag');openPro();});
+  bind('ov-add-ok',function(){hide('ov-add');});
+  bind('ov-add-x',function(){hide('ov-add');});
+  bind('ov-mei-close',function(){hide('ov-mei');});
+  bind('ov-ming-close',function(){hide('ov-ming');});
+  // toggles
+  ['tg1','tg2','tg3','tg4','tg5','tg6'].forEach(function(id){bind(id,function(){var e=g(id);if(e)e.classList.toggle('on');});});
+});
+
+</script>
+</body>
+</html>
