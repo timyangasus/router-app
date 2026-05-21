@@ -4,42 +4,41 @@
 
 <script>
 (function(){
-  // iPhone 16 Pro Max screen width is 430px CSS pixels
   var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   if(!isMobile) return;
 
-  // Inject style tag immediately
-  var s = document.createElement('style');
-  s.textContent = [
-    'html,body{height:100dvh!important;overflow:hidden!important;background:#F0F2F8!important;margin:0!important;padding:0!important;display:block!important}',
-    '.shell{display:none!important}',
-    '.phone{',
-      'position:fixed!important;inset:0!important;',
-      'width:100vw!important;height:100dvh!important;',
-      'max-width:none!important;border-radius:0!important;',
-      'box-shadow:none!important;overflow:visible!important;',
-      'display:flex!important;flex-direction:column!important;',
-    '}',
-    '.sb{',
-      'flex-shrink:0!important;height:auto!important;min-height:0!important;',
-      'padding:env(safe-area-inset-top,54px) 20px 8px!important;',
-      'background:var(--w,#fff)!important;align-items:center!important;',
-    '}',
-    '.ct{',
-      'flex:1!important;min-height:0!important;',
-      'overflow-y:auto!important;overflow-x:hidden!important;',
-      '-webkit-overflow-scrolling:touch!important;',
-      'position:relative!important;',
-    '}',
-    '.tb{',
-      'flex-shrink:0!important;height:auto!important;',
-      'padding:8px 4px max(env(safe-area-inset-bottom,20px),20px)!important;',
-      'position:relative!important;z-index:10!important;',
-    '}',
-  ].join('');
-  document.head.appendChild(s);
+  function applyLayout() {
+    // Read actual safe area values via CSS
+    var testEl = document.createElement('div');
+    testEl.style.cssText = 'position:fixed;top:env(safe-area-inset-top,0px);left:0;width:1px;height:1px;pointer-events:none;visibility:hidden';
+    document.body.appendChild(testEl);
+    var safeTop = testEl.getBoundingClientRect().top;
+    document.body.removeChild(testEl);
+    // iPhone 16 Pro Max = 59px, fallback if env() not supported
+    if(safeTop < 20) safeTop = 59;
+
+    var s = document.createElement('style');
+    s.id = 'mobile-layout';
+    s.textContent =
+      'html,body{height:100dvh!important;overflow:hidden!important;background:#F0F2F8!important;margin:0!important;padding:0!important;display:block!important}' +
+      '.shell{display:none!important}' +
+      '.phone{position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;max-width:none!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important;display:flex!important;flex-direction:column!important}' +
+      '' +'.sb{flex-shrink:0!important;height:auto!important;min-height:0!important;padding-top:' + safeTop + 'px!important;padding-left:20px!important;padding-right:20px!important;padding-bottom:10px!important;background:var(--w,#fff)!important;align-items:center!important;box-sizing:border-box!important}' +
+      '.ct{flex:1!important;min-height:0!important;overflow-y:scroll!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch!important;position:relative!important}' +
+      '.tb{flex-shrink:0!important;height:auto!important;padding-top:8px!important;padding-left:4px!important;padding-right:4px!important;padding-bottom:max(env(safe-area-inset-bottom,34px),34px)!important;position:relative!important;z-index:10!important;background:var(--w,#fff)!important}';
+    document.head.appendChild(s);
+  }
+
+  if(document.body) {
+    applyLayout();
+  } else {
+    document.addEventListener('DOMContentLoaded', applyLayout);
+  }
 })();
 </script>
+
+
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="mobile-web-app-capable" content="yes">
@@ -77,7 +76,7 @@ body{display:flex;align-items:center;justify-content:center}
 .side-btn{position:absolute;right:-3px;top:156px;width:3px;height:84px;background:#B0B4BF;border-radius:0 2px 2px 0;z-index:1}
 /* status bar */
 .sb{height:58px;background:var(--w);display:flex;align-items:flex-end;justify-content:space-between;padding:0 28px 10px;flex-shrink:0;position:relative;z-index:2}
-.di{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:126px;height:37px;background:#111;border-radius:20px}
+
 .sb-t{font-size:15px;font-weight:600;color:var(--tx)}
 .sb-r{display:flex;gap:6px;align-items:center}
 /* scroll area */
@@ -272,7 +271,6 @@ body{display:flex;align-items:center;justify-content:center}
   <div class="side-btn"></div>
   <!-- Status Bar -->
   <div class="sb">
-    <div class="di"></div>
     <div class="sb-t">9:41</div>
     <div class="sb-r">
       <svg width="17" height="12" viewBox="0 0 17 12" fill="var(--tx)"><rect x="0" y="3.5" width="3" height="8.5" rx="1"/><rect x="4.5" y="2" width="3" height="10" rx="1"/><rect x="9" y=".5" width="3" height="11.5" rx="1"/><rect x="13.5" y=".5" width="3" height="11.5" rx="1" opacity=".25"/></svg>
@@ -498,7 +496,7 @@ body{display:flex;align-items:center;justify-content:center}
 
   <!-- SUB: PRO MODE -->
   <div class="sub" id="sub-pro">
-    <div class="sb"><div class="di"></div><div class="sb-t">9:41</div><div class="sb-r"><svg width="17" height="12" viewBox="0 0 17 12" fill="var(--tx)"><rect x="0" y="3.5" width="3" height="8.5" rx="1"/><rect x="4.5" y="2" width="3" height="10" rx="1"/><rect x="9" y=".5" width="3" height="11.5" rx="1"/><rect x="13.5" y=".5" width="3" height="11.5" rx="1" opacity=".25"/></svg><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
+    <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="17" height="12" viewBox="0 0 17 12" fill="var(--tx)"><rect x="0" y="3.5" width="3" height="8.5" rx="1"/><rect x="4.5" y="2" width="3" height="10" rx="1"/><rect x="9" y=".5" width="3" height="11.5" rx="1"/><rect x="13.5" y=".5" width="3" height="11.5" rx="1" opacity=".25"/></svg><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
     <div class="phd"><div class="pbk" id="pro-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div style="font-size:26px;font-weight:700;color:#fff;letter-spacing:-.5px">Pro Mode</div><div style="font-size:13px;color:rgba(255,255,255,.45);margin-top:4px">進階設定 · 適合專業使用者</div></div>
     <div class="ptabs"><div class="pt on" id="ptab-net">Network</div><div class="pt" id="ptab-wl">Wireless</div><div class="pt" id="ptab-vpn">VPN</div><div class="pt" id="ptab-sys">System</div><div class="pt" id="ptab-int">Integration</div></div>
     <div class="pcn" id="pro-cnt"></div>
@@ -513,14 +511,14 @@ body{display:flex;align-items:center;justify-content:center}
 
   <!-- SUB: DEVICE DETAIL -->
   <div class="sub" id="sub-dev">
-    <div class="sb"><div class="di"></div><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
+    <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0"><div class="bk" id="dev-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div style="font-size:17px;font-weight:600;color:var(--tx)" id="dev-title">裝置詳情</div></div>
     <div style="flex:1;min-height:0;overflow-y:auto;background:var(--bg)" id="dev-body"></div>
   </div>
 
   <!-- SUB: NOTIFICATIONS -->
   <div class="sub" id="sub-notif">
-    <div class="sb"><div class="di"></div><div class="sb-t">9:41</div><div class="sb-r"><svg width="17" height="12" viewBox="0 0 17 12" fill="var(--tx)"><rect x="0" y="3.5" width="3" height="8.5" rx="1"/><rect x="4.5" y="2" width="3" height="10" rx="1"/><rect x="9" y=".5" width="3" height="11.5" rx="1"/><rect x="13.5" y=".5" width="3" height="11.5" rx="1" opacity=".25"/></svg><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
+    <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="17" height="12" viewBox="0 0 17 12" fill="var(--tx)"><rect x="0" y="3.5" width="3" height="8.5" rx="1"/><rect x="4.5" y="2" width="3" height="10" rx="1"/><rect x="9" y=".5" width="3" height="11.5" rx="1"/><rect x="13.5" y=".5" width="3" height="11.5" rx="1" opacity=".25"/></svg><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0"><div style="display:flex;align-items:center;gap:12px"><div class="bk" id="notif-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div style="font-size:18px;font-weight:600;color:var(--tx)">通知</div></div><div style="font-size:13px;color:var(--ac);font-weight:500;cursor:pointer">全部已讀</div></div>
     <div style="flex:1;min-height:0;overflow-y:auto;background:var(--bg);padding-bottom:20px">
       <div style="background:var(--w);margin:12px 16px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden">
@@ -599,7 +597,7 @@ body{display:flex;align-items:center;justify-content:center}
 
   <!-- SUB: QUICK ACTION EDITOR -->
   <div class="sub" id="sub-qaedit">
-    <div class="sb"><div class="di"></div><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
+    <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
       <div style="display:flex;align-items:center;gap:12px">
         <div class="bk" id="qaedit-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
@@ -621,7 +619,7 @@ body{display:flex;align-items:center;justify-content:center}
   </div></div>
   <!-- SUB: SCHEDULE -->
   <div class="sub" id="sub-sched">
-    <div class="sb"><div class="di"></div><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
+    <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
       <div style="display:flex;align-items:center;gap:12px">
         <div class="bk" id="sched-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
@@ -679,7 +677,7 @@ body{display:flex;align-items:center;justify-content:center}
 
   <!-- SUB: 韌體更新 -->
   <div class="sub" id="sub-fw">
-    <div class="sb"><div class="di"></div><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
+    <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
       <div class="bk" id="fw-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
       <div style="font-size:17px;font-weight:600;color:var(--tx)">韌體更新</div>
@@ -749,7 +747,7 @@ body{display:flex;align-items:center;justify-content:center}
 
   <!-- SUB: AiProtection -->
   <div class="sub" id="sub-aip">
-    <div class="sb"><div class="di"></div><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
+    <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
       <div class="bk" id="aip-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
       <div style="font-size:17px;font-weight:600;color:var(--tx)">AiProtection</div>
@@ -932,7 +930,7 @@ body{display:flex;align-items:center;justify-content:center}
 
   <!-- SUB: THEME -->
   <div class="sub" id="sub-theme">
-    <div class="sb"><div class="di"></div><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
+    <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
       <div style="display:flex;align-items:center;gap:12px">
         <div class="bk" id="theme-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
@@ -997,7 +995,7 @@ body{display:flex;align-items:center;justify-content:center}
 
   <!-- SUB: FEEDBACK -->
   <div class="sub" id="sub-feedback">
-    <div class="sb"><div class="di"></div><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
+    <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
       <div style="display:flex;align-items:center;gap:12px">
         <div class="bk" id="fb-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
