@@ -1,31 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<script>
-(function(){
-  if(!/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) return;
-  var st = document.createElement('style');
-  st.textContent =
-    'html,body{margin:0;padding:0;height:100dvh;overflow:hidden;overscroll-behavior:none;background:#F2F4F8}' +
-    '.shell{display:none}' +
-    '.phone{position:fixed;inset:0;width:100vw;height:100dvh;display:flex;flex-direction:column;overflow:hidden;border-radius:0;box-shadow:none;max-width:none}' +
-    '.sb{display:none}' +
-    '.ct{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain}' +
-    '.tb{flex-shrink:0;padding:8px 0 max(env(safe-area-inset-bottom,20px),20px);background:var(--w);border-top:1px solid var(--bd)}' +
-    '.pg-header{padding-top:max(env(safe-area-inset-top,44px),44px)}';
-  document.head.appendChild(st);
-
-  // Add top padding to first child of each page (the header div)
-  function patchHeaders(){
-    var top = Math.max(44, window.screen.height > 844 ? 59 : 44);
-    var st2 = document.createElement('style');
-    st2.textContent = '.pg > div:first-child, .pg > span:first-child + div{padding-top:max(env(safe-area-inset-top,'+top+'px),'+top+'px) !important}';
-    document.head.appendChild(st2);
-  }
-  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', patchHeaders);
-  else patchHeaders();
-})();
-</script>
 
 
 
@@ -1777,6 +1752,68 @@ window.addEventListener('load',function(){
   ['tg1','tg2','tg3','tg4','tg5','tg6'].forEach(function(id){bind(id,function(){var e=g(id);if(e)e.classList.toggle('on');});});
 });
 
+</script>
+<script>
+(function() {
+  if (!/iPhone|iPad|iPod/i.test(navigator.userAgent)) return;
+
+  function init() {
+    // Hide fake status bar
+    var sb = document.querySelector('.sb');
+    if (sb) sb.style.display = 'none';
+
+    // Hide phone shell
+    var shell = document.querySelector('.shell');
+    if (shell) shell.style.display = 'none';
+
+    // Make phone fill screen
+    var phone = document.querySelector('.phone');
+    if (phone) {
+      phone.style.cssText = 'position:fixed;inset:0;width:100vw;height:100dvh;' +
+        'display:flex;flex-direction:column;overflow:hidden;' +
+        'border-radius:0;box-shadow:none;max-width:none;background:#F2F4F8';
+    }
+
+    // Content area scrollable
+    var ct = document.querySelector('.ct');
+    if (ct) {
+      ct.style.cssText = 'flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;' +
+        '-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;position:relative';
+    }
+
+    // Tab bar at bottom with safe area
+    var tb = document.querySelector('.tb');
+    if (tb) {
+      tb.style.cssText = 'flex-shrink:0;background:#fff;border-top:1px solid #E5E7EB;' +
+        'padding:8px 0;padding-bottom:max(env(safe-area-inset-bottom,20px),20px);' +
+        'display:flex;position:relative;z-index:10';
+    }
+
+    // Add safe area top padding to body
+    document.body.style.cssText = 'margin:0;padding:0;height:100dvh;overflow:hidden;' +
+      'overscroll-behavior:none;background:#F2F4F8';
+    document.documentElement.style.cssText = 'height:100dvh;overflow:hidden;overscroll-behavior:none';
+
+    // Add safe-area padding to first pg header
+    var safeTop = parseInt(getComputedStyle(document.documentElement)
+      .getPropertyValue('--sat') || '59');
+    if (!safeTop || safeTop < 10) safeTop = 59;
+
+    var style = document.createElement('style');
+    style.textContent =
+      '.pg > div:first-child { padding-top: ' + safeTop + 'px !important; }' +
+      '.sub > div:first-child { padding-top: ' + safeTop + 'px !important; }';
+    document.head.appendChild(style);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+  // Also run after load to catch anything missed
+  window.addEventListener('load', init);
+})();
 </script>
 </body>
 </html>
