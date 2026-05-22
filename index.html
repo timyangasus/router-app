@@ -118,7 +118,7 @@ body{display:flex;align-items:center;justify-content:center}
 .bgb{background:var(--abg);color:var(--ac)}
 .bgx{background:var(--s2);color:var(--t3)}
 /* status card */
-.sc{margin:8px 16px 8px;border-radius:var(--r);background:linear-gradient(140deg,#3B87E0,#4D95EA,#90BFF5);color:#fff;box-shadow:0 4px 24px rgba(79,99,240,.18);overflow:hidden;position:relative}
+.sc{margin:8px 16px 8px;border-radius:var(--r);background:linear-gradient(140deg,#90BFF5,#4D95EA,#3B87E0);color:#fff;box-shadow:0 4px 24px rgba(79,99,240,.18);overflow:hidden;position:relative}
 .sc::before{content:'';position:absolute;top:-40px;right:-20px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.07)}
 .sci{padding:14px 20px;position:relative;z-index:1}
 .sp{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border-radius:20px;padding:4px 12px;font-size:12px;font-weight:500}
@@ -136,7 +136,7 @@ body{display:flex;align-items:center;justify-content:center}
 .sic{width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:14px}
 .sic svg{width:16px;height:16px;stroke:var(--is);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 /* pro */
-.phd{padding:16px 20px 20px;background:linear-gradient(140deg,#3B87E0,#4D95EA,#90BFF5);position:relative;overflow:hidden;flex-shrink:0}
+.phd{padding:16px 20px 20px;background:linear-gradient(140deg,#90BFF5,#4D95EA,#3B87E0);position:relative;overflow:hidden;flex-shrink:0}
 .phd::before{content:'';position:absolute;top:-70px;right:-40px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.05)}
 .pbk{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;cursor:pointer;margin-bottom:12px}
 .pbk svg{width:17px;height:17px;stroke:rgba(255,255,255,.85);fill:none;stroke-width:2;stroke-linecap:round}
@@ -343,25 +343,25 @@ body{display:flex;align-items:center;justify-content:center}
         <div style="padding:20px 16px 10px;display:flex;align-items:flex-start">
           <!-- Internet / 主路由器 -->
           <div style="text-align:center;flex:1">
-            <div style="width:38px;height:38px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;margin:0 auto 5px">
-              <svg width="20" height="20" viewBox="0 -960 960 960" fill="var(--is)"><path d="M340-148.42q-65.69-28.43-114.42-77.16-48.73-48.73-77.16-114.42Q120-405.69 120-480.12q0-74.42 28.42-140 28.43-65.57 77.16-114.3 48.73-48.73 114.42-77.16Q405.69-840 480.12-840q74.42 0 140 28.42 65.57 28.43 114.3 77.16 48.73 48.73 77.16 114.3 28.42 65.58 28.42 140 0 74.43-28.42 140.12-28.43 65.69-77.16 114.42-48.73 48.73-114.3 77.16-65.58 28.42-140 28.42-74.43 0-140.12-28.42Zm140-11.27q35.23-45.23 58.08-88.85 22.84-43.61 37.15-97.61H384.77q15.85 57.07 37.92 100.69 22.08 43.61 57.31 85.77Zm-50.92-6q-28-33-51.12-81.58-23.11-48.58-34.42-98.88H190.15q34.39 74.61 97.5 122.38 63.12 47.77 141.43 58.08Zm101.84 0q78.31-10.31 141.43-58.08 63.11-47.77 97.5-122.38H616.46q-15.15 51.07-38.27 99.65-23.11 48.58-47.27 80.81ZM173.85-386.15h161.38q-4.54-24.62-6.42-47.97-1.89-23.34-1.89-45.88 0-22.54 1.89-45.88 1.88-23.35 6.42-47.97H173.85q-6.54 20.77-10.2 45.27Q160-504.08 160-480t3.65 48.58q3.66 24.5 10.2 45.27Zm201.38 0h209.54q4.54-24.62 6.42-47.2 1.89-22.57 1.89-46.65t-1.89-46.65q-1.88-22.58-6.42-47.2H375.23q-4.54 24.62-6.42 47.2-1.89 22.57-1.89 46.65t1.89 46.65q1.88 22.58 6.42 47.2Zm249.54 0h161.38q6.54-20.77 10.2-45.27Q800-455.92 800-480t-3.65-48.58q-3.66-24.5-10.2-45.27H624.77q4.54 24.62 6.42 47.97 1.89 23.34 1.89 45.88 0 22.54-1.89 45.88-1.88 23.35-6.42 47.97Zm-8.31-227.7h153.39Q734.69-690 673.5-736.23q-61.19-46.23-142.58-58.85 28 36.85 50.35 84.27 22.35 47.43 35.19 96.96Zm-231.69 0h190.46q-15.85-56.3-39.08-101.84-23.23-45.54-56.15-84.62-32.92 39.08-56.15 84.62-23.23 45.54-39.08 101.84Zm-194.62 0h153.39q12.84-49.53 35.19-96.96 22.35-47.42 50.35-84.27-82.16 12.62-142.96 59.23-60.81 46.62-95.97 122Z"/></svg>
+            <div style="width:46px;height:46px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;margin:0 auto 5px">
+              <svg width="24" height="24" viewBox="0 -960 960 960" fill="var(--is)"><path d="M340-148.42q-65.69-28.43-114.42-77.16-48.73-48.73-77.16-114.42Q120-405.69 120-480.12q0-74.42 28.42-140 28.43-65.57 77.16-114.3 48.73-48.73 114.42-77.16Q405.69-840 480.12-840q74.42 0 140 28.42 65.57 28.43 114.3 77.16 48.73 48.73 77.16 114.3 28.42 65.58 28.42 140 0 74.43-28.42 140.12-28.43 65.69-77.16 114.42-48.73 48.73-114.3 77.16-65.58 28.42-140 28.42-74.43 0-140.12-28.42Zm140-11.27q35.23-45.23 58.08-88.85 22.84-43.61 37.15-97.61H384.77q15.85 57.07 37.92 100.69 22.08 43.61 57.31 85.77Zm-50.92-6q-28-33-51.12-81.58-23.11-48.58-34.42-98.88H190.15q34.39 74.61 97.5 122.38 63.12 47.77 141.43 58.08Zm101.84 0q78.31-10.31 141.43-58.08 63.11-47.77 97.5-122.38H616.46q-15.15 51.07-38.27 99.65-23.11 48.58-47.27 80.81ZM173.85-386.15h161.38q-4.54-24.62-6.42-47.97-1.89-23.34-1.89-45.88 0-22.54 1.89-45.88 1.88-23.35 6.42-47.97H173.85q-6.54 20.77-10.2 45.27Q160-504.08 160-480t3.65 48.58q3.66 24.5 10.2 45.27Zm201.38 0h209.54q4.54-24.62 6.42-47.2 1.89-22.57 1.89-46.65t-1.89-46.65q-1.88-22.58-6.42-47.2H375.23q-4.54 24.62-6.42 47.2-1.89 22.57-1.89 46.65t1.89 46.65q1.88 22.58 6.42 47.2Zm249.54 0h161.38q6.54-20.77 10.2-45.27Q800-455.92 800-480t-3.65-48.58q-3.66-24.5-10.2-45.27H624.77q4.54 24.62 6.42 47.97 1.89 23.34 1.89 45.88 0 22.54-1.89 45.88-1.88 23.35-6.42 47.97Zm-8.31-227.7h153.39Q734.69-690 673.5-736.23q-61.19-46.23-142.58-58.85 28 36.85 50.35 84.27 22.35 47.43 35.19 96.96Zm-231.69 0h190.46q-15.85-56.3-39.08-101.84-23.23-45.54-56.15-84.62-32.92 39.08-56.15 84.62-23.23 45.54-39.08 101.84Zm-194.62 0h153.39q12.84-49.53 35.19-96.96 22.35-47.42 50.35-84.27-82.16 12.62-142.96 59.23-60.81 46.62-95.97 122Z"/></svg>
             </div>
             <div style="font-size:17px;font-weight:600;color:var(--tx)">Internet</div>
           </div>
-          <div style="flex:1;height:1.5px;background:var(--ac);opacity:.25;margin-top:19px"></div>
+          <div style="flex:1;height:1.5px;background:var(--ac);opacity:.25;margin-top:23px"></div>
           <!-- 客廳：藍紫色圓，選取狀態 -->
           <div style="text-align:center;flex:1">
-            <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(140deg,#3B87E0,#4D95EA,#90BFF5);display:flex;align-items:center;justify-content:center;margin:0 auto 5px;box-shadow:0 2px 10px rgba(79,99,240,.35)">
-              <svg width="20" height="20" viewBox="0 -960 960 960" fill="#fff"><path d="M224.62-160q-27.62 0-46.12-18.5Q160-197 160-224.62v-110.76q0-27.62 18.5-46.12Q197-400 224.62-400H620v-160h40v160h75.38q27.62 0 46.12 18.5Q800-363 800-335.38v110.76q0 27.62-18.5 46.12Q763-160 735.38-160H224.62Zm0-40h510.76q10.77 0 17.7-6.92 6.92-6.93 6.92-17.7v-110.76q0-10.77-6.92-17.7-6.93-6.92-17.7-6.92H224.62q-10.77 0-17.7 6.92-6.92 6.93-6.92 17.7v110.76q0 10.77 6.92 17.7 6.93 6.92 17.7 6.92Zm77.34-58.04q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm140 0q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm140 0q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm-25.81-365.81-28.77-28.77q26-24 53.39-35.69Q608.15-700 640-700q31.85 0 59.23 11.69 27.39 11.69 53.39 35.69l-28.77 28.77q-17.08-17.07-37.66-26.61Q665.62-660 640-660q-25.62 0-46.19 9.54-20.58 9.54-37.66 26.61Zm-100-100-28.3-28.3q41.69-41.7 95.46-64.77Q577.08-840 640-840q62.92 0 116.69 23.08 53.77 23.07 95.46 64.77l-28.3 28.3q-33-33-79.58-54.57Q697.69-800 640-800t-104.27 21.58q-46.58 21.57-79.58 54.57ZM200-200V-360-200Z"/></svg>
+            <div style="width:46px;height:46px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center;margin:0 auto 5px;">
+              <svg width="24" height="24" viewBox="0 -960 960 960" fill="#fff"><path d="M224.62-160q-27.62 0-46.12-18.5Q160-197 160-224.62v-110.76q0-27.62 18.5-46.12Q197-400 224.62-400H620v-160h40v160h75.38q27.62 0 46.12 18.5Q800-363 800-335.38v110.76q0 27.62-18.5 46.12Q763-160 735.38-160H224.62Zm0-40h510.76q10.77 0 17.7-6.92 6.92-6.93 6.92-17.7v-110.76q0-10.77-6.92-17.7-6.93-6.92-17.7-6.92H224.62q-10.77 0-17.7 6.92-6.92 6.93-6.92 17.7v110.76q0 10.77 6.92 17.7 6.93 6.92 17.7 6.92Zm77.34-58.04q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm140 0q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm140 0q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm-25.81-365.81-28.77-28.77q26-24 53.39-35.69Q608.15-700 640-700q31.85 0 59.23 11.69 27.39 11.69 53.39 35.69l-28.77 28.77q-17.08-17.07-37.66-26.61Q665.62-660 640-660q-25.62 0-46.19 9.54-20.58 9.54-37.66 26.61Zm-100-100-28.3-28.3q41.69-41.7 95.46-64.77Q577.08-840 640-840q62.92 0 116.69 23.08 53.77 23.07 95.46 64.77l-28.3 28.3q-33-33-79.58-54.57Q697.69-800 640-800t-104.27 21.58q-46.58 21.57-79.58 54.57ZM200-200V-360-200Z"/></svg>
             </div>
             <div style="font-size:17px;font-weight:600;color:var(--tx)">客廳</div>
             <div style="font-size:10px;color:var(--gn);margin-top:1px">● 良好</div>
           </div>
-          <div style="flex:1;height:1.5px;background:var(--ac);opacity:.25;margin-top:19px"></div>
+          <div style="flex:1;height:1.5px;background:var(--ac);opacity:.25;margin-top:23px"></div>
           <!-- 臥室：淺藍底 -->
           <div style="text-align:center;flex:1">
-            <div style="width:38px;height:38px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;margin:0 auto 5px">
-              <svg width="20" height="20" viewBox="0 -960 960 960" fill="var(--is)"><path d="M224.62-160q-27.62 0-46.12-18.5Q160-197 160-224.62v-110.76q0-27.62 18.5-46.12Q197-400 224.62-400H620v-160h40v160h75.38q27.62 0 46.12 18.5Q800-363 800-335.38v110.76q0 27.62-18.5 46.12Q763-160 735.38-160H224.62Zm0-40h510.76q10.77 0 17.7-6.92 6.92-6.93 6.92-17.7v-110.76q0-10.77-6.92-17.7-6.93-6.92-17.7-6.92H224.62q-10.77 0-17.7 6.92-6.92 6.93-6.92 17.7v110.76q0 10.77 6.92 17.7 6.93 6.92 17.7 6.92Zm77.34-58.04q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm140 0q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm140 0q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm-25.81-365.81-28.77-28.77q26-24 53.39-35.69Q608.15-700 640-700q31.85 0 59.23 11.69 27.39 11.69 53.39 35.69l-28.77 28.77q-17.08-17.07-37.66-26.61Q665.62-660 640-660q-25.62 0-46.19 9.54-20.58 9.54-37.66 26.61Zm-100-100-28.3-28.3q41.69-41.7 95.46-64.77Q577.08-840 640-840q62.92 0 116.69 23.08 53.77 23.07 95.46 64.77l-28.3 28.3q-33-33-79.58-54.57Q697.69-800 640-800t-104.27 21.58q-46.58 21.57-79.58 54.57ZM200-200V-360-200Z"/></svg>
+            <div style="width:46px;height:46px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;margin:0 auto 5px">
+              <svg width="24" height="24" viewBox="0 -960 960 960" fill="var(--is)"><path d="M224.62-160q-27.62 0-46.12-18.5Q160-197 160-224.62v-110.76q0-27.62 18.5-46.12Q197-400 224.62-400H620v-160h40v160h75.38q27.62 0 46.12 18.5Q800-363 800-335.38v110.76q0 27.62-18.5 46.12Q763-160 735.38-160H224.62Zm0-40h510.76q10.77 0 17.7-6.92 6.92-6.93 6.92-17.7v-110.76q0-10.77-6.92-17.7-6.93-6.92-17.7-6.92H224.62q-10.77 0-17.7 6.92-6.92 6.93-6.92 17.7v110.76q0 10.77 6.92 17.7 6.93 6.92 17.7 6.92Zm77.34-58.04q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm140 0q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm140 0q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm-25.81-365.81-28.77-28.77q26-24 53.39-35.69Q608.15-700 640-700q31.85 0 59.23 11.69 27.39 11.69 53.39 35.69l-28.77 28.77q-17.08-17.07-37.66-26.61Q665.62-660 640-660q-25.62 0-46.19 9.54-20.58 9.54-37.66 26.61Zm-100-100-28.3-28.3q41.69-41.7 95.46-64.77Q577.08-840 640-840q62.92 0 116.69 23.08 53.77 23.07 95.46 64.77l-28.3 28.3q-33-33-79.58-54.57Q697.69-800 640-800t-104.27 21.58q-46.58 21.57-79.58 54.57ZM200-200V-360-200Z"/></svg>
             </div>
             <div style="font-size:17px;font-weight:600;color:var(--tx)">臥室</div>
             <div style="font-size:10px;color:var(--gn);margin-top:1px">● 良好</div>
@@ -403,7 +403,7 @@ body{display:flex;align-items:center;justify-content:center}
         <div class="df"    data-filter="unk"  style="height:36px;padding:0 16px;border-radius:18px;font-size:14px;font-weight:500;white-space:nowrap;cursor:pointer;display:flex;align-items:center">⚠ 陌生(1)</div>
       </div>
 <div style="background:var(--w)">
-        <div class="di2" id="d-unknown" style="border-left:3px solid var(--or)"><div class="da"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg><div class="dd" style="background:var(--or)"></div></div><div style="flex:1;min-width:0"><div style="font-size:17px;font-weight:600;color:var(--tx)">未知裝置</div><div style="font-size:14px;color:var(--t3);margin-top:2px">MAC: 8C:85:90:FF · 2.4GHz</div></div><span class="bg bgo">陌生</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-left:8px"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="di2" id="d-unknown"><div class="da"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg><div class="dd" style="background:var(--or)"></div></div><div style="flex:1;min-width:0"><div style="font-size:17px;font-weight:600;color:var(--tx)">未知裝置</div><div style="font-size:14px;color:var(--t3);margin-top:2px">MAC: 8C:85:90:FF · 2.4GHz</div></div><span class="bg bgo">陌生</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-left:8px"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="di2" id="d-laptop"><div class="da"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg><div class="dd" style="background:var(--gn)"></div></div><div style="flex:1;min-width:0"><div style="font-size:17px;font-weight:600;color:var(--tx)">Tim\'s MacBook Pro</div><div style="font-size:14px;color:var(--t3);margin-top:2px">Tim · 5GHz · 客廳節點</div></div><div style="display:flex;align-items:flex-end;gap:2px;height:14px"><div style="width:3px;height:5px;border-radius:1.5px;background:var(--ac)"></div><div style="width:3px;height:8px;border-radius:1.5px;background:var(--ac)"></div><div style="width:3px;height:11px;border-radius:1.5px;background:var(--ac)"></div><div style="width:3px;height:14px;border-radius:1.5px;background:var(--ac)"></div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-left:8px"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="di2" id="d-iphone"><div class="da"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg><div class="dd" style="background:var(--gn)"></div></div><div style="flex:1;min-width:0"><div style="font-size:17px;font-weight:600;color:var(--tx)">Tim\'s iPhone</div><div style="font-size:14px;color:var(--t3);margin-top:2px">Tim · 5GHz · 主路由器</div></div><div style="display:flex;align-items:flex-end;gap:2px;height:14px"><div style="width:3px;height:5px;border-radius:1.5px;background:var(--ac)"></div><div style="width:3px;height:8px;border-radius:1.5px;background:var(--ac)"></div><div style="width:3px;height:11px;border-radius:1.5px;background:var(--ac)"></div><div style="width:3px;height:14px;border-radius:1.5px;background:var(--ac)"></div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-left:8px"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="di2" id="d-appletv"><div class="da"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg><div class="dd" style="background:var(--gn)"></div></div><div style="flex:1;min-width:0"><div style="font-size:17px;font-weight:600;color:var(--tx)">客廳 Apple TV</div><div style="font-size:14px;color:var(--t3);margin-top:2px">乙太網路 · 客廳節點</div></div><span class="bg bgg">有線</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-left:8px"><polyline points="9 18 15 12 9 6"/></svg></div>
@@ -1175,6 +1175,95 @@ body{display:flex;align-items:center;justify-content:center}
     </div>
   </div></div>
 
+
+  <!-- SUB: WIFI SETTINGS -->
+  <div class="sub" id="sub-wifi">
+    <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="bk" id="wifi-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+        <div style="font-size:17px;font-weight:600;color:var(--tx)">Wi-Fi 設定</div>
+      </div>
+      <div style="font-size:14px;color:var(--ac);font-weight:600;cursor:pointer">儲存</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg);padding-bottom:30px">
+
+      <!-- 狀態卡片 -->
+      <div style="background:linear-gradient(140deg,#3B87E0,#6AAAF0);margin:14px 16px;border-radius:var(--r);padding:16px 18px;box-shadow:0 4px 16px rgba(59,135,224,.25)">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1.5" fill="#fff" stroke="none"/></svg>
+          <div style="font-size:16px;font-weight:700;color:#fff">ASUS_Home</div>
+          <div style="margin-left:auto;background:rgba(255,255,255,.2);border-radius:10px;padding:3px 10px;font-size:12px;color:#fff;font-weight:600">啟用中</div>
+        </div>
+        <div style="display:flex;gap:16px">
+          <div style="text-align:center"><div style="font-size:18px;font-weight:700;color:#fff">5</div><div style="font-size:10px;color:rgba(255,255,255,.7);margin-top:1px">GHz</div></div>
+          <div style="width:1px;background:rgba(255,255,255,.2)"></div>
+          <div style="text-align:center"><div style="font-size:18px;font-weight:700;color:#fff">149</div><div style="font-size:10px;color:rgba(255,255,255,.7);margin-top:1px">頻道</div></div>
+          <div style="width:1px;background:rgba(255,255,255,.2)"></div>
+          <div style="text-align:center"><div style="font-size:18px;font-weight:700;color:#fff">WPA3</div><div style="font-size:10px;color:rgba(255,255,255,.7);margin-top:1px">加密</div></div>
+        </div>
+      </div>
+
+      <!-- Wi-Fi 名稱 & 密碼 -->
+      <span class="sl">Wi-Fi 資訊</span>
+      <div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh)">
+        <div style="display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid var(--bd)">
+          <div style="font-size:14px;color:var(--t3);width:60px;flex-shrink:0">名稱</div>
+          <input value="ASUS_Home" style="flex:1;border:none;outline:none;background:transparent;font-size:17px;font-weight:500;color:var(--tx);font-family:var(--f)"/>
+        </div>
+        <div style="display:flex;align-items:center;padding:13px 16px">
+          <div style="font-size:14px;color:var(--t3);width:60px;flex-shrink:0">密碼</div>
+          <input type="password" value="mypassword123" id="wifi-pw" style="flex:1;border:none;outline:none;background:transparent;font-size:17px;font-weight:500;color:var(--tx);font-family:var(--m)"/>
+          <div style="cursor:pointer;color:var(--t3);font-size:12px;padding-left:8px" id="wifi-pw-toggle">顯示</div>
+        </div>
+      </div>
+
+      <!-- 頻段 -->
+      <span class="sl">頻段</span>
+      <div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh)">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd)">
+          <div>
+            <div style="font-size:17px;font-weight:500;color:var(--tx)">5 GHz</div>
+            <div style="font-size:13px;color:var(--t3);margin-top:2px">高速・短距離</div>
+          </div>
+          <div class="tg on" id="tg-5g"></div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd)">
+          <div>
+            <div style="font-size:17px;font-weight:500;color:var(--tx)">2.4 GHz</div>
+            <div style="font-size:13px;color:var(--t3);margin-top:2px">較慢・覆蓋廣</div>
+          </div>
+          <div class="tg on" id="tg-24g"></div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px">
+          <div>
+            <div style="font-size:17px;font-weight:500;color:var(--tx)">6 GHz</div>
+            <div style="font-size:13px;color:var(--t3);margin-top:2px">超高速・Wi-Fi 6E</div>
+          </div>
+          <div class="tg on" id="tg-6g"></div>
+        </div>
+      </div>
+
+      <!-- 分享 -->
+      <span class="sl">分享</span>
+      <div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh)">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;cursor:pointer" id="wifi-share-btn">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            </div>
+            <div>
+              <div style="font-size:17px;font-weight:500;color:var(--tx)">分享 Wi-Fi</div>
+              <div style="font-size:13px;color:var(--t3);margin-top:1px">產生 QR Code 讓訪客連線</div>
+            </div>
+          </div>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
 </div><!-- end phone -->
 <script>
 
@@ -1497,9 +1586,20 @@ window.addEventListener('load',function(){
   bind('d-ipad',function(){openDev('ipad');});
   // home
   bind('h-wifi',function(){show('ov-wifi');});
-  bind('h-wifirow',function(){show('ov-wifi');});
+  bind('h-wifirow',function(){show('sub-wifi');});
   bind('h-diag',function(){show('ov-diag');});
   bind('h-devs',function(){goTab('devices');});
+  bind('wifi-back',function(){hide('sub-wifi');});
+  bind('wifi-pw-toggle',function(){
+    var inp=g('wifi-pw');if(!inp)return;
+    var show=inp.type==='password';
+    inp.type=show?'text':'password';
+    g('wifi-pw-toggle').textContent=show?'隱藏':'顯示';
+  });
+  bind('tg-5g',function(){g('tg-5g').classList.toggle('on');});
+  bind('tg-24g',function(){g('tg-24g').classList.toggle('on');});
+  bind('tg-6g',function(){g('tg-6g').classList.toggle('on');});
+
   bind('h-notif',function(){show('sub-notif');});
   bind('h-mesh-detail',function(){show('ov-mesh');});
   bind('ov-mesh-close',function(){hide('ov-mesh');});
