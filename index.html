@@ -146,11 +146,11 @@ body{display:flex;align-items:center;justify-content:center}
 .pt.on{background:var(--ac);color:#fff;border-color:var(--ac)}
 .pcn{flex:1;min-height:0;overflow-y:auto;background:var(--bg)}
 .pcn::-webkit-scrollbar{display:none}
-.pitem{display:flex;align-items:center;padding:14px 20px;background:var(--w);border-bottom:1px solid var(--bd);cursor:pointer}
-.pit{font-size:15px;font-weight:500;color:var(--tx);letter-spacing:-.1px}
+.pitem{display:flex;align-items:center;padding:16px 20px;background:var(--w);border-bottom:1px solid var(--bd);cursor:pointer}
+.pit{font-size:17px;font-weight:500;color:var(--tx);letter-spacing:-.1px}
 .pis{font-size:13px;color:var(--t3);margin-top:2px}
-.pic{width:30px;height:30px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;margin-right:14px;flex-shrink:0}
-.pic svg{width:14px;height:14px;stroke:var(--is);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pic{width:36px;height:36px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;margin-right:20px;flex-shrink:0}
+.pic svg{width:17px;height:17px;stroke:var(--is);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .ptb{height:84px;background:var(--w);border-top:1px solid var(--bd);display:flex;padding:0 4px 26px;flex-shrink:0}
 .pti{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer}
 .pti svg{width:25px;height:25px;stroke:var(--t3);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
@@ -1174,7 +1174,7 @@ function renderPro(key,tabId){
   var items=PRO[key]||[];
   var cnt=g('pro-cnt');if(!cnt)return;
   cnt.innerHTML='<div>'+items.map(function(it){
-    return '<div class="pitem"><div class="pic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a1 1 0 00-1.41 0l-.5.5a7 7 0 00-9.32 0l-.5-.5a1 1 0 00-1.41 1.41l.5.5a7 7 0 000 9.32l-.5.5a1 1 0 001.41 1.41l.5-.5a7 7 0 009.32 0l.5.5a1 1 0 001.41-1.41l-.5-.5a7 7 0 000-9.32l.5-.5a1 1 0 000-1.41z"/></svg></div><div style="flex:1"><div class="pit">'+it.t+'</div><div class="pis">'+it.s+'</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>';
+    return '<div class="pitem"><div class="pic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div><div style="flex:1"><div class="pit">'+it.t+'</div><div class="pis">'+it.s+'</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>';
   }).join('')+'</div>';
 }
 function openDev(type){
