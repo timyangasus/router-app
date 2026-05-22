@@ -128,7 +128,7 @@ body{display:flex;align-items:center;justify-content:center}
 .smi{text-align:center}
 /* quick actions */
 .qa{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:0 16px}
-.qb{background:var(--w);border-radius:var(--r2);padding:12px 6px;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;box-shadow:var(--sh)}
+.qb{background:var(--w);border-radius:var(--r2);padding:16px 18px;display:flex;flex-direction:row;align-items:center;gap:14px;cursor:pointer;box-shadow:var(--sh)}
 .qi{width:36px;height:36px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center}
 .qi svg{width:17px;height:17px;stroke:var(--is);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 /* settings rows */
@@ -136,11 +136,11 @@ body{display:flex;align-items:center;justify-content:center}
 .sic{width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:14px}
 .sic svg{width:16px;height:16px;stroke:var(--is);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 /* pro */
-.phd{padding:16px 20px 20px;background:linear-gradient(160deg,#1A2448,#243066,#2E3E80);position:relative;overflow:hidden;flex-shrink:0}
+.phd{padding:16px 20px 20px;background:linear-gradient(140deg,#3D54E8,#5B6EF5,#8AA4FF);position:relative;overflow:hidden;flex-shrink:0}
 .phd::before{content:'';position:absolute;top:-70px;right:-40px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.05)}
 .pbk{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;cursor:pointer;margin-bottom:12px}
 .pbk svg{width:17px;height:17px;stroke:rgba(255,255,255,.85);fill:none;stroke-width:2;stroke-linecap:round}
-.ptabs{display:flex;gap:6px;padding:10px 16px;background:var(--w);border-bottom:1px solid var(--bd);overflow-x:auto;flex-shrink:0;scrollbar-width:none}
+.ptabs{display:flex;gap:6px;padding:20px 16px;background:var(--w);border-bottom:1px solid var(--bd);overflow-x:auto;flex-shrink:0;scrollbar-width:none}
 .ptabs::-webkit-scrollbar{display:none}
 .pt{height:30px;padding:0 14px;border-radius:15px;font-size:12px;font-weight:500;white-space:nowrap;cursor:pointer;border:1px solid var(--bd);background:var(--w);color:var(--t2);display:flex;align-items:center}
 .pt.on{background:var(--ac);color:#fff;border-color:var(--ac)}
@@ -324,16 +324,16 @@ body{display:flex;align-items:center;justify-content:center}
           <!-- Wi-Fi row -->
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;cursor:pointer" id="h-wifirow">
             <div>
-              <div style="font-size:16px;font-weight:700;opacity:.95">ASUS_Home_5G</div>
-              <div style="font-size:13px;opacity:.6;margin-top:2px">主要網路 · 5 GHz / 2.4 GHz</div>
+              <div style="font-size:17px;font-weight:700;opacity:.95">ASUS_Home_5G</div>
+              <div style="font-size:14px;opacity:.6;margin-top:2px">主要網路 · 5 GHz / 2.4 GHz</div>
             </div>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
           <!-- Stats row -->
           <div class="sm">
-            <div class="smi"><div style="font-size:22px;font-weight:700">14</div><div style="font-size:12px;opacity:.6;margin-top:3px">連線裝置</div></div>
-            <div class="smi"><div style="font-size:22px;font-weight:700;color:#fff">2</div><div style="font-size:12px;opacity:.6;margin-top:3px">Mesh 節點</div></div>
-            <div class="smi"><div style="font-size:22px;font-weight:700;color:#4ADE80">安全</div><div style="font-size:12px;opacity:.6;margin-top:3px">安全狀態</div></div>
+            <div class="smi"><div style="font-size:22px;font-weight:700">14</div><div style="font-size:13px;opacity:.6;margin-top:3px">連線裝置</div></div>
+            <div class="smi"><div style="font-size:22px;font-weight:700;color:#fff">2</div><div style="font-size:13px;opacity:.6;margin-top:3px">Mesh 節點</div></div>
+            <div class="smi"><div style="font-size:22px;font-weight:700;color:#4ADE80">安全</div><div style="font-size:13px;opacity:.6;margin-top:3px">安全狀態</div></div>
           </div>
         </div>
       </div>
@@ -346,7 +346,7 @@ body{display:flex;align-items:center;justify-content:center}
             <div style="width:38px;height:38px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;margin:0 auto 5px">
               <svg width="20" height="20" viewBox="0 -960 960 960" fill="var(--is)"><path d="M340-148.42q-65.69-28.43-114.42-77.16-48.73-48.73-77.16-114.42Q120-405.69 120-480.12q0-74.42 28.42-140 28.43-65.57 77.16-114.3 48.73-48.73 114.42-77.16Q405.69-840 480.12-840q74.42 0 140 28.42 65.57 28.43 114.3 77.16 48.73 48.73 77.16 114.3 28.42 65.58 28.42 140 0 74.43-28.42 140.12-28.43 65.69-77.16 114.42-48.73 48.73-114.3 77.16-65.58 28.42-140 28.42-74.43 0-140.12-28.42Zm140-11.27q35.23-45.23 58.08-88.85 22.84-43.61 37.15-97.61H384.77q15.85 57.07 37.92 100.69 22.08 43.61 57.31 85.77Zm-50.92-6q-28-33-51.12-81.58-23.11-48.58-34.42-98.88H190.15q34.39 74.61 97.5 122.38 63.12 47.77 141.43 58.08Zm101.84 0q78.31-10.31 141.43-58.08 63.11-47.77 97.5-122.38H616.46q-15.15 51.07-38.27 99.65-23.11 48.58-47.27 80.81ZM173.85-386.15h161.38q-4.54-24.62-6.42-47.97-1.89-23.34-1.89-45.88 0-22.54 1.89-45.88 1.88-23.35 6.42-47.97H173.85q-6.54 20.77-10.2 45.27Q160-504.08 160-480t3.65 48.58q3.66 24.5 10.2 45.27Zm201.38 0h209.54q4.54-24.62 6.42-47.2 1.89-22.57 1.89-46.65t-1.89-46.65q-1.88-22.58-6.42-47.2H375.23q-4.54 24.62-6.42 47.2-1.89 22.57-1.89 46.65t1.89 46.65q1.88 22.58 6.42 47.2Zm249.54 0h161.38q6.54-20.77 10.2-45.27Q800-455.92 800-480t-3.65-48.58q-3.66-24.5-10.2-45.27H624.77q4.54 24.62 6.42 47.97 1.89 23.34 1.89 45.88 0 22.54-1.89 45.88-1.88 23.35-6.42 47.97Zm-8.31-227.7h153.39Q734.69-690 673.5-736.23q-61.19-46.23-142.58-58.85 28 36.85 50.35 84.27 22.35 47.43 35.19 96.96Zm-231.69 0h190.46q-15.85-56.3-39.08-101.84-23.23-45.54-56.15-84.62-32.92 39.08-56.15 84.62-23.23 45.54-39.08 101.84Zm-194.62 0h153.39q12.84-49.53 35.19-96.96 22.35-47.42 50.35-84.27-82.16 12.62-142.96 59.23-60.81 46.62-95.97 122Z"/></svg>
             </div>
-            <div style="font-size:11px;font-weight:600;color:var(--tx)">Internet</div>
+            <div style="font-size:15px;font-weight:600;color:var(--tx)">Internet</div>
           </div>
           <div style="flex:1;height:1.5px;background:var(--ac);opacity:.25;margin-top:19px"></div>
           <!-- 客廳：藍紫色圓，選取狀態 -->
@@ -354,7 +354,7 @@ body{display:flex;align-items:center;justify-content:center}
             <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(140deg,#3D54E8,#5B6EF5,#8AA4FF);display:flex;align-items:center;justify-content:center;margin:0 auto 5px;box-shadow:0 2px 10px rgba(79,99,240,.35)">
               <svg width="20" height="20" viewBox="0 -960 960 960" fill="#fff"><path d="M224.62-160q-27.62 0-46.12-18.5Q160-197 160-224.62v-110.76q0-27.62 18.5-46.12Q197-400 224.62-400H620v-160h40v160h75.38q27.62 0 46.12 18.5Q800-363 800-335.38v110.76q0 27.62-18.5 46.12Q763-160 735.38-160H224.62Zm0-40h510.76q10.77 0 17.7-6.92 6.92-6.93 6.92-17.7v-110.76q0-10.77-6.92-17.7-6.93-6.92-17.7-6.92H224.62q-10.77 0-17.7 6.92-6.92 6.93-6.92 17.7v110.76q0 10.77 6.92 17.7 6.93 6.92 17.7 6.92Zm77.34-58.04q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm140 0q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm140 0q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm-25.81-365.81-28.77-28.77q26-24 53.39-35.69Q608.15-700 640-700q31.85 0 59.23 11.69 27.39 11.69 53.39 35.69l-28.77 28.77q-17.08-17.07-37.66-26.61Q665.62-660 640-660q-25.62 0-46.19 9.54-20.58 9.54-37.66 26.61Zm-100-100-28.3-28.3q41.69-41.7 95.46-64.77Q577.08-840 640-840q62.92 0 116.69 23.08 53.77 23.07 95.46 64.77l-28.3 28.3q-33-33-79.58-54.57Q697.69-800 640-800t-104.27 21.58q-46.58 21.57-79.58 54.57ZM200-200V-360-200Z"/></svg>
             </div>
-            <div style="font-size:11px;font-weight:600;color:var(--tx)">客廳</div>
+            <div style="font-size:15px;font-weight:600;color:var(--tx)">客廳</div>
             <div style="font-size:10px;color:var(--gn);margin-top:1px">● 良好</div>
           </div>
           <div style="flex:1;height:1.5px;background:var(--ac);opacity:.25;margin-top:19px"></div>
@@ -363,7 +363,7 @@ body{display:flex;align-items:center;justify-content:center}
             <div style="width:38px;height:38px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;margin:0 auto 5px">
               <svg width="20" height="20" viewBox="0 -960 960 960" fill="var(--is)"><path d="M224.62-160q-27.62 0-46.12-18.5Q160-197 160-224.62v-110.76q0-27.62 18.5-46.12Q197-400 224.62-400H620v-160h40v160h75.38q27.62 0 46.12 18.5Q800-363 800-335.38v110.76q0 27.62-18.5 46.12Q763-160 735.38-160H224.62Zm0-40h510.76q10.77 0 17.7-6.92 6.92-6.93 6.92-17.7v-110.76q0-10.77-6.92-17.7-6.93-6.92-17.7-6.92H224.62q-10.77 0-17.7 6.92-6.92 6.93-6.92 17.7v110.76q0 10.77 6.92 17.7 6.93 6.92 17.7 6.92Zm77.34-58.04q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm140 0q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm140 0q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm-25.81-365.81-28.77-28.77q26-24 53.39-35.69Q608.15-700 640-700q31.85 0 59.23 11.69 27.39 11.69 53.39 35.69l-28.77 28.77q-17.08-17.07-37.66-26.61Q665.62-660 640-660q-25.62 0-46.19 9.54-20.58 9.54-37.66 26.61Zm-100-100-28.3-28.3q41.69-41.7 95.46-64.77Q577.08-840 640-840q62.92 0 116.69 23.08 53.77 23.07 95.46 64.77l-28.3 28.3q-33-33-79.58-54.57Q697.69-800 640-800t-104.27 21.58q-46.58 21.57-79.58 54.57ZM200-200V-360-200Z"/></svg>
             </div>
-            <div style="font-size:11px;font-weight:600;color:var(--tx)">臥室</div>
+            <div style="font-size:15px;font-weight:600;color:var(--tx)">臥室</div>
             <div style="font-size:10px;color:var(--gn);margin-top:1px">● 良好</div>
           </div>
         </div>
@@ -379,7 +379,7 @@ body{display:flex;align-items:center;justify-content:center}
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
         </div>
       </div>
-      <div id="qa-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:0 16px"></div>
+      <div id="qa-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:0 16px"></div>
     </div>
 
     <!-- ═══ DEVICES ═══ -->
@@ -396,18 +396,18 @@ body{display:flex;align-items:center;justify-content:center}
         </div>
       </div>
       <div id="d-search-bar" style="display:none;align-items:center;gap:8px;background:var(--w);border-bottom:1px solid var(--bd);padding:8px 16px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg><input placeholder="搜尋裝置名稱…" style="border:none;outline:none;background:transparent;font-size:14px;color:var(--tx);flex:1;font-family:var(--f)"/><div style="font-size:13px;color:var(--ac);cursor:pointer" id="d-search-cancel">取消</div></div>
-      <div style="display:flex;gap:6px;padding:4px 16px 8px;overflow-x:auto;scrollbar-width:none" id="dev-filters">
-        <div class="df on" data-filter="all"  style="height:26px;padding:0 11px;border-radius:13px;font-size:12px;font-weight:500;white-space:nowrap;cursor:pointer;display:flex;align-items:center">全部(5)</div>
-        <div class="df"    data-filter="on"   style="height:26px;padding:0 11px;border-radius:13px;font-size:12px;font-weight:500;white-space:nowrap;cursor:pointer;display:flex;align-items:center">線上(3)</div>
-        <div class="df"    data-filter="off"  style="height:26px;padding:0 11px;border-radius:13px;font-size:12px;font-weight:500;white-space:nowrap;cursor:pointer;display:flex;align-items:center">離線(1)</div>
-        <div class="df"    data-filter="unk"  style="height:26px;padding:0 11px;border-radius:13px;font-size:12px;font-weight:500;white-space:nowrap;cursor:pointer;display:flex;align-items:center">⚠ 陌生(1)</div>
+      <div style="display:flex;gap:8px;padding:20px 16px;overflow-x:auto;scrollbar-width:none" id="dev-filters">
+        <div class="df on" data-filter="all"  style="height:36px;padding:0 16px;border-radius:18px;font-size:14px;font-weight:500;white-space:nowrap;cursor:pointer;display:flex;align-items:center">全部(5)</div>
+        <div class="df"    data-filter="on"   style="height:36px;padding:0 16px;border-radius:18px;font-size:14px;font-weight:500;white-space:nowrap;cursor:pointer;display:flex;align-items:center">線上(3)</div>
+        <div class="df"    data-filter="off"  style="height:36px;padding:0 16px;border-radius:18px;font-size:14px;font-weight:500;white-space:nowrap;cursor:pointer;display:flex;align-items:center">離線(1)</div>
+        <div class="df"    data-filter="unk"  style="height:36px;padding:0 16px;border-radius:18px;font-size:14px;font-weight:500;white-space:nowrap;cursor:pointer;display:flex;align-items:center">⚠ 陌生(1)</div>
       </div>
-<div style="background:var(--w);margin-top:4px">
-        <div class="di2" id="d-unknown" style="border-left:3px solid var(--or)"><div class="da"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg><div class="dd" style="background:var(--or)"></div></div><div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:600;color:var(--tx)">未知裝置</div><div style="font-size:12px;color:var(--t3);margin-top:1px">MAC: 8C:85:90:FF · 2.4GHz</div></div><span class="bg bgo">陌生</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-left:8px"><polyline points="9 18 15 12 9 6"/></svg></div>
-        <div class="di2" id="d-laptop"><div class="da"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg><div class="dd" style="background:var(--gn)"></div></div><div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:600;color:var(--tx)">Tim\'s MacBook Pro</div><div style="font-size:12px;color:var(--t3);margin-top:1px">Tim · 5GHz · 客廳節點</div></div><div style="display:flex;align-items:flex-end;gap:2px;height:14px"><div style="width:3px;height:5px;border-radius:1.5px;background:var(--ac)"></div><div style="width:3px;height:8px;border-radius:1.5px;background:var(--ac)"></div><div style="width:3px;height:11px;border-radius:1.5px;background:var(--ac)"></div><div style="width:3px;height:14px;border-radius:1.5px;background:var(--ac)"></div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-left:8px"><polyline points="9 18 15 12 9 6"/></svg></div>
-        <div class="di2" id="d-iphone"><div class="da"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg><div class="dd" style="background:var(--gn)"></div></div><div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:600;color:var(--tx)">Tim\'s iPhone</div><div style="font-size:12px;color:var(--t3);margin-top:1px">Tim · 5GHz · 主路由器</div></div><div style="display:flex;align-items:flex-end;gap:2px;height:14px"><div style="width:3px;height:5px;border-radius:1.5px;background:var(--ac)"></div><div style="width:3px;height:8px;border-radius:1.5px;background:var(--ac)"></div><div style="width:3px;height:11px;border-radius:1.5px;background:var(--ac)"></div><div style="width:3px;height:14px;border-radius:1.5px;background:var(--ac)"></div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-left:8px"><polyline points="9 18 15 12 9 6"/></svg></div>
-        <div class="di2" id="d-appletv"><div class="da"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg><div class="dd" style="background:var(--gn)"></div></div><div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:600;color:var(--tx)">客廳 Apple TV</div><div style="font-size:12px;color:var(--t3);margin-top:1px">乙太網路 · 客廳節點</div></div><span class="bg bgg">有線</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-left:8px"><polyline points="9 18 15 12 9 6"/></svg></div>
-        <div class="di2" id="d-ipad" style="opacity:.5"><div class="da"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg><div class="dd" style="background:var(--t3)"></div></div><div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:600;color:var(--tx)">舊 iPad</div><div style="font-size:12px;color:var(--t3);margin-top:1px">離線 · 最後上線 2 小時前</div></div><span class="bg bgx">離線</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-left:8px"><polyline points="9 18 15 12 9 6"/></svg></div>
+<div style="background:var(--w)">
+        <div class="di2" id="d-unknown" style="border-left:3px solid var(--or)"><div class="da"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg><div class="dd" style="background:var(--or)"></div></div><div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:600;color:var(--tx)">未知裝置</div><div style="font-size:14px;color:var(--t3);margin-top:2px">MAC: 8C:85:90:FF · 2.4GHz</div></div><span class="bg bgo">陌生</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-left:8px"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="di2" id="d-laptop"><div class="da"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg><div class="dd" style="background:var(--gn)"></div></div><div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:600;color:var(--tx)">Tim\'s MacBook Pro</div><div style="font-size:14px;color:var(--t3);margin-top:2px">Tim · 5GHz · 客廳節點</div></div><div style="display:flex;align-items:flex-end;gap:2px;height:14px"><div style="width:3px;height:5px;border-radius:1.5px;background:var(--ac)"></div><div style="width:3px;height:8px;border-radius:1.5px;background:var(--ac)"></div><div style="width:3px;height:11px;border-radius:1.5px;background:var(--ac)"></div><div style="width:3px;height:14px;border-radius:1.5px;background:var(--ac)"></div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-left:8px"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="di2" id="d-iphone"><div class="da"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg><div class="dd" style="background:var(--gn)"></div></div><div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:600;color:var(--tx)">Tim\'s iPhone</div><div style="font-size:14px;color:var(--t3);margin-top:2px">Tim · 5GHz · 主路由器</div></div><div style="display:flex;align-items:flex-end;gap:2px;height:14px"><div style="width:3px;height:5px;border-radius:1.5px;background:var(--ac)"></div><div style="width:3px;height:8px;border-radius:1.5px;background:var(--ac)"></div><div style="width:3px;height:11px;border-radius:1.5px;background:var(--ac)"></div><div style="width:3px;height:14px;border-radius:1.5px;background:var(--ac)"></div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-left:8px"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="di2" id="d-appletv"><div class="da"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg><div class="dd" style="background:var(--gn)"></div></div><div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:600;color:var(--tx)">客廳 Apple TV</div><div style="font-size:14px;color:var(--t3);margin-top:2px">乙太網路 · 客廳節點</div></div><span class="bg bgg">有線</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-left:8px"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="di2" id="d-ipad" style="opacity:.5"><div class="da"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg><div class="dd" style="background:var(--t3)"></div></div><div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:600;color:var(--tx)">舊 iPad</div><div style="font-size:14px;color:var(--t3);margin-top:2px">離線 · 最後上線 2 小時前</div></div><span class="bg bgx">離線</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-left:8px"><polyline points="9 18 15 12 9 6"/></svg></div>
       </div>
     </div>
 
@@ -453,25 +453,25 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="padding:14px 20px 12px;background:var(--w);border-bottom:1px solid var(--bd)"><div style="font-size:16px;font-weight:400;color:var(--tx)">設定</div><div style="font-size:12px;color:var(--t3);margin-top:2px">ASUS RT-BE96U · 3.0.0.4.386</div></div>
       <span class="sl">Wi-Fi 設定</span>
       <div style="background:var(--w)">
-        <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">主 Wi-Fi</div><div style="font-size:12px;color:var(--t3);margin-top:1px">ASUS_Home_5G</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-        <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">訪客網路</div><div style="font-size:12px;color:var(--t3);margin-top:1px">已停用</div></div><div class="tg" id="tg1"></div></div>
-        <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">IoT 網路</div><div style="font-size:12px;color:var(--t3);margin-top:1px">ASUS_IoT · 啟用中</div></div><div class="tg on" id="tg2"></div></div>
+        <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">主 Wi-Fi</div><div style="font-size:14px;color:var(--t3);margin-top:2px">ASUS_Home_5G</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">訪客網路</div><div style="font-size:14px;color:var(--t3);margin-top:2px">已停用</div></div><div class="tg" id="tg1"></div></div>
+        <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">IoT 網路</div><div style="font-size:14px;color:var(--t3);margin-top:2px">ASUS_IoT · 啟用中</div></div><div class="tg on" id="tg2"></div></div>
       </div>
       <span class="sl">安全與隱私</span>
       <div style="background:var(--w)">
-        <div class="sr" id="s-aip" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">AiProtection</div><div style="font-size:12px;color:var(--t3);margin-top:1px">即時保護 · 啟用中</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" id="s-aip" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">AiProtection</div><div style="font-size:14px;color:var(--t3);margin-top:2px">即時保護 · 啟用中</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
       </div>
       <span class="sl">系統維護</span>
       <div style="background:var(--w)">
-        <div class="sr" id="s-fw" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">韌體更新</div><div style="font-size:12px;color:var(--t3);margin-top:1px">3.0.0.4.388 可用</div></div><span class="bg bgb" style="margin-right:6px">更新</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" id="s-fw" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">韌體更新</div><div style="font-size:14px;color:var(--t3);margin-top:2px">3.0.0.4.388 可用</div></div><span class="bg bgb" style="margin-right:6px">更新</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">路由器重開機</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">LED 燈號</div></div><div class="tg on" id="tg5"></div></div>
       </div>
       <span class="sl">App 與帳號</span>
       <div style="background:var(--w)">
-        <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">帳號</div><div style="font-size:12px;color:var(--t3);margin-top:1px">tim@asus.com</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">帳號</div><div style="font-size:14px;color:var(--t3);margin-top:2px">tim@asus.com</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Face ID / 密碼鎖</div></div><div class="tg on" id="tg6"></div></div>
-        <div class="sr" style="border:none"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16" stroke-width="2.5"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">App 版本</div><div style="font-size:12px;color:var(--t3);margin-top:1px">v5.1.2.3</div></div></div>
+        <div class="sr" style="border:none"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16" stroke-width="2.5"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">App 版本</div><div style="font-size:14px;color:var(--t3);margin-top:2px">v5.1.2.3</div></div></div>
       </div>
       <div style="height:10px"></div>
       <div style="padding:0 16px 20px">
@@ -730,14 +730,14 @@ body{display:flex;align-items:center;justify-content:center}
         <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd)">
           <div>
             <div style="font-size:17px;font-weight:600;color:var(--tx)">自動更新</div>
-            <div style="font-size:12px;color:var(--t3);margin-top:1px">每週自動安裝最新安全更新</div>
+            <div style="font-size:14px;color:var(--t3);margin-top:2px">每週自動安裝最新安全更新</div>
           </div>
           <div class="tg on" id="tg-autoupdate"></div>
         </div>
         <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px">
           <div>
             <div style="font-size:17px;font-weight:600;color:var(--tx)">預約更新時間</div>
-            <div style="font-size:12px;color:var(--t3);margin-top:1px">凌晨 03:00（低用量時段）</div>
+            <div style="font-size:14px;color:var(--t3);margin-top:2px">凌晨 03:00（低用量時段）</div>
           </div>
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
@@ -795,23 +795,23 @@ body{display:flex;align-items:center;justify-content:center}
         <span class="sl">保護功能</span>
         <div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh)">
           <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd)">
-            <div><div style="font-size:17px;font-weight:600;color:var(--tx)">即時網路防護</div><div style="font-size:12px;color:var(--t3);margin-top:1px">攔截惡意網站與入侵嘗試</div></div>
+            <div><div style="font-size:17px;font-weight:600;color:var(--tx)">即時網路防護</div><div style="font-size:14px;color:var(--t3);margin-top:2px">攔截惡意網站與入侵嘗試</div></div>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
           <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd)">
-            <div><div style="font-size:17px;font-weight:600;color:var(--tx)">惡意網站封鎖</div><div style="font-size:12px;color:var(--t3);margin-top:1px">防止釣魚與詐騙網站</div></div>
+            <div><div style="font-size:17px;font-weight:600;color:var(--tx)">惡意網站封鎖</div><div style="font-size:14px;color:var(--t3);margin-top:2px">防止釣魚與詐騙網站</div></div>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
           <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd)">
-            <div><div style="font-size:17px;font-weight:600;color:var(--tx)">雙向 IPS</div><div style="font-size:12px;color:var(--t3);margin-top:1px">偵測並阻止入侵行為</div></div>
+            <div><div style="font-size:17px;font-weight:600;color:var(--tx)">雙向 IPS</div><div style="font-size:14px;color:var(--t3);margin-top:2px">偵測並阻止入侵行為</div></div>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
           <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd)">
-            <div><div style="font-size:17px;font-weight:600;color:var(--tx)">受感染裝置偵測</div><div style="font-size:12px;color:var(--t3);margin-top:1px">偵測網路內已感染的裝置</div></div>
+            <div><div style="font-size:17px;font-weight:600;color:var(--tx)">受感染裝置偵測</div><div style="font-size:14px;color:var(--t3);margin-top:2px">偵測網路內已感染的裝置</div></div>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
           <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px">
-            <div><div style="font-size:17px;font-weight:600;color:var(--tx)">廣告攔截</div><div style="font-size:12px;color:var(--t3);margin-top:1px">攔截追蹤器與廣告請求</div></div>
+            <div><div style="font-size:17px;font-weight:600;color:var(--tx)">廣告攔截</div><div style="font-size:14px;color:var(--t3);margin-top:2px">攔截追蹤器與廣告請求</div></div>
             <div class="tg on" id="tg-adblock"></div>
           </div>
         </div>
@@ -859,7 +859,7 @@ body{display:flex;align-items:center;justify-content:center}
           </div>
           <div>
             <div style="font-size:15px;font-weight:600;color:var(--tx)">asus1234</div>
-            <div style="font-size:12px;color:var(--t3);margin-top:1px">asus1234@gmail.com</div>
+            <div style="font-size:14px;color:var(--t3);margin-top:2px">asus1234@gmail.com</div>
           </div>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="margin-left:auto"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
@@ -1058,9 +1058,9 @@ body{display:flex;align-items:center;justify-content:center}
   <div class="ov" id="ov-plus"><div class="sheet" style="padding-bottom:48px">
     <div class="hdl"></div>
     <div style="font-size:13px;font-weight:600;color:var(--ac);margin-bottom:4px;letter-spacing:.3px">Set up new device</div>
-    <div style="display:flex;align-items:center;gap:14px;padding:11px 0;cursor:pointer"><div style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><span style="font-size:15px;color:var(--tx);font-weight:500">Set up a new network</span></div><div style="display:flex;align-items:center;gap:14px;padding:11px 0;cursor:pointer"><div style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="12" y1="8" x2="5" y2="16"/><line x1="12" y1="8" x2="19" y2="16"/></svg></div><span style="font-size:15px;color:var(--tx);font-weight:500">Add AiMesh node</span></div>    <div style="height:1px;background:var(--bd);margin:8px 0"></div>
+    <div style="display:flex;align-items:center;gap:14px;padding:11px 0;cursor:pointer"><div style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><span style="font-size:17px;color:var(--tx);font-weight:600">Set up a new network</span></div><div style="display:flex;align-items:center;gap:14px;padding:11px 0;cursor:pointer"><div style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="12" y1="8" x2="5" y2="16"/><line x1="12" y1="8" x2="19" y2="16"/></svg></div><span style="font-size:17px;color:var(--tx);font-weight:600">Add AiMesh node</span></div>    <div style="height:1px;background:var(--bd);margin:8px 0"></div>
     <div style="font-size:13px;font-weight:600;color:var(--ac);margin-bottom:4px;letter-spacing:.3px">Create Guest Network</div>
-    <div style="display:flex;align-items:center;gap:14px;padding:11px 0;cursor:pointer"><div style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><span style="font-size:15px;color:var(--tx);font-weight:500">Guest Network</span></div><div style="display:flex;align-items:center;gap:14px;padding:11px 0;cursor:pointer"><div style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><span style="font-size:15px;color:var(--tx);font-weight:500">Kid's Network</span></div><div style="display:flex;align-items:center;gap:14px;padding:11px 0;cursor:pointer"><div style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><span style="font-size:15px;color:var(--tx);font-weight:500">IoT Network</span></div>  </div></div>
+    <div style="display:flex;align-items:center;gap:14px;padding:11px 0;cursor:pointer"><div style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><span style="font-size:17px;color:var(--tx);font-weight:600">Guest Network</span></div><div style="display:flex;align-items:center;gap:14px;padding:11px 0;cursor:pointer"><div style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><span style="font-size:17px;color:var(--tx);font-weight:600">Kid's Network</span></div><div style="display:flex;align-items:center;gap:14px;padding:11px 0;cursor:pointer"><div style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><span style="font-size:17px;color:var(--tx);font-weight:600">IoT Network</span></div>  </div></div>
 
 
   <!-- OV: AIMESH DETAIL -->
@@ -1101,14 +1101,14 @@ body{display:flex;align-items:center;justify-content:center}
             <svg width="24" height="24" viewBox="0 -960 960 960" fill="#fff"><path d="M224.62-160q-27.62 0-46.12-18.5Q160-197 160-224.62v-110.76q0-27.62 18.5-46.12Q197-400 224.62-400H620v-160h40v160h75.38q27.62 0 46.12 18.5Q800-363 800-335.38v110.76q0 27.62-18.5 46.12Q763-160 735.38-160H224.62Zm0-40h510.76q10.77 0 17.7-6.92 6.92-6.93 6.92-17.7v-110.76q0-10.77-6.92-17.7-6.93-6.92-17.7-6.92H224.62q-10.77 0-17.7 6.92-6.92 6.93-6.92 17.7v110.76q0 10.77 6.92 17.7 6.93 6.92 17.7 6.92Zm77.34-58.04q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm140 0q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm140 0q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81ZM200-200V-360-200Z"/></svg>
           </div>
           <div style="font-size:12px;font-weight:600;color:var(--tx);margin-top:7px">客廳</div>
-          <div style="font-size:10px;color:var(--gn);margin-top:2px">● 良好</div>
+          <div style="font-size:13px;color:var(--gn);margin-top:2px">● 良好</div>
         </div>
         <div style="text-align:center">
           <div style="width:56px;height:56px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;margin:0 auto;box-shadow:0 2px 10px rgba(79,99,240,.1)">
             <svg width="24" height="24" viewBox="0 -960 960 960" fill="var(--is)"><path d="M224.62-160q-27.62 0-46.12-18.5Q160-197 160-224.62v-110.76q0-27.62 18.5-46.12Q197-400 224.62-400H620v-160h40v160h75.38q27.62 0 46.12 18.5Q800-363 800-335.38v110.76q0 27.62-18.5 46.12Q763-160 735.38-160H224.62Zm0-40h510.76q10.77 0 17.7-6.92 6.92-6.93 6.92-17.7v-110.76q0-10.77-6.92-17.7-6.93-6.92-17.7-6.92H224.62q-10.77 0-17.7 6.92-6.92 6.93-6.92 17.7v110.76q0 10.77 6.92 17.7 6.93 6.92 17.7 6.92Zm77.34-58.04q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm140 0q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81Zm140 0q8.81-8.81 8.81-21.96t-8.81-21.96q-8.81-8.81-21.96-8.81t-21.96 8.81q-8.81 8.81-8.81 21.96t8.81 21.96q8.81 8.81 21.96 8.81t21.96-8.81ZM200-200V-360-200Z"/></svg>
           </div>
           <div style="font-size:12px;font-weight:600;color:var(--tx);margin-top:7px">臥室</div>
-          <div style="font-size:10px;color:var(--gn);margin-top:2px">● 良好</div>
+          <div style="font-size:13px;color:var(--gn);margin-top:2px">● 良好</div>
         </div>
       </div>
     </div>
@@ -1206,24 +1206,24 @@ function selAge(el){
 // ── Quick Action definitions ──
 var QA_ALL = [
   // 網路
-  {id:'qa-wifi',   icon:'wifi',   label:'分享\nWi-Fi',   group:'網路',   action:'wifi'},
-  {id:'qa-diag',   icon:'search', label:'網路\n診斷',    group:'網路',   action:'diag'},
-  {id:'qa-guest',  icon:'users',  label:'訪客\n網路',    group:'網路',   action:''},
-  {id:'qa-devs',   icon:'phone',  label:'連線\n裝置',    group:'網路',   action:'devs'},
-  {id:'qa-adddev', icon:'plus',   label:'新增\n裝置',    group:'網路',   action:''},
-  {id:'qa-wifiset',icon:'wifi2',  label:'Wi-Fi\n設定',   group:'網路',   action:''},
-  {id:'qa-pass',   icon:'lock',   label:'查看\n密碼',    group:'網路',   action:'wifi'},
-  {id:'qa-pause',  icon:'pause',  label:'暫停\n裝置',    group:'網路',   action:''},
+  {id:'qa-wifi',   icon:'wifi',   label:'分享 Wi-Fi',   group:'網路',   action:'wifi'},
+  {id:'qa-diag',   icon:'search', label:'網路診斷',    group:'網路',   action:'diag'},
+  {id:'qa-guest',  icon:'users',  label:'訪客網路',    group:'網路',   action:''},
+  {id:'qa-devs',   icon:'phone',  label:'連線裝置',    group:'網路',   action:'devs'},
+  {id:'qa-adddev', icon:'plus',   label:'新增裝置',    group:'網路',   action:''},
+  {id:'qa-wifiset',icon:'wifi2',  label:'Wi-Fi設定',   group:'網路',   action:''},
+  {id:'qa-pass',   icon:'lock',   label:'查看密碼',    group:'網路',   action:'wifi'},
+  {id:'qa-pause',  icon:'pause',  label:'暫停裝置',    group:'網路',   action:''},
   // 家庭
-  {id:'qa-parental',icon:'child', label:'家長\n控制',    group:'家庭',   action:'family'},
-  {id:'qa-kids',   icon:'stop',   label:'暫停兒童\n網路', group:'家庭',  action:''},
-  {id:'qa-sched',  icon:'clock',  label:'上網\n排程',    group:'家庭',   action:''},
-  {id:'qa-alert',  icon:'bell',   label:'陌生裝置\n提醒', group:'家庭',  action:''},
+  {id:'qa-parental',icon:'child', label:'家長控制',    group:'家庭',   action:'family'},
+  {id:'qa-kids',   icon:'stop',   label:'暫停兒童 網路', group:'家庭',  action:''},
+  {id:'qa-sched',  icon:'clock',  label:'上網排程',    group:'家庭',   action:''},
+  {id:'qa-alert',  icon:'bell',   label:'陌生裝置 提醒', group:'家庭',  action:''},
   // 維護
-  {id:'qa-fw',     icon:'upload', label:'韌體\n更新',    group:'維護',   action:''},
-  {id:'qa-scan',   icon:'shield', label:'安全\n掃描',    group:'維護',   action:''},
-  {id:'qa-mesh',   icon:'mesh',   label:'Mesh\n最佳化',  group:'維護',   action:''},
-  {id:'qa-reboot', icon:'reboot', label:'重新\n開機',    group:'維護',   action:''},
+  {id:'qa-fw',     icon:'upload', label:'韌體更新',    group:'維護',   action:''},
+  {id:'qa-scan',   icon:'shield', label:'安全掃描',    group:'維護',   action:''},
+  {id:'qa-mesh',   icon:'mesh',   label:'Mesh 最佳化',  group:'維護',   action:''},
+  {id:'qa-reboot', icon:'reboot', label:'重新開機',    group:'維護',   action:''},
 ];
 
 // Default selected (first 4)
