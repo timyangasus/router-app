@@ -272,7 +272,7 @@ body{display:flex;align-items:center;justify-content:center}
 }
 </style>
 </head>
-<body onload="(function(){if(!/iPhone|iPad|iPod/i.test(navigator.userAgent))return;var p=document.querySelector('.phone');var ct=document.querySelector('.ct');var sb=document.querySelector('.sb');var sh=document.querySelector('.shell');if(sh)sh.style.display='none';if(sb)sb.style.display='none';if(p){p.style.cssText='position:fixed;inset:0;width:100vw;height:100dvh;max-width:none;border-radius:0;box-shadow:none;display:flex;flex-direction:column;overflow:hidden;overscroll-behavior:none';}if(ct){ct.style.cssText='flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:none';}document.documentElement.style.overflow='hidden';document.documentElement.style.overscrollBehavior='none';document.body.style.overflow='hidden';document.body.style.overscrollBehavior='none';document.body.style.height='100dvh';})()">
+<body onload="(function(){if(!/iPhone|iPad|iPod/i.test(navigator.userAgent))return;var p=document.querySelector('.phone');var ct=document.querySelector('.ct');var sb=document.querySelector('.sb');var sh=document.querySelector('.shell');if(sh)sh.style.display='none';if(sb)sb.style.display='none';if(p){p.style.cssText='position:fixed;inset:0;width:100vw;height:100dvh;max-width:none;border-radius:0;box-shadow:none;display:flex;flex-direction:column;overflow:hidden;overscroll-behavior:none';}if(ct){ct.style.cssText='flex:1;min-height:0;overflow:hidden;position:relative';}document.documentElement.style.overflow='hidden';document.documentElement.style.overscrollBehavior='none';document.body.style.overflow='hidden';document.body.style.overscrollBehavior='none';document.body.style.height='100dvh';})()">
 <div class="phone">
   <div class="side-btn"></div>
   <!-- Status Bar -->
@@ -311,6 +311,7 @@ body{display:flex;align-items:center;justify-content:center}
           </div>
         </div>
       </div>
+      <div class="pg-body">
       <!-- Status Card -->
       <div class="sc">
         <canvas id="banner-canvas" style="position:absolute;inset:0;width:100%;height:100%;border-radius:var(--r)"></canvas>
@@ -387,7 +388,8 @@ body{display:flex;align-items:center;justify-content:center}
         </div>
       </div>
       <div id="qa-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:0 16px"></div>
-    </div>
+    
+      </div></div>
 
     <!-- ═══ DEVICES ═══ -->
     <div class="pg" id="pg-devices">
@@ -402,6 +404,7 @@ body{display:flex;align-items:center;justify-content:center}
           </div>
         </div>
       </div>
+      <div class="pg-body">
       <div id="d-search-bar" style="display:none;align-items:center;gap:8px;background:var(--w);border-bottom:1px solid var(--bd);padding:8px 16px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg><input placeholder="搜尋裝置名稱…" style="border:none;outline:none;background:transparent;font-size:14px;color:var(--tx);flex:1;font-family:var(--f)"/><div style="font-size:13px;color:var(--ac);cursor:pointer" id="d-search-cancel">取消</div></div>
       <div style="display:flex;gap:8px;padding:20px 16px;overflow-x:auto;scrollbar-width:none" id="dev-filters">
         <div class="df on" data-filter="all"  style="height:36px;padding:0 16px;border-radius:18px;font-size:14px;font-weight:500;white-space:nowrap;cursor:pointer;display:flex;align-items:center">全部(5)</div>
@@ -416,11 +419,13 @@ body{display:flex;align-items:center;justify-content:center}
         <div class="di2" id="d-appletv"><div class="da"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg><div class="dd" style="background:var(--gn)"></div></div><div style="flex:1;min-width:0"><div style="font-size:17px;font-weight:600;color:var(--tx)">客廳 Apple TV</div><div style="font-size:14px;color:var(--t3);margin-top:2px">乙太網路 · 客廳節點</div></div><span class="bg bgg">有線</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-left:8px"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="di2" id="d-ipad" style="opacity:.5"><div class="da"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg><div class="dd" style="background:var(--t3)"></div></div><div style="flex:1;min-width:0"><div style="font-size:17px;font-weight:600;color:var(--tx)">舊 iPad</div><div style="font-size:14px;color:var(--t3);margin-top:2px">離線 · 最後上線 2 小時前</div></div><span class="bg bgx">離線</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-left:8px"><polyline points="9 18 15 12 9 6"/></svg></div>
       </div>
-    </div>
+    
+      </div></div>
 
     <!-- ═══ INSIGHT ═══ -->
     <div class="pg" id="pg-insight">
       <div style="padding:14px 20px 12px;background:var(--w);border-bottom:1px solid var(--bd)"><div style="font-size:24px;font-weight:600;color:var(--tx);letter-spacing:-.5px">洞察</div><div style="font-size:13px;color:var(--t3);margin-top:2px">主動建議 · 今日更新</div></div>
+      <div class="pg-body">
       <span class="sl">今日摘要</span>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 16px 10px">
         <div style="background:var(--w);border-radius:var(--r2);padding:12px;box-shadow:var(--sh)"><div style="font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:5px">網路狀態</div><div style="font-size:18px;font-weight:600;color:var(--gn)">正常</div></div>
@@ -432,11 +437,13 @@ body{display:flex;align-items:center;justify-content:center}
       <div class="ins"><div style="display:flex;gap:10px;align-items:flex-start"><div class="ic"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2.5"/></svg></div><div><div style="font-size:17px;font-weight:600;color:var(--tx);margin-bottom:3px">偵測到陌生裝置</div><div style="font-size:12px;color:var(--t3);line-height:1.5">MAC: 8C:85:90:FF:12:34 已連接，請確認或封鎖。</div><div style="display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:6px;background:var(--abg);color:var(--ac);font-size:11px;font-weight:600;margin-top:8px;cursor:pointer" id="i-unknown">立即處理 ›</div></div></div></div>
       <div class="ins"><div style="display:flex;gap:10px;align-items:flex-start"><div class="ic"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2.5"/></svg></div><div><div style="font-size:17px;font-weight:600;color:var(--tx);margin-bottom:3px">2.4GHz 頻道有干擾</div><div style="font-size:12px;color:var(--t3);line-height:1.5">頻道 6 偵測到干擾，建議切換至頻道 11。</div><div style="display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:6px;background:var(--abg);color:var(--ac);font-size:11px;font-weight:600;margin-top:8px;cursor:pointer" id="i-pro">前往 Pro 設定 ›</div></div></div></div>
       <div class="ins"><div style="display:flex;gap:10px;align-items:flex-start"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div><div><div style="font-size:17px;font-weight:600;color:var(--tx);margin-bottom:3px">AiProtection 運作中</div><div style="font-size:12px;color:var(--t3);line-height:1.5">昨日攔截 12 則威脅，網路安全。</div></div></div></div>
-    </div>
+    
+      </div></div>
 
     <!-- ═══ FAMILY ═══ -->
     <div class="pg" id="pg-family">
       <div style="padding:14px 20px 12px;background:var(--w);border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between"><div><div style="font-size:24px;font-weight:600;color:var(--tx);letter-spacing:-.5px">家庭管理</div><div style="font-size:13px;color:var(--t3);margin-top:2px">2 位成員</div></div><div style="width:34px;height:34px;background:var(--ac);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer" id="f-add"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="4" x2="12" y2="20"/><line x1="4" y1="12" x2="20" y2="12"/></svg></div></div>
+      <div class="pg-body">
       <span class="sl">家庭成員</span>
       <div class="mg">
         <div class="mc" id="f-ming"><div class="ma"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div style="font-size:17px;font-weight:600;color:var(--tx)">小明</div><div style="font-size:11px;color:var(--t3);margin-top:2px">青少年 · 12 歲</div><div style="font-size:11px;color:var(--t3);margin-top:6px">● 1 台連線</div><div style="margin-top:7px"><span class="bg bgo">4.5h 今日</span></div></div>
@@ -453,7 +460,8 @@ body{display:flex;align-items:center;justify-content:center}
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px"><div style="font-size:12px;color:var(--t2);width:30px">小明</div><div style="flex:1;height:6px;background:var(--s3);border-radius:3px;overflow:hidden"><div style="height:100%;width:90%;background:var(--or);border-radius:3px"></div></div><div style="font-size:11px;color:var(--or);width:24px;text-align:right;font-weight:600">4.5h</div></div>
         
       </div></div>
-    </div>
+    
+      </div></div>
 
     <!-- ═══ SETTINGS ═══ -->
     <div class="pg" id="pg-settings" style="padding-bottom:20px">
@@ -468,6 +476,7 @@ body{display:flex;align-items:center;justify-content:center}
           <div id="stab-pro" style="flex:1;text-align:center;padding:10px 0;font-size:15px;font-weight:700;color:var(--t3);border-bottom:2.5px solid transparent;cursor:pointer">進階設定</div>
         </div>
       </div>
+      <div class="pg-body">
 
       <!-- General settings -->
       <div id="settings-general">
@@ -536,7 +545,8 @@ body{display:flex;align-items:center;justify-content:center}
 
 
       </div><!-- end settings-pro -->
-    </div>
+    
+      </div></div>
 
   </div><!-- end ct -->
 
