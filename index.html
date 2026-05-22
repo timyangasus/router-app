@@ -1,41 +1,32 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-
 <script>
 (function(){
-  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  if(!isMobile) return;
+  if(!/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) return;
+  var st = document.createElement('style');
+  st.textContent =
+    'html,body{margin:0;padding:0;height:100dvh;overflow:hidden;overscroll-behavior:none;background:#F2F4F8}' +
+    '.shell{display:none}' +
+    '.phone{position:fixed;inset:0;width:100vw;height:100dvh;display:flex;flex-direction:column;overflow:hidden;border-radius:0;box-shadow:none;max-width:none}' +
+    '.sb{display:none}' +
+    '.ct{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain}' +
+    '.tb{flex-shrink:0;padding:8px 0 max(env(safe-area-inset-bottom,20px),20px);background:var(--w);border-top:1px solid var(--bd)}' +
+    '.pg-header{padding-top:max(env(safe-area-inset-top,44px),44px)}';
+  document.head.appendChild(st);
 
-  function applyLayout() {
-    // Read actual safe area values via CSS
-    var testEl = document.createElement('div');
-    testEl.style.cssText = 'position:fixed;top:env(safe-area-inset-top,0px);left:0;width:1px;height:1px;pointer-events:none;visibility:hidden';
-    document.body.appendChild(testEl);
-    var safeTop = testEl.getBoundingClientRect().top;
-    document.body.removeChild(testEl);
-    // iPhone 16 Pro Max = 59px, fallback if env() not supported
-    if(safeTop < 20) safeTop = 59;
-
-    var s = document.createElement('style');
-    s.id = 'mobile-layout';
-    s.textContent =
-      'html,body{height:100dvh!important;overflow:hidden!important;overscroll-behavior:none!important;background:#F0F2F8!important;margin:0!important;padding:0!important;display:block!important}' +
-      '.shell{display:none!important}' +
-      '.phone{position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;max-width:none!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important;display:flex!important;flex-direction:column!important;overscroll-behavior:none!important}' +
-      '.sb{display:none!important}' +
-      '.ct{flex:1!important;min-height:0!important;overflow-y:scroll!important;overscroll-behavior:contain!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch!important;position:relative!important}' +
-      '.tb{flex-shrink:0!important;height:auto!important;padding-top:8px!important;padding-left:4px!important;padding-right:4px!important;padding-bottom:max(env(safe-area-inset-bottom,34px),34px)!important;position:relative!important;z-index:10!important;background:var(--w,#fff)!important}';
-    document.head.appendChild(s);
+  // Add top padding to first child of each page (the header div)
+  function patchHeaders(){
+    var top = Math.max(44, window.screen.height > 844 ? 59 : 44);
+    var st2 = document.createElement('style');
+    st2.textContent = '.pg > div:first-child, .pg > span:first-child + div{padding-top:max(env(safe-area-inset-top,'+top+'px),'+top+'px) !important}';
+    document.head.appendChild(st2);
   }
-
-  if(document.body) {
-    applyLayout();
-  } else {
-    document.addEventListener('DOMContentLoaded', applyLayout);
-  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', patchHeaders);
+  else patchHeaders();
 })();
 </script>
+
 
 
 
@@ -300,7 +291,7 @@ body{display:flex;align-items:center;justify-content:center}
     <!-- ═══ HOME ═══ -->
     <div class="pg on" id="pg-home">
       <!-- Header -->
-      <div style="padding:12px 20px 10px;background:var(--w);border-bottom:1px solid var(--bd);position:sticky;top:0;z-index:10">
+      <div style="padding:12px 20px 10px;background:var(--w);border-bottom:1px solid var(--bd)">
         <div style="display:flex;align-items:center;justify-content:space-between">
           <div style="display:flex;align-items:center;gap:12px">
             <div style="width:38px;height:38px;border-radius:50%;background:#f1f3f4;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;box-shadow:0 1px 4px rgba(0,0,0,.1)" id="h-avatar">
@@ -468,7 +459,7 @@ body{display:flex;align-items:center;justify-content:center}
     <!-- ═══ SETTINGS ═══ -->
     <div class="pg" id="pg-settings" style="padding-bottom:20px">
       <!-- Header with tabs -->
-      <div style="background:var(--w);border-bottom:1px solid var(--bd);position:sticky;top:0;z-index:10">
+      <div style="background:var(--w);border-bottom:1px solid var(--bd)">
         <div style="padding:14px 20px 10px">
           <div style="font-size:24px;font-weight:600;color:var(--tx);letter-spacing:-.5px">設定</div>
           <div style="font-size:14px;color:var(--t3);margin-top:2px">ASUS RT-BE96U · 3.0.0.4.386</div>
