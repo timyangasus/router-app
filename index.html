@@ -2355,6 +2355,21 @@ window.addEventListener('load',function(){
   bind('energy-back',function(){hide('sub-energy');});
   bind('aipro-detail-back',function(){hide('sub-aipro-detail');});
   bind('wifi-insight-back',function(){hide('sub-wifi-insight');});
+  // Keyboard: hide toolbar on focus, show on blur
+  document.addEventListener('focusin',function(e){
+    if(e.target&&e.target.id==='ai-input'){
+      var tb=document.querySelector('.tb');
+      if(tb)tb.style.display='none';
+    }
+  });
+  document.addEventListener('focusout',function(e){
+    if(e.target&&e.target.id==='ai-input'){
+      setTimeout(function(){
+        var tb=document.querySelector('.tb');
+        if(tb)tb.style.display='';
+      },100);
+    }
+  });
   // security rows
   var secRows=[['Default username & password','Passed'],['UPnP Service','Passed'],['Web Access from WAN','Passed'],['Ping from WAN','Passed'],['Remote Administration','Passed'],['Firmware Version','Latest Version'],['WiFi Encryption','WPA3 Enabled']];
   var secEl=document.getElementById('security-rows');
