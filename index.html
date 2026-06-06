@@ -82,10 +82,11 @@ body{display:flex;align-items:center;justify-content:center}
 .ti span{font-size:10px;font-weight:500;color:var(--t3)}
 .ti.on svg{stroke:var(--ac)}
 .ti.on span{color:var(--ac);font-weight:600}
+#tab-insight svg{width:26px!important;height:26px!important}
 #tab-insight svg path{fill:var(--t3);stroke:none}
 #tab-insight.on svg path{fill:var(--ac)}
 /* insight page wrapper */
-.insight-wrap{height:100%;display:flex;flex-direction:column;overflow:hidden}
+.insight-wrap{height:100%;display:flex;flex-direction:column;overflow:hidden;position:relative}
 .insight-content{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
 .insight-content::-webkit-scrollbar{display:none}
 @keyframes aiDot{0%,80%,100%{transform:scale(0.6);opacity:.4}40%{transform:scale(1);opacity:1}}
@@ -473,14 +474,14 @@ body{display:flex;align-items:center;justify-content:center}
               <div style="font-size:13px;color:#666;line-height:1.5">(Forgot your Wi-Fi password? I'll help you find or reset it.)</div>
             </div>
           </div>
-          <div style="padding:20px 16px 16px">
+          <div style="padding:48px 16px 16px">
             <div onclick="startAIChat()" style="width:100%;height:52px;background:#4A89E8;border-radius:26px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 24px rgba(74,137,232,.35)">
               <span style="font-size:18px;font-weight:700;color:#fff">Start with AI</span>
             </div>
           </div>
         </div>
         <!-- AI Chat mode -->
-        <div id="ai-chat-mode" style="display:none;flex:1;flex-direction:column;overflow:hidden">
+        <div id="ai-chat-mode" style="display:none;height:100%;flex-direction:column;overflow:hidden;position:absolute;inset:0;background:var(--bg)">
           <div id="ai-chat-messages" style="flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;background:var(--bg)"></div>
           <div style="background:var(--w);border-top:1px solid var(--bd);padding:10px 16px 14px;flex-shrink:0">
             <div style="display:flex;align-items:flex-end;gap:8px">
@@ -719,15 +720,17 @@ body{display:flex;align-items:center;justify-content:center}
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
       <!-- Hero -->
-      <div style="background:linear-gradient(160deg,#74C7FF 0%,#7FD8EE 40%,#A8EDD8 70%,#C2F0E8 100%);padding:40px 24px 24px;position:relative;min-height:200px;display:flex;flex-direction:column;align-items:center">
-        <!-- sparkle icon -->
-        <div style="margin-bottom:16px">
-          <svg width="56" height="56" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l1.09 4.26L17 7l-3.91.74L12 12l-1.09-4.26L7 7l3.91-.74L12 2z"/><path d="M19 15l.5 2 2 .5-2 .5-.5 2-.5-2-2-.5 2-.5.5-2z" opacity=".7"/><path d="M5 15l.4 1.6 1.6.4-1.6.4-.4 1.6-.4-1.6-1.6-.4 1.6-.4.4-1.6z" opacity=".7"/></svg>
+      <div style="background:linear-gradient(160deg,#74C7FF 0%,#7FD8EE 40%,#A8EDD8 70%,#C2F0E8 100%);padding:36px 24px 28px;position:relative;display:flex;flex-direction:column;align-items:center">
+        <!-- sparkle icon with circle -->
+        <div style="position:relative;width:88px;height:88px;margin-bottom:20px">
+          <div style="width:88px;height:88px;border-radius:50%;background:rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="#fff"><path d="M12 2 L13.5 10.5 L22 12 L13.5 13.5 L12 22 L10.5 13.5 L2 12 L10.5 10.5 Z"/></svg>
+          </div>
         </div>
-        <!-- toggle row inside hero -->
-        <div style="width:100%;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.25);border-radius:14px;padding:12px 18px;backdrop-filter:blur(8px)">
+        <!-- toggle row: no background -->
+        <div style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:0 4px">
           <span style="font-size:18px;font-weight:700;color:#1a1a1a">Energy Saving</span>
-          <div style="width:51px;height:31px;background:#4DA6FF;border-radius:16px;position:relative;cursor:pointer;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4)"><div style="position:absolute;width:25px;height:25px;background:#fff;border-radius:50%;top:3px;right:3px;box-shadow:0 1px 4px rgba(0,0,0,.2)"></div></div>
+          <div style="width:51px;height:31px;background:#4DA6FF;border-radius:16px;position:relative;cursor:pointer"><div style="position:absolute;width:25px;height:25px;background:#fff;border-radius:50%;top:3px;right:3px;box-shadow:0 1px 4px rgba(0,0,0,.2)"></div></div>
         </div>
       </div>
 
@@ -1483,63 +1486,63 @@ body{display:flex;align-items:center;justify-content:center}
   <!-- SUB: THEME -->
   <div class="sub" id="sub-theme">
     <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
-    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div style="display:flex;align-items:center;gap:12px">
-        <div class="bk" id="theme-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-        <div style="font-size:17px;font-weight:600;color:var(--tx)">Theme</div>
-      </div>
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="theme-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">外觀</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--w);padding-bottom:24px">
-      <div style="font-size:13px;color:var(--t3);padding:14px 20px 10px">Theme</div>
-      <!-- Themes list -->
       <div id="theme-list">
-        <div class="theme-item" data-t="techno" style="display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--bd);cursor:pointer">
-          <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2);display:flex;align-items:center;justify-content:center;flex-shrink:0" id="tr-techno"></div>
-          <div style="width:68px;height:100px;border-radius:8px;background:linear-gradient(160deg,#0D1B2A,#1A3A5C,#0A2444);overflow:hidden;flex-shrink:0;position:relative">
-            <div style="height:16px;background:rgba(0,100,200,.4);display:flex;align-items:center;padding:0 5px;gap:3px"><div style="width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.4)"></div><div style="flex:1;height:2px;background:rgba(255,255,255,.15);border-radius:1px"></div></div>
-            <div style="display:flex;justify-content:center;padding-top:10px"><div style="width:20px;height:20px;border-radius:50%;border:1px solid #4A90D9;display:flex;align-items:center;justify-content:center"><div style="width:8px;height:8px;border-radius:50%;background:#4A90D9"></div></div></div>
-            <div style="display:flex;justify-content:space-around;padding-top:8px"><div style="width:16px;height:16px;border-radius:50%;border:1px solid #4A90D9;opacity:.7"></div><div style="width:16px;height:16px;border-radius:50%;border:1px solid #4A90D9;opacity:.7"></div></div>
-            <div style="position:absolute;bottom:0;left:0;right:0;height:20px;background:rgba(0,50,120,.6);display:flex;justify-content:space-around;align-items:center;padding:0 4px"><div style="width:10px;height:10px;opacity:.5;font-size:8px">⌂</div><div style="width:10px;height:10px;opacity:.5;font-size:8px">▣</div><div style="width:10px;height:10px;opacity:.5;font-size:8px">◈</div></div>
+        <!-- Light -->
+        <div class="theme-item on" data-t="light" style="display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--bd);cursor:pointer">
+          <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--ac);background:var(--ac);display:flex;align-items:center;justify-content:center;flex-shrink:0" id="tr-light"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div style="width:62px;height:118px;border-radius:10px;background:#F4F6FB;overflow:hidden;flex-shrink:0;border:1.5px solid #E4E8F2;display:flex;flex-direction:column">
+            <div style="height:10px;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0"><div style="width:20px;height:2px;border-radius:1px;background:#ccc"></div></div>
+            <div style="height:14px;background:#fff;border-bottom:1px solid #E4E8F2;flex-shrink:0"></div>
+            <div style="height:28px;background:linear-gradient(135deg,#7BAAF7,#4A8FE0);margin:4px 4px 3px;border-radius:4px;flex-shrink:0"></div>
+            <div style="flex:1;padding:0 4px;display:flex;flex-direction:column;gap:2px">
+              <div style="flex:1;background:#fff;border-radius:3px;border:1px solid #E4E8F2"></div>
+              <div style="flex:1;background:#fff;border-radius:3px;border:1px solid #E4E8F2"></div>
+            </div>
+            <div style="height:14px;background:#fff;border-top:1px solid #E4E8F2;display:flex;justify-content:space-around;align-items:center;padding:0 4px;flex-shrink:0">
+              <div style="width:10px;height:5px;background:#4A8FE0;border-radius:2px"></div>
+              <div style="width:5px;height:5px;border-radius:50%;background:#C8CEDE"></div>
+              <div style="width:5px;height:5px;border-radius:50%;background:#C8CEDE"></div>
+              <div style="width:5px;height:5px;border-radius:50%;background:#C8CEDE"></div>
+              <div style="width:5px;height:5px;border-radius:50%;background:#C8CEDE"></div>
+            </div>
           </div>
-          <div style="font-size:15px;font-weight:500;color:var(--tx)">Techno Blue</div>
+          <div><div style="font-size:17px;font-weight:600;color:var(--tx)">Simplicity White</div><div style="font-size:12px;color:var(--t3);margin-top:3px">Light</div></div>
         </div>
-        <div class="theme-item" data-t="gaming" style="display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--bd);cursor:pointer">
-          <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2);display:flex;align-items:center;justify-content:center;flex-shrink:0" id="tr-gaming"></div>
-          <div style="width:68px;height:100px;border-radius:8px;background:linear-gradient(160deg,#1A0000,#3D0000,#1A0505);overflow:hidden;flex-shrink:0;position:relative">
-            <div style="height:16px;background:rgba(180,0,0,.5);display:flex;align-items:center;padding:0 5px;gap:3px"><div style="width:4px;height:4px;border-radius:50%;background:rgba(255,100,100,.5)"></div><div style="flex:1;height:2px;background:rgba(255,100,100,.2);border-radius:1px"></div></div>
-            <div style="display:flex;justify-content:center;padding-top:10px"><div style="width:20px;height:20px;border-radius:50%;border:1px solid #E53E3E;display:flex;align-items:center;justify-content:center"><div style="width:8px;height:8px;border-radius:50%;background:#E53E3E"></div></div></div>
-            <div style="display:flex;justify-content:space-around;padding-top:8px"><div style="width:16px;height:16px;border-radius:50%;border:1px solid #E53E3E;opacity:.7"></div><div style="width:16px;height:16px;border-radius:50%;border:1px solid #E53E3E;opacity:.7"></div></div>
-            <div style="position:absolute;bottom:0;left:0;right:0;height:20px;background:rgba(80,0,0,.7);display:flex;justify-content:space-around;align-items:center"></div>
+        <!-- Dark -->
+        <div class="theme-item" data-t="dark" style="display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--bd);cursor:pointer">
+          <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2);display:flex;align-items:center;justify-content:center;flex-shrink:0" id="tr-dark"></div>
+          <div style="width:62px;height:118px;border-radius:10px;background:#1C1C1E;overflow:hidden;flex-shrink:0;border:1.5px solid #3A3A3C;display:flex;flex-direction:column">
+            <div style="height:10px;background:#2C2C2E;display:flex;align-items:center;justify-content:center;flex-shrink:0"><div style="width:20px;height:2px;border-radius:1px;background:#48484A"></div></div>
+            <div style="height:14px;background:#2C2C2E;border-bottom:1px solid #3A3A3C;flex-shrink:0"></div>
+            <div style="height:28px;background:linear-gradient(135deg,#2A4A7A,#1E3A5F);margin:4px 4px 3px;border-radius:4px;flex-shrink:0"></div>
+            <div style="flex:1;padding:0 4px;display:flex;flex-direction:column;gap:2px">
+              <div style="flex:1;background:#2C2C2E;border-radius:3px;border:1px solid #3A3A3C"></div>
+              <div style="flex:1;background:#2C2C2E;border-radius:3px;border:1px solid #3A3A3C"></div>
+            </div>
+            <div style="height:14px;background:#2C2C2E;border-top:1px solid #3A3A3C;display:flex;justify-content:space-around;align-items:center;padding:0 4px;flex-shrink:0">
+              <div style="width:10px;height:5px;background:#5B9BD6;border-radius:2px"></div>
+              <div style="width:5px;height:5px;border-radius:50%;background:#48484A"></div>
+              <div style="width:5px;height:5px;border-radius:50%;background:#48484A"></div>
+              <div style="width:5px;height:5px;border-radius:50%;background:#48484A"></div>
+              <div style="width:5px;height:5px;border-radius:50%;background:#48484A"></div>
+            </div>
           </div>
-          <div style="font-size:15px;font-weight:500;color:var(--tx)">Gaming Red</div>
+          <div><div style="font-size:17px;font-weight:600;color:var(--tx)">Dark Mode</div><div style="font-size:12px;color:var(--t3);margin-top:3px">Dark</div></div>
         </div>
-        <div class="theme-item on" data-t="white" style="display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--bd);cursor:pointer">
-          <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--ac);background:var(--ac);display:flex;align-items:center;justify-content:center;flex-shrink:0" id="tr-white"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div style="width:68px;height:100px;border-radius:8px;background:#F4F6FB;overflow:hidden;flex-shrink:0;border:1px solid var(--bd);position:relative">
-            <div style="height:16px;background:#fff;border-bottom:1px solid var(--bd);display:flex;align-items:center;padding:0 5px"><div style="width:30px;height:4px;border-radius:2px;background:#111;margin:0 auto"></div></div>
-            <div style="display:flex;justify-content:center;padding-top:8px"><div style="width:20px;height:20px;border-radius:50%;background:#4A8FE0;display:flex;align-items:center;justify-content:center"></div></div>
-            <div style="display:flex;justify-content:space-around;padding-top:6px"><div style="width:16px;height:16px;border-radius:50%;background:var(--ib)"></div><div style="width:16px;height:16px;border-radius:50%;background:var(--ib)"></div></div>
-            <div style="position:absolute;bottom:0;left:0;right:0;height:20px;background:#fff;border-top:1px solid var(--bd);display:flex;justify-content:space-around;align-items:center"></div>
-          </div>
-          <div style="font-size:17px;font-weight:600;color:var(--tx)">Simplicity White</div>
-        </div>
-        <div class="theme-item" data-t="oled" style="display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--bd);cursor:pointer">
-          <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2);display:flex;align-items:center;justify-content:center;flex-shrink:0" id="tr-oled"></div>
-          <div style="width:68px;height:100px;border-radius:8px;background:#000;overflow:hidden;flex-shrink:0;border:1px solid #222;position:relative">
-            <div style="height:16px;background:#111;display:flex;align-items:center;padding:0 5px"><div style="width:30px;height:4px;border-radius:2px;background:#333;margin:0 auto"></div></div>
-            <div style="display:flex;justify-content:center;padding-top:8px"><div style="width:20px;height:20px;border-radius:50%;border:1px solid #4A8FE0;display:flex;align-items:center;justify-content:center"><div style="width:8px;height:8px;border-radius:50%;background:#4A8FE0"></div></div></div>
-            <div style="display:flex;justify-content:space-around;padding-top:6px"><div style="width:16px;height:16px;border-radius:50%;border:1px solid #333"></div><div style="width:16px;height:16px;border-radius:50%;border:1px solid #333"></div></div>
-            <div style="position:absolute;bottom:0;left:0;right:0;height:20px;background:#111;display:flex;justify-content:space-around;align-items:center"></div>
-          </div>
-          <div style="font-size:15px;font-weight:500;color:var(--tx)">OLED Black</div>
-        </div>
+        <!-- Default -->
         <div class="theme-item" data-t="default" style="display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--bd);cursor:pointer">
           <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2);flex-shrink:0" id="tr-default"></div>
-          <div style="font-size:15px;font-weight:500;color:var(--tx)">Default Theme</div>
+          <div style="font-size:17px;font-weight:600;color:var(--tx)">Default Theme</div>
         </div>
+        <!-- System -->
         <div class="theme-item" data-t="system" style="display:flex;align-items:center;gap:16px;padding:14px 20px;cursor:pointer">
           <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2);flex-shrink:0" id="tr-system"></div>
-          <div><div style="font-size:15px;font-weight:500;color:var(--tx)">System</div><div style="font-size:12px;color:var(--ac);margin-top:2px">Adjust your theme based on your device's system settings.</div></div>
+          <div><div style="font-size:17px;font-weight:600;color:var(--tx)">System</div><div style="font-size:12px;color:var(--ac);margin-top:2px">Adjust your theme based on your device's system settings.</div></div>
         </div>
       </div>
     </div>
@@ -2186,20 +2189,52 @@ window.addEventListener('load',function(){
   bind('sched-back',function(){hide('sub-sched');});
   // Theme
   bind('theme-back',function(){hide('sub-theme');show('drawer');});
-  document.querySelectorAll('.theme-item').forEach(function(el){
-    el.addEventListener('click',function(){
-      document.querySelectorAll('.theme-item').forEach(function(o){
-        o.classList.remove('on');
-        var dot=o.querySelector('[id^="tr-"]');
-        if(dot){dot.innerHTML='';dot.style.background='';dot.style.border='2px solid var(--bd2)';}
-      });
-      el.classList.add('on');
-      var dot=el.querySelector('[id^="tr-"]');
-      if(dot){
-        dot.style.background='var(--ac)';dot.style.border='2px solid var(--ac)';
+
+  var DARK_VARS={
+    '--bg':'#111113','--w':'#1C1C1E','--s2':'#2C2C2E','--s3':'#3A3A3C',
+    '--bd':'#3A3A3C','--bd2':'#48484A',
+    '--tx':'#F2F2F7','--t2':'#AEAEB2','--t3':'#6E6E73',
+    '--sh':'0 2px 12px rgba(0,0,0,.4)',
+    '--ib':'rgba(91,155,214,.28)','--is':'#7DB8E8',
+    '--abg':'rgba(91,155,214,.28)',
+    '--gbg':'rgba(52,199,89,.2)','--gn':'#30D158',
+    '--obg':'rgba(255,159,10,.2)','--or':'#FF9F0A',
+    '--rd':'#FF453A','--ac':'#5B9BD6'
+  };
+  var LIGHT_VARS={
+    '--bg':'#F4F6FB','--w':'#fff','--s2':'#F0F2F8','--s3':'#E6E9F4',
+    '--bd':'#E4E8F2','--bd2':'#CDD3E8',
+    '--tx':'#0C1120','--t2':'#46526E','--t3':'#8A93AA',
+    '--sh':'0 2px 12px rgba(44,62,120,.08)',
+    '--ib':'rgba(74,143,224,.12)','--is':'#4A8FE0',
+    '--abg':'rgba(74,143,224,.12)',
+    '--gbg':'rgba(52,199,89,.12)','--gn':'#34C759',
+    '--obg':'rgba(255,149,0,.12)','--or':'#FF9500',
+    '--rd':'#FF3B30','--ac':'#4A8FE0'
+  };
+
+  function applyTheme(t){
+    var vars=t==='dark'?DARK_VARS:LIGHT_VARS;
+    var phone=document.querySelector('.phone');
+    Object.keys(vars).forEach(function(k){phone.style.setProperty(k,vars[k]);});
+    phone.style.transition='background .3s,color .3s';
+    // update selector
+    document.querySelectorAll('.theme-item').forEach(function(c){
+      var dot=c.querySelector('[id^="tr-"]');if(!dot)return;
+      if(c.dataset.t===t){
+        c.classList.add('on');
+        dot.style.background=vars['--ac'];dot.style.border='2px solid '+vars['--ac'];
         dot.innerHTML='<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/><\/svg>';
+      } else {
+        c.classList.remove('on');
+        dot.style.background='';dot.style.border='2px solid '+vars['--bd2'];
+        dot.innerHTML='';
       }
     });
+  }
+
+  document.querySelectorAll('.theme-item').forEach(function(el){
+    el.addEventListener('click',function(){applyTheme(el.dataset.t==='dark'?'dark':'light');});
   });
   // Feedback
   bind('fb-back',function(){hide('sub-feedback');show('drawer');});
