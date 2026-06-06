@@ -28,7 +28,7 @@
 
 
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -458,20 +458,20 @@ body{display:flex;align-items:center;justify-content:center}
             <div style="width:100px;height:100px;border-radius:50%;background:#5CAEFF;display:flex;align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 8px 32px rgba(92,174,255,.4)">
               <svg width="48" height="48" viewBox="0 -960 960 960" fill="#fff"><path d="M280-240v-480h80v480h-80ZM440-80v-800h80v800h-80ZM120-400v-160h80v160h-80Zm480 160v-480h80v480h-80Zm160-160v-160h80v160h-80Z"/></svg>
             </div>
-            <div style="font-size:17px;font-weight:500;color:#666;text-align:center;line-height:1.5;max-width:280px">These are just a few examples of what I can do.</div>
+            <div style="font-size:17px;font-weight:500;color:var(--t2);text-align:center;line-height:1.5;max-width:280px">These are just a few examples of what I can do.</div>
           </div>
           <div style="display:flex;flex-direction:column;gap:12px;padding:0 16px">
-            <div style="background:#EFEFEF;border-radius:18px;padding:20px 18px;cursor:pointer" onclick="startAIChat()">
-              <div style="font-size:16px;font-weight:700;color:#222;margin-bottom:6px">Troubleshoot your network issues.</div>
-              <div style="font-size:13px;color:#666;line-height:1.5">(Ask why your internet is slow, or why your node isn't connecting.)</div>
+            <div style="background:var(--s2);border-radius:18px;padding:20px 18px;cursor:pointer" onclick="startAIChat()">
+              <div style="font-size:16px;font-weight:700;color:var(--tx);margin-bottom:6px">Troubleshoot your network issues.</div>
+              <div style="font-size:13px;color:var(--t2);line-height:1.5">(Ask why your internet is slow, or why your node isn't connecting.)</div>
             </div>
-            <div style="background:#EFEFEF;border-radius:18px;padding:20px 18px;cursor:pointer" onclick="startAIChat()">
-              <div style="font-size:16px;font-weight:700;color:#222;margin-bottom:6px">Guide you through setup.</div>
-              <div style="font-size:13px;color:#666;line-height:1.5">(Need help installing your mesh node? Just say it out loud!)</div>
+            <div style="background:var(--s2);border-radius:18px;padding:20px 18px;cursor:pointer" onclick="startAIChat()">
+              <div style="font-size:16px;font-weight:700;color:var(--tx);margin-bottom:6px">Guide you through setup.</div>
+              <div style="font-size:13px;color:var(--t2);line-height:1.5">(Need help installing your mesh node? Just say it out loud!)</div>
             </div>
-            <div style="background:#EFEFEF;border-radius:18px;padding:20px 18px;cursor:pointer" onclick="startAIChat()">
-              <div style="font-size:16px;font-weight:700;color:#222;margin-bottom:6px">Help with password &amp; security settings.</div>
-              <div style="font-size:13px;color:#666;line-height:1.5">(Forgot your Wi-Fi password? I'll help you find or reset it.)</div>
+            <div style="background:var(--s2);border-radius:18px;padding:20px 18px;cursor:pointer" onclick="startAIChat()">
+              <div style="font-size:16px;font-weight:700;color:var(--tx);margin-bottom:6px">Help with password &amp; security settings.</div>
+              <div style="font-size:13px;color:var(--t2);line-height:1.5">(Forgot your Wi-Fi password? I'll help you find or reset it.)</div>
             </div>
           </div>
           <div style="padding:48px 16px 16px">
@@ -482,12 +482,25 @@ body{display:flex;align-items:center;justify-content:center}
         </div>
         <!-- AI Chat mode -->
         <div id="ai-chat-mode" style="display:none;height:100%;flex-direction:column;overflow:hidden;position:absolute;inset:0;background:var(--bg)">
+          <!-- Tab switcher stays visible in chat -->
+          <div style="padding:10px 16px 8px;background:var(--w);flex-shrink:0;border-bottom:1px solid var(--bd)">
+            <div style="display:flex;height:40px;border-radius:20px;border:1.5px solid transparent;background:linear-gradient(var(--w),var(--w)) padding-box,linear-gradient(90deg,#56C5F9,#D47BFF) border-box;overflow:hidden">
+              <div onclick="switchAITab('advisor')" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;border-radius:18px;margin:2px;background:linear-gradient(90deg,#56C5F9,#D47BFF)">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                <span style="font-size:14px;font-weight:700;color:#fff">AI Advisor</span>
+              </div>
+              <div onclick="switchAITab('insight')" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;border-radius:18px;margin:2px">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t2)" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                <span style="font-size:14px;font-weight:600;color:var(--t2)">AI Insight</span>
+              </div>
+            </div>
+          </div>
           <div id="ai-chat-messages" style="flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;background:var(--bg)"></div>
           <div style="background:var(--w);border-top:1px solid var(--bd);padding:10px 16px 14px;flex-shrink:0">
             <div style="display:flex;align-items:flex-end;gap:8px">
               <div style="width:36px;height:36px;border-radius:50%;border:1.5px solid var(--bd2);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;color:var(--t2);font-size:22px;font-weight:300">+</div>
               <div style="flex:1;background:var(--s2);border-radius:20px;padding:12px 16px;min-height:48px;display:flex;align-items:center">
-                <div id="ai-input" contenteditable="true" data-placeholder="有什麼問題都可以問我…" style="flex:1;font-size:15px;color:var(--tx);outline:none;max-height:120px;overflow-y:auto;line-height:1.5;word-break:break-all"></div>
+                <div id="ai-input" contenteditable="true" data-placeholder="有什麼問題都可以問我…" style="flex:1;font-size:16px;color:var(--tx);outline:none;max-height:120px;overflow-y:auto;line-height:1.5;word-break:break-word"></div>
               </div>
               <div id="ai-send" onclick="sendAIMessage()" style="width:36px;height:36px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;box-shadow:0 2px 8px rgba(74,137,232,.35)">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
@@ -821,16 +834,16 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="font-size:17px;font-weight:600;color:var(--tx)">WiFi Insight</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <div style="height:220px;background:linear-gradient(180deg,#FFE8E8 0%,#FFF5F5 60%,#fff 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px">
-        <div style="width:100px;height:100px;border-radius:50%;background:rgba(255,106,106,.12);display:flex;align-items:center;justify-content:center">
+      <div style="background:var(--s2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:36px 20px 28px">
+        <div style="width:100px;height:100px;border-radius:50%;background:rgba(255,106,106,.15);display:flex;align-items:center;justify-content:center">
           <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#FF6A6A" stroke-width="1.8" stroke-linecap="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1.5" fill="#FF6A6A" stroke="none"/></svg>
         </div>
-        <div style="text-align:center"><div style="font-size:18px;font-weight:600;color:#222">Channel Analysis</div><div style="font-size:13px;color:#666;margin-top:3px">Minor interference detected · Auto-optimized</div><div style="display:inline-flex;margin-top:8px;height:26px;padding:0 14px;border-radius:13px;background:#E8F8F0;align-items:center"><span style="font-size:12px;font-weight:600;color:#4CAF50">● Good</span></div></div>
+        <div style="text-align:center"><div style="font-size:18px;font-weight:600;color:var(--tx)">Channel Analysis</div><div style="font-size:13px;color:var(--t3);margin-top:3px">Minor interference detected · Auto-optimized</div><div style="display:inline-flex;margin-top:8px;height:26px;padding:0 14px;border-radius:13px;background:var(--gbg);align-items:center"><span style="font-size:12px;font-weight:600;color:var(--gn)">● Good</span></div></div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:12px 16px">
-        <div style="background:var(--w);border-radius:14px;padding:14px 10px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05)"><div style="font-size:11px;color:var(--t3);margin-bottom:4px">Channel</div><div style="font-size:17px;font-weight:700;color:var(--tx)">149</div><div style="font-size:10px;color:#4CAF50;margin-top:3px;font-weight:600">Optimal</div></div>
-        <div style="background:var(--w);border-radius:14px;padding:14px 10px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05)"><div style="font-size:11px;color:var(--t3);margin-bottom:4px">Interference</div><div style="font-size:17px;font-weight:700;color:#4CAF50">12%</div><div style="font-size:10px;color:#4CAF50;margin-top:3px;font-weight:600">Low</div></div>
-        <div style="background:var(--w);border-radius:14px;padding:14px 10px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05)"><div style="font-size:11px;color:var(--t3);margin-bottom:4px">Signal</div><div style="font-size:17px;font-weight:700;color:#4CAF50">92%</div><div style="font-size:10px;color:#4CAF50;margin-top:3px;font-weight:600">Excellent</div></div>
+        <div style="background:var(--w);border-radius:14px;padding:14px 10px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05)"><div style="font-size:11px;color:var(--t3);margin-bottom:4px">Channel</div><div style="font-size:17px;font-weight:700;color:var(--tx)">149</div><div style="font-size:10px;color:var(--gn);margin-top:3px;font-weight:600">Optimal</div></div>
+        <div style="background:var(--w);border-radius:14px;padding:14px 10px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05)"><div style="font-size:11px;color:var(--t3);margin-bottom:4px">Interference</div><div style="font-size:17px;font-weight:700;color:var(--gn)">12%</div><div style="font-size:10px;color:var(--gn);margin-top:3px;font-weight:600">Low</div></div>
+        <div style="background:var(--w);border-radius:14px;padding:14px 10px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05)"><div style="font-size:11px;color:var(--t3);margin-bottom:4px">Signal</div><div style="font-size:17px;font-weight:700;color:var(--gn)">92%</div><div style="font-size:10px;color:var(--gn);margin-top:3px;font-weight:600">Excellent</div></div>
       </div>
       <div style="background:var(--w);margin:0 16px 12px;border-radius:16px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,.06)">
         <div style="font-size:15px;font-weight:600;color:var(--tx);margin-bottom:2px">Channel Interference History</div>
@@ -838,12 +851,12 @@ body{display:flex;align-items:center;justify-content:center}
         <div style="position:relative;height:110px"><canvas id="wifi-detail-chart" style="width:100%;height:100%"></canvas></div>
         <div style="display:flex;justify-content:space-between;padding:4px 0 0"><span style="font-size:10px;color:var(--t3)">10:17</span><span style="font-size:10px;color:var(--t3)">10:32</span><span style="font-size:10px;color:var(--t3)">10:47</span><span style="font-size:10px;color:var(--t3)">11:02</span><span style="font-size:10px;color:var(--t3)">11:17</span></div>
       </div>
-      <div style="background:#F8FAFF;margin:0 16px 12px;border-radius:20px;padding:16px">
+      <div style="background:var(--s2);margin:0 16px 12px;border-radius:20px;padding:16px">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="#4DA6FF"><path d="M12 2L9.2 8.8 2 9.7l5.1 4.9L5.8 22 12 18.4 18.2 22l-1.3-7.4 5.1-4.9-7.2-.9z"/></svg><span style="font-size:15px;font-weight:600;color:#4DA6FF">AI Recommendation</span></div>
         <div style="font-size:14px;color:var(--t2);line-height:1.6">The router detected temporary channel congestion and automatically switched to the optimal channel to maintain network stability.</div>
       </div>
       <div style="background:var(--w);margin:0 16px 24px;border-radius:16px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,.06);display:flex;align-items:center;justify-content:space-between">
-        <div><div style="font-size:15px;font-weight:600;color:var(--tx)">Overall WiFi Health</div><div style="font-size:12px;color:#4CAF50;margin-top:2px;font-weight:500">Excellent</div></div>
+        <div><div style="font-size:15px;font-weight:600;color:var(--tx)">Overall WiFi Health</div><div style="font-size:12px;color:var(--gn);margin-top:2px;font-weight:500">Excellent</div></div>
         <div style="font-size:32px;font-weight:700;color:#4DA6FF">95<span style="font-size:14px;color:var(--t3);font-weight:400"> / 100</span></div>
       </div>
     </div>
@@ -2402,6 +2415,10 @@ window.addEventListener('load',function(){
       setTimeout(function(){
         var tb=document.querySelector('.tb');
         if(tb)tb.style.display='';
+        var chatMode=document.getElementById('ai-chat-mode');
+        if(chatMode&&chatMode.style.display!=='none'){
+          chatMode.style.height='100%';
+        }
       },100);
     }
   });
@@ -2410,6 +2427,26 @@ window.addEventListener('load',function(){
   var secEl=document.getElementById('security-rows');
   if(secEl){secEl.innerHTML=secRows.map(function(r,i){return '<div style="display:flex;align-items:center;padding:13px 16px;'+(i<secRows.length-1?'border-bottom:1px solid var(--bd)':'')+'"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">'+r[0]+'</div><div style="font-size:12px;color:#4CAF50;margin-top:2px;font-weight:500">'+r[1]+'</div></div><div style="width:24px;height:24px;border-radius:50%;background:#E8F8F0;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>';}).join('');}
 });
+
+// iOS Keyboard handler via visualViewport
+(function(){
+  if(!window.visualViewport) return;
+  var lastH = window.visualViewport.height;
+  function onVVResize(){
+    var chatMode=document.getElementById('ai-chat-mode');
+    var chatMessages=document.getElementById('ai-chat-messages');
+    if(!chatMode||chatMode.style.display==='none') return;
+    var vvH=window.visualViewport.height;
+    var phoneEl=document.querySelector('.phone');
+    var phoneH=phoneEl?phoneEl.clientHeight:vvH;
+    chatMode.style.height=Math.min(vvH,phoneH)+'px';
+    if(vvH<lastH&&chatMessages){
+      setTimeout(function(){chatMessages.scrollTop=chatMessages.scrollHeight;},50);
+    }
+    lastH=vvH;
+  }
+  window.visualViewport.addEventListener('resize',onVVResize);
+})();
 
 // ── AI global functions ──
 function switchAITab(t){
@@ -2487,14 +2524,14 @@ function appendUserMsg(text){
 function appendAIMsg(text){
   var msgs=document.getElementById('ai-chat-messages');if(!msgs)return;
   var typing=document.createElement('div');
-  typing.style.cssText='align-self:flex-start;background:#EFEFEF;border-radius:20px 20px 20px 4px;padding:16px 18px;display:flex;gap:5px;align-items:center';
+  typing.style.cssText='align-self:flex-start;background:var(--s3);border-radius:20px 20px 20px 4px;padding:16px 18px;display:flex;gap:5px;align-items:center';
   typing.innerHTML='<span style="width:7px;height:7px;border-radius:50%;background:#999;animation:aiDot 1.2s infinite"></span><span style="width:7px;height:7px;border-radius:50%;background:#999;animation:aiDot 1.2s .2s infinite"></span><span style="width:7px;height:7px;border-radius:50%;background:#999;animation:aiDot 1.2s .4s infinite"></span>';
   msgs.appendChild(typing);msgs.scrollTop=msgs.scrollHeight;
   var delay=Math.min(600+text.length*6,2200);
   setTimeout(function(){
     msgs.removeChild(typing);
     var bubble=document.createElement('div');
-    bubble.style.cssText='align-self:flex-start;background:#E2E4EA;color:#1a1a1a;border-radius:20px 20px 20px 4px;padding:14px 18px;font-size:16px;max-width:86%;line-height:1.5;word-break:break-word;white-space:pre-wrap';
+    bubble.style.cssText='align-self:flex-start;background:var(--s3);color:var(--tx);border-radius:20px 20px 20px 4px;padding:14px 18px;font-size:16px;max-width:86%;line-height:1.5;word-break:break-word;white-space:pre-wrap';
     msgs.appendChild(bubble);msgs.scrollTop=msgs.scrollHeight;
     var i=0;
     function tick(){
