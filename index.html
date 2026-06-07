@@ -1968,10 +1968,10 @@ window.addEventListener('load',function(){
   bind('wifi-insight-back',function(){hide('sub-wifi-insight');});
   // hide toolbar when AI input focused (keyboard open)
   document.addEventListener('focusin',function(e){
-    if(e.target&&e.target.id==='ai-input'){var tb=document.querySelector('.tb');if(tb)tb.style.visibility='hidden';}
+    if(e.target&&e.target.id==='ai-input'){var tb=document.querySelector('.tb');if(tb)tb.style.display='none';}
   });
   document.addEventListener('focusout',function(e){
-    if(e.target&&e.target.id==='ai-input'){setTimeout(function(){var tb=document.querySelector('.tb');if(tb)tb.style.visibility='';},150);}
+    if(e.target&&e.target.id==='ai-input'){setTimeout(function(){var tb=document.querySelector('.tb');if(tb)tb.style.display='';if(window._updateAIInputBar)window._updateAIInputBar();},150);}
   });
   // security rows
   var secRows=[['Default username & password','Passed'],['UPnP Service','Passed'],['Web Access from WAN','Passed'],['Ping from WAN','Passed'],['Remote Administration','Passed'],['Firmware Version','Latest Version'],['WiFi Encryption','WPA3 Enabled']];
@@ -2329,7 +2329,9 @@ function drawDetailCharts(){
   function update(){
     var b=getBar();if(!b||b.style.display==='none')return;
     var kbH=window.innerHeight-window.visualViewport.height;
-    b.style.bottom=Math.max(0,kbH)+'px';
+    var tb=document.querySelector('.tb');
+    var tbH=(kbH<50&&tb)?tb.offsetHeight:0;
+    b.style.bottom=(kbH+tbH)+'px';
     var msgs=document.getElementById('ai-chat-messages');
     if(msgs)msgs.scrollTop=msgs.scrollHeight;
   }
