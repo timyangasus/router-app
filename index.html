@@ -1989,7 +1989,7 @@ window.addEventListener('load',function(){
   var secEl=document.getElementById('security-rows');
   if(secEl){secEl.innerHTML=secRows.map(function(r,i){return '<div style="display:flex;align-items:center;padding:13px 16px;'+(i<secRows.length-1?'border-bottom:1px solid var(--bd)':'')+'"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">'+r[0]+'</div><div style="font-size:12px;color:var(--gn);margin-top:2px;font-weight:500">'+r[1]+'</div></div><div style="width:24px;height:24px;border-radius:50%;background:var(--gbg);display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>';}).join('');}
   // theme sub page
-  bind('theme-back',function(){hide('sub-theme');show('drawer');});
+  bind('theme-back',function(){hide('sub-theme');hide('drawer');});
   document.querySelectorAll('.theme-item').forEach(function(el){
     el.addEventListener('click',function(){applyTheme(el.dataset.t==='dark'?'dark':'light');});
   });
@@ -2071,7 +2071,7 @@ window.addEventListener('load',function(){
   });
   bind('sched-back',function(){hide('sub-sched');});
   // Theme
-  bind('theme-back',function(){hide('sub-theme');show('drawer');});
+  bind('theme-back',function(){hide('sub-theme');hide('drawer');});
   document.querySelectorAll('.theme-item').forEach(function(el){
     el.addEventListener('click',function(){
       document.querySelectorAll('.theme-item').forEach(function(o){
@@ -2358,7 +2358,10 @@ function applyTheme(t){
   var isDark=t==='dark';
   var vars=isDark?DARK_VARS:LIGHT_VARS;
   var phone=document.querySelector('.phone');
-  Object.keys(vars).forEach(function(k){phone.style.setProperty(k,vars[k]);});
+  Object.keys(vars).forEach(function(k){
+    phone.style.setProperty(k,vars[k]);
+    document.documentElement.style.setProperty(k,vars[k]);
+  });
   var energyHero=document.querySelector('.energy-hero');
   var aiproHero=document.querySelector('.aipro-hero');
   if(isDark){if(energyHero)energyHero.style.background='linear-gradient(160deg,#1A3A4A 0%,#1E3D3A 50%,#1C2E2A 100%)';if(aiproHero)aiproHero.style.background='linear-gradient(180deg,#1A3D28 0%,#1C3022 60%,#111113 100%)';}
