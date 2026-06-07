@@ -2254,7 +2254,7 @@ function startAIChat(){
   var bar=document.getElementById('ai-input-bar');
   if(cAdv)cAdv.style.display='none';
   if(cChat){cChat.style.display='flex';cChat.style.flexDirection='column';}
-  if(bar)bar.style.display='block';
+  if(bar){bar.style.display='block';if(window._updateAIInputBar)window._updateAIInputBar();}
 }
 function sendAIMessage(){
   var input=document.getElementById('ai-input');
@@ -2319,11 +2319,12 @@ function drawDetailCharts(){
 (function(){
   var bar=null;
   function getBar(){return bar||(bar=document.getElementById('ai-input-bar'));}
+  function getTbH(){var tb=document.querySelector('.tb');return tb?tb.offsetHeight:0;}
   function update(){
     var b=getBar();if(!b||b.style.display==='none')return;
     var kbH=window.innerHeight-window.visualViewport.height;
-    b.style.bottom=Math.max(0,kbH)+'px';
-    // scroll messages to bottom
+    var tbH=kbH>50?0:getTbH(); // keyboard open: sit on keyboard; keyboard closed: sit on toolbar
+    b.style.bottom=(kbH+tbH)+'px';
     var msgs=document.getElementById('ai-chat-messages');
     if(msgs)msgs.scrollTop=msgs.scrollHeight;
   }
@@ -2331,6 +2332,8 @@ function drawDetailCharts(){
     window.visualViewport.addEventListener('resize',update);
     window.visualViewport.addEventListener('scroll',update);
   }
+  // expose so startAIChat can call it
+  window._updateAIInputBar=update;
 })();
 var DARK_VARS={'--bg':'#111113','--w':'#1C1C1E','--s2':'#2C2C2E','--s3':'#3A3A3C','--bd':'#3A3A3C','--bd2':'#48484A','--tx':'#F2F2F7','--t2':'#AEAEB2','--t3':'#6E6E73','--sh':'0 2px 12px rgba(0,0,0,.4)','--ib':'rgba(91,155,214,.28)','--is':'#7DB8E8','--abg':'rgba(91,155,214,.28)','--gbg':'rgba(52,199,89,.2)','--gn':'#30D158','--obg':'rgba(255,159,10,.2)','--or':'#FF9F0A','--rd':'#FF453A','--ac':'#5B9BD6'};
 var LIGHT_VARS={'--bg':'#F4F6FB','--w':'#fff','--s2':'#F0F2F8','--s3':'#E6E9F4','--bd':'#E4E8F2','--bd2':'#CDD3E8','--tx':'#0C1120','--t2':'#46526E','--t3':'#8A93AA','--sh':'0 2px 12px rgba(44,62,120,.08)','--ib':'rgba(74,143,224,.12)','--is':'#4A8FE0','--abg':'rgba(74,143,224,.12)','--gbg':'rgba(52,199,89,.12)','--gn':'#34C759','--obg':'rgba(255,149,0,.12)','--or':'#FF9500','--rd':'#FF3B30','--ac':'#4A8FE0'};
