@@ -1650,10 +1650,15 @@ function goTab(t){
   if(p)p.classList.add('on');
   if(tb)tb.classList.add('on');
   var ct=g('ct');
-  if(ct){
-    ct.scrollTop=0;
-  }
+  if(ct){ct.scrollTop=0;}
   ['sub-pro','sub-dev','sub-notif','sub-diag','sub-suggestions','sub-energy','sub-aipro-detail','sub-wifi-insight','sub-theme'].forEach(hide);
+  // hide AI input bar when leaving insight tab
+  if(t!=='insight'){
+    var bar=document.getElementById('ai-input-bar');
+    if(bar)bar.style.display='none';
+    var tb2=document.querySelector('.tb');
+    if(tb2)tb2.style.display='';
+  }
 }
 function openPro(){
   show('sub-pro');
