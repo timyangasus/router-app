@@ -420,7 +420,7 @@ body{margin:0;padding:0;width:100%;height:100vh;overflow:hidden}
           </div>
         </div>
         <!-- AI Chat mode -->
-        <div id="ai-chat-mode" style="display:none;position:absolute;top:0;left:0;right:0;bottom:0;flex-direction:column;overflow:hidden;background:var(--bg)">
+        <div id="ai-chat-mode" style="display:none;flex-direction:column;overflow:hidden;background:var(--bg);position:absolute;left:0;right:0;top:0;bottom:0">
           <!-- Tab switcher stays visible in chat -->
           <div style="padding:10px 16px 8px;background:var(--w);flex-shrink:0;border-bottom:1px solid var(--bd)">
             <div style="display:flex;height:40px;border-radius:20px;border:1.5px solid transparent;background:linear-gradient(var(--w),var(--w)) padding-box,linear-gradient(90deg,#56C5F9,#D47BFF) border-box;overflow:hidden">
@@ -2376,9 +2376,17 @@ window.addEventListener('load',function(){
   function onVVResize(){
     var chatMode=document.getElementById('ai-chat-mode');
     if(!chatMode||chatMode.style.display==='none') return;
-    var vvH=Math.round(window.visualViewport.height);
-    chatMode.style.height=vvH+'px';
-    chatMode.style.top=Math.round(window.visualViewport.offsetTop)+'px';
+    var vvH=window.visualViewport.height;
+    var vvTop=window.visualViewport.offsetTop;
+    // Position chat-mode relative to its .ct parent
+    var ct=document.getElementById('ct');
+    if(!ct) return;
+    var ctRect=ct.getBoundingClientRect();
+    var visibleTop=Math.max(0, vvTop - ctRect.top);
+    var visibleH=vvH - Math.max(0, ctRect.top - vvTop);
+    chatMode.style.top=visibleTop+'px';
+    chatMode.style.height=visibleH+'px';
+    chatMode.style.bottom='auto';
     var msgs=document.getElementById('ai-chat-messages');
     if(msgs) msgs.scrollTop=msgs.scrollHeight;
   }
