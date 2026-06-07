@@ -2370,7 +2370,6 @@ window.addEventListener('load',function(){
         if(chatMode&&chatMode.style.display!=='none'){
           chatMode.style.height='';
           chatMode.style.top='0';
-          chatMode.style.bottom='0';
         }
       },150);
     }
@@ -2387,25 +2386,14 @@ window.addEventListener('load',function(){
   function onVVResize(){
     var chatMode=document.getElementById('ai-chat-mode');
     if(!chatMode||chatMode.style.display==='none') return;
-    var vvH=window.visualViewport.height;
-    var phoneEl=document.querySelector('.phone');
-    var phoneH=phoneEl?phoneEl.clientHeight:window.innerHeight;
-    // Only act when keyboard is open (viewport significantly smaller than phone)
-    if(phoneH-vvH > 100){
-      // Keyboard is open - shrink chat-mode to fit visible area
-      chatMode.style.height=vvH+'px';
-      chatMode.style.top='0';
-      chatMode.style.bottom='auto';
-    } else {
-      // Keyboard closed - restore
-      chatMode.style.height='100%';
-      chatMode.style.top='0';
-      chatMode.style.bottom='0';
-    }
+    var vvH=Math.round(window.visualViewport.height);
+    chatMode.style.height=vvH+'px';
+    chatMode.style.top=Math.round(window.visualViewport.offsetTop)+'px';
     var msgs=document.getElementById('ai-chat-messages');
-    if(msgs) setTimeout(function(){msgs.scrollTop=msgs.scrollHeight;},50);
+    if(msgs) msgs.scrollTop=msgs.scrollHeight;
   }
   window.visualViewport.addEventListener('resize',onVVResize);
+  window.visualViewport.addEventListener('scroll',onVVResize);
 })();
 
 // ── AI global functions ──
