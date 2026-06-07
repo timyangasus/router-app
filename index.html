@@ -740,8 +740,8 @@ body{display:flex;align-items:center;justify-content:center}
   </div>
 
   <!-- OV: CHAT SETTINGS -->
-  <div class="ov" id="ov-chat-settings" onclick="if(event.target===this)hide('ov-chat-settings')">
-    <div class="sheet">
+  <div id="ov-chat-settings" style="display:none;position:fixed;inset:0;z-index:1200;background:rgba(12,17,32,.5);align-items:flex-end" onclick="if(event.target===this){this.style.display='none';var b=document.getElementById('ai-input-bar');if(b)b.style.visibility='';}">
+    <div class="sheet" style="background:var(--w);padding-bottom:120px">
       <div class="hdl"></div>
       <div style="font-size:20px;font-weight:600;color:#4DA6FF;margin-bottom:24px">Chat Settings</div>
       <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 0 16px;border-bottom:1px solid var(--bd)">
@@ -1652,12 +1652,18 @@ function goTab(t){
   var ct=g('ct');
   if(ct){ct.scrollTop=0;}
   ['sub-pro','sub-dev','sub-notif','sub-diag','sub-suggestions','sub-energy','sub-aipro-detail','sub-wifi-insight','sub-theme'].forEach(hide);
-  // hide AI input bar when leaving insight tab
+  // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
     var bar=document.getElementById('ai-input-bar');
     if(bar)bar.style.display='none';
     var tb2=document.querySelector('.tb');
     if(tb2)tb2.style.display='';
+  } else {
+    var chatMode=document.getElementById('ai-chat-mode');
+    if(chatMode&&chatMode.style.display!=='none'){
+      var bar=document.getElementById('ai-input-bar');
+      if(bar){bar.style.display='block';if(window._updateAIInputBar)window._updateAIInputBar();}
+    }
   }
 }
 function openPro(){
@@ -2285,14 +2291,14 @@ function appendUserMsg(text){
 function appendAIMsg(text){
   var msgs=document.getElementById('ai-chat-messages');if(!msgs)return;
   var typing=document.createElement('div');
-  typing.style.cssText='align-self:flex-start;background:var(--s2);border-radius:18px 18px 18px 4px;padding:14px 16px;display:flex;gap:5px;align-items:center';
+  typing.style.cssText='align-self:flex-start;background:var(--s3);border-radius:18px 18px 18px 4px;padding:14px 16px;display:flex;gap:5px;align-items:center';
   typing.innerHTML='<span style="width:7px;height:7px;border-radius:50%;background:var(--t3);animation:aiDot 1.2s infinite"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--t3);animation:aiDot 1.2s .2s infinite"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--t3);animation:aiDot 1.2s .4s infinite"></span>';
   msgs.appendChild(typing);msgs.scrollTop=msgs.scrollHeight;
   var delay=Math.min(600+text.length*6,2200);
   setTimeout(function(){
     msgs.removeChild(typing);
     var bubble=document.createElement('div');
-    bubble.style.cssText='align-self:flex-start;background:var(--s2);color:var(--tx);border-radius:18px 18px 18px 4px;padding:14px 18px;font-size:16px;max-width:86%;line-height:1.5;word-break:break-word;white-space:pre-wrap';
+    bubble.style.cssText='align-self:flex-start;background:var(--s3);color:var(--tx);border-radius:18px 18px 18px 4px;padding:14px 18px;font-size:16px;max-width:86%;line-height:1.5;word-break:break-word;white-space:pre-wrap';
     msgs.appendChild(bubble);msgs.scrollTop=msgs.scrollHeight;
     var i=0;
     function tick(){if(i>=text.length){bubble.textContent=text;return;}i+=Math.min(4,text.length-i);bubble.textContent=text.substring(0,i)+'▌';msgs.scrollTop=msgs.scrollHeight;setTimeout(tick,16);}
@@ -2378,7 +2384,7 @@ function applyTheme(t){
       </div>
     </div>
     <div style="display:flex;align-items:center;justify-content:center;margin-top:7px">
-      <div onclick="show('ov-chat-settings')" style="display:flex;align-items:center;gap:4px;cursor:pointer">
+      <div onclick="var o=document.getElementById('ov-chat-settings');var b=document.getElementById('ai-input-bar');o.style.display='flex';if(b)b.style.visibility='hidden'" style="display:flex;align-items:center;gap:4px;cursor:pointer">
         <span style="font-size:13px;color:var(--t2);font-weight:600">Chat Settings</span>
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--t2)" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
       </div>
