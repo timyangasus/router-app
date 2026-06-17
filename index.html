@@ -73,7 +73,7 @@ body{display:flex;align-items:center;justify-content:center}
 /* pages */
 .pg{display:none;flex-direction:column;height:100%}
 .pg.on{display:flex}
-.pg-body{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;padding-bottom:16px}
+.pg-body{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;padding-bottom:100px}
 .pg-body::-webkit-scrollbar{display:none}
 /* tab bar */
 .tb{height:84px;background:var(--w);border-top:1px solid var(--bd);display:flex;padding:0 4px 26px;flex-shrink:0;position:relative;z-index:2}
@@ -98,7 +98,7 @@ body{display:flex;align-items:center;justify-content:center}
 .ic svg{width:17px;height:17px;stroke:var(--is);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .bk{width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
 .bk svg{width:17px;height:17px;stroke:var(--tx);fill:none;stroke-width:2;stroke-linecap:round}
-.tg{width:44px;height:26px;background:var(--bd2);border-radius:13px;position:relative;cursor:pointer;flex-shrink:0;transition:background .2s}
+.tg{width:44px;height:26px;background:#C4CADA;border-radius:13px;position:relative;cursor:pointer;flex-shrink:0;transition:background .2s}
 .tg.on{background:var(--ac)}
 .tg::after{content:'';position:absolute;width:20px;height:20px;background:#fff;border-radius:50%;top:3px;left:3px;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
 .tg.on::after{transform:translateX(18px)}
@@ -402,7 +402,12 @@ body{display:flex;align-items:center;justify-content:center}
     <!-- ═══ DEVICES ═══ -->
     <div class="pg" id="pg-devices">
       <div style="padding:14px 20px 12px;background:var(--w);border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between">
-        <div><div style="font-size:24px;font-weight:600;color:var(--tx);letter-spacing:-.5px">裝置</div><div style="font-size:13px;color:var(--t3);margin-top:2px">14 線上 · 2 離線</div></div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div id="devices-back-btn" onclick="goTab('home')" style="display:none;width:32px;height:32px;border-radius:50%;background:var(--ib);align-items:center;justify-content:center;cursor:pointer;flex-shrink:0">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2.2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </div>
+          <div><div style="font-size:24px;font-weight:600;color:var(--tx);letter-spacing:-.5px">裝置</div><div style="font-size:13px;color:var(--t3);margin-top:2px">14 線上 · 2 離線</div></div>
+        </div>
         <div style="display:flex;gap:8px">
           <div style="width:34px;height:34px;background:var(--ib);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer" id="d-sort-btn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="9" y1="18" x2="15" y2="18"/></svg>
@@ -516,26 +521,14 @@ body{display:flex;align-items:center;justify-content:center}
 
     <!-- ═══ FAMILY ═══ -->
     <div class="pg" id="pg-family">
-      <div style="padding:14px 20px 12px;background:var(--w);border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between"><div><div style="font-size:24px;font-weight:600;color:var(--tx);letter-spacing:-.5px">家庭管理</div><div style="font-size:13px;color:var(--t3);margin-top:2px">2 位成員</div></div><div style="width:34px;height:34px;background:var(--ac);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer" id="f-add"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="4" x2="12" y2="20"/><line x1="4" y1="12" x2="20" y2="12"/></svg></div></div>
-      <div class="pg-body">
-      <span class="sl">家庭成員</span>
-      <div class="mg">
-        <div class="mc" id="f-ming"><div class="ma"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div style="font-size:17px;font-weight:600;color:var(--tx)">小明</div><div style="font-size:11px;color:var(--t3);margin-top:2px">青少年 · 12 歲</div><div style="font-size:11px;color:var(--t3);margin-top:6px">● 1 台連線</div><div style="margin-top:7px"><span class="bg bgo">4.5h 今日</span></div></div>
-        <div class="mc" id="f-mei"><div class="ma"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div style="font-size:17px;font-weight:600;color:var(--tx)">小美</div><div style="font-size:11px;color:var(--t3);margin-top:2px">學童 · 8 歲</div><div style="font-size:11px;color:var(--t3);margin-top:6px">● 目前離線</div><div style="margin-top:7px"><span class="bg bgg">1.2h 今日</span></div></div>
+      <div style="padding:14px 20px 12px;background:var(--w);border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;flex-shrink:0">
+        <div style="font-size:24px;font-weight:600;color:var(--tx);letter-spacing:-.5px">家庭成員</div>
+        <div onclick="show('sub-fm-step1')" style="width:34px;height:34px;background:var(--ac);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="4" x2="12" y2="20"/><line x1="4" y1="12" x2="20" y2="12"/></svg></div>
       </div>
-      <span class="sl">今日報告</span>
-      <div class="card"><div style="padding:14px 16px">
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px">
-          <div style="background:var(--s2);border-radius:8px;padding:10px;text-align:center"><div style="font-size:17px;font-weight:600;color:var(--tx)">5.7h</div><div style="font-size:10px;color:var(--t3);margin-top:2px">家庭總計</div></div>
-          <div style="background:var(--s2);border-radius:8px;padding:10px;text-align:center"><div style="font-size:17px;font-weight:600;color:var(--rd)">3</div><div style="font-size:10px;color:var(--t3);margin-top:2px">被封鎖</div></div>
-          <div style="background:var(--s2);border-radius:8px;padding:10px;text-align:center"><div style="font-size:17px;font-weight:600;color:var(--gn)">安全</div><div style="font-size:10px;color:var(--t3);margin-top:2px">今日狀態</div></div>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px"><div style="font-size:12px;color:var(--t2);width:30px">小美</div><div style="flex:1;height:6px;background:var(--s3);border-radius:3px;overflow:hidden"><div style="height:100%;width:24%;background:var(--gn);border-radius:3px"></div></div><div style="font-size:11px;color:var(--t3);width:24px;text-align:right">1.2h</div></div>
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px"><div style="font-size:12px;color:var(--t2);width:30px">小明</div><div style="flex:1;height:6px;background:var(--s3);border-radius:3px;overflow:hidden"><div style="height:100%;width:90%;background:var(--or);border-radius:3px"></div></div><div style="font-size:11px;color:var(--or);width:24px;text-align:right;font-weight:600">4.5h</div></div>
-        
-      </div></div>
-    
-      </div></div>
+      <div class="pg-body" id="family-list-body">
+        <!-- rendered by JS -->
+      </div>
+    </div>
 
     <!-- ═══ SETTINGS ═══ -->
     <div class="pg" id="pg-settings">
@@ -557,7 +550,7 @@ body{display:flex;align-items:center;justify-content:center}
       <span class="sl">Wi-Fi 設定</span>
       <div style="background:var(--w)">
         <div class="sr" onclick="show('sub-main-wifi')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">主 Wi-Fi</div><div style="font-size:14px;color:var(--t3);margin-top:2px">ASUS_Home_5G</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-        <div class="sr" onclick="show('ov-guest')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">訪客網路</div><div style="font-size:14px;color:var(--t3);margin-top:2px">已停用</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="show('ov-guest')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">訪客網路</div><div id="guest-status-text" style="font-size:14px;color:var(--t3);margin-top:2px">已停用</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">IoT 網路</div><div style="font-size:14px;color:var(--t3);margin-top:2px">ASUS_IoT · 啟用中</div></div><div class="tg on" id="tg2"></div></div>
       </div>
       <span class="sl">安全與隱私</span>
@@ -749,6 +742,26 @@ body{display:flex;align-items:center;justify-content:center}
         <div id="tg-chat-context" onclick="toggleChatContext()" style="width:51px;height:31px;background:var(--ac);border-radius:16px;position:relative;cursor:pointer"><div style="position:absolute;width:25px;height:25px;background:#fff;border-radius:50%;top:3px;right:3px;box-shadow:0 1px 3px rgba(0,0,0,.2)"></div></div>
       </div>
       <div style="padding:14px 0;font-size:13px;color:var(--t3);line-height:1.7">開啟後AI 將記住該次對談的內容脈絡，提供完整連續的解答。<br>＊為保護您的隱私，對話紀錄將於離開此畫面或關閉 App 後自動清除。</div>
+    </div>
+  </div>
+
+  <!-- OV: Reward（增加使用時間） -->
+
+  <div class="ov" id="ov-fm-reward" onclick="if(event.target===this)hide('ov-fm-reward')">
+    <div class="sheet">
+      <div class="hdl"></div>
+      <div style="font-size:18px;font-weight:600;color:var(--tx);margin-bottom:6px">增加使用時間</div>
+      <div id="ov-reward-name" style="font-size:13px;color:var(--t3);margin-bottom:20px"></div>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px">
+        <div onclick="selectReward(this,15)" class="reward-opt" style="height:48px;border-radius:12px;background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;color:var(--tx);cursor:pointer;border:2px solid transparent">+15 分鐘</div>
+        <div onclick="selectReward(this,30)" class="reward-opt" style="height:48px;border-radius:12px;background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;color:var(--tx);cursor:pointer;border:2px solid transparent">+30 分鐘</div>
+        <div onclick="selectReward(this,60)" class="reward-opt" style="height:48px;border-radius:12px;background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;color:var(--tx);cursor:pointer;border:2px solid transparent">+1 小時</div>
+        <div onclick="selectReward(this,'custom')" class="reward-opt" style="height:48px;border-radius:12px;background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;color:var(--tx);cursor:pointer;border:2px solid transparent">自訂</div>
+      </div>
+      <div id="ov-reward-custom" style="display:none;margin-bottom:16px">
+        <input id="ov-reward-custom-val" type="number" min="1" max="240" placeholder="輸入分鐘數" style="width:100%;height:44px;border:1.5px solid var(--bd);border-radius:10px;padding:0 14px;font-size:16px;color:var(--tx);background:var(--s2);outline:none;font-family:var(--f);box-sizing:border-box"/>
+      </div>
+      <div onclick="confirmReward()" style="height:50px;border-radius:var(--r2);background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:#fff;cursor:pointer">確認</div>
     </div>
   </div>
 
@@ -1082,7 +1095,7 @@ body{display:flex;align-items:center;justify-content:center}
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px"><div style="height:44px;background:var(--rd);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:500;cursor:pointer" id="ov-ming-close">⏸ 暫停網路</div><div style="height:44px;background:var(--gbg);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--gn);font-size:13px;font-weight:500;cursor:pointer">+ 給予延長</div></div><div style="background:var(--s2);border-radius:var(--r2);padding:12px"><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">每日上限</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">3 小時</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">上床時間</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">22:00</div></div><div style="display:flex;justify-content:space-between;padding:9px 0"><div style="font-size:13px;color:var(--t3)">週末規則</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">+1 小時</div></div></div></div></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px"><div style="height:44px;background:var(--rd);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:500;cursor:pointer" id="ov-ming-close">暫停網路</div><div style="height:44px;background:var(--gbg);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--gn);font-size:13px;font-weight:500;cursor:pointer">+ 給予延長</div></div><div style="background:var(--s2);border-radius:var(--r2);padding:12px"><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">每日上限</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">3 小時</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">上床時間</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">22:00</div></div><div style="display:flex;justify-content:space-between;padding:9px 0"><div style="font-size:13px;color:var(--t3)">週末規則</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">+1 小時</div></div></div></div></div>
 
 
   <!-- SUB: QUICK ACTION EDITOR -->
@@ -1524,11 +1537,6 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="flex:1"><div style="font-size:17px;color:var(--tx);font-weight:600">Add AiMesh node</div><div style="font-size:13px;color:var(--t3);margin-top:2px">Add another AiMesh node to extend your Wi-Fi coverage.</div></div>
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
     </div>
-    <div style="display:flex;align-items:center;gap:14px;padding:18px 0;cursor:pointer" onclick="hide('sub-wifi');show('ov-guest')">
-      <div style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
-      <div style="flex:1"><div style="font-size:17px;color:var(--tx);font-weight:600">Create Guest Network</div><div style="font-size:13px;color:var(--t3);margin-top:2px">Create a separate Wi-Fi network for guests or IoT devices.</div></div>
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-    </div>
   </div></div>
 
 
@@ -1760,7 +1768,7 @@ body{display:flex;align-items:center;justify-content:center}
       </div>
       <span class="sl">安全性</span>
       <div style="background:var(--w)">
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">修改密碼</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="show('sub-change-pwd')" style="cursor:pointer"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">修改密碼</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">兩步驟驗證</div><div style="font-size:13px;color:var(--t3);margin-top:2px">增強帳號安全性</div></div><div class="tg" id="tg-2fa"></div></div>
         <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Face ID / 密碼鎖</div></div><div class="tg on" id="tg-faceid"></div></div>
       </div>
@@ -1986,13 +1994,307 @@ body{display:flex;align-items:center;justify-content:center}
       <!-- Device picker -->
       <span class="sl">選擇裝置</span>
       <div style="background:var(--w)" id="dev-sched-picker">
-        <div class="sr" onclick="selectSchedDev(this,'MacBook Pro')" style="cursor:pointer"><div style="font-size:20px;margin-right:4px">💻</div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Tim's MacBook Pro</div><div style="font-size:12px;color:var(--t3)">5GHz · 客廳節點</div></div><div class="sched-dev-check" style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2)"></div></div>
-        <div class="sr" onclick="selectSchedDev(this,'iPhone')" style="cursor:pointer"><div style="font-size:20px;margin-right:4px">📱</div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Tim's iPhone</div><div style="font-size:12px;color:var(--t3)">5GHz · 主路由器</div></div><div class="sched-dev-check" style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2)"></div></div>
-        <div class="sr" onclick="selectSchedDev(this,'Apple TV')" style="cursor:pointer"><div style="font-size:20px;margin-right:4px">📺</div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">客廳 Apple TV</div><div style="font-size:12px;color:var(--t3)">有線 · 客廳節點</div></div><div class="sched-dev-check" style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2)"></div></div>
-        <div class="sr" onclick="selectSchedDev(this,'iPad')" style="cursor:pointer;border:none"><div style="font-size:20px;margin-right:4px">📱</div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">舊 iPad</div><div style="font-size:12px;color:var(--t3)">2.4GHz · 主路由器</div></div><div class="sched-dev-check" style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2)"></div></div>
+        <div class="sr" onclick="selectSchedDev(this,'MacBook Pro')" style="cursor:pointer"><div style="width:36px;height:36px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M0 21h24"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Tim's MacBook Pro</div><div style="font-size:12px;color:var(--t3)">5GHz · 客廳節點</div></div><div class="sched-dev-check" style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2)"></div></div>
+        <div class="sr" onclick="selectSchedDev(this,'iPhone')" style="cursor:pointer"><div style="width:36px;height:36px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Tim's iPhone</div><div style="font-size:12px;color:var(--t3)">5GHz · 主路由器</div></div><div class="sched-dev-check" style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2)"></div></div>
+        <div class="sr" onclick="selectSchedDev(this,'Apple TV')" style="cursor:pointer"><div style="width:36px;height:36px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">客廳 Apple TV</div><div style="font-size:12px;color:var(--t3)">有線 · 客廳節點</div></div><div class="sched-dev-check" style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2)"></div></div>
+        <div class="sr" onclick="selectSchedDev(this,'iPad')" style="cursor:pointer;border:none"><div style="width:36px;height:36px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">舊 iPad</div><div style="font-size:12px;color:var(--t3)">2.4GHz · 主路由器</div></div><div class="sched-dev-check" style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2)"></div></div>
       </div>
       <!-- Schedule grid (shown after device selected) -->
       <div id="dev-sched-days" style="display:none;padding:8px 0"></div>
+    </div>
+  </div>
+  <!-- SUB: 修改密碼 -->
+  <div class="sub" id="sub-change-pwd">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="change-pwd-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">修改密碼</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg);padding:24px 16px">
+      <div style="background:var(--w);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)">
+        <div style="padding:16px;border-bottom:1px solid var(--bd)">
+          <div style="font-size:12px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px">目前密碼</div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <input id="inp-cur-pwd" type="password" placeholder="輸入目前密碼" style="flex:1;height:44px;border:1.5px solid var(--bd);border-radius:10px;padding:0 14px;font-size:16px;color:var(--tx);background:var(--s2);outline:none;font-family:var(--f)"/>
+            <div onclick="togglePwdVis('inp-cur-pwd','eye-cur')" style="width:44px;height:44px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0">
+              <svg id="eye-cur" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round" style="opacity:.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+          </div>
+        </div>
+        <div style="padding:16px;border-bottom:1px solid var(--bd)">
+          <div style="font-size:12px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px">新密碼</div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <input id="inp-new-pwd" type="password" placeholder="輸入新密碼" style="flex:1;height:44px;border:1.5px solid var(--bd);border-radius:10px;padding:0 14px;font-size:16px;color:var(--tx);background:var(--s2);outline:none;font-family:var(--f)"/>
+            <div onclick="togglePwdVis('inp-new-pwd','eye-new')" style="width:44px;height:44px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0">
+              <svg id="eye-new" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round" style="opacity:.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+          </div>
+        </div>
+        <div style="padding:16px">
+          <div style="font-size:12px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px">確認新密碼</div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <input id="inp-conf-pwd" type="password" placeholder="再次輸入新密碼" style="flex:1;height:44px;border:1.5px solid var(--bd);border-radius:10px;padding:0 14px;font-size:16px;color:var(--tx);background:var(--s2);outline:none;font-family:var(--f)"/>
+            <div onclick="togglePwdVis('inp-conf-pwd','eye-conf')" style="width:44px;height:44px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0">
+              <svg id="eye-conf" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round" style="opacity:.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:8px;font-size:12px;color:var(--t3);padding:0 4px;line-height:1.7">密碼需至少 8 個字元，包含英文字母與數字。</div>
+      <div style="margin-top:20px">
+        <div style="height:50px;border-radius:var(--r2);background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:#fff;cursor:pointer">確認修改</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══ FAMILY SUB PAGES ═══ -->
+
+  <!-- SUB: 建立家庭成員 Step 1 — 選類型 -->
+  <div class="sub" id="sub-fm-step1">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="fm-step1-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--ac)">家庭管理</div>
+      <div style="width:34px"></div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:#fff;padding:24px 20px 32px">
+      <div style="text-align:center;margin-bottom:20px">
+        <div style="font-size:20px;font-weight:700;color:var(--tx);margin-bottom:8px">新增家庭成員</div>
+        <div style="font-size:14px;color:var(--t3);line-height:1.7">依年齡設定不同的上網規則，<br>守護全家人的網路安全。</div>
+      </div>
+      <div style="font-size:13px;font-weight:600;color:var(--t3);letter-spacing:.5px;margin-bottom:12px">選擇成員類型</div>
+      <!-- 4 type cards -->
+      <div style="display:flex;flex-direction:column;gap:10px" id="fm-age-list">
+        <div onclick="fmSelectAge('preschooler')" class="fm-age-card" data-age="preschooler" style="display:flex;align-items:center;gap:14px;padding:16px;background:linear-gradient(135deg,#6AAAF0,#4D95EA);border-radius:16px;cursor:pointer">
+          <div style="font-size:34px;width:48px;text-align:center;flex-shrink:0">👶</div>
+          <div style="flex:1">
+            <div style="font-size:16px;font-weight:700;color:#fff">幼兒 <span style="font-weight:400;font-size:13px;opacity:.8">0–6 歲</span></div>
+            <div style="font-size:12px;color:rgba(255,255,255,.75);margin-top:4px;line-height:1.5">封鎖幾乎所有網路內容，僅開放教育類與影音平台，給孩子最安全的上網環境。</div>
+          </div>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div onclick="fmSelectAge('school')" class="fm-age-card" data-age="school" style="display:flex;align-items:center;gap:14px;padding:16px;background:linear-gradient(135deg,#5A9EEC,#3D87E0);border-radius:16px;cursor:pointer">
+          <div style="font-size:34px;width:48px;text-align:center;flex-shrink:0">🧒</div>
+          <div style="flex:1">
+            <div style="font-size:16px;font-weight:700;color:#fff">學童 <span style="font-weight:400;font-size:13px;opacity:.8">6–13 歲</span></div>
+            <div style="font-size:12px;color:rgba(255,255,255,.75);margin-top:4px;line-height:1.5">過濾色情、暴力、賭博及社群媒體，保護孩子遠離不當內容與網路成癮。</div>
+          </div>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div onclick="fmSelectAge('teen')" class="fm-age-card" data-age="teen" style="display:flex;align-items:center;gap:14px;padding:16px;background:linear-gradient(135deg,#4A90E2,#2E76D0);border-radius:16px;cursor:pointer">
+          <div style="font-size:34px;width:48px;text-align:center;flex-shrink:0">🧑</div>
+          <div style="flex:1">
+            <div style="font-size:16px;font-weight:700;color:#fff">青少年 <span style="font-weight:400;font-size:13px;opacity:.8">13–18 歲</span></div>
+            <div style="font-size:12px;color:rgba(255,255,255,.75);margin-top:4px;line-height:1.5">過濾色情、暴力及賭博，兼顧青少年的自主性，同時維護基本網路安全。</div>
+          </div>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div onclick="fmSelectAge('adult')" class="fm-age-card" data-age="adult" style="display:flex;align-items:center;gap:14px;padding:16px;background:linear-gradient(135deg,#3B87E0,#2060BE);border-radius:16px;cursor:pointer">
+          <div style="font-size:34px;width:48px;text-align:center;flex-shrink:0">🧔</div>
+          <div style="flex:1">
+            <div style="font-size:16px;font-weight:700;color:#fff">成人 <span style="font-weight:400;font-size:13px;opacity:.8">18 歲以上</span></div>
+            <div style="font-size:12px;color:rgba(255,255,255,.75);margin-top:4px;line-height:1.5">預設無限制，可自訂上網時段、封鎖特定網站，彈性管理個人帳號。</div>
+          </div>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUB: 建立家庭成員 Step 2 — 輸入名稱 -->
+  <div class="sub" id="sub-fm-step2name">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="fm-step2n-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--ac)" id="fm-step2n-title">成人</div>
+      <div onclick="fmStep2nNext()" style="height:32px;padding:0 16px;border-radius:16px;background:var(--s2);display:flex;align-items:center;font-size:14px;font-weight:600;color:var(--t3);cursor:pointer" id="fm-step2n-next-btn">下一步</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:#fff;padding:32px 20px 24px">
+      <div style="display:flex;justify-content:center;margin-bottom:28px">
+        <div style="width:96px;height:96px;border-radius:50%;background:#2E5A8C;display:flex;align-items:center;justify-content:center;font-size:48px" id="fm-step2n-avatar">🧔</div>
+      </div>
+      <div style="font-size:13px;font-weight:600;color:var(--ac);letter-spacing:.3px;margin-bottom:20px">成員名稱</div>
+      <div style="position:relative;margin-bottom:8px">
+        <input id="fm-name-input" placeholder="例如：小明、Tommy" style="width:100%;height:48px;border:none;border-bottom:1.5px solid var(--bd);padding:0 36px 0 0;font-size:17px;color:var(--tx);background:transparent;outline:none;font-family:var(--f);box-sizing:border-box;caret-color:var(--ac)" oninput="fmNameInputChanged(this)"/>
+        <style>#fm-name-input::placeholder{color:#C5C8D4}</style>
+        <div onclick="document.getElementById('fm-name-input').value='';fmNameInputChanged(document.getElementById('fm-name-input'))" style="position:absolute;right:0;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;background:var(--s3);display:none;align-items:center;justify-content:center;cursor:pointer;color:var(--t3)" id="fm-name-clear">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </div>
+      </div>
+      <div style="font-size:13px;color:var(--t3);margin-top:12px;line-height:1.6">輸入一個好記的名字，方便在家庭管理頁識別成員。建立後可隨時修改。</div>
+    </div>
+  </div>
+
+
+  <!-- SUB: Step 3 — 選擇裝置 -->
+  <div class="sub" id="sub-fm-step2">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="fm-step2-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--ac)">綁定裝置</div>
+      <div onclick="fmStep2Next()" style="height:32px;padding:0 16px;border-radius:16px;background:var(--s2);display:flex;align-items:center;font-size:14px;font-weight:600;color:var(--t3);cursor:pointer" id="fm-step2-next-btn">下一步</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <div style="padding:14px 16px 10px;font-size:13px;color:var(--t2);line-height:1.6">選擇要加入此帳號的裝置。後續可在成員設定中隨時新增或移除。</div>
+      <div style="background:var(--w)" id="fm-dev-list"><!-- rendered by JS --></div>
+    </div>
+  </div>
+
+  <!-- SUB: Step 4 — 禁用時段 -->
+  <div class="sub" id="sub-fm-step3">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="fm-step3-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--ac)">上網時段管理</div>
+      <div onclick="fmStep3Next()" style="height:32px;padding:0 16px;border-radius:16px;background:var(--ac);display:flex;align-items:center;font-size:14px;font-weight:600;color:#fff;cursor:pointer">下一步</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg);padding:16px 16px 24px">
+      <!-- Member identity -->
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+        <div style="font-size:26px" id="fm-step3-av">🧔</div>
+        <div>
+          <div style="font-size:16px;font-weight:700;color:var(--ac)" id="fm-step3-name">成人</div>
+          <div style="font-size:13px;color:var(--t3)" id="fm-step3-label">18 歲以上</div>
+        </div>
+      </div>
+      <!-- Day picker card -->
+      <div style="background:var(--w);border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:var(--sh)">
+        <div style="font-size:13px;font-weight:600;color:var(--t3);margin-bottom:12px">禁用日期</div>
+        <div style="display:flex;justify-content:space-between;gap:4px" id="fm-day-row">
+          <div onclick="fmToggleDay(this,'Sun')" data-day="Sun" class="fm-day-btn" style="flex:1;height:44px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;background:var(--s2)"><div style="font-size:10px;color:var(--t3)">S</div><div style="font-size:14px;font-weight:500;color:var(--t2)">日</div></div>
+          <div onclick="fmToggleDay(this,'Mon')" data-day="Mon" class="fm-day-btn" style="flex:1;height:44px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;background:var(--s2)"><div style="font-size:10px;color:var(--t3)">M</div><div style="font-size:14px;font-weight:500;color:var(--t2)">一</div></div>
+          <div onclick="fmToggleDay(this,'Tue')" data-day="Tue" class="fm-day-btn" style="flex:1;height:44px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;background:var(--s2)"><div style="font-size:10px;color:var(--t3)">T</div><div style="font-size:14px;font-weight:500;color:var(--t2)">二</div></div>
+          <div onclick="fmToggleDay(this,'Wed')" data-day="Wed" class="fm-day-btn on" style="flex:1;height:44px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;background:var(--or)"><div style="font-size:10px;color:rgba(255,255,255,.75)">W</div><div style="font-size:14px;font-weight:700;color:#fff">三</div></div>
+          <div onclick="fmToggleDay(this,'Thu')" data-day="Thu" class="fm-day-btn" style="flex:1;height:44px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;background:var(--s2)"><div style="font-size:10px;color:var(--t3)">T</div><div style="font-size:14px;font-weight:500;color:var(--t2)">四</div></div>
+          <div onclick="fmToggleDay(this,'Fri')" data-day="Fri" class="fm-day-btn" style="flex:1;height:44px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;background:var(--s2)"><div style="font-size:10px;color:var(--t3)">F</div><div style="font-size:14px;font-weight:500;color:var(--t2)">五</div></div>
+          <div onclick="fmToggleDay(this,'Sat')" data-day="Sat" class="fm-day-btn" style="flex:1;height:44px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;background:var(--s2)"><div style="font-size:10px;color:var(--t3)">S</div><div style="font-size:14px;font-weight:500;color:var(--t2)">六</div></div>
+        </div>
+      </div>
+      <!-- Time card -->
+      <div style="background:var(--w);border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:var(--sh)">
+        <div style="font-size:13px;font-weight:600;color:var(--t3);margin-bottom:14px">禁用時段</div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div onclick="fmOpenTimePicker('start')" style="flex:1;background:var(--bg);border-radius:12px;padding:12px;cursor:pointer;text-align:center">
+            <div style="font-size:12px;color:var(--t3);margin-bottom:4px">開始時間</div>
+            <div style="font-size:28px;font-weight:700;color:var(--tx);font-family:var(--m);letter-spacing:1px" id="fm-start-time-lbl">22:00</div>
+          </div>
+          <div style="font-size:18px;color:var(--t3);flex-shrink:0">→</div>
+          <div onclick="fmOpenTimePicker('end')" style="flex:1;background:var(--bg);border-radius:12px;padding:12px;cursor:pointer;text-align:center">
+            <div style="font-size:12px;color:var(--t3);margin-bottom:4px">結束時間</div>
+            <div style="font-size:28px;font-weight:700;color:var(--tx);font-family:var(--m);letter-spacing:1px" id="fm-end-time-lbl">06:00</div>
+          </div>
+        </div>
+        <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between">
+          <div>
+            <div style="font-size:15px;font-weight:500;color:var(--tx)">全天禁用</div>
+            <div style="font-size:12px;color:var(--t3);margin-top:2px">忽略時段，整天禁止上網</div>
+          </div>
+          <div onclick="fmToggleAllDay(this)" id="fm-allday-check" class="tg" style="cursor:pointer;flex-shrink:0"></div>
+        </div>
+      </div>
+      <!-- Skip -->
+      <div style="text-align:center;padding-top:4px">
+        <div onclick="fmStep3Skip()" style="font-size:14px;color:var(--t3);cursor:pointer;text-decoration:underline">略過此步驟</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUB: Step 5 — Content Block -->
+  <div class="sub" id="sub-fm-step4">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="fm-step4-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--ac)">內容過濾</div>
+      <div onclick="fmCreateMember()" style="height:32px;padding:0 16px;border-radius:16px;background:var(--ac);display:flex;align-items:center;font-size:14px;font-weight:600;color:#fff;cursor:pointer">完成</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <div style="display:flex;align-items:center;gap:12px;padding:16px 20px 12px;background:var(--w);border-bottom:1px solid var(--bd)">
+        <div style="font-size:30px" id="fm-step4-av">🧔</div>
+        <div>
+          <div style="font-size:17px;font-weight:700;color:var(--ac)" id="fm-step4-name">成人</div>
+          <div style="font-size:13px;color:var(--t3)" id="fm-step4-label">18 歲以上</div>
+        </div>
+      </div>
+      <div style="padding:14px 16px 8px;font-size:13px;color:var(--t2);line-height:1.6">依預設類型自動勾選，可手動調整。過濾的類別將對此成員的所有裝置生效。</div>
+      <div style="background:var(--w);margin-top:2px" id="fm-step4-cats"><!-- rendered by JS --></div>
+    </div>
+  </div>
+
+  <!-- SUB: 裝置編輯 -->
+  <div class="sub" id="sub-fm-devices">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="fm-devices-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--ac)">綁定裝置</div>
+      <div onclick="fmSaveDevices()" style="height:32px;padding:0 16px;border-radius:16px;background:var(--ac);display:flex;align-items:center;font-size:14px;font-weight:600;color:#fff;cursor:pointer">儲存</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <div style="padding:14px 16px 8px;font-size:13px;color:var(--t2);line-height:1.6">勾選要綁定到此成員的裝置。</div>
+      <div style="background:var(--w)" id="fm-devices-list"><!-- rendered by JS --></div>
+    </div>
+  </div>
+
+  <!-- SUB: Member Detail -->
+  <div class="sub" id="sub-fm-detail">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="bk" id="fm-detail-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+        <div id="fm-detail-title" style="font-size:17px;font-weight:600;color:var(--tx)">成員</div>
+      </div>
+      <div id="fm-detail-delete" style="font-size:14px;color:var(--rd);cursor:pointer">刪除</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)" id="fm-detail-body">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+
+  <!-- SUB: 每日使用時間 -->
+  <div class="sub" id="sub-fm-time">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="fm-time-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">每日使用時間</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)" id="fm-time-body"><!-- rendered by JS --></div>
+  </div>
+
+  <!-- SUB: 網站過濾 -->
+  <div class="sub" id="sub-fm-filter">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="fm-filter-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">網站過濾</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)" id="fm-filter-body"><!-- rendered by JS --></div>
+  </div>
+
+  <!-- SUB: 封鎖網站 -->
+  <div class="sub" id="sub-fm-blocked">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="fm-blocked-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">封鎖網站</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)" id="fm-blocked-body"><!-- rendered by JS --></div>
+  </div>
+
+  <!-- Time Picker Overlay — at end of phone so it's above all subs in DOM order -->
+  <div class="ov" id="ov-time-picker" onclick="if(event.target===this)fmHideTimePicker()">
+    <div class="sheet" onclick="event.stopPropagation()">
+      <div class="hdl"></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding:0 4px">
+        <div onclick="fmHideTimePicker()" style="font-size:16px;color:var(--t3);cursor:pointer">取消</div>
+        <div style="font-size:17px;font-weight:600;color:var(--tx)" id="ov-tp-title">開始時間</div>
+        <div onclick="fmConfirmTimePicker()" style="font-size:16px;font-weight:600;color:var(--ac);cursor:pointer">確認</div>
+      </div>
+      <div style="text-align:center;font-size:40px;font-weight:700;color:var(--tx);letter-spacing:2px;margin-bottom:20px" id="ov-tp-preview">22:00</div>
+      <div style="display:flex;align-items:stretch;justify-content:center;gap:8px;margin-bottom:8px">
+        <div style="flex:1;position:relative">
+          <div style="position:absolute;top:50%;left:0;right:0;height:44px;transform:translateY(-50%);background:var(--s2);border-radius:10px;pointer-events:none;z-index:1"></div>
+          <div id="ov-tp-hours" style="height:220px;overflow-y:scroll;scroll-snap-type:y mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;position:relative;z-index:2" onscroll="fmTpSyncH(this)">
+            <div style="height:88px;flex-shrink:0"></div>
+          </div>
+        </div>
+        <div style="font-size:32px;font-weight:700;color:var(--tx);display:flex;align-items:center;flex-shrink:0;padding-bottom:4px">:</div>
+        <div style="flex:1;position:relative">
+          <div style="position:absolute;top:50%;left:0;right:0;height:44px;transform:translateY(-50%);background:var(--s2);border-radius:10px;pointer-events:none;z-index:1"></div>
+          <div id="ov-tp-mins" style="height:220px;overflow-y:scroll;scroll-snap-type:y mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;position:relative;z-index:2" onscroll="fmTpSyncM(this)">
+            <div style="height:88px;flex-shrink:0"></div>
+          </div>
+        </div>
+      </div>
+      <style>#ov-tp-hours::-webkit-scrollbar,#ov-tp-mins::-webkit-scrollbar{display:none}.tp-item{height:44px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500;color:var(--t3);scroll-snap-align:center;flex-shrink:0;cursor:pointer}.tp-item.sel{color:var(--tx);font-size:26px;font-weight:700}</style>
     </div>
   </div>
 
@@ -2022,11 +2324,11 @@ function goTab(t){
   if(tb)tb.classList.add('on');
   var ct=g('ct');
   if(ct){ct.scrollTop=0;}
-  ['sub-pro','sub-dev','sub-notif','sub-diag','sub-suggestions','sub-energy','sub-aipro-detail','sub-wifi-insight','sub-theme','sub-main-wifi','sub-reboot','sub-account','sub-led','sub-passwords','sub-pause','sub-scan','sub-mesh-opt','sub-sched-home','sub-wifi-sched','sub-dev-sched'].forEach(hide);
+  ['sub-pro','sub-dev','sub-notif','sub-diag','sub-suggestions','sub-energy','sub-aipro-detail','sub-wifi-insight','sub-theme','sub-main-wifi','sub-reboot','sub-account','sub-led','sub-passwords','sub-pause','sub-scan','sub-mesh-opt','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-change-pwd','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked'].forEach(hide);
   // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
     var bar=document.getElementById('ai-input-bar');
-    if(bar)bar.style.display='none';
+    if(bar){bar.style.display='none';bar.style.visibility='';}
     var tb2=document.querySelector('.tb');
     if(tb2)tb2.style.display='';
   } else {
@@ -2036,6 +2338,9 @@ function goTab(t){
       if(bar){bar.style.display='block';if(window._updateAIInputBar)window._updateAIInputBar();}
     }
   }
+  // hide devices back button when switching via tab bar
+  var db=document.getElementById('devices-back-btn');
+  if(db)db.style.display='none';
 }
 function openPro(){
   show('sub-pro');
@@ -2058,16 +2363,16 @@ function openDev(type){
     if(body)body.innerHTML='<div style="padding:20px"><div style="background:var(--obg);border-radius:var(--r);padding:14px;margin-bottom:18px"><div style="font-size:14px;font-weight:600;color:var(--tx);margin-bottom:5px">⚠️ 偵測到陌生裝置</div><div style="font-size:12px;color:var(--or)">這台裝置連上了您的網路，您認識它嗎？</div></div><div style="background:var(--w);border-radius:var(--r);padding:14px;margin-bottom:14px;box-shadow:var(--sh)"><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">MAC 位址</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">8C:85:90:FF:12:34</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">IP 位址</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">192.168.1.108</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">連線頻段</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">2.4 GHz</div></div><div style="display:flex;justify-content:space-between;padding:9px 0"><div style="font-size:13px;color:var(--t3)">連線節點</div><div style="font-size:13px;font-weight:500;color:var(--tx)">主路由器</div></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px"><div style="height:46px;background:var(--rd);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:500;cursor:pointer" onclick="hide(\'sub-dev\')">🚫 封鎖裝置</div><div style="height:46px;background:var(--s2);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--t2);font-size:13px;font-weight:500;cursor:pointer">✏️ 重新命名</div></div><div style="height:46px;background:var(--w);border:1px solid var(--bd);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--ac);font-size:13px;font-weight:500;cursor:pointer">👋 這是訪客，允許連線</div></div>';
   } else if(type==='iphone'){
     if(title)title.textContent="Tim's iPhone";
-    if(body)body.innerHTML='<div style="padding:20px"><div style="text-align:center;margin-bottom:20px"><div style="width:66px;height:66px;border-radius:18px;background:var(--ib);font-size:34px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px">📱</div><div style="font-size:17px;font-weight:600;color:var(--tx)">Tim\'s iPhone</div><div style="display:inline-flex;align-items:center;gap:5px;margin-top:4px"><span style="width:7px;height:7px;border-radius:50%;background:var(--gn);display:inline-block"></span><span style="font-size:13px;color:var(--t3)">線上中</span></div></div><div style="background:var(--w);border-radius:var(--r);padding:14px;margin-bottom:14px;box-shadow:var(--sh)"><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">IP 位址</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">192.168.1.102</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">MAC 位址</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">F8:4D:89:3A:22:1C</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">連線頻段</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">5 GHz</div></div><div style="display:flex;justify-content:space-between;padding:9px 0"><div style="font-size:13px;color:var(--t3)">連線節點</div><div style="font-size:13px;font-weight:500;color:var(--tx)">主路由器</div></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="height:46px;background:var(--obg);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--or);font-size:13px;font-weight:500;cursor:pointer">⏸ 暫停網路</div><div style="height:46px;background:var(--ib);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--is);font-size:13px;font-weight:500;cursor:pointer">⭐ 高優先權</div></div></div>';
+    if(body)body.innerHTML='<div style="padding:20px"><div style="text-align:center;margin-bottom:20px"><div style="width:66px;height:66px;border-radius:18px;background:var(--ib);font-size:34px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px">📱</div><div style="font-size:17px;font-weight:600;color:var(--tx)">Tim\'s iPhone</div><div style="display:inline-flex;align-items:center;gap:5px;margin-top:4px"><span style="width:7px;height:7px;border-radius:50%;background:var(--gn);display:inline-block"></span><span style="font-size:13px;color:var(--t3)">線上中</span></div></div><div style="background:var(--w);border-radius:var(--r);padding:14px;margin-bottom:14px;box-shadow:var(--sh)"><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">IP 位址</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">192.168.1.102</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">MAC 位址</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">F8:4D:89:3A:22:1C</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">連線頻段</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">5 GHz</div></div><div style="display:flex;justify-content:space-between;padding:9px 0"><div style="font-size:13px;color:var(--t3)">連線節點</div><div style="font-size:13px;font-weight:500;color:var(--tx)">主路由器</div></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="height:46px;background:var(--obg);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--or);font-size:13px;font-weight:500;cursor:pointer">暫停網路</div><div style="height:46px;background:var(--ib);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--is);font-size:13px;font-weight:500;cursor:pointer">⭐ 高優先權</div></div></div>';
   } else if(type==='appletv'){
     if(title)title.textContent='客廳 Apple TV';
-    if(body)body.innerHTML='<div style="padding:20px"><div style="text-align:center;margin-bottom:20px"><div style="width:66px;height:66px;border-radius:18px;background:var(--ib);font-size:34px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px">📺</div><div style="font-size:17px;font-weight:600;color:var(--tx)">客廳 Apple TV</div><div style="display:inline-flex;align-items:center;gap:5px;margin-top:4px"><span style="width:7px;height:7px;border-radius:50%;background:var(--gn);display:inline-block"></span><span style="font-size:13px;color:var(--t3)">線上中</span></div></div><div style="background:var(--w);border-radius:var(--r);padding:14px;margin-bottom:14px;box-shadow:var(--sh)"><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">IP 位址</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">192.168.1.110</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">連線方式</div><div style="font-size:13px;font-weight:500;color:var(--tx)">乙太網路</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">MAC 位址</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">DC:56:E7:44:AB:02</div></div><div style="display:flex;justify-content:space-between;padding:9px 0"><div style="font-size:13px;color:var(--t3)">連線節點</div><div style="font-size:13px;font-weight:500;color:var(--tx)">客廳節點</div></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="height:46px;background:var(--obg);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--or);font-size:13px;font-weight:500;cursor:pointer">⏸ 暫停網路</div><div style="height:46px;background:var(--ib);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--is);font-size:13px;font-weight:500;cursor:pointer">⭐ 高優先權</div></div></div>';
+    if(body)body.innerHTML='<div style="padding:20px"><div style="text-align:center;margin-bottom:20px"><div style="width:66px;height:66px;border-radius:18px;background:var(--ib);font-size:34px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px">📺</div><div style="font-size:17px;font-weight:600;color:var(--tx)">客廳 Apple TV</div><div style="display:inline-flex;align-items:center;gap:5px;margin-top:4px"><span style="width:7px;height:7px;border-radius:50%;background:var(--gn);display:inline-block"></span><span style="font-size:13px;color:var(--t3)">線上中</span></div></div><div style="background:var(--w);border-radius:var(--r);padding:14px;margin-bottom:14px;box-shadow:var(--sh)"><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">IP 位址</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">192.168.1.110</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">連線方式</div><div style="font-size:13px;font-weight:500;color:var(--tx)">乙太網路</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">MAC 位址</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">DC:56:E7:44:AB:02</div></div><div style="display:flex;justify-content:space-between;padding:9px 0"><div style="font-size:13px;color:var(--t3)">連線節點</div><div style="font-size:13px;font-weight:500;color:var(--tx)">客廳節點</div></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="height:46px;background:var(--obg);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--or);font-size:13px;font-weight:500;cursor:pointer">暫停網路</div><div style="height:46px;background:var(--ib);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--is);font-size:13px;font-weight:500;cursor:pointer">⭐ 高優先權</div></div></div>';
   } else if(type==='ipad'){
     if(title)title.textContent='舊 iPad';
     if(body)body.innerHTML='<div style="padding:20px"><div style="text-align:center;margin-bottom:20px"><div style="width:66px;height:66px;border-radius:18px;background:var(--s2);font-size:34px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;opacity:.6">📱</div><div style="font-size:17px;font-weight:600;color:var(--tx)">舊 iPad</div><div style="display:inline-flex;align-items:center;gap:5px;margin-top:4px"><span style="width:7px;height:7px;border-radius:50%;background:var(--t3);display:inline-block"></span><span style="font-size:13px;color:var(--t3)">離線中</span></div></div><div style="background:var(--w);border-radius:var(--r);padding:14px;margin-bottom:14px;box-shadow:var(--sh)"><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">最後 IP</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">192.168.1.115</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">MAC 位址</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">B8:78:2E:11:CC:44</div></div><div style="display:flex;justify-content:space-between;padding:9px 0"><div style="font-size:13px;color:var(--t3)">最後上線</div><div style="font-size:13px;font-weight:500;color:var(--tx)">2 小時前</div></div></div><div style="height:46px;background:var(--s2);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--t2);font-size:13px;font-weight:500;cursor:pointer">🗑 從清單移除</div></div>';
   } else {
     if(title)title.textContent="Tim's MacBook Pro";
-    if(body)body.innerHTML='<div style="padding:20px"><div style="text-align:center;margin-bottom:20px"><div style="width:66px;height:66px;border-radius:18px;background:var(--ib);font-size:34px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px">💻</div><div style="font-size:17px;font-weight:600;color:var(--tx)">Tim\'s MacBook Pro</div><div style="display:inline-flex;align-items:center;gap:5px;margin-top:4px"><span style="width:7px;height:7px;border-radius:50%;background:var(--gn);display:inline-block"></span><span style="font-size:13px;color:var(--t3)">線上中</span></div></div><div style="background:var(--w);border-radius:var(--r);padding:14px;margin-bottom:14px;box-shadow:var(--sh)"><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">IP 位址</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">192.168.1.101</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">MAC 位址</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">A4:CF:99:E2:11:08</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">連線頻段</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">5 GHz</div></div><div style="display:flex;justify-content:space-between;padding:9px 0"><div style="font-size:13px;color:var(--t3)">連線節點</div><div style="font-size:13px;font-weight:500;color:var(--tx)">客廳節點</div></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="height:46px;background:var(--obg);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--or);font-size:13px;font-weight:500;cursor:pointer">⏸ 暫停網路</div><div style="height:46px;background:var(--ib);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--is);font-size:13px;font-weight:500;cursor:pointer">⭐ 高優先權</div></div></div>';
+    if(body)body.innerHTML='<div style="padding:20px"><div style="text-align:center;margin-bottom:20px"><div style="width:66px;height:66px;border-radius:18px;background:var(--ib);font-size:34px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px">💻</div><div style="font-size:17px;font-weight:600;color:var(--tx)">Tim\'s MacBook Pro</div><div style="display:inline-flex;align-items:center;gap:5px;margin-top:4px"><span style="width:7px;height:7px;border-radius:50%;background:var(--gn);display:inline-block"></span><span style="font-size:13px;color:var(--t3)">線上中</span></div></div><div style="background:var(--w);border-radius:var(--r);padding:14px;margin-bottom:14px;box-shadow:var(--sh)"><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">IP 位址</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">192.168.1.101</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">MAC 位址</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">A4:CF:99:E2:11:08</div></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><div style="font-size:13px;color:var(--t3)">連線頻段</div><div style="font-size:13px;font-weight:500;color:var(--tx);font-family:var(--m)">5 GHz</div></div><div style="display:flex;justify-content:space-between;padding:9px 0"><div style="font-size:13px;color:var(--t3)">連線節點</div><div style="font-size:13px;font-weight:500;color:var(--tx)">客廳節點</div></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="height:46px;background:var(--obg);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--or);font-size:13px;font-weight:500;cursor:pointer">暫停網路</div><div style="height:46px;background:var(--ib);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--is);font-size:13px;font-weight:500;cursor:pointer">⭐ 高優先權</div></div></div>';
   }
 }
 function selAge(el){
@@ -2153,9 +2458,9 @@ function renderQAGrid() {
       if      (act==='wifi')     show('ov-wifi');
       else if (act==='guest')    show('ov-guest');
       else if (act==='diag')     show('sub-diag');
-      else if (act==='devs')     goTab('devices');
+      else if (act==='devs')     { goTab('devices'); var b=document.getElementById('devices-back-btn'); if(b)b.style.display='flex'; }
       else if (act==='family')   goTab('family');
-      else if (act==='add')      show('sub-wifi');
+      else if (act==='add')      { show('ov-plus'); }
       else if (act==='wifiset')  show('sub-main-wifi');
       else if (act==='passwords'){ show('sub-passwords'); }
       else if (act==='pause')    { buildPauseList(); show('sub-pause'); }
@@ -2373,9 +2678,18 @@ window.addEventListener('load',function(){
     el.addEventListener('click',function(){applyTheme(el.dataset.t==='dark'?'dark':'light');});
   });
   // family
-  bind('f-add',function(){show('ov-add');});
-  bind('f-mei',function(){show('ov-mei');});
-  bind('f-ming',function(){show('ov-ming');});
+  bind('fm-step1-back',function(){hide('sub-fm-step1');});
+  bind('fm-step2n-back',function(){hide('sub-fm-step2name');show('sub-fm-step1');});
+  bind('fm-step2-back',function(){hide('sub-fm-step2');show('sub-fm-step2name');});
+  bind('fm-step3-back',function(){hide('sub-fm-step3');show('sub-fm-step2');});
+  bind('fm-step4-back',function(){hide('sub-fm-step4');show('sub-fm-step3');});
+  bind('fm-devices-back',function(){hide('sub-fm-devices');});
+  bind('fm-detail-back',function(){hide('sub-fm-detail');});
+  bind('fm-time-back',function(){hide('sub-fm-time');});
+  bind('fm-filter-back',function(){hide('sub-fm-filter');});
+  bind('fm-blocked-back',function(){hide('sub-fm-blocked');});
+  bind('fm-detail-delete',function(){if(_fmActiveId){FM_MEMBERS=FM_MEMBERS.filter(function(m){return m.id!==_fmActiveId;});hide('sub-fm-detail');renderFamilyList();}});
+  renderFamilyList();
   function openSched(name){
     hide('ov-tim');hide('ov-ming');
     g('sched-title').textContent=name+'的排程';
@@ -2528,7 +2842,7 @@ window.addEventListener('load',function(){
   bind('pause-back',function(){hide('sub-pause');});
   bind('scan-back',function(){hide('sub-scan');});
   bind('mesh-opt-back',function(){hide('sub-mesh-opt');});
-  bind('sched-home-back',function(){hide('sub-sched-home');});
+  bind('change-pwd-back',function(){hide('sub-change-pwd');});
   bind('wifi-sched-back',function(){hide('sub-wifi-sched');});
   bind('dev-sched-back',function(){hide('sub-dev-sched');});
   // init wifi sched grid when page shows
@@ -2708,6 +3022,543 @@ function selectSchedDev(el,name){
   var days=document.getElementById('dev-sched-days');
   if(days){days.style.display='block';buildSchedDays('dev-sched-days',_devSched);}
 }
+  var days=document.getElementById('dev-sched-days');
+  if(days){days.style.display='block';buildSchedDays('dev-sched-days',_devSched);}
+// ── Family Management ──
+var FM_AGE_INFO={
+  preschooler:{emoji:'👶',label:'幼兒',sublabel:'0–6 歲',filter:'preschooler',bgCard:'linear-gradient(135deg,#6AAAF0,#4D95EA)',bgAvatar:'#3D86D8'},
+  school:{emoji:'🧒',label:'學童',sublabel:'6–13 歲',filter:'school',bgCard:'linear-gradient(135deg,#5A9EEC,#3D87E0)',bgAvatar:'#3078CC'},
+  teen:{emoji:'🧑',label:'青少年',sublabel:'13–18 歲',filter:'teen',bgCard:'linear-gradient(135deg,#4A90E2,#2E76D0)',bgAvatar:'#2568BE'},
+  adult:{emoji:'🧔',label:'成人',sublabel:'18 歲以上',filter:'adult',bgCard:'linear-gradient(135deg,#3B87E0,#2060BE)',bgAvatar:'#1A52A8'},
+};
+var FM_FILTER_CATS={
+  preschooler:['Adult','Gambling','Illegal and Violence','Manga','Dating','Game','Cloud Game','Live','Streaming','Shopping','Social Media','News'],
+  school:     ['Adult','Gambling','Illegal and Violence','Manga','Dating'],
+  teen:       ['Adult','Gambling','Illegal and Violence'],
+  adult:      [],
+};
+var FM_MEMBERS=[
+  {id:1,name:'Tommy',ageType:'school',devices:['iPhone','iPad'],limitMin:300,usedMin:165,paused:false,rewardMin:0,schedule:{days:['Mon','Tue','Wed','Thu','Fri'],start:'22:00',end:'06:00',allDay:false},filterCats:FM_FILTER_CATS.school.slice(),blocked:['tiktok.com','facebook.com']},
+  {id:2,name:'Dad',  ageType:'adult', devices:['MacBook Pro'],limitMin:0,  usedMin:90, paused:true,  rewardMin:0,schedule:{days:[],start:'22:00',end:'06:00',allDay:false},filterCats:[],blocked:[]},
+];
+var _fmNew={ageType:'adult',name:'',schedule:{days:[],start:'22:00',end:'06:00',allDay:false},filterCats:[]};
+var _fmActiveId=null;
+var _rewardSelected=null;
+var _fmSelDevs={};
+
+function fmMinsToStr(m){if(!m)return '0 min';var h=Math.floor(m/60),mn=m%60;return h?(mn?h+'h '+mn+'m':h+' hr'):(mn+'m');}
+
+function fmAgeInfo(type){return FM_AGE_INFO[type]||FM_AGE_INFO.adult;}
+
+// ── Step 1: Select age type ──
+function fmSelectAge(type){
+  _fmNew=Object.assign({},_fmNew,{ageType:type,filterCats:FM_FILTER_CATS[type].slice()});
+  var info=fmAgeInfo(type);
+  // update step2 name page
+  var av=document.getElementById('fm-step2n-avatar');if(av){av.textContent=info.emoji;av.style.background=info.bgAvatar||'#4878A8';}
+  var t2=document.getElementById('fm-step2n-title');if(t2)t2.textContent=info.label;
+  var inp=document.getElementById('fm-name-input');if(inp){inp.value='';inp.style.borderBottom='1.5px solid var(--bd)';}
+  var btn=document.getElementById('fm-step2n-next-btn');if(btn){btn.style.background='var(--s2)';btn.style.color='var(--t3)';}
+  show('sub-fm-step2name');
+}
+function fmNameInputChanged(inp){
+  var hasVal=inp.value.trim().length>0;
+  var btn=document.getElementById('fm-step2n-next-btn');
+  if(btn){btn.style.background=hasVal?'var(--ac)':'var(--s2)';btn.style.color=hasVal?'#fff':'var(--t3)';}
+  var clear=document.getElementById('fm-name-clear');
+  if(clear)clear.style.display=hasVal?'flex':'none';
+}
+function fmStep2nNext(){
+  var inp=document.getElementById('fm-name-input');var name=inp?inp.value.trim():'';
+  if(!name){if(inp){inp.style.borderBottom='1.5px solid var(--rd)';}return;}
+  _fmNew.name=name;
+  _fmSelDevs={};
+  renderFmDevList();
+  show('sub-fm-step2');
+}
+
+// ── Device list for step2 ──
+var FM_DEVICES=[
+  {id:'MacBook Pro',name:"小明的 MacBook Pro",band:'5GHz',icon:'laptop'},
+  {id:'iPhone 15',name:"小明的 iPhone 15",band:'5GHz',icon:'phone'},
+  {id:'Apple TV',name:'客廳 Apple TV',band:'有線',icon:'tv'},
+  {id:'iPad',name:'舊 iPad',band:'2.4GHz',icon:'phone'},
+  {id:'iPhone 16 Pro Max',name:'iPhone 16 Pro Max',band:'5GHz',icon:'phone'},
+  {id:'Nintendo Switch',name:'Nintendo Switch',band:'2.4GHz',icon:'game'},
+  {id:'小美的 iPad',name:'小美的 iPad mini',band:'2.4GHz',icon:'phone'},
+  {id:'書房電腦',name:'書房桌機',band:'有線',icon:'laptop'},
+  {id:'Samsung TV',name:'主臥 Samsung TV',band:'2.4GHz',icon:'tv'},
+  {id:'小孩平板',name:"孩子的學習平板",band:'2.4GHz',icon:'phone'},
+];
+function fmDevIcon(type){
+  if(type==='laptop')return '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M0 21h24"/></svg>';
+  if(type==='tv')return '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>';
+  if(type==='game')return '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="6" width="20" height="12" rx="4"/><line x1="8" y1="12" x2="12" y2="12"/><line x1="10" y1="10" x2="10" y2="14"/><circle cx="16" cy="11" r=".5" fill="var(--is)"/><circle cx="18" cy="13" r=".5" fill="var(--is)"/></svg>';
+  return '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg>';
+}
+function renderFmDevList(){
+  var el=document.getElementById('fm-dev-list');if(!el)return;
+  el.innerHTML=FM_DEVICES.map(function(d,i){
+    var sel=!!_fmSelDevs[d.id];
+    var border=i<FM_DEVICES.length-1?'border-bottom:1px solid var(--bd)':'';
+    return '<div onclick="toggleFmDev(this,\''+d.id+'\')" class="fm-dev-row" style="display:flex;align-items:center;gap:12px;padding:13px 16px;'+border+';cursor:pointer">'+
+      '<div style="width:36px;height:36px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0">'+fmDevIcon(d.icon)+'</div>'+
+      '<div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">'+d.name+'</div><div style="font-size:12px;color:var(--t3)">'+d.band+'</div></div>'+
+      '<div class="fm-dev-check" style="width:22px;height:22px;border-radius:50%;border:2px solid '+(sel?'var(--ac)':'var(--bd2)')+';background:'+(sel?'var(--ac)':'transparent')+';flex-shrink:0;display:flex;align-items:center;justify-content:center">'+(sel?'<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>':'')+'</div>'+
+    '</div>';
+  }).join('');
+}
+function toggleFmDev(row,id){
+  _fmSelDevs[id]=!_fmSelDevs[id];
+  var check=row.querySelector('.fm-dev-check');
+  if(check){
+    var sel=_fmSelDevs[id];
+    check.style.background=sel?'var(--ac)':'transparent';
+    check.style.borderColor=sel?'var(--ac)':'var(--bd2)';
+    check.innerHTML=sel?'<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>':'';
+  }
+  // update Next button state
+  var anySelected=Object.keys(_fmSelDevs).some(function(k){return _fmSelDevs[k];});
+  var btn=document.getElementById('fm-step2-next-btn');
+  if(btn){
+    btn.style.background=anySelected?'var(--ac)':'var(--s2)';
+    btn.style.color=anySelected?'#fff':'var(--t3)';
+  }
+}
+function fmStep2Next(){
+  _fmNew.devices=Object.keys(_fmSelDevs).filter(function(k){return _fmSelDevs[k];});
+  // update step3 labels
+  var info=fmAgeInfo(_fmNew.ageType);
+  var av3=document.getElementById('fm-step3-av');if(av3)av3.textContent=info.emoji;
+  var n3=document.getElementById('fm-step3-name');if(n3)n3.textContent=_fmNew.name;
+  var l3=document.getElementById('fm-step3-label');if(l3)l3.textContent=info.sublabel;
+  // reset days to today
+  var days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var today=days[new Date().getDay()];
+  _fmNew.schedule={days:[today],start:'22:00',end:'06:00',allDay:false};
+  document.querySelectorAll('.fm-day-btn').forEach(function(b){
+    var d=b.getAttribute('data-day');var active=d===today;
+    b.style.background=active?'var(--or)':'var(--s2)';
+    var divs=b.querySelectorAll('div');
+    if(divs[0]){divs[0].style.color=active?'rgba(255,255,255,.75)':'var(--t3)';}
+    if(divs[1]){divs[1].style.color=active?'#fff':'var(--t2)';divs[1].style.fontWeight=active?'700':'500';}
+    b.classList.toggle('on',active);
+  });
+  var sl=document.getElementById('fm-start-time-lbl');if(sl)sl.textContent='22:00';
+  var el2=document.getElementById('fm-end-time-lbl');if(el2)el2.textContent='06:00';
+  var ac=document.getElementById('fm-allday-check');if(ac){ac.classList.remove('on');}
+  show('sub-fm-step3');
+}
+
+// ── Step3: Time schedule ──
+function fmToggleDay(el,day){
+  var idx=_fmNew.schedule.days.indexOf(day);
+  var on;
+  if(idx>=0){_fmNew.schedule.days.splice(idx,1);on=false;}
+  else{_fmNew.schedule.days.push(day);on=true;}
+  el.style.background=on?'var(--or)':'var(--s2)';
+  var divs=el.querySelectorAll('div');
+  if(divs[0]){divs[0].style.color=on?'rgba(255,255,255,.75)':'var(--t3)';}
+  if(divs[1]){divs[1].style.color=on?'#fff':'var(--t2)';divs[1].style.fontWeight=on?'700':'500';}
+}
+var _fmTpWhich='start';
+var _fmTpH=22,_fmTpM=0;
+var _fmTpMemberId=null;
+function fmOpenTimePicker(which,memberId){
+  _fmTpWhich=which;_fmTpMemberId=memberId||null;
+  var cur;
+  if(memberId){var m=fmGetMember(memberId);cur=which==='start'?(m&&m.schedule?m.schedule.start:'22:00'):(m&&m.schedule?m.schedule.end:'06:00');}
+  else{cur=which==='start'?_fmNew.schedule.start:_fmNew.schedule.end;}
+  var parts=(cur||'22:00').split(':');
+  _fmTpH=parseInt(parts[0])||0;_fmTpM=parseInt(parts[1])||0;
+  var title=document.getElementById('ov-tp-title');
+  if(title)title.textContent=(which==='start'?'開始時間':'結束時間');
+  fmTpBuild();
+  var tp=document.getElementById('ov-time-picker');
+  if(tp){tp.style.display='flex';tp.classList.add('on');}
+}
+function fmHideTimePicker(){
+  var tp=document.getElementById('ov-time-picker');
+  if(tp){tp.classList.remove('on');tp.style.display='';}
+}
+function fmTpBuild(){
+  var hEl=document.getElementById('ov-tp-hours');
+  var mEl=document.getElementById('ov-tp-mins');
+  if(!hEl||!mEl)return;
+  // Hours 0-23
+  var hHtml='<div style="height:88px;flex-shrink:0"></div>';
+  for(var h=0;h<24;h++){
+    hHtml+='<div class="tp-item'+(h===_fmTpH?' sel':'')+'" onclick="fmTpTapH('+h+')">'+( h<10?'0':'')+h+'</div>';
+  }
+  hHtml+='<div style="height:88px;flex-shrink:0"></div>';
+  hEl.innerHTML=hHtml;
+  // Minutes 0,5,10...55
+  var mHtml='<div style="height:88px;flex-shrink:0"></div>';
+  var mRounded=Math.round(_fmTpM/5)*5;if(mRounded>=60)mRounded=55;
+  for(var mi=0;mi<60;mi+=5){
+    mHtml+='<div class="tp-item'+(mi===mRounded?' sel':'')+'" onclick="fmTpTapM('+mi+')">'+( mi<10?'0':'')+mi+'</div>';
+  }
+  mHtml+='<div style="height:88px;flex-shrink:0"></div>';
+  mEl.innerHTML=mHtml;
+  // Scroll to position
+  setTimeout(function(){
+    hEl.scrollTop=_fmTpH*44;
+    var mIdx=Math.round(_fmTpM/5);mEl.scrollTop=mIdx*44;
+    fmTpUpdatePreview();
+  },30);
+}
+function fmTpTapH(h){
+  _fmTpH=h;
+  var hEl=document.getElementById('ov-tp-hours');
+  if(hEl)hEl.scrollTo({top:h*44,behavior:'smooth'});
+  fmTpHighlight(hEl,h);
+  fmTpUpdatePreview();
+}
+function fmTpTapM(m){
+  _fmTpM=m;
+  var mEl=document.getElementById('ov-tp-mins');
+  var idx=m/5;
+  if(mEl)mEl.scrollTo({top:idx*44,behavior:'smooth'});
+  fmTpHighlight(mEl,idx);
+  fmTpUpdatePreview();
+}
+function fmTpHighlight(container,idx){
+  if(!container)return;
+  var items=container.querySelectorAll('.tp-item');
+  items.forEach(function(it,i){it.classList.toggle('sel',i===idx);});
+}
+function fmTpSyncH(el){
+  var idx=Math.round(el.scrollTop/44);
+  if(idx<0)idx=0;if(idx>23)idx=23;
+  if(idx!==_fmTpH){_fmTpH=idx;fmTpHighlight(el,idx);fmTpUpdatePreview();}
+}
+function fmTpSyncM(el){
+  var idx=Math.round(el.scrollTop/44);
+  if(idx<0)idx=0;if(idx>11)idx=11;
+  var m=idx*5;
+  if(m!==_fmTpM){_fmTpM=m;fmTpHighlight(el,idx);fmTpUpdatePreview();}
+}
+function fmTpUpdatePreview(){
+  var p=document.getElementById('ov-tp-preview');
+  if(p)p.textContent=(_fmTpH<10?'0':'')+_fmTpH+':'+(_fmTpM<10?'0':'')+_fmTpM;
+}
+function fmConfirmTimePicker(){
+  var val=(_fmTpH<10?'0':'')+_fmTpH+':'+(_fmTpM<10?'0':'')+_fmTpM;
+  if(_fmTpMemberId){
+    var m=fmGetMember(_fmTpMemberId);
+    if(m){if(_fmTpWhich==='start')m.schedule.start=val;else m.schedule.end=val;}
+    var lbl=document.getElementById(_fmTpWhich==='start'?'fm-dt-start':'fm-dt-end');
+    if(lbl)lbl.textContent=val;
+  } else {
+    if(_fmTpWhich==='start'){_fmNew.schedule.start=val;var sl=document.getElementById('fm-start-time-lbl');if(sl)sl.textContent=val;}
+    else{_fmNew.schedule.end=val;var el2=document.getElementById('fm-end-time-lbl');if(el2)el2.textContent=val;}
+  }
+  fmHideTimePicker();
+}
+// ── Inline time picker (step3 page) ──
+var _fmIL={start:{h:22,m:0},end:{h:6,m:0}};
+function fmILBuildDrum(which){
+  var hEl=document.getElementById('fm-ih-'+which);
+  var mEl=document.getElementById('fm-im-'+which);
+  if(!hEl||!mEl)return;
+  var curH=_fmIL[which].h,curM=_fmIL[which].m;
+  var mRounded=Math.round(curM/5)*5;if(mRounded>=60)mRounded=55;
+  var hHtml='<div style="height:66px;flex-shrink:0"></div>';
+  for(var h=0;h<24;h++){var sel=h===curH;
+    hHtml+='<div style="height:44px;display:flex;align-items:center;justify-content:center;font-size:'+(sel?'24px':'18px')+';font-weight:'+(sel?'700':'400')+';color:'+(sel?'var(--tx)':'var(--t3)')+';scroll-snap-align:center;flex-shrink:0">'+(h<10?'0':'')+h+'</div>';
+  }
+  hHtml+='<div style="height:66px;flex-shrink:0"></div>';
+  hEl.innerHTML=hHtml;
+  var mHtml='<div style="height:66px;flex-shrink:0"></div>';
+  for(var mi=0;mi<60;mi+=5){var sel2=mi===mRounded;
+    mHtml+='<div style="height:44px;display:flex;align-items:center;justify-content:center;font-size:'+(sel2?'24px':'18px')+';font-weight:'+(sel2?'700':'400')+';color:'+(sel2?'var(--tx)':'var(--t3)')+';scroll-snap-align:center;flex-shrink:0">'+(mi<10?'0':'')+mi+'</div>';
+  }
+  mHtml+='<div style="height:66px;flex-shrink:0"></div>';
+  mEl.innerHTML=mHtml;
+  setTimeout(function(){hEl.scrollTop=curH*44;mEl.scrollTop=Math.round(mRounded/5)*44;},30);
+}
+function fmInlineTimeTap(which){
+  var el=document.getElementById('fm-inline-'+which);
+  var other=document.getElementById('fm-inline-'+(which==='start'?'end':'start'));
+  if(!el)return;
+  var isOpen=el.style.display!=='none';
+  if(other)other.style.display='none';
+  if(isOpen){el.style.display='none';return;}
+  var lbl=document.getElementById('fm-'+which+'-time-lbl');
+  var cur=(lbl?lbl.textContent:'22:00').split(':');
+  _fmIL[which]={h:parseInt(cur[0])||0,m:parseInt(cur[1])||0};
+  el.style.display='block';
+  fmILBuildDrum(which);
+}
+function fmILSync(which,type,el){
+  var idx=Math.round(el.scrollTop/44);
+  var changed=false;
+  if(type==='h'){idx=Math.max(0,Math.min(23,idx));if(_fmIL[which].h!==idx){_fmIL[which].h=idx;changed=true;}}
+  else{idx=Math.max(0,Math.min(11,idx));var m=idx*5;if(_fmIL[which].m!==m){_fmIL[which].m=m;changed=true;}}
+  if(!changed)return;
+  var col=document.getElementById(type==='h'?'fm-ih-'+which:'fm-im-'+which);
+  if(col){var items=col.querySelectorAll('[style*="scroll-snap-align"]');var selIdx=type==='h'?_fmIL[which].h:Math.round(_fmIL[which].m/5);
+    items.forEach(function(it,i){it.style.fontSize=i===selIdx?'24px':'18px';it.style.fontWeight=i===selIdx?'700':'400';it.style.color=i===selIdx?'var(--tx)':'var(--t3)';});
+  }
+  var h=_fmIL[which].h,m2=_fmIL[which].m;
+  var val=(h<10?'0':'')+h+':'+(m2<10?'0':'')+m2;
+  var lbl=document.getElementById('fm-'+which+'-time-lbl');if(lbl)lbl.textContent=val;
+  if(which==='start')_fmNew.schedule.start=val;else _fmNew.schedule.end=val;
+}
+function fmToggleAllDay(el){
+  _fmNew.schedule.allDay=!_fmNew.schedule.allDay;
+  el.classList.toggle('on',_fmNew.schedule.allDay);
+}
+function fmStep3Next(){
+  // go to step4 content block
+  var info=fmAgeInfo(_fmNew.ageType);
+  var av4=document.getElementById('fm-step4-av');if(av4)av4.textContent=info.emoji;
+  var n4=document.getElementById('fm-step4-name');if(n4)n4.textContent=_fmNew.name;
+  var l4=document.getElementById('fm-step4-label');if(l4)l4.textContent=info.sublabel;
+  renderFmStep4Cats();
+  show('sub-fm-step4');
+}
+function fmStep3Skip(){fmStep3Next();}
+
+// ── Step4: Content block cats ──
+var FM_ALL_CATS=['Adult','Gambling','Illegal and Violence','Manga','Dating','Game','Cloud Game','Live','Streaming','Shopping','Social Media','News','P2P / Torrenting'];
+function renderFmStep4Cats(){
+  var el=document.getElementById('fm-step4-cats');if(!el)return;
+  el.innerHTML=FM_ALL_CATS.map(function(c,i){
+    var on=_fmNew.filterCats.indexOf(c)>=0;
+    var border=i<FM_ALL_CATS.length-1?'border-bottom:1px solid var(--bd)':'';
+    return '<div style="display:flex;align-items:center;padding:13px 16px;'+border+';cursor:pointer" onclick="fmToggleNewCat(\''+c+'\',this)">'+
+      '<div style="width:20px;height:20px;border-radius:50%;border:2px solid '+(on?'var(--ac)':'var(--bd2)')+';background:'+(on?'var(--ac)':'transparent')+';display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:14px">'+(on?'<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>':'')+'</div>'+
+      '<div style="font-size:17px;color:var(--tx)">'+c+'</div>'+
+    '</div>';
+  }).join('');
+}
+function fmToggleNewCat(cat,row){
+  var idx=_fmNew.filterCats.indexOf(cat);
+  if(idx>=0)_fmNew.filterCats.splice(idx,1);else _fmNew.filterCats.push(cat);
+  var on=_fmNew.filterCats.indexOf(cat)>=0;
+  var dot=row.querySelector('div');
+  if(dot){dot.style.background=on?'var(--ac)':'transparent';dot.style.borderColor=on?'var(--ac)':'var(--bd2)';dot.innerHTML=on?'<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>':'';}
+}
+// ── Create Member ──
+function fmCreateMember(){
+  var devs=Object.keys(_fmSelDevs).filter(function(k){return _fmSelDevs[k];});
+  var newId=Date.now();
+  FM_MEMBERS.push({
+    id:newId,name:_fmNew.name,ageType:_fmNew.ageType,
+    devices:devs,limitMin:0,usedMin:0,paused:false,rewardMin:0,
+    schedule:Object.assign({},_fmNew.schedule),
+    filterCats:_fmNew.filterCats.slice(),blocked:[]
+  });
+  hide('sub-fm-step1');hide('sub-fm-step2name');hide('sub-fm-step2');hide('sub-fm-step3');hide('sub-fm-step4');
+  var inp=document.getElementById('fm-name-input');if(inp)inp.value='';
+  renderFamilyList();
+}
+function fmStep2Skip(){fmCreateMember();}
+function fmStep2Done(){fmCreateMember();}
+
+// ── Render family list ──
+function renderFamilyList(){
+  var el=document.getElementById('family-list-body');if(!el)return;
+  if(!FM_MEMBERS.length){
+    el.innerHTML='<div style="display:flex;flex-direction:column;align-items:center;padding:60px 24px;text-align:center">'+
+      '<div style="width:64px;height:64px;border-radius:20px;background:var(--ib);display:flex;align-items:center;justify-content:center;margin-bottom:20px"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.6" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>'+
+      '<div style="font-size:18px;font-weight:700;color:var(--tx);margin-bottom:8px">尚未建立家庭成員</div>'+
+      '<div style="font-size:14px;color:var(--t3);line-height:1.7;margin-bottom:28px">新增成員後，可依年齡設定上網時間、<br>內容過濾與禁用時段，守護全家人的網路安全。</div>'+
+      '<div onclick="show(\'sub-fm-step1\')" style="height:50px;padding:0 32px;border-radius:25px;background:var(--ac);display:inline-flex;align-items:center;font-size:16px;font-weight:600;color:#fff;cursor:pointer">新增家庭成員</div></div>';
+    return;
+  }
+  el.innerHTML=FM_MEMBERS.map(function(m){
+    var info=fmAgeInfo(m.ageType);
+    var isBlocked=m.paused;
+    var bg=isBlocked?'linear-gradient(135deg,#D4939B,#BC7080)':info.bgCard;
+    var schedLabel=m.schedule&&m.schedule.days&&m.schedule.days.length?m.schedule.start+' – '+m.schedule.end:'未設定';
+    var filterLabel=m.filterCats&&m.filterCats.length?(m.filterCats[0]+(m.filterCats.length>1?' +'+( m.filterCats.length-1):'')):'未啟用';
+    return '<div onclick="fmOpenDetail('+m.id+')" style="background:'+bg+';border-radius:20px;margin:12px 20px 0;padding:14px 16px 12px;cursor:pointer;position:relative">'+
+      '<div onclick="event.stopPropagation();fmDeleteMember('+m.id+')" style="position:absolute;top:12px;right:14px;opacity:.55;padding:4px">'+
+        '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>'+
+      '</div>'+
+      (isBlocked?'':'')+'<div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">'+
+        '<div style="width:52px;height:52px;border-radius:50%;background:rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0">'+info.emoji+'</div>'+
+        '<div style="flex:1;min-width:0">'+
+          '<div style="font-size:12px;color:rgba(255,255,255,.7);margin-bottom:1px">裝置 '+m.devices.length+' 台</div>'+
+          '<div style="font-size:13px;color:rgba(255,255,255,.85)">上網時段</div>'+
+          '<div style="font-size:15px;font-weight:700;color:#fff">'+schedLabel+'</div>'+
+          '<div style="font-size:13px;color:rgba(255,255,255,.85);margin-top:2px">內容過濾</div>'+
+          '<div style="display:flex;align-items:center;gap:8px;width:100%">'+
+            '<div style="font-size:15px;font-weight:600;color:#fff">'+info.label+'</div>'+
+            (isBlocked?'<div style="font-size:11px;color:rgba(255,255,255,.85);background:rgba(0,0,0,.18);border-radius:8px;padding:2px 8px;margin-left:auto;flex-shrink:0">所有裝置已暫停</div>':'')+
+          '</div>'+
+        '</div>'+
+      '</div>'+
+      '<div style="display:flex;gap:0;border-top:1px solid rgba(255,255,255,.3);padding-top:10px">'+
+        '<div onclick="event.stopPropagation();'+(isBlocked?'fmResume('+m.id+')':'fmPause('+m.id+')')+'\" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer">'+
+          '<div style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;background:'+(isBlocked?'rgba(80,0,20,.2)':'transparent')+'">'+
+            '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>'+
+          '</div>'+
+          '<div style="font-size:11px;color:rgba(255,255,255,.85)">'+(isBlocked?'解除暫停':'暫停網路')+'</div>'+
+        '</div>'+
+        '<div style="width:1px;background:rgba(255,255,255,.25)"></div>'+
+        '<div onclick="event.stopPropagation();fmOpenReward('+m.id+')" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer">'+
+          '<div style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center">'+
+            '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>'+
+          '</div>'+
+          '<div style="font-size:11px;color:rgba(255,255,255,.85)">獎勵延長</div>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  }).join('')+'<div style="height:24px"></div>';
+}
+function fmDeleteMember(id){FM_MEMBERS=FM_MEMBERS.filter(function(m){return m.id!==id;});renderFamilyList();}
+function fmOpenDeviceEdit(id){
+  _fmActiveId=id;
+  var m=fmGetMember(id);if(!m)return;
+  // pre-populate _fmSelDevs from member's devices
+  _fmSelDevs={};
+  m.devices.forEach(function(d){_fmSelDevs[d]=true;});
+  var el=document.getElementById('fm-devices-list');
+  if(el){
+    el.innerHTML=FM_DEVICES.map(function(d,i){
+      var sel=!!_fmSelDevs[d.id];
+      var border=i<FM_DEVICES.length-1?'border-bottom:1px solid var(--bd)':'';
+      return '<div onclick="toggleFmDev(this,\''+d.id+'\')" class="fm-dev-row" style="display:flex;align-items:center;gap:12px;padding:13px 16px;'+border+';cursor:pointer">'+
+        '<div style="width:36px;height:36px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0">'+fmDevIcon(d.icon)+'</div>'+
+        '<div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">'+d.name+'</div><div style="font-size:12px;color:var(--t3)">'+d.band+'</div></div>'+
+        '<div class="fm-dev-check" style="width:22px;height:22px;border-radius:50%;border:2px solid '+(sel?'var(--ac)':'var(--bd2)')+';background:'+(sel?'var(--ac)':'transparent')+';flex-shrink:0;display:flex;align-items:center;justify-content:center">'+(sel?'<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>':'')+'</div>'+
+      '</div>';
+    }).join('');
+  }
+  show('sub-fm-devices');
+}
+function fmSaveDevices(){
+  var m=fmGetMember(_fmActiveId);
+  if(m){m.devices=Object.keys(_fmSelDevs).filter(function(k){return _fmSelDevs[k];});}
+  hide('sub-fm-devices');
+  if(m)renderFmDetail(m);
+  renderFamilyList();
+}
+function fmGetMember(id){return FM_MEMBERS.find(function(m){return m.id===id;});}
+function fmOpenDetail(id){_fmActiveId=id;var m=fmGetMember(id);if(!m)return;document.getElementById('fm-detail-title').textContent=m.name;renderFmDetail(m);show('sub-fm-detail');}
+function renderFmDetail(m){
+  var el=document.getElementById('fm-detail-body');if(!el)return;
+  var info=fmAgeInfo(m.ageType);
+  var schedLabel=m.schedule&&m.schedule.days&&m.schedule.days.length?(m.schedule.days.join(', ')+' · '+m.schedule.start+'-'+m.schedule.end):'Not Set';
+  var filterLabel=m.filterCats&&m.filterCats.length?m.filterCats.length+' categories':'None';
+  el.innerHTML='<div style="display:flex;flex-direction:column;align-items:center;padding:24px 16px 16px">'+
+    '<div style="width:80px;height:80px;border-radius:50%;background:'+(info.bgAvatar||'#3A87C8')+';display:flex;align-items:center;justify-content:center;font-size:40px;margin-bottom:12px">'+info.emoji+'</div>'+
+    '<div style="font-size:22px;font-weight:700;color:var(--tx);margin-bottom:3px">'+m.name+'</div>'+
+    '<div style="font-size:14px;color:var(--t3)">'+info.label+'・'+info.sublabel+'</div>'+
+  '</div>'+
+  '<div style="background:var(--w)">'+
+    '<div class="sr" onclick="fmOpenDeviceEdit('+m.id+')" style="cursor:pointer"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">綁定裝置</div></div><span style="font-size:14px;color:var(--t2);margin-right:8px">'+m.devices.length+' 台</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>'+
+    '<div class="sr" onclick="show(\'sub-fm-time\');renderFmTime(fmGetMember('+m.id+'))" style="cursor:pointer"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">上網時段管理</div></div><span style="font-size:14px;color:var(--t2);margin-right:8px">'+schedLabel+'</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>'+
+    '<div class="sr" onclick="show(\'sub-fm-filter\');renderFmFilter(fmGetMember('+m.id+'))" style="cursor:pointer"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">內容過濾</div></div><span style="font-size:14px;color:var(--t2);margin-right:8px">'+filterLabel+'</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>'+
+    '<div class="sr" onclick="show(\'sub-fm-blocked\');renderFmBlocked(fmGetMember('+m.id+'))" style="cursor:pointer;border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">封鎖網站</div></div><span style="font-size:14px;color:var(--t2);margin-right:8px">'+m.blocked.length+' 個</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>'+
+  '</div>'+
+  '<div style="background:var(--w);padding:14px 16px;display:flex;gap:10px;margin-top:10px">'+
+    '<div onclick="fmOpenReward('+m.id+')" style="flex:1;height:44px;border-radius:22px;background:var(--gbg);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:var(--gn);cursor:pointer">獎勵延長時間</div>'+
+    '<div onclick="fmTogglePause('+m.id+')" style="flex:1;height:44px;border-radius:22px;background:'+(m.paused?'var(--gbg)':'var(--s3)')+';display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:'+(m.paused?'var(--gn)':'var(--t2)')+';cursor:pointer">'+(m.paused?'解除暫停':'暫停網路')+'</div>'+
+  '</div>';
+}
+function renderFmTime(m){
+  var el=document.getElementById('fm-time-body');if(!el)return;
+  var sched=m.schedule||{days:[],start:'22:00',end:'06:00',allDay:false};
+  var allDays=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var dayLabels={'Sun':'日','Mon':'一','Tue':'二','Wed':'三','Thu':'四','Fri':'五','Sat':'六'};
+  el.innerHTML=
+    '<div style="padding:16px 16px 0">'+
+    // Day picker card
+    '<div style="background:var(--w);border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:var(--sh)">'+
+      '<div style="font-size:13px;font-weight:600;color:var(--t3);margin-bottom:12px">禁用日期</div>'+
+      '<div style="display:flex;justify-content:space-between;gap:4px">'+
+      allDays.map(function(d){var on=sched.days.indexOf(d)>=0;return '<div onclick="fmDetailToggleDay(this,\''+d+'\','+m.id+')" data-day="'+d+'" style="flex:1;height:44px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;background:'+(on?'var(--or)':'var(--s2)')+';gap:2px">'+
+        '<div style="font-size:11px;color:'+(on?'rgba(255,255,255,.75)':'var(--t3)')+'">'+d.slice(0,1)+'</div>'+
+        '<div style="font-size:14px;font-weight:'+(on?'700':'500')+';color:'+(on?'#fff':'var(--t2)')+'">'+dayLabels[d]+'</div>'+
+      '</div>';}).join('')+
+      '</div>'+
+    '</div>'+
+    // Time card
+    '<div style="background:var(--w);border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:var(--sh)">'+
+      '<div style="font-size:13px;font-weight:600;color:var(--t3);margin-bottom:14px">禁用時段</div>'+
+      '<div style="display:flex;align-items:center;gap:12px">'+
+        // Start time
+        '<div onclick="fmOpenTimePicker(\'start\','+m.id+')" style="flex:1;background:var(--bg);border-radius:12px;padding:12px 14px;cursor:pointer;text-align:center">'+
+          '<div style="font-size:12px;color:var(--t3);margin-bottom:4px">開始時間</div>'+
+          '<div style="font-size:28px;font-weight:700;color:var(--tx);font-family:var(--m);letter-spacing:1px" id="fm-dt-start">'+sched.start+'</div>'+
+        '</div>'+
+        '<div style="font-size:20px;color:var(--t3);font-weight:300;flex-shrink:0">→</div>'+
+        // End time
+        '<div onclick="fmOpenTimePicker(\'end\','+m.id+')" style="flex:1;background:var(--bg);border-radius:12px;padding:12px 14px;cursor:pointer;text-align:center">'+
+          '<div style="font-size:12px;color:var(--t3);margin-bottom:4px">結束時間</div>'+
+          '<div style="font-size:28px;font-weight:700;color:var(--tx);font-family:var(--m);letter-spacing:1px" id="fm-dt-end">'+sched.end+'</div>'+
+        '</div>'+
+      '</div>'+
+      '<div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between">'+
+        '<div>'+
+          '<div style="font-size:15px;font-weight:500;color:var(--tx)">全天禁用</div>'+
+          '<div style="font-size:12px;color:var(--t3);margin-top:2px">忽略時段設定，整天禁止上網</div>'+
+        '</div>'+
+        '<div id="fm-dt-allday" onclick="fmDetailToggleAllDay(this,'+m.id+')" class="tg'+(sched.allDay?' on':'')+'" style="cursor:pointer"></div>'+
+      '</div>'+
+    '</div>'+
+    // Info card
+    (sched.days.length?
+    '<div style="background:var(--ib);border-radius:14px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px">'+
+      '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16" stroke-width="2.5"/></svg>'+
+      '<div style="font-size:13px;color:var(--is);line-height:1.6">每週 '+sched.days.join('、')+' 的 '+sched.start+' 至 '+sched.end+'，所有綁定裝置將無法上網。</div>'+
+    '</div>'
+    :'<div style="background:var(--s2);border-radius:14px;padding:12px 14px;text-align:center;font-size:13px;color:var(--t3)">尚未設定禁用時段</div>')+
+    '</div>';
+}
+function fmDetailToggleDay(el,day,id){
+  var m=fmGetMember(id);if(!m)return;
+  var sched=m.schedule;if(!sched.days)sched.days=[];
+  var idx=sched.days.indexOf(day);
+  if(idx>=0){sched.days.splice(idx,1);el.style.background='var(--s2)';el.style.color='var(--t2)';el.style.fontWeight='500';}
+  else{sched.days.push(day);el.style.background='var(--or)';el.style.color='#fff';el.style.fontWeight='600';}
+}
+function fmDetailToggleAllDay(el,id){
+  var m=fmGetMember(id);if(!m)return;
+  m.schedule.allDay=!m.schedule.allDay;
+  el.classList.toggle('on',m.schedule.allDay);
+}
+function renderFmFilter(m){
+  var el=document.getElementById('fm-filter-body');if(!el)return;
+  var cats=m.filterCats||[];
+  el.innerHTML='<div style="padding:14px 20px;font-size:13px;color:var(--t2)">依類別封鎖不當內容，點擊即可開啟或關閉。</div>'+
+  '<div style="background:var(--w)">'+
+  FM_ALL_CATS.map(function(c,i){
+    var on=cats.indexOf(c)>=0;
+    var border=i<FM_ALL_CATS.length-1?'border-bottom:1px solid var(--bd)':'';
+    return '<div onclick="fmDetailToggleCat(\''+c+'\','+m.id+',this)" style="display:flex;align-items:center;padding:13px 16px;'+border+';cursor:pointer">'+
+      '<div style="width:20px;height:20px;border-radius:50%;border:2px solid '+(on?'var(--ac)':'var(--bd2)')+';background:'+(on?'var(--ac)':'transparent')+';display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:14px">'+(on?'<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>':'')+'</div>'+
+      '<div style="font-size:17px;color:var(--tx)">'+c+'</div>'+
+    '</div>';
+  }).join('')+'</div>';
+}
+function fmDetailToggleCat(cat,id,row){
+  var m=fmGetMember(id);if(!m)return;
+  if(!m.filterCats)m.filterCats=[];
+  var idx=m.filterCats.indexOf(cat);
+  if(idx>=0)m.filterCats.splice(idx,1);else m.filterCats.push(cat);
+  var on=m.filterCats.indexOf(cat)>=0;
+  var dot=row.querySelector('div');
+  if(dot){dot.style.background=on?'var(--ac)':'transparent';dot.style.borderColor=on?'var(--ac)':'var(--bd2)';dot.innerHTML=on?'<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>':'';}
+}
+function renderFmBlocked(m){
+  var el=document.getElementById('fm-blocked-body');if(!el)return;
+  el.innerHTML='<div style="padding:16px"><div style="height:44px;border:1.5px dashed var(--bd);border-radius:10px;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;color:var(--ac);font-size:15px;font-weight:600"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="4" x2="12" y2="20"/><line x1="4" y1="12" x2="20" y2="12"/></svg> 新增網站</div></div>'+
+  (m.blocked.length?'<div style="background:var(--w)">'+m.blocked.map(function(s){return '<div style="display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid var(--bd)"><div style="flex:1;font-size:17px;color:var(--tx)">'+s+'</div><div style="font-size:13px;color:var(--rd);cursor:pointer;padding:4px 8px">移除</div></div>';}).join('')+'</div>':'<div style="padding:24px;text-align:center;font-size:14px;color:var(--t3)">尚無封鎖網站</div>');
+}
+function setFmLimit(v){var m=fmGetMember(_fmActiveId);if(!m)return;m.limitMin=v<0?0:v;renderFmDetail(m);renderFamilyList();}
+function setFmFilter(v){var m=fmGetMember(_fmActiveId);if(!m)return;m.filterCats=FM_FILTER_CATS[v]?FM_FILTER_CATS[v].slice():[];renderFmFilter(m);}
+function fmPause(id){var m=fmGetMember(id);if(m){m.paused=true;renderFamilyList();}}
+function fmResume(id){var m=fmGetMember(id);if(m){m.paused=false;renderFamilyList();}}
+function fmUnlock(id){var m=fmGetMember(id);if(m){m.usedMin=0;m.rewardMin=0;renderFamilyList();}}
+function fmTogglePause(id){var m=fmGetMember(id);if(!m)return;m.paused=!m.paused;renderFmDetail(m);renderFamilyList();}
+function fmOpenReward(id){_fmActiveId=id;var m=fmGetMember(id);if(!m)return;document.querySelectorAll('.reward-opt').forEach(function(o){o.style.background='var(--s2)';o.style.borderColor='transparent';o.style.color='var(--tx)';o.style.fontWeight='500';});var nameEl=document.getElementById('ov-reward-name');if(nameEl)nameEl.textContent='為 '+m.name+' 增加今日上網時間';_rewardSelected=null;var cEl=document.getElementById('ov-reward-custom');if(cEl)cEl.style.display='none';show('ov-fm-reward');}
+function selectReward(el,val){document.querySelectorAll('.reward-opt').forEach(function(o){o.style.background='var(--s2)';o.style.borderColor='transparent';o.style.color='var(--tx)';o.style.fontWeight='500';});el.style.background='var(--ib)';el.style.borderColor='var(--ac)';el.style.color='var(--ac)';el.style.fontWeight='700';_rewardSelected=val;var c=document.getElementById('ov-reward-custom');if(c)c.style.display=(val==='custom'?'block':'none');}
+function confirmReward(){var m=fmGetMember(_fmActiveId);if(!m||!_rewardSelected)return;var mins=_rewardSelected==='custom'?parseInt(document.getElementById('ov-reward-custom-val').value||0):_rewardSelected;if(mins>0){m.rewardMin=(m.rewardMin||0)+mins;}hide('ov-fm-reward');renderFamilyList();if(document.getElementById('sub-fm-detail').classList.contains('on'))renderFmDetail(m);}
 var _guestOn=false;
 var _guestPwdVisible=false;
 var _GUEST_PWD='Asus@1234';
@@ -2717,17 +3568,20 @@ function toggleGuest(){
   var thumb=document.getElementById('tg-guest-thumb');
   var offMsg=document.getElementById('guest-off-msg');
   var content=document.getElementById('guest-content');
+  var statusEl=document.getElementById('guest-status-text');
   if(_guestOn){
     tg.style.background='var(--ac)';
     thumb.style.left='23px';
     offMsg.style.display='none';
     content.style.display='block';
+    if(statusEl){statusEl.textContent='已啟用';statusEl.style.color='var(--t3)';}
     drawGuestQR();
   } else {
     tg.style.background='var(--bd2)';
     thumb.style.left='3px';
     offMsg.style.display='block';
     content.style.display='none';
+    if(statusEl){statusEl.textContent='已停用';statusEl.style.color='var(--t3)';}
   }
 }
 function toggleGuestPwd(){
@@ -2897,12 +3751,6 @@ function applyTheme(t){
       </div>
       <div id="ai-send" onclick="sendAIMessage()" style="width:36px;height:36px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;box-shadow:0 2px 8px rgba(74,137,232,.35)">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
-      </div>
-    </div>
-    <div style="display:flex;align-items:center;justify-content:center;margin-top:7px">
-      <div onclick="var o=document.getElementById('ov-chat-settings');var b=document.getElementById('ai-input-bar');o.style.display='flex';if(b)b.style.visibility='hidden'" style="display:flex;align-items:center;gap:4px;cursor:pointer">
-        <span style="font-size:13px;color:var(--t2);font-weight:600">Chat Settings</span>
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--t2)" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
       </div>
     </div>
   </div>
