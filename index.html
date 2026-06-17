@@ -28,7 +28,7 @@
 
 
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -82,14 +82,6 @@ body{display:flex;align-items:center;justify-content:center}
 .ti span{font-size:10px;font-weight:500;color:var(--t3)}
 .ti.on svg{stroke:var(--ac)}
 .ti.on span{color:var(--ac);font-weight:600}
-#tab-insight svg path{fill:var(--t3);stroke:none}
-#tab-insight.on svg path{fill:var(--ac)}
-/* insight page wrapper */
-.insight-wrap{height:100%;display:flex;flex-direction:column;overflow:hidden}
-.insight-content{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
-.insight-content::-webkit-scrollbar{display:none}
-@keyframes aiDot{0%,80%,100%{transform:scale(0.6);opacity:.4}40%{transform:scale(1);opacity:1}}
-#ai-input:empty::before{content:attr(data-placeholder);color:var(--t3);pointer-events:none}
 /* sub pages — full overlay inside .phone */
 .sub{display:none;position:absolute;inset:0;z-index:10;flex-direction:column;background:var(--bg)}
 .sub.on{display:flex}
@@ -276,6 +268,16 @@ body{display:flex;align-items:center;justify-content:center}
   pointer-events:none;
   filter:blur(6px);
 }
+#tab-insight svg path{fill:var(--t3)}
+#tab-insight.on svg path{fill:var(--ac)}
+#tab-insight svg{width:26px!important;height:26px!important;stroke:none!important}
+.insight-wrap{height:100%;display:flex;flex-direction:column;overflow:hidden;position:relative}
+.insight-content{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
+.insight-content::-webkit-scrollbar{display:none}
+@keyframes aiDot{0%,80%,100%{transform:scale(.6);opacity:.4}40%{transform:scale(1);opacity:1}}
+#ai-input:empty::before{content:attr(data-placeholder);color:var(--t3);pointer-events:none}
+.energy-hero{background:linear-gradient(160deg,#74C7FF 0%,#7FD8EE 40%,#A8EDD8 70%,#C2F0E8 100%)}
+.aipro-hero{background:linear-gradient(180deg,#59D37A 0%,#98E7AE 60%,#fff 100%)}
 </style>
 </head>
 <body onload="(function(){if(!/iPhone|iPad|iPod/i.test(navigator.userAgent))return;var p=document.querySelector('.phone');var ct=document.querySelector('.ct');var sb=document.querySelector('.sb');var sh=document.querySelector('.shell');if(sh)sh.style.display='none';if(sb)sb.style.display='none';if(p){p.style.cssText='position:fixed;inset:0;width:100vw;height:100dvh;max-width:none;border-radius:0;box-shadow:none;display:flex;flex-direction:column;overflow:hidden;overscroll-behavior:none';}if(ct){ct.style.cssText='flex:1;min-height:0;overflow:hidden;position:relative';}document.documentElement.style.overflow='hidden';document.documentElement.style.overscrollBehavior='none';document.body.style.overflow='hidden';document.body.style.overscrollBehavior='none';document.body.style.height='100dvh';})()">
@@ -431,118 +433,76 @@ body{display:flex;align-items:center;justify-content:center}
     <!-- ═══ INSIGHT / AI ═══ -->
     <div class="pg" id="pg-insight">
       <div class="insight-wrap">
-        <!-- Header -->
         <div style="background:var(--w);padding:10px 20px 12px;display:flex;align-items:center;justify-content:center;position:relative;border-bottom:1px solid var(--bd);flex-shrink:0">
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--w);box-shadow:0 2px 8px rgba(0,0,0,.1);display:flex;align-items:center;justify-content:center;position:absolute;left:20px;overflow:hidden">
+          <div onclick="show('drawer')" style="width:36px;height:36px;border-radius:50%;background:var(--w);box-shadow:0 2px 8px rgba(0,0,0,.1);display:flex;align-items:center;justify-content:center;position:absolute;left:20px;overflow:hidden;cursor:pointer">
             <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
           </div>
           <div style="font-size:20px;font-weight:600;color:#4DA6FF">Insight</div>
         </div>
-        <!-- Tab Switcher -->
-        <div style="padding:12px 16px 10px;background:var(--w);flex-shrink:0">
-          <div style="display:flex;height:44px;border-radius:22px;border:1.5px solid transparent;background:linear-gradient(var(--w),var(--w)) padding-box,linear-gradient(90deg,#56C5F9,#D47BFF) border-box;overflow:hidden">
-            <div id="ai-tab-advisor" onclick="switchAITab('advisor')" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;border-radius:20px;margin:2px;background:linear-gradient(90deg,#56C5F9,#D47BFF)">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-              <span style="font-size:15px;font-weight:700;color:#fff">AI Advisor</span>
+        <div style="padding:10px 16px 8px;background:var(--w);flex-shrink:0">
+          <div style="display:flex;height:40px;border-radius:20px;border:1.5px solid transparent;background:linear-gradient(var(--w),var(--w)) padding-box,linear-gradient(90deg,#56C5F9,#D47BFF) border-box;overflow:hidden">
+            <div id="ai-tab-advisor" onclick="switchAITab('advisor')" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;border-radius:18px;margin:2px;background:linear-gradient(90deg,#56C5F9,#D47BFF)">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              <span style="font-size:14px;font-weight:700;color:#fff">AI Advisor</span>
             </div>
-            <div id="ai-tab-insight" onclick="switchAITab('insight')" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;border-radius:20px;margin:2px">
-              <svg id="ai-insight-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-              <span style="font-size:15px;font-weight:600;color:#666">AI Insight</span>
+            <div id="ai-tab-insight" onclick="switchAITab('insight')" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;border-radius:18px;margin:2px">
+              <svg id="ai-insight-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t2)" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              <span style="font-size:14px;font-weight:600;color:var(--t2)">AI Insight</span>
             </div>
           </div>
         </div>
-        <!-- AI Advisor content -->
+        <!-- AI Advisor -->
         <div class="insight-content" id="ai-content-advisor">
           <div style="display:flex;flex-direction:column;align-items:center;padding:32px 20px 24px">
             <div style="width:100px;height:100px;border-radius:50%;background:#5CAEFF;display:flex;align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 8px 32px rgba(92,174,255,.4)">
               <svg width="48" height="48" viewBox="0 -960 960 960" fill="#fff"><path d="M280-240v-480h80v480h-80ZM440-80v-800h80v800h-80ZM120-400v-160h80v160h-80Zm480 160v-480h80v480h-80Zm160-160v-160h80v160h-80Z"/></svg>
             </div>
-            <div style="font-size:17px;font-weight:500;color:#666;text-align:center;line-height:1.5;max-width:280px">These are just a few examples of what I can do.</div>
+            <div style="font-size:17px;font-weight:500;color:var(--t2);text-align:center;line-height:1.5;max-width:280px">These are just a few examples of what I can do.</div>
           </div>
           <div style="display:flex;flex-direction:column;gap:12px;padding:0 16px">
-            <div style="background:#EFEFEF;border-radius:18px;padding:20px 18px;cursor:pointer" onclick="startAIChat()">
-              <div style="font-size:16px;font-weight:700;color:#222;margin-bottom:6px">Troubleshoot your network issues.</div>
-              <div style="font-size:13px;color:#666;line-height:1.5">(Ask why your internet is slow, or why your node isn't connecting.)</div>
-            </div>
-            <div style="background:#EFEFEF;border-radius:18px;padding:20px 18px;cursor:pointer" onclick="startAIChat()">
-              <div style="font-size:16px;font-weight:700;color:#222;margin-bottom:6px">Guide you through setup.</div>
-              <div style="font-size:13px;color:#666;line-height:1.5">(Need help installing your mesh node? Just say it out loud!)</div>
-            </div>
-            <div style="background:#EFEFEF;border-radius:18px;padding:20px 18px;cursor:pointer" onclick="startAIChat()">
-              <div style="font-size:16px;font-weight:700;color:#222;margin-bottom:6px">Help with password &amp; security settings.</div>
-              <div style="font-size:13px;color:#666;line-height:1.5">(Forgot your Wi-Fi password? I'll help you find or reset it.)</div>
-            </div>
+            <div style="background:var(--s2);border-radius:18px;padding:20px 18px;cursor:pointer" onclick="startAIChat()"><div style="font-size:16px;font-weight:700;color:var(--tx);margin-bottom:6px">Troubleshoot your network issues.</div><div style="font-size:13px;color:var(--t2);line-height:1.5">(Ask why your internet is slow, or why your node isn't connecting.)</div></div>
+            <div style="background:var(--s2);border-radius:18px;padding:20px 18px;cursor:pointer" onclick="startAIChat()"><div style="font-size:16px;font-weight:700;color:var(--tx);margin-bottom:6px">Guide you through setup.</div><div style="font-size:13px;color:var(--t2);line-height:1.5">(Need help installing your mesh node? Just say it out loud!)</div></div>
+            <div style="background:var(--s2);border-radius:18px;padding:20px 18px;cursor:pointer" onclick="startAIChat()"><div style="font-size:16px;font-weight:700;color:var(--tx);margin-bottom:6px">Help with password &amp; security settings.</div><div style="font-size:13px;color:var(--t2);line-height:1.5">(Forgot your Wi-Fi password? I'll help you find or reset it.)</div></div>
           </div>
-          <div style="padding:20px 16px 16px">
-            <div onclick="startAIChat()" style="width:100%;height:52px;background:#4A89E8;border-radius:26px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 24px rgba(74,137,232,.35)">
-              <span style="font-size:18px;font-weight:700;color:#fff">Start with AI</span>
-            </div>
+          <div style="padding:48px 16px 16px">
+            <div onclick="startAIChat()" style="width:100%;height:52px;background:#4A89E8;border-radius:26px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 24px rgba(74,137,232,.35)"><span style="font-size:18px;font-weight:700;color:#fff">Start with AI</span></div>
           </div>
         </div>
-        <!-- AI Chat mode -->
-        <div id="ai-chat-mode" style="display:none;flex:1;flex-direction:column;overflow:hidden">
-          <div id="ai-chat-messages" style="flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;background:var(--bg)"></div>
-          <div style="background:var(--w);border-top:1px solid var(--bd);padding:10px 16px 14px;flex-shrink:0">
-            <div style="display:flex;align-items:flex-end;gap:8px">
-              <div style="width:36px;height:36px;border-radius:50%;border:1.5px solid var(--bd2);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;color:var(--t2);font-size:22px;font-weight:300">+</div>
-              <div style="flex:1;background:var(--s2);border-radius:20px;padding:12px 16px;min-height:48px;display:flex;align-items:center">
-                <div id="ai-input" contenteditable="true" data-placeholder="有什麼問題都可以問我…" style="flex:1;font-size:15px;color:var(--tx);outline:none;max-height:120px;overflow-y:auto;line-height:1.5;word-break:break-all"></div>
+        <!-- AI Chat -->
+        <div id="ai-chat-mode" style="display:none;flex-direction:column;overflow:hidden;background:var(--bg);position:absolute;left:0;right:0;top:0;bottom:0">
+          <div style="padding:10px 16px 8px;background:var(--w);flex-shrink:0;border-bottom:1px solid var(--bd)">
+            <div style="display:flex;height:40px;border-radius:20px;border:1.5px solid transparent;background:linear-gradient(var(--w),var(--w)) padding-box,linear-gradient(90deg,#56C5F9,#D47BFF) border-box;overflow:hidden">
+              <div onclick="switchAITab('advisor')" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;border-radius:18px;margin:2px;background:linear-gradient(90deg,#56C5F9,#D47BFF)">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                <span style="font-size:14px;font-weight:700;color:#fff">AI Advisor</span>
               </div>
-              <div id="ai-send" onclick="sendAIMessage()" style="width:36px;height:36px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;box-shadow:0 2px 8px rgba(74,137,232,.35)">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
-              </div>
-            </div>
-            <div style="display:flex;align-items:center;justify-content:center;margin-top:7px">
-              <div onclick="show('ov-chat-settings')" style="display:flex;align-items:center;gap:4px;cursor:pointer">
-                <span style="font-size:13px;color:var(--t2);font-weight:600">Chat Settings</span>
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--t2)" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+              <div onclick="switchAITab('insight')" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;border-radius:18px;margin:2px">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t2)" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                <span style="font-size:14px;font-weight:600;color:var(--t2)">AI Insight</span>
               </div>
             </div>
           </div>
+          <div id="ai-chat-messages" style="flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;background:var(--bg);padding-bottom:90px"></div>
         </div>
-        <!-- AI Insight content -->
+        <!-- AI Insight -->
         <div class="insight-content" id="ai-content-insight" style="display:none;padding:16px">
-          <!-- Suggestions -->
-          <div onclick="show('sub-suggestions')" style="background:var(--w);border-radius:18px;box-shadow:0 2px 10px rgba(0,0,0,.06);padding:16px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;margin-bottom:16px">
-            <div style="position:relative;width:44px;height:44px;border-radius:50%;background:#E8F0FF;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4A89E8" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-              <div style="position:absolute;top:0;right:0;width:12px;height:12px;border-radius:50%;background:#F5A623;border:2px solid var(--w)"></div>
-            </div>
+          <div onclick="show('sub-suggestions')" style="background:var(--w);border-radius:18px;box-shadow:var(--sh);padding:16px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;margin-bottom:16px">
+            <div style="position:relative;width:44px;height:44px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><div style="position:absolute;top:0;right:0;width:12px;height:12px;border-radius:50%;background:#F5A623;border:2px solid var(--w)"></div></div>
             <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Suggestions (6)</div><div style="font-size:13px;color:var(--t3);margin-top:2px">查看網路優化、安全設定與產品建議</div></div>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
-          <!-- Energy Saving -->
-          <div onclick="show('sub-energy');setTimeout(drawDetailCharts,60)" style="background:var(--w);border-radius:18px;box-shadow:0 2px 10px rgba(0,0,0,.06);padding:16px 18px;margin-bottom:16px;cursor:pointer">
-            <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px">
-              <div style="width:40px;height:40px;border-radius:50%;background:#E8F0FF;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A89E8" stroke-width="2" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-              <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Energy Saving</div><div style="font-size:12px;color:var(--t3);margin-top:2px">目前處於低功耗模式，今日已為您省下 15% 電量</div></div>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-            </div>
+          <div onclick="show('sub-energy');setTimeout(drawDetailCharts,60)" style="background:var(--w);border-radius:18px;box-shadow:var(--sh);padding:16px 18px;margin-bottom:16px;cursor:pointer">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px"><div style="width:40px;height:40px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Energy Saving</div><div style="font-size:12px;color:var(--t3);margin-top:2px">目前處於低功耗模式，今日已為您省下 15% 電量</div></div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
             <div style="position:relative;height:130px;margin-top:8px"><canvas id="energy-chart" style="width:100%;height:100%"></canvas></div>
-            <div style="display:flex;justify-content:space-between;padding:0 4px;margin-top:4px">
-              <span style="font-size:10px;color:var(--t3)">15</span><span style="font-size:10px;color:var(--t3)">18</span><span style="font-size:10px;color:var(--t3)">21</span><span style="font-size:10px;color:var(--t3)">0</span><span style="font-size:10px;color:var(--t3)">3</span><span style="font-size:10px;color:var(--t3)">6</span><span style="font-size:10px;color:var(--t3)">9</span><span style="font-size:10px;color:var(--t3)">12</span><span style="font-size:10px;color:var(--t3)">15</span>
-            </div>
+            <div style="display:flex;justify-content:space-between;padding:0 4px;margin-top:4px"><span style="font-size:10px;color:var(--t3)">15</span><span style="font-size:10px;color:var(--t3)">18</span><span style="font-size:10px;color:var(--t3)">21</span><span style="font-size:10px;color:var(--t3)">0</span><span style="font-size:10px;color:var(--t3)">3</span><span style="font-size:10px;color:var(--t3)">6</span><span style="font-size:10px;color:var(--t3)">9</span><span style="font-size:10px;color:var(--t3)">12</span><span style="font-size:10px;color:var(--t3)">15</span></div>
           </div>
-          <!-- WiFi Insight -->
-          <div onclick="show('sub-wifi-insight');setTimeout(drawDetailCharts,60)" style="background:var(--w);border-radius:18px;box-shadow:0 2px 10px rgba(0,0,0,.06);padding:16px 18px;margin-bottom:16px;cursor:pointer">
-            <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px">
-              <div style="width:40px;height:40px;border-radius:50%;background:#FFF0F0;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6A6A" stroke-width="2" stroke-linecap="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="#FF6A6A" stroke="none"/></svg></div>
-              <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">WiFi Insight</div><div style="font-size:12px;color:var(--t3);margin-top:2px">偵測到輕微頻道干擾，系統已自動為您切換至最佳頻道</div></div>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-            </div>
-            <div style="font-size:11px;color:var(--t3);margin:8px 0 4px;font-weight:500">In Channel Interference</div>
+          <div onclick="show('sub-wifi-insight');setTimeout(drawDetailCharts,60)" style="background:var(--w);border-radius:18px;box-shadow:var(--sh);padding:16px 18px;margin-bottom:16px;cursor:pointer">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px"><div style="width:40px;height:40px;border-radius:50%;background:#FFF0F0;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6A6A" stroke-width="2" stroke-linecap="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="#FF6A6A" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">WiFi Insight</div><div style="font-size:12px;color:var(--t3);margin-top:2px">偵測到輕微頻道干擾，系統已自動為您切換至最佳頻道</div></div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
             <div style="position:relative;height:110px"><canvas id="wifi-chart" style="width:100%;height:100%"></canvas></div>
-            <div style="display:flex;justify-content:space-between;padding:4px 4px 0">
-              <span style="font-size:10px;color:var(--t3)">10:17</span><span style="font-size:10px;color:var(--t3)">10:32</span><span style="font-size:10px;color:var(--t3)">10:47</span><span style="font-size:10px;color:var(--t3)">11:02</span><span style="font-size:10px;color:var(--t3)">11:17</span>
-            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 4px 0"><span style="font-size:10px;color:var(--t3)">10:17</span><span style="font-size:10px;color:var(--t3)">10:32</span><span style="font-size:10px;color:var(--t3)">10:47</span><span style="font-size:10px;color:var(--t3)">11:02</span><span style="font-size:10px;color:var(--t3)">11:17</span></div>
           </div>
-          <!-- AI Protection -->
-          <div onclick="show('sub-aipro-detail')" style="background:var(--w);border-radius:18px;box-shadow:0 2px 10px rgba(0,0,0,.06);padding:16px 18px;margin-bottom:16px;cursor:pointer">
-            <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
-              <div style="width:40px;height:40px;border-radius:50%;background:#E8F0FF;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A89E8" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-              <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">AI Protection</div><div style="font-size:12px;color:var(--t3);margin-top:2px">AI 今日已阻擋 6,091 次潛在威脅與違規行為</div></div>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-            </div>
+          <div onclick="show('sub-aipro-detail')" style="background:var(--w);border-radius:18px;box-shadow:var(--sh);padding:16px 18px;margin-bottom:16px;cursor:pointer">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><div style="width:40px;height:40px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">AI Protection</div><div style="font-size:12px;color:var(--t3);margin-top:2px">AI 今日已阻擋 6,091 次潛在威脅與違規行為</div></div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
             <div style="font-size:12px;font-weight:600;color:var(--t3);margin-bottom:12px">Today's Protection:</div>
             <div style="display:flex;justify-content:space-around;align-items:center">
               <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:68px;height:68px;border-radius:50%;background:#57B657;display:flex;align-items:center;justify-content:center"><span style="font-size:17px;font-weight:700;color:#fff">1275</span></div><span style="font-size:11px;color:var(--t3)">Blocked</span></div>
@@ -596,8 +556,8 @@ body{display:flex;align-items:center;justify-content:center}
       <div id="settings-general">
       <span class="sl">Wi-Fi 設定</span>
       <div style="background:var(--w)">
-        <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">主 Wi-Fi</div><div style="font-size:14px;color:var(--t3);margin-top:2px">ASUS_Home_5G</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-        <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">訪客網路</div><div style="font-size:14px;color:var(--t3);margin-top:2px">已停用</div></div><div class="tg" id="tg1"></div></div>
+        <div class="sr" onclick="show('sub-main-wifi')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">主 Wi-Fi</div><div style="font-size:14px;color:var(--t3);margin-top:2px">ASUS_Home_5G</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="show('ov-guest')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">訪客網路</div><div style="font-size:14px;color:var(--t3);margin-top:2px">已停用</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">IoT 網路</div><div style="font-size:14px;color:var(--t3);margin-top:2px">ASUS_IoT · 啟用中</div></div><div class="tg on" id="tg2"></div></div>
       </div>
       <span class="sl">安全與隱私</span>
@@ -607,12 +567,12 @@ body{display:flex;align-items:center;justify-content:center}
       <span class="sl">系統維護</span>
       <div style="background:var(--w)">
         <div class="sr" id="s-fw" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">韌體更新</div><div style="font-size:14px;color:var(--t3);margin-top:2px">3.0.0.4.388 可用</div></div><span class="bg bgb" style="margin-right:6px">更新</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-        <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">路由器重開機</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-        <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">LED 燈號</div></div><div class="tg on" id="tg5"></div></div>
+        <div class="sr" onclick="show('sub-reboot')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">路由器重開機</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="show('sub-led')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">LED 燈號</div></div><div class="tg on" id="tg5"></div></div>
       </div>
       <span class="sl">App 與帳號</span>
       <div style="background:var(--w)">
-        <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">帳號</div><div style="font-size:14px;color:var(--t3);margin-top:2px">tim@asus.com</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="show('sub-account')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">帳號</div><div style="font-size:14px;color:var(--t3);margin-top:2px">tim@asus.com</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Face ID / 密碼鎖</div></div><div class="tg on" id="tg6"></div></div>
         <div class="sr" style="border:none"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16" stroke-width="2.5"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">App 版本</div><div style="font-size:14px;color:var(--t3);margin-top:2px">v5.1.2.3</div></div></div>
       <div style="height:10px"></div>
@@ -668,12 +628,11 @@ body{display:flex;align-items:center;justify-content:center}
   <div class="tb">
     <div class="ti on" id="tab-home"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首頁</span></div>
     <div class="ti" id="tab-devices"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg><span>裝置</span></div>
-    <div class="ti" id="tab-insight"><svg viewBox="0 0 24 24" fill="none"><path d="M18.71,9.63c-.08,0-.14-.04-.16-.12-.22-.84-.63-1.56-1.25-2.17s-1.33-1.03-2.17-1.25c-.08-.03-.12-.08-.12-.16,0-.1.04-.15.12-.16.84-.22,1.56-.63,2.17-1.25s1.03-1.33,1.25-2.17c.03-.08.08-.12.16-.12s.14.04.16.12c.22.84.63,1.56,1.25,2.17s1.33,1.03,2.17,1.25c.08.01.12.07.12.16,0,.08-.04.14-.12.16-.84.22-1.56.63-2.17,1.25s-1.03,1.33-1.25,2.17c-.01.08-.07.12-.16.12Z" fill="var(--t3)"/><path d="M10.44,22.42c-.21,0-.35-.1-.42-.31-.56-2.12-1.61-3.96-3.16-5.51s-3.38-2.6-5.51-3.16c-.21-.07-.31-.21-.31-.42,0-.24.1-.38.31-.42,2.12-.56,3.96-1.61,5.51-3.16s2.6-3.38,3.16-5.51c.07-.21.21-.31.42-.31s.35.1.42.31c.56,2.12,1.61,3.96,3.16,5.51s3.38,2.6,5.51,3.16c.21.03.31.17.31.42,0,.21-.1.35-.31.42-2.12.56-3.96,1.61-5.51,3.16s-2.6,3.38-3.16,5.51c-.03.21-.17.31-.42.31Z" fill="var(--t3)"/></svg><span>AI</span></div>
+    <div class="ti" id="tab-insight"><svg viewBox="0 0 24 24" fill="none" style="stroke:none"><path d="M18.71,9.63c-.08,0-.14-.04-.16-.12-.22-.84-.63-1.56-1.25-2.17s-1.33-1.03-2.17-1.25c-.08-.03-.12-.08-.12-.16,0-.1.04-.15.12-.16.84-.22,1.56-.63,2.17-1.25s1.03-1.33,1.25-2.17c.03-.08.08-.12.16-.12s.14.04.16.12c.22.84.63,1.56,1.25,2.17s1.33,1.03,2.17,1.25c.08.01.12.07.12.16,0,.08-.04.14-.12.16-.84.22-1.56.63-2.17,1.25s-1.03,1.33-1.25,2.17c-.01.08-.07.12-.16.12Z" fill="var(--t3)"/><path d="M10.44,22.42c-.21,0-.35-.1-.42-.31-.56-2.12-1.61-3.96-3.16-5.51s-3.38-2.6-5.51-3.16c-.21-.07-.31-.21-.31-.42,0-.24.1-.38.31-.42,2.12-.56,3.96-1.61,5.51-3.16s2.6-3.38,3.16-5.51c.07-.21.21-.31.42-.31s.35.1.42.31c.56,2.12,1.61,3.96,3.16,5.51s3.38,2.6,5.51,3.16c.21.03.31.17.31.42,0,.21-.1.35-.31.42-2.12.56-3.96,1.61-5.51,3.16s-2.6,3.38-3.16,5.51c-.03.21-.17.31-.42.31Z" fill="var(--t3)"/></svg><span>AI</span></div>
     <div class="ti" id="tab-family"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg><span>家庭</span></div>
     <div class="ti" id="tab-settings"><svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span>設定</span></div>
   </div>
 
-  <!-- SUB: PRO MODE -->
   <!-- SUB: SUGGESTIONS -->
   <div class="sub" id="sub-suggestions">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
@@ -681,31 +640,16 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="font-size:18px;font-weight:600;color:#4DA6FF;flex:1;text-align:center;margin-right:34px">Suggestions</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg);padding:16px;display:flex;flex-direction:column;gap:12px">
-      <div style="background:var(--w);border-radius:16px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,.06)">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
-          <div style="position:relative;width:28px;height:28px;flex-shrink:0">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4A89E8" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <div style="position:absolute;top:-2px;right:-2px;width:10px;height:10px;border-radius:50%;background:#F5A623;border:1.5px solid #fff"></div>
-          </div>
-          <div style="font-size:17px;font-weight:700;color:var(--tx)">AiMesh available</div>
-        </div>
+      <div style="background:var(--w);border-radius:16px;padding:16px;box-shadow:var(--sh)">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><div style="position:relative;width:28px;height:28px;flex-shrink:0"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><div style="position:absolute;top:-2px;right:-2px;width:10px;height:10px;border-radius:50%;background:#F5A623;border:1.5px solid var(--w)"></div></div><div style="font-size:17px;font-weight:700;color:var(--tx)">AiMesh available</div></div>
         <div style="font-size:14px;color:var(--t3);line-height:1.6;margin-bottom:14px">AiMesh combines more than one ASUS router to form a WiFi system, provides whole-home coverage and centralized management.</div>
-        <div style="display:flex;gap:10px;margin-bottom:10px">
-          <div style="height:34px;padding:0 20px;border-radius:17px;border:1.5px solid var(--bd2);display:flex;align-items:center;font-size:14px;font-weight:500;color:var(--tx);cursor:pointer">Search</div>
-          <div style="height:34px;padding:0 20px;border-radius:17px;border:1.5px solid var(--bd2);display:flex;align-items:center;font-size:14px;font-weight:500;color:var(--tx);cursor:pointer">Details</div>
-        </div>
+        <div style="display:flex;gap:10px;margin-bottom:10px"><div style="height:34px;padding:0 20px;border-radius:17px;border:1.5px solid var(--bd2);display:flex;align-items:center;font-size:14px;font-weight:500;color:var(--tx);cursor:pointer">Search</div><div style="height:34px;padding:0 20px;border-radius:17px;border:1.5px solid var(--bd2);display:flex;align-items:center;font-size:14px;font-weight:500;color:var(--tx);cursor:pointer">Details</div></div>
         <div style="font-size:11px;color:var(--t3);text-align:right">Today, 10:07 Wed</div>
       </div>
-      <div style="background:var(--w);border-radius:16px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,.06)">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4A89E8" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-          <div style="font-size:17px;font-weight:700;color:var(--tx)">Register Your Product</div>
-        </div>
+      <div style="background:var(--w);border-radius:16px;padding:16px;box-shadow:var(--sh)">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><div style="font-size:17px;font-weight:700;color:var(--tx)">Register Your Product</div></div>
         <div style="font-size:14px;color:var(--t3);line-height:1.6;margin-bottom:14px">It is recommended to register your product to access our customer support quickly and easily.</div>
-        <div style="display:flex;gap:10px;margin-bottom:10px">
-          <div style="height:34px;padding:0 20px;border-radius:17px;border:1.5px solid var(--bd2);display:flex;align-items:center;font-size:14px;font-weight:500;color:var(--tx);cursor:pointer">Dismiss</div>
-          <div style="height:34px;padding:0 20px;border-radius:17px;background:var(--ac);display:flex;align-items:center;font-size:14px;font-weight:600;color:#fff;cursor:pointer">GO</div>
-        </div>
+        <div style="display:flex;gap:10px;margin-bottom:10px"><div style="height:34px;padding:0 20px;border-radius:17px;border:1.5px solid var(--bd2);display:flex;align-items:center;font-size:14px;font-weight:500;color:var(--tx);cursor:pointer">Dismiss</div><div style="height:34px;padding:0 20px;border-radius:17px;background:var(--ac);display:flex;align-items:center;font-size:14px;font-weight:600;color:#fff;cursor:pointer">GO</div></div>
         <div style="font-size:11px;color:var(--t3);text-align:right">Today, 10:07 Wed</div>
       </div>
     </div>
@@ -718,134 +662,97 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="font-size:17px;font-weight:600;color:var(--tx)">Energy Saving</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <!-- Hero -->
-      <div style="background:linear-gradient(160deg,#74C7FF 0%,#7FD8EE 40%,#A8EDD8 70%,#C2F0E8 100%);padding:40px 24px 24px;position:relative;min-height:200px;display:flex;flex-direction:column;align-items:center">
-        <!-- sparkle icon -->
-        <div style="margin-bottom:16px">
-          <svg width="56" height="56" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l1.09 4.26L17 7l-3.91.74L12 12l-1.09-4.26L7 7l3.91-.74L12 2z"/><path d="M19 15l.5 2 2 .5-2 .5-.5 2-.5-2-2-.5 2-.5.5-2z" opacity=".7"/><path d="M5 15l.4 1.6 1.6.4-1.6.4-.4 1.6-.4-1.6-1.6-.4 1.6-.4.4-1.6z" opacity=".7"/></svg>
-        </div>
-        <!-- toggle row inside hero -->
-        <div style="width:100%;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.25);border-radius:14px;padding:12px 18px;backdrop-filter:blur(8px)">
-          <span style="font-size:18px;font-weight:700;color:#1a1a1a">Energy Saving</span>
-          <div style="width:51px;height:31px;background:#4DA6FF;border-radius:16px;position:relative;cursor:pointer;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4)"><div style="position:absolute;width:25px;height:25px;background:#fff;border-radius:50%;top:3px;right:3px;box-shadow:0 1px 4px rgba(0,0,0,.2)"></div></div>
-        </div>
+      <div class="energy-hero" style="padding:36px 24px 28px;display:flex;flex-direction:column;align-items:center">
+        <div style="width:88px;height:88px;border-radius:50%;background:rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;margin-bottom:20px"><svg width="48" height="48" viewBox="0 0 24 24" fill="#fff"><path d="M12 2 L13.5 10.5 L22 12 L13.5 13.5 L12 22 L10.5 13.5 L2 12 L10.5 10.5 Z"/></svg></div>
+        <div style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:0 4px"><span style="font-size:18px;font-weight:700;color:#1a1a1a">Energy Saving</span><div style="width:51px;height:31px;background:#4DA6FF;border-radius:16px;position:relative;cursor:pointer"><div style="position:absolute;width:25px;height:25px;background:#fff;border-radius:50%;top:3px;right:3px;box-shadow:0 1px 4px rgba(0,0,0,.2)"></div></div></div>
       </div>
-
-      <!-- Energy Saving Mode row -->
-      <div style="background:var(--w);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd)">
-        <span style="font-size:17px;font-weight:600;color:var(--tx)">Energy Saving Mode</span>
-        <div style="display:flex;align-items:center;gap:4px;color:#1677FF;font-size:15px;font-weight:500;cursor:pointer">AI Energy Saving <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1677FF" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-      </div>
-
-      <!-- Chart card -->
-      <div style="background:var(--w);margin:12px 16px;border-radius:16px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,.06)">
+      <div style="background:var(--w);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd)"><span style="font-size:17px;font-weight:600;color:var(--tx)">Energy Saving Mode</span><div style="display:flex;align-items:center;gap:4px;color:#1677FF;font-size:15px;font-weight:500;cursor:pointer">AI Energy Saving <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1677FF" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+      <div style="background:var(--w);margin:12px 16px;border-radius:16px;padding:16px;box-shadow:var(--sh)">
         <div style="position:relative;height:180px;margin-bottom:6px"><canvas id="energy-detail-chart" style="width:100%;height:100%"></canvas></div>
-        <div style="display:flex;justify-content:space-between;padding:0 0 10px">
-          <span style="font-size:10px;color:var(--t3)">0</span><span style="font-size:10px;color:var(--t3)">3</span><span style="font-size:10px;color:var(--t3)">6</span><span style="font-size:10px;color:var(--t3)">9</span><span style="font-size:10px;color:var(--t3)">12</span><span style="font-size:10px;color:var(--t3)">15</span><span style="font-size:10px;color:var(--t3)">18</span><span style="font-size:10px;color:var(--t3)">20</span><span style="font-size:10px;color:var(--t3)">23</span><span style="font-size:10px;color:var(--t3)">24(hr)</span>
-        </div>
-        <div style="display:flex;justify-content:center;gap:20px">
-          <div style="display:flex;align-items:center;gap:6px"><div style="width:24px;height:3px;background:#FF8D8D;border-radius:2px"></div><span style="font-size:12px;color:var(--t3)">Standard Usage</span></div>
-          <div style="display:flex;align-items:center;gap:6px"><div style="width:24px;height:3px;background:#4A89E8;border-radius:2px"></div><span style="font-size:12px;color:var(--t3)">AI-Saving</span></div>
-        </div>
+        <div style="display:flex;justify-content:space-between;padding:0 0 10px"><span style="font-size:10px;color:var(--t3)">0</span><span style="font-size:10px;color:var(--t3)">3</span><span style="font-size:10px;color:var(--t3)">6</span><span style="font-size:10px;color:var(--t3)">9</span><span style="font-size:10px;color:var(--t3)">12</span><span style="font-size:10px;color:var(--t3)">15</span><span style="font-size:10px;color:var(--t3)">18</span><span style="font-size:10px;color:var(--t3)">20</span><span style="font-size:10px;color:var(--t3)">23</span><span style="font-size:10px;color:var(--t3)">24(hr)</span></div>
+        <div style="display:flex;justify-content:center;gap:20px"><div style="display:flex;align-items:center;gap:6px"><div style="width:24px;height:3px;background:#FF8D8D;border-radius:2px"></div><span style="font-size:12px;color:var(--t3)">Standard Usage</span></div><div style="display:flex;align-items:center;gap:6px"><div style="width:24px;height:3px;background:#4A89E8;border-radius:2px"></div><span style="font-size:12px;color:var(--t3)">AI-Saving</span></div></div>
       </div>
-
-      <!-- Description bullets -->
-      <div style="background:var(--w);margin:0 16px 12px;border-radius:16px;padding:16px 18px;box-shadow:0 2px 10px rgba(0,0,0,.06)">
-        <div style="display:flex;gap:10px;margin-bottom:12px">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#4DA6FF" style="flex-shrink:0;margin-top:2px"><path d="M12 2l1.09 4.26L17 7l-3.91.74L12 12l-1.09-4.26L7 7l3.91-.74L12 2z"/></svg>
-          <span style="font-size:14px;color:var(--t2);line-height:1.6">AI Power Saving Mode automatically detects usage conditions and optimises energy consumption.</span>
-        </div>
-        <div style="display:flex;gap:10px">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#4DA6FF" style="flex-shrink:0;margin-top:2px"><path d="M12 2l1.09 4.26L17 7l-3.91.74L12 12l-1.09-4.26L7 7l3.91-.74L12 2z"/></svg>
-          <span style="font-size:14px;color:var(--t2);line-height:1.6">For optimal power efficiency, it's recommended to enable all WiFi bands under one network (SSID).</span>
-        </div>
+      <div style="background:var(--w);margin:0 16px 12px;border-radius:16px;padding:16px 18px;box-shadow:var(--sh)">
+        <div style="display:flex;gap:10px;margin-bottom:12px"><svg width="16" height="16" viewBox="0 0 24 24" fill="#4DA6FF" style="flex-shrink:0;margin-top:2px"><path d="M12 2L9.2 8.8 2 9.7l5.1 4.9L5.8 22 12 18.4 18.2 22l-1.3-7.4 5.1-4.9-7.2-.9z"/></svg><span style="font-size:14px;color:var(--t2);line-height:1.6">AI Power Saving Mode automatically detects usage conditions and optimises energy consumption.</span></div>
+        <div style="display:flex;gap:10px"><svg width="16" height="16" viewBox="0 0 24 24" fill="#4DA6FF" style="flex-shrink:0;margin-top:2px"><path d="M12 2L9.2 8.8 2 9.7l5.1 4.9L5.8 22 12 18.4 18.2 22l-1.3-7.4 5.1-4.9-7.2-.9z"/></svg><span style="font-size:14px;color:var(--t2);line-height:1.6">For optimal power efficiency, it's recommended to enable all WiFi bands under one network (SSID).</span></div>
       </div>
-
-      <!-- Power Saving row -->
-      <div style="background:var(--w);margin:0 16px 1px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)">
-        <span style="font-size:17px;font-weight:600;color:var(--tx)">Power Saving</span>
-        <div style="display:flex;align-items:baseline;gap:2px"><span style="font-size:36px;font-weight:700;color:#4A89E8">23</span><span style="font-size:16px;color:#4A89E8;font-weight:500">%</span></div>
-      </div>
-
-      <!-- Advanced Settings row -->
-      <div style="background:var(--w);margin:0 16px 24px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);cursor:pointer">
-        <span style="font-size:17px;font-weight:600;color:var(--tx)">Advanced Settings</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-      </div>
+      <div style="background:var(--w);margin:0 16px 1px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)"><span style="font-size:17px;font-weight:600;color:var(--tx)">Power Saving</span><div style="display:flex;align-items:baseline;gap:2px"><span style="font-size:36px;font-weight:700;color:var(--ac)">23</span><span style="font-size:16px;color:var(--ac);font-weight:500">%</span></div></div>
+      <div style="background:var(--w);margin:0 16px 24px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);cursor:pointer"><span style="font-size:17px;font-weight:600;color:var(--tx)">Advanced Settings</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
     </div>
   </div>
 
-  <!-- SUB: AI PROTECTION DETAIL -->
+  <!-- SUB: AI PROTECTION -->
   <div class="sub" id="sub-aipro-detail">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
       <div class="bk" id="aipro-detail-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
       <div style="font-size:17px;font-weight:600;color:var(--tx)">AiProtection</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <div style="height:280px;background:linear-gradient(180deg,#59D37A 0%,#98E7AE 60%,#fff 100%);display:flex;align-items:center;justify-content:center;padding:20px;gap:20px">
-        <div style="position:relative">
-          <svg width="110" height="110" viewBox="0 0 24 24" fill="rgba(255,255,255,.25)" stroke="#fff" stroke-width="1.2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-        </div>
-        <div>
-          <div style="font-size:16px;font-weight:600;color:#fff;opacity:.9;margin-bottom:4px">Security Level</div>
-          <div style="font-size:56px;font-weight:700;color:#fff;line-height:1">HIGH</div>
-          <div style="font-size:12px;color:rgba(255,255,255,.8);margin-top:4px">Latest update: Today</div>
-          <div style="margin-top:16px;width:120px;height:44px;background:#fff;border-radius:22px;display:flex;align-items:center;justify-content:center;cursor:pointer"><span style="font-size:16px;font-weight:600;color:#2E8B57">Scan</span></div>
-        </div>
+      <div class="aipro-hero" style="height:280px;display:flex;align-items:center;justify-content:center;padding:20px;gap:20px">
+        <div style="position:relative"><svg width="110" height="110" viewBox="0 0 24 24" fill="rgba(255,255,255,.25)" stroke="#fff" stroke-width="1.2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div><div style="font-size:16px;font-weight:600;color:#fff;opacity:.9;margin-bottom:4px">Security Level</div><div style="font-size:56px;font-weight:700;color:#fff;line-height:1">HIGH</div><div style="font-size:12px;color:rgba(255,255,255,.8);margin-top:4px">Latest update: Today</div><div style="margin-top:16px;width:120px;height:44px;background:#fff;border-radius:22px;display:flex;align-items:center;justify-content:center;cursor:pointer"><span style="font-size:16px;font-weight:600;color:#2E8B57">Scan</span></div></div>
       </div>
-      <div style="background:var(--w);margin:12px 16px;border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.06)">
+      <div style="background:var(--w);margin:12px 16px;border-radius:16px;overflow:hidden;box-shadow:var(--sh)">
         <div style="padding:10px 16px 6px"><span style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.7px;text-transform:uppercase">AiProtection</span></div>
         <div style="display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid var(--bd)"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Malicious Sites Blocking</div></div><div style="width:44px;height:26px;background:#59D37A;border-radius:13px;position:relative"><div style="position:absolute;width:20px;height:20px;background:#fff;border-radius:50%;top:3px;right:3px"></div></div></div>
         <div style="display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid var(--bd)"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Advertisement Blocking</div></div><div style="width:44px;height:26px;background:#59D37A;border-radius:13px;position:relative"><div style="position:absolute;width:20px;height:20px;background:#fff;border-radius:50%;top:3px;right:3px"></div></div></div>
         <div style="display:flex;align-items:center;padding:13px 16px"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Tracker Blocking</div></div><div style="width:44px;height:26px;background:#59D37A;border-radius:13px;position:relative"><div style="position:absolute;width:20px;height:20px;background:#fff;border-radius:50%;top:3px;right:3px"></div></div></div>
       </div>
-      <div style="background:var(--w);margin:0 16px 12px;border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.06)">
+      <div style="background:var(--w);margin:0 16px 12px;border-radius:16px;overflow:hidden;box-shadow:var(--sh)">
         <div style="padding:14px 16px 6px;display:flex;align-items:center;justify-content:space-between"><span style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.7px;text-transform:uppercase">Router Security</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="18 15 12 9 6 15"/></svg></div>
         <div id="security-rows"></div>
       </div>
-      <div style="background:#F5FFF7;margin:0 16px 24px;border-radius:20px;padding:20px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.04)">
-        <div style="font-size:14px;font-weight:600;color:#2E8B57;margin-bottom:8px">Overall Security Score</div>
-        <div style="font-size:48px;font-weight:700;color:#2E8B57;line-height:1">98<span style="font-size:20px;opacity:.6"> / 100</span></div>
-      </div>
+      <div style="background:var(--gbg);margin:0 16px 24px;border-radius:20px;padding:20px;text-align:center"><div style="font-size:14px;font-weight:600;color:var(--gn);margin-bottom:8px">Overall Security Score</div><div style="font-size:48px;font-weight:700;color:var(--gn);line-height:1">98<span style="font-size:20px;opacity:.6"> / 100</span></div></div>
     </div>
   </div>
 
-  <!-- SUB: WIFI INSIGHT DETAIL -->
+  <!-- SUB: WIFI INSIGHT -->
   <div class="sub" id="sub-wifi-insight">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
       <div class="bk" id="wifi-insight-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
       <div style="font-size:17px;font-weight:600;color:var(--tx)">WiFi Insight</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <div style="height:220px;background:linear-gradient(180deg,#FFE8E8 0%,#FFF5F5 60%,#fff 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px">
-        <div style="width:100px;height:100px;border-radius:50%;background:rgba(255,106,106,.12);display:flex;align-items:center;justify-content:center">
-          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#FF6A6A" stroke-width="1.8" stroke-linecap="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1.5" fill="#FF6A6A" stroke="none"/></svg>
-        </div>
-        <div style="text-align:center"><div style="font-size:18px;font-weight:600;color:#222">Channel Analysis</div><div style="font-size:13px;color:#666;margin-top:3px">Minor interference detected · Auto-optimized</div><div style="display:inline-flex;margin-top:8px;height:26px;padding:0 14px;border-radius:13px;background:#E8F8F0;align-items:center"><span style="font-size:12px;font-weight:600;color:#4CAF50">● Good</span></div></div>
+      <div style="background:var(--s2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:36px 20px 28px">
+        <div style="width:100px;height:100px;border-radius:50%;background:rgba(255,106,106,.15);display:flex;align-items:center;justify-content:center"><svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#FF6A6A" stroke-width="1.8" stroke-linecap="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1.5" fill="#FF6A6A" stroke="none"/></svg></div>
+        <div style="text-align:center"><div style="font-size:18px;font-weight:600;color:var(--tx)">Channel Analysis</div><div style="font-size:13px;color:var(--t3);margin-top:3px">Minor interference detected · Auto-optimized</div><div style="display:inline-flex;margin-top:8px;height:26px;padding:0 14px;border-radius:13px;background:var(--gbg);align-items:center"><span style="font-size:12px;font-weight:600;color:var(--gn)">● Good</span></div></div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:12px 16px">
-        <div style="background:var(--w);border-radius:14px;padding:14px 10px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05)"><div style="font-size:11px;color:var(--t3);margin-bottom:4px">Channel</div><div style="font-size:17px;font-weight:700;color:var(--tx)">149</div><div style="font-size:10px;color:#4CAF50;margin-top:3px;font-weight:600">Optimal</div></div>
-        <div style="background:var(--w);border-radius:14px;padding:14px 10px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05)"><div style="font-size:11px;color:var(--t3);margin-bottom:4px">Interference</div><div style="font-size:17px;font-weight:700;color:#4CAF50">12%</div><div style="font-size:10px;color:#4CAF50;margin-top:3px;font-weight:600">Low</div></div>
-        <div style="background:var(--w);border-radius:14px;padding:14px 10px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05)"><div style="font-size:11px;color:var(--t3);margin-bottom:4px">Signal</div><div style="font-size:17px;font-weight:700;color:#4CAF50">92%</div><div style="font-size:10px;color:#4CAF50;margin-top:3px;font-weight:600">Excellent</div></div>
+        <div style="background:var(--w);border-radius:14px;padding:14px 10px;text-align:center;box-shadow:var(--sh)"><div style="font-size:11px;color:var(--t3);margin-bottom:4px">Channel</div><div style="font-size:17px;font-weight:700;color:var(--tx)">149</div><div style="font-size:10px;color:var(--gn);margin-top:3px;font-weight:600">Optimal</div></div>
+        <div style="background:var(--w);border-radius:14px;padding:14px 10px;text-align:center;box-shadow:var(--sh)"><div style="font-size:11px;color:var(--t3);margin-bottom:4px">Interference</div><div style="font-size:17px;font-weight:700;color:var(--gn)">12%</div><div style="font-size:10px;color:var(--gn);margin-top:3px;font-weight:600">Low</div></div>
+        <div style="background:var(--w);border-radius:14px;padding:14px 10px;text-align:center;box-shadow:var(--sh)"><div style="font-size:11px;color:var(--t3);margin-bottom:4px">Signal</div><div style="font-size:17px;font-weight:700;color:var(--gn)">92%</div><div style="font-size:10px;color:var(--gn);margin-top:3px;font-weight:600">Excellent</div></div>
       </div>
-      <div style="background:var(--w);margin:0 16px 12px;border-radius:16px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,.06)">
+      <div style="background:var(--w);margin:0 16px 12px;border-radius:16px;padding:16px;box-shadow:var(--sh)">
         <div style="font-size:15px;font-weight:600;color:var(--tx);margin-bottom:2px">Channel Interference History</div>
         <div style="font-size:12px;color:var(--t3);margin-bottom:10px">Last 60 Minutes</div>
         <div style="position:relative;height:110px"><canvas id="wifi-detail-chart" style="width:100%;height:100%"></canvas></div>
         <div style="display:flex;justify-content:space-between;padding:4px 0 0"><span style="font-size:10px;color:var(--t3)">10:17</span><span style="font-size:10px;color:var(--t3)">10:32</span><span style="font-size:10px;color:var(--t3)">10:47</span><span style="font-size:10px;color:var(--t3)">11:02</span><span style="font-size:10px;color:var(--t3)">11:17</span></div>
       </div>
-      <div style="background:#F8FAFF;margin:0 16px 12px;border-radius:20px;padding:16px">
+      <div style="background:var(--s2);margin:0 16px 12px;border-radius:20px;padding:16px">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="#4DA6FF"><path d="M12 2L9.2 8.8 2 9.7l5.1 4.9L5.8 22 12 18.4 18.2 22l-1.3-7.4 5.1-4.9-7.2-.9z"/></svg><span style="font-size:15px;font-weight:600;color:#4DA6FF">AI Recommendation</span></div>
         <div style="font-size:14px;color:var(--t2);line-height:1.6">The router detected temporary channel congestion and automatically switched to the optimal channel to maintain network stability.</div>
       </div>
-      <div style="background:var(--w);margin:0 16px 24px;border-radius:16px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,.06);display:flex;align-items:center;justify-content:space-between">
-        <div><div style="font-size:15px;font-weight:600;color:var(--tx)">Overall WiFi Health</div><div style="font-size:12px;color:#4CAF50;margin-top:2px;font-weight:500">Excellent</div></div>
+      <div style="background:var(--w);margin:0 16px 24px;border-radius:16px;padding:16px;box-shadow:var(--sh);display:flex;align-items:center;justify-content:space-between">
+        <div><div style="font-size:15px;font-weight:600;color:var(--tx)">Overall WiFi Health</div><div style="font-size:12px;color:var(--gn);margin-top:2px;font-weight:500">Excellent</div></div>
         <div style="font-size:32px;font-weight:700;color:#4DA6FF">95<span style="font-size:14px;color:var(--t3);font-weight:400"> / 100</span></div>
       </div>
     </div>
   </div>
 
+  <!-- OV: CHAT SETTINGS -->
+  <div id="ov-chat-settings" style="display:none;position:fixed;inset:0;z-index:1200;background:rgba(12,17,32,.5);align-items:flex-end" onclick="if(event.target===this){this.style.display='none';var b=document.getElementById('ai-input-bar');if(b)b.style.visibility='';}">
+    <div class="sheet" style="background:var(--w);padding-bottom:120px">
+      <div class="hdl"></div>
+      <div style="font-size:20px;font-weight:600;color:#4DA6FF;margin-bottom:24px">Chat Settings</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 0 16px;border-bottom:1px solid var(--bd)">
+        <span style="font-size:17px;font-weight:600;color:var(--tx)">Chat as context</span>
+        <div id="tg-chat-context" onclick="toggleChatContext()" style="width:51px;height:31px;background:var(--ac);border-radius:16px;position:relative;cursor:pointer"><div style="position:absolute;width:25px;height:25px;background:#fff;border-radius:50%;top:3px;right:3px;box-shadow:0 1px 3px rgba(0,0,0,.2)"></div></div>
+      </div>
+      <div style="padding:14px 0;font-size:13px;color:var(--t3);line-height:1.7">開啟後AI 將記住該次對談的內容脈絡，提供完整連續的解答。<br>＊為保護您的隱私，對話紀錄將於離開此畫面或關閉 App 後自動清除。</div>
+    </div>
+  </div>
+
+  <!-- SUB: PRO MODE -->
   <div class="sub" id="sub-pro">
     <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="17" height="12" viewBox="0 0 17 12" fill="var(--tx)"><rect x="0" y="3.5" width="3" height="8.5" rx="1"/><rect x="4.5" y="2" width="3" height="10" rx="1"/><rect x="9" y=".5" width="3" height="11.5" rx="1"/><rect x="13.5" y=".5" width="3" height="11.5" rx="1" opacity=".25"/></svg><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
     <div class="phd"><div class="pbk" id="pro-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div style="font-size:26px;font-weight:700;color:#fff;letter-spacing:-.5px">Pro Mode</div><div style="font-size:13px;color:rgba(255,255,255,.45);margin-top:4px">進階設定 · 適合專業使用者</div></div>
@@ -915,23 +822,54 @@ body{display:flex;align-items:center;justify-content:center}
   </div>
 
   <!-- OVERLAYS -->
-  <!-- Chat Settings overlay -->
-  <div class="ov" id="ov-chat-settings" onclick="if(event.target===this)hide('ov-chat-settings')">
+  <div class="ov" id="ov-wifi"><div class="sheet"><div class="hdl"></div><div style="font-size:18px;font-weight:600;color:var(--tx);text-align:center;margin-bottom:18px">分享 Wi-Fi</div><div style="font-size:14px;color:var(--t3);text-align:center;line-height:1.6;margin-bottom:16px">掃描 QR code，讓家人或朋友快速連上您的 Wi-Fi，無需手動輸入密碼。您也可以儲存為圖片，方便日後分享。</div><div style="width:180px;height:180px;background:#fff;border-radius:14px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;border:1px solid var(--bd);padding:10px"><img src="data:image/jpeg;base64,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" style="width:100%;height:100%;object-fit:contain;image-rendering:pixelated"/></div><div style="text-align:center;margin-bottom:18px"><div style="font-size:17px;font-weight:600;color:var(--tx)">ASUS_Home_5G</div><div style="font-family:var(--m);font-size:13px;color:var(--t3);margin-top:4px">ASUS_Home</div></div><div style="display:flex;gap:10px"><div style="flex:1;height:46px;background:var(--ac);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:500;cursor:pointer">儲存圖片</div><div style="flex:1;height:46px;background:var(--s2);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--t2);font-size:14px;font-weight:500;cursor:pointer" id="ov-wifi-close">關閉</div></div></div></div>
+  <div class="ov" id="ov-guest" onclick="if(event.target===this)hide('ov-guest')" style="cursor:pointer">
     <div class="sheet">
       <div class="hdl"></div>
-      <div style="font-size:20px;font-weight:600;color:#4DA6FF;margin-bottom:24px">Chat Settings</div>
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 0 16px;border-bottom:1px solid var(--bd)">
-        <span style="font-size:17px;font-weight:600;color:var(--tx)">Chat as context</span>
-        <div id="tg-chat-context" onclick="toggleChatContext()" style="width:51px;height:31px;background:var(--ac);border-radius:16px;position:relative;cursor:pointer;transition:background .2s"><div style="position:absolute;width:25px;height:25px;background:#fff;border-radius:50%;top:3px;right:3px;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:transform .2s"></div></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+        <div style="font-size:18px;font-weight:600;color:var(--tx)">訪客網路</div>
+        <div id="tg-guest" onclick="toggleGuest()" style="width:51px;height:31px;background:var(--bd2);border-radius:16px;position:relative;cursor:pointer">
+          <div id="tg-guest-thumb" style="position:absolute;width:25px;height:25px;background:#fff;border-radius:50%;top:3px;left:3px;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:left .2s"></div>
+        </div>
       </div>
-      <div style="padding:14px 0;font-size:13px;color:var(--t3);line-height:1.7">
-        開啟後AI 將記住該次對談的內容脈絡，提供完整連續的解答。<br>
-        ＊為保護您的隱私，對話紀錄將於離開此畫面或關閉 App 後自動清除。
+      <div id="guest-off-msg" style="text-align:center;padding:20px 0;color:var(--t3);font-size:14px;line-height:1.7">訪客網路目前已關閉。<br>開啟後，訪客可連線上網，但無法存取您的家庭網路裝置。</div>
+      <div id="guest-content" style="display:none">
+        <div style="font-size:14px;color:var(--t3);text-align:center;line-height:1.7;margin-bottom:14px">訪客可透過獨立網路連線上網，與您的家庭裝置完全隔離，保護家庭網路安全。</div>
+        <div style="background:var(--s2);border-radius:14px;padding:14px 16px;margin-bottom:12px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+            <span style="font-size:13px;color:var(--t3)">網路名稱（SSID）</span>
+            <span style="font-size:14px;font-weight:600;color:var(--tx)">ASUS_Guest</span>
+          </div>
+          <div style="height:1px;background:var(--bd);margin-bottom:10px"></div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:13px;color:var(--t3)">密碼</span>
+            <div style="display:flex;align-items:center;gap:8px">
+              <span id="guest-pwd-text" style="font-size:14px;font-weight:600;color:var(--tx);letter-spacing:2px">••••••••</span>
+              <div onclick="toggleGuestPwd()" style="cursor:pointer;color:var(--ac)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+            </div>
+          </div>
+        </div>
+        <div style="background:var(--s2);border-radius:14px;padding:14px 16px;margin-bottom:12px">
+          <div style="font-size:13px;color:var(--t3);margin-bottom:10px">連線時間限制</div>
+          <div style="display:flex;gap:8px">
+            <div onclick="setGuestTime(this)" data-val="不限制" class="guest-time" style="flex:1;height:34px;border-radius:17px;background:var(--ac);color:#fff;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;cursor:pointer">不限制</div>
+            <div onclick="setGuestTime(this)" data-val="1 小時" class="guest-time" style="flex:1;height:34px;border-radius:17px;background:var(--s3);color:var(--t2);font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center;cursor:pointer">1 小時</div>
+            <div onclick="setGuestTime(this)" data-val="4 小時" class="guest-time" style="flex:1;height:34px;border-radius:17px;background:var(--s3);color:var(--t2);font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center;cursor:pointer">4 小時</div>
+            <div onclick="setGuestTime(this)" data-val="24 小時" class="guest-time" style="flex:1;height:34px;border-radius:17px;background:var(--s3);color:var(--t2);font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center;cursor:pointer">24 小時</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;margin-bottom:12px">
+          <div style="font-size:13px;color:var(--t3);margin-bottom:8px">掃描 QR code 快速加入訪客網路</div>
+          <div style="width:130px;height:130px;background:#fff;border-radius:12px;border:1px solid var(--bd);padding:8px;display:flex;align-items:center;justify-content:center">
+            <canvas id="guest-qr" width="114" height="114"></canvas>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:4px">
+        <div id="ov-guest-close" style="flex:1;height:46px;background:var(--s2);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--t2);font-size:14px;font-weight:500;cursor:pointer">關閉</div>
       </div>
     </div>
   </div>
-
-  <div class="ov" id="ov-wifi"><div class="sheet"><div class="hdl"></div><div style="font-size:18px;font-weight:600;color:var(--tx);text-align:center;margin-bottom:18px">分享 Wi-Fi</div><div style="width:180px;height:180px;background:#fff;border-radius:14px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;border:1px solid var(--bd);padding:10px"><img src="data:image/jpeg;base64,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" style="width:100%;height:100%;object-fit:contain;image-rendering:pixelated"/></div><div style="text-align:center;margin-bottom:18px"><div style="font-size:17px;font-weight:600;color:var(--tx)">ASUS_Home_5G</div><div style="font-family:var(--m);font-size:13px;color:var(--t3);margin-top:4px">ASUS_Home</div></div><div style="display:flex;gap:10px"><div style="flex:1;height:46px;background:var(--ac);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:500;cursor:pointer">儲存圖片</div><div style="flex:1;height:46px;background:var(--s2);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:var(--t2);font-size:14px;font-weight:500;cursor:pointer" id="ov-wifi-close">關閉</div></div></div></div>
   <!-- DIAG FULL PAGE -->
   <div class="sub" id="sub-diag">
     <!-- header -->
@@ -1481,65 +1419,31 @@ body{display:flex;align-items:center;justify-content:center}
   </div>
 
   <!-- SUB: THEME -->
+  <!-- SUB: THEME -->
   <div class="sub" id="sub-theme">
-    <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
-    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div style="display:flex;align-items:center;gap:12px">
-        <div class="bk" id="theme-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-        <div style="font-size:17px;font-weight:600;color:var(--tx)">Theme</div>
-      </div>
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="theme-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">外觀</div>
     </div>
-    <div style="flex:1;overflow-y:auto;background:var(--w);padding-bottom:24px">
-      <div style="font-size:13px;color:var(--t3);padding:14px 20px 10px">Theme</div>
-      <!-- Themes list -->
+    <div style="flex:1;overflow-y:auto;background:var(--w)">
       <div id="theme-list">
-        <div class="theme-item" data-t="techno" style="display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--bd);cursor:pointer">
-          <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2);display:flex;align-items:center;justify-content:center;flex-shrink:0" id="tr-techno"></div>
-          <div style="width:68px;height:100px;border-radius:8px;background:linear-gradient(160deg,#0D1B2A,#1A3A5C,#0A2444);overflow:hidden;flex-shrink:0;position:relative">
-            <div style="height:16px;background:rgba(0,100,200,.4);display:flex;align-items:center;padding:0 5px;gap:3px"><div style="width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.4)"></div><div style="flex:1;height:2px;background:rgba(255,255,255,.15);border-radius:1px"></div></div>
-            <div style="display:flex;justify-content:center;padding-top:10px"><div style="width:20px;height:20px;border-radius:50%;border:1px solid #4A90D9;display:flex;align-items:center;justify-content:center"><div style="width:8px;height:8px;border-radius:50%;background:#4A90D9"></div></div></div>
-            <div style="display:flex;justify-content:space-around;padding-top:8px"><div style="width:16px;height:16px;border-radius:50%;border:1px solid #4A90D9;opacity:.7"></div><div style="width:16px;height:16px;border-radius:50%;border:1px solid #4A90D9;opacity:.7"></div></div>
-            <div style="position:absolute;bottom:0;left:0;right:0;height:20px;background:rgba(0,50,120,.6);display:flex;justify-content:space-around;align-items:center;padding:0 4px"><div style="width:10px;height:10px;opacity:.5;font-size:8px">⌂</div><div style="width:10px;height:10px;opacity:.5;font-size:8px">▣</div><div style="width:10px;height:10px;opacity:.5;font-size:8px">◈</div></div>
-          </div>
-          <div style="font-size:15px;font-weight:500;color:var(--tx)">Techno Blue</div>
+        <div class="theme-item on" data-t="light" style="display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--bd);cursor:pointer">
+          <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--ac);background:var(--ac);display:flex;align-items:center;justify-content:center;flex-shrink:0" id="tr-light"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div style="width:62px;height:118px;border-radius:10px;background:#F4F6FB;overflow:hidden;flex-shrink:0;border:1.5px solid #E4E8F2;display:flex;flex-direction:column"><div style="height:10px;background:#fff;flex-shrink:0"></div><div style="height:14px;background:#fff;border-bottom:1px solid #E4E8F2;flex-shrink:0"></div><div style="height:28px;background:linear-gradient(135deg,#7BAAF7,#4A8FE0);margin:4px;border-radius:4px;flex-shrink:0"></div><div style="flex:1;padding:0 4px;display:flex;flex-direction:column;gap:2px"><div style="flex:1;background:#fff;border-radius:3px;border:1px solid #E4E8F2"></div><div style="flex:1;background:#fff;border-radius:3px;border:1px solid #E4E8F2"></div></div><div style="height:14px;background:#fff;border-top:1px solid #E4E8F2;flex-shrink:0"></div></div>
+          <div><div style="font-size:17px;font-weight:600;color:var(--tx)">Simplicity White</div><div style="font-size:12px;color:var(--t3);margin-top:3px">Light</div></div>
         </div>
-        <div class="theme-item" data-t="gaming" style="display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--bd);cursor:pointer">
-          <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2);display:flex;align-items:center;justify-content:center;flex-shrink:0" id="tr-gaming"></div>
-          <div style="width:68px;height:100px;border-radius:8px;background:linear-gradient(160deg,#1A0000,#3D0000,#1A0505);overflow:hidden;flex-shrink:0;position:relative">
-            <div style="height:16px;background:rgba(180,0,0,.5);display:flex;align-items:center;padding:0 5px;gap:3px"><div style="width:4px;height:4px;border-radius:50%;background:rgba(255,100,100,.5)"></div><div style="flex:1;height:2px;background:rgba(255,100,100,.2);border-radius:1px"></div></div>
-            <div style="display:flex;justify-content:center;padding-top:10px"><div style="width:20px;height:20px;border-radius:50%;border:1px solid #E53E3E;display:flex;align-items:center;justify-content:center"><div style="width:8px;height:8px;border-radius:50%;background:#E53E3E"></div></div></div>
-            <div style="display:flex;justify-content:space-around;padding-top:8px"><div style="width:16px;height:16px;border-radius:50%;border:1px solid #E53E3E;opacity:.7"></div><div style="width:16px;height:16px;border-radius:50%;border:1px solid #E53E3E;opacity:.7"></div></div>
-            <div style="position:absolute;bottom:0;left:0;right:0;height:20px;background:rgba(80,0,0,.7);display:flex;justify-content:space-around;align-items:center"></div>
-          </div>
-          <div style="font-size:15px;font-weight:500;color:var(--tx)">Gaming Red</div>
-        </div>
-        <div class="theme-item on" data-t="white" style="display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--bd);cursor:pointer">
-          <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--ac);background:var(--ac);display:flex;align-items:center;justify-content:center;flex-shrink:0" id="tr-white"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div style="width:68px;height:100px;border-radius:8px;background:#F4F6FB;overflow:hidden;flex-shrink:0;border:1px solid var(--bd);position:relative">
-            <div style="height:16px;background:#fff;border-bottom:1px solid var(--bd);display:flex;align-items:center;padding:0 5px"><div style="width:30px;height:4px;border-radius:2px;background:#111;margin:0 auto"></div></div>
-            <div style="display:flex;justify-content:center;padding-top:8px"><div style="width:20px;height:20px;border-radius:50%;background:#4A8FE0;display:flex;align-items:center;justify-content:center"></div></div>
-            <div style="display:flex;justify-content:space-around;padding-top:6px"><div style="width:16px;height:16px;border-radius:50%;background:var(--ib)"></div><div style="width:16px;height:16px;border-radius:50%;background:var(--ib)"></div></div>
-            <div style="position:absolute;bottom:0;left:0;right:0;height:20px;background:#fff;border-top:1px solid var(--bd);display:flex;justify-content:space-around;align-items:center"></div>
-          </div>
-          <div style="font-size:17px;font-weight:600;color:var(--tx)">Simplicity White</div>
-        </div>
-        <div class="theme-item" data-t="oled" style="display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--bd);cursor:pointer">
-          <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2);display:flex;align-items:center;justify-content:center;flex-shrink:0" id="tr-oled"></div>
-          <div style="width:68px;height:100px;border-radius:8px;background:#000;overflow:hidden;flex-shrink:0;border:1px solid #222;position:relative">
-            <div style="height:16px;background:#111;display:flex;align-items:center;padding:0 5px"><div style="width:30px;height:4px;border-radius:2px;background:#333;margin:0 auto"></div></div>
-            <div style="display:flex;justify-content:center;padding-top:8px"><div style="width:20px;height:20px;border-radius:50%;border:1px solid #4A8FE0;display:flex;align-items:center;justify-content:center"><div style="width:8px;height:8px;border-radius:50%;background:#4A8FE0"></div></div></div>
-            <div style="display:flex;justify-content:space-around;padding-top:6px"><div style="width:16px;height:16px;border-radius:50%;border:1px solid #333"></div><div style="width:16px;height:16px;border-radius:50%;border:1px solid #333"></div></div>
-            <div style="position:absolute;bottom:0;left:0;right:0;height:20px;background:#111;display:flex;justify-content:space-around;align-items:center"></div>
-          </div>
-          <div style="font-size:15px;font-weight:500;color:var(--tx)">OLED Black</div>
+        <div class="theme-item" data-t="dark" style="display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--bd);cursor:pointer">
+          <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2);flex-shrink:0" id="tr-dark"></div>
+          <div style="width:62px;height:118px;border-radius:10px;background:#1C1C1E;overflow:hidden;flex-shrink:0;border:1.5px solid #3A3A3C;display:flex;flex-direction:column"><div style="height:10px;background:#2C2C2E;flex-shrink:0"></div><div style="height:14px;background:#2C2C2E;border-bottom:1px solid #3A3A3C;flex-shrink:0"></div><div style="height:28px;background:linear-gradient(135deg,#2A4A7A,#1E3A5F);margin:4px;border-radius:4px;flex-shrink:0"></div><div style="flex:1;padding:0 4px;display:flex;flex-direction:column;gap:2px"><div style="flex:1;background:#2C2C2E;border-radius:3px;border:1px solid #3A3A3C"></div><div style="flex:1;background:#2C2C2E;border-radius:3px;border:1px solid #3A3A3C"></div></div><div style="height:14px;background:#2C2C2E;border-top:1px solid #3A3A3C;flex-shrink:0"></div></div>
+          <div><div style="font-size:17px;font-weight:600;color:var(--tx)">Dark Mode</div><div style="font-size:12px;color:var(--t3);margin-top:3px">Dark</div></div>
         </div>
         <div class="theme-item" data-t="default" style="display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--bd);cursor:pointer">
           <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2);flex-shrink:0" id="tr-default"></div>
-          <div style="font-size:15px;font-weight:500;color:var(--tx)">Default Theme</div>
+          <div style="font-size:17px;font-weight:600;color:var(--tx)">Default Theme</div>
         </div>
         <div class="theme-item" data-t="system" style="display:flex;align-items:center;gap:16px;padding:14px 20px;cursor:pointer">
           <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2);flex-shrink:0" id="tr-system"></div>
-          <div><div style="font-size:15px;font-weight:500;color:var(--tx)">System</div><div style="font-size:12px;color:var(--ac);margin-top:2px">Adjust your theme based on your device's system settings.</div></div>
+          <div><div style="font-size:17px;font-weight:600;color:var(--tx)">System</div><div style="font-size:12px;color:var(--ac);margin-top:2px">Adjust your theme based on your device's system settings.</div></div>
         </div>
       </div>
     </div>
@@ -1610,9 +1514,22 @@ body{display:flex;align-items:center;justify-content:center}
   <div class="ov" id="ov-plus"><div class="sheet" style="padding-bottom:48px">
     <div class="hdl"></div>
     <div style="font-size:13px;font-weight:600;color:var(--ac);margin-bottom:4px;letter-spacing:.3px">Set up new device</div>
-    <div style="display:flex;align-items:center;gap:14px;padding:11px 0;cursor:pointer"><div style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><span style="font-size:17px;color:var(--tx);font-weight:600">Set up a new network</span></div><div style="display:flex;align-items:center;gap:14px;padding:11px 0;cursor:pointer"><div style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="12" y1="8" x2="5" y2="16"/><line x1="12" y1="8" x2="19" y2="16"/></svg></div><span style="font-size:17px;color:var(--tx);font-weight:600">Add AiMesh node</span></div>    <div style="height:1px;background:var(--bd);margin:8px 0"></div>
-    <div style="font-size:13px;font-weight:600;color:var(--ac);margin-bottom:4px;letter-spacing:.3px">Create Guest Network</div>
-    <div style="display:flex;align-items:center;gap:14px;padding:11px 0;cursor:pointer"><div style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><span style="font-size:17px;color:var(--tx);font-weight:600">Guest Network</span></div><div style="display:flex;align-items:center;gap:14px;padding:11px 0;cursor:pointer"><div style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><span style="font-size:17px;color:var(--tx);font-weight:600">Kid's Network</span></div><div style="display:flex;align-items:center;gap:14px;padding:11px 0;cursor:pointer"><div style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><span style="font-size:17px;color:var(--tx);font-weight:600">IoT Network</span></div>  </div></div>
+    <div style="display:flex;align-items:center;gap:14px;padding:18px 0;cursor:pointer;border-bottom:1px solid var(--bd)">
+      <div style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div>
+      <div style="flex:1"><div style="font-size:17px;color:var(--tx);font-weight:600">Set up a new network</div><div style="font-size:13px;color:var(--t3);margin-top:2px">Set up a new ASUS router and connect it to the internet.</div></div>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;padding:18px 0;cursor:pointer;border-bottom:1px solid var(--bd)">
+      <div style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="12" y1="8" x2="5" y2="16"/><line x1="12" y1="8" x2="19" y2="16"/></svg></div>
+      <div style="flex:1"><div style="font-size:17px;color:var(--tx);font-weight:600">Add AiMesh node</div><div style="font-size:13px;color:var(--t3);margin-top:2px">Add another AiMesh node to extend your Wi-Fi coverage.</div></div>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;padding:18px 0;cursor:pointer" onclick="hide('sub-wifi');show('ov-guest')">
+      <div style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <div style="flex:1"><div style="font-size:17px;color:var(--tx);font-weight:600">Create Guest Network</div><div style="font-size:13px;color:var(--t3);margin-top:2px">Create a separate Wi-Fi network for guests or IoT devices.</div></div>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+  </div></div>
 
 
   <!-- OV: AIMESH DETAIL -->
@@ -1769,8 +1686,319 @@ body{display:flex;align-items:center;justify-content:center}
     </div>
   </div>
 </div><!-- end phone -->
-<script>
 
+  <!-- SUB: 主 Wi-Fi -->
+  <div class="sub" id="sub-main-wifi">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="main-wifi-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">主 Wi-Fi</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <span class="sl">基本設定</span>
+      <div style="background:var(--w)">
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">網路名稱（SSID）</div></div><span style="font-size:14px;color:var(--t2);font-weight:500">ASUS_Home_5G</span></div>
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">密碼</div></div><span style="font-size:14px;color:var(--t2);font-weight:500;letter-spacing:2px">••••••••</span></div>
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">安全加密</div></div><span style="font-size:14px;color:var(--t2)">WPA3-Personal</span></div>
+      </div>
+      <span class="sl">頻段設定</span>
+      <div style="background:var(--w)">
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">2.4 GHz</div><div style="font-size:13px;color:var(--t3);margin-top:2px">頻道 6 · 40 MHz</div></div><div class="tg on" id="tg-24g"></div></div>
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">5 GHz</div><div style="font-size:13px;color:var(--t3);margin-top:2px">頻道 149 · 160 MHz</div></div><div class="tg on" id="tg-5g"></div></div>
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">6 GHz</div><div style="font-size:13px;color:var(--t3);margin-top:2px">頻道 37 · 320 MHz</div></div><div class="tg on" id="tg-6g"></div></div>
+      </div>
+      <span class="sl">進階</span>
+      <div style="background:var(--w)">
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Smart Connect</div><div style="font-size:13px;color:var(--t3);margin-top:2px">自動分配最佳頻段</div></div><div class="tg on" id="tg-sc"></div></div>
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Wi-Fi 排程</div><div style="font-size:13px;color:var(--t3);margin-top:2px">未設定</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">隱藏 SSID</div><div style="font-size:13px;color:var(--t3);margin-top:2px">不廣播網路名稱</div></div><div class="tg" id="tg-hide-ssid"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUB: 路由器重開機 -->
+  <div class="sub" id="sub-reboot">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="reboot-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">路由器重開機</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg);display:flex;flex-direction:column;align-items:center;padding:40px 24px 24px">
+      <div style="width:100px;height:100px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;margin-bottom:24px">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+      </div>
+      <div style="font-size:20px;font-weight:600;color:var(--tx);margin-bottom:10px">重新啟動路由器</div>
+      <div style="font-size:14px;color:var(--t3);text-align:center;line-height:1.7;margin-bottom:32px">重開機約需 1–2 分鐘。過程中所有裝置將暫時中斷連線，請確認沒有進行中的重要作業。</div>
+      <div style="width:100%;background:var(--w);border-radius:var(--r);padding:16px;margin-bottom:24px;box-shadow:var(--sh)">
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--bd)"><span style="font-size:14px;color:var(--t3)">目前運行時間</span><span style="font-size:14px;font-weight:600;color:var(--tx)">12 天 4 小時</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0"><span style="font-size:14px;color:var(--t3)">連線裝置</span><span style="font-size:14px;font-weight:600;color:var(--tx)">14 台</span></div>
+      </div>
+      <div style="width:100%;display:flex;gap:12px">
+        <div id="reboot-back2" style="flex:1;height:50px;border-radius:var(--r2);background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:var(--t2);cursor:pointer">取消</div>
+        <div style="flex:1;height:50px;border-radius:var(--r2);background:var(--rd);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:#fff;cursor:pointer">立即重開機</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUB: 帳號 -->
+  <div class="sub" id="sub-account">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="account-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">帳號</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <div style="display:flex;flex-direction:column;align-items:center;padding:32px 24px 24px">
+        <div style="width:80px;height:80px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center;margin-bottom:14px">
+          <span style="font-size:32px;font-weight:700;color:#fff">T</span>
+        </div>
+        <div style="font-size:20px;font-weight:600;color:var(--tx);margin-bottom:4px">Tim</div>
+        <div style="font-size:14px;color:var(--t3)">tim@asus.com</div>
+      </div>
+      <span class="sl">帳號資訊</span>
+      <div style="background:var(--w)">
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">ASUS ID</div></div><span style="font-size:14px;color:var(--t2)">tim@asus.com</span></div>
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">帳號狀態</div></div><span style="font-size:14px;color:var(--gn);font-weight:500">已驗證</span></div>
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">綁定路由器</div></div><span style="font-size:14px;color:var(--t2)">2 台</span></div>
+      </div>
+      <span class="sl">安全性</span>
+      <div style="background:var(--w)">
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">修改密碼</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">兩步驟驗證</div><div style="font-size:13px;color:var(--t3);margin-top:2px">增強帳號安全性</div></div><div class="tg" id="tg-2fa"></div></div>
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Face ID / 密碼鎖</div></div><div class="tg on" id="tg-faceid"></div></div>
+      </div>
+      <span class="sl">通知</span>
+      <div style="background:var(--w)">
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">安全警報</div></div><div class="tg on" id="tg-sec-notif"></div></div>
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">韌體更新通知</div></div><div class="tg on" id="tg-fw-notif"></div></div>
+      </div>
+      <div style="padding:24px 16px">
+        <div style="height:50px;border-radius:var(--r2);background:var(--rd);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:#fff;cursor:pointer">登出</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUB: LED 燈號 -->
+  <div class="sub" id="sub-led">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="led-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">LED 燈號</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <span class="sl">燈號控制</span>
+      <div style="background:var(--w)">
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">LED 燈號</div><div style="font-size:13px;color:var(--t3);margin-top:2px">開啟時路由器正常運作</div></div><div class="tg on" id="tg-led-main"></div></div>
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">夜間自動關閉</div><div style="font-size:13px;color:var(--t3);margin-top:2px">指定時段關閉燈號</div></div><div class="tg" id="tg-led-night"></div></div>
+      </div>
+      <span class="sl">排程</span>
+      <div style="background:var(--w)">
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">關閉時間</div></div><span style="font-size:14px;color:var(--t2)">22:00</span></div>
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">開啟時間</div></div><span style="font-size:14px;color:var(--t2)">07:00</span></div>
+      </div>
+      <span class="sl">燈號說明</span>
+      <div style="background:var(--w);border-radius:var(--r);margin:0 16px;overflow:hidden">
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--bd)"><div style="width:12px;height:12px;border-radius:50%;background:#59D37A;flex-shrink:0"></div><div style="font-size:14px;color:var(--tx)">常亮藍色 — 正常運作</div></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--bd)"><div style="width:12px;height:12px;border-radius:50%;background:#FF9500;flex-shrink:0"></div><div style="font-size:14px;color:var(--tx)">閃爍橘色 — 連線中</div></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 16px"><div style="width:12px;height:12px;border-radius:50%;background:#FF3B30;flex-shrink:0"></div><div style="font-size:14px;color:var(--tx)">常亮紅色 — 錯誤或斷線</div></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end phone -->
+
+  <!-- SUB: 查看密碼 -->
+  <div class="sub" id="sub-passwords">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="passwords-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">密碼管理</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <span class="sl">Wi-Fi 密碼</span>
+      <div style="background:var(--w);border-radius:var(--r);margin:0 16px;overflow:hidden;box-shadow:var(--sh)">
+        <div style="padding:16px">
+          <div style="font-size:12px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px">網路名稱（SSID）</div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <input id="inp-ssid" value="ASUS_Home_5G" style="flex:1;height:42px;border:1.5px solid var(--bd);border-radius:10px;padding:0 12px;font-size:16px;color:var(--tx);background:var(--s2);outline:none;font-family:var(--f)"/>
+            <div onclick="copyVal('inp-ssid')" style="width:42px;height:42px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            </div>
+          </div>
+        </div>
+        <div style="height:1px;background:var(--bd);margin:0 16px"></div>
+        <div style="padding:16px">
+          <div style="font-size:12px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px">Wi-Fi 密碼</div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <input id="inp-wifi-pwd" type="password" value="MyRouter@2024" style="flex:1;height:42px;border:1.5px solid var(--bd);border-radius:10px;padding:0 12px;font-size:16px;color:var(--tx);background:var(--s2);outline:none;font-family:var(--f)"/>
+            <div onclick="togglePwdVis('inp-wifi-pwd','eye-wifi')" style="width:42px;height:42px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0">
+              <svg id="eye-wifi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+          </div>
+        </div>
+        <div style="padding:0 16px 16px">
+          <div id="save-wifi-pwd" style="height:44px;background:var(--ac);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:#fff;cursor:pointer">儲存 Wi-Fi 密碼</div>
+        </div>
+      </div>
+
+      <span class="sl">路由器管理員</span>
+      <div style="background:var(--w);border-radius:var(--r);margin:0 16px;overflow:hidden;box-shadow:var(--sh)">
+        <div style="padding:16px">
+          <div style="font-size:12px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px">管理員帳號</div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <input id="inp-admin-user" value="admin" style="flex:1;height:42px;border:1.5px solid var(--bd);border-radius:10px;padding:0 12px;font-size:16px;color:var(--tx);background:var(--s2);outline:none;font-family:var(--f)"/>
+            <div onclick="copyVal('inp-admin-user')" style="width:42px;height:42px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            </div>
+          </div>
+        </div>
+        <div style="height:1px;background:var(--bd);margin:0 16px"></div>
+        <div style="padding:16px">
+          <div style="font-size:12px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px">管理員密碼</div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <input id="inp-admin-pwd" type="password" value="Admin@Router1" style="flex:1;height:42px;border:1.5px solid var(--bd);border-radius:10px;padding:0 12px;font-size:16px;color:var(--tx);background:var(--s2);outline:none;font-family:var(--f)"/>
+            <div onclick="togglePwdVis('inp-admin-pwd','eye-admin')" style="width:42px;height:42px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0">
+              <svg id="eye-admin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+          </div>
+        </div>
+        <div style="padding:0 16px 16px">
+          <div id="save-admin-pwd" style="height:44px;background:var(--ac);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:#fff;cursor:pointer">儲存管理員密碼</div>
+        </div>
+      </div>
+      <div style="padding:16px;font-size:12px;color:var(--t3);text-align:center;line-height:1.6">修改密碼後需重新連線。請記住新密碼以免無法登入。</div>
+    </div>
+  </div>
+
+  <!-- SUB: 暫停裝置 -->
+  <div class="sub" id="sub-pause">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="bk" id="pause-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+        <div style="font-size:17px;font-weight:600;color:var(--tx)">暫停裝置</div>
+      </div>
+      <div id="pause-apply" style="height:32px;padding:0 14px;background:var(--ac);border-radius:16px;display:flex;align-items:center;font-size:14px;font-weight:600;color:#fff;cursor:pointer">套用</div>
+    </div>
+    <div style="background:var(--w);padding:10px 16px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div style="font-size:13px;color:var(--t3)">勾選裝置後點「套用」，所選裝置將暫停網路存取。</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)" id="pause-list">
+      <!-- Injected by JS -->
+    </div>
+  </div>
+
+  <!-- SUB: 安全掃描 -->
+  <div class="sub" id="sub-scan">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="scan-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">安全掃描</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg);display:flex;flex-direction:column;align-items:center;padding:40px 24px 24px">
+      <div style="width:110px;height:110px;border-radius:50%;background:var(--gbg);display:flex;align-items:center;justify-content:center;margin-bottom:24px">
+        <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="1.6" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+      </div>
+      <div style="font-size:20px;font-weight:600;color:var(--tx);margin-bottom:8px">上次掃描：今天 09:12</div>
+      <div style="font-size:14px;color:var(--gn);font-weight:600;margin-bottom:24px">✓ 未發現威脅</div>
+      <div style="width:100%;background:var(--w);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);margin-bottom:24px">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--bd)"><span style="font-size:15px;color:var(--tx)">惡意網站封鎖</span><span style="font-size:13px;font-weight:600;color:var(--gn)">啟用中</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--bd)"><span style="font-size:15px;color:var(--tx)">入侵防護</span><span style="font-size:13px;font-weight:600;color:var(--gn)">啟用中</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--bd)"><span style="font-size:15px;color:var(--tx)">今日封鎖威脅</span><span style="font-size:13px;font-weight:600;color:var(--tx)">1,275 次</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px"><span style="font-size:15px;color:var(--tx)">Router Security 評分</span><span style="font-size:13px;font-weight:600;color:var(--ac)">98 / 100</span></div>
+      </div>
+      <div id="scan-start-btn" style="width:100%;height:50px;border-radius:var(--r2);background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:#fff;cursor:pointer">立即掃描</div>
+    </div>
+  </div>
+
+  <!-- SUB: Mesh 最佳化 -->
+  <div class="sub" id="sub-mesh-opt">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="mesh-opt-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">Mesh 最佳化</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <div style="padding:20px 16px 8px;font-size:14px;color:var(--t3);line-height:1.7">分析各節點間的連線品質，自動調整頻道與頻寬以提升整體效能。</div>
+      <span class="sl">節點狀態</span>
+      <div style="background:var(--w)">
+        <div class="sr"><div style="width:36px;height:36px;border-radius:50%;background:#4DA6FF22;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4DA6FF" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">客廳（主路由器）</div><div style="font-size:13px;color:var(--gn);margin-top:2px">信號強度：極佳</div></div><span style="font-size:12px;font-weight:600;color:var(--gn)">●良好</span></div>
+        <div class="sr" style="border:none"><div style="width:36px;height:36px;border-radius:50%;background:#4DA6FF22;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4DA6FF" stroke-width="2" stroke-linecap="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1.5" fill="#4DA6FF" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">臥室（節點）</div><div style="font-size:13px;color:var(--gn);margin-top:2px">Backhaul：5GHz · -52dBm</div></div><span style="font-size:12px;font-weight:600;color:var(--gn)">●良好</span></div>
+      </div>
+      <span class="sl">最佳化設定</span>
+      <div style="background:var(--w)">
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">自動頻道選擇</div><div style="font-size:13px;color:var(--t3);margin-top:2px">定期掃描並切換最佳頻道</div></div><div class="tg on" id="tg-auto-ch"></div></div>
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">漫遊助手</div><div style="font-size:13px;color:var(--t3);margin-top:2px">自動引導裝置連接最近節點</div></div><div class="tg on" id="tg-roam"></div></div>
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Backhaul 監控</div><div style="font-size:13px;color:var(--t3);margin-top:2px">監測節點間連線品質</div></div><div class="tg on" id="tg-backhaul"></div></div>
+      </div>
+      <div style="padding:16px">
+        <div id="mesh-run-btn" style="height:50px;border-radius:var(--r2);background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:#fff;cursor:pointer">立即執行最佳化</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end phone -->
+
+  <!-- SUB: 上網排程（入口選擇） -->
+  <div class="sub" id="sub-sched-home">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="sched-home-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">上網排程</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <div style="padding:20px 16px 8px;font-size:14px;color:var(--t3);line-height:1.7">設定 Wi-Fi 自動開關時段，或針對特定裝置限制上網時間。</div>
+      <span class="sl">排程類型</span>
+      <div style="background:var(--w)">
+        <div class="sr" onclick="show('sub-wifi-sched')" style="cursor:pointer">
+          <div class="sic"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div>
+          <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Wi-Fi 整體排程</div><div style="font-size:13px;color:var(--t3);margin-top:2px">設定全部 Wi-Fi 自動開關時段</div></div>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="sr" onclick="show('sub-dev-sched')" style="cursor:pointer;border:none">
+          <div class="sic"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg></div>
+          <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">裝置排程</div><div style="font-size:13px;color:var(--t3);margin-top:2px">針對特定裝置設定上網時段</div></div>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUB: Wi-Fi 整體排程 -->
+  <div class="sub" id="sub-wifi-sched">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="bk" id="wifi-sched-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+        <div style="font-size:17px;font-weight:600;color:var(--tx)">Wi-Fi 整體排程</div>
+      </div>
+      <div id="wifi-sched-save" style="height:32px;padding:0 14px;background:var(--ac);border-radius:16px;display:flex;align-items:center;font-size:14px;font-weight:600;color:#fff;cursor:pointer">儲存</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <div style="background:var(--w);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd)">
+        <div><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用排程</div><div style="font-size:13px;color:var(--t3);margin-top:2px">依排程自動開關 Wi-Fi</div></div>
+        <div class="tg on" id="tg-wifi-sched"></div>
+      </div>
+      <div id="wifi-sched-days" style="padding:8px 0"></div>
+    </div>
+  </div>
+
+  <!-- SUB: 裝置排程 -->
+  <div class="sub" id="sub-dev-sched">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="bk" id="dev-sched-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+        <div style="font-size:17px;font-weight:600;color:var(--tx)">裝置排程</div>
+      </div>
+      <div id="dev-sched-save" style="height:32px;padding:0 14px;background:var(--ac);border-radius:16px;display:flex;align-items:center;font-size:14px;font-weight:600;color:#fff;cursor:pointer">儲存</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <!-- Device picker -->
+      <span class="sl">選擇裝置</span>
+      <div style="background:var(--w)" id="dev-sched-picker">
+        <div class="sr" onclick="selectSchedDev(this,'MacBook Pro')" style="cursor:pointer"><div style="font-size:20px;margin-right:4px">💻</div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Tim's MacBook Pro</div><div style="font-size:12px;color:var(--t3)">5GHz · 客廳節點</div></div><div class="sched-dev-check" style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2)"></div></div>
+        <div class="sr" onclick="selectSchedDev(this,'iPhone')" style="cursor:pointer"><div style="font-size:20px;margin-right:4px">📱</div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Tim's iPhone</div><div style="font-size:12px;color:var(--t3)">5GHz · 主路由器</div></div><div class="sched-dev-check" style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2)"></div></div>
+        <div class="sr" onclick="selectSchedDev(this,'Apple TV')" style="cursor:pointer"><div style="font-size:20px;margin-right:4px">📺</div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">客廳 Apple TV</div><div style="font-size:12px;color:var(--t3)">有線 · 客廳節點</div></div><div class="sched-dev-check" style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2)"></div></div>
+        <div class="sr" onclick="selectSchedDev(this,'iPad')" style="cursor:pointer;border:none"><div style="font-size:20px;margin-right:4px">📱</div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">舊 iPad</div><div style="font-size:12px;color:var(--t3)">2.4GHz · 主路由器</div></div><div class="sched-dev-check" style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2)"></div></div>
+      </div>
+      <!-- Schedule grid (shown after device selected) -->
+      <div id="dev-sched-days" style="display:none;padding:8px 0"></div>
+    </div>
+  </div>
+
+</div><!-- end phone -->
+
+<script>
 var TABS=['home','devices','insight','family','settings'];
 var PRO={
   net:[{t:'LAN 設定',s:'192.168.1.1 / 255.255.255.0'},{t:'WAN 設定',s:'PPPoE · 動態 IP'},{t:'DNS Settings',s:'8.8.8.8 / 1.1.1.1'},{t:'DDNS',s:'your-home.asuscomm.com · 啟用'},{t:'Dual WAN',s:'容錯備援 · 停用'},{t:'Port Forwarding',s:'3 條規則已啟用'},{t:'IP Binding',s:'5 個裝置已綁定'}],
@@ -1793,10 +2021,21 @@ function goTab(t){
   if(p)p.classList.add('on');
   if(tb)tb.classList.add('on');
   var ct=g('ct');
-  if(ct){
-    ct.scrollTop=0;
+  if(ct){ct.scrollTop=0;}
+  ['sub-pro','sub-dev','sub-notif','sub-diag','sub-suggestions','sub-energy','sub-aipro-detail','sub-wifi-insight','sub-theme','sub-main-wifi','sub-reboot','sub-account','sub-led','sub-passwords','sub-pause','sub-scan','sub-mesh-opt','sub-sched-home','sub-wifi-sched','sub-dev-sched'].forEach(hide);
+  // hide AI input bar when leaving insight tab, restore when returning
+  if(t!=='insight'){
+    var bar=document.getElementById('ai-input-bar');
+    if(bar)bar.style.display='none';
+    var tb2=document.querySelector('.tb');
+    if(tb2)tb2.style.display='';
+  } else {
+    var chatMode=document.getElementById('ai-chat-mode');
+    if(chatMode&&chatMode.style.display!=='none'){
+      var bar=document.getElementById('ai-input-bar');
+      if(bar){bar.style.display='block';if(window._updateAIInputBar)window._updateAIInputBar();}
+    }
   }
-  ['sub-pro','sub-dev','sub-notif','sub-diag','sub-suggestions','sub-energy','sub-aipro-detail','sub-wifi-insight'].forEach(hide);
 }
 function openPro(){
   show('sub-pro');
@@ -1841,22 +2080,20 @@ var QA_ALL = [
   // 網路
   {id:'qa-wifi',   icon:'wifi',   label:'分享 Wi-Fi',   group:'網路',   action:'wifi'},
   {id:'qa-diag',   icon:'search', label:'網路診斷',    group:'網路',   action:'diag'},
-  {id:'qa-guest',  icon:'users',  label:'訪客網路',    group:'網路',   action:''},
+  {id:'qa-guest',  icon:'users',  label:'訪客網路',    group:'網路',   action:'guest'},
   {id:'qa-devs',   icon:'phone',  label:'連線裝置',    group:'網路',   action:'devs'},
-  {id:'qa-adddev', icon:'plus',   label:'新增裝置',    group:'網路',   action:''},
-  {id:'qa-wifiset',icon:'wifi2',  label:'Wi-Fi設定',   group:'網路',   action:''},
-  {id:'qa-pass',   icon:'lock',   label:'查看密碼',    group:'網路',   action:'wifi'},
-  {id:'qa-pause',  icon:'pause',  label:'暫停裝置',    group:'網路',   action:''},
+  {id:'qa-adddev', icon:'plus',   label:'新增裝置',    group:'網路',   action:'add'},
+  {id:'qa-wifiset',icon:'wifi2',  label:'Wi-Fi設定',   group:'網路',   action:'wifiset'},
+  {id:'qa-pass',   icon:'lock',   label:'查看密碼',    group:'網路',   action:'passwords'},
+  {id:'qa-pause',  icon:'pause',  label:'暫停裝置',    group:'網路',   action:'pause'},
   // 家庭
   {id:'qa-parental',icon:'child', label:'家長控制',    group:'家庭',   action:'family'},
-  {id:'qa-kids',   icon:'stop',   label:'暫停兒童 網路', group:'家庭',  action:''},
-  {id:'qa-sched',  icon:'clock',  label:'上網排程',    group:'家庭',   action:''},
-  {id:'qa-alert',  icon:'bell',   label:'陌生裝置 提醒', group:'家庭',  action:''},
+  {id:'qa-sched',  icon:'clock',  label:'上網排程',    group:'家庭',   action:'sched'},
   // 維護
-  {id:'qa-fw',     icon:'upload', label:'韌體更新',    group:'維護',   action:''},
-  {id:'qa-scan',   icon:'shield', label:'安全掃描',    group:'維護',   action:''},
-  {id:'qa-mesh',   icon:'mesh',   label:'Mesh 最佳化',  group:'維護',   action:''},
-  {id:'qa-reboot', icon:'reboot', label:'重新開機',    group:'維護',   action:''},
+  {id:'qa-fw',     icon:'upload', label:'韌體更新',    group:'維護',   action:'fw'},
+  {id:'qa-scan',   icon:'shield', label:'安全掃描',    group:'維護',   action:'scan'},
+  {id:'qa-mesh',   icon:'mesh',   label:'Mesh 最佳化',  group:'維護',   action:'meshopt'},
+  {id:'qa-reboot', icon:'reboot', label:'重新開機',    group:'維護',   action:'reboot'},
 ];
 
 // Default selected (first 4)
@@ -1913,10 +2150,20 @@ function renderQAGrid() {
   grid.querySelectorAll('[data-action]').forEach(function(el) {
     el.addEventListener('click', function() {
       var act = el.getAttribute('data-action');
-      if (act==='wifi') show('ov-wifi');
-      else if (act==='diag') { show('sub-diag'); }
-      else if (act==='devs') goTab('devices');
-      else if (act==='family') goTab('family');
+      if      (act==='wifi')     show('ov-wifi');
+      else if (act==='guest')    show('ov-guest');
+      else if (act==='diag')     show('sub-diag');
+      else if (act==='devs')     goTab('devices');
+      else if (act==='family')   goTab('family');
+      else if (act==='add')      show('sub-wifi');
+      else if (act==='wifiset')  show('sub-main-wifi');
+      else if (act==='passwords'){ show('sub-passwords'); }
+      else if (act==='pause')    { buildPauseList(); show('sub-pause'); }
+      else if (act==='fw')       show('sub-fw');
+      else if (act==='scan')     show('sub-scan');
+      else if (act==='meshopt')  show('sub-mesh-opt');
+      else if (act==='sched')    show('sub-sched-home');
+      else if (act==='reboot')   show('sub-reboot');
     });
   });
   // re-check home scroll
@@ -2104,9 +2351,27 @@ window.addEventListener('load',function(){
   bind('notif-back',function(){hide('sub-notif');});
   bind('notif-unk',function(){hide('sub-notif');openDev('unknown');});
   bind('notif-unk-cta',function(){hide('sub-notif');openDev('unknown');});
-  // insight
-  bind('i-unknown',function(){openDev('unknown');});
-  bind('i-pro',openPro);
+  // AI module bindings
+  bind('suggest-back',function(){hide('sub-suggestions');});
+  bind('energy-back',function(){hide('sub-energy');});
+  bind('aipro-detail-back',function(){hide('sub-aipro-detail');});
+  bind('wifi-insight-back',function(){hide('sub-wifi-insight');});
+  // hide toolbar when AI input focused (keyboard open)
+  document.addEventListener('focusin',function(e){
+    if(e.target&&e.target.id==='ai-input'){var tb=document.querySelector('.tb');if(tb)tb.style.display='none';}
+  });
+  document.addEventListener('focusout',function(e){
+    if(e.target&&e.target.id==='ai-input'){setTimeout(function(){var tb=document.querySelector('.tb');if(tb)tb.style.display='';if(window._updateAIInputBar)window._updateAIInputBar();},150);}
+  });
+  // security rows
+  var secRows=[['Default username & password','Passed'],['UPnP Service','Passed'],['Web Access from WAN','Passed'],['Ping from WAN','Passed'],['Remote Administration','Passed'],['Firmware Version','Latest Version'],['WiFi Encryption','WPA3 Enabled']];
+  var secEl=document.getElementById('security-rows');
+  if(secEl){secEl.innerHTML=secRows.map(function(r,i){return '<div style="display:flex;align-items:center;padding:13px 16px;'+(i<secRows.length-1?'border-bottom:1px solid var(--bd)':'')+'"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">'+r[0]+'</div><div style="font-size:12px;color:var(--gn);margin-top:2px;font-weight:500">'+r[1]+'</div></div><div style="width:24px;height:24px;border-radius:50%;background:var(--gbg);display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>';}).join('');}
+  // theme sub page
+  bind('theme-back',function(){hide('sub-theme');hide('drawer');});
+  document.querySelectorAll('.theme-item').forEach(function(el){
+    el.addEventListener('click',function(){applyTheme(el.dataset.t==='dark'?'dark':'light');});
+  });
   // family
   bind('f-add',function(){show('ov-add');});
   bind('f-mei',function(){show('ov-mei');});
@@ -2185,7 +2450,7 @@ window.addEventListener('load',function(){
   });
   bind('sched-back',function(){hide('sub-sched');});
   // Theme
-  bind('theme-back',function(){hide('sub-theme');show('drawer');});
+  bind('theme-back',function(){hide('sub-theme');hide('drawer');});
   document.querySelectorAll('.theme-item').forEach(function(el){
     el.addEventListener('click',function(){
       document.querySelectorAll('.theme-item').forEach(function(o){
@@ -2254,7 +2519,23 @@ window.addEventListener('load',function(){
   ['ov-wifi','ov-add','ov-mei','ov-ming'].forEach(function(id){
     bind(id,function(e){if(e.target===g(id))hide(id);});
   });
-  bind('ov-wifi-close',function(){hide('ov-wifi');});
+  bind('main-wifi-back',function(){hide('sub-main-wifi');});
+  bind('reboot-back',function(){hide('sub-reboot');});
+  bind('reboot-back2',function(){hide('sub-reboot');});
+  bind('account-back',function(){hide('sub-account');});
+  bind('led-back',function(){hide('sub-led');});
+  bind('passwords-back',function(){hide('sub-passwords');});
+  bind('pause-back',function(){hide('sub-pause');});
+  bind('scan-back',function(){hide('sub-scan');});
+  bind('mesh-opt-back',function(){hide('sub-mesh-opt');});
+  bind('sched-home-back',function(){hide('sub-sched-home');});
+  bind('wifi-sched-back',function(){hide('sub-wifi-sched');});
+  bind('dev-sched-back',function(){hide('sub-dev-sched');});
+  // init wifi sched grid when page shows
+  var _origShowWifi=g('sub-wifi-sched');
+  if(_origShowWifi){var _mo=new MutationObserver(function(){if(_origShowWifi.classList.contains('on'))buildSchedDays('wifi-sched-days',_wifiSched);});_mo.observe(_origShowWifi,{attributeFilter:['class']});}
+  bind('ov-guest-close',function(){hide('ov-guest');});
+  bind('h-guest',function(){show('ov-guest');});
   bind('ov-diag-close',function(){});
   // sub-diag
   function diagShowState(s){
@@ -2350,129 +2631,162 @@ window.addEventListener('load',function(){
   bind('ov-ming-close',function(){hide('ov-ming');});
   // toggles
   ['tg1','tg2','tg3','tg4','tg5','tg6'].forEach(function(id){bind(id,function(){var e=g(id);if(e)e.classList.toggle('on');});});
-  // AI module bindings
-  bind('suggest-back',function(){hide('sub-suggestions');});
-  bind('energy-back',function(){hide('sub-energy');});
-  bind('aipro-detail-back',function(){hide('sub-aipro-detail');});
-  bind('wifi-insight-back',function(){hide('sub-wifi-insight');});
-  // Keyboard: hide toolbar on focus, show on blur
-  document.addEventListener('focusin',function(e){
-    if(e.target&&e.target.id==='ai-input'){
-      var tb=document.querySelector('.tb');
-      if(tb)tb.style.display='none';
-    }
-  });
-  document.addEventListener('focusout',function(e){
-    if(e.target&&e.target.id==='ai-input'){
-      setTimeout(function(){
-        var tb=document.querySelector('.tb');
-        if(tb)tb.style.display='';
-      },100);
-    }
-  });
-  // security rows
-  var secRows=[['Default username & password','Passed'],['UPnP Service','Passed'],['Web Access from WAN','Passed'],['Ping from WAN','Passed'],['Remote Administration','Passed'],['Firmware Version','Latest Version'],['WiFi Encryption','WPA3 Enabled']];
-  var secEl=document.getElementById('security-rows');
-  if(secEl){secEl.innerHTML=secRows.map(function(r,i){return '<div style="display:flex;align-items:center;padding:13px 16px;'+(i<secRows.length-1?'border-bottom:1px solid var(--bd)':'')+'"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">'+r[0]+'</div><div style="font-size:12px;color:#4CAF50;margin-top:2px;font-weight:500">'+r[1]+'</div></div><div style="width:24px;height:24px;border-radius:50%;background:#E8F8F0;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>';}).join('');}
 });
 
-// ── AI global functions ──
-function switchAITab(t){
-  var advisor=document.getElementById('ai-tab-advisor');
-  var insightTab=document.getElementById('ai-tab-insight');
-  var insightIcon=document.getElementById('ai-insight-icon');
-  var cAdvisor=document.getElementById('ai-content-advisor');
-  var cChat=document.getElementById('ai-chat-mode');
-  var cInsight=document.getElementById('ai-content-insight');
-  if(!advisor)return;
-  if(t==='advisor'){
-    advisor.style.background='linear-gradient(90deg,#56C5F9,#D47BFF)';
-    advisor.querySelector('span').style.color='#fff';
-    advisor.querySelector('span').style.fontWeight='700';
-    insightTab.style.background='transparent';
-    insightTab.querySelector('span').style.color='#666';
-    insightTab.querySelector('span').style.fontWeight='600';
-    if(insightIcon)insightIcon.setAttribute('stroke','#888');
-    var inChat=cChat&&cChat.style.display==='flex';
-    if(cAdvisor&&!inChat)cAdvisor.style.display='block';
-    if(cInsight)cInsight.style.display='none';
+// ── Password page helpers ──
+function togglePwdVis(inputId,eyeId){var inp=document.getElementById(inputId);if(!inp)return;inp.type=inp.type==='password'?'text':'password';var eye=document.getElementById(eyeId);if(eye)eye.style.opacity=inp.type==='text'?'1':'0.5';}
+function copyVal(inputId){var inp=document.getElementById(inputId);if(!inp)return;if(navigator.clipboard)navigator.clipboard.writeText(inp.value);var orig=inp.style.borderColor;inp.style.borderColor='var(--gn)';setTimeout(function(){inp.style.borderColor=orig;},800);}
+
+// ── Pause device list ──
+var PAUSE_DEVICES=[
+  {name:"Tim's MacBook Pro",band:"5GHz",node:"客廳節點",icon:"💻"},
+  {name:"Tim's iPhone",    band:"5GHz",node:"主路由器",icon:"📱"},
+  {name:"客廳 Apple TV",   band:"有線", node:"客廳節點",icon:"📺"},
+  {name:"舊 iPad",         band:"2.4GHz",node:"主路由器",icon:"📱"},
+  {name:"未知裝置",        band:"2.4GHz",node:"主路由器",icon:"❓"},
+];
+var _pausedSet={};
+function buildPauseList(){
+  var el=document.getElementById('pause-list');if(!el)return;
+  el.innerHTML='<span class="sl">線上裝置</span><div style="background:var(--w)">'+
+  PAUSE_DEVICES.map(function(d,i){
+    var p=_pausedSet[i];
+    return '<div style="display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid var(--bd);cursor:pointer" onclick="togglePause('+i+')">'+
+      '<div style="width:42px;height:42px;border-radius:12px;background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">'+d.icon+'</div>'+
+      '<div style="flex:1"><div style="font-size:17px;font-weight:600;color:'+(p?'var(--t3)':'var(--tx)')+'">'+d.name+'</div>'+
+      '<div style="font-size:12px;color:var(--t3);margin-top:2px">'+d.band+' · '+d.node+(p?' · <span style="color:var(--or)">暫停中</span>':'')+'</div></div>'+
+      '<div style="width:24px;height:24px;border-radius:50%;border:2px solid '+(p?'var(--ac)':'var(--bd2)')+';background:'+(p?'var(--ac)':'transparent')+';display:flex;align-items:center;justify-content:center;flex-shrink:0">'+
+      (p?'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>':'')+
+      '</div></div>';
+  }).join('')+'</div>';
+}
+function togglePause(idx){_pausedSet[idx]=!_pausedSet[idx];buildPauseList();}
+
+// ── Schedule helpers ──
+var DAYS=['週一','週二','週三','週四','週五','週六','週日'];
+var _wifiSched=DAYS.map(function(){return{on:true,start:'22:00',end:'07:00'};});
+var _devSchedTarget='';
+var _devSched=DAYS.map(function(){return{on:false,start:'22:00',end:'07:00'};});
+
+function buildSchedDays(containerId, data){
+  var el=document.getElementById(containerId);
+  if(!el)return;
+  el.innerHTML=DAYS.map(function(day,i){
+    var d=data[i];
+    return '<div style="background:var(--w);margin:0 16px '+(i<6?'1px':'12px')+';border-radius:'+(i===0?'14px 14px 0 0':i===6?'0 0 14px 14px':'0')+'">'+
+      '<div style="display:flex;align-items:center;padding:13px 16px;gap:12px">'+
+        '<div style="width:38px;font-size:15px;font-weight:600;color:var(--tx)">'+day+'</div>'+
+        '<div style="flex:1;display:flex;align-items:center;gap:8px" id="sched-times-'+containerId+'-'+i+'" style="'+(d.on?'':'opacity:.4')+'">'+
+          '<input type="time" value="'+d.start+'" style="height:34px;border:1.5px solid var(--bd);border-radius:8px;padding:0 8px;font-size:14px;color:var(--tx);background:var(--s2);outline:none;flex:1" onchange="updateSched(\''+containerId+'\','+i+',\'start\',this.value)"/>'+
+          '<span style="font-size:13px;color:var(--t3)">–</span>'+
+          '<input type="time" value="'+d.end+'" style="height:34px;border:1.5px solid var(--bd);border-radius:8px;padding:0 8px;font-size:14px;color:var(--tx);background:var(--s2);outline:none;flex:1" onchange="updateSched(\''+containerId+'\','+i+',\'end\',this.value)"/>'+
+        '</div>'+
+        '<div onclick="toggleSchedDay(\''+containerId+'\','+i+')" style="width:44px;height:26px;background:'+(d.on?'var(--ac)':'var(--bd2)')+';border-radius:13px;position:relative;cursor:pointer;flex-shrink:0">'+
+          '<div style="position:absolute;width:20px;height:20px;background:#fff;border-radius:50%;top:3px;'+(d.on?'right:3px':'left:3px')+';box-shadow:0 1px 3px rgba(0,0,0,.2)"></div>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+}
+function toggleSchedDay(cid,i){
+  var data=cid==='wifi-sched-days'?_wifiSched:_devSched;
+  data[i].on=!data[i].on;
+  buildSchedDays(cid,data);
+}
+function updateSched(cid,i,field,val){
+  var data=cid==='wifi-sched-days'?_wifiSched:_devSched;
+  data[i][field]=val;
+}
+function selectSchedDev(el,name){
+  _devSchedTarget=name;
+  document.querySelectorAll('.sched-dev-check').forEach(function(c){
+    c.style.background='transparent';c.style.borderColor='var(--bd2)';c.innerHTML='';
+  });
+  var check=el.querySelector('.sched-dev-check');
+  check.style.background='var(--ac)';check.style.borderColor='var(--ac)';
+  check.innerHTML='<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>';
+  var days=document.getElementById('dev-sched-days');
+  if(days){days.style.display='block';buildSchedDays('dev-sched-days',_devSched);}
+}
+var _guestOn=false;
+var _guestPwdVisible=false;
+var _GUEST_PWD='Asus@1234';
+function toggleGuest(){
+  _guestOn=!_guestOn;
+  var tg=document.getElementById('tg-guest');
+  var thumb=document.getElementById('tg-guest-thumb');
+  var offMsg=document.getElementById('guest-off-msg');
+  var content=document.getElementById('guest-content');
+  if(_guestOn){
+    tg.style.background='var(--ac)';
+    thumb.style.left='23px';
+    offMsg.style.display='none';
+    content.style.display='block';
+    drawGuestQR();
   } else {
-    insightTab.style.background='linear-gradient(90deg,#56C5F9,#D47BFF)';
-    insightTab.querySelector('span').style.color='#fff';
-    insightTab.querySelector('span').style.fontWeight='700';
-    if(insightIcon)insightIcon.setAttribute('stroke','#fff');
-    advisor.style.background='transparent';
-    advisor.querySelector('span').style.color='#666';
-    advisor.querySelector('span').style.fontWeight='600';
-    if(cAdvisor)cAdvisor.style.display='none';
+    tg.style.background='var(--bd2)';
+    thumb.style.left='3px';
+    offMsg.style.display='block';
+    content.style.display='none';
+  }
+}
+function toggleGuestPwd(){
+  _guestPwdVisible=!_guestPwdVisible;
+  var el=document.getElementById('guest-pwd-text');
+  if(el)el.textContent=_guestPwdVisible?_GUEST_PWD:'••••••••';
+}
+function setGuestTime(el){
+  document.querySelectorAll('.guest-time').forEach(function(b){
+    b.style.background='var(--s3)';b.style.color='var(--t2)';b.style.fontWeight='500';
+  });
+  el.style.background='var(--ac)';el.style.color='#fff';el.style.fontWeight='600';
+}
+function drawGuestQR(){
+  var c=document.getElementById('guest-qr');
+  if(!c||c._drawn)return;c._drawn=true;
+  var ctx=c.getContext('2d');var sz=114;
+  // Simple QR-like pattern (demo)
+  ctx.fillStyle='#fff';ctx.fillRect(0,0,sz,sz);
+  ctx.fillStyle='#000';
+  var pattern=[[1,1,1,1,1,1,1,0,1,0,1,0,1,0,1,1,1,1,1,1,1],[1,0,0,0,0,0,1,0,0,1,0,1,0,0,1,0,0,0,0,0,1],[1,0,1,1,1,0,1,0,1,0,1,0,1,0,1,0,1,1,1,0,1],[1,0,1,1,1,0,1,0,0,1,1,0,0,0,1,0,1,1,1,0,1],[1,0,1,1,1,0,1,0,1,0,0,1,1,0,1,0,1,1,1,0,1],[1,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,1],[1,1,1,1,1,1,1,0,1,0,1,0,1,0,1,1,1,1,1,1,1],[0,0,0,0,0,0,0,0,1,1,0,1,1,0,0,0,0,0,0,0,0],[1,1,0,1,1,0,1,1,0,1,0,1,1,1,0,1,0,1,1,0,1],[0,1,0,0,1,0,0,0,1,0,1,0,0,1,0,0,1,0,0,1,0],[1,0,1,1,0,1,1,0,1,1,1,0,1,0,1,1,0,1,1,0,1],[0,0,1,0,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0,0],[1,1,0,1,1,0,1,0,1,0,1,1,1,0,1,0,1,1,0,1,1],[0,0,0,0,0,0,0,0,1,0,0,1,1,0,0,1,0,1,0,0,1],[1,1,1,1,1,1,1,0,0,1,0,1,0,0,1,0,1,1,1,0,0],[1,0,0,0,0,0,1,0,1,0,1,0,1,1,0,1,0,0,0,1,0],[1,0,1,1,1,0,1,1,0,1,0,1,0,0,1,1,1,0,1,0,1],[1,0,1,1,1,0,1,0,1,0,1,1,0,1,0,0,0,1,0,1,0],[1,0,1,1,1,0,1,0,0,1,1,0,1,0,1,0,1,1,0,0,1],[1,0,0,0,0,0,1,0,1,0,0,1,0,1,0,1,0,0,1,0,0],[1,1,1,1,1,1,1,0,1,1,0,0,1,0,1,0,1,0,0,1,1]];
+  var cell=Math.floor(sz/21);
+  pattern.forEach(function(row,r){row.forEach(function(v,c){if(v)ctx.fillRect(c*cell,r*cell,cell,cell);});});
+}
+function switchAITab(t){
+  var adv=document.getElementById('ai-tab-advisor');
+  var ins=document.getElementById('ai-tab-insight');
+  var icon=document.getElementById('ai-insight-icon');
+  var cAdv=document.getElementById('ai-content-advisor');
+  var cChat=document.getElementById('ai-chat-mode');
+  var cIns=document.getElementById('ai-content-insight');
+  var bar=document.getElementById('ai-input-bar');
+  if(!adv)return;
+  if(t==='advisor'){
+    adv.style.background='linear-gradient(90deg,#56C5F9,#D47BFF)';adv.querySelector('span').style.color='#fff';adv.querySelector('span').style.fontWeight='700';
+    ins.style.background='transparent';ins.querySelector('span').style.color='var(--t2)';ins.querySelector('span').style.fontWeight='600';
+    if(icon)icon.setAttribute('stroke','var(--t2)');
     if(cChat)cChat.style.display='none';
-    if(cInsight){cInsight.style.display='block';setTimeout(drawCharts,50);}
+    if(bar)bar.style.display='none';
+    if(cAdv)cAdv.style.display='block';
+    if(cIns)cIns.style.display='none';
+  } else {
+    ins.style.background='linear-gradient(90deg,#56C5F9,#D47BFF)';ins.querySelector('span').style.color='#fff';ins.querySelector('span').style.fontWeight='700';
+    if(icon)icon.setAttribute('stroke','#fff');
+    adv.style.background='transparent';adv.querySelector('span').style.color='var(--t2)';adv.querySelector('span').style.fontWeight='600';
+    if(cChat)cChat.style.display='none';
+    if(bar)bar.style.display='none';
+    if(cAdv)cAdv.style.display='none';
+    if(cIns){cIns.style.display='block';setTimeout(drawCharts,50);}
   }
 }
 function startAIChat(){
-  var cAdvisor=document.getElementById('ai-content-advisor');
+  var cAdv=document.getElementById('ai-content-advisor');
   var cChat=document.getElementById('ai-chat-mode');
-  if(cAdvisor)cAdvisor.style.display='none';
+  var bar=document.getElementById('ai-input-bar');
+  if(cAdv)cAdv.style.display='none';
   if(cChat){cChat.style.display='flex';cChat.style.flexDirection='column';}
+  if(bar){bar.style.display='block';if(window._updateAIInputBar)window._updateAIInputBar();}
 }
-
-var AI_RESPONSES=[
-  {keys:['慢','slow','速度','lag','斷線','不穩','restarting','internet'],
-   reply:'Got it. Here are a few steps you can try to troubleshoot further:\n1. Check for Device Overload\n2. Too many devices connected? Try disconnecting a few and see if it helps.\n3. Test Wired Connection'},
-  {keys:['mesh','節點','node','aimesh','覆蓋'],
-   reply:'Setting up AiMesh is easy:\n1. Reset the second router (hold Reset 5 sec)\n2. Go to Home → AiMesh → Add Node\n3. Wait for scan, then tap Connect\n4. Place the node at the edge of your main router\'s signal for best coverage 📡'},
-  {keys:['密碼','password','wifi','wi-fi','忘記'],
-   reply:'There are two ways to find your Wi-Fi password:\n1. In the App: Settings → Wi-Fi Settings → Main Wi-Fi → Show Password\n2. Reset it: Settings → Wi-Fi Settings → Main Wi-Fi → Edit\nWant me to generate a QR Code for easy sharing?'},
-  {keys:['裝置','連不上','connect','device'],
-   reply:'Let me help diagnose the connection issue:\n• Check if the device appears in the Devices tab\n• Make sure MAC filtering isn\'t blocking it\n• Try forgetting the network and reconnecting\n\nShall I run a full network scan?'},
-  {keys:['安全','protection','威脅','aiprotection'],
-   reply:'AiProtection is running normally ✅\nToday\'s summary:\n• Blocked: 1,275 threats\n• Filtered: 377 trackers\n• Scanned: 122 files\n\nSecurity Score: 98 / 100 🛡️'},
-  {keys:['省電','energy','電量'],
-   reply:'AI Energy Saving is active ⚡\nToday\'s result:\n• Power saved: 23%\n• Reduced ~15W vs standard mode\n\nWant to see the detailed usage chart?'}
-];
-var AI_DEFAULT='I understand. Let me check your router settings...\n\n1. Try restarting the router (Settings → Reboot Router)\n2. Update firmware to the latest version\n3. Run a Network Diagnostic for a full check\n\nAnything else I can help with? 😊';
-
-function getAIReply(text){
-  var lower=text.toLowerCase();
-  for(var i=0;i<AI_RESPONSES.length;i++){
-    var keys=AI_RESPONSES[i].keys;
-    for(var j=0;j<keys.length;j++){if(lower.indexOf(keys[j])!==-1)return AI_RESPONSES[i].reply;}
-  }
-  return AI_DEFAULT;
-}
-
-function appendUserMsg(text){
-  var msgs=document.getElementById('ai-chat-messages');if(!msgs)return;
-  var el=document.createElement('div');
-  el.style.cssText='align-self:flex-end;background:linear-gradient(135deg,#7BAAF7,#5B8DEE);color:#fff;border-radius:20px 20px 4px 20px;padding:14px 18px;font-size:16px;max-width:82%;line-height:1.6;word-break:break-word';
-  el.textContent=text;
-  msgs.appendChild(el);msgs.scrollTop=msgs.scrollHeight;
-}
-
-function appendAIMsg(text){
-  var msgs=document.getElementById('ai-chat-messages');if(!msgs)return;
-  var typing=document.createElement('div');
-  typing.style.cssText='align-self:flex-start;background:#EFEFEF;border-radius:20px 20px 20px 4px;padding:16px 18px;display:flex;gap:5px;align-items:center';
-  typing.innerHTML='<span style="width:7px;height:7px;border-radius:50%;background:#999;animation:aiDot 1.2s infinite"></span><span style="width:7px;height:7px;border-radius:50%;background:#999;animation:aiDot 1.2s .2s infinite"></span><span style="width:7px;height:7px;border-radius:50%;background:#999;animation:aiDot 1.2s .4s infinite"></span>';
-  msgs.appendChild(typing);msgs.scrollTop=msgs.scrollHeight;
-  var delay=Math.min(600+text.length*6,2200);
-  setTimeout(function(){
-    msgs.removeChild(typing);
-    var bubble=document.createElement('div');
-    bubble.style.cssText='align-self:flex-start;background:#E2E4EA;color:#1a1a1a;border-radius:20px 20px 20px 4px;padding:14px 18px;font-size:16px;max-width:86%;line-height:1.5;word-break:break-word;white-space:pre-wrap';
-    msgs.appendChild(bubble);msgs.scrollTop=msgs.scrollHeight;
-    var i=0;
-    function tick(){
-      if(i>=text.length){bubble.textContent=text;return;}
-      i+=Math.min(4,text.length-i);
-      bubble.textContent=text.substring(0,i)+'▌';
-      msgs.scrollTop=msgs.scrollHeight;
-      setTimeout(tick,16);
-    }
-    tick();
-  },delay);
-}
-
 function sendAIMessage(){
   var input=document.getElementById('ai-input');
   var msgs=document.getElementById('ai-chat-messages');
@@ -2481,112 +2795,117 @@ function sendAIMessage(){
   appendUserMsg(txt);input.textContent='';
   appendAIMsg(getAIReply(txt));
 }
+function appendUserMsg(text){
+  var msgs=document.getElementById('ai-chat-messages');if(!msgs)return;
+  var el=document.createElement('div');
+  el.style.cssText='align-self:flex-end;background:linear-gradient(135deg,#7BAAF7,#5B8DEE);color:#fff;border-radius:18px 18px 4px 18px;padding:14px 18px;font-size:16px;max-width:82%;line-height:1.5;word-break:break-word';
+  el.textContent=text;msgs.appendChild(el);msgs.scrollTop=msgs.scrollHeight;
+}
+function appendAIMsg(text){
+  var msgs=document.getElementById('ai-chat-messages');if(!msgs)return;
+  var typing=document.createElement('div');
+  typing.style.cssText='align-self:flex-start;background:var(--s3);border-radius:18px 18px 18px 4px;padding:14px 16px;display:flex;gap:5px;align-items:center';
+  typing.innerHTML='<span style="width:7px;height:7px;border-radius:50%;background:var(--t3);animation:aiDot 1.2s infinite"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--t3);animation:aiDot 1.2s .2s infinite"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--t3);animation:aiDot 1.2s .4s infinite"></span>';
+  msgs.appendChild(typing);msgs.scrollTop=msgs.scrollHeight;
+  var delay=Math.min(600+text.length*6,2200);
+  setTimeout(function(){
+    msgs.removeChild(typing);
+    var bubble=document.createElement('div');
+    bubble.style.cssText='align-self:flex-start;background:var(--s3);color:var(--tx);border-radius:18px 18px 18px 4px;padding:14px 18px;font-size:16px;max-width:86%;line-height:1.5;word-break:break-word;white-space:pre-wrap';
+    msgs.appendChild(bubble);msgs.scrollTop=msgs.scrollHeight;
+    var i=0;
+    function tick(){if(i>=text.length){bubble.textContent=text;return;}i+=Math.min(4,text.length-i);bubble.textContent=text.substring(0,i)+'▌';msgs.scrollTop=msgs.scrollHeight;setTimeout(tick,16);}
+    tick();
+  },delay);
+}
+var AI_RESPONSES=[
+  {keys:['慢','slow','速度','lag','斷線','不穩','restarting','internet'],reply:'Got it. Here are a few steps you can try:\n1. Check for Device Overload\n2. Too many devices connected? Try disconnecting a few.\n3. Test Wired Connection'},
+  {keys:['mesh','節點','node','aimesh'],reply:'Setting up AiMesh is easy:\n1. Reset the second router (hold Reset 5 sec)\n2. Go to Home → AiMesh → Add Node\n3. Wait for scan, then tap Connect'},
+  {keys:['密碼','password','wifi','wi-fi','忘記'],reply:'Two ways to find your Wi-Fi password:\n1. App: Settings → Wi-Fi Settings → Show Password\n2. Reset: Settings → Wi-Fi Settings → Edit'},
+  {keys:['裝置','連不上','connect','device'],reply:'Let me help diagnose:\n• Check the Devices tab\n• Make sure MAC filtering isn\'t blocking it\n• Try forgetting the network and reconnecting'},
+  {keys:['安全','protection','威脅'],reply:'AiProtection is running ✅\nToday: Blocked 1,275 • Filtered 377 • Scanned 122\nSecurity Score: 98/100 🛡️'},
+  {keys:['省電','energy'],reply:'AI Energy Saving is active ⚡\nPower saved: 23% today\nReduced ~15W vs standard mode'}
+];
+var AI_DEFAULT='Let me check your router settings...\n1. Try restarting (Settings → Reboot Router)\n2. Update firmware\n3. Run Network Diagnostic\n\nAnything else I can help with? 😊';
+function getAIReply(text){
+  var lower=text.toLowerCase();
+  for(var i=0;i<AI_RESPONSES.length;i++){var keys=AI_RESPONSES[i].keys;for(var j=0;j<keys.length;j++){if(lower.indexOf(keys[j])!==-1)return AI_RESPONSES[i].reply;}}
+  return AI_DEFAULT;
+}
 function toggleChatContext(){
-  var tg=document.getElementById('tg-chat-context');
-  if(!tg)return;
-  var on=tg.style.background===''||tg.style.background.indexOf('ac')===-1&&tg.style.background!=='#BD2C2C'?null:tg.dataset.on!=='0';
-  // simpler: toggle data attribute
+  var tg=document.getElementById('tg-chat-context');if(!tg)return;
   var isOn=tg.dataset.on!=='0';
-  if(isOn){
-    tg.dataset.on='0';
-    tg.style.background='var(--bd2)';
-    tg.querySelector('div').style.transform='translateX(0)';
-    tg.querySelector('div').style.left='3px';
-    tg.querySelector('div').style.right='auto';
-  } else {
-    tg.dataset.on='1';
-    tg.style.background='var(--ac)';
-    tg.querySelector('div').style.transform='';
-    tg.querySelector('div').style.left='auto';
-    tg.querySelector('div').style.right='3px';
-  }
+  if(isOn){tg.dataset.on='0';tg.style.background='var(--bd2)';tg.querySelector('div').style.cssText='position:absolute;width:25px;height:25px;background:#fff;border-radius:50%;top:3px;left:3px;box-shadow:0 1px 3px rgba(0,0,0,.2)';}
+  else{tg.dataset.on='1';tg.style.background='var(--ac)';tg.querySelector('div').style.cssText='position:absolute;width:25px;height:25px;background:#fff;border-radius:50%;top:3px;right:3px;box-shadow:0 1px 3px rgba(0,0,0,.2)';}
 }
 function drawCharts(){
-  (function(){
-    var c=document.getElementById('energy-chart');if(!c||c._drawn)return;c._drawn=true;
-    var dpr=window.devicePixelRatio||1,w=c.offsetWidth||320,h=c.offsetHeight||130;
-    c.width=w*dpr;c.height=h*dpr;var ctx=c.getContext('2d');ctx.scale(dpr,dpr);
-    var data=[85,80,75,90,95,100,100,95,90,85,70,60,55,50,45,50,60,70,80,85,90,88,85,82,80,85,90],now=17,pts=data.length;
-    var pad={l:28,r:8,t:10,b:4},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;
-    function xP(i){return pad.l+i*(cw/(pts-1));}function yP(v){return pad.t+ch*(1-v/100);}
-    ctx.strokeStyle='rgba(200,200,200,.3)';ctx.lineWidth=1;[0,25,50,75,100].forEach(function(v){ctx.beginPath();ctx.moveTo(pad.l,yP(v));ctx.lineTo(pad.l+cw,yP(v));ctx.stroke();});
-    var g=ctx.createLinearGradient(0,pad.t,0,pad.t+ch);g.addColorStop(0,'rgba(61,139,255,0.22)');g.addColorStop(1,'rgba(61,139,255,0)');
-    ctx.beginPath();ctx.moveTo(xP(0),yP(data[0]));data.forEach(function(v,i){if(i>0)ctx.lineTo(xP(i),yP(v));});ctx.lineTo(xP(pts-1),yP(0));ctx.lineTo(xP(0),yP(0));ctx.closePath();ctx.fillStyle=g;ctx.fill();
-    ctx.strokeStyle='#3D8BFF';ctx.lineWidth=2;ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(xP(0),yP(data[0]));data.forEach(function(v,i){if(i>0)ctx.lineTo(xP(i),yP(v));});ctx.stroke();
-    ctx.strokeStyle='#444';ctx.lineWidth=1;ctx.setLineDash([3,2]);ctx.beginPath();ctx.moveTo(xP(now),pad.t);ctx.lineTo(xP(now),pad.t+ch);ctx.stroke();ctx.setLineDash([]);
-    ctx.fillStyle='#444';ctx.font='bold 9px system-ui';ctx.textAlign='center';ctx.fillText('Now',xP(now),pad.t-1);
-  })();
-  (function(){
-    var c=document.getElementById('wifi-chart');if(!c||c._drawn)return;c._drawn=true;
-    var dpr=window.devicePixelRatio||1,w=c.offsetWidth||320,h=c.offsetHeight||110;
-    c.width=w*dpr;c.height=h*dpr;var ctx=c.getContext('2d');ctx.scale(dpr,dpr);
-    var pts=60,data=[];for(var i=0;i<pts;i++)data.push(20+Math.random()*55+Math.sin(i/4)*15);
-    var pad={l:6,r:6,t:6,b:4},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;
-    function xP(i){return pad.l+i*(cw/(pts-1));}function yP(v){return pad.t+ch*(1-v/100);}
-    var g=ctx.createLinearGradient(0,pad.t,0,pad.t+ch);g.addColorStop(0,'rgba(255,106,106,0.18)');g.addColorStop(1,'rgba(255,106,106,0)');
-    ctx.beginPath();ctx.moveTo(xP(0),yP(data[0]));data.forEach(function(v,i){if(i>0)ctx.lineTo(xP(i),yP(v));});ctx.lineTo(xP(pts-1),yP(0));ctx.lineTo(xP(0),yP(0));ctx.closePath();ctx.fillStyle=g;ctx.fill();
-    ctx.strokeStyle='#FF6A6A';ctx.lineWidth=1.5;ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(xP(0),yP(data[0]));data.forEach(function(v,i){if(i>0)ctx.lineTo(xP(i),yP(v));});ctx.stroke();
-  })();
+  (function(){var c=document.getElementById('energy-chart');if(!c||c._drawn)return;c._drawn=true;var dpr=window.devicePixelRatio||1,w=c.offsetWidth||320,h=c.offsetHeight||130;c.width=w*dpr;c.height=h*dpr;var ctx=c.getContext('2d');ctx.scale(dpr,dpr);var data=[85,80,75,90,95,100,100,95,90,85,70,60,55,50,45,50,60,70,80,85,90,88,85,82,80,85,90],now=17,pts=data.length,pad={l:6,r:6,t:10,b:4},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;function xP(i){return pad.l+i*(cw/(pts-1));}function yP(v){return pad.t+ch*(1-v/100);}var g=ctx.createLinearGradient(0,pad.t,0,pad.t+ch);g.addColorStop(0,'rgba(61,139,255,0.22)');g.addColorStop(1,'rgba(61,139,255,0)');ctx.beginPath();ctx.moveTo(xP(0),yP(data[0]));data.forEach(function(v,i){if(i>0)ctx.lineTo(xP(i),yP(v));});ctx.lineTo(xP(pts-1),yP(0));ctx.lineTo(xP(0),yP(0));ctx.closePath();ctx.fillStyle=g;ctx.fill();ctx.strokeStyle='#3D8BFF';ctx.lineWidth=2;ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(xP(0),yP(data[0]));data.forEach(function(v,i){if(i>0)ctx.lineTo(xP(i),yP(v));});ctx.stroke();ctx.strokeStyle='#444';ctx.lineWidth=1;ctx.setLineDash([3,2]);ctx.beginPath();ctx.moveTo(xP(now),pad.t);ctx.lineTo(xP(now),pad.t+ch);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#444';ctx.font='bold 9px system-ui';ctx.textAlign='center';ctx.fillText('Now',xP(now),pad.t-1);})();
+  (function(){var c=document.getElementById('wifi-chart');if(!c||c._drawn)return;c._drawn=true;var dpr=window.devicePixelRatio||1,w=c.offsetWidth||320,h=c.offsetHeight||110;c.width=w*dpr;c.height=h*dpr;var ctx=c.getContext('2d');ctx.scale(dpr,dpr);var pts=60,data=[];for(var i=0;i<pts;i++)data.push(20+Math.random()*55+Math.sin(i/4)*15);var pad={l:6,r:6,t:6,b:4},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;function xP(i){return pad.l+i*(cw/(pts-1));}function yP(v){return pad.t+ch*(1-v/100);}var g=ctx.createLinearGradient(0,pad.t,0,pad.t+ch);g.addColorStop(0,'rgba(255,106,106,0.18)');g.addColorStop(1,'rgba(255,106,106,0)');ctx.beginPath();ctx.moveTo(xP(0),yP(data[0]));data.forEach(function(v,i){if(i>0)ctx.lineTo(xP(i),yP(v));});ctx.lineTo(xP(pts-1),yP(0));ctx.lineTo(xP(0),yP(0));ctx.closePath();ctx.fillStyle=g;ctx.fill();ctx.strokeStyle='#FF6A6A';ctx.lineWidth=1.5;ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(xP(0),yP(data[0]));data.forEach(function(v,i){if(i>0)ctx.lineTo(xP(i),yP(v));});ctx.stroke();})();
 }
 function drawDetailCharts(){
-  (function(){
-    var c=document.getElementById('energy-detail-chart');if(!c||c._drawn)return;c._drawn=true;
-    var dpr=window.devicePixelRatio||1,w=c.offsetWidth||320,h=c.offsetHeight||180;
-    c.width=w*dpr;c.height=h*dpr;var ctx=c.getContext('2d');ctx.scale(dpr,dpr);
-    // 0-24hr, 25 points
-    var std=[55,55,55,55,55,55,55,55,55,62,65,65,65,65,14,14,14,14,14,14,14,14,14,14,14];
-    var ai =[14,14,14,14,14,14,14,14,14,14,14,14,14,14,22,22,22,22,10,10,10,10,10,10,10];
-    var now=18; // current time index (~18hr)
-    var pts=std.length;
-    var pad={l:36,r:10,t:16,b:4},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;
-    function xP(i){return pad.l+i*(cw/(pts-1));}
-    function yP(v){return pad.t+ch*(1-v/100);}
-    // grid
-    ctx.strokeStyle='rgba(200,210,230,.5)';ctx.lineWidth=.8;
-    [0,20,40,60,80,100].forEach(function(v){
-      ctx.beginPath();ctx.moveTo(pad.l,yP(v));ctx.lineTo(pad.l+cw,yP(v));ctx.stroke();
-    });
-    // Y axis labels
-    ctx.fillStyle='#999';ctx.font='9px system-ui';ctx.textAlign='right';
-    [0,20,40,60,80,100].forEach(function(v){ctx.fillText(v,pad.l-4,yP(v)+3);});
-    // AI area fill (blue, right of now)
-    var grad=ctx.createLinearGradient(0,pad.t,0,pad.t+ch);
-    grad.addColorStop(0,'rgba(74,137,232,0.2)');grad.addColorStop(1,'rgba(74,137,232,0.05)');
-    ctx.beginPath();ctx.moveTo(xP(now),yP(ai[now]));
-    for(var i=now;i<pts;i++)ctx.lineTo(xP(i),yP(ai[i]));
-    ctx.lineTo(xP(pts-1),yP(0));ctx.lineTo(xP(now),yP(0));ctx.closePath();
-    ctx.fillStyle=grad;ctx.fill();
-    // standard line
-    ctx.strokeStyle='#FF8D8D';ctx.lineWidth=2;ctx.lineJoin='round';
-    ctx.beginPath();ctx.moveTo(xP(0),yP(std[0]));
-    std.forEach(function(v,i){if(i>0)ctx.lineTo(xP(i),yP(v));});ctx.stroke();
-    // AI line
-    ctx.strokeStyle='#4A89E8';ctx.lineWidth=2;
-    ctx.beginPath();ctx.moveTo(xP(0),yP(ai[0]));
-    ai.forEach(function(v,i){if(i>0)ctx.lineTo(xP(i),yP(v));});ctx.stroke();
-    // Now marker
-    ctx.strokeStyle='#355C9A';ctx.lineWidth=1.5;ctx.setLineDash([3,2]);
-    ctx.beginPath();ctx.moveTo(xP(now),pad.t-4);ctx.lineTo(xP(now),pad.t+ch);ctx.stroke();ctx.setLineDash([]);
-    // Now badge
-    var bx=xP(now),by=pad.t-14,bw=32,bh=14,br=4;
-    ctx.fillStyle='#355C9A';
-    ctx.beginPath();ctx.roundRect(bx-bw/2,by,bw,bh,br);ctx.fill();
-    ctx.fillStyle='#fff';ctx.font='bold 9px system-ui';ctx.textAlign='center';
-    ctx.fillText('Now',bx,by+10);
-  })();
-  (function(){
-    var c=document.getElementById('wifi-detail-chart');if(!c||c._drawn)return;c._drawn=true;
-    var dpr=window.devicePixelRatio||1,w=c.offsetWidth||320,h=c.offsetHeight||110;
-    c.width=w*dpr;c.height=h*dpr;var ctx=c.getContext('2d');ctx.scale(dpr,dpr);
-    var pts=60,data=[];for(var i=0;i<pts;i++)data.push(20+Math.random()*55+Math.sin(i/4)*15);
-    var pad={l:6,r:6,t:6,b:4},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;
-    function xP(i){return pad.l+i*(cw/(pts-1));}function yP(v){return pad.t+ch*(1-v/100);}
-    var g=ctx.createLinearGradient(0,pad.t,0,pad.t+ch);g.addColorStop(0,'rgba(255,106,106,0.18)');g.addColorStop(1,'rgba(255,106,106,0)');
-    ctx.beginPath();ctx.moveTo(xP(0),yP(data[0]));data.forEach(function(v,i){if(i>0)ctx.lineTo(xP(i),yP(v));});ctx.lineTo(xP(pts-1),yP(0));ctx.lineTo(xP(0),yP(0));ctx.closePath();ctx.fillStyle=g;ctx.fill();
-    ctx.strokeStyle='#FF6A6A';ctx.lineWidth=1.5;ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(xP(0),yP(data[0]));data.forEach(function(v,i){if(i>0)ctx.lineTo(xP(i),yP(v));});ctx.stroke();
-  })();
+  (function(){var c=document.getElementById('energy-detail-chart');if(!c||c._drawn)return;c._drawn=true;var dpr=window.devicePixelRatio||1,w=c.offsetWidth||320,h=c.offsetHeight||180;c.width=w*dpr;c.height=h*dpr;var ctx=c.getContext('2d');ctx.scale(dpr,dpr);var std=[55,55,55,55,55,55,55,55,55,62,65,65,65,65,14,14,14,14,14,14,14,14,14,14,14],ai=[14,14,14,14,14,14,14,14,14,14,14,14,14,14,22,22,22,22,10,10,10,10,10,10,10],now=18,pts=std.length,pad={l:36,r:10,t:16,b:4},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;function xP(i){return pad.l+i*(cw/(pts-1));}function yP(v){return pad.t+ch*(1-v/100);}ctx.strokeStyle='rgba(200,210,230,.5)';ctx.lineWidth=.8;[0,20,40,60,80,100].forEach(function(v){ctx.beginPath();ctx.moveTo(pad.l,yP(v));ctx.lineTo(pad.l+cw,yP(v));ctx.stroke();});ctx.fillStyle='#999';ctx.font='9px system-ui';ctx.textAlign='right';[0,20,40,60,80,100].forEach(function(v){ctx.fillText(v,pad.l-4,yP(v)+3);});var g=ctx.createLinearGradient(0,pad.t,0,pad.t+ch);g.addColorStop(0,'rgba(74,137,232,0.2)');g.addColorStop(1,'rgba(74,137,232,0.05)');ctx.beginPath();ctx.moveTo(xP(now),yP(ai[now]));for(var i=now;i<pts;i++)ctx.lineTo(xP(i),yP(ai[i]));ctx.lineTo(xP(pts-1),yP(0));ctx.lineTo(xP(now),yP(0));ctx.closePath();ctx.fillStyle=g;ctx.fill();ctx.strokeStyle='#FF8D8D';ctx.lineWidth=2;ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(xP(0),yP(std[0]));std.forEach(function(v,i){if(i>0)ctx.lineTo(xP(i),yP(v));});ctx.stroke();ctx.strokeStyle='#4A89E8';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(xP(0),yP(ai[0]));ai.forEach(function(v,i){if(i>0)ctx.lineTo(xP(i),yP(v));});ctx.stroke();ctx.strokeStyle='#355C9A';ctx.lineWidth=1.5;ctx.setLineDash([3,2]);ctx.beginPath();ctx.moveTo(xP(now),pad.t-4);ctx.lineTo(xP(now),pad.t+ch);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#355C9A';ctx.font='bold 8px system-ui';ctx.textAlign='center';ctx.fillText('Now',xP(now),pad.t-2);})();
+  (function(){var c=document.getElementById('wifi-detail-chart');if(!c||c._drawn)return;c._drawn=true;var dpr=window.devicePixelRatio||1,w=c.offsetWidth||320,h=c.offsetHeight||110;c.width=w*dpr;c.height=h*dpr;var ctx=c.getContext('2d');ctx.scale(dpr,dpr);var pts=60,data=[];for(var i=0;i<pts;i++)data.push(20+Math.random()*55+Math.sin(i/4)*15);var pad={l:6,r:6,t:6,b:4},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;function xP(i){return pad.l+i*(cw/(pts-1));}function yP(v){return pad.t+ch*(1-v/100);}var g=ctx.createLinearGradient(0,pad.t,0,pad.t+ch);g.addColorStop(0,'rgba(255,106,106,0.18)');g.addColorStop(1,'rgba(255,106,106,0)');ctx.beginPath();ctx.moveTo(xP(0),yP(data[0]));data.forEach(function(v,i){if(i>0)ctx.lineTo(xP(i),yP(v));});ctx.lineTo(xP(pts-1),yP(0));ctx.lineTo(xP(0),yP(0));ctx.closePath();ctx.fillStyle=g;ctx.fill();ctx.strokeStyle='#FF6A6A';ctx.lineWidth=1.5;ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(xP(0),yP(data[0]));data.forEach(function(v,i){if(i>0)ctx.lineTo(xP(i),yP(v));});ctx.stroke();})();
+}
+// visualViewport keyboard handler - keep overlay above keyboard
+(function(){
+  var bar=null;
+  function getBar(){return bar||(bar=document.getElementById('ai-input-bar'));}
+  function update(){
+    var b=getBar();if(!b||b.style.display==='none')return;
+    var kbH=window.innerHeight-window.visualViewport.height;
+    var tb=document.querySelector('.tb');
+    var tbH=(kbH<50&&tb)?tb.offsetHeight:0;
+    b.style.bottom=(kbH+tbH)+'px';
+    var msgs=document.getElementById('ai-chat-messages');
+    if(msgs)msgs.scrollTop=msgs.scrollHeight;
+  }
+  if(window.visualViewport){
+    window.visualViewport.addEventListener('resize',update);
+    window.visualViewport.addEventListener('scroll',update);
+  }
+  window._updateAIInputBar=update;
+})();
+var DARK_VARS={'--bg':'#111113','--w':'#1C1C1E','--s2':'#2C2C2E','--s3':'#3A3A3C','--bd':'#3A3A3C','--bd2':'#48484A','--tx':'#F2F2F7','--t2':'#AEAEB2','--t3':'#6E6E73','--sh':'0 2px 12px rgba(0,0,0,.4)','--ib':'rgba(91,155,214,.28)','--is':'#7DB8E8','--abg':'rgba(91,155,214,.28)','--gbg':'rgba(52,199,89,.2)','--gn':'#30D158','--obg':'rgba(255,159,10,.2)','--or':'#FF9F0A','--rd':'#FF453A','--ac':'#5B9BD6'};
+var LIGHT_VARS={'--bg':'#F4F6FB','--w':'#fff','--s2':'#F0F2F8','--s3':'#E6E9F4','--bd':'#E4E8F2','--bd2':'#CDD3E8','--tx':'#0C1120','--t2':'#46526E','--t3':'#8A93AA','--sh':'0 2px 12px rgba(44,62,120,.08)','--ib':'rgba(74,143,224,.12)','--is':'#4A8FE0','--abg':'rgba(74,143,224,.12)','--gbg':'rgba(52,199,89,.12)','--gn':'#34C759','--obg':'rgba(255,149,0,.12)','--or':'#FF9500','--rd':'#FF3B30','--ac':'#4A8FE0'};
+function applyTheme(t){
+  var isDark=t==='dark';
+  var vars=isDark?DARK_VARS:LIGHT_VARS;
+  var phone=document.querySelector('.phone');
+  Object.keys(vars).forEach(function(k){
+    phone.style.setProperty(k,vars[k]);
+    document.documentElement.style.setProperty(k,vars[k]);
+  });
+  var energyHero=document.querySelector('.energy-hero');
+  var aiproHero=document.querySelector('.aipro-hero');
+  if(isDark){if(energyHero)energyHero.style.background='linear-gradient(160deg,#1A3A4A 0%,#1E3D3A 50%,#1C2E2A 100%)';if(aiproHero)aiproHero.style.background='linear-gradient(180deg,#1A3D28 0%,#1C3022 60%,#111113 100%)';}
+  else{if(energyHero)energyHero.style.background='linear-gradient(160deg,#74C7FF 0%,#7FD8EE 40%,#A8EDD8 70%,#C2F0E8 100%)';if(aiproHero)aiproHero.style.background='linear-gradient(180deg,#59D37A 0%,#98E7AE 60%,#fff 100%)';}
+  document.querySelectorAll('.theme-item').forEach(function(c){
+    var dot=c.querySelector('[id^="tr-"]');if(!dot)return;
+    if(c.dataset.t===t){c.classList.add('on');dot.style.background=vars['--ac'];dot.style.border='2px solid '+vars['--ac'];dot.innerHTML='<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/><\/svg>';}
+    else{c.classList.remove('on');dot.style.background='';dot.style.border='2px solid '+vars['--bd2'];dot.innerHTML='';}
+  });
 }
 
 </script>
+<!-- AI Chat Keyboard-Aware Overlay: input only, always above keyboard -->
+<div id="ai-input-bar" style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:999">
+  <div style="background:var(--w);border-top:1px solid var(--bd);padding:10px 16px 14px">
+    <div style="display:flex;align-items:flex-end;gap:8px">
+      <div style="width:36px;height:36px;border-radius:50%;border:1.5px solid var(--bd2);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;color:var(--t2);font-size:22px;font-weight:300">+</div>
+      <div style="flex:1;background:var(--s2);border-radius:20px;padding:12px 16px;min-height:48px;display:flex;align-items:center">
+        <div id="ai-input" contenteditable="true" data-placeholder="有什麼問題都可以問我…" style="flex:1;font-size:16px;color:var(--tx);outline:none;max-height:120px;overflow-y:auto;line-height:1.5;word-break:break-word"></div>
+      </div>
+      <div id="ai-send" onclick="sendAIMessage()" style="width:36px;height:36px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;box-shadow:0 2px 8px rgba(74,137,232,.35)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;margin-top:7px">
+      <div onclick="var o=document.getElementById('ov-chat-settings');var b=document.getElementById('ai-input-bar');o.style.display='flex';if(b)b.style.visibility='hidden'" style="display:flex;align-items:center;gap:4px;cursor:pointer">
+        <span style="font-size:13px;color:var(--t2);font-weight:600">Chat Settings</span>
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--t2)" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
