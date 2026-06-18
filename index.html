@@ -519,7 +519,10 @@ body{display:flex;align-items:center;justify-content:center}
     <!-- ═══ FAMILY ═══ -->
     <div class="pg" id="pg-family">
       <div style="padding:14px 20px 12px;background:var(--w);border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;flex-shrink:0">
-        <div style="font-size:24px;font-weight:600;color:var(--tx);letter-spacing:-.5px">家庭成員</div>
+        <div id="family-back-btn" onclick="familyBackFromQuick()" style="display:none;width:34px;height:34px;border-radius:50%;background:var(--s2);align-items:center;justify-content:center;cursor:pointer;flex-shrink:0">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--t2)" stroke-width="2.2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </div>
+        <div style="font-size:24px;font-weight:600;color:var(--tx);letter-spacing:-.5px;flex:1" id="family-title">家庭成員</div>
         <div onclick="show('sub-fm-step1')" style="width:34px;height:34px;background:var(--ac);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="4" x2="12" y2="20"/><line x1="4" y1="12" x2="20" y2="12"/></svg></div>
       </div>
       <div class="pg-body" id="family-list-body">
@@ -1766,7 +1769,6 @@ body{display:flex;align-items:center;justify-content:center}
       <span class="sl">安全性</span>
       <div style="background:var(--w)">
         <div class="sr" onclick="show('sub-change-pwd')" style="cursor:pointer"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">修改密碼</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">兩步驟驗證</div><div style="font-size:13px;color:var(--t3);margin-top:2px">增強帳號安全性</div></div><div class="tg" id="tg-2fa"></div></div>
         <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Face ID / 密碼鎖</div></div><div class="tg on" id="tg-faceid"></div></div>
       </div>
       <span class="sl">通知</span>
@@ -2284,7 +2286,7 @@ body{display:flex;align-items:center;justify-content:center}
   <!-- SUB: 家長控制（從快速操作入口，有 back 回首頁） -->
   <div class="sub" id="sub-family-quick">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" id="family-quick-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div class="bk" id="family-quick-back" onclick="hide('sub-family-quick')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
       <div style="font-size:17px;font-weight:600;color:var(--tx)">家庭成員</div>
       <div onclick="show('sub-fm-step1')" style="width:32px;height:32px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center;cursor:pointer">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -2348,6 +2350,8 @@ function goTab(t){
   if(tb)tb.classList.add('on');
   var ct=g('ct');
   if(ct){ct.scrollTop=0;}
+  // hide family back when switching tabs normally
+  if(t==='family'){var fb=document.getElementById('family-back-btn');if(fb)fb.style.display='none';}
   ['sub-pro','sub-dev','sub-notif','sub-diag','sub-suggestions','sub-energy','sub-aipro-detail','sub-wifi-insight','sub-theme','sub-main-wifi','sub-reboot','sub-account','sub-led','sub-passwords','sub-pause','sub-scan','sub-mesh-opt','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick'].forEach(hide);
   // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
@@ -2483,7 +2487,6 @@ function renderQAGrid() {
       else if (act==='guest')    show('ov-guest');
       else if (act==='diag')     show('sub-diag');
       else if (act==='devs')     { goTab('devices'); var b=document.getElementById('devices-back-btn'); if(b)b.style.display='flex'; }
-      else if (act==='family')   goTab('family');
       else if (act==='add')      { show('ov-plus'); }
       else if (act==='wifiset')  show('sub-main-wifi');
       else if (act==='passwords'){ show('sub-passwords'); }
@@ -2494,13 +2497,9 @@ function renderQAGrid() {
       else if (act==='sched')    show('sub-sched-home');
       else if (act==='reboot')   show('sub-reboot');
       else if (act==='family'){
-        var qb=document.getElementById('family-quick-body');
-        if(qb){qb.innerHTML=document.getElementById('family-list-body')?document.getElementById('family-list-body').innerHTML:'';}
-        // re-render fresh
-        var _origEl=document.getElementById('family-list-body');
-        var _quickEl=document.getElementById('family-quick-body');
-        if(_quickEl&&_origEl){renderFamilyListInto(_quickEl);}
-        show('sub-family-quick');
+        goTab('family');
+        var btn=document.getElementById('family-back-btn');
+        if(btn){btn.style.display='flex';}
       }
     });
   });
@@ -3431,6 +3430,11 @@ function fmStep2Skip(){fmCreateMember();}
 function fmStep2Done(){fmCreateMember();}
 
 // ── Render family list ──
+function familyBackFromQuick(){
+  var btn=document.getElementById('family-back-btn');
+  if(btn)btn.style.display='none';
+  goTab('home');
+}
 function renderFamilyListInto(el){
   var orig=document.getElementById('family-list-body');
   if(!orig)return;
