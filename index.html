@@ -442,7 +442,7 @@ body{display:flex;align-items:center;justify-content:center}
           <div onclick="show('drawer')" style="width:36px;height:36px;border-radius:50%;background:var(--w);box-shadow:0 2px 8px rgba(0,0,0,.1);display:flex;align-items:center;justify-content:center;position:absolute;left:20px;overflow:hidden;cursor:pointer">
             <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
           </div>
-          <div style="font-size:20px;font-weight:600;color:#4DA6FF">Insight</div>
+          <div style="font-size:20px;font-weight:600;color:#4DA6FF">AI</div>
         </div>
         <div style="padding:10px 16px 8px;background:var(--w);flex-shrink:0">
           <div style="display:flex;height:40px;border-radius:20px;border:1.5px solid transparent;background:linear-gradient(var(--w),var(--w)) padding-box,linear-gradient(90deg,#56C5F9,#D47BFF) border-box;overflow:hidden">
@@ -476,6 +476,9 @@ body{display:flex;align-items:center;justify-content:center}
         <!-- AI Chat -->
         <div id="ai-chat-mode" style="display:none;flex-direction:column;overflow:hidden;background:var(--bg);position:absolute;left:0;right:0;top:0;bottom:0">
           <div style="padding:10px 16px 8px;background:var(--w);flex-shrink:0;border-bottom:1px solid var(--bd)">
+            <div style="display:flex;align-items:center;justify-content:center;position:relative;margin-bottom:8px">
+              <div style="font-size:18px;font-weight:600;color:#4DA6FF">AI</div>
+            </div>
             <div style="display:flex;height:40px;border-radius:20px;border:1.5px solid transparent;background:linear-gradient(var(--w),var(--w)) padding-box,linear-gradient(90deg,#56C5F9,#D47BFF) border-box;overflow:hidden">
               <div onclick="switchAITab('advisor')" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;border-radius:18px;margin:2px;background:linear-gradient(90deg,#56C5F9,#D47BFF)">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
@@ -489,31 +492,25 @@ body{display:flex;align-items:center;justify-content:center}
           </div>
           <div id="ai-chat-messages" style="flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;background:var(--bg);padding-bottom:90px"></div>
         </div>
-        <!-- AI Insight -->
-        <div class="insight-content" id="ai-content-insight" style="display:none;padding:16px">
-          <div onclick="show('sub-suggestions')" style="background:var(--w);border-radius:18px;box-shadow:var(--sh);padding:16px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;margin-bottom:16px">
-            <div style="position:relative;width:44px;height:44px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><div style="position:absolute;top:0;right:0;width:12px;height:12px;border-radius:50%;background:#F5A623;border:2px solid var(--w)"></div></div>
-            <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Suggestions (6)</div><div style="font-size:13px;color:var(--t3);margin-top:2px">查看網路優化、安全設定與產品建議</div></div>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <!-- AI Insight — directly shows suggestions content -->
+        <div class="insight-content" id="ai-content-insight" style="display:none;background:var(--bg);padding:16px;flex-direction:column;gap:12px">
+          <div style="background:var(--w);border-radius:16px;padding:16px;box-shadow:var(--sh)">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><div style="position:relative;width:28px;height:28px;flex-shrink:0"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><div style="position:absolute;top:-2px;right:-2px;width:10px;height:10px;border-radius:50%;background:#F5A623;border:1.5px solid var(--w)"></div></div><div style="font-size:17px;font-weight:700;color:var(--tx)">AiMesh available</div></div>
+            <div style="font-size:14px;color:var(--t3);line-height:1.6;margin-bottom:14px">AiMesh combines more than one ASUS router to form a WiFi system, provides whole-home coverage and centralized management.</div>
+            <div style="display:flex;gap:10px;margin-bottom:10px"><div style="height:34px;padding:0 20px;border-radius:17px;border:1.5px solid var(--bd2);display:flex;align-items:center;font-size:14px;font-weight:500;color:var(--tx);cursor:pointer">Search</div><div style="height:34px;padding:0 20px;border-radius:17px;border:1.5px solid var(--bd2);display:flex;align-items:center;font-size:14px;font-weight:500;color:var(--tx);cursor:pointer">Details</div></div>
+            <div style="font-size:11px;color:var(--t3);text-align:right">Today, 10:07 Wed</div>
           </div>
-          <div onclick="show('sub-energy');setTimeout(drawDetailCharts,60)" style="background:var(--w);border-radius:18px;box-shadow:var(--sh);padding:16px 18px;margin-bottom:16px;cursor:pointer">
-            <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px"><div style="width:40px;height:40px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Energy Saving</div><div style="font-size:12px;color:var(--t3);margin-top:2px">目前處於低功耗模式，今日已為您省下 15% 電量</div></div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-            <div style="position:relative;height:130px;margin-top:8px"><canvas id="energy-chart" style="width:100%;height:100%"></canvas></div>
-            <div style="display:flex;justify-content:space-between;padding:0 4px;margin-top:4px"><span style="font-size:10px;color:var(--t3)">15</span><span style="font-size:10px;color:var(--t3)">18</span><span style="font-size:10px;color:var(--t3)">21</span><span style="font-size:10px;color:var(--t3)">0</span><span style="font-size:10px;color:var(--t3)">3</span><span style="font-size:10px;color:var(--t3)">6</span><span style="font-size:10px;color:var(--t3)">9</span><span style="font-size:10px;color:var(--t3)">12</span><span style="font-size:10px;color:var(--t3)">15</span></div>
+          <div style="background:var(--w);border-radius:16px;padding:16px;box-shadow:var(--sh)">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><div style="font-size:17px;font-weight:700;color:var(--tx)">Register Your Product</div></div>
+            <div style="font-size:14px;color:var(--t3);line-height:1.6;margin-bottom:14px">It is recommended to register your product to access our customer support quickly and easily.</div>
+            <div style="display:flex;gap:10px;margin-bottom:10px"><div style="height:34px;padding:0 20px;border-radius:17px;border:1.5px solid var(--bd2);display:flex;align-items:center;font-size:14px;font-weight:500;color:var(--tx);cursor:pointer">Dismiss</div><div style="height:34px;padding:0 20px;border-radius:17px;background:var(--ac);display:flex;align-items:center;font-size:14px;font-weight:600;color:#fff;cursor:pointer">GO</div></div>
+            <div style="font-size:11px;color:var(--t3);text-align:right">Today, 10:07 Wed</div>
           </div>
-          <div onclick="show('sub-wifi-insight');setTimeout(drawDetailCharts,60)" style="background:var(--w);border-radius:18px;box-shadow:var(--sh);padding:16px 18px;margin-bottom:16px;cursor:pointer">
-            <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px"><div style="width:40px;height:40px;border-radius:50%;background:#FFF0F0;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6A6A" stroke-width="2" stroke-linecap="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="#FF6A6A" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">WiFi Insight</div><div style="font-size:12px;color:var(--t3);margin-top:2px">偵測到輕微頻道干擾，系統已自動為您切換至最佳頻道</div></div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-            <div style="position:relative;height:110px"><canvas id="wifi-chart" style="width:100%;height:100%"></canvas></div>
-            <div style="display:flex;justify-content:space-between;padding:4px 4px 0"><span style="font-size:10px;color:var(--t3)">10:17</span><span style="font-size:10px;color:var(--t3)">10:32</span><span style="font-size:10px;color:var(--t3)">10:47</span><span style="font-size:10px;color:var(--t3)">11:02</span><span style="font-size:10px;color:var(--t3)">11:17</span></div>
-          </div>
-          <div onclick="show('sub-aipro-detail')" style="background:var(--w);border-radius:18px;box-shadow:var(--sh);padding:16px 18px;margin-bottom:16px;cursor:pointer">
-            <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><div style="width:40px;height:40px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">AI Protection</div><div style="font-size:12px;color:var(--t3);margin-top:2px">AI 今日已阻擋 6,091 次潛在威脅與違規行為</div></div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-            <div style="font-size:12px;font-weight:600;color:var(--t3);margin-bottom:12px">Today's Protection:</div>
-            <div style="display:flex;justify-content:space-around;align-items:center">
-              <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:68px;height:68px;border-radius:50%;background:#57B657;display:flex;align-items:center;justify-content:center"><span style="font-size:17px;font-weight:700;color:#fff">1275</span></div><span style="font-size:11px;color:var(--t3)">Blocked</span></div>
-              <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:68px;height:68px;border-radius:50%;background:#5A86FF;display:flex;align-items:center;justify-content:center"><span style="font-size:17px;font-weight:700;color:#fff">377</span></div><span style="font-size:11px;color:var(--t3)">Filtered</span></div>
-              <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:68px;height:68px;border-radius:50%;background:#41B6FF;display:flex;align-items:center;justify-content:center"><span style="font-size:17px;font-weight:700;color:#fff">122</span></div><span style="font-size:11px;color:var(--t3)">Scanned</span></div>
-            </div>
+          <div style="background:var(--w);border-radius:16px;padding:16px;box-shadow:var(--sh)">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><div style="font-size:17px;font-weight:700;color:var(--tx)">Firmware Update Available</div></div>
+            <div style="font-size:14px;color:var(--t3);line-height:1.6;margin-bottom:14px">Version 3.0.0.4.388 is available. Updating improves security and performance.</div>
+            <div style="display:flex;gap:10px;margin-bottom:10px"><div style="height:34px;padding:0 20px;border-radius:17px;border:1.5px solid var(--bd2);display:flex;align-items:center;font-size:14px;font-weight:500;color:var(--tx);cursor:pointer">Later</div><div style="height:34px;padding:0 20px;border-radius:17px;background:var(--ac);display:flex;align-items:center;font-size:14px;font-weight:600;color:#fff;cursor:pointer">Update Now</div></div>
+            <div style="font-size:11px;color:var(--t3);text-align:right">Today, 09:30 Wed</div>
           </div>
         </div>
       </div>
@@ -1951,12 +1948,14 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="background:var(--w)">
         <div class="sr" onclick="show('sub-wifi-sched')" style="cursor:pointer">
           <div class="sic"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div>
-          <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Wi-Fi 整體排程</div><div style="font-size:13px;color:var(--t3);margin-top:2px">設定全部 Wi-Fi 自動開關時段</div></div>
+          <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Wi-Fi 整體排程</div><div style="font-size:13px;color:var(--t3);margin-top:2px" id="wifi-sched-status">尚未設定</div></div>
+          <div id="wifi-sched-badge" style="display:none;font-size:12px;font-weight:600;color:var(--ac);margin-right:8px">ON</div>
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
         <div class="sr" onclick="show('sub-dev-sched')" style="cursor:pointer;border:none">
           <div class="sic"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg></div>
-          <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">裝置排程</div><div style="font-size:13px;color:var(--t3);margin-top:2px">針對特定裝置設定上網時段</div></div>
+          <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">裝置排程</div><div style="font-size:13px;color:var(--t3);margin-top:2px" id="dev-sched-status">尚未設定</div></div>
+          <div id="dev-sched-badge" style="display:none;font-size:12px;font-weight:600;color:var(--ac);margin-right:8px">ON</div>
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
       </div>
@@ -1975,7 +1974,7 @@ body{display:flex;align-items:center;justify-content:center}
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
       <div style="background:var(--w);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd)">
         <div><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用排程</div><div style="font-size:13px;color:var(--t3);margin-top:2px">依排程自動開關 Wi-Fi</div></div>
-        <div class="tg on" id="tg-wifi-sched"></div>
+        <div class="tg on" id="tg-wifi-sched" onclick="toggleWifiSchedEnable(this)" style="cursor:pointer"></div>
       </div>
       <div id="wifi-sched-days" style="padding:8px 0"></div>
     </div>
@@ -1988,19 +1987,31 @@ body{display:flex;align-items:center;justify-content:center}
         <div class="bk" id="dev-sched-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
         <div style="font-size:17px;font-weight:600;color:var(--tx)">裝置排程</div>
       </div>
+      <div onclick="devSchedStep1Next()" id="dev-sched-next" style="height:32px;padding:0 14px;background:var(--s2);border-radius:16px;display:flex;align-items:center;font-size:14px;font-weight:600;color:var(--t3);cursor:pointer">下一步</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <div style="padding:14px 16px 8px;font-size:13px;color:var(--t2)">選擇要套用排程的裝置（可複選）。</div>
+      <div style="background:var(--w)" id="dev-sched-picker">
+        <div class="sr" onclick="toggleSchedDev(this,'MacBook Pro')" style="cursor:pointer"><div style="width:36px;height:36px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M0 21h24"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Tim's MacBook Pro</div><div style="font-size:12px;color:var(--t3)">5GHz · 客廳節點</div></div><div class="sched-dev-check" style="width:22px;height:22px;border-radius:50%;border:2px solid var(--bd2);display:flex;align-items:center;justify-content:center;flex-shrink:0"></div></div>
+        <div class="sr" onclick="toggleSchedDev(this,'iPhone')" style="cursor:pointer"><div style="width:36px;height:36px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Tim's iPhone</div><div style="font-size:12px;color:var(--t3)">5GHz · 主路由器</div></div><div class="sched-dev-check" style="width:22px;height:22px;border-radius:50%;border:2px solid var(--bd2);display:flex;align-items:center;justify-content:center;flex-shrink:0"></div></div>
+        <div class="sr" onclick="toggleSchedDev(this,'Apple TV')" style="cursor:pointer"><div style="width:36px;height:36px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">客廳 Apple TV</div><div style="font-size:12px;color:var(--t3)">有線 · 客廳節點</div></div><div class="sched-dev-check" style="width:22px;height:22px;border-radius:50%;border:2px solid var(--bd2);display:flex;align-items:center;justify-content:center;flex-shrink:0"></div></div>
+        <div class="sr" onclick="toggleSchedDev(this,'iPad')" style="cursor:pointer;border:none"><div style="width:36px;height:36px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">舊 iPad</div><div style="font-size:12px;color:var(--t3)">2.4GHz · 主路由器</div></div><div class="sched-dev-check" style="width:22px;height:22px;border-radius:50%;border:2px solid var(--bd2);display:flex;align-items:center;justify-content:center;flex-shrink:0"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUB: 裝置排程 Step 2 — 設定時段 -->
+  <div class="sub" id="sub-dev-sched-time">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="bk" id="dev-sched-time-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+        <div style="font-size:17px;font-weight:600;color:var(--tx)">設定時段</div>
+      </div>
       <div id="dev-sched-save" style="height:32px;padding:0 14px;background:var(--ac);border-radius:16px;display:flex;align-items:center;font-size:14px;font-weight:600;color:#fff;cursor:pointer">儲存</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <!-- Device picker -->
-      <span class="sl">選擇裝置</span>
-      <div style="background:var(--w)" id="dev-sched-picker">
-        <div class="sr" onclick="selectSchedDev(this,'MacBook Pro')" style="cursor:pointer"><div style="width:36px;height:36px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M0 21h24"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Tim's MacBook Pro</div><div style="font-size:12px;color:var(--t3)">5GHz · 客廳節點</div></div><div class="sched-dev-check" style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2)"></div></div>
-        <div class="sr" onclick="selectSchedDev(this,'iPhone')" style="cursor:pointer"><div style="width:36px;height:36px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Tim's iPhone</div><div style="font-size:12px;color:var(--t3)">5GHz · 主路由器</div></div><div class="sched-dev-check" style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2)"></div></div>
-        <div class="sr" onclick="selectSchedDev(this,'Apple TV')" style="cursor:pointer"><div style="width:36px;height:36px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">客廳 Apple TV</div><div style="font-size:12px;color:var(--t3)">有線 · 客廳節點</div></div><div class="sched-dev-check" style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2)"></div></div>
-        <div class="sr" onclick="selectSchedDev(this,'iPad')" style="cursor:pointer;border:none"><div style="width:36px;height:36px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">舊 iPad</div><div style="font-size:12px;color:var(--t3)">2.4GHz · 主路由器</div></div><div class="sched-dev-check" style="width:20px;height:20px;border-radius:50%;border:2px solid var(--bd2)"></div></div>
-      </div>
-      <!-- Schedule grid (shown after device selected) -->
-      <div id="dev-sched-days" style="display:none;padding:8px 0"></div>
+      <div style="padding:14px 16px 6px;font-size:13px;color:var(--t2)" id="dev-sched-selected-label">已選裝置：—</div>
+      <div id="dev-sched-days" style="padding:8px 0"></div>
     </div>
   </div>
   <!-- SUB: 修改密碼 -->
@@ -2157,13 +2168,13 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="background:var(--w);border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:var(--sh)">
         <div style="font-size:13px;font-weight:600;color:var(--t3);margin-bottom:12px">禁用日期</div>
         <div style="display:flex;justify-content:space-between;gap:4px" id="fm-day-row">
-          <div onclick="fmToggleDay(this,'Sun')" data-day="Sun" class="fm-day-btn" style="flex:1;height:44px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;background:var(--s2)"><div style="font-size:10px;color:var(--t3)">S</div><div style="font-size:14px;font-weight:500;color:var(--t2)">日</div></div>
-          <div onclick="fmToggleDay(this,'Mon')" data-day="Mon" class="fm-day-btn" style="flex:1;height:44px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;background:var(--s2)"><div style="font-size:10px;color:var(--t3)">M</div><div style="font-size:14px;font-weight:500;color:var(--t2)">一</div></div>
-          <div onclick="fmToggleDay(this,'Tue')" data-day="Tue" class="fm-day-btn" style="flex:1;height:44px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;background:var(--s2)"><div style="font-size:10px;color:var(--t3)">T</div><div style="font-size:14px;font-weight:500;color:var(--t2)">二</div></div>
-          <div onclick="fmToggleDay(this,'Wed')" data-day="Wed" class="fm-day-btn on" style="flex:1;height:44px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;background:var(--or)"><div style="font-size:10px;color:rgba(255,255,255,.75)">W</div><div style="font-size:14px;font-weight:700;color:#fff">三</div></div>
-          <div onclick="fmToggleDay(this,'Thu')" data-day="Thu" class="fm-day-btn" style="flex:1;height:44px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;background:var(--s2)"><div style="font-size:10px;color:var(--t3)">T</div><div style="font-size:14px;font-weight:500;color:var(--t2)">四</div></div>
-          <div onclick="fmToggleDay(this,'Fri')" data-day="Fri" class="fm-day-btn" style="flex:1;height:44px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;background:var(--s2)"><div style="font-size:10px;color:var(--t3)">F</div><div style="font-size:14px;font-weight:500;color:var(--t2)">五</div></div>
-          <div onclick="fmToggleDay(this,'Sat')" data-day="Sat" class="fm-day-btn" style="flex:1;height:44px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;background:var(--s2)"><div style="font-size:10px;color:var(--t3)">S</div><div style="font-size:14px;font-weight:500;color:var(--t2)">六</div></div>
+          <div onclick="fmToggleDay(this,'Sun')" data-day="Sun" class="fm-day-btn" style="flex:1;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--s2)"><div style="font-size:14px;font-weight:500;color:var(--t2)">日</div></div>
+          <div onclick="fmToggleDay(this,'Mon')" data-day="Mon" class="fm-day-btn" style="flex:1;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--s2)"><div style="font-size:14px;font-weight:500;color:var(--t2)">一</div></div>
+          <div onclick="fmToggleDay(this,'Tue')" data-day="Tue" class="fm-day-btn" style="flex:1;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--s2)"><div style="font-size:14px;font-weight:500;color:var(--t2)">二</div></div>
+          <div onclick="fmToggleDay(this,'Wed')" data-day="Wed" class="fm-day-btn on" style="flex:1;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--or)"><div style="font-size:14px;font-weight:700;color:#fff">三</div></div>
+          <div onclick="fmToggleDay(this,'Thu')" data-day="Thu" class="fm-day-btn" style="flex:1;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--s2)"><div style="font-size:14px;font-weight:500;color:var(--t2)">四</div></div>
+          <div onclick="fmToggleDay(this,'Fri')" data-day="Fri" class="fm-day-btn" style="flex:1;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--s2)"><div style="font-size:14px;font-weight:500;color:var(--t2)">五</div></div>
+          <div onclick="fmToggleDay(this,'Sat')" data-day="Sat" class="fm-day-btn" style="flex:1;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--s2)"><div style="font-size:14px;font-weight:500;color:var(--t2)">六</div></div>
         </div>
       </div>
       <!-- Time card -->
@@ -2216,18 +2227,6 @@ body{display:flex;align-items:center;justify-content:center}
   </div>
 
   <!-- SUB: 裝置編輯 -->
-  <div class="sub" id="sub-fm-devices">
-    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" id="fm-devices-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="font-size:17px;font-weight:600;color:var(--ac)">綁定裝置</div>
-      <div onclick="fmSaveDevices()" style="height:32px;padding:0 16px;border-radius:16px;background:var(--ac);display:flex;align-items:center;font-size:14px;font-weight:600;color:#fff;cursor:pointer">儲存</div>
-    </div>
-    <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <div style="padding:14px 16px 8px;font-size:13px;color:var(--t2);line-height:1.6">勾選要綁定到此成員的裝置。</div>
-      <div style="background:var(--w)" id="fm-devices-list"><!-- rendered by JS --></div>
-    </div>
-  </div>
-
   <!-- SUB: Member Detail -->
   <div class="sub" id="sub-fm-detail">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
@@ -2267,6 +2266,31 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="font-size:17px;font-weight:600;color:var(--tx)">封鎖網站</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)" id="fm-blocked-body"><!-- rendered by JS --></div>
+  </div>
+
+  <!-- SUB: 綁定裝置編輯 -->
+  <div class="sub" id="sub-fm-devices">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="fm-devices-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--ac)">綁定裝置</div>
+      <div onclick="fmSaveDevices()" style="height:32px;padding:0 16px;border-radius:16px;background:var(--ac);display:flex;align-items:center;font-size:14px;font-weight:600;color:#fff;cursor:pointer">儲存</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <div style="padding:14px 16px 8px;font-size:13px;color:var(--t2);line-height:1.6">勾選要綁定到此成員的裝置。</div>
+      <div style="background:var(--w)" id="fm-devices-list"><!-- rendered by JS --></div>
+    </div>
+  </div>
+
+  <!-- SUB: 家長控制（從快速操作入口，有 back 回首頁） -->
+  <div class="sub" id="sub-family-quick">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="family-quick-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">家庭成員</div>
+      <div onclick="show('sub-fm-step1')" style="width:32px;height:32px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center;cursor:pointer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </div>
+    </div>
+    <div class="pg-body" id="family-quick-body"></div>
   </div>
 
   <!-- Time Picker Overlay — at end of phone so it's above all subs in DOM order -->
@@ -2324,7 +2348,7 @@ function goTab(t){
   if(tb)tb.classList.add('on');
   var ct=g('ct');
   if(ct){ct.scrollTop=0;}
-  ['sub-pro','sub-dev','sub-notif','sub-diag','sub-suggestions','sub-energy','sub-aipro-detail','sub-wifi-insight','sub-theme','sub-main-wifi','sub-reboot','sub-account','sub-led','sub-passwords','sub-pause','sub-scan','sub-mesh-opt','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-change-pwd','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked'].forEach(hide);
+  ['sub-pro','sub-dev','sub-notif','sub-diag','sub-suggestions','sub-energy','sub-aipro-detail','sub-wifi-insight','sub-theme','sub-main-wifi','sub-reboot','sub-account','sub-led','sub-passwords','sub-pause','sub-scan','sub-mesh-opt','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick'].forEach(hide);
   // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
     var bar=document.getElementById('ai-input-bar');
@@ -2469,6 +2493,15 @@ function renderQAGrid() {
       else if (act==='meshopt')  show('sub-mesh-opt');
       else if (act==='sched')    show('sub-sched-home');
       else if (act==='reboot')   show('sub-reboot');
+      else if (act==='family'){
+        var qb=document.getElementById('family-quick-body');
+        if(qb){qb.innerHTML=document.getElementById('family-list-body')?document.getElementById('family-list-body').innerHTML:'';}
+        // re-render fresh
+        var _origEl=document.getElementById('family-list-body');
+        var _quickEl=document.getElementById('family-quick-body');
+        if(_quickEl&&_origEl){renderFamilyListInto(_quickEl);}
+        show('sub-family-quick');
+      }
     });
   });
   // re-check home scroll
@@ -2843,8 +2876,13 @@ window.addEventListener('load',function(){
   bind('scan-back',function(){hide('sub-scan');});
   bind('mesh-opt-back',function(){hide('sub-mesh-opt');});
   bind('change-pwd-back',function(){hide('sub-change-pwd');});
-  bind('wifi-sched-back',function(){hide('sub-wifi-sched');});
-  bind('dev-sched-back',function(){hide('sub-dev-sched');});
+  bind('wifi-sched-back',function(){hide('sub-wifi-sched');show('sub-sched-home');});
+  bind('dev-sched-back',function(){hide('sub-dev-sched');show('sub-sched-home');});
+  bind('dev-sched-time-back',function(){hide('sub-dev-sched-time');show('sub-dev-sched');});
+  bind('family-quick-back',function(){hide('sub-family-quick');});
+  bind('sched-home-back',function(){hide('sub-sched-home');});
+  bind('wifi-sched-save',function(){updateWifiSchedStatus();hide('sub-wifi-sched');show('sub-sched-home');});
+  bind('dev-sched-save',function(){updateDevSchedStatus();hide('sub-dev-sched-time');hide('sub-dev-sched');show('sub-sched-home');});
   // init wifi sched grid when page shows
   var _origShowWifi=g('sub-wifi-sched');
   if(_origShowWifi){var _mo=new MutationObserver(function(){if(_origShowWifi.classList.contains('on'))buildSchedDays('wifi-sched-days',_wifiSched);});_mo.observe(_origShowWifi,{attributeFilter:['class']});}
@@ -2978,6 +3016,34 @@ function togglePause(idx){_pausedSet[idx]=!_pausedSet[idx];buildPauseList();}
 
 // ── Schedule helpers ──
 var DAYS=['週一','週二','週三','週四','週五','週六','週日'];
+var _wifiSchedEnabled=true;
+function updateWifiSchedStatus(){
+  if(!_wifiSchedEnabled)return;
+  // find enabled days and time range from _wifiSched
+  var on=_wifiSched.filter(function(d){return d.on;});
+  var badge=document.getElementById('wifi-sched-badge');
+  var status=document.getElementById('wifi-sched-status');
+  if(!on.length){if(badge)badge.style.display='none';if(status)status.textContent='尚未設定';return;}
+  var first=_wifiSched.filter(function(d){return d.on;})[0];
+  if(badge){badge.style.display='';badge.textContent='ON';}
+  if(status){status.textContent=on.length+' 天 · '+first.start+' – '+first.end;}
+}
+function updateDevSchedStatus(){
+  var selected=Object.keys(_schedSelDevs).filter(function(k){return _schedSelDevs[k];});
+  var on=_devSched.filter(function(d){return d.on;});
+  var badge=document.getElementById('dev-sched-badge');
+  var status=document.getElementById('dev-sched-status');
+  if(!selected.length&&!on.length){if(badge)badge.style.display='none';if(status)status.textContent='尚未設定';return;}
+  var first=on.length?_devSched.filter(function(d){return d.on;})[0]:null;
+  if(badge){badge.style.display='';badge.textContent='ON';}
+  if(status){var t=selected.length?selected.length+'台裝置':'';var s=first?' · '+first.start+' – '+first.end:'';status.textContent=t+s||'已設定';}
+}
+function toggleWifiSchedEnable(el){
+  _wifiSchedEnabled=!_wifiSchedEnabled;
+  el.classList.toggle('on',_wifiSchedEnabled);
+  var days=document.getElementById('wifi-sched-days');
+  if(days){days.style.opacity=_wifiSchedEnabled?'1':'.4';days.style.pointerEvents=_wifiSchedEnabled?'':'none';}
+}
 var _wifiSched=DAYS.map(function(){return{on:true,start:'22:00',end:'07:00'};});
 var _devSchedTarget='';
 var _devSched=DAYS.map(function(){return{on:false,start:'22:00',end:'07:00'};});
@@ -3011,19 +3077,28 @@ function updateSched(cid,i,field,val){
   var data=cid==='wifi-sched-days'?_wifiSched:_devSched;
   data[i][field]=val;
 }
-function selectSchedDev(el,name){
-  _devSchedTarget=name;
-  document.querySelectorAll('.sched-dev-check').forEach(function(c){
-    c.style.background='transparent';c.style.borderColor='var(--bd2)';c.innerHTML='';
-  });
-  var check=el.querySelector('.sched-dev-check');
-  check.style.background='var(--ac)';check.style.borderColor='var(--ac)';
-  check.innerHTML='<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>';
-  var days=document.getElementById('dev-sched-days');
-  if(days){days.style.display='block';buildSchedDays('dev-sched-days',_devSched);}
+var _schedSelDevs={};
+function toggleSchedDev(row,name){
+  _schedSelDevs[name]=!_schedSelDevs[name];
+  var check=row.querySelector('.sched-dev-check');
+  var sel=_schedSelDevs[name];
+  if(check){
+    check.style.background=sel?'var(--ac)':'transparent';
+    check.style.borderColor=sel?'var(--ac)':'var(--bd2)';
+    check.innerHTML=sel?'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>':'';
+  }
+  var anySelected=Object.keys(_schedSelDevs).some(function(k){return _schedSelDevs[k];});
+  var btn=document.getElementById('dev-sched-next');
+  if(btn){btn.style.background=anySelected?'var(--ac)':'var(--s2)';btn.style.color=anySelected?'#fff':'var(--t3)';}
 }
-  var days=document.getElementById('dev-sched-days');
-  if(days){days.style.display='block';buildSchedDays('dev-sched-days',_devSched);}
+function devSchedStep1Next(){
+  var selected=Object.keys(_schedSelDevs).filter(function(k){return _schedSelDevs[k];});
+  if(!selected.length)return;
+  var lbl=document.getElementById('dev-sched-selected-label');
+  if(lbl)lbl.textContent='已選裝置：'+selected.join('、');
+  buildSchedDays('dev-sched-days',_devSched);
+  show('sub-dev-sched-time');
+}
 // ── Family Management ──
 var FM_AGE_INFO={
   preschooler:{emoji:'👶',label:'幼兒',sublabel:'0–6 歲',filter:'preschooler',bgCard:'linear-gradient(135deg,#6AAAF0,#4D95EA)',bgAvatar:'#3D86D8'},
@@ -3139,9 +3214,8 @@ function fmStep2Next(){
   document.querySelectorAll('.fm-day-btn').forEach(function(b){
     var d=b.getAttribute('data-day');var active=d===today;
     b.style.background=active?'var(--or)':'var(--s2)';
-    var divs=b.querySelectorAll('div');
-    if(divs[0]){divs[0].style.color=active?'rgba(255,255,255,.75)':'var(--t3)';}
-    if(divs[1]){divs[1].style.color=active?'#fff':'var(--t2)';divs[1].style.fontWeight=active?'700':'500';}
+    var inner=b.querySelector('div');
+    if(inner){inner.style.color=active?'#fff':'var(--t2)';inner.style.fontWeight=active?'700':'500';}
     b.classList.toggle('on',active);
   });
   var sl=document.getElementById('fm-start-time-lbl');if(sl)sl.textContent='22:00';
@@ -3157,9 +3231,8 @@ function fmToggleDay(el,day){
   if(idx>=0){_fmNew.schedule.days.splice(idx,1);on=false;}
   else{_fmNew.schedule.days.push(day);on=true;}
   el.style.background=on?'var(--or)':'var(--s2)';
-  var divs=el.querySelectorAll('div');
-  if(divs[0]){divs[0].style.color=on?'rgba(255,255,255,.75)':'var(--t3)';}
-  if(divs[1]){divs[1].style.color=on?'#fff':'var(--t2)';divs[1].style.fontWeight=on?'700':'500';}
+  var inner=el.querySelector('div');
+  if(inner){inner.style.color=on?'#fff':'var(--t2)';inner.style.fontWeight=on?'700':'500';}
 }
 var _fmTpWhich='start';
 var _fmTpH=22,_fmTpM=0;
@@ -3358,6 +3431,12 @@ function fmStep2Skip(){fmCreateMember();}
 function fmStep2Done(){fmCreateMember();}
 
 // ── Render family list ──
+function renderFamilyListInto(el){
+  var orig=document.getElementById('family-list-body');
+  if(!orig)return;
+  renderFamilyList();
+  el.innerHTML=orig.innerHTML;
+}
 function renderFamilyList(){
   var el=document.getElementById('family-list-body');if(!el)return;
   if(!FM_MEMBERS.length){
@@ -3371,39 +3450,41 @@ function renderFamilyList(){
   el.innerHTML=FM_MEMBERS.map(function(m){
     var info=fmAgeInfo(m.ageType);
     var isBlocked=m.paused;
-    var bg=isBlocked?'linear-gradient(135deg,#D4939B,#BC7080)':info.bgCard;
+    var bg=isBlocked?'linear-gradient(145deg,#C47A8A,#D4899A)':'linear-gradient(145deg,#4A8FD4,#5B9EE0)';
     var schedLabel=m.schedule&&m.schedule.days&&m.schedule.days.length?m.schedule.start+' – '+m.schedule.end:'未設定';
-    var filterLabel=m.filterCats&&m.filterCats.length?(m.filterCats[0]+(m.filterCats.length>1?' +'+( m.filterCats.length-1):'')):'未啟用';
-    return '<div onclick="fmOpenDetail('+m.id+')" style="background:'+bg+';border-radius:20px;margin:12px 20px 0;padding:14px 16px 12px;cursor:pointer;position:relative">'+
-      '<div onclick="event.stopPropagation();fmDeleteMember('+m.id+')" style="position:absolute;top:12px;right:14px;opacity:.55;padding:4px">'+
-        '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>'+
+    return '<div onclick="fmOpenDetail('+m.id+')" style="background:'+bg+';border-radius:20px;margin:12px 20px 0;padding:16px 16px 13px;cursor:pointer;position:relative">'+
+      '<div onclick="event.stopPropagation();fmDeleteMember('+m.id+')" style="position:absolute;top:13px;right:14px;opacity:.45;padding:4px">'+
+        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>'+
       '</div>'+
-      (isBlocked?'':'')+'<div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">'+
-        '<div style="width:52px;height:52px;border-radius:50%;background:rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0">'+info.emoji+'</div>'+
+      '<div style="display:flex;align-items:center;gap:13px;margin-bottom:12px">'+
+        '<div style="width:50px;height:50px;border-radius:50%;background:rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0">'+info.emoji+'</div>'+
         '<div style="flex:1;min-width:0">'+
-          '<div style="font-size:12px;color:rgba(255,255,255,.7);margin-bottom:1px">裝置 '+m.devices.length+' 台</div>'+
-          '<div style="font-size:13px;color:rgba(255,255,255,.85)">上網時段</div>'+
-          '<div style="font-size:15px;font-weight:700;color:#fff">'+schedLabel+'</div>'+
-          '<div style="font-size:13px;color:rgba(255,255,255,.85);margin-top:2px">內容過濾</div>'+
-          '<div style="display:flex;align-items:center;gap:8px;width:100%">'+
-            '<div style="font-size:15px;font-weight:600;color:#fff">'+info.label+'</div>'+
-            (isBlocked?'<div style="font-size:11px;color:rgba(255,255,255,.85);background:rgba(0,0,0,.18);border-radius:8px;padding:2px 8px;margin-left:auto;flex-shrink:0">所有裝置已暫停</div>':'')+
+          '<div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:6px">'+m.name+'</div>'+
+          '<div style="font-size:12px;color:rgba(255,255,255,.65);margin-bottom:4px">裝置 '+m.devices.length+' 台</div>'+
+          '<div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">'+
+            '<div style="font-size:12px;color:rgba(255,255,255,.65)">上網時段</div>'+
+            '<div style="font-size:13px;font-weight:600;color:#fff">'+schedLabel+'</div>'+
+          '</div>'+
+          '<div style="display:flex;align-items:center;gap:8px">'+
+            '<div style="font-size:12px;color:rgba(255,255,255,.65)">內容過濾</div>'+
+            '<div style="font-size:13px;font-weight:600;color:#fff">'+info.label+'</div>'+
+            (isBlocked?'<div style="font-size:11px;color:rgba(255,255,255,.9);background:rgba(0,0,0,.2);border-radius:8px;padding:1px 8px;margin-left:auto;flex-shrink:0">已暫停</div>':'')+
           '</div>'+
         '</div>'+
       '</div>'+
-      '<div style="display:flex;gap:0;border-top:1px solid rgba(255,255,255,.3);padding-top:10px">'+
-        '<div onclick="event.stopPropagation();'+(isBlocked?'fmResume('+m.id+')':'fmPause('+m.id+')')+'\" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer">'+
-          '<div style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;background:'+(isBlocked?'rgba(80,0,20,.2)':'transparent')+'">'+
-            '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>'+
+      '<div style="display:flex;border-top:1px solid rgba(255,255,255,.25);padding-top:11px">'+
+        '<div onclick="event.stopPropagation();'+(isBlocked?'fmResume('+m.id+')':'fmPause('+m.id+')')+'\" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer">'+
+          '<div style="width:40px;height:40px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center">'+
+            '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>'+
           '</div>'+
-          '<div style="font-size:11px;color:rgba(255,255,255,.85)">'+(isBlocked?'解除暫停':'暫停網路')+'</div>'+
+          '<div style="font-size:12px;color:rgba(255,255,255,.85)">'+(isBlocked?'解除暫停':'暫停網路')+'</div>'+
         '</div>'+
-        '<div style="width:1px;background:rgba(255,255,255,.25)"></div>'+
-        '<div onclick="event.stopPropagation();fmOpenReward('+m.id+')" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer">'+
-          '<div style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center">'+
-            '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>'+
+        '<div style="width:1px;background:rgba(255,255,255,.2)"></div>'+
+        '<div onclick="event.stopPropagation();fmOpenReward('+m.id+')" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer">'+
+          '<div style="width:40px;height:40px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center">'+
+            '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>'+
           '</div>'+
-          '<div style="font-size:11px;color:rgba(255,255,255,.85)">獎勵延長</div>'+
+          '<div style="font-size:12px;color:rgba(255,255,255,.85)">獎勵延長</div>'+
         '</div>'+
       '</div>'+
     '</div>';
@@ -3456,8 +3537,8 @@ function renderFmDetail(m){
     '<div class="sr" onclick="show(\'sub-fm-blocked\');renderFmBlocked(fmGetMember('+m.id+'))" style="cursor:pointer;border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">封鎖網站</div></div><span style="font-size:14px;color:var(--t2);margin-right:8px">'+m.blocked.length+' 個</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>'+
   '</div>'+
   '<div style="background:var(--w);padding:14px 16px;display:flex;gap:10px;margin-top:10px">'+
-    '<div onclick="fmOpenReward('+m.id+')" style="flex:1;height:44px;border-radius:22px;background:var(--gbg);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:var(--gn);cursor:pointer">獎勵延長時間</div>'+
-    '<div onclick="fmTogglePause('+m.id+')" style="flex:1;height:44px;border-radius:22px;background:'+(m.paused?'var(--gbg)':'var(--s3)')+';display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:'+(m.paused?'var(--gn)':'var(--t2)')+';cursor:pointer">'+(m.paused?'解除暫停':'暫停網路')+'</div>'+
+    '<div onclick="fmTogglePause('+m.id+')" style="flex:1;height:44px;border-radius:22px;background:var(--s3);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:var(--t2);cursor:pointer">'+(m.paused?'解除暫停':'暫停網路')+'</div>'+
+    '<div onclick="fmOpenReward('+m.id+')" style="flex:1;height:44px;border-radius:22px;background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:#fff;cursor:pointer">獎勵延長時間</div>'+
   '</div>';
 }
 function renderFmTime(m){
@@ -3471,8 +3552,7 @@ function renderFmTime(m){
     '<div style="background:var(--w);border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:var(--sh)">'+
       '<div style="font-size:13px;font-weight:600;color:var(--t3);margin-bottom:12px">禁用日期</div>'+
       '<div style="display:flex;justify-content:space-between;gap:4px">'+
-      allDays.map(function(d){var on=sched.days.indexOf(d)>=0;return '<div onclick="fmDetailToggleDay(this,\''+d+'\','+m.id+')" data-day="'+d+'" style="flex:1;height:44px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;background:'+(on?'var(--or)':'var(--s2)')+';gap:2px">'+
-        '<div style="font-size:11px;color:'+(on?'rgba(255,255,255,.75)':'var(--t3)')+'">'+d.slice(0,1)+'</div>'+
+      allDays.map(function(d){var on=sched.days.indexOf(d)>=0;return '<div onclick="fmDetailToggleDay(this,\''+d+'\','+m.id+')" data-day="'+d+'" style="width:38px;height:38px;flex-shrink:0;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;background:'+(on?'var(--or)':'var(--s2)')+'">'+
         '<div style="font-size:14px;font-weight:'+(on?'700':'500')+';color:'+(on?'#fff':'var(--t2)')+'">'+dayLabels[d]+'</div>'+
       '</div>';}).join('')+
       '</div>'+
@@ -3630,7 +3710,7 @@ function switchAITab(t){
     if(cChat)cChat.style.display='none';
     if(bar)bar.style.display='none';
     if(cAdv)cAdv.style.display='none';
-    if(cIns){cIns.style.display='block';setTimeout(drawCharts,50);}
+    if(cIns){cIns.style.display='flex';setTimeout(drawCharts,50);}
   }
 }
 function startAIChat(){
