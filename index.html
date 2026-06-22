@@ -583,6 +583,7 @@ body{display:flex;align-items:center;justify-content:center}
           <div class="sr" onclick="show('sub-pro-dualwan')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Dual WAN</div><div style="font-size:14px;color:var(--t3);margin-top:2px">容錯備援 · 停用</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
           <div class="sr" onclick="show('sub-pro-portfw')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Port Forwarding</div><div style="font-size:14px;color:var(--t3);margin-top:2px">3 條規則已啟用</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
           <div class="sr" onclick="show('sub-pro-ipbind')" style="cursor:pointer" style="border-bottom:none"><div class="sic"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">IP Binding</div><div style="font-size:14px;color:var(--t3);margin-top:2px">5 個裝置已綁定</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="sr" onclick="show('sub-pro-qos')" style="cursor:pointer;border:none"><div class="sic"><svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6" stroke-width="3"/><line x1="3" y1="12" x2="3.01" y2="12" stroke-width="3"/><line x1="3" y1="18" x2="3.01" y2="18" stroke-width="3"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">QoS 頻寬管理</div><div style="font-size:14px;color:var(--t3);margin-top:2px">停用</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         </div>
 
         <span class="sl">Wireless</span>
@@ -2836,6 +2837,186 @@ body{display:flex;align-items:center;justify-content:center}
     </div>
   </div>
 
+  <!-- SUB: 網速測試 -->
+  <div class="sub" id="sub-speedtest">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" onclick="hide('sub-speedtest')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">網速測試</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <!-- 速度儀表板 -->
+      <div style="padding:28px 20px 20px;display:flex;flex-direction:column;align-items:center">
+        <div style="width:160px;height:160px;border-radius:50%;background:var(--w);box-shadow:var(--sh);display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;position:relative">
+          <div style="font-size:44px;font-weight:700;color:var(--ac);font-family:var(--m);line-height:1" id="sp-num">512</div>
+          <div style="font-size:14px;color:var(--t3);margin-top:4px">Mbps</div>
+          <div style="position:absolute;bottom:14px;font-size:11px;color:var(--t3)">下載速度</div>
+        </div>
+        <!-- 上下行 -->
+        <div style="display:flex;gap:20px;width:100%;max-width:280px;margin-bottom:24px">
+          <div style="flex:1;background:var(--w);border-radius:14px;padding:14px;text-align:center;box-shadow:var(--sh)">
+            <div style="font-size:11px;color:var(--t3);margin-bottom:4px">↓ 下載</div>
+            <div style="font-size:22px;font-weight:700;color:var(--ac);font-family:var(--m)">512</div>
+            <div style="font-size:11px;color:var(--t3)">Mbps</div>
+          </div>
+          <div style="flex:1;background:var(--w);border-radius:14px;padding:14px;text-align:center;box-shadow:var(--sh)">
+            <div style="font-size:11px;color:var(--t3);margin-bottom:4px">↑ 上傳</div>
+            <div style="font-size:22px;font-weight:700;color:var(--gn);font-family:var(--m)">128</div>
+            <div style="font-size:11px;color:var(--t3)">Mbps</div>
+          </div>
+          <div style="flex:1;background:var(--w);border-radius:14px;padding:14px;text-align:center;box-shadow:var(--sh)">
+            <div style="font-size:11px;color:var(--t3);margin-bottom:4px">⊡ 延遲</div>
+            <div style="font-size:22px;font-weight:700;color:var(--or);font-family:var(--m)">12</div>
+            <div style="font-size:11px;color:var(--t3)">ms</div>
+          </div>
+        </div>
+        <div id="sp-btn" onclick="runSpeedTest()" style="height:50px;width:200px;border-radius:25px;background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:#fff;cursor:pointer;box-shadow:0 4px 16px rgba(74,137,232,.35)">
+          重新測速
+        </div>
+        <div style="font-size:12px;color:var(--t3);margin-top:12px">上次測試：今天 23:30</div>
+      </div>
+      <!-- 歷史記錄 -->
+      <span class="sl">測速記錄</span>
+      <div style="background:var(--w)">
+        <div class="sr"><div style="flex:1"><div style="font-size:15px;font-weight:500;color:var(--tx)">今天 23:30</div></div><div style="text-align:right"><div style="font-size:13px;color:var(--ac);font-family:var(--m)">↓ 512 Mbps</div><div style="font-size:12px;color:var(--gn);font-family:var(--m)">↑ 128 Mbps</div></div></div>
+        <div class="sr"><div style="flex:1"><div style="font-size:15px;font-weight:500;color:var(--tx)">今天 18:12</div></div><div style="text-align:right"><div style="font-size:13px;color:var(--ac);font-family:var(--m)">↓ 498 Mbps</div><div style="font-size:12px;color:var(--gn);font-family:var(--m)">↑ 115 Mbps</div></div></div>
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:15px;font-weight:500;color:var(--tx)">昨天 22:05</div></div><div style="text-align:right"><div style="font-size:13px;color:var(--ac);font-family:var(--m)">↓ 480 Mbps</div><div style="font-size:12px;color:var(--gn);font-family:var(--m)">↑ 110 Mbps</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUB: 流量統計 -->
+  <div class="sub" id="sub-traffic">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" onclick="hide('sub-traffic')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">流量統計</div>
+      <div style="display:flex;gap:1px;background:var(--s3);border-radius:8px;padding:2px">
+        <div id="tr-tab-day" onclick="switchTrafficTab('day')" style="font-size:12px;font-weight:600;padding:4px 10px;border-radius:6px;background:var(--w);color:var(--ac);cursor:pointer">今日</div>
+        <div id="tr-tab-week" onclick="switchTrafficTab('week')" style="font-size:12px;font-weight:600;padding:4px 10px;border-radius:6px;color:var(--t3);cursor:pointer">本週</div>
+        <div id="tr-tab-month" onclick="switchTrafficTab('month')" style="font-size:12px;font-weight:600;padding:4px 10px;border-radius:6px;color:var(--t3);cursor:pointer">本月</div>
+      </div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <!-- 總計卡 -->
+      <div style="padding:16px 16px 0;display:flex;gap:10px">
+        <div style="flex:1;background:var(--w);border-radius:16px;padding:14px;box-shadow:var(--sh);text-align:center">
+          <div style="font-size:11px;color:var(--t3);margin-bottom:4px">↓ 總下載</div>
+          <div style="font-size:24px;font-weight:700;color:var(--ac);font-family:var(--m)">38.4</div>
+          <div style="font-size:12px;color:var(--t3)">GB</div>
+        </div>
+        <div style="flex:1;background:var(--w);border-radius:16px;padding:14px;box-shadow:var(--sh);text-align:center">
+          <div style="font-size:11px;color:var(--t3);margin-bottom:4px">↑ 總上傳</div>
+          <div style="font-size:24px;font-weight:700;color:var(--gn);font-family:var(--m)">8.2</div>
+          <div style="font-size:12px;color:var(--t3)">GB</div>
+        </div>
+      </div>
+      <!-- 裝置排行 -->
+      <span class="sl">裝置流量排行</span>
+      <div style="background:var(--w)">
+        <div class="sr">
+          <div style="width:36px;height:36px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M0 21h24"/></svg></div>
+          <div style="flex:1">
+            <div style="font-size:15px;font-weight:600;color:var(--tx)">Tim's MacBook Pro</div>
+            <div style="height:4px;background:var(--s3);border-radius:2px;margin-top:6px"><div style="height:4px;background:var(--ac);border-radius:2px;width:72%"></div></div>
+          </div>
+          <div style="text-align:right;margin-left:10px"><div style="font-size:13px;font-weight:600;color:var(--ac);font-family:var(--m)">18.2 GB</div><div style="font-size:11px;color:var(--t3)">↓16.4 ↑1.8</div></div>
+        </div>
+        <div class="sr">
+          <div style="width:36px;height:36px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg></div>
+          <div style="flex:1">
+            <div style="font-size:15px;font-weight:600;color:var(--tx)">Tim's iPhone</div>
+            <div style="height:4px;background:var(--s3);border-radius:2px;margin-top:6px"><div style="height:4px;background:var(--ac);border-radius:2px;width:38%"></div></div>
+          </div>
+          <div style="text-align:right;margin-left:10px"><div style="font-size:13px;font-weight:600;color:var(--ac);font-family:var(--m)">9.6 GB</div><div style="font-size:11px;color:var(--t3)">↓8.8 ↑0.8</div></div>
+        </div>
+        <div class="sr">
+          <div style="width:36px;height:36px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg></div>
+          <div style="flex:1">
+            <div style="font-size:15px;font-weight:600;color:var(--tx)">客廳 Apple TV</div>
+            <div style="height:4px;background:var(--s3);border-radius:2px;margin-top:6px"><div style="height:4px;background:var(--ac);border-radius:2px;width:22%"></div></div>
+          </div>
+          <div style="text-align:right;margin-left:10px"><div style="font-size:13px;font-weight:600;color:var(--ac);font-family:var(--m)">5.5 GB</div><div style="font-size:11px;color:var(--t3)">↓5.3 ↑0.2</div></div>
+        </div>
+        <div class="sr" style="border:none">
+          <div style="width:36px;height:36px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg></div>
+          <div style="flex:1">
+            <div style="font-size:15px;font-weight:600;color:var(--tx)">舊 iPad</div>
+            <div style="height:4px;background:var(--s3);border-radius:2px;margin-top:6px"><div style="height:4px;background:var(--ac);border-radius:2px;width:12%"></div></div>
+          </div>
+          <div style="text-align:right;margin-left:10px"><div style="font-size:13px;font-weight:600;color:var(--ac);font-family:var(--m)">3.1 GB</div><div style="font-size:11px;color:var(--t3)">↓2.9 ↑0.2</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUB: QoS 頻寬管理 -->
+  <div class="sub" id="sub-pro-qos">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" onclick="hide('sub-pro-qos')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">QoS 頻寬管理</div>
+      <div style="font-size:15px;font-weight:600;color:var(--ac);cursor:pointer">套用</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <span class="sl">基本設定</span>
+      <div style="background:var(--w)">
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 QoS</div><div style="font-size:13px;color:var(--t3);margin-top:2px">依優先權管理各裝置頻寬分配</div></div><div class="tg" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">QoS 模式</div></div><div style="display:flex;align-items:center;gap:6px"><div style="font-size:14px;color:var(--t2)">自動</div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+      </div>
+      <span class="sl">頻寬設定</span>
+      <div style="background:var(--w)">
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">WAN 下載頻寬</div><div style="font-size:13px;color:var(--t3);margin-top:2px">輸入您的網路方案速度</div></div><div style="font-size:14px;color:var(--t2);font-family:var(--m)">500 Mbps</div></div>
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">WAN 上傳頻寬</div></div><div style="font-size:14px;color:var(--t2);font-family:var(--m)">200 Mbps</div></div>
+      </div>
+      <span class="sl">流量優先權</span>
+      <div style="background:var(--w)">
+        <div class="sr">
+          <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">遊戲與串流</div><div style="font-size:13px;color:var(--t3);margin-top:2px">低延遲優先</div></div>
+          <div style="display:flex;gap:4px;align-items:center">
+            <div style="width:10px;height:18px;border-radius:2px;background:var(--ac)"></div>
+            <div style="width:10px;height:18px;border-radius:2px;background:var(--ac)"></div>
+            <div style="width:10px;height:18px;border-radius:2px;background:var(--ac)"></div>
+            <div style="width:10px;height:18px;border-radius:2px;background:var(--s3)"></div>
+            <div style="width:10px;height:18px;border-radius:2px;background:var(--s3)"></div>
+          </div>
+        </div>
+        <div class="sr">
+          <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">影音通話</div><div style="font-size:13px;color:var(--t3);margin-top:2px">視訊會議、VoIP</div></div>
+          <div style="display:flex;gap:4px;align-items:center">
+            <div style="width:10px;height:18px;border-radius:2px;background:var(--ac)"></div>
+            <div style="width:10px;height:18px;border-radius:2px;background:var(--ac)"></div>
+            <div style="width:10px;height:18px;border-radius:2px;background:var(--ac)"></div>
+            <div style="width:10px;height:18px;border-radius:2px;background:var(--s3)"></div>
+            <div style="width:10px;height:18px;border-radius:2px;background:var(--s3)"></div>
+          </div>
+        </div>
+        <div class="sr">
+          <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">一般瀏覽</div><div style="font-size:13px;color:var(--t3);margin-top:2px">網頁、社群媒體</div></div>
+          <div style="display:flex;gap:4px;align-items:center">
+            <div style="width:10px;height:18px;border-radius:2px;background:var(--ac)"></div>
+            <div style="width:10px;height:18px;border-radius:2px;background:var(--ac)"></div>
+            <div style="width:10px;height:18px;border-radius:2px;background:var(--s3)"></div>
+            <div style="width:10px;height:18px;border-radius:2px;background:var(--s3)"></div>
+            <div style="width:10px;height:18px;border-radius:2px;background:var(--s3)"></div>
+          </div>
+        </div>
+        <div class="sr" style="border:none">
+          <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">檔案下載</div><div style="font-size:13px;color:var(--t3);margin-top:2px">P2P、大型更新</div></div>
+          <div style="display:flex;gap:4px;align-items:center">
+            <div style="width:10px;height:18px;border-radius:2px;background:var(--ac)"></div>
+            <div style="width:10px;height:18px;border-radius:2px;background:var(--s3)"></div>
+            <div style="width:10px;height:18px;border-radius:2px;background:var(--s3)"></div>
+            <div style="width:10px;height:18px;border-radius:2px;background:var(--s3)"></div>
+            <div style="width:10px;height:18px;border-radius:2px;background:var(--s3)"></div>
+          </div>
+        </div>
+      </div>
+      <span class="sl">裝置頻寬限制</span>
+      <div style="background:var(--w)">
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用裝置限速</div><div style="font-size:13px;color:var(--t3);margin-top:2px">為個別裝置設定最高頻寬</div></div><div class="tg" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
+        <div class="sr" style="border:none;cursor:pointer"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--ac)">設定裝置限速規則</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+    </div>
+  </div>
+
   <!-- Time Picker Overlay — at end of phone so it's above all subs in DOM order -->
   <div class="ov" id="ov-time-picker" onclick="if(event.target===this)fmHideTimePicker()">
     <div class="sheet" onclick="event.stopPropagation()">
@@ -2893,7 +3074,7 @@ function goTab(t){
   if(ct){ct.scrollTop=0;}
   // hide family back when switching tabs normally
   if(t==='family'){var fb=document.getElementById('family-back-btn');if(fb)fb.style.display='none';}
-  ['sub-pro','sub-dev','sub-notif','sub-diag','sub-suggestions','sub-energy','sub-aipro-detail','sub-wifi-insight','sub-theme','sub-main-wifi','sub-reboot','sub-account','sub-led','sub-passwords','sub-pause','sub-scan','sub-mesh-opt','sub-mesh-addnode','sub-adddev','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-ifttt','sub-pro-smarthome','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick'].forEach(hide);
+  ['sub-pro','sub-dev','sub-notif','sub-diag','sub-suggestions','sub-energy','sub-aipro-detail','sub-wifi-insight','sub-theme','sub-main-wifi','sub-reboot','sub-account','sub-led','sub-passwords','sub-pause','sub-scan','sub-mesh-opt','sub-mesh-addnode','sub-adddev','sub-speedtest','sub-traffic','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-ifttt','sub-pro-smarthome','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick'].forEach(hide);
   // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
     var bar=document.getElementById('ai-input-bar');
@@ -3020,23 +3201,24 @@ var QA_ALL = [
   {id:'qa-wifi',   icon:'wifi',   label:'分享 Wi-Fi',   group:'網路',   action:'wifi'},
   {id:'qa-diag',   icon:'search', label:'網路診斷',    group:'網路',   action:'diag'},
   {id:'qa-guest',  icon:'users',  label:'訪客網路',    group:'網路',   action:'guest'},
-  {id:'qa-devs',   icon:'phone',  label:'連線裝置',    group:'網路',   action:'devs'},
   {id:'qa-adddev', icon:'plus',   label:'新增裝置',    group:'網路',   action:'adddev'},
   {id:'qa-wifiset',icon:'wifi2',  label:'Wi-Fi設定',   group:'網路',   action:'wifiset'},
   {id:'qa-pass',   icon:'lock',   label:'查看密碼',    group:'網路',   action:'passwords'},
   {id:'qa-pause',  icon:'pause',  label:'暫停裝置',    group:'網路',   action:'pause'},
   // 家庭
-  {id:'qa-parental',icon:'child', label:'家長控制',    group:'家庭',   action:'family'},
   {id:'qa-sched',  icon:'clock',  label:'上網排程',    group:'家庭',   action:'sched'},
   // 維護
   {id:'qa-fw',     icon:'upload', label:'韌體更新',    group:'維護',   action:'fw'},
   {id:'qa-scan',   icon:'shield', label:'安全掃描',    group:'維護',   action:'scan'},
   {id:'qa-mesh',   icon:'mesh',   label:'Mesh 最佳化',  group:'維護',   action:'meshopt'},
   {id:'qa-reboot', icon:'reboot', label:'重新開機',    group:'維護',   action:'reboot'},
+  // 分析
+  {id:'qa-speed',  icon:'speed',  label:'網速測試',    group:'網路',   action:'speed'},
+  {id:'qa-traffic',icon:'chart',  label:'流量統計',    group:'網路',   action:'traffic'},
 ];
 
 // Default selected (first 4)
-var QA_SELECTED = ['qa-wifi','qa-diag','qa-guest','qa-devs'];
+var QA_SELECTED = ['qa-wifi','qa-diag','qa-guest','qa-adddev'];
 
 function qaSvg(icon, color) {
   color = color || 'var(--is)';
@@ -3057,6 +3239,8 @@ function qaSvg(icon, color) {
     shield:  '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>',
     mesh:    '<circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="12" y1="8" x2="5" y2="16"/><line x1="12" y1="8" x2="19" y2="16"/>',
     reboot:  '<polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/>',
+    speed:   '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42"/>',
+    chart:   '<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>',
   };
   var sz = '17';
   return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="none" stroke="'+color+'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+(paths[icon]||'')+'</svg>';
@@ -3103,6 +3287,8 @@ function renderQAGrid() {
       else if (act==='meshopt')  show('sub-mesh-opt');
       else if (act==='sched')    show('sub-sched-home');
       else if (act==='reboot')   show('sub-reboot');
+      else if (act==='speed')    show('sub-speedtest');
+      else if (act==='traffic')  show('sub-traffic');
       else if (act==='family'){
         goTab('family');
         var btn=document.getElementById('family-back-btn');
@@ -4051,6 +4237,23 @@ function renderFamilyListInto(el){
   if(!orig)return;
   renderFamilyList();
   el.innerHTML=orig.innerHTML;
+}
+function runSpeedTest(){
+  var btn=document.getElementById('sp-btn');
+  var num=document.getElementById('sp-num');
+  if(!btn||!num)return;
+  btn.textContent='測速中…';btn.style.background='var(--t3)';btn.style.pointerEvents='none';
+  var val=0;var target=Math.floor(Math.random()*200+400);
+  var t=setInterval(function(){val+=Math.floor(Math.random()*40+10);if(val>=target){val=target;clearInterval(t);btn.textContent='重新測速';btn.style.background='var(--ac)';btn.style.pointerEvents='';}num.textContent=val;},80);
+}
+function switchTrafficTab(tab){
+  ['day','week','month'].forEach(function(t){
+    var el=document.getElementById('tr-tab-'+t);
+    if(!el)return;
+    var active=t===tab;
+    el.style.background=active?'var(--w)':'transparent';
+    el.style.color=active?'var(--ac)':'var(--t3)';
+  });
 }
 function renderFamilyList(){
   var el=document.getElementById('family-list-body');if(!el)return;
