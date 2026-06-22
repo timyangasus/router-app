@@ -3284,7 +3284,7 @@ function renderQAGrid() {
       else if (act==='pause')    { buildPauseList(); show('sub-pause'); }
       else if (act==='fw')       show('sub-fw');
       else if (act==='scan')     show('sub-scan');
-      else if (act==='meshopt')  show('sub-mesh-opt');
+      else if (act==='meshopt')  { window._meshOptFromQuick=true; show('sub-mesh-opt'); }
       else if (act==='sched')    show('sub-sched-home');
       else if (act==='reboot')   show('sub-reboot');
       else if (act==='speed')    show('sub-speedtest');
@@ -3666,7 +3666,7 @@ window.addEventListener('load',function(){
   bind('passwords-back',function(){hide('sub-passwords');});
   bind('pause-back',function(){hide('sub-pause');});
   bind('scan-back',function(){hide('sub-scan');});
-  bind('mesh-opt-back',function(){hide('sub-mesh-opt');show('ov-mesh');});
+  bind('mesh-opt-back',function(){hide('sub-mesh-opt');if(window._meshOptFromQuick){window._meshOptFromQuick=false;goTab('home');}else{show('ov-mesh');}});
   bind('change-pwd-back',function(){hide('sub-change-pwd');});
   bind('wifi-sched-back',function(){hide('sub-wifi-sched');show('sub-sched-home');});
   bind('dev-sched-back',function(){hide('sub-dev-sched');show('sub-sched-home');});
