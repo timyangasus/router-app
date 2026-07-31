@@ -124,28 +124,6 @@ body{display:flex;align-items:center;justify-content:center}
 .sr{display:flex;align-items:center;padding:13px 20px;border-bottom:1px solid var(--bd);background:var(--w)}
 .sic{width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:14px}
 .sic svg{width:16px;height:16px;stroke:var(--is);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-/* pro */
-.phd{padding:16px 20px 20px;background:linear-gradient(140deg,#90BFF5,#4D95EA,#3B87E0);position:relative;overflow:hidden;flex-shrink:0}
-.phd::before{content:'';position:absolute;top:-70px;right:-40px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.05)}
-.pbk{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;cursor:pointer;margin-bottom:12px}
-.pbk svg{width:17px;height:17px;stroke:rgba(255,255,255,.85);fill:none;stroke-width:2;stroke-linecap:round}
-.ptabs{display:flex;gap:6px;padding:20px 16px;background:var(--w);border-bottom:1px solid var(--bd);overflow-x:auto;flex-shrink:0;scrollbar-width:none}
-.ptabs::-webkit-scrollbar{display:none}
-.pt{height:30px;padding:0 14px;border-radius:15px;font-size:12px;font-weight:500;white-space:nowrap;cursor:pointer;border:1px solid var(--bd);background:var(--w);color:var(--t2);display:flex;align-items:center}
-.pt.on{background:var(--ac);color:#fff;border-color:var(--ac)}
-.pcn{flex:1;min-height:0;overflow-y:auto;background:var(--bg)}
-.pcn::-webkit-scrollbar{display:none}
-.pitem{display:flex;align-items:center;padding:16px 20px;background:var(--w);border-bottom:1px solid var(--bd);cursor:pointer}
-.pit{font-size:17px;font-weight:600;color:var(--tx);letter-spacing:-.1px}
-.pis{font-size:13px;color:var(--t3);margin-top:2px}
-.pic{width:36px;height:36px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;margin-right:20px;flex-shrink:0}
-.pic svg{width:17px;height:17px;stroke:var(--is);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.ptb{height:84px;background:var(--w);border-top:1px solid var(--bd);display:flex;padding:0 4px 26px;flex-shrink:0}
-.pti{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer}
-.pti svg{width:25px;height:25px;stroke:var(--t3);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.pti span{font-size:10px;font-weight:500;color:var(--t3)}
-.pti.on svg{stroke:var(--ac)}
-.pti.on span{color:var(--ac);font-weight:600}
 /* device list */
 .di2{display:flex;align-items:center;gap:12px;padding:16px;background:var(--w);border-bottom:1px solid var(--bd);cursor:pointer}
 .da{width:42px;height:42px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
@@ -756,21 +734,6 @@ body{display:flex;align-items:center;justify-content:center}
         <input id="ov-reward-custom-val" type="number" min="1" max="240" placeholder="輸入分鐘數" style="width:100%;height:44px;border:1.5px solid var(--bd);border-radius:10px;padding:0 14px;font-size:16px;color:var(--tx);background:var(--s2);outline:none;font-family:var(--f);box-sizing:border-box"/>
       </div>
       <div onclick="confirmReward()" style="height:50px;border-radius:var(--r2);background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:#fff;cursor:pointer">確認</div>
-    </div>
-  </div>
-
-  <!-- SUB: PRO MODE -->
-  <div class="sub" id="sub-pro">
-    <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="17" height="12" viewBox="0 0 17 12" fill="var(--tx)"><rect x="0" y="3.5" width="3" height="8.5" rx="1"/><rect x="4.5" y="2" width="3" height="10" rx="1"/><rect x="9" y=".5" width="3" height="11.5" rx="1"/><rect x="13.5" y=".5" width="3" height="11.5" rx="1" opacity=".25"/></svg><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
-    <div class="phd"><div class="pbk" id="pro-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div style="font-size:26px;font-weight:700;color:#fff;letter-spacing:-.5px">Pro Mode</div><div style="font-size:13px;color:rgba(255,255,255,.45);margin-top:4px">進階設定 · 適合專業使用者</div></div>
-    <div class="ptabs"><div class="pt on" id="ptab-net">Network</div><div class="pt" id="ptab-wl">Wireless</div><div class="pt" id="ptab-vpn">VPN</div><div class="pt" id="ptab-sys">System</div><div class="pt" id="ptab-int">Integration</div></div>
-    <div class="pcn" id="pro-cnt"></div>
-    <div class="ptb">
-      <div class="pti" id="ptb-home"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首頁</span></div>
-      <div class="pti" id="ptb-dev"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg><span>裝置</span></div>
-      <div class="pti" id="ptb-ins"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span>洞察</span></div>
-      <div class="pti" id="ptb-fam"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg><span>家庭</span></div>
-      <div class="pti on" id="ptb-set"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a1 1 0 00-1.41 0l-.71.71a7 7 0 00-9.9 0l-.71-.71a1 1 0 00-1.41 1.41l.71.71a7 7 0 000 9.9l-.71.71a1 1 0 001.41 1.41l.71-.71a7 7 0 009.9 0l.71.71a1 1 0 001.41-1.41l-.71-.71a7 7 0 000-9.9l.71-.71a1 1 0 000-1.41z"/></svg><span>設定</span></div>
     </div>
   </div>
 
@@ -3063,13 +3026,6 @@ body{display:flex;align-items:center;justify-content:center}
 
 <script>
 var TABS=['home','devices','insight','family','settings'];
-var PRO={
-  net:[{t:'LAN 設定',s:'192.168.1.1 / 255.255.255.0'},{t:'WAN 設定',s:'PPPoE · 動態 IP'},{t:'DNS Settings',s:'8.8.8.8 / 1.1.1.1'},{t:'DDNS',s:'your-home.asuscomm.com · 啟用'},{t:'Dual WAN',s:'容錯備援 · 停用'},{t:'Port Forwarding',s:'3 條規則已啟用'},{t:'IP Binding',s:'5 個裝置已綁定'}],
-  wl:[{t:'Channel',s:'5GHz: Ch149 · 2.4GHz: Ch6'},{t:'Bandwidth',s:'5GHz: 160MHz · 2.4GHz: 40MHz'},{t:'PSC',s:'6GHz: PSC Ch37'},{t:'MLO 詳細設定',s:'Multi-Link Operation · 啟用'}],
-  vpn:[{t:'VPN Server',s:'OpenVPN · 啟用中 · 1 個連線'},{t:'VPN Fusion',s:'2 個設定檔'},{t:'Instant Guard',s:'一鍵 VPN 保護'}],
-  sys:[{t:'System Monitor',s:'CPU 12% · RAM 38%'},{t:'System Log',s:'查看完整系統紀錄'},{t:'Setting Backup',s:'上次備份：3 天前'},{t:'Reboot Scheduler',s:'每週日 03:00'},{t:'Wake-On-LAN',s:'2 台裝置已設定'}],
-  int:[{t:'Voice Assistant',s:'Alexa · Google Assistant · 已連結'},{t:'Related Apps',s:'AURA Sync · AiCloud'},{t:'Account Binding',s:'ASUS ID · 已驗證'}]
-};
 function g(id){return document.getElementById(id)}
 function show(id){var e=g(id);if(e)e.classList.add('on')}
 function hide(id){var e=g(id);if(e)e.classList.remove('on')}
@@ -3087,7 +3043,7 @@ function goTab(t){
   if(ct){ct.scrollTop=0;}
   // hide family back when switching tabs normally
   if(t==='family'){var fb=document.getElementById('family-back-btn');if(fb)fb.style.display='none';}
-  ['sub-pro','sub-dev','sub-notif','sub-diag','sub-suggestions','sub-energy','sub-aipro-detail','sub-wifi-insight','sub-theme','sub-main-wifi','sub-reboot','sub-account','sub-led','sub-passwords','sub-pause','sub-scan','sub-mesh-opt','sub-mesh-addnode','sub-adddev','sub-speedtest','sub-traffic','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-ifttt','sub-pro-smarthome','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick'].forEach(hide);
+  ['sub-dev','sub-notif','sub-diag','sub-suggestions','sub-energy','sub-aipro-detail','sub-wifi-insight','sub-theme','sub-main-wifi','sub-reboot','sub-account','sub-led','sub-passwords','sub-pause','sub-scan','sub-mesh-opt','sub-mesh-addnode','sub-adddev','sub-speedtest','sub-traffic','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-ifttt','sub-pro-smarthome','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick'].forEach(hide);
   // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
     var bar=document.getElementById('ai-input-bar');
@@ -3104,32 +3060,6 @@ function goTab(t){
   // hide devices back button when switching via tab bar
   var db=document.getElementById('devices-back-btn');
   if(db)db.style.display='none';
-}
-function openPro(){
-  show('sub-pro');
-  renderPro('net','ptab-net');
-}
-function renderPro(key,tabId){
-  document.querySelectorAll('.pt').forEach(function(e){e.classList.remove('on')});
-  var tab=g(tabId);if(tab)tab.classList.add('on');
-  var items=PRO[key]||[];
-  var cnt=g('pro-cnt');if(!cnt)return;
-  var webCard='<div style="background:var(--w);border-radius:16px;padding:18px 16px;margin:16px 20px;box-shadow:var(--sh)">'
-    +'<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">'
-      +'<div style="width:34px;height:34px;border-radius:50%;background:var(--abg);display:flex;align-items:center;justify-content:center;flex-shrink:0">'
-        +'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>'
-      +'</div>'
-      +'<div style="font-size:15px;font-weight:700;color:var(--tx)">需要更多進階功能？</div>'
-    +'</div>'
-    +'<div style="font-size:13px;color:var(--t2);line-height:1.6;margin-bottom:14px">部分專業網路設定僅提供於路由器網頁管理介面。如需使用更多進階功能或專業設定，請透過瀏覽器前往網頁版操作。</div>'
-    +'<div onclick="window.open(\'http://router.asus.com\',\'_blank\')" style="display:flex;align-items:center;justify-content:center;gap:6px;height:44px;border-radius:22px;border:1.5px solid var(--ac);cursor:pointer">'
-      +'<span style="font-size:14px;font-weight:600;color:var(--ac)">前往網頁版設定</span>'
-      +'<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>'
-    +'</div>'
-  +'</div>';
-  cnt.innerHTML=webCard+'<div>'+items.map(function(it){
-    return '<div class="pitem"><div class="pic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div><div style="flex:1"><div class="pit">'+it.t+'</div><div class="pis">'+it.s+'</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>';
-  }).join('')+'</div>';
 }
 // ── Device detail: shared building blocks (used by openDev + openMeshDevice) ──
 var _svgDevPause='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
@@ -3452,11 +3382,6 @@ window.addEventListener('load',function(){
   // init home no-scroll
   // tabs
   TABS.forEach(function(t){bind('tab-'+t,function(){goTab(t);});});
-  // pro
-  bind('s-pro',openPro);
-  bind('pro-back',function(){hide('sub-pro');});
-  [['ptb-home','home'],['ptb-dev','devices'],['ptb-ins','insight'],['ptb-fam','family'],['ptb-set','settings']].forEach(function(p){bind(p[0],function(){hide('sub-pro');goTab(p[1]);});});
-  [['ptab-net','net'],['ptab-wl','wl'],['ptab-vpn','vpn'],['ptab-sys','sys'],['ptab-int','int']].forEach(function(p){bind(p[0],function(){renderPro(p[1],p[0]);});});
   // devices
   bind('dev-back',function(){
     hide('sub-dev');
