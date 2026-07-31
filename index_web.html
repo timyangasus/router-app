@@ -312,38 +312,49 @@ body{display:flex;align-items:center;justify-content:center}
         </div>
       </div>
       <!-- AiMesh -->
-      <span class="sl">AiMesh 狀態</span>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:22px 20px 6px">
+        <span class="sl" style="padding:0">AiMesh 狀態</span>
+        <span style="font-size:12px;color:var(--t3);font-weight:500">節點：2</span>
+      </div>
       <div class="card" onclick="show('ov-mesh')" style="cursor:pointer">
-        <div style="padding:20px 16px 10px;display:flex;align-items:flex-start">
+        <div style="padding:20px 16px 22px;display:flex;align-items:flex-start">
           <!-- Internet -->
           <div style="text-align:center;flex:1">
-            <div style="width:46px;height:46px;border-radius:50%;background:#1A5FAA;display:flex;align-items:center;justify-content:center;margin:0 auto 5px">
+            <div style="width:46px;height:46px;border-radius:50%;background:#1A5FAA;display:flex;align-items:center;justify-content:center;margin:0 auto 8px">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
             </div>
-            <div style="font-size:17px;font-weight:600;color:var(--tx)">Internet</div>
+            <div style="font-size:17px;font-weight:700;color:var(--tx)">Internet</div>
           </div>
-          <div style="flex:1;height:1.5px;background:var(--ac);opacity:.25;margin-top:23px"></div>
+          <!-- connector -->
+          <div style="flex:1;display:flex;align-items:center;margin-top:23px;padding:0 2px">
+            <div style="flex:1;height:1.5px;background:var(--t3);opacity:.4"></div>
+            <div style="width:22px;height:22px;border-radius:50%;background:var(--gn);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin:0 4px">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div style="flex:1;height:1.5px;background:var(--t3);opacity:.4"></div>
+          </div>
           <!-- 客廳 -->
           <div style="text-align:center;flex:1">
-            <div style="width:46px;height:46px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center;margin:0 auto 5px">
+            <div style="width:46px;height:46px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center;margin:0 auto 8px">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             </div>
-            <div style="font-size:17px;font-weight:600;color:var(--tx);white-space:nowrap">客廳 <span style="font-size:14px;color:var(--ac);font-weight:700">(15)</span></div>
-            <div style="font-size:10px;color:var(--gn);margin-top:1px">● 良好</div>
+            <div style="font-size:17px;font-weight:700;color:var(--tx);white-space:nowrap">客廳 <span style="color:var(--ac)">(15)</span></div>
           </div>
-          <div style="flex:1;height:1.5px;background:var(--ac);opacity:.25;margin-top:23px"></div>
+          <!-- connector -->
+          <div style="flex:1;display:flex;align-items:center;margin-top:23px;padding:0 2px">
+            <div style="flex:1;height:1.5px;background:var(--t3);opacity:.4"></div>
+            <div style="width:22px;height:22px;border-radius:50%;background:var(--gn);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin:0 4px">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div style="flex:1;height:1.5px;background:var(--t3);opacity:.4"></div>
+          </div>
           <!-- 臥室 -->
           <div style="text-align:center;flex:1">
-            <div style="width:46px;height:46px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center;margin:0 auto 5px">
+            <div style="width:46px;height:46px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center;margin:0 auto 8px">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 012 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
             </div>
-            <div style="font-size:17px;font-weight:600;color:var(--tx)">臥室 <span style="color:var(--ac);font-weight:700">(6)</span></div>
-            <div style="font-size:10px;color:var(--gn);margin-top:1px">● 良好</div>
+            <div style="font-size:17px;font-weight:700;color:var(--tx);white-space:nowrap">臥室 <span style="color:var(--ac)">(6)</span></div>
           </div>
-        </div>
-        <div style="padding:8px 16px 10px;border-top:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center">
-          <div style="font-size:12px;color:var(--t3)">2 個節點・全部正常</div>
-          <div style="font-size:12px;color:var(--ac);font-weight:500">查看詳細 ›</div>
         </div>
       </div>
       <!-- Quick Actions -->
