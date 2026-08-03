@@ -3615,6 +3615,7 @@ window.addEventListener('load',function(){
     if(btn){btn.textContent='更新中…';btn.style.background='var(--t3)';btn.style.cursor='default';}
   });
   // overlays
+  bind('ov-wifi-close',function(){hide('ov-wifi');});
   ['ov-wifi','ov-add','ov-mei','ov-ming'].forEach(function(id){
     bind(id,function(e){if(e.target===g(id))hide(id);});
   });
