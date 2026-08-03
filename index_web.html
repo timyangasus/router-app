@@ -3019,7 +3019,8 @@ function show(id){
   if(window.innerWidth>430 && (e.classList.contains('sub')||e.classList.contains('ov'))){
     var phone=document.querySelector('.phone');
     if(phone && e.parentElement!==phone){phone.appendChild(e);}
-    e.style.cssText='display:flex;position:absolute;top:0;left:0;width:'+phone.offsetWidth+'px;height:'+phone.offsetHeight+'px;z-index:'+(e.classList.contains('ov')?20:10)+';flex-direction:column;background:var(--bg)';
+    var isOv=e.classList.contains('ov');
+    e.style.cssText='display:flex;position:absolute;top:0;left:0;width:'+phone.offsetWidth+'px;height:'+phone.offsetHeight+'px;z-index:'+(isOv?20:10)+';'+(isOv?'align-items:flex-end;background:rgba(12,17,32,.5)':'flex-direction:column;background:var(--bg)');
   }
   e.classList.add('on');
 }
