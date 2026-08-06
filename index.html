@@ -283,6 +283,7 @@ body{display:flex;align-items:center;justify-content:center}
 .insight-content{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
 .insight-content::-webkit-scrollbar{display:none}
 @keyframes aiDot{0%,80%,100%{transform:scale(.6);opacity:.4}40%{transform:scale(1);opacity:1}}
+@keyframes spin{to{transform:rotate(360deg)}}
 #ai-input:empty::before{content:attr(data-placeholder);color:var(--t3);pointer-events:none}
 .energy-hero{background:linear-gradient(160deg,#74C7FF 0%,#7FD8EE 40%,#A8EDD8 70%,#C2F0E8 100%)}
 .aipro-hero{background:linear-gradient(180deg,#59D37A 0%,#98E7AE 60%,#fff 100%)}
@@ -383,7 +384,7 @@ body{display:flex;align-items:center;justify-content:center}
             <div style="flex:1;height:2px;background:var(--gn);opacity:.5"></div>
           </div>
           <!-- 客廳 -->
-          <div style="text-align:center;flex:1">
+          <div onclick="event.stopPropagation();openNodeDetail('living')" style="text-align:center;flex:1;cursor:pointer">
             <div style="position:relative;width:46px;height:46px;margin:0 auto 8px">
               <div style="width:46px;height:46px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
@@ -403,7 +404,7 @@ body{display:flex;align-items:center;justify-content:center}
             <div id="mesh-conn2-r" style="flex:1;height:2px;background:var(--gn);opacity:.5"></div>
           </div>
           <!-- 臥室 -->
-          <div style="text-align:center;flex:1">
+          <div onclick="event.stopPropagation();openNodeDetail('bedroom')" style="text-align:center;flex:1;cursor:pointer">
             <div style="position:relative;width:46px;height:46px;margin:0 auto 8px">
               <div id="mesh-node-bedroom" style="width:46px;height:46px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 012 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
@@ -414,6 +415,12 @@ body{display:flex;align-items:center;justify-content:center}
             </div>
             <div style="font-size:17px;font-weight:700;color:var(--tx);white-space:nowrap">臥室</div>
             <div id="mesh-bedroom-err" style="display:none;font-size:11px;font-weight:700;color:var(--or);margin-top:2px">連線異常</div>
+          </div>
+        </div>
+        <div style="padding:0 16px 12px">
+          <div onclick="event.stopPropagation();show('ov-mesh')" style="height:36px;border:1.5px solid var(--ac);border-radius:18px;background:var(--w);display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+            <span style="font-size:13px;font-weight:600;color:var(--ac)">查看網路地圖</span>
           </div>
         </div>
         <div style="height:1px;background:var(--bd);margin:0 16px"></div>
@@ -1735,6 +1742,63 @@ body{display:flex;align-items:center;justify-content:center}
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg);padding-bottom:30px" id="node-detail-body">
       <!-- Injected by JS -->
+    </div>
+  </div>
+
+  <!-- SUB: Node LED (per-node, shared shell) -->
+  <div class="sub" id="sub-node-led">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="node-led-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)" id="node-led-title">LED</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)" id="node-led-body"><!-- Injected by JS --></div>
+  </div>
+
+  <!-- SUB: Node Aura RGB (per-node, shared shell) -->
+  <div class="sub" id="sub-node-aura">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="node-aura-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)" id="node-aura-title">Aura RGB</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)" id="node-aura-body"><!-- Injected by JS --></div>
+  </div>
+
+  <!-- SUB: Node Night Mode (per-node, shared shell) -->
+  <div class="sub" id="sub-node-nightmode">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="node-nightmode-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)" id="node-nightmode-title">Night Mode</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)" id="node-nightmode-body"><!-- Injected by JS --></div>
+  </div>
+
+  <!-- SUB: Node Restart (per-node, shared shell) -->
+  <div class="sub" id="sub-node-restart">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="node-restart-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)" id="node-restart-title">重新啟動</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg);display:flex;flex-direction:column;align-items:center;padding:40px 24px 24px" id="node-restart-body"><!-- Injected by JS --></div>
+  </div>
+
+  <!-- SUB: Node Optimize (per-node, shared shell) -->
+  <div class="sub" id="sub-node-optimize">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="node-optimize-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)" id="node-optimize-title">最佳化</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg);display:flex;flex-direction:column;align-items:center;padding:40px 24px 24px" id="node-optimize-body"><!-- Injected by JS --></div>
+  </div>
+
+  <!-- OV: Node rename -->
+  <div class="ov" id="ov-node-rename" onclick="if(event.target===this)hide('ov-node-rename')">
+    <div class="sheet">
+      <div style="font-size:16px;font-weight:700;color:var(--tx);margin-bottom:14px">重新命名節點</div>
+      <input id="node-rename-input" style="width:100%;height:46px;border:1.5px solid var(--bd);border-radius:10px;padding:0 14px;font-size:16px;color:var(--tx);background:var(--s2);outline:none;font-family:var(--f);box-sizing:border-box;margin-bottom:16px"/>
+      <div style="display:flex;gap:12px">
+        <div onclick="hide('ov-node-rename')" style="flex:1;height:48px;border-radius:var(--r2);background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:var(--t2);cursor:pointer">取消</div>
+        <div id="node-rename-save" style="flex:1;height:48px;border-radius:var(--r2);background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:#fff;cursor:pointer">儲存</div>
+      </div>
     </div>
   </div>
 
@@ -3502,7 +3566,7 @@ function goTab(t){
   if(ct){ct.scrollTop=0;}
   // hide family back when switching tabs normally
   if(t==='family'){var fb=document.getElementById('family-back-btn');if(fb)fb.style.display='none';}
-  ['sub-dev','sub-notif','sub-diag','sub-suggestions','sub-energy','sub-aipro-detail','sub-wifi-insight','sub-theme','sub-main-wifi','sub-reboot','sub-account','sub-led','sub-passwords','sub-pause','sub-scan','sub-mesh-opt','sub-mesh-addnode','sub-adddev','sub-speedtest','sub-traffic','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-ifttt','sub-pro-smarthome','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-report','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-faq','sub-network','sub-network-iot','sub-network-sdn','sub-aura','sub-nightmode','sub-routerinfo','sub-firmware','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-wifiadv','sub-pro-restartsched','sub-pro-energy'].forEach(hide);
+  ['sub-dev','sub-notif','sub-diag','sub-suggestions','sub-energy','sub-aipro-detail','sub-wifi-insight','sub-theme','sub-main-wifi','sub-reboot','sub-account','sub-led','sub-passwords','sub-pause','sub-scan','sub-mesh-opt','sub-mesh-addnode','sub-adddev','sub-speedtest','sub-traffic','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-ifttt','sub-pro-smarthome','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-report','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-faq','sub-network','sub-network-iot','sub-network-sdn','sub-aura','sub-nightmode','sub-routerinfo','sub-firmware','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-wifiadv','sub-pro-restartsched','sub-pro-energy','sub-node-detail','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize'].forEach(hide);
   // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
     var bar=document.getElementById('ai-input-bar');
@@ -4614,6 +4678,20 @@ window.addEventListener('load',function(){
   bind('pause-back',function(){hide('sub-pause');});
   bind('blacklist-back',function(){hide('sub-blacklist');});
   bind('node-detail-back',function(){hide('sub-node-detail');show('ov-mesh');});
+  bind('node-led-back',function(){hide('sub-node-led');backToNodeDetail();});
+  bind('node-aura-back',function(){hide('sub-node-aura');backToNodeDetail();});
+  bind('node-nightmode-back',function(){hide('sub-node-nightmode');backToNodeDetail();});
+  bind('node-restart-back',function(){hide('sub-node-restart');backToNodeDetail();});
+  bind('node-optimize-back',function(){hide('sub-node-optimize');backToNodeDetail();});
+  bind('node-rename-save',function(){
+    var id=_renameNodeId;if(!id)return;
+    var val=g('node-rename-input').value.trim();
+    if(val){
+      MESH_NODES[id].name=val;
+      if(g('sub-node-detail').classList.contains('on'))renderNodeDetail(id);
+    }
+    hide('ov-node-rename');
+  });
   bind('scan-back',function(){hide('sub-scan');});
   bind('mesh-opt-back',function(){hide('sub-mesh-opt');if(window._meshOptFromQuick){window._meshOptFromQuick=false;goTab('home');}else{show('ov-mesh');}});
   bind('change-pwd-back',function(){hide('sub-change-pwd');});
@@ -4783,6 +4861,7 @@ var MESH_NODES={
     location:'客廳',
     groupLabel:'客廳（主路由器）',
     status:'連線正常 · Backhaul 5GHz · -42dBm',
+    firmware:'3.0.0.4.386',
     devices:[
       {name:"Tim's MacBook Pro",band:'5GHz',type:'laptop',status:'online',mac:'A4:CF:99:E2:11:08',ip:'192.168.1.101'},
       {name:'客廳 Apple TV',band:'有線',type:'tv',status:'online',mac:'DC:56:E7:44:AB:02',ip:'192.168.1.110'},
@@ -4797,12 +4876,25 @@ var MESH_NODES={
     location:'臥室',
     groupLabel:'臥室（節點）',
     status:'連線正常 · Backhaul 5GHz · -52dBm',
+    firmware:'3.0.0.4.386',
     devices:[
       {name:"Tim's iPad",band:'5GHz',type:'phone',status:'online',mac:'7C:2E:BD:44:11:8A',ip:'192.168.1.151'},
       {name:'小美的 Kindle',band:'2.4GHz',type:'phone',status:'online',mac:'A0:C5:89:2F:63:0D',ip:'192.168.1.152'},
       {name:'智慧檯燈',band:'2.4GHz',type:'iot',status:'online',mac:'5C:F9:38:AB:14:66',ip:'192.168.1.153'},
       {name:'空氣清淨機',band:'2.4GHz',type:'iot',status:'online',mac:'90:9A:4A:1D:E2:77',ip:'192.168.1.154'},
     ]
+  }
+};
+var NODE_LIGHTING={
+  living:{
+    led:true, ledNightAuto:false, ledOffTime:'22:00', ledOnTime:'07:00',
+    auraEnabled:true, auraEffect:0, auraColor:0, auraBrightness:70, auraSync:false,
+    nmEnabled:true, nmStart:'22:00', nmEnd:'07:00', nmLedOff:true, nmLowerTx:false, nmPauseGuest:false
+  },
+  bedroom:{
+    led:true, ledNightAuto:true, ledOffTime:'23:00', ledOnTime:'06:30',
+    auraEnabled:false, auraEffect:2, auraColor:3, auraBrightness:50, auraSync:false,
+    nmEnabled:false, nmStart:'23:00', nmEnd:'06:30', nmLedOff:true, nmLowerTx:false, nmPauseGuest:false
   }
 };
 var _nodeBlockedSet={};
@@ -4849,26 +4941,161 @@ function renderDevicesTab(){
     countEl.textContent=total+' 台裝置';
   }
 }
+var _curNodeId=null;
 function openNodeDetail(nodeId){
+  _curNodeId=nodeId;
   hide('ov-mesh');
   renderNodeDetail(nodeId);
   show('sub-node-detail');
 }
+function backToNodeDetail(){
+  if(_curNodeId){renderNodeDetail(_curNodeId);show('sub-node-detail');}
+  else show('ov-mesh');
+}
 function renderNodeDetail(nodeId){
   var n=MESH_NODES[nodeId];if(!n)return;
+  var lt=NODE_LIGHTING[nodeId]||{};
   var title=g('node-detail-title');if(title)title.textContent=n.name;
   var body=g('node-detail-body');if(!body)return;
+  var chev='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>';
   var html='';
-  html+='<div style="background:var(--w);margin:14px 16px;border-radius:var(--r);box-shadow:var(--sh)">'
-    +'<div style="display:flex;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd)"><span style="font-size:14px;color:var(--t3)">裝置名稱</span><span style="font-size:14px;font-weight:600;color:var(--tx)">'+n.name+'</span></div>'
+  html+='<span class="sl">裝置資訊</span>';
+  html+='<div style="background:var(--w);margin:0 16px 12px;border-radius:var(--r);box-shadow:var(--sh)">'
+    +'<div style="display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid var(--bd)"><span style="font-size:14px;color:var(--t3)">裝置名稱</span><div style="display:flex;align-items:center;gap:6px"><span style="font-size:14px;font-weight:600;color:var(--tx)">'+n.name+'</span><div onclick="openNodeRename(\''+nodeId+'\')" style="cursor:pointer;padding:2px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 013 3L12 15l-4 1 1-4z"/></svg></div></div></div>'
     +'<div style="display:flex;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd)"><span style="font-size:14px;color:var(--t3)">連線狀況</span><span style="font-size:14px;font-weight:600;color:var(--gn)">'+n.status+'</span></div>'
-    +'<div style="display:flex;justify-content:space-between;padding:13px 16px"><span style="font-size:14px;color:var(--t3)">地點</span><span style="font-size:14px;font-weight:600;color:var(--tx)">'+n.location+'</span></div>'
+    +'<div style="display:flex;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd)"><span style="font-size:14px;color:var(--t3)">地點</span><span style="font-size:14px;font-weight:600;color:var(--tx)">'+n.location+'</span></div>'
+    +'<div style="display:flex;justify-content:space-between;padding:13px 16px"><span style="font-size:14px;color:var(--t3)">韌體版本</span><span style="font-size:14px;font-weight:600;color:var(--tx)">'+n.firmware+'</span></div>'
+    +'</div>';
+  html+='<span class="sl">燈光效果</span>';
+  html+='<div style="background:var(--w);margin:0 16px 12px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden">'
+    +'<div class="sr" style="border-bottom:1px solid var(--bd);cursor:pointer" onclick="openNodeLED(\''+nodeId+'\')"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">LED</div></div><span style="font-size:13px;color:var(--t3);margin-right:6px">'+(lt.led?'開啟':'關閉')+'</span>'+chev+'</div>'
+    +'<div class="sr" style="border-bottom:1px solid var(--bd);cursor:pointer" onclick="openNodeAura(\''+nodeId+'\')"><div class="sic"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Aura RGB</div></div><span style="font-size:13px;color:var(--t3);margin-right:6px">'+(lt.auraEnabled?'啟用中':'停用')+'</span>'+chev+'</div>'
+    +'<div class="sr" style="border:none;cursor:pointer" onclick="openNodeNightMode(\''+nodeId+'\')"><div class="sic"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Night Mode</div></div><span style="font-size:13px;color:var(--t3);margin-right:6px">'+(lt.nmEnabled?'啟用中':'停用')+'</span>'+chev+'</div>'
+    +'</div>';
+  html+='<span class="sl">維護</span>';
+  html+='<div style="background:var(--w);margin:0 16px 12px;border-radius:var(--r);box-shadow:var(--sh);padding:18px 16px;display:flex">'
+    +'<div onclick="openNodeRestart(\''+nodeId+'\')" style="flex:1;text-align:center;cursor:pointer"><div style="width:44px;height:44px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;margin:0 auto 8px"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg></div><div style="font-size:14px;font-weight:600;color:var(--tx)">重新啟動</div></div>'
+    +'<div style="width:1px;background:var(--bd)"></div>'
+    +'<div onclick="openNodeOptimize(\''+nodeId+'\')" style="flex:1;text-align:center;cursor:pointer"><div style="width:44px;height:44px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;margin:0 auto 8px"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="12" y1="8" x2="5" y2="16"/><line x1="12" y1="8" x2="19" y2="16"/></svg></div><div style="font-size:14px;font-weight:600;color:var(--tx)">立即最佳化</div></div>'
     +'</div>';
   html+='<span class="sl">連線裝置 ('+n.devices.length+')</span>';
   html+='<div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden">'
     +n.devices.map(function(d,i){return deviceRowHtml(nodeId,i,d,n.name);}).join('')
     +'</div>';
   body.innerHTML=html;
+}
+function openNodeLED(nodeId){ hide('sub-node-detail'); renderNodeLED(nodeId); show('sub-node-led'); }
+function renderNodeLED(nodeId){
+  var n=MESH_NODES[nodeId],lt=NODE_LIGHTING[nodeId];if(!n||!lt)return;
+  g('node-led-title').textContent=n.name+' · LED';
+  g('node-led-body').innerHTML=
+    '<span class="sl">燈號控制</span>'
+    +'<div style="background:var(--w)">'
+    +'<div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">LED 燈號</div><div style="font-size:13px;color:var(--t3);margin-top:2px">開啟時此節點正常運作</div></div><div class="tg'+(lt.led?' on':'')+'" onclick="this.classList.toggle(\'on\')" style="cursor:pointer"></div></div>'
+    +'<div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">夜間自動關閉</div><div style="font-size:13px;color:var(--t3);margin-top:2px">指定時段關閉燈號</div></div><div class="tg'+(lt.ledNightAuto?' on':'')+'" onclick="this.classList.toggle(\'on\')" style="cursor:pointer"></div></div>'
+    +'</div>'
+    +'<span class="sl">排程</span>'
+    +'<div style="background:var(--w)">'
+    +'<div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">關閉時間</div></div><span style="font-size:14px;color:var(--t2)">'+lt.ledOffTime+'</span></div>'
+    +'<div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">開啟時間</div></div><span style="font-size:14px;color:var(--t2)">'+lt.ledOnTime+'</span></div>'
+    +'</div>';
+}
+var AURA_EFFECTS=[{label:'彩虹',swatch:'linear-gradient(135deg,#FF3B30,#FF9500,#59D37A,#0A84FF,#AF52DE)'},{label:'呼吸',swatch:'#0A84FF'},{label:'靜態',swatch:'#59D37A'},{label:'彗星',swatch:'#FF9500'},{label:'閃光',swatch:'#FF3B30'}];
+var AURA_COLORS=['#FF3B30','#FF9500','#59D37A','#0A84FF','#AF52DE','#fff'];
+function openNodeAura(nodeId){ hide('sub-node-detail'); renderNodeAura(nodeId); show('sub-node-aura'); }
+function renderNodeAura(nodeId){
+  var n=MESH_NODES[nodeId],lt=NODE_LIGHTING[nodeId];if(!n||!lt)return;
+  g('node-aura-title').textContent=n.name+' · Aura RGB';
+  var effectsHtml=AURA_EFFECTS.map(function(e,i){
+    var sel=i===lt.auraEffect;
+    return '<div style="flex-shrink:0;width:76px;height:76px;border-radius:14px;background:var(--w);box-shadow:'+(sel?'0 0 0 2px var(--ac) inset':'var(--sh)')+';display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px"><div style="width:24px;height:24px;border-radius:50%;background:'+e.swatch+'"></div><div style="font-size:11px;font-weight:600;color:'+(sel?'var(--tx)':'var(--t2)')+'">'+e.label+'</div></div>';
+  }).join('');
+  var colorsHtml=AURA_COLORS.map(function(c,i){
+    var sel=i===lt.auraColor;
+    var ring=c==='#fff'?('box-shadow:0 0 0 1.5px var(--bd) inset'+(sel?',0 0 0 2px var(--w),0 0 0 3.5px var(--ac)':'')+';'):(sel?'box-shadow:0 0 0 2px var(--w),0 0 0 3.5px var(--ac);':'');
+    return '<div style="width:32px;height:32px;border-radius:50%;background:'+c+';'+ring+'cursor:pointer"></div>';
+  }).join('');
+  g('node-aura-body').innerHTML=
+    '<span class="sl">燈光效果</span>'
+    +'<div style="background:var(--w)"><div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 Aura RGB</div></div><div class="tg'+(lt.auraEnabled?' on':'')+'" onclick="this.classList.toggle(\'on\')" style="cursor:pointer"></div></div></div>'
+    +'<div style="padding:14px 16px;display:flex;gap:10px;overflow-x:auto">'+effectsHtml+'</div>'
+    +'<span class="sl">顏色</span>'
+    +'<div style="padding:14px 16px;display:flex;gap:12px">'+colorsHtml+'</div>'
+    +'<span class="sl">亮度</span>'
+    +'<div style="background:var(--w)"><div class="sr" style="border:none"><div style="flex:1"><div style="height:6px;border-radius:3px;background:var(--s2);position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:'+lt.auraBrightness+'%;border-radius:3px;background:var(--ac)"></div><div style="position:absolute;left:'+lt.auraBrightness+'%;top:50%;transform:translate(-50%,-50%);width:18px;height:18px;border-radius:50%;background:var(--w);box-shadow:var(--sh)"></div></div></div></div></div>'
+    +'<span class="sl">同步</span>'
+    +'<div style="background:var(--w)"><div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">與其他 Aura Sync 裝置同步</div><div style="font-size:13px;color:var(--t3);margin-top:2px">讓所有支援 Aura Sync 的裝置燈效一致</div></div><div class="tg'+(lt.auraSync?' on':'')+'" onclick="this.classList.toggle(\'on\')" style="cursor:pointer"></div></div></div>';
+}
+function openNodeNightMode(nodeId){ hide('sub-node-detail'); renderNodeNightMode(nodeId); show('sub-node-nightmode'); }
+function renderNodeNightMode(nodeId){
+  var n=MESH_NODES[nodeId],lt=NODE_LIGHTING[nodeId];if(!n||!lt)return;
+  g('node-nightmode-title').textContent=n.name+' · Night Mode';
+  g('node-nightmode-body').innerHTML=
+    '<span class="sl">排程</span>'
+    +'<div style="background:var(--w)">'
+    +'<div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 Night Mode</div></div><div class="tg'+(lt.nmEnabled?' on':'')+'" onclick="this.classList.toggle(\'on\')" style="cursor:pointer"></div></div>'
+    +'<div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">開始時間</div></div><span style="font-size:14px;color:var(--t2)">'+lt.nmStart+'</span></div>'
+    +'<div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">結束時間</div></div><span style="font-size:14px;color:var(--t2)">'+lt.nmEnd+'</span></div>'
+    +'</div>'
+    +'<span class="sl">此時段內</span>'
+    +'<div style="background:var(--w)">'
+    +'<div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">關閉 LED 燈號</div></div><div class="tg'+(lt.nmLedOff?' on':'')+'" onclick="this.classList.toggle(\'on\')" style="cursor:pointer"></div></div>'
+    +'<div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">降低 Wi-Fi 發射功率</div><div style="font-size:13px;color:var(--t3);margin-top:2px">減少睡眠期間的無線電波</div></div><div class="tg'+(lt.nmLowerTx?' on':'')+'" onclick="this.classList.toggle(\'on\')" style="cursor:pointer"></div></div>'
+    +'<div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">暫停訪客網路</div></div><div class="tg'+(lt.nmPauseGuest?' on':'')+'" onclick="this.classList.toggle(\'on\')" style="cursor:pointer"></div></div>'
+    +'</div>'
+    +'<div style="padding:16px;font-size:12px;color:var(--t3);text-align:center;line-height:1.6">此時段內 LED 燈號將依上方設定自動調整，不影響網路正常連線。</div>';
+}
+function openNodeRestart(nodeId){ hide('sub-node-detail'); renderNodeRestart(nodeId); show('sub-node-restart'); }
+function renderNodeRestart(nodeId){
+  var n=MESH_NODES[nodeId];if(!n)return;
+  g('node-restart-title').textContent='重新啟動';
+  g('node-restart-body').innerHTML=
+    '<div style="width:100px;height:100px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;margin-bottom:24px"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg></div>'
+    +'<div style="font-size:20px;font-weight:600;color:var(--tx);margin-bottom:10px">重新啟動'+n.name+'</div>'
+    +'<div style="font-size:14px;color:var(--t3);text-align:center;line-height:1.7;margin-bottom:32px">重新啟動約需 1 分鐘。過程中連接此節點的裝置將暫時中斷連線，其他節點不受影響。</div>'
+    +'<div style="width:100%;background:var(--w);border-radius:var(--r);padding:16px;margin-bottom:24px;box-shadow:var(--sh)">'
+    +'<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--bd)"><span style="font-size:14px;color:var(--t3)">地點</span><span style="font-size:14px;font-weight:600;color:var(--tx)">'+n.location+'</span></div>'
+    +'<div style="display:flex;justify-content:space-between;padding:8px 0"><span style="font-size:14px;color:var(--t3)">連線裝置</span><span style="font-size:14px;font-weight:600;color:var(--tx)">'+n.devices.length+' 台</span></div>'
+    +'</div>'
+    +'<div style="width:100%;display:flex;gap:12px">'
+    +'<div onclick="hide(\'sub-node-restart\');backToNodeDetail()" style="flex:1;height:50px;border-radius:var(--r2);background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:var(--t2);cursor:pointer">取消</div>'
+    +'<div onclick="runNodeRestart(\''+nodeId+'\')" style="flex:1;height:50px;border-radius:var(--r2);background:var(--rd);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:#fff;cursor:pointer">立即重新啟動</div>'
+    +'</div>';
+}
+function runNodeRestart(nodeId){
+  var body=g('node-restart-body');
+  body.style.paddingTop='60px';
+  body.innerHTML='<div style="width:40px;height:40px;border-radius:50%;border:3px solid var(--bd);border-top-color:var(--ac);animation:spin 1s linear infinite;margin-bottom:20px"></div><div style="font-size:16px;font-weight:600;color:var(--tx)">重新啟動中…</div>';
+  setTimeout(function(){ hide('sub-node-restart'); body.style.paddingTop=''; backToNodeDetail(); }, 1800);
+}
+function openNodeOptimize(nodeId){ hide('sub-node-detail'); renderNodeOptimize(nodeId); show('sub-node-optimize'); }
+function renderNodeOptimize(nodeId){
+  var n=MESH_NODES[nodeId];if(!n)return;
+  g('node-optimize-title').textContent='最佳化';
+  g('node-optimize-body').innerHTML=
+    '<div style="width:100px;height:100px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;margin-bottom:24px"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="12" y1="8" x2="5" y2="16"/><line x1="12" y1="8" x2="19" y2="16"/></svg></div>'
+    +'<div style="font-size:20px;font-weight:600;color:var(--tx);margin-bottom:10px">為'+n.name+'執行最佳化</div>'
+    +'<div style="font-size:14px;color:var(--t3);text-align:center;line-height:1.7;margin-bottom:32px">系統將重新選擇最佳頻道與連線路徑，過程約需 30 秒，期間網路可能短暫變慢。</div>'
+    +'<div style="width:100%;background:var(--w);border-radius:var(--r);padding:16px;margin-bottom:24px;box-shadow:var(--sh)">'
+    +'<div style="display:flex;justify-content:space-between;padding:8px 0"><span style="font-size:14px;color:var(--t3)">目前訊號</span><span style="font-size:14px;font-weight:600;color:var(--tx)">'+n.status.split(' · ').pop()+'</span></div>'
+    +'</div>'
+    +'<div onclick="runNodeOptimize(\''+nodeId+'\')" style="width:100%;height:50px;border-radius:var(--r2);background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:#fff;cursor:pointer">立即執行最佳化</div>';
+}
+function runNodeOptimize(nodeId){
+  var body=g('node-optimize-body');
+  body.style.paddingTop='60px';
+  body.innerHTML='<div style="width:40px;height:40px;border-radius:50%;border:3px solid var(--bd);border-top-color:var(--ac);animation:spin 1s linear infinite;margin-bottom:20px"></div><div style="font-size:16px;font-weight:600;color:var(--tx)">最佳化中…</div>';
+  setTimeout(function(){
+    body.style.paddingTop='50px';
+    body.innerHTML='<div style="width:64px;height:64px;border-radius:50%;background:var(--gbg);display:flex;align-items:center;justify-content:center;margin-bottom:16px"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div style="font-size:17px;font-weight:700;color:var(--tx);margin-bottom:6px">最佳化完成</div><div style="font-size:13px;color:var(--t3)">訊號品質已提升</div>';
+  }, 1500);
+}
+var _renameNodeId=null;
+function openNodeRename(nodeId){
+  _renameNodeId=nodeId;
+  var n=MESH_NODES[nodeId];if(!n)return;
+  g('node-rename-input').value=n.name;
+  show('ov-node-rename');
 }
 function openMeshDevice(nodeId,idx){
   var fromNodeDetail=g('sub-node-detail').classList.contains('on');
