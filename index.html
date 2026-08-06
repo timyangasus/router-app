@@ -4864,7 +4864,7 @@ var MESH_NODES={
     firmware:'3.0.0.4.386',
     devices:[
       {name:"Tim's MacBook Pro",band:'5GHz',type:'laptop',status:'online',signal:'good',mac:'A4:CF:99:E2:11:08',ip:'192.168.1.101'},
-      {name:'客廳 Apple TV',band:'5GHz',type:'tv',status:'online',signal:'good',mac:'DC:56:E7:44:AB:02',ip:'192.168.1.110'},
+      {name:'客廳 Apple TV',band:'5GHz',type:'tv',status:'online',signal:'medium',mac:'DC:56:E7:44:AB:02',ip:'192.168.1.110'},
       {name:'PS5',band:'有線',type:'game',status:'online',mac:'3C:E9:26:4A:8B:12',ip:'192.168.1.111'},
       {name:'Sonos Soundbar',band:'5GHz',type:'iot',status:'online',signal:'good',mac:'B8:27:EB:9C:41:03',ip:'192.168.1.112'},
       {name:'三星 QLED TV',band:'有線',type:'tv',status:'online',mac:'4C:BB:58:2D:77:1A',ip:'192.168.1.113'},
@@ -4880,7 +4880,7 @@ var MESH_NODES={
     devices:[
       {name:"Tim's iPad",band:'5GHz',type:'phone',status:'online',signal:'good',mac:'7C:2E:BD:44:11:8A',ip:'192.168.1.151'},
       {name:'小美的 Kindle',band:'2.4GHz',type:'phone',status:'online',signal:'weak',mac:'A0:C5:89:2F:63:0D',ip:'192.168.1.152'},
-      {name:'智慧檯燈',band:'2.4GHz',type:'iot',status:'online',signal:'good',mac:'5C:F9:38:AB:14:66',ip:'192.168.1.153'},
+      {name:'智慧檯燈',band:'2.4GHz',type:'iot',status:'online',signal:'medium',mac:'5C:F9:38:AB:14:66',ip:'192.168.1.153'},
       {name:'空氣清淨機',band:'2.4GHz',type:'iot',status:'online',signal:'weak',mac:'90:9A:4A:1D:E2:77',ip:'192.168.1.154'},
     ]
   }
@@ -4908,7 +4908,7 @@ function deviceStatusTrailing(d,blocked){
   if(d.band==='有線')return '<span class="bg bgg">有線</span>';
   var weak=d.signal==='weak';
   var activeColor=weak?'var(--or)':'var(--ac)';
-  var activeCount=weak?1:4;
+  var activeCount=weak?1:(d.signal==='medium'?3:4);
   return '<div style="display:flex;align-items:flex-end;gap:2px;height:14px">'
     +[5,8,11,14].map(function(h,i){return '<div style="width:3px;height:'+h+'px;border-radius:1.5px;background:'+(i<activeCount?activeColor:'var(--bd)')+'"></div>';}).join('')
     +'</div>';
@@ -5116,7 +5116,10 @@ function renderMeshDeviceDetail(nodeId,idx){
   if(title)title.textContent=d.name;
   var infoRows=[['IP 位址',d.ip],['MAC 位址',d.mac],[d.band==='有線'?'連線方式':'連線頻段',d.band],['連線節點',node.name]];
   var weak=d.band!=='有線'&&d.signal==='weak';
-  if(d.band!=='有線')infoRows.push(['訊號強度',weak?'<span style="color:var(--or)">微弱</span>':'<span style="color:var(--gn)">良好</span>']);
+  if(d.band!=='有線'){
+    var sigLabel=weak?'<span style="color:var(--or)">微弱</span>':(d.signal==='medium'?'<span style="color:var(--tx)">普通</span>':'<span style="color:var(--gn)">良好</span>');
+    infoRows.push(['訊號強度',sigLabel]);
+  }
   var suggestHtml=weak?(
     '<div style="background:var(--obg);border-radius:var(--r);padding:14px;margin-bottom:14px">'
     +'<div style="font-size:14px;font-weight:700;color:var(--tx);margin-bottom:8px">訊號微弱，建議：</div>'
