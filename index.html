@@ -1814,9 +1814,6 @@ body{display:flex;align-items:center;justify-content:center}
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg);padding-bottom:30px">
 
-      <!-- 問題卡片（異常時顯示） -->
-      <div id="wifi-issues-card" style="display:none;background:var(--w);margin:14px 16px;border-radius:var(--r);padding:16px 18px;box-shadow:var(--sh)"></div>
-
       <!-- 狀態卡片 -->
       <div id="wifi-status-card" style="background:linear-gradient(140deg,#3B87E0,#6AAAF0);margin:14px 16px;border-radius:var(--r);padding:16px 18px;box-shadow:0 4px 16px rgba(59,135,224,.25)">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
@@ -1832,6 +1829,9 @@ body{display:flex;align-items:center;justify-content:center}
           <div style="text-align:center"><div style="font-size:18px;font-weight:700;color:#fff">WPA3</div><div style="font-size:10px;color:rgba(255,255,255,.7);margin-top:1px">加密</div></div>
         </div>
       </div>
+
+      <!-- 問題卡片（異常時顯示） -->
+      <div id="wifi-issues-card" style="display:none;background:var(--w);margin:14px 16px;border-radius:var(--r);padding:16px 18px;box-shadow:var(--sh)"></div>
 
       <!-- Wi-Fi 名稱 & 密碼 -->
       <span class="sl">Wi-Fi 資訊</span>
@@ -3682,8 +3682,6 @@ var QA_CATEGORIES = [
   {name:'系統', emoji:'⚙️', ids:['qa-fw','qa-reboot','qa-led','qa-backup']},
 ];
 
-var QA_MAX = 4;
-
 // Default selected
 var QA_SELECTED = ['qa-wifi','qa-diag','qa-guest','qa-meshadd'];
 
@@ -4310,10 +4308,6 @@ function qaToggle(id){
   if (idx !== -1) {
     QA_SELECTED.splice(idx, 1);
   } else {
-    if (QA_SELECTED.length >= QA_MAX) {
-      showQAToast('最多只能選擇 '+QA_MAX+' 個項目，請先移除一項');
-      return;
-    }
     QA_SELECTED.push(id);
   }
   renderQAEditor();
