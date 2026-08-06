@@ -417,20 +417,18 @@ body{display:flex;align-items:center;justify-content:center}
             <div id="mesh-bedroom-err" style="display:none;font-size:11px;font-weight:700;color:var(--or);margin-top:2px">連線異常</div>
           </div>
         </div>
-        <div style="padding:0 16px 12px">
-          <div onclick="event.stopPropagation();show('ov-mesh')" style="height:36px;border:1.5px solid var(--ac);border-radius:18px;background:var(--w);display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
-            <span style="font-size:13px;font-weight:600;color:var(--ac)">查看網路地圖</span>
-          </div>
-        </div>
         <div style="height:1px;background:var(--bd);margin:0 16px"></div>
         <div style="display:flex;align-items:center;padding:14px 16px">
           <div style="flex:1">
             <div style="font-size:13px;color:var(--t3)">AiMesh</div>
             <div id="mesh-summary-status" style="font-size:15px;font-weight:700;color:var(--gn);margin-top:2px">良好</div>
+            <div onclick="event.stopPropagation();show('ov-mesh')" style="display:inline-flex;align-items:center;gap:3px;margin-top:6px;padding:3px 9px;border:1px solid var(--ac);border-radius:10px;cursor:pointer">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+              <span style="font-size:10.5px;font-weight:600;color:var(--ac)">查看網路地圖</span>
+            </div>
           </div>
           <div style="width:1px;height:28px;background:var(--bd);margin:0 16px"></div>
-          <div style="flex:1">
+          <div onclick="event.stopPropagation();goTab('devices')" style="flex:1;cursor:pointer">
             <div style="font-size:13px;color:var(--t3)">連線裝置</div>
             <div style="font-size:15px;font-weight:700;color:var(--tx);margin-top:2px">7 已連線 1 離線</div>
           </div>
@@ -4677,7 +4675,7 @@ window.addEventListener('load',function(){
   bind('passwords-back',function(){hide('sub-passwords');});
   bind('pause-back',function(){hide('sub-pause');});
   bind('blacklist-back',function(){hide('sub-blacklist');});
-  bind('node-detail-back',function(){hide('sub-node-detail');show('ov-mesh');});
+  bind('node-detail-back',function(){hide('sub-node-detail');if(window._nodeDetailReturnTo==='ov-mesh')show('ov-mesh');});
   bind('node-led-back',function(){hide('sub-node-led');backToNodeDetail();});
   bind('node-aura-back',function(){hide('sub-node-aura');backToNodeDetail();});
   bind('node-nightmode-back',function(){hide('sub-node-nightmode');backToNodeDetail();});
@@ -4863,12 +4861,12 @@ var MESH_NODES={
     status:'連線正常 · Backhaul 5GHz · -42dBm',
     firmware:'3.0.0.4.386',
     devices:[
-      {name:"Tim's MacBook Pro",band:'5GHz',type:'laptop',status:'online',mac:'A4:CF:99:E2:11:08',ip:'192.168.1.101'},
-      {name:'客廳 Apple TV',band:'有線',type:'tv',status:'online',mac:'DC:56:E7:44:AB:02',ip:'192.168.1.110'},
+      {name:"Tim's MacBook Pro",band:'5GHz',type:'laptop',status:'online',signal:'good',mac:'A4:CF:99:E2:11:08',ip:'192.168.1.101'},
+      {name:'客廳 Apple TV',band:'5GHz',type:'tv',status:'online',signal:'good',mac:'DC:56:E7:44:AB:02',ip:'192.168.1.110'},
       {name:'PS5',band:'有線',type:'game',status:'online',mac:'3C:E9:26:4A:8B:12',ip:'192.168.1.111'},
-      {name:'Sonos Soundbar',band:'有線',type:'iot',status:'online',mac:'B8:27:EB:9C:41:03',ip:'192.168.1.112'},
+      {name:'Sonos Soundbar',band:'5GHz',type:'iot',status:'online',signal:'good',mac:'B8:27:EB:9C:41:03',ip:'192.168.1.112'},
       {name:'三星 QLED TV',band:'有線',type:'tv',status:'online',mac:'4C:BB:58:2D:77:1A',ip:'192.168.1.113'},
-      {name:'Nest Cam',band:'2.4GHz',type:'iot',status:'online',mac:'18:B4:30:5E:22:9F',ip:'192.168.1.121'},
+      {name:'Nest Cam',band:'2.4GHz',type:'iot',status:'online',signal:'weak',mac:'18:B4:30:5E:22:9F',ip:'192.168.1.121'},
     ]
   },
   bedroom:{
@@ -4878,10 +4876,10 @@ var MESH_NODES={
     status:'連線正常 · Backhaul 5GHz · -52dBm',
     firmware:'3.0.0.4.386',
     devices:[
-      {name:"Tim's iPad",band:'5GHz',type:'phone',status:'online',mac:'7C:2E:BD:44:11:8A',ip:'192.168.1.151'},
-      {name:'小美的 Kindle',band:'2.4GHz',type:'phone',status:'online',mac:'A0:C5:89:2F:63:0D',ip:'192.168.1.152'},
-      {name:'智慧檯燈',band:'2.4GHz',type:'iot',status:'online',mac:'5C:F9:38:AB:14:66',ip:'192.168.1.153'},
-      {name:'空氣清淨機',band:'2.4GHz',type:'iot',status:'online',mac:'90:9A:4A:1D:E2:77',ip:'192.168.1.154'},
+      {name:"Tim's iPad",band:'5GHz',type:'phone',status:'online',signal:'good',mac:'7C:2E:BD:44:11:8A',ip:'192.168.1.151'},
+      {name:'小美的 Kindle',band:'2.4GHz',type:'phone',status:'online',signal:'weak',mac:'A0:C5:89:2F:63:0D',ip:'192.168.1.152'},
+      {name:'智慧檯燈',band:'2.4GHz',type:'iot',status:'online',signal:'good',mac:'5C:F9:38:AB:14:66',ip:'192.168.1.153'},
+      {name:'空氣清淨機',band:'2.4GHz',type:'iot',status:'online',signal:'weak',mac:'90:9A:4A:1D:E2:77',ip:'192.168.1.154'},
     ]
   }
 };
@@ -4906,8 +4904,11 @@ function deviceStatusTrailing(d,blocked){
   if(d.status==='offline')return '<span class="bg bgx">離線</span>';
   if(d.status==='unknown')return '<span class="bg bgo">陌生</span>';
   if(d.band==='有線')return '<span class="bg bgg">有線</span>';
+  var weak=d.signal==='weak';
+  var activeColor=weak?'var(--or)':'var(--ac)';
+  var activeCount=weak?1:4;
   return '<div style="display:flex;align-items:flex-end;gap:2px;height:14px">'
-    +[5,8,11,14].map(function(h){return '<div style="width:3px;height:'+h+'px;border-radius:1.5px;background:var(--ac)"></div>';}).join('')
+    +[5,8,11,14].map(function(h,i){return '<div style="width:3px;height:'+h+'px;border-radius:1.5px;background:'+(i<activeCount?activeColor:'var(--bd)')+'"></div>';}).join('')
     +'</div>';
 }
 function deviceSubtitle(d,nodeName){
@@ -4944,6 +4945,7 @@ function renderDevicesTab(){
 var _curNodeId=null;
 function openNodeDetail(nodeId){
   _curNodeId=nodeId;
+  window._nodeDetailReturnTo=g('ov-mesh').classList.contains('on')?'ov-mesh':null;
   hide('ov-mesh');
   renderNodeDetail(nodeId);
   show('sub-node-detail');
@@ -5110,9 +5112,22 @@ function renderMeshDeviceDetail(nodeId,idx){
   var title=g('dev-title'),body=g('dev-body');
   var blocked=isDeviceBlocked(nodeId,idx);
   if(title)title.textContent=d.name;
+  var infoRows=[['IP 位址',d.ip],['MAC 位址',d.mac],[d.band==='有線'?'連線方式':'連線頻段',d.band],['連線節點',node.name]];
+  var weak=d.band!=='有線'&&d.signal==='weak';
+  if(d.band!=='有線')infoRows.push(['訊號強度',weak?'<span style="color:var(--or)">微弱</span>':'<span style="color:var(--gn)">良好</span>']);
+  var suggestHtml=weak?(
+    '<div style="background:var(--obg);border-radius:var(--r);padding:14px;margin-bottom:14px">'
+    +'<div style="font-size:14px;font-weight:700;color:var(--tx);margin-bottom:8px">訊號微弱，建議：</div>'
+    +'<div style="font-size:13px;color:var(--t2);line-height:1.9">'
+    +'• 將裝置移到離路由器或節點較近的位置<br>'
+    +'• 確認附近沒有微波爐、無線電話等干擾源<br>'
+    +'• 執行 Mesh 最佳化，重新選擇最佳連線路徑'
+    +'</div></div>'
+  ):'';
   if(body)body.innerHTML='<div style="padding:20px">'
     +devHeader(d.type,d.name,d.status,blocked)
-    +devInfoCard([['IP 位址',d.ip],['MAC 位址',d.mac],[d.band==='有線'?'連線方式':'連線頻段',d.band],['連線節點',node.name]])
+    +devInfoCard(infoRows)
+    +suggestHtml
     +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'
       +devBtn('var(--obg)','var(--or)',_svgDevPause,'暫停網路','')
       +devBtn(blocked?'var(--ib)':'var(--rd)',blocked?'var(--is)':'#fff',_svgDevBlock,blocked?'解除封鎖':'封鎖裝置','onclick="toggleMeshDeviceBlock(\''+nodeId+'\','+idx+')"')
