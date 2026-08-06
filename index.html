@@ -122,6 +122,39 @@ body{display:flex;align-items:center;justify-content:center}
 .sr{display:flex;align-items:center;padding:13px 20px;border-bottom:1px solid var(--bd);background:var(--w)}
 .sic{width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:14px}
 .sic svg{width:16px;height:16px;stroke:var(--is);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+/* reusable expandable info card (Pro Mode advanced-settings pages) */
+.infocard-exp{background:var(--w);border-radius:14px;padding:14px 16px;margin:14px 16px 8px;box-shadow:var(--sh)}
+.infocard-col{display:flex;align-items:center;gap:8px;background:var(--w);border-radius:12px;padding:10px 14px;margin:14px 16px 8px;box-shadow:var(--sh);cursor:pointer}
+.infocard-ic{width:28px;height:28px;border-radius:50%;background:var(--abg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.infocard-ic-sm{width:22px;height:22px}
+.infocard-dot{width:8px;height:8px;border-radius:50%;background:var(--rd);flex-shrink:0}
+.infocard-link{font-size:13px;font-weight:600;color:var(--ac);cursor:pointer;display:flex;align-items:center;gap:2px}
+.infocard-collapse-btn{margin-top:10px;display:flex;align-items:center;justify-content:center;gap:4px;font-size:12px;color:var(--t3);cursor:pointer}
+/* notification category tabs */
+#notif-tabs::-webkit-scrollbar{display:none}
+.notif-tab{position:relative;flex-shrink:0;height:32px;padding:0 16px;border-radius:16px;background:var(--s2);color:var(--t2);font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;cursor:pointer;white-space:nowrap}
+.notif-tab.on{background:var(--ac);color:#fff}
+.notif-tab-dot{display:none;position:absolute;top:1px;right:3px;width:8px;height:8px;border-radius:50%;background:var(--rd);border:1.5px solid var(--w)}
+.notif-tab.on .notif-tab-dot{border-color:var(--ac)}
+.notif-tab-dot.on{display:block}
+/* notification attention cards + timeline */
+.natt-card{background:var(--w);border-radius:14px;padding:16px;margin:0 16px 12px;box-shadow:var(--sh)}
+.ntag{display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:6px;font-size:11px;font-weight:700}
+.ntag-critical{background:#FBE2E2;color:var(--rd)}
+.ntag-warning{background:var(--obg);color:var(--or)}
+.ntag-info{background:var(--abg);color:var(--ac)}
+.ntag-resolved{background:var(--gbg);color:var(--gn)}
+.nact-btn{height:38px;padding:0 16px;border-radius:19px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;cursor:pointer}
+.nact-primary{background:var(--ac);color:#fff}
+.nact-secondary{background:var(--s2);color:var(--tx)}
+.ntl-group{font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.9px;text-transform:uppercase;padding:14px 20px 8px}
+.ntl-row{display:flex;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bd);cursor:default}
+.ntl-row:last-child{border-bottom:none}
+.ntl-row.clickable{cursor:pointer}
+.ntl-merge-toggle{font-size:12px;color:var(--ac);font-weight:600;margin-top:6px;cursor:pointer;display:inline-flex;align-items:center;gap:3px}
+.ntl-merge-list{display:none;margin-top:10px;padding-top:10px;border-top:1px solid var(--bd)}
+.ntl-merge-list.on{display:block}
+.ntl-merge-item{display:flex;justify-content:space-between;padding:6px 0;font-size:13px;color:var(--t2)}
 /* device list */
 .di2{display:flex;align-items:center;gap:12px;padding:16px;background:var(--w);border-bottom:1px solid var(--bd);cursor:pointer}
 .da{width:42px;height:42px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
@@ -289,7 +322,7 @@ body{display:flex;align-items:center;justify-content:center}
             </div>
             <div style="width:36px;height:36px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative" id="h-notif">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
-              <div style="position:absolute;top:6px;right:6px;width:8px;height:8px;background:var(--rd);border-radius:50%;border:2px solid var(--w)"></div>
+              <div id="h-notif-badge" style="display:none;position:absolute;top:2px;right:2px;min-width:16px;height:16px;padding:0 3px;background:var(--rd);border-radius:8px;border:2px solid var(--w);align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;box-sizing:content-box"></div>
             </div>
           </div>
         </div>
@@ -512,7 +545,6 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="background:var(--w);border-bottom:1px solid var(--bd)">
         <div style="padding:14px 20px 10px">
           <div style="font-size:24px;font-weight:600;color:var(--tx);letter-spacing:-.5px">設定</div>
-          <div style="font-size:14px;color:var(--t3);margin-top:2px">ASUS ZenWiFi BT10 · 3.0.0.4.386</div>
         </div>
         <div style="display:flex;padding:0 16px;gap:0">
           <div id="stab-general" style="flex:1;text-align:center;padding:10px 0;font-size:15px;font-weight:700;color:var(--ac);border-bottom:2.5px solid var(--ac);cursor:pointer">一般設定</div>
@@ -523,6 +555,11 @@ body{display:flex;align-items:center;justify-content:center}
 
       <!-- General settings -->
       <div id="settings-general">
+      <span class="sl">App 與帳號</span>
+      <div style="background:var(--w)">
+        <div class="sr" onclick="show('sub-account')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">帳號</div><div style="font-size:14px;color:var(--t3);margin-top:2px">tim@asus.com</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" style="border:none"><div class="sic"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Face ID / 密碼鎖</div></div><div class="tg on" id="tg6"></div></div>
+      </div>
       <span class="sl">Wi-Fi 設定</span>
       <div style="background:var(--w)">
         <div class="sr" onclick="show('sub-main-wifi')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">主 Wi-Fi</div><div style="font-size:14px;color:var(--t3);margin-top:2px">ASUS_Home_5G</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
@@ -538,14 +575,13 @@ body{display:flex;align-items:center;justify-content:center}
         <div class="sr" id="s-fw" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">韌體更新</div><div style="font-size:14px;color:var(--t3);margin-top:2px">3.0.0.4.388 可用</div></div><span class="bg bgb" style="margin-right:6px">更新</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr" onclick="show('sub-reboot')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">路由器重開機</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr" onclick="show('sub-led')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">LED 燈號</div></div><div class="tg on" id="tg5"></div></div>
+        <div class="sr" onclick="show('sub-theme')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">外觀</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="show('sub-about')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16" stroke-width="2.5"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">關於</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="show('sub-feedback')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">意見回饋</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="show('sub-faq')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2.5"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">常見問題</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" style="border:none"><div class="sic"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">App 版本</div><div style="font-size:14px;color:var(--t3);margin-top:2px">v5.1.2.3</div></div></div>
       </div>
-      <span class="sl">App 與帳號</span>
-      <div style="background:var(--w)">
-        <div class="sr" onclick="show('sub-account')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">帳號</div><div style="font-size:14px;color:var(--t3);margin-top:2px">tim@asus.com</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-        <div class="sr"><div class="sic"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Face ID / 密碼鎖</div></div><div class="tg on" id="tg6"></div></div>
-        <div class="sr" style="border:none"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16" stroke-width="2.5"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">App 版本</div><div style="font-size:14px;color:var(--t3);margin-top:2px">v5.1.2.3</div></div></div>
       <div style="height:10px"></div>
-      </div>
       </div><!-- end settings-general -->
 
       <!-- Advanced settings (pro) -->
@@ -765,48 +801,73 @@ body{display:flex;align-items:center;justify-content:center}
   <!-- SUB: NOTIFICATIONS -->
   <div class="sub" id="sub-notif">
     <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="17" height="12" viewBox="0 0 17 12" fill="var(--tx)"><rect x="0" y="3.5" width="3" height="8.5" rx="1"/><rect x="4.5" y="2" width="3" height="10" rx="1"/><rect x="9" y=".5" width="3" height="11.5" rx="1"/><rect x="13.5" y=".5" width="3" height="11.5" rx="1" opacity=".25"/></svg><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
-    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0"><div style="display:flex;align-items:center;gap:12px"><div class="bk" id="notif-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div style="font-size:18px;font-weight:600;color:var(--tx)">通知</div></div><div style="font-size:13px;color:var(--ac);font-weight:500;cursor:pointer">全部已讀</div></div>
-    <div style="flex:1;min-height:0;overflow-y:auto;background:var(--bg);padding-bottom:20px">
-      <div style="background:var(--w);margin:12px 16px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden">
-        <!-- 未讀 -->
-        <div style="display:flex;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bd);cursor:pointer" id="notif-unk">
-          <div style="width:8px;height:8px;border-radius:50%;background:var(--ac);flex-shrink:0;margin-top:4px"></div>
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--obg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2.5"/></svg></div>
-          <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:2px"><div style="font-size:17px;font-weight:600;color:var(--tx)">偵測到陌生裝置</div><div style="font-size:10px;color:var(--t3);flex-shrink:0">05/21 14:32</div></div><div style="font-size:12px;color:var(--t2);line-height:1.5">未知裝置已連上網路，請確認或封鎖。</div><div style="display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:6px;background:var(--abg);color:var(--ac);font-size:11px;font-weight:600;margin-top:7px;cursor:pointer" id="notif-unk-cta">立即處理 ›</div></div>
-        </div>
-        <div style="display:flex;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bd)">
-          <div style="width:8px;height:8px;border-radius:50%;background:var(--ac);flex-shrink:0;margin-top:4px"></div>
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--abg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/></svg></div>
-          <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:2px"><div style="font-size:17px;font-weight:600;color:var(--tx)">韌體更新可用</div><div style="font-size:10px;color:var(--t3);flex-shrink:0">05/21 14:10</div></div><div style="font-size:12px;color:var(--t2);line-height:1.5">新版本 3.0.0.4.388，提升安全性。</div></div>
-        </div>
-        <div style="display:flex;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bd)">
-          <div style="width:8px;height:8px;border-radius:50%;background:var(--ac);flex-shrink:0;margin-top:4px"></div>
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--obg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 10-16 0"/></svg></div>
-          <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:2px"><div style="font-size:17px;font-weight:600;color:var(--tx)">小明上網超時</div><div style="font-size:10px;color:var(--t3);flex-shrink:0">05/21 06:00</div></div><div style="font-size:12px;color:var(--t2);line-height:1.5">小明已達 3 小時上限，已暫停網路。</div></div>
-        </div>
-        <!-- 已讀 -->
-        <div style="display:flex;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bd)">
-          <div style="width:8px;height:8px;flex-shrink:0;margin-top:4px"></div>
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
-          <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:2px"><div style="font-size:17px;font-weight:600;color:var(--tx)">安全掃描完成</div><div style="font-size:10px;color:var(--t3);flex-shrink:0">05/21 08:30</div></div><div style="font-size:12px;color:var(--t3);line-height:1.5">未發現威脅，網路安全狀態良好。</div></div>
-        </div>
-        <div style="display:flex;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bd)">
-          <div style="width:8px;height:8px;flex-shrink:0;margin-top:4px"></div>
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--t3)" stroke="none"/></svg></div>
-          <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:2px"><div style="font-size:17px;font-weight:600;color:var(--tx)">新裝置連線</div><div style="font-size:10px;color:var(--t3);flex-shrink:0">05/21 07:12</div></div><div style="font-size:12px;color:var(--t3);line-height:1.5">Tim's iPhone 已連上 ASUS_Home_5G。</div></div>
-        </div>
-        <div style="display:flex;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bd)">
-          <div style="width:8px;height:8px;flex-shrink:0;margin-top:4px"></div>
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-          <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:2px"><div style="font-size:17px;font-weight:600;color:var(--tx)">AiProtection 攔截威脅</div><div style="font-size:10px;color:var(--t3);flex-shrink:0">05/20 22:14</div></div><div style="font-size:12px;color:var(--t3);line-height:1.5">攔截 12 則惡意網站存取嘗試。</div></div>
-        </div>
-        <div style="display:flex;gap:10px;padding:13px 16px">
-          <div style="width:8px;height:8px;flex-shrink:0;margin-top:4px"></div>
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-          <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:2px"><div style="font-size:17px;font-weight:600;color:var(--tx)">Mesh 最佳化完成</div><div style="font-size:10px;color:var(--t3);flex-shrink:0">05/20 03:00</div></div><div style="font-size:12px;color:var(--t3);line-height:1.5">自動最佳化完成，節點連線品質良好。</div></div>
-        </div>
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0"><div style="display:flex;align-items:center;gap:12px"><div class="bk" id="notif-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div style="font-size:18px;font-weight:600;color:var(--tx);cursor:pointer" id="notif-title" title="點擊切換示範情境">通知</div></div>
+      <div style="width:32px;height:32px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;cursor:pointer" id="notif-more-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--is)"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
       </div>
     </div>
+    <div id="notif-offline-banner" style="display:none;background:var(--obg);padding:10px 20px;font-size:12px;color:#8a5a10;line-height:1.6;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div style="font-weight:700;color:var(--or)">⚠ 無法連線至 Router</div>
+      目前顯示的是上次同步的通知<br>最後更新：<span id="notif-offline-time">今天 14:32</span>
+    </div>
+    <div style="flex:1;min-height:0;overflow-y:auto;background:var(--bg);padding-bottom:20px">
+      <div style="display:flex;gap:8px;padding:14px 16px 4px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none" id="notif-tabs">
+        <div class="notif-tab on" data-cat="all">全部<span class="notif-tab-dot"></span></div>
+        <div class="notif-tab" data-cat="issue">問題<span class="notif-tab-dot"></span></div>
+        <div class="notif-tab" data-cat="update">更新<span class="notif-tab-dot"></span></div>
+        <div class="notif-tab" data-cat="security">安全<span class="notif-tab-dot"></span></div>
+        <div class="notif-tab" data-cat="general">通知<span class="notif-tab-dot"></span></div>
+      </div>
+      <div id="notif-attention"></div>
+      <div id="notif-timeline"></div>
+      <div id="notif-empty"></div>
+    </div>
+  </div>
+
+  <!-- OV: notification overflow menu -->
+  <div class="ov" id="ov-notif-more" onclick="if(event.target===this)hide('ov-notif-more')">
+    <div class="sheet">
+      <div class="hdl"></div>
+      <div onclick="notifMarkAllRead()" style="padding:15px 4px;font-size:16px;color:var(--tx);border-bottom:1px solid var(--bd);cursor:pointer">全部標示為已讀</div>
+      <div onclick="hide('ov-notif-more');show('sub-notif-settings');renderNotifSettings()" style="padding:15px 4px;font-size:16px;color:var(--tx);border-bottom:1px solid var(--bd);cursor:pointer">通知設定</div>
+      <div onclick="notifClearCompleted()" style="padding:15px 4px;font-size:16px;color:var(--tx);cursor:pointer">清除已完成通知</div>
+    </div>
+  </div>
+
+  <!-- OV: general notification summary bottom sheet -->
+  <div class="ov" id="ov-notif-summary" onclick="if(event.target===this)hide('ov-notif-summary')">
+    <div class="sheet" id="notif-summary-body"></div>
+  </div>
+
+  <!-- SUB: Network Health Report -->
+  <div class="sub" id="sub-notif-report">
+    <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="notif-report-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">網路健康報告</div>
+    </div>
+    <div id="notif-report-body" style="flex:1;min-height:0;overflow-y:auto;background:var(--bg);padding:16px;padding-bottom:32px"></div>
+  </div>
+
+  <!-- SUB: Notification Settings -->
+  <div class="sub" id="sub-notif-settings">
+    <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="notif-settings-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">通知設定</div>
+    </div>
+    <div id="notif-settings-body" style="flex:1;min-height:0;overflow-y:auto;background:var(--bg);padding-bottom:32px"></div>
+  </div>
+
+  <!-- SUB: Important Devices -->
+  <div class="sub" id="sub-notif-impdev">
+    <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="notif-impdev-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">重要裝置</div>
+    </div>
+    <div style="padding:14px 20px 8px;font-size:13px;color:var(--t2);line-height:1.6;background:var(--bg)">只有指定的重要裝置離線時才會主動推播提醒。一般手機、平板正常離開家中 Wi-Fi 不會通知。</div>
+    <div id="notif-impdev-body" style="flex:1;min-height:0;overflow-y:auto;background:var(--bg);padding-bottom:32px"></div>
   </div>
 
   <!-- OVERLAYS -->
@@ -1379,32 +1440,6 @@ body{display:flex;align-items:center;justify-content:center}
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
         </div>
-        <!-- Divider -->
-        <div style="height:1px;background:var(--bd);margin:4px 0"></div>
-        <!-- More -->
-        <div style="padding:6px 0 20px">
-          <div style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.8px;padding:10px 20px 4px;text-transform:uppercase">More</div>
-          <div style="display:flex;align-items:center;gap:12px;padding:12px 20px;cursor:pointer;border-bottom:1px solid var(--bd)">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--t2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-            <span style="font-size:14px;color:var(--tx)">Theme</span>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="margin-left:auto"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;padding:12px 20px;cursor:pointer;border-bottom:1px solid var(--bd)">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--t2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16" stroke-width="2.5"/></svg>
-            <span style="font-size:14px;color:var(--tx)">About</span>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="margin-left:auto"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;padding:12px 20px;cursor:pointer;border-bottom:1px solid var(--bd)">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--t2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-            <span style="font-size:14px;color:var(--tx)">Feedback</span>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="margin-left:auto"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;padding:12px 20px;cursor:pointer">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--t2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2.5"/></svg>
-            <span style="font-size:14px;color:var(--tx)">FAQ</span>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="margin-left:auto"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -1498,6 +1533,52 @@ body{display:flex;align-items:center;justify-content:center}
         </div>
       </div>
 
+    </div>
+  </div>
+
+  <!-- SUB: ABOUT -->
+  <div class="sub" id="sub-about">
+    <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="about-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">關於</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg);padding-bottom:30px">
+      <div style="display:flex;flex-direction:column;align-items:center;padding:36px 20px 28px">
+        <div style="width:72px;height:72px;border-radius:20px;background:var(--w);box-shadow:var(--sh);display:flex;align-items:center;justify-content:center;margin-bottom:14px">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M12 3L21 20H3L12 3Z" stroke="var(--ac)" stroke-width="2" stroke-linejoin="round"/></svg>
+        </div>
+        <div style="font-size:18px;font-weight:700;color:var(--tx)">ASUS Router</div>
+        <div style="font-size:13px;color:var(--t3);margin-top:2px">App 版本 v5.1.2.3</div>
+      </div>
+      <div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden">
+        <div class="sr" style="border-bottom:1px solid var(--bd)"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">服務條款</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" style="border-bottom:1px solid var(--bd)"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">隱私權政策</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">開放原始碼授權</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div style="text-align:center;font-size:12px;color:var(--t3);margin-top:24px">© 2026 ASUSTeK Computer Inc.</div>
+    </div>
+  </div>
+
+  <!-- SUB: FAQ -->
+  <div class="sub" id="sub-faq">
+    <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="faq-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">常見問題</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg);padding-bottom:30px">
+      <span class="sl">連線問題</span>
+      <div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden">
+        <div style="padding:14px 16px;border-bottom:1px solid var(--bd)"><div style="font-size:15px;font-weight:600;color:var(--tx);margin-bottom:4px">為什麼我的網路突然中斷？</div><div style="font-size:13px;color:var(--t3);line-height:1.6">請確認數據機與路由器的實體連線是否正常，並嘗試重新啟動路由器。若問題持續，請聯繫網路業者確認線路狀態。</div></div>
+        <div style="padding:14px 16px;border-bottom:1px solid var(--bd)"><div style="font-size:15px;font-weight:600;color:var(--tx);margin-bottom:4px">AiMesh 節點離線該怎麼辦？</div><div style="font-size:13px;color:var(--t3);line-height:1.6">請確認節點電源與主路由器訊號範圍，可嘗試將節點移至訊號較佳的位置，或執行 Mesh 最佳化。</div></div>
+        <div style="padding:14px 16px;border-bottom:none"><div style="font-size:15px;font-weight:600;color:var(--tx);margin-bottom:4px">忘記 Wi-Fi 密碼怎麼辦？</div><div style="font-size:13px;color:var(--t3);line-height:1.6">可於「設定 → Wi-Fi 設定」查看或重設目前的 Wi-Fi 密碼。</div></div>
+      </div>
+      <span class="sl">帳號與 App</span>
+      <div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden">
+        <div style="padding:14px 16px;border-bottom:1px solid var(--bd)"><div style="font-size:15px;font-weight:600;color:var(--tx);margin-bottom:4px">如何新增家庭成員？</div><div style="font-size:13px;color:var(--t3);line-height:1.6">請至「家庭」頁籤點擊右上角新增按鈕，即可建立成員並指定裝置。</div></div>
+        <div style="padding:14px 16px;border-bottom:none"><div style="font-size:15px;font-weight:600;color:var(--tx);margin-bottom:4px">找不到我要的功能怎麼辦？</div><div style="font-size:13px;color:var(--t3);line-height:1.6">歡迎透過「意見回饋」告訴我們，我們會持續優化 App 功能。</div></div>
+      </div>
     </div>
   </div>
 
@@ -2345,7 +2426,7 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="font-size:15px;font-weight:600;color:var(--ac);cursor:pointer">套用</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <div style="padding:14px 16px 8px;display:flex;align-items:flex-start;gap:12px"><div style="width:32px;height:32px;border-radius:50%;background:var(--abg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div style="flex:1;font-size:13px;color:var(--t2);line-height:1.6;padding-top:3px">設定路由器分配給家中裝置的內部網路位址（IP）與 DHCP 規則。多數家庭不需更動，只有在自訂內網或裝置 IP 衝突時才需要調整。</div></div>
+      <div id="infocard-lan"></div>
       <span class="sl">基本設定</span>
       <div style="background:var(--w)">
         <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">路由器 IP 位址</div></div><div style="font-size:14px;color:var(--t2);font-family:var(--m)">192.168.1.1</div></div>
@@ -2377,7 +2458,7 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="font-size:15px;font-weight:600;color:var(--ac);cursor:pointer">套用</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <div style="padding:14px 16px 8px;display:flex;align-items:flex-start;gap:12px"><div style="width:32px;height:32px;border-radius:50%;background:var(--abg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div style="flex:1;font-size:13px;color:var(--t2);line-height:1.6;padding-top:3px">設定路由器對外連接網際網路業者（ISP）的連線方式。首次安裝路由器、更換電信業者，或斷網需要重新輸入帳密時會用到。</div></div>
+      <div id="infocard-wan"></div>
       <span class="sl">WAN 連線類型</span>
       <div style="background:var(--w)">
         <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">連線類型</div></div><div style="display:flex;align-items:center;gap:6px"><div style="font-size:14px;color:var(--t2)">PPPoE</div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div></div>
@@ -2408,7 +2489,7 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="font-size:15px;font-weight:600;color:var(--ac);cursor:pointer">套用</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <div style="padding:14px 16px 8px;display:flex;align-items:flex-start;gap:12px"><div style="width:32px;height:32px;border-radius:50%;background:var(--abg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div style="flex:1;font-size:13px;color:var(--t2);line-height:1.6;padding-top:3px">DNS 就像網路的電話簿，負責把網址轉換成裝置看得懂的 IP 位址。想加快上網速度、提升安全隱私，或過濾不良網站時可更換 DNS。</div></div>
+      <div id="infocard-dns"></div>
       <span class="sl">DNS 伺服器</span>
       <div style="background:var(--w)">
         <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">自動取得 DNS</div><div style="font-size:13px;color:var(--t3);margin-top:2px">由 ISP 自動指派</div></div><div class="tg" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
@@ -2438,7 +2519,7 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="font-size:15px;font-weight:600;color:var(--ac);cursor:pointer">套用</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <div style="padding:14px 16px 8px;display:flex;align-items:flex-start;gap:12px"><div style="width:32px;height:32px;border-radius:50%;background:var(--abg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div style="flex:1;font-size:13px;color:var(--t2);line-height:1.6;padding-top:3px">讓您用一組固定好記的網址，從外部連回家中經常變動 IP 的路由器。想在外面用手機遠端查看家中監視器或存取檔案時會用到。</div></div>
+      <div id="infocard-ddns"></div>
       <span class="sl">DDNS 狀態</span>
       <div style="background:var(--w)">
         <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 DDNS</div><div style="font-size:13px;color:var(--t3);margin-top:2px">動態域名解析服務</div></div><div class="tg on" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
@@ -2467,7 +2548,7 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="font-size:15px;font-weight:600;color:var(--ac);cursor:pointer">套用</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <div style="padding:14px 16px 8px;display:flex;align-items:flex-start;gap:12px"><div style="width:32px;height:32px;border-radius:50%;background:var(--abg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div style="flex:1;font-size:13px;color:var(--t2);line-height:1.6;padding-top:3px">讓路由器同時接兩條網路線，主線斷線時自動切換備援，網路不中斷。適合遠距工作、監視系統等對網路穩定度要求高的家庭。</div></div>
+      <div id="infocard-dualwan"></div>
       <span class="sl">雙 WAN 模式</span>
       <div style="background:var(--w)">
         <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 Dual WAN</div></div><div class="tg" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
@@ -2501,7 +2582,7 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="font-size:14px;font-weight:600;color:var(--ac);cursor:pointer">＋ 新增</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <div style="padding:14px 16px 8px;display:flex;align-items:flex-start;gap:12px"><div style="width:32px;height:32px;border-radius:50%;background:var(--abg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div style="flex:1;font-size:13px;color:var(--t2);line-height:1.6;padding-top:3px">開放特定連接埠，讓外部網路可以直接連進家中的特定裝置或服務。架設遊戲伺服器、遠端觀看監視器時通常需要設定。</div></div>
+      <div id="infocard-portfw"></div>
       <span class="sl">連接埠轉送規則</span>
       <div style="background:var(--w)">
         <div class="sr">
@@ -2542,7 +2623,7 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="font-size:14px;font-weight:600;color:var(--ac);cursor:pointer">＋ 新增</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <div style="padding:14px 16px 8px;display:flex;align-items:flex-start;gap:12px"><div style="width:32px;height:32px;border-radius:50%;background:var(--abg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div style="flex:1;font-size:13px;color:var(--t2);line-height:1.6;padding-top:3px">將特定裝置的 MAC 位址與固定 IP 綁定，確保每次連線都拿到相同 IP。適合印表機、NAS、監視器等需要固定位址的裝置，避免每次重開機 IP 不同造成連線失敗。</div></div>
+      <div id="infocard-ipbind"></div>
       <span class="sl">已綁定裝置（5）</span>
       <div style="background:var(--w)">
         <div class="sr"><div style="width:36px;height:36px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M0 21h24"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:500;color:var(--tx)">Tim's MacBook Pro</div><div style="font-size:12px;color:var(--t3);margin-top:1px">F8:4D:89:3A:22:1C</div></div><div style="font-size:14px;font-weight:600;color:var(--ac);font-family:var(--m)">.101</div></div>
@@ -2645,7 +2726,7 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="font-size:15px;font-weight:600;color:var(--ac);cursor:pointer">套用</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <div style="padding:14px 16px 8px;display:flex;align-items:flex-start;gap:12px"><div style="width:32px;height:32px;border-radius:50%;background:var(--abg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div style="flex:1;font-size:13px;color:var(--t2);line-height:1.6;padding-top:3px">把家用路由器變成安全的連線入口，讓您在外面也能安全連回家中網路，就像人在家一樣。出差旅遊在外想存取家中檔案或保護連線安全時使用。</div></div>
+      <div id="infocard-vpns"></div>
       <span class="sl">伺服器設定</span>
       <div style="background:var(--w)">
         <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 VPN Server</div></div><div class="tg" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
@@ -2674,7 +2755,7 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="font-size:14px;font-weight:600;color:var(--ac);cursor:pointer">＋ 新增</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <div style="padding:14px 16px 8px;display:flex;align-items:flex-start;gap:12px"><div style="width:32px;height:32px;border-radius:50%;background:var(--abg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div style="flex:1;font-size:13px;color:var(--t2);line-height:1.6;padding-top:3px">讓路由器主動連上外部 VPN 服務，家中所有裝置的網路都會自動透過該 VPN 傳送。想讓全家裝置套用同一組 VPN，而不必逐台裝置設定時使用。</div></div>
+      <div id="infocard-vpnc"></div>
       <span class="sl">VPN 設定檔</span>
       <div style="background:var(--w)">
         <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:500;color:var(--tx)">Work VPN</div><div style="font-size:12px;color:var(--t3);margin-top:1px">OpenVPN · vpn.company.com</div></div><div style="display:flex;align-items:center;gap:8px"><span style="font-size:12px;color:var(--t3)">未連線</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div></div>
@@ -2774,7 +2855,7 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">Smart Home</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <div style="padding:14px 16px 8px;display:flex;align-items:flex-start;gap:12px"><div style="width:32px;height:32px;border-radius:50%;background:var(--abg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div style="flex:1;font-size:13px;color:var(--t2);line-height:1.6;padding-top:3px">讓路由器與智慧音箱（如 Amazon Alexa、Google Home）連動，用語音就能查詢網路狀態或控制部分功能。家中已有智慧音箱時很方便。</div></div>
+      <div id="infocard-smarthome"></div>
       <span class="sl">語音助理整合</span>
       <div style="background:var(--w)">
         <div class="sr" style="cursor:pointer"><div style="width:40px;height:40px;border-radius:12px;background:#232F3E;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 013 3v7a3 3 0 01-6 0V5a3 3 0 013-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Amazon Alexa</div><div style="font-size:13px;color:var(--t3);margin-top:1px">「Alexa，暫停家庭 Wi-Fi」</div></div><div style="display:flex;align-items:center;gap:6px"><span style="font-size:13px;color:var(--gn);font-weight:500">已連結</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div></div>
@@ -2952,7 +3033,7 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="font-size:15px;font-weight:600;color:var(--ac);cursor:pointer">套用</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <div style="padding:14px 16px 8px;display:flex;align-items:flex-start;gap:12px"><div style="width:32px;height:32px;border-radius:50%;background:var(--abg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div style="flex:1;font-size:13px;color:var(--t2);line-height:1.6;padding-top:3px">依優先順序分配家中網路頻寬，避免重要用途（如視訊會議、遊戲）被其他裝置佔滿頻寬影響。家中人多、裝置多常常同時上網卡頓時可以啟用。</div></div>
+      <div id="infocard-qos"></div>
       <span class="sl">基本設定</span>
       <div style="background:var(--w)">
         <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 QoS</div><div style="font-size:13px;color:var(--t3);margin-top:2px">依優先權管理各裝置頻寬分配</div></div><div class="tg" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
@@ -3064,7 +3145,7 @@ function goTab(t){
   if(ct){ct.scrollTop=0;}
   // hide family back when switching tabs normally
   if(t==='family'){var fb=document.getElementById('family-back-btn');if(fb)fb.style.display='none';}
-  ['sub-dev','sub-notif','sub-diag','sub-suggestions','sub-energy','sub-aipro-detail','sub-wifi-insight','sub-theme','sub-main-wifi','sub-reboot','sub-account','sub-led','sub-passwords','sub-pause','sub-scan','sub-mesh-opt','sub-mesh-addnode','sub-adddev','sub-speedtest','sub-traffic','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-ifttt','sub-pro-smarthome','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick'].forEach(hide);
+  ['sub-dev','sub-notif','sub-diag','sub-suggestions','sub-energy','sub-aipro-detail','sub-wifi-insight','sub-theme','sub-main-wifi','sub-reboot','sub-account','sub-led','sub-passwords','sub-pause','sub-scan','sub-mesh-opt','sub-mesh-addnode','sub-adddev','sub-speedtest','sub-traffic','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-ifttt','sub-pro-smarthome','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-report','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-faq'].forEach(hide);
   // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
     var bar=document.getElementById('ai-input-bar');
@@ -3213,6 +3294,432 @@ function qaSvg(icon, color) {
   return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="none" stroke="'+color+'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+(paths[icon]||'')+'</svg>';
 }
 
+// ══════════════════ Notification System V2 ══════════════════
+var _notifCurrentCat = 'all';
+var _notifScenario = 'default';
+var _notifRouterOffline = false;
+var _notifData = [];
+
+function notifSeedData(){
+  return [
+    {id:'n1', cat:'issue', severity:'critical', status:'unresolved', unread:true,
+      title:'家庭網路已中斷',
+      desc:'可能影響 2 個節點與 8 台裝置，Instant Guard 連線也已中止',
+      cause:'系統判斷根因：Internet／WAN 無法連線',
+      duration:'已持續 12 分鐘', time:'14:20', group:'today',
+      merged:[
+        {label:'Internet', status:'離線'},
+        {label:'臥室節點', status:'離線'},
+        {label:'Door Camera', status:'離線'},
+        {label:'TV', status:'離線'},
+        {label:'Instant Guard', status:'已中斷'}
+      ],
+      actions:[{label:'查看問題',kind:'primary',act:'report'},{label:'開始診斷',kind:'secondary',act:'diag'}]},
+    {id:'n2', cat:'issue', severity:'warning', status:'unresolved', unread:true,
+      title:'書房節點連線不穩',
+      desc:'過去 1 小時已中斷 6 次，可能影響 3 台裝置',
+      duration:'最近一次：3 分鐘前', time:'今天', group:'today', occurrences:6,
+      actions:[{label:'開始診斷',kind:'primary',act:'diag'}]},
+    {id:'n3', cat:'issue', severity:'warning', status:'unresolved', unread:true,
+      title:'韌體更新失敗',
+      desc:'更新至 3.0.0.4.390 時發生錯誤，已自動回復為目前版本',
+      duration:'14:10 發生', time:'14:10', group:'today',
+      actions:[{label:'查看詳情',kind:'primary',act:'report'},{label:'重新嘗試更新',kind:'secondary',act:'fw'}]},
+    {id:'n4', cat:'issue', severity:'resolved', status:'auto-resolved', unread:false,
+      title:'客廳節點連線異常', desc:'14:20 發生．14:36 已恢復', time:'14:36', group:'today',
+      tag:'已自動恢復', click:'sheet'},
+    {id:'n5', cat:'update', severity:'info', status:'resolved', unread:false,
+      title:'App 版本更新完成', desc:'已更新至 v5.1.3，修正已知問題。', time:'12:05', group:'today',
+      tag:'已完成', click:'sheet'},
+    {id:'n6', cat:'general', severity:'info', status:'resolved', unread:true,
+      title:'新裝置加入網路', desc:'「Tim\'s iPhone」首次連上 ASUS_Home。', time:'11:18', group:'today',
+      tag:'操作：確認裝置', click:'devconfirm', arrow:true},
+    {id:'n7', cat:'security', severity:'info', status:'resolved', unread:false,
+      title:'AiProtection 阻擋可疑連線', desc:'封鎖 1 則惡意網站存取嘗試，裝置：Tim\'s MacBook Pro。', time:'09:52', group:'today',
+      click:'sheet'},
+    {id:'n8', cat:'general', severity:'info', status:'resolved', unread:false,
+      title:'訪客網路已關閉', desc:'24 小時使用期限已結束。', time:'昨天 22:00', group:'yesterday',
+      click:'guest', arrow:true},
+    {id:'n9', cat:'general', severity:'info', status:'resolved', unread:false,
+      title:'Instant Guard 已連線', desc:'Tim\'s iPhone 已透過安全通道連回家庭網路。', time:'昨天 18:22', group:'yesterday',
+      click:'vpns', arrow:true},
+    {id:'n10', cat:'update', severity:'resolved', status:'resolved', unread:false,
+      title:'安全資料庫已更新', desc:'AiProtection 威脅特徵資料庫已更新至最新版本。', time:'昨天 03:00', group:'yesterday',
+      tag:'已完成', click:'sheet'},
+    {id:'n11', cat:'security', severity:'warning', status:'resolved', unread:false,
+      title:'陌生裝置首次加入網路', desc:'裝置已連上網路，已由使用者確認為個人裝置。', time:'昨天 20:41', group:'yesterday',
+      tag:'已處理', click:'sheet'},
+    {id:'n12', cat:'general', severity:'info', status:'resolved', unread:false,
+      title:'Wi-Fi 密碼已變更', desc:'主 Wi-Fi 密碼已更新。', time:'週二 09:15', group:'week',
+      click:'wifiset', arrow:true},
+    {id:'n13', cat:'general', severity:'info', status:'resolved', unread:false,
+      title:'AiMesh 節點已恢復', desc:'書房節點已重新連線，訊號穩定。', time:'週一 16:03', group:'week',
+      click:'sheet'},
+    {id:'n14', cat:'general', severity:'info', status:'resolved', unread:false,
+      title:'訪客網路已建立', desc:'已建立 24 小時期限的訪客網路。', time:'週一 10:00', group:'week',
+      click:'guest', arrow:true},
+    {id:'n15', cat:'general', severity:'info', status:'resolved', unread:false,
+      title:'系統自動最佳化已完成', desc:'自動最佳化完成，節點連線品質良好。', time:'05/20', group:'earlier',
+      click:'sheet'},
+    {id:'n16', cat:'update', severity:'info', status:'resolved', unread:false,
+      title:'韌體更新已排程', desc:'將於下次系統維護時間自動更新。', time:'05/19', group:'earlier',
+      tag:'已排程', click:'fw'}
+  ];
+}
+
+var NOTIF_REPORTS = {
+  n1:{
+    summary:'系統偵測到 WAN 連線中斷，導致整個家庭網路無法存取網際網路，連帶影響 2 個 AiMesh 節點與多台裝置。',
+    causes:['ISP 端連線異常或帳號認證失敗','WAN 纜線或數據機連線鬆脫','路由器 WAN 連接埠異常'],
+    impact:['臥室節點：離線','Door Camera：離線','TV：離線','Instant Guard：已中斷連線','受影響裝置：8 台'],
+    checks:['已確認 WAN 連接埠實體連線','已重新嘗試取得 IP 位址（失敗）','已排除路由器內部硬體異常'],
+    suggestions:['確認數據機／光世代設備電源與連線','重新啟動數據機後再重新啟動路由器','若問題持續，請聯繫網路業者（ISP）確認線路狀態'],
+    actions:[{label:'開始診斷',act:'diag'},{label:'重新啟動路由器',act:'reboot'}]
+  },
+  n2:{
+    summary:'書房節點在過去 1 小時內反覆離線又恢復連線共 6 次，訊號穩定度不佳，可能影響該區域 3 台裝置的使用體驗。',
+    causes:['節點與主路由器之間訊號干擾','Backhaul 頻寬不足或頻道壅塞','節點位置訊號覆蓋不佳'],
+    impact:['受影響裝置：3 台（書房區域）','目前狀態：連線中，但不穩定'],
+    checks:['已檢查節點韌體版本為最新','已檢查 Backhaul 連線頻段','已排除節點硬體異常'],
+    suggestions:['調整書房節點擺放位置，避免障礙物遮蔽','執行 Mesh 最佳化，重新配置頻道','若持續不穩，可考慮增加中繼節點'],
+    actions:[{label:'開始診斷',act:'diag'},{label:'執行 Mesh 最佳化',act:'meshopt'}]
+  },
+  n3:{
+    summary:'路由器嘗試將韌體更新至 3.0.0.4.390 時發生錯誤，系統已自動回復為目前穩定版本，網路服務未中斷。',
+    causes:['更新過程中網路連線不穩定導致下載中斷','韌體檔案驗證失敗','更新過程中斷電或重新啟動'],
+    impact:['目前韌體版本：3.0.0.4.388（穩定運作中）','網路服務：未受影響'],
+    checks:['已確認回復後系統運作正常','已驗證目前韌體版本完整性'],
+    suggestions:['確認網路連線穩定後再重新嘗試更新','避免在更新過程中中斷電源','若持續失敗，可嘗試手動下載韌體更新'],
+    actions:[{label:'重新嘗試更新',act:'fw'}]
+  }
+};
+
+function notifIconFor(item){
+  var sev = item.severity||'info';
+  var bgMap = {critical:'#FBE2E2', warning:'var(--obg)', info:'var(--abg)', resolved:'var(--gbg)'};
+  var strokeMap = {critical:'var(--rd)', warning:'var(--or)', info:'var(--ac)', resolved:'var(--gn)'};
+  var paths = {
+    issue:'<path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2.5"/>',
+    update:'<polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/>',
+    security:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+    general:'<path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/>'
+  };
+  if(item.status==='auto-resolved' || item.status==='resolved'){
+    if(item.cat==='issue') paths.issue = '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>';
+  }
+  return '<div style="width:36px;height:36px;border-radius:50%;background:'+bgMap[sev]+';display:flex;align-items:center;justify-content:center;flex-shrink:0">'
+    +'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="'+strokeMap[sev]+'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+(paths[item.cat]||paths.general)+'</svg></div>';
+}
+
+function notifLoadScenario(name){
+  _notifScenario = name;
+  _notifRouterOffline = (name==='offline');
+  _notifData = (name==='empty') ? [] : notifSeedData();
+  _notifCurrentCat = 'all';
+  document.querySelectorAll('.notif-tab').forEach(function(t){ t.classList.toggle('on', t.getAttribute('data-cat')==='all'); });
+  renderNotifPage();
+}
+
+function filterNotif(cat){
+  _notifCurrentCat = cat;
+  document.querySelectorAll('.notif-tab').forEach(function(t){
+    t.classList.toggle('on', t.getAttribute('data-cat')===cat);
+  });
+  renderNotifPage();
+}
+
+function renderNotifPage(){
+  var banner = g('notif-offline-banner');
+  if(banner) banner.style.display = _notifRouterOffline ? 'block' : 'none';
+
+  var cat = _notifCurrentCat;
+  var attentionItems = _notifData.filter(function(e){ return e.cat==='issue' && e.status==='unresolved'; });
+  var showAttention = attentionItems.length && (cat==='all' || cat==='issue');
+  var attentionIds = {};
+  attentionItems.forEach(function(e){ attentionIds[e.id] = true; });
+
+  var timelineItems = _notifData.filter(function(e){
+    if(attentionIds[e.id]) return false;
+    return cat==='all' || e.cat===cat;
+  });
+
+  // attention section
+  var att = g('notif-attention');
+  if(att){
+    if(showAttention){
+      var html = '<div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 8px">'
+        +'<span style="font-size:15px;font-weight:700;color:var(--tx)">需要處理</span>'
+        +'<span style="font-size:13px;font-weight:700;color:var(--rd)">'+attentionItems.length+' 項</span></div>';
+      attentionItems.forEach(function(item){ html += notifAttentionCard(item); });
+      att.innerHTML = html;
+      att.style.display = 'block';
+      att.querySelectorAll('[data-nact]').forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          e.stopPropagation();
+          notifRunAction(btn.getAttribute('data-nid'), btn.getAttribute('data-nact'));
+        });
+      });
+      att.querySelectorAll('.ntl-merge-toggle').forEach(function(t){
+        t.addEventListener('click', function(e){
+          e.stopPropagation();
+          var list = t.parentElement.querySelector('.ntl-merge-list');
+          if(list){ list.classList.toggle('on'); t.querySelector('span').textContent = list.classList.contains('on') ? '收合':'展開受影響項目'; }
+        });
+      });
+    } else {
+      att.innerHTML = '';
+      att.style.display = 'none';
+    }
+  }
+
+  // timeline
+  var tl = g('notif-timeline');
+  var emptyEl = g('notif-empty');
+  if(tl){
+    if(timelineItems.length === 0 && !showAttention){
+      tl.innerHTML = '';
+      if(emptyEl){
+        var emptyCopy = {
+          all:{t:'目前沒有新通知', s:'網路的重要變化與系統提醒會顯示在這裡。'},
+          issue:{t:'目前沒有需要處理的問題', s:'最近的網路狀態正常。'},
+          update:{t:'目前沒有更新通知', s:'有新的韌體或系統更新時會顯示在這裡。'},
+          security:{t:'最近沒有需要處理的安全提醒', s:'系統仍會持續監測網路安全。'},
+          general:{t:'目前沒有一般通知', s:'裝置與網路狀態變化會顯示在這裡。'}
+        }[cat] || {t:'目前沒有通知', s:''};
+        emptyEl.innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;padding:60px 32px;text-align:center">'
+          +'<div style="width:64px;height:64px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;margin-bottom:16px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="1.6" stroke-linecap="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div>'
+          +'<div style="font-size:16px;font-weight:700;color:var(--tx);margin-bottom:6px">'+emptyCopy.t+'</div>'
+          +'<div style="font-size:13px;color:var(--t3);line-height:1.6">'+emptyCopy.s+'</div></div>';
+        emptyEl.style.display = 'block';
+      }
+    } else {
+      if(emptyEl){ emptyEl.innerHTML=''; emptyEl.style.display='none'; }
+      var groups = [['today','今天'],['yesterday','昨天'],['week','本週'],['earlier','更早']];
+      var html2 = '';
+      groups.forEach(function(g2){
+        var rows = timelineItems.filter(function(e){ return e.group===g2[0]; });
+        if(!rows.length) return;
+        html2 += '<div class="ntl-group">'+g2[1]+'</div><div style="background:var(--w);margin:0 16px 12px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden">';
+        rows.forEach(function(item){ html2 += notifTimelineRow(item); });
+        html2 += '</div>';
+      });
+      tl.innerHTML = html2;
+      tl.querySelectorAll('[data-nrow]').forEach(function(row){
+        row.addEventListener('click', function(){ notifOpenItem(row.getAttribute('data-nrow')); });
+      });
+    }
+  }
+  updateBellBadge();
+  updateNotifTabDots();
+}
+
+function updateNotifTabDots(){
+  var cats = ['issue','update','security','general'];
+  var anyUnread = false;
+  cats.forEach(function(c){
+    var has = _notifData.some(function(e){ return e.cat===c && e.unread; });
+    if(has) anyUnread = true;
+    var dot = document.querySelector('.notif-tab[data-cat="'+c+'"] .notif-tab-dot');
+    if(dot) dot.classList.toggle('on', has);
+  });
+  var allDot = document.querySelector('.notif-tab[data-cat="all"] .notif-tab-dot');
+  if(allDot) allDot.classList.toggle('on', anyUnread);
+}
+
+function notifAttentionCard(item){
+  var mergeHtml = '';
+  if(item.merged && item.merged.length){
+    mergeHtml = '<div class="ntl-merge-toggle" data-nid="'+item.id+'"><span>展開受影響項目</span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>'
+      +'<div class="ntl-merge-list">'+item.merged.map(function(m){ return '<div class="ntl-merge-item"><span>'+m.label+'</span><span style="color:var(--or);font-weight:600">'+m.status+'</span></div>'; }).join('')+'</div>';
+  }
+  var actionsHtml = (item.actions||[]).map(function(a){
+    return '<div class="nact-btn nact-'+a.kind+'" data-nid="'+item.id+'" data-nact="'+a.act+'">'+a.label+'</div>';
+  }).join('');
+  return '<div class="natt-card sev-'+item.severity+'">'
+    +'<div style="display:flex;gap:12px">'
+      + notifIconFor(item)
+      +'<div style="flex:1;min-width:0">'
+        +'<div style="font-size:16px;font-weight:700;color:var(--tx);margin-bottom:3px">'+item.title+'</div>'
+        +'<div style="font-size:13px;color:var(--t2);line-height:1.5">'+item.desc+'</div>'
+        +(item.cause ? '<div style="font-size:12px;color:var(--t3);margin-top:4px">'+item.cause+'</div>' : '')
+        +'<div style="display:flex;align-items:center;gap:8px;margin-top:8px">'
+          +'<span class="ntag ntag-'+item.severity+'">需要處理</span>'
+          +'<span style="font-size:11px;color:var(--t3)">'+(item.duration||item.time)+'</span>'
+        +'</div>'
+        + mergeHtml
+      +'</div>'
+    +'</div>'
+    +'<div style="display:flex;gap:8px;margin-top:14px">'+actionsHtml+'</div>'
+  +'</div>';
+}
+
+function notifTimelineRow(item){
+  var dot = item.unread ? '<div style="width:8px;height:8px;border-radius:50%;background:var(--ac);flex-shrink:0;margin-top:5px"></div>' : '<div style="width:8px;height:8px;flex-shrink:0;margin-top:5px"></div>';
+  var titleColor = item.unread ? 'var(--tx)' : 'var(--tx)';
+  var descColor = item.unread ? 'var(--t2)' : 'var(--t3)';
+  var tag = item.tag ? '<span class="ntag ntag-'+(item.severity==='resolved'?'resolved':(item.severity==='warning'?'warning':'info'))+'" style="margin-top:6px">'+item.tag+'</span>' : '';
+  var arrow = item.arrow ? '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-top:6px"><polyline points="9 18 15 12 9 6"/></svg>' : '';
+  return '<div class="ntl-row clickable" data-nrow="'+item.id+'">'
+    + dot
+    + notifIconFor(item)
+    +'<div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:2px"><div style="font-size:16px;font-weight:600;color:'+titleColor+'">'+item.title+'</div><div style="font-size:10px;color:var(--t3);flex-shrink:0;margin-top:2px">'+item.time+'</div></div>'
+    +'<div style="font-size:12px;color:'+descColor+';line-height:1.5">'+item.desc+'</div>'
+    + (tag ? '<div style="margin-top:6px">'+tag+'</div>' : '')
+    +'</div>'
+    + arrow
+  +'</div>';
+}
+
+function notifRunAction(id, act){
+  if(act==='report'){ notifOpenReport(id); return; }
+  if(act==='diag'){ show('sub-diag'); return; }
+  if(act==='fw'){ show('sub-fw'); return; }
+  if(act==='meshopt'){ window._meshOptFromQuick=true; show('sub-mesh-opt'); return; }
+  if(act==='reboot'){ show('sub-reboot'); return; }
+}
+
+function notifOpenItem(id){
+  var item = _notifData.find(function(e){ return e.id===id; });
+  if(!item) return;
+  item.unread = false;
+  var click = item.click || 'sheet';
+  if(click==='guest'){ show('ov-guest'); }
+  else if(click==='wifiset'){ show('sub-main-wifi'); }
+  else if(click==='vpns'){ show('sub-pro-vpns'); }
+  else if(click==='fw'){ show('sub-fw'); }
+  else if(click==='devconfirm'){ notifOpenSheet(id); }
+  else { notifOpenSheet(id); }
+  updateBellBadge();
+}
+
+function notifOpenSheet(id){
+  var item = _notifData.find(function(e){ return e.id===id; });
+  if(!item) return;
+  var body = g('notif-summary-body');
+  if(!body) return;
+  body.innerHTML = '<div class="hdl"></div>'
+    +'<div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:14px">'+notifIconFor(item)
+    +'<div><div style="font-size:17px;font-weight:700;color:var(--tx);margin-bottom:4px">'+item.title+'</div>'
+    +'<div style="font-size:11px;color:var(--t3)">'+item.time+'</div></div></div>'
+    +'<div style="font-size:14px;color:var(--t2);line-height:1.7;margin-bottom:18px">'+item.desc+'</div>'
+    +(item.tag ? '<span class="ntag ntag-info" style="margin-bottom:14px">'+item.tag+'</span><div style="height:14px"></div>' : '')
+    +'<div onclick="hide(\'ov-notif-summary\')" style="height:48px;border-radius:var(--r2);background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:var(--tx);cursor:pointer">關閉</div>';
+  show('ov-notif-summary');
+}
+
+function notifOpenReport(id){
+  var item = _notifData.find(function(e){ return e.id===id; });
+  var report = NOTIF_REPORTS[id];
+  var body = g('notif-report-body');
+  if(!item || !report || !body) return;
+  var html = '<div style="background:var(--w);border-radius:16px;padding:18px;margin-bottom:14px;box-shadow:var(--sh)">'
+    +'<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">'+notifIconFor(item)
+    +'<div style="font-size:18px;font-weight:700;color:var(--tx)">'+item.title+'</div></div>'
+    +'<div style="font-size:14px;color:var(--t2);line-height:1.7">'+report.summary+'</div></div>';
+
+  function section(title, list){
+    return '<div style="background:var(--w);border-radius:16px;padding:16px 18px;margin-bottom:12px;box-shadow:var(--sh)">'
+      +'<div style="font-size:13px;font-weight:700;color:var(--t3);letter-spacing:.5px;margin-bottom:10px">'+title+'</div>'
+      +list.map(function(l){ return '<div style="display:flex;gap:8px;font-size:14px;color:var(--tx);line-height:1.6;margin-bottom:6px"><span style="color:var(--t3)">•</span><span>'+l+'</span></div>'; }).join('')
+    +'</div>';
+  }
+  html += section('可能原因', report.causes);
+  html += section('影響範圍', report.impact);
+  html += section('已完成的系統檢查', report.checks);
+  html += section('建議處理順序', report.suggestions);
+
+  html += '<div style="background:linear-gradient(135deg,#5CAEFF,#4A89E8);border-radius:16px;padding:16px 18px;margin-bottom:14px;color:#fff">'
+    +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><svg width="18" height="18" viewBox="0 -960 960 960" fill="#fff"><path d="M280-240v-480h80v480h-80ZM440-80v-800h80v800h-80ZM120-400v-160h80v160h-80Zm480 160v-480h80v480h-80Zm160-160v-160h80v160h-80Z"/></svg><span style="font-size:15px;font-weight:700">AI 協助診斷</span></div>'
+    +'<div style="font-size:13px;line-height:1.6;opacity:.95">AI 已根據系統紀錄完成初步分析，可協助進一步排查或直接執行建議的修復步驟。</div>'
+    +'</div>';
+
+  html += '<div style="display:flex;flex-direction:column;gap:10px;padding-bottom:8px">'
+    + report.actions.map(function(a){ return '<div class="nact-btn nact-primary" style="width:100%" data-nid="'+id+'" data-nact="'+a.act+'">'+a.label+'</div>'; }).join('')
+  +'</div>';
+
+  body.innerHTML = html;
+  body.querySelectorAll('[data-nact]').forEach(function(btn){
+    btn.addEventListener('click', function(){ notifRunAction(btn.getAttribute('data-nid'), btn.getAttribute('data-nact')); });
+  });
+  show('sub-notif-report');
+}
+
+function notifMarkAllRead(){
+  _notifData.forEach(function(e){ e.unread = false; });
+  hide('ov-notif-more');
+  renderNotifPage();
+}
+
+function notifClearCompleted(){
+  _notifData = _notifData.filter(function(e){ return e.status==='unresolved'; });
+  hide('ov-notif-more');
+  renderNotifPage();
+}
+
+function updateBellBadge(){
+  var badge = g('h-notif-badge');
+  if(!badge) return;
+  var critCount = _notifData.filter(function(e){ return e.cat==='issue' && e.status==='unresolved'; }).length;
+  var anyUnread = _notifData.some(function(e){ return e.unread; });
+  if(critCount > 0){
+    badge.style.display = 'flex';
+    badge.style.background = 'var(--rd)';
+    badge.textContent = critCount > 9 ? '9+' : String(critCount);
+    badge.style.width = ''; badge.style.height='';
+  } else if(anyUnread){
+    badge.style.display = 'flex';
+    badge.style.background = 'var(--ac)';
+    badge.textContent = '';
+    badge.style.width = '10px'; badge.style.height = '10px';
+  } else {
+    badge.style.display = 'none';
+  }
+}
+
+function renderNotifSettings(){
+  var body = g('notif-settings-body');
+  if(!body) return;
+  var cats = [['issue','問題通知'],['update','更新通知'],['security','安全通知'],['general','一般通知']];
+  var html = '<span class="sl">分類</span><div style="background:var(--w)">';
+  cats.forEach(function(c, i){
+    html += '<div style="padding:14px 20px;'+(i<cats.length-1?'border-bottom:1px solid var(--bd)':'')+'">'
+      +'<div style="font-size:16px;font-weight:600;color:var(--tx);margin-bottom:10px">'+c[1]+'</div>'
+      +['App 內顯示','手機推播','播放聲音'].map(function(opt,oi){
+        return '<div style="display:flex;align-items:center;justify-content:space-between;padding:'+(oi===0?'0':'8px')+' 0 8px"><span style="font-size:14px;color:var(--t2)">'+opt+'</span><div class="tg on" onclick="this.classList.toggle(\'on\')" style="cursor:pointer"></div></div>';
+      }).join('')
+    +'</div>';
+  });
+  html += '</div>';
+  html += '<span class="sl">進階通知設定</span>';
+  html += '<div style="background:var(--w)">'
+    +'<div class="sr" onclick="show(\'sub-notif-impdev\');renderNotifImpDevices()" style="cursor:pointer"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">重要裝置</div><div style="font-size:13px;color:var(--t3);margin-top:2px">只有指定裝置離線才會推播</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>'
+    +'<div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">勿擾時段</div><div style="font-size:13px;color:var(--t3);margin-top:2px">22:00 - 07:00（嚴重事件仍會通知）</div></div><div class="tg on" onclick="this.classList.toggle(\'on\')" style="cursor:pointer"></div></div>'
+    +'<div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">通知頻率</div><div style="font-size:13px;color:var(--t3);margin-top:2px">同一事件 15 分鐘內不重複推播</div></div></div>'
+  +'</div>';
+  body.innerHTML = html;
+}
+
+function renderNotifImpDevices(){
+  var body = g('notif-impdev-body');
+  if(!body) return;
+  var devices = [
+    {name:'客廳 Nest Cam', type:'iot', on:true},
+    {name:'智慧門鎖', type:'iot', on:true},
+    {name:'NAS 儲存伺服器', type:'iot', on:false},
+    {name:'長輩房間 - 小米平板', type:'phone', on:false},
+    {name:"Tim's MacBook Pro（工作電腦）", type:'laptop', on:true}
+  ];
+  var html = '<div style="background:var(--w)">';
+  devices.forEach(function(d, i){
+    html += '<div style="display:flex;align-items:center;padding:14px 20px;'+(i<devices.length-1?'border-bottom:1px solid var(--bd)':'')+'">'
+      +'<div style="width:36px;height:36px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;margin-right:14px;flex-shrink:0">'+devIconSvg(d.type,17)+'</div>'
+      +'<div style="flex:1;font-size:16px;font-weight:600;color:var(--tx)">'+d.name+'</div>'
+      +'<div class="tg'+(d.on?' on':'')+'" onclick="this.classList.toggle(\'on\')" style="cursor:pointer"></div>'
+    +'</div>';
+  });
+  html += '</div>';
+  body.innerHTML = html;
+}
 function drawBannerCanvas(isError){
   var canvas = g('banner-canvas');
   if(!canvas) return;
@@ -3386,9 +3893,83 @@ function renderQAEditor() {
 }
 
 
+// ── Reusable expandable info card (Pro Mode advanced-settings pages) ──
+var INFO_CARDS = {
+  lan:{title:'關於 LAN 設定',body:'設定路由器分配給家中裝置的內部網路位址（IP）與 DHCP 規則。多數家庭不需更動，只有在自訂內網或裝置 IP 衝突時才需要調整。',version:1},
+  wan:{title:'關於 WAN 設定',body:'設定路由器對外連接網際網路業者（ISP）的連線方式。首次安裝路由器、更換電信業者，或斷網需要重新輸入帳密時會用到。',version:1},
+  dns:{title:'什麼是 DNS？',body:'DNS 就像網路的電話簿，負責把網址轉換成裝置看得懂的 IP 位址。想加快上網速度、提升安全隱私，或過濾不良網站時可更換 DNS。',version:1},
+  ddns:{title:'什麼是 DDNS？',body:'讓您用一組固定好記的網址，從外部連回家中經常變動 IP 的路由器。想在外面用手機遠端查看家中監視器或存取檔案時會用到。',version:1,links:[{label:'常見問題',act:'faq'}]},
+  dualwan:{title:'什麼是雙 WAN／網路備援？',body:'讓路由器同時接兩條網路線，主線斷線時自動切換備援，網路不中斷。適合遠距工作、監視系統等對網路穩定度要求高的家庭。',version:1},
+  portfw:{title:'什麼是連接埠轉發？',body:'開放特定連接埠，讓外部網路可以直接連進家中的特定裝置或服務。架設遊戲伺服器、遠端觀看監視器時通常需要設定。',version:1,links:[{label:'常見問題',act:'faq'}]},
+  ipbind:{title:'什麼是 IP 綁定？',body:'將特定裝置的 MAC 位址與固定 IP 綁定，確保每次連線都拿到相同 IP。適合印表機、NAS、監視器等需要固定位址的裝置，避免每次重開機 IP 不同造成連線失敗。',version:1},
+  vpns:{title:'什麼是 VPN 伺服器？',body:'把家用路由器變成安全的連線入口，讓您在外面也能安全連回家中網路，就像人在家一樣。出差旅遊在外想存取家中檔案或保護連線安全時使用。',version:1,links:[{label:'常見問題',act:'faq'}]},
+  vpnc:{title:'什麼是 VPN 用戶端？',body:'讓路由器主動連上外部 VPN 服務，家中所有裝置的網路都會自動透過該 VPN 傳送。想讓全家裝置套用同一組 VPN，而不必逐台裝置設定時使用。',version:1},
+  smarthome:{title:'什麼是智慧家庭整合？',body:'讓路由器與智慧音箱（如 Amazon Alexa、Google Home）連動，用語音就能查詢網路狀態或控制部分功能。家中已有智慧音箱時很方便。',version:1},
+  qos:{title:'什麼是 QoS 頻寬管理？',body:'依優先順序分配家中網路頻寬，避免重要用途（如視訊會議、遊戲）被其他裝置佔滿頻寬影響。家中人多、裝置多常常同時上網卡頓時可以啟用。',version:1}
+};
+function infoCardIconSvg(sz){
+  return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>';
+}
+function renderInfoCard(key){
+  var cfg = INFO_CARDS[key];
+  var el = g('infocard-'+key);
+  if(!cfg || !el) return;
+  var seenKey = 'infocard_v_'+key;
+  var seenVersion = parseInt(localStorage.getItem(seenKey)||'0',10);
+  var expanded = seenVersion === 0;
+  var hasUpdate = seenVersion > 0 && seenVersion < cfg.version;
+  function markSeen(){ localStorage.setItem(seenKey, String(cfg.version)); }
+  function linksHtml(){
+    if(!cfg.links || !cfg.links.length) return '';
+    return '<div style="display:flex;gap:16px;margin-top:10px">' + cfg.links.map(function(l){
+      return '<div class="infocard-link" data-act="'+l.act+'">'+l.label+'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>';
+    }).join('') + '</div>';
+  }
+  function draw(){
+    if(expanded){
+      el.innerHTML = '<div class="infocard-exp">'
+        + '<div style="display:flex;align-items:flex-start;gap:10px">'
+        + '<div class="infocard-ic">'+infoCardIconSvg(16)+'</div>'
+        + '<div style="flex:1"><div style="font-size:14px;font-weight:700;color:var(--tx)">'+cfg.title+'</div>'
+        + '<div style="font-size:13px;color:var(--t2);line-height:1.6;margin-top:4px">'+cfg.body+'</div>'
+        + linksHtml()
+        + '</div></div>'
+        + '<div class="infocard-collapse-btn" data-toggle>收合<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2.5" stroke-linecap="round"><polyline points="18 15 12 9 6 15"/></svg></div>'
+        + '</div>';
+    } else {
+      el.innerHTML = '<div class="infocard-col" data-toggle>'
+        + '<div class="infocard-ic infocard-ic-sm">'+infoCardIconSvg(13)+'</div>'
+        + '<div style="flex:1;font-size:13px;font-weight:600;color:var(--t2)">'+cfg.title+'</div>'
+        + (hasUpdate ? '<div class="infocard-dot"></div>' : '')
+        + '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>'
+        + '</div>';
+    }
+    var toggle = el.querySelector('[data-toggle]');
+    if(toggle){
+      toggle.onclick = function(){
+        expanded = !expanded;
+        if(expanded){ markSeen(); hasUpdate = false; }
+        draw();
+      };
+    }
+    el.querySelectorAll('.infocard-link').forEach(function(le){
+      le.onclick = function(e){
+        e.stopPropagation();
+        if(le.getAttribute('data-act')==='faq') show('sub-faq');
+      };
+    });
+  }
+  draw();
+}
+function initInfoCards(){
+  Object.keys(INFO_CARDS).forEach(renderInfoCard);
+}
+
 window.addEventListener('load',function(){
   renderQAGrid();
   renderDevicesTab();
+  notifLoadScenario('default');
+  initInfoCards();
   // ── Live traffic numbers (home status card) ──
   (function(){
     var upEl = g('traffic-up-val'), downEl = g('traffic-down-val');
@@ -3405,6 +3986,9 @@ window.addEventListener('load',function(){
   })();
   applyNetState();
   bind('h-avatar',function(){show('drawer');});
+  document.querySelectorAll('.notif-tab').forEach(function(t){
+    t.addEventListener('click',function(){ filterNotif(t.getAttribute('data-cat')); });
+  });
   bind('sb-wifi-toggle',toggleNetErrorDemo);
   bind('h-add',function(){show('ov-plus');});
   bind('ov-plus',function(e){if(e.target===g('ov-plus'))hide('ov-plus');});
@@ -3472,6 +4056,10 @@ window.addEventListener('load',function(){
   bind('ov-mesh',function(e){if(e.target===g('ov-mesh'))hide('ov-mesh');});
   // notif
   bind('notif-back',function(){hide('sub-notif');});
+  bind('notif-more-btn',function(){show('ov-notif-more');});
+  bind('notif-report-back',function(){hide('sub-notif-report');});
+  bind('notif-settings-back',function(){hide('sub-notif-settings');});
+  bind('notif-impdev-back',function(){hide('sub-notif-impdev');});
   bind('notif-unk',function(){hide('sub-notif');openDev('unknown');});
   bind('notif-unk-cta',function(){hide('sub-notif');openDev('unknown');});
   // AI module bindings
@@ -3491,7 +4079,7 @@ window.addEventListener('load',function(){
   var secEl=document.getElementById('security-rows');
   if(secEl){secEl.innerHTML=secRows.map(function(r,i){return '<div style="display:flex;align-items:center;padding:13px 16px;'+(i<secRows.length-1?'border-bottom:1px solid var(--bd)':'')+'"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">'+r[0]+'</div><div style="font-size:12px;color:var(--gn);margin-top:2px;font-weight:500">'+r[1]+'</div></div><div style="width:24px;height:24px;border-radius:50%;background:var(--gbg);display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>';}).join('');}
   // theme sub page
-  bind('theme-back',function(){hide('sub-theme');hide('drawer');});
+  bind('theme-back',function(){hide('sub-theme');});
   document.querySelectorAll('.theme-item').forEach(function(el){
     el.addEventListener('click',function(){applyTheme(el.dataset.t==='dark'?'dark':'light');});
   });
@@ -3582,7 +4170,7 @@ window.addEventListener('load',function(){
   });
   bind('sched-back',function(){hide('sub-sched');});
   // Theme
-  bind('theme-back',function(){hide('sub-theme');hide('drawer');});
+  bind('theme-back',function(){hide('sub-theme');});
   document.querySelectorAll('.theme-item').forEach(function(el){
     el.addEventListener('click',function(){
       document.querySelectorAll('.theme-item').forEach(function(o){
@@ -3599,13 +4187,9 @@ window.addEventListener('load',function(){
     });
   });
   // Feedback
-  bind('fb-back',function(){hide('sub-feedback');show('drawer');});
-  // Drawer more items
-  document.querySelectorAll('#drawer .drawer-panel div[style*="cursor:pointer"]').forEach(function(el){
-    var txt=el.textContent.trim();
-    if(txt==='Theme'){el.addEventListener('click',function(){hide('drawer');show('sub-theme');});}
-    else if(txt==='Feedback'){el.addEventListener('click',function(){hide('drawer');show('sub-feedback');});}
-  });
+  bind('fb-back',function(){hide('sub-feedback');});
+  bind('about-back',function(){hide('sub-about');});
+  bind('faq-back',function(){hide('sub-faq');});
   bind('stab-general',function(){
     g('settings-general').style.display='block';
     g('settings-pro').style.display='none';

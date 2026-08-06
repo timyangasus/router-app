@@ -145,6 +145,10 @@ body{display:flex;align-items:center;justify-content:center}
 .sr{display:flex;align-items:center;padding:13px 20px;border-bottom:1px solid var(--bd);background:var(--w)}
 .sic{width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:14px}
 .sic svg{width:16px;height:16px;stroke:var(--is);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+/* notification category tabs */
+#notif-tabs::-webkit-scrollbar{display:none}
+.notif-tab{flex-shrink:0;height:32px;padding:0 16px;border-radius:16px;background:var(--s2);color:var(--t2);font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;cursor:pointer;white-space:nowrap}
+.notif-tab.on{background:var(--ac);color:#fff}
 /* device list */
 .di2{display:flex;align-items:center;gap:12px;padding:16px;background:var(--w);border-bottom:1px solid var(--bd);cursor:pointer}
 .da{width:42px;height:42px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
@@ -723,40 +727,47 @@ body{display:flex;align-items:center;justify-content:center}
     <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="17" height="12" viewBox="0 0 17 12" fill="var(--tx)"><rect x="0" y="3.5" width="3" height="8.5" rx="1"/><rect x="4.5" y="2" width="3" height="10" rx="1"/><rect x="9" y=".5" width="3" height="11.5" rx="1"/><rect x="13.5" y=".5" width="3" height="11.5" rx="1" opacity=".25"/></svg><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0"><div style="display:flex;align-items:center;gap:12px"><div class="bk" id="notif-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div style="font-size:18px;font-weight:600;color:var(--tx)">通知</div></div><div style="font-size:13px;color:var(--ac);font-weight:500;cursor:pointer">全部已讀</div></div>
     <div style="flex:1;min-height:0;overflow-y:auto;background:var(--bg);padding-bottom:20px">
-      <div style="background:var(--w);margin:12px 16px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden">
+      <div style="display:flex;gap:8px;padding:14px 16px 4px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none" id="notif-tabs">
+        <div class="notif-tab on" data-cat="all">全部</div>
+        <div class="notif-tab" data-cat="issue">問題</div>
+        <div class="notif-tab" data-cat="update">更新</div>
+        <div class="notif-tab" data-cat="security">安全</div>
+        <div class="notif-tab" data-cat="general">通知</div>
+      </div>
+      <div style="background:var(--w);margin:8px 16px 12px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden" id="notif-list">
         <!-- 未讀 -->
-        <div style="display:flex;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bd);cursor:pointer" id="notif-unk">
+        <div style="display:flex;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bd);cursor:pointer" id="notif-unk" data-cat="issue">
           <div style="width:8px;height:8px;border-radius:50%;background:var(--ac);flex-shrink:0;margin-top:4px"></div>
           <div style="width:36px;height:36px;border-radius:50%;background:var(--obg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2.5"/></svg></div>
           <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:2px"><div style="font-size:17px;font-weight:600;color:var(--tx)">偵測到陌生裝置</div><div style="font-size:10px;color:var(--t3);flex-shrink:0">05/21 14:32</div></div><div style="font-size:12px;color:var(--t2);line-height:1.5">未知裝置已連上網路，請確認或封鎖。</div><div style="display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:6px;background:var(--abg);color:var(--ac);font-size:11px;font-weight:600;margin-top:7px;cursor:pointer" id="notif-unk-cta">立即處理 ›</div></div>
         </div>
-        <div style="display:flex;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bd)">
+        <div style="display:flex;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bd)" data-cat="update">
           <div style="width:8px;height:8px;border-radius:50%;background:var(--ac);flex-shrink:0;margin-top:4px"></div>
           <div style="width:36px;height:36px;border-radius:50%;background:var(--abg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/></svg></div>
           <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:2px"><div style="font-size:17px;font-weight:600;color:var(--tx)">韌體更新可用</div><div style="font-size:10px;color:var(--t3);flex-shrink:0">05/21 14:10</div></div><div style="font-size:12px;color:var(--t2);line-height:1.5">新版本 3.0.0.4.388，提升安全性。</div></div>
         </div>
-        <div style="display:flex;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bd)">
+        <div style="display:flex;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bd)" data-cat="issue">
           <div style="width:8px;height:8px;border-radius:50%;background:var(--ac);flex-shrink:0;margin-top:4px"></div>
           <div style="width:36px;height:36px;border-radius:50%;background:var(--obg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 10-16 0"/></svg></div>
           <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:2px"><div style="font-size:17px;font-weight:600;color:var(--tx)">小明上網超時</div><div style="font-size:10px;color:var(--t3);flex-shrink:0">05/21 06:00</div></div><div style="font-size:12px;color:var(--t2);line-height:1.5">小明已達 3 小時上限，已暫停網路。</div></div>
         </div>
         <!-- 已讀 -->
-        <div style="display:flex;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bd)">
+        <div style="display:flex;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bd)" data-cat="security">
           <div style="width:8px;height:8px;flex-shrink:0;margin-top:4px"></div>
           <div style="width:36px;height:36px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
           <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:2px"><div style="font-size:17px;font-weight:600;color:var(--tx)">安全掃描完成</div><div style="font-size:10px;color:var(--t3);flex-shrink:0">05/21 08:30</div></div><div style="font-size:12px;color:var(--t3);line-height:1.5">未發現威脅，網路安全狀態良好。</div></div>
         </div>
-        <div style="display:flex;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bd)">
+        <div style="display:flex;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bd)" data-cat="general">
           <div style="width:8px;height:8px;flex-shrink:0;margin-top:4px"></div>
           <div style="width:36px;height:36px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--t3)" stroke="none"/></svg></div>
           <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:2px"><div style="font-size:17px;font-weight:600;color:var(--tx)">新裝置連線</div><div style="font-size:10px;color:var(--t3);flex-shrink:0">05/21 07:12</div></div><div style="font-size:12px;color:var(--t3);line-height:1.5">Tim's iPhone 已連上 ASUS_Home_5G。</div></div>
         </div>
-        <div style="display:flex;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bd)">
+        <div style="display:flex;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bd)" data-cat="security">
           <div style="width:8px;height:8px;flex-shrink:0;margin-top:4px"></div>
           <div style="width:36px;height:36px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
           <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:2px"><div style="font-size:17px;font-weight:600;color:var(--tx)">AiProtection 攔截威脅</div><div style="font-size:10px;color:var(--t3);flex-shrink:0">05/20 22:14</div></div><div style="font-size:12px;color:var(--t3);line-height:1.5">攔截 12 則惡意網站存取嘗試。</div></div>
         </div>
-        <div style="display:flex;gap:10px;padding:13px 16px">
+        <div style="display:flex;gap:10px;padding:13px 16px" data-cat="general">
           <div style="width:8px;height:8px;flex-shrink:0;margin-top:4px"></div>
           <div style="width:36px;height:36px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
           <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:2px"><div style="font-size:17px;font-weight:600;color:var(--tx)">Mesh 最佳化完成</div><div style="font-size:10px;color:var(--t3);flex-shrink:0">05/20 03:00</div></div><div style="font-size:12px;color:var(--t3);line-height:1.5">自動最佳化完成，節點連線品質良好。</div></div>
@@ -3209,6 +3220,14 @@ function qaSvg(icon, color) {
   return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="none" stroke="'+color+'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+(paths[icon]||'')+'</svg>';
 }
 
+function filterNotif(cat){
+  document.querySelectorAll('.notif-tab').forEach(function(t){
+    t.classList.toggle('on', t.getAttribute('data-cat')===cat);
+  });
+  document.querySelectorAll('#notif-list > [data-cat]').forEach(function(row){
+    row.style.display = (cat==='all' || row.getAttribute('data-cat')===cat) ? 'flex' : 'none';
+  });
+}
 function drawBannerCanvas(isError){
   var canvas = g('banner-canvas');
   if(!canvas) return;
@@ -3401,6 +3420,9 @@ window.addEventListener('load',function(){
   })();
   applyNetState();
   bind('h-avatar',function(){show('drawer');});
+  document.querySelectorAll('.notif-tab').forEach(function(t){
+    t.addEventListener('click',function(){ filterNotif(t.getAttribute('data-cat')); });
+  });
   bind('sb-wifi-toggle',toggleNetErrorDemo);
   bind('h-add',function(){show('ov-plus');});
   bind('ov-plus',function(e){if(e.target===g('ov-plus'))hide('ov-plus');});
