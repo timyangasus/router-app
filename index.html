@@ -421,14 +421,16 @@ body{display:flex;align-items:center;justify-content:center}
         <div style="display:flex;align-items:center;padding:14px 16px">
           <div style="flex:1">
             <div style="font-size:13px;color:var(--t3)">AiMesh</div>
-            <div id="mesh-summary-status" style="font-size:15px;font-weight:700;color:var(--gn);margin-top:2px">良好</div>
-            <div onclick="event.stopPropagation();show('ov-mesh')" style="display:inline-flex;align-items:center;gap:3px;margin-top:6px;padding:3px 9px;border:1px solid var(--ac);border-radius:10px;cursor:pointer">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
-              <span style="font-size:10.5px;font-weight:600;color:var(--ac)">查看網路地圖</span>
+            <div style="display:flex;align-items:center;gap:6px;margin-top:2px">
+              <span id="mesh-summary-status" style="font-size:15px;font-weight:700;color:var(--gn)">良好</span>
+              <div onclick="event.stopPropagation();show('ov-mesh')" style="display:inline-flex;align-items:center;gap:2px;padding:2px 7px;border:1px solid var(--ac);border-radius:9px;cursor:pointer">
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+                <span style="font-size:10px;font-weight:600;color:var(--ac)">地圖</span>
+              </div>
             </div>
           </div>
           <div style="width:1px;height:28px;background:var(--bd);margin:0 16px"></div>
-          <div onclick="event.stopPropagation();goTab('devices')" style="flex:1;cursor:pointer">
+          <div onclick="event.stopPropagation();goTab('devices');var b=document.getElementById('devices-back-btn');if(b)b.style.display='flex';" style="flex:1;cursor:pointer">
             <div style="font-size:13px;color:var(--t3)">連線裝置</div>
             <div style="font-size:15px;font-weight:700;color:var(--tx);margin-top:2px">7 已連線 1 離線</div>
           </div>
@@ -1719,13 +1721,13 @@ body{display:flex;align-items:center;justify-content:center}
     </div>
 
     <!-- Bottom actions -->
-    <div style="background:var(--s2);border-radius:40px;height:46px;display:flex;align-items:center;justify-content:center;margin-top:8px">
-      <div onclick="hide('ov-mesh');show('sub-mesh-addnode')" style="flex:1;display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer">
+    <div style="border-top:1px solid var(--bd);height:50px;display:flex;align-items:center;justify-content:center;margin-top:8px;padding-top:8px">
+      <div onclick="hide('ov-mesh');show('sub-mesh-addnode')" style="flex:1;height:100%;display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="12" y1="8" x2="5" y2="16"/><line x1="12" y1="8" x2="19" y2="16"/></svg>
         <span style="font-size:14px;font-weight:500;color:var(--ac)">Add Node</span>
       </div>
       <div style="width:1px;height:18px;background:var(--bd2)"></div>
-      <div onclick="hide('ov-mesh');show('sub-mesh-opt')" style="flex:1;display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer">
+      <div onclick="hide('ov-mesh');show('sub-mesh-opt')" style="flex:1;height:100%;display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         <span style="font-size:14px;font-weight:500;color:var(--ac)">Optimization</span>
       </div>
@@ -3650,7 +3652,7 @@ var QA_ALL = [
   {id:'qa-guest',       icon:'users',   label:'訪客網路',          action:'guest'},
   {id:'qa-wifiset',     icon:'wifi2',   label:'Wi-Fi 設定',        action:'wifiset'},
   {id:'qa-iot',         icon:'iot',     label:'IoT 網路',          action:'iot'},
-  {id:'qa-meshadd',     icon:'plus',    label:'新增 AiMesh 節點',   action:'meshadd'},
+  {id:'qa-meshadd',     icon:'plus',    label:'新增節點',   action:'meshadd'},
   {id:'qa-meshopt',     icon:'mesh',    label:'Mesh 最佳化',        action:'meshopt'},
   {id:'qa-meshdiag',    icon:'search',  label:'Mesh 診斷',          action:'meshdiag'},
   {id:'qa-meshstat',    icon:'chart',   label:'查看節點狀態',       action:'meshstat'},
