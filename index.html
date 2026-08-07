@@ -386,6 +386,9 @@ body{display:flex;align-items:center;justify-content:center}
           <div><div style="font-size:24px;font-weight:600;color:var(--tx);letter-spacing:-.5px">裝置</div><div style="font-size:13px;color:var(--t3);margin-top:2px" id="devices-count-sub">21 台裝置</div></div>
         </div>
         <div style="display:flex;gap:8px">
+          <div style="width:34px;height:34px;background:var(--ib);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer" onclick="openAddDev()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="4" x2="12" y2="20"/><line x1="4" y1="12" x2="20" y2="12"/></svg>
+          </div>
           <div style="width:34px;height:34px;background:var(--ib);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer" id="d-sort-btn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="9" y1="18" x2="15" y2="18"/></svg>
           </div>
@@ -3256,41 +3259,7 @@ body{display:flex;align-items:center;justify-content:center}
       <div class="bk" onclick="hide('sub-adddev')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
       <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">新增裝置</div>
     </div>
-    <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <div style="padding:20px 20px 8px;text-align:center">
-        <div style="font-size:15px;color:var(--t3);line-height:1.7">選擇新增方式，將裝置連接至您的網路。</div>
-      </div>
-      <div style="background:var(--w);margin-top:8px">
-        <div class="sr" style="cursor:pointer">
-          <div style="width:44px;height:44px;border-radius:14px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h.01M14 17h.01M17 14h.01M17 17h.01M20 14h.01M20 17h.01M20 20h.01M17 20h.01M14 20h.01"/></svg>
-          </div>
-          <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">掃描 QR Code</div><div style="font-size:13px;color:var(--t3);margin-top:2px">掃描裝置底部的 QR Code 快速加入</div></div>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </div>
-        <div class="sr" style="cursor:pointer">
-          <div style="width:44px;height:44px;border-radius:14px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg>
-          </div>
-          <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Wi-Fi 連線</div><div style="font-size:13px;color:var(--t3);margin-top:2px">將裝置連接至 ASUS_Home_5G</div></div>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </div>
-        <div class="sr" style="cursor:pointer;border:none">
-          <div style="width:44px;height:44px;border-radius:14px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
-          </div>
-          <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">手動輸入 MAC</div><div style="font-size:13px;color:var(--t3);margin-top:2px">輸入裝置 MAC 位址手動加入</div></div>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </div>
-        <div class="sr" style="cursor:pointer;border:none">
-          <div style="width:44px;height:44px;border-radius:14px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
-          </div>
-          <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">輸入管理帳密</div><div style="font-size:13px;color:var(--t3);margin-top:2px">以路由器管理員帳號與密碼加入裝置</div></div>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </div>
-      </div>
-    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)" id="adddev-body"><!-- Injected by JS --></div>
   </div>
 
   <!-- SUB: 網速測試 -->
@@ -4993,6 +4962,53 @@ function renderDevicesTab(){
     var total=MESH_NODES.living.devices.length+MESH_NODES.bedroom.devices.length+MESH_NODES.kitchen.devices.length;
     countEl.textContent=total+' 台裝置';
   }
+}
+function openAddDev(){ renderAddDevHome(); show('sub-adddev'); }
+function renderAddDevHome(){
+  var body=g('adddev-body');if(!body)return;
+  body.innerHTML='<div style="padding:20px 20px 8px;text-align:center"><div style="font-size:15px;color:var(--t3);line-height:1.7">選擇新增方式，將裝置連接至您的網路。</div></div>'
+    +'<div style="background:var(--w);margin-top:8px">'
+    +'<div class="sr" style="cursor:pointer" onclick="startAddDevQR()"><div style="width:44px;height:44px;border-radius:14px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h.01M14 17h.01M17 14h.01M17 17h.01M20 14h.01M20 17h.01M20 20h.01M17 20h.01M14 20h.01"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">掃描 QR Code</div><div style="font-size:13px;color:var(--t3);margin-top:2px">掃描裝置底部的 QR Code 快速加入</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>'
+    +'<div class="sr" style="cursor:pointer" onclick="startAddDevWifi()"><div style="width:44px;height:44px;border-radius:14px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Wi-Fi 連線</div><div style="font-size:13px;color:var(--t3);margin-top:2px">將裝置連接至 ASUS_Home_5G</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>'
+    +'<div class="sr" style="cursor:pointer;border:none" onclick="startAddDevMAC()"><div style="width:44px;height:44px;border-radius:14px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">手動輸入 MAC</div><div style="font-size:13px;color:var(--t3);margin-top:2px">輸入裝置 MAC 位址手動加入</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>'
+    +'</div>';
+}
+function addDevSpinnerHtml(title,desc){
+  return '<div style="display:flex;flex-direction:column;align-items:center;padding:60px 24px">'
+    +'<div style="width:40px;height:40px;border-radius:50%;border:3px solid var(--bd);border-top-color:var(--ac);animation:spin 1s linear infinite;margin-bottom:20px"></div>'
+    +'<div style="font-size:16px;font-weight:600;color:var(--tx)">'+title+'</div>'
+    +(desc?'<div style="font-size:13px;color:var(--t3);margin-top:6px;text-align:center">'+desc+'</div>':'')
+    +'</div>';
+}
+function startAddDevQR(){
+  g('adddev-body').innerHTML=addDevSpinnerHtml('掃描中…','請將裝置底部的 QR Code 對準鏡頭');
+  setTimeout(function(){ finishAddDev('智慧插座'); },1800);
+}
+function startAddDevWifi(){
+  g('adddev-body').innerHTML=addDevSpinnerHtml('連接中…','正在將裝置加入 ASUS_Home_5G');
+  setTimeout(function(){ finishAddDev('新裝置'); },1800);
+}
+function startAddDevMAC(){
+  g('adddev-body').innerHTML='<div style="padding:24px 20px">'
+    +'<div style="font-size:14px;color:var(--t3);margin-bottom:16px;line-height:1.6">輸入裝置的 MAC 位址，系統會在裝置連上網路後自動加入清單。</div>'
+    +'<input id="adddev-mac-input" placeholder="例如：AC:9E:17:5D:20:0X" style="width:100%;height:46px;border:1.5px solid var(--bd);border-radius:10px;padding:0 14px;font-size:15px;color:var(--tx);background:var(--w);outline:none;font-family:var(--m);box-sizing:border-box;margin-bottom:16px"/>'
+    +'<div onclick="submitAddDevMAC()" style="height:50px;border-radius:var(--r2);background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:#fff;cursor:pointer">新增</div>'
+    +'</div>';
+}
+function submitAddDevMAC(){
+  var input=g('adddev-mac-input');
+  var mac=(input.value||'').trim();
+  if(!mac){ input.style.borderColor='var(--rd)'; return; }
+  g('adddev-body').innerHTML=addDevSpinnerHtml('驗證中…','');
+  setTimeout(function(){ finishAddDev('新裝置 ('+mac+')'); },1200);
+}
+function finishAddDev(name){
+  g('adddev-body').innerHTML='<div style="display:flex;flex-direction:column;align-items:center;padding:50px 24px 24px">'
+    +'<div style="width:64px;height:64px;border-radius:50%;background:var(--gbg);display:flex;align-items:center;justify-content:center;margin-bottom:16px"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>'
+    +'<div style="font-size:17px;font-weight:700;color:var(--tx);margin-bottom:6px">裝置已加入</div>'
+    +'<div style="font-size:13px;color:var(--t3);margin-bottom:28px;text-align:center">'+name+' 已成功連接至您的網路</div>'
+    +'<div onclick="hide(\'sub-adddev\')" style="width:100%;height:50px;border-radius:var(--r2);background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:#fff;cursor:pointer">完成</div>'
+    +'</div>';
 }
 var _curNodeId=null;
 function openNodeDetail(nodeId){
