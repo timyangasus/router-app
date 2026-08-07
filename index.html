@@ -327,7 +327,8 @@ body{display:flex;align-items:center;justify-content:center}
             <!-- 右側狀態 -->
             <div style="flex:1;min-width:0;text-align:right;display:flex;flex-direction:column;justify-content:space-between">
               <div>
-                <div id="home-status-text" style="font-size:19px;font-weight:700;color:#fff;line-height:1.35;margin-top:14px">網路一切正常</div>
+                <div id="home-uptime-text" style="font-size:11px;font-weight:500;color:#fff;opacity:.75;line-height:1.3;margin-top:10px">已運行 12 天 4 小時</div>
+                <div id="home-status-text" style="font-size:19px;font-weight:700;color:#fff;line-height:1.35;margin-top:6px">網路一切正常</div>
                 <div id="home-status-action" style="display:none;justify-content:flex-end;margin-top:10px">
                   <div onclick="event.stopPropagation();show('sub-diag')" style="background:#fff;color:var(--rd);border-radius:18px;padding:8px 16px;font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:4px;cursor:pointer">立即查看 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--rd)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
                 </div>
@@ -1645,8 +1646,8 @@ body{display:flex;align-items:center;justify-content:center}
         </div>
         <!-- Fork connectors -->
         <div style="position:relative;height:86px;margin-top:2px">
-          <div id="mesh-line-bedroom" style="position:absolute;top:0;left:50%;width:3px;height:86px;background:var(--gn);border-radius:2px;transform-origin:top center;transform:rotate(-34deg) translateX(-50%)"></div>
-          <div id="mesh-line-kitchen" style="position:absolute;top:0;left:50%;width:3px;height:86px;background:var(--gn);border-radius:2px;transform-origin:top center;transform:rotate(34deg) translateX(-50%)"></div>
+          <div id="mesh-line-bedroom" style="position:absolute;top:0;left:50%;width:3px;height:86px;background:var(--gn);border-radius:2px;transform-origin:top center;transform:rotate(34deg) translateX(-50%)"></div>
+          <div id="mesh-line-kitchen" style="position:absolute;top:0;left:50%;width:3px;height:86px;background:var(--gn);border-radius:2px;transform-origin:top center;transform:rotate(-34deg) translateX(-50%)"></div>
         </div>
         <!-- 臥室 / 廚房 -->
         <div style="display:flex;justify-content:space-between;padding:0 4px">
