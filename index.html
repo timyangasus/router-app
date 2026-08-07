@@ -1594,9 +1594,9 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="flex:1"><div style="font-size:17px;color:var(--tx);font-weight:600">設定新網路</div><div style="font-size:13px;color:var(--t3);margin-top:2px">設定新的 ASUS 路由器並連上網際網路。</div></div>
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
     </div>
-    <div onclick="hide('ov-plus');show('sub-mesh-addnode')" style="display:flex;align-items:center;gap:14px;padding:18px 0;cursor:pointer;border-bottom:1px solid var(--bd)">
+    <div onclick="hide('ov-plus');window._meshAddFromQuick=true;show('sub-mesh-addnode')" style="display:flex;align-items:center;gap:14px;padding:18px 0;cursor:pointer;border-bottom:1px solid var(--bd)">
       <div style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="12" y1="8" x2="5" y2="16"/><line x1="12" y1="8" x2="19" y2="16"/></svg></div>
-      <div style="flex:1"><div style="font-size:17px;color:var(--tx);font-weight:600">新增 AiMesh 節點</div><div style="font-size:13px;color:var(--t3);margin-top:2px">新增節點以擴大 Wi-Fi 覆蓋範圍。</div></div>
+      <div style="flex:1"><div style="font-size:17px;color:var(--tx);font-weight:600">新增節點</div><div style="font-size:13px;color:var(--t3);margin-top:2px">新增節點以擴大 Wi-Fi 覆蓋範圍。</div></div>
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
     </div>
     <div onclick="hide('ov-plus');show('ov-guest')" style="display:flex;align-items:center;gap:14px;padding:18px 0;cursor:pointer">
@@ -2195,8 +2195,8 @@ body{display:flex;align-items:center;justify-content:center}
   <!-- SUB: Add AiMesh Node -->
   <div class="sub" id="sub-mesh-addnode">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" onclick="hide('sub-mesh-addnode');show('ov-mesh')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">新增 AiMesh 節點</div>
+      <div class="bk" id="mesh-addnode-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">新增節點</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
       <!-- Step indicator -->
@@ -4229,7 +4229,7 @@ function renderQAGrid() {
       else if (act==='blacklist')   { buildBlacklist(); show('sub-blacklist'); }
       else if (act==='fw')          show('sub-fw');
       else if (act==='meshopt')     { window._meshOptFromQuick=true; show('sub-mesh-opt'); }
-      else if (act==='meshadd')     show('sub-mesh-addnode');
+      else if (act==='meshadd')     { window._meshAddFromQuick=true; show('sub-mesh-addnode'); }
       else if (act==='meshdiag')    show('sub-diag');
       else if (act==='meshstat')    show('ov-mesh');
       else if (act==='sched')       show('sub-sched-home');
@@ -4689,6 +4689,7 @@ window.addEventListener('load',function(){
   });
   bind('scan-back',function(){hide('sub-scan');});
   bind('mesh-opt-back',function(){hide('sub-mesh-opt');if(window._meshOptFromQuick){window._meshOptFromQuick=false;goTab('home');}else{show('ov-mesh');}});
+  bind('mesh-addnode-back',function(){hide('sub-mesh-addnode');if(window._meshAddFromQuick){window._meshAddFromQuick=false;goTab('home');}else{show('ov-mesh');}});
   bind('change-pwd-back',function(){hide('sub-change-pwd');});
   bind('wifi-sched-back',function(){hide('sub-wifi-sched');show('sub-sched-home');});
   bind('dev-sched-back',function(){hide('sub-dev-sched');show('sub-sched-home');});
