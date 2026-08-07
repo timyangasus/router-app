@@ -126,9 +126,10 @@ body{display:flex;align-items:center;justify-content:center}
 #settings-general .sic svg,#settings-pro .sic svg{width:20px;height:20px;stroke-width:2.4;stroke:var(--ac)}
 #settings-general .sic svg circle[fill],#settings-pro .sic svg circle[fill]{fill:var(--ac)}
 /* reusable expandable info card (Pro Mode advanced-settings pages) */
-.infocard-exp{background:var(--w);border-radius:14px;padding:14px 16px;margin:14px 16px 8px;box-shadow:var(--sh)}
+.infocard-exp{background:var(--ib);border:1.5px solid rgba(74,143,224,.35);border-radius:14px;padding:14px 16px;margin:14px 16px 8px;box-shadow:var(--sh)}
 .infocard-col{display:flex;align-items:center;gap:8px;background:var(--w);border-radius:12px;padding:10px 14px;margin:14px 16px 8px;box-shadow:var(--sh);cursor:pointer}
 .infocard-ic{width:28px;height:28px;border-radius:50%;background:var(--abg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.infocard-exp .infocard-ic{background:var(--w)}
 .infocard-ic-sm{width:22px;height:22px}
 .infocard-dot{width:8px;height:8px;border-radius:50%;background:var(--rd);flex-shrink:0}
 .infocard-link{font-size:13px;font-weight:600;color:var(--ac);cursor:pointer;display:flex;align-items:center;gap:2px}
@@ -4301,7 +4302,7 @@ var INFO_CARDS = {
   mlo:{title:'什麼是 MLO？',body:'Wi-Fi 7 的新技術，能同時使用 2.4／5／6GHz 多個頻段傳輸同一筆資料，降低延遲、提升穩定度。需要路由器與裝置皆支援 Wi-Fi 7 才能生效。',version:1}
 };
 function infoCardIconSvg(sz){
-  return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>';
+  return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-7 7c0 2.7 1.5 4.2 2.5 5.7S9 17 9 18h6c0-1 .5-1.5 1.5-3S19 11.7 19 9a7 7 0 00-7-7z"/></svg>';
 }
 function renderInfoCard(key){
   var cfg = INFO_CARDS[key];
