@@ -575,9 +575,9 @@ body{display:flex;align-items:center;justify-content:center}
   <!-- Tab Bar -->
   <div class="tb">
     <div class="ti on" id="tab-home"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首頁</span></div>
-    <div class="ti" id="tab-devices"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg><span>裝置</span></div>
+    <div class="ti" id="tab-devices" style="display:none"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg><span>裝置</span></div>
     <div class="ti" id="tab-insight"><svg viewBox="0 0 24 24" fill="none" style="stroke:none"><path d="M18.71,9.63c-.08,0-.14-.04-.16-.12-.22-.84-.63-1.56-1.25-2.17s-1.33-1.03-2.17-1.25c-.08-.03-.12-.08-.12-.16,0-.1.04-.15.12-.16.84-.22,1.56-.63,2.17-1.25s1.03-1.33,1.25-2.17c.03-.08.08-.12.16-.12s.14.04.16.12c.22.84.63,1.56,1.25,2.17s1.33,1.03,2.17,1.25c.08.01.12.07.12.16,0,.08-.04.14-.12.16-.84.22-1.56.63-2.17,1.25s-1.03,1.33-1.25,2.17c-.01.08-.07.12-.16.12Z" fill="var(--t3)"/><path d="M10.44,22.42c-.21,0-.35-.1-.42-.31-.56-2.12-1.61-3.96-3.16-5.51s-3.38-2.6-5.51-3.16c-.21-.07-.31-.21-.31-.42,0-.24.1-.38.31-.42,2.12-.56,3.96-1.61,5.51-3.16s2.6-3.38,3.16-5.51c.07-.21.21-.31.42-.31s.35.1.42.31c.56,2.12,1.61,3.96,3.16,5.51s3.38,2.6,5.51,3.16c.21.03.31.17.31.42,0,.21-.1.35-.31.42-2.12.56-3.96,1.61-5.51,3.16s-2.6,3.38-3.16,5.51c-.03.21-.17.31-.42.31Z" fill="var(--t3)"/></svg><span>AI</span></div>
-    <div class="ti" id="tab-family"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg><span>家庭</span></div>
+    <div class="ti" id="tab-family" style="display:none"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg><span>家庭</span></div>
     <div class="ti" id="tab-settings"><svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span>設定</span></div>
   </div>
 
@@ -3616,6 +3616,7 @@ var QA_ALL = [
   {id:'qa-meshopt',     icon:'mesh',    label:'Mesh 最佳化',        action:'meshopt'},
   {id:'qa-meshdiag',    icon:'search',  label:'Mesh 診斷',          action:'meshdiag'},
   {id:'qa-meshstat',    icon:'chart',   label:'查看節點狀態',       action:'meshstat'},
+  {id:'qa-family',      icon:'users',   label:'家庭',              action:'family'},
   {id:'qa-parental',    icon:'child',   label:'家長監護',          action:'parental'},
   {id:'qa-sched',       icon:'clock',   label:'上網排程',          action:'sched'},
   {id:'qa-pause',       icon:'pause',   label:'暫停裝置',          action:'pause'},
@@ -3634,13 +3635,13 @@ var QA_ALL = [
 var QA_CATEGORIES = [
   {name:'網路', emoji:'🌐', ids:['qa-wifi','qa-pass','qa-wifiset','qa-guest','qa-iot','qa-diag','qa-speed']},
   {name:'AiMesh', emoji:'📡', ids:['qa-meshadd','qa-meshopt','qa-meshdiag','qa-meshstat']},
-  {name:'家庭', emoji:'👨‍👩‍👧', ids:['qa-parental','qa-sched','qa-pause','qa-devmgmt']},
+  {name:'家庭', emoji:'👨‍👩‍👧', ids:['qa-family','qa-parental','qa-sched','qa-pause','qa-devmgmt']},
   {name:'安全', emoji:'🔒', ids:['qa-aiprotect','qa-blacklist','qa-instantguard','qa-vpnc','qa-vpns']},
   {name:'系統', emoji:'⚙️', ids:['qa-fw','qa-reboot','qa-led','qa-backup']},
 ];
 
 // Default selected
-var QA_SELECTED = ['qa-wifi','qa-diag','qa-guest','qa-meshadd'];
+var QA_SELECTED = ['qa-wifi','qa-diag','qa-guest','qa-meshadd','qa-family'];
 
 function qaSvg(icon, color) {
   color = color || 'var(--is)';
@@ -4235,7 +4236,8 @@ function renderQAGrid() {
       else if (act==='reboot')      show('sub-reboot');
       else if (act==='speed')       show('sub-speedtest');
       else if (act==='iot')         goTab('settings');
-      else if (act==='parental')    goTab('family');
+      else if (act==='family')      { goTab('family'); var fb=document.getElementById('family-back-btn'); if(fb)fb.style.display='flex'; }
+      else if (act==='parental')    { goTab('family'); var fb=document.getElementById('family-back-btn'); if(fb)fb.style.display='flex'; }
       else if (act==='devmgmt')     { goTab('devices'); var b=document.getElementById('devices-back-btn'); if(b)b.style.display='flex'; }
       else if (act==='aiprotect')   show('sub-aipro-detail');
       else if (act==='instantguard')show('sub-pro-vpns');
