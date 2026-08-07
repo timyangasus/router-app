@@ -3616,7 +3616,7 @@ var QA_ALL = [
   {id:'qa-meshopt',     icon:'mesh',    label:'Mesh 最佳化',        action:'meshopt'},
   {id:'qa-meshdiag',    icon:'search',  label:'Mesh 診斷',          action:'meshdiag'},
   {id:'qa-meshstat',    icon:'chart',   label:'查看節點狀態',       action:'meshstat'},
-  {id:'qa-family',      icon:'users',   label:'家庭',              action:'family'},
+  {id:'qa-family',      icon:'users',   label:'家長監控',           action:'family'},
   {id:'qa-parental',    icon:'child',   label:'家長監護',          action:'parental'},
   {id:'qa-sched',       icon:'clock',   label:'上網排程',          action:'sched'},
   {id:'qa-pause',       icon:'pause',   label:'暫停裝置',          action:'pause'},
@@ -4968,7 +4968,7 @@ function renderDevicesTab(){
     var bad=(nodeId==='kitchen'&&_netErrorDemo);
     var expanded=_deviceGroupExpanded[nodeId];
     html+='<div class="di2" style="background:var(--ib);margin-top:16px;border-radius:var(--r) var(--r) 0 0;border-bottom:none'+(expanded?'':';border-radius:var(--r);margin-bottom:1px')+'" onclick="toggleDeviceGroup(\''+nodeId+'\')">'
-      +'<div class="da" style="background:var(--w)"><img id="devgrp-img-'+nodeId+'" style="width:22px;height:22px;object-fit:contain"></div>'
+      +'<div class="da" style="background:rgba(0,0,0,.1)"><img id="devgrp-img-'+nodeId+'" style="width:22px;height:22px;object-fit:contain"></div>'
       +'<div style="flex:1;min-width:0"><div style="font-size:17px;font-weight:600;color:var(--tx)">'+n.name+' <span style="font-size:13px;font-weight:500;color:var(--is)">· '+n.model+'</span></div>'
       +'<div style="font-size:13px;margin-top:2px;display:flex;align-items:center;gap:5px">'
         +'<span style="width:6px;height:6px;border-radius:50%;background:'+(bad?'var(--or)':'var(--gn)')+';display:inline-block;flex-shrink:0"></span>'
