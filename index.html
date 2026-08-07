@@ -346,25 +346,25 @@ body{display:flex;align-items:center;justify-content:center}
         <span class="sl" style="padding:0">網路連線</span>
       </div>
       <div style="display:flex;gap:10px;padding:0 16px">
-        <div class="card" onclick="show('ov-mesh')" style="cursor:pointer;flex:1;margin:0;padding:14px">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
-            <span style="font-size:13px;color:var(--t3)">網路連線</span>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="12" y1="8" x2="5" y2="16"/><line x1="12" y1="8" x2="19" y2="16"/></svg>
+        <div class="card" onclick="show('ov-mesh')" style="cursor:pointer;flex:1;margin:0;padding:18px 16px">
+          <div style="font-size:15px;color:var(--t3)">網路連線</div>
+          <div style="display:flex;justify-content:center;padding:18px 0">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="12" y1="8" x2="5" y2="16"/><line x1="12" y1="8" x2="19" y2="16"/></svg>
           </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0"><span style="font-size:13px;color:var(--t3)">AiMesh 節點</span><span id="mesh-node-count" style="font-size:15px;font-weight:700;color:var(--tx)">2</span></div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0"><span style="font-size:13px;color:var(--t3)">網路連線</span><span id="mesh-summary-status" style="font-size:15px;font-weight:700;color:var(--gn)">良好</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0"><span style="font-size:13px;color:var(--t3)">AiMesh 節點</span><span id="mesh-node-count" style="font-size:15px;font-weight:700;color:var(--tx)">2</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0"><span style="font-size:13px;color:var(--t3)">網路連線</span><span id="mesh-summary-status" style="font-size:15px;font-weight:700;color:var(--gn)">良好</span></div>
         </div>
-        <div class="card" onclick="goTab('devices');var b=document.getElementById('devices-back-btn');if(b)b.style.display='flex';" style="cursor:pointer;flex:1;margin:0;padding:14px">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
-            <span style="font-size:13px;color:var(--t3)">連線裝置</span>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="14" width="18" height="7" rx="2"/><circle cx="8" cy="17.5" r=".6" fill="var(--ac)" stroke="none"/><path d="M12 10a4 4 0 014 4"/><path d="M12 6a8 8 0 018 8"/></svg>
+        <div class="card" onclick="goTab('devices');var b=document.getElementById('devices-back-btn');if(b)b.style.display='flex';" style="cursor:pointer;flex:1;margin:0;padding:18px 16px">
+          <div style="font-size:15px;color:var(--t3)">連線裝置</div>
+          <div style="display:flex;justify-content:center;padding:18px 0">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="14" width="18" height="7" rx="2"/><circle cx="8" cy="17.5" r=".6" fill="var(--ac)" stroke="none"/><path d="M12 10a4 4 0 014 4"/><path d="M12 6a8 8 0 018 8"/></svg>
           </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0"><span style="font-size:13px;color:var(--t3)">連線</span><span style="font-size:15px;font-weight:700;color:var(--tx)">7</span></div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0"><span style="font-size:13px;color:var(--t3)">離線</span><span style="font-size:15px;font-weight:700;color:var(--tx)">1</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0"><span style="font-size:13px;color:var(--t3)">連線</span><span style="font-size:15px;font-weight:700;color:var(--tx)">7</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0"><span style="font-size:13px;color:var(--t3)">離線</span><span style="font-size:15px;font-weight:700;color:var(--tx)">1</span></div>
         </div>
       </div>
       <!-- Quick Actions -->
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 20px 6px">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:24px 20px 6px">
         <span style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.9px;text-transform:uppercase">快速操作</span>
         <div style="height:28px;padding:0 12px;border-radius:14px;background:var(--ib);display:flex;align-items:center;gap:5px;cursor:pointer" id="qa-edit-btn">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
