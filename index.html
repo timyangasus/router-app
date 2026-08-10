@@ -334,7 +334,7 @@ body{display:flex;align-items:center;justify-content:center}
                 <div id="home-uptime-text" style="font-size:11px;font-weight:500;color:#fff;opacity:.75;line-height:1.3;margin-top:10px">已運行 12 天 4 小時</div>
                 <div id="home-status-text" style="font-size:19px;font-weight:700;color:#fff;line-height:1.35;margin-top:6px">網路一切正常</div>
                 <div id="home-status-action" style="display:none;justify-content:flex-end;margin-top:10px">
-                  <div onclick="event.stopPropagation();show('sub-diag')" style="background:#fff;color:var(--rd);border-radius:18px;padding:8px 16px;font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:4px;cursor:pointer">立即查看 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--rd)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+                  <div onclick="event.stopPropagation();show('sub-main-wifi')" style="background:#fff;color:var(--rd);border-radius:18px;padding:8px 16px;font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:4px;cursor:pointer">立即查看 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--rd)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
                 </div>
               </div>
               <div style="display:flex;justify-content:flex-end;align-items:baseline;gap:6px;font-size:15px;font-weight:600">
@@ -3812,13 +3812,6 @@ function renderNotifPage(){
           notifRunAction(btn.getAttribute('data-nid'), btn.getAttribute('data-nact'));
         });
       });
-      att.querySelectorAll('.ntl-merge-toggle').forEach(function(t){
-        t.addEventListener('click', function(e){
-          e.stopPropagation();
-          var list = t.parentElement.querySelector('.ntl-merge-list');
-          if(list){ list.classList.toggle('on'); t.querySelector('span').textContent = list.classList.contains('on') ? '收合':'展開受影響項目'; }
-        });
-      });
     } else {
       att.innerHTML = '';
       att.style.display = 'none';
@@ -3880,11 +3873,6 @@ function updateNotifTabDots(){
 }
 
 function notifAttentionCard(item){
-  var mergeHtml = '';
-  if(item.merged && item.merged.length){
-    mergeHtml = '<div class="ntl-merge-toggle" data-nid="'+item.id+'"><span>展開受影響項目</span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>'
-      +'<div class="ntl-merge-list">'+item.merged.map(function(m){ return '<div class="ntl-merge-item"><span>'+m.label+'</span><span style="color:var(--or);font-weight:600">'+m.status+'</span></div>'; }).join('')+'</div>';
-  }
   var actionsHtml = (item.actions||[]).map(function(a){
     return '<div class="nact-btn nact-'+a.kind+'" data-nid="'+item.id+'" data-nact="'+a.act+'">'+a.label+'</div>';
   }).join('');
@@ -3894,12 +3882,6 @@ function notifAttentionCard(item){
       +'<div style="flex:1;min-width:0">'
         +'<div style="font-size:16px;font-weight:700;color:var(--tx);margin-bottom:3px">'+item.title+'</div>'
         +'<div style="font-size:13px;color:var(--t2);line-height:1.5">'+item.desc+'</div>'
-        +(item.cause ? '<div style="font-size:12px;color:var(--t3);margin-top:4px">'+item.cause+'</div>' : '')
-        +'<div style="display:flex;align-items:center;gap:8px;margin-top:8px">'
-          +'<span class="ntag ntag-'+item.severity+'">需要處理</span>'
-          +'<span style="font-size:11px;color:var(--t3)">'+(item.duration||item.time)+'</span>'
-        +'</div>'
-        + mergeHtml
       +'</div>'
     +'</div>'
     +'<div style="display:flex;gap:8px;margin-top:14px">'+actionsHtml+'</div>'
