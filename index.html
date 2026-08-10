@@ -5193,9 +5193,15 @@ function runNodeOptimize(nodeId){
   body.style.paddingTop='60px';
   body.innerHTML='<div style="width:40px;height:40px;border-radius:50%;border:3px solid var(--bd);border-top-color:var(--ac);animation:spin 1s linear infinite;margin-bottom:20px"></div><div style="font-size:16px;font-weight:600;color:var(--tx)">最佳化中…</div>';
   setTimeout(function(){
-    body.style.paddingTop='50px';
-    body.innerHTML='<div style="width:64px;height:64px;border-radius:50%;background:var(--gbg);display:flex;align-items:center;justify-content:center;margin-bottom:16px"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div style="font-size:17px;font-weight:700;color:var(--tx);margin-bottom:6px">最佳化完成</div><div style="font-size:13px;color:var(--t3)">訊號品質已提升</div>';
-    if(window._nodeOptFromWifiIssue) resolveWifiIssue('node');
+    hide('sub-node-optimize');
+    if(window._nodeOptFromWifiIssue){
+      window._nodeOptFromWifiIssue=false;
+      resolveWifiIssue('node');
+      show('sub-wifi');
+    } else {
+      backToNodeDetail();
+    }
+    showToast('最佳化完成，訊號品質已提升');
   }, 1500);
 }
 var _renameNodeId=null;
