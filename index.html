@@ -163,7 +163,6 @@ body{display:flex;align-items:center;justify-content:center}
 .di2{display:flex;align-items:center;gap:12px;padding:16px;background:var(--w);border-bottom:1px solid var(--bd);cursor:pointer}
 .da{width:42px;height:42px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
 .da svg{width:20px;height:20px;stroke:var(--is);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.dd{position:absolute;bottom:1px;right:1px;width:10px;height:10px;border-radius:50%;border:2px solid var(--w)}
 /* family */
 .mg{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px 10px}
 .mc{background:var(--w);border-radius:var(--r);padding:14px 12px;box-shadow:var(--sh);text-align:center;cursor:pointer}
@@ -4924,23 +4923,35 @@ var _nodeBlockedSet={};
 function isDeviceBlocked(nodeId,idx){
   return !!(_nodeBlockedSet[nodeId]&&_nodeBlockedSet[nodeId][idx]);
 }
-function deviceStatusTrailing(d,blocked,sigOverride){
-  if(blocked)return '<span class="bg" style="background:#E53E3E1A;color:var(--rd)">已封鎖</span>';
-  if(d.status==='offline')return '<span class="bg bgx">離線</span>';
-  if(d.status==='unknown')return '<span class="bg bgo">陌生</span>';
-  if(d.band==='有線')return '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="10" rx="2"/><path d="M8 9V6a1 1 0 011-1h6a1 1 0 011 1v3"/><line x1="9" y1="13" x2="9" y2="15"/><line x1="12" y1="13" x2="12" y2="15"/><line x1="15" y1="13" x2="15" y2="15"/></svg>';
-  var sig=sigOverride||d.signal;
+var _nodePausedSet={};
+function isDevicePaused(nodeId,idx){
+  return !!(_nodePausedSet[nodeId]&&_nodePausedSet[nodeId][idx]);
+}
+function toggleMeshDevicePause(nodeId,idx){
+  if(!_nodePausedSet[nodeId])_nodePausedSet[nodeId]={};
+  _nodePausedSet[nodeId][idx]=!_nodePausedSet[nodeId][idx];
+  renderMeshDeviceDetail(nodeId,idx);
+  renderNodeDetail(nodeId);
+  renderDevicesTab();
+}
+function deviceIconBadge(inner){
+  return '<div style="position:absolute;bottom:-4px;right:-4px;width:18px;height:18px;border-radius:50%;background:var(--w);display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.2)">'+inner+'</div>';
+}
+function deviceSignalBadge(sig){
   var weak=sig==='weak',poor=sig==='poor',medium=sig==='medium';
   var activeColor=(weak||poor)?'var(--or)':'var(--ac)';
   var level=weak?1:poor?2:medium?3:4;
   var grey='var(--bd)';
   var cOuter=level>=4?activeColor:grey, cMid=level>=3?activeColor:grey, cInner=level>=2?activeColor:grey, cDot=level>=1?activeColor:grey;
-  return '<svg width="18" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">'
+  return deviceIconBadge('<svg width="12" height="10" viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round">'
     +'<path d="M1.42 9A16 16 0 0122.58 9" stroke="'+cOuter+'"/>'
     +'<path d="M5 12.55a11 11 0 0114.08 0" stroke="'+cMid+'"/>'
     +'<path d="M8.53 16.11a6 6 0 016.95 0" stroke="'+cInner+'"/>'
-    +'<circle cx="12" cy="20" r="1.5" fill="'+cDot+'" stroke="none"/>'
-    +'</svg>';
+    +'<circle cx="12" cy="20" r="1.8" fill="'+cDot+'" stroke="none"/>'
+    +'</svg>');
+}
+function devicePortBadge(){
+  return deviceIconBadge('<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="10" rx="2"/><path d="M8 9V6a1 1 0 011-1h6a1 1 0 011 1v3"/><line x1="9" y1="13" x2="9" y2="15"/><line x1="12" y1="13" x2="12" y2="15"/><line x1="15" y1="13" x2="15" y2="15"/></svg>');
 }
 function deviceSubtitle(d,nodeName){
   if(d.status==='unknown')return 'MAC: '+d.mac+' · '+d.band;
@@ -4954,14 +4965,25 @@ function deviceSubtitleShort(d){
 }
 function deviceRowHtml(nodeId,idx,d,sigOverride){
   var blocked=isDeviceBlocked(nodeId,idx);
-  var dotColor=blocked?'var(--rd)':(d.status==='unknown'?'var(--or)':null);
-  var dim=blocked||d.status==='offline';
-  return '<div class="di2"'+(dim?' style="opacity:.5"':'')+' onclick="openMeshDevice(\''+nodeId+'\','+idx+')">'
-    +'<div class="da">'+devIconSvg(d.type,20,'var(--is)')+(dotColor?'<div class="dd" style="background:'+dotColor+'"></div>':'')+'</div>'
-    +'<div style="flex:1;min-width:0"><div style="font-size:17px;font-weight:600;color:var(--tx)">'+d.name+'</div><div style="font-size:14px;color:var(--t3);margin-top:2px">'+deviceSubtitleShort(d)+'</div></div>'
-    +deviceStatusTrailing(d,blocked,sigOverride)
-    +'<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-left:8px"><polyline points="9 18 15 12 9 6"/></svg>'
-    +'</div>';
+  var paused=isDevicePaused(nodeId,idx);
+  var offline=d.status==='offline';
+  var badge=offline?'':(d.band==='有線'?devicePortBadge():deviceSignalBadge(sigOverride||d.signal));
+  var statusLine=blocked
+    ? '<div style="font-size:12px;font-weight:600;color:var(--rd);margin-top:3px">已封鎖</div>'
+    : (paused ? '<div style="font-size:12px;font-weight:600;color:var(--or);margin-top:3px">已暫停</div>' : '');
+  var pauseOnclick=blocked?'':'event.stopPropagation();toggleMeshDevicePause(\''+nodeId+'\','+idx+')';
+  var pauseBg=paused&&!blocked?'var(--obg)':'var(--s2)';
+  var pauseColor=blocked?'var(--bd2)':(paused?'var(--or)':'var(--t2)');
+  var blockBg=blocked?'#E53E3E1A':'var(--s2)';
+  var blockColor=blocked?'var(--rd)':'var(--t2)';
+  return '<div class="di2"'+(offline?' style="opacity:.5"':'')+' onclick="openMeshDevice(\''+nodeId+'\','+idx+')">'
+    +'<div class="da">'+devIconSvg(d.type,20,'var(--is)')+badge+'</div>'
+    +'<div style="flex:1;min-width:0"><div style="font-size:17px;font-weight:600;color:var(--tx)">'+d.name+'</div><div style="font-size:14px;color:var(--t3);margin-top:2px">'+deviceSubtitleShort(d)+'</div>'+statusLine+'</div>'
+    +'<div style="display:flex;gap:8px;flex-shrink:0">'
+      +'<div onclick="'+pauseOnclick+'" style="width:36px;height:36px;border-radius:50%;background:'+pauseBg+';color:'+pauseColor+';display:flex;align-items:center;justify-content:center;cursor:'+(blocked?'default':'pointer')+'">'+_svgDevPause+'</div>'
+      +'<div onclick="event.stopPropagation();toggleMeshDeviceBlock(\''+nodeId+'\','+idx+')" style="width:36px;height:36px;border-radius:50%;background:'+blockBg+';color:'+blockColor+';display:flex;align-items:center;justify-content:center;cursor:pointer">'+_svgDevBlock+'</div>'
+    +'</div>'
+  +'</div>';
 }
 var _deviceGroupExpanded={living:true,bedroom:true,kitchen:true};
 function toggleDeviceGroup(nodeId){
@@ -5232,6 +5254,7 @@ function renderMeshDeviceDetail(nodeId,idx){
   var d=node.devices[idx];if(!d)return;
   var title=g('dev-title'),body=g('dev-body');
   var blocked=isDeviceBlocked(nodeId,idx);
+  var paused=isDevicePaused(nodeId,idx);
   if(title)title.textContent=d.name;
   var infoRows=[['IP 位址',d.ip],['MAC 位址',d.mac],[d.band==='有線'?'連線方式':'連線頻段',d.band],['連線節點',node.name]];
   var weak=d.band!=='有線'&&d.signal==='weak';
@@ -5253,7 +5276,7 @@ function renderMeshDeviceDetail(nodeId,idx){
     +devInfoCard(infoRows)
     +suggestHtml
     +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'
-      +devBtn('var(--obg)','var(--or)',_svgDevPause,'暫停網路','')
+      +devBtn(paused?'var(--ib)':'var(--obg)',paused?'var(--is)':'var(--or)',_svgDevPause,paused?'解除暫停':'暫停網路','onclick="toggleMeshDevicePause(\''+nodeId+'\','+idx+')"')
       +devBtn(blocked?'var(--ib)':'var(--rd)',blocked?'var(--is)':'#fff',_svgDevBlock,blocked?'解除封鎖':'封鎖裝置','onclick="toggleMeshDeviceBlock(\''+nodeId+'\','+idx+')"')
     +'</div></div>';
 }
