@@ -3880,19 +3880,23 @@ function updateNotifTabDots(){
   if(allDot) allDot.classList.toggle('on', anyUnread);
 }
 
+function notifAttentionIcon(){
+  return '<div style="width:22px;height:22px;border-radius:50%;background:var(--obg);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">'
+    +'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2.5"/></svg></div>';
+}
 function notifAttentionCard(item){
   var actionsHtml = (item.actions||[]).map(function(a){
-    return '<div class="nact-btn nact-'+a.kind+'" data-nid="'+item.id+'" data-nact="'+a.act+'">'+a.label+'</div>';
+    return '<div class="nact-btn nact-'+a.kind+'" data-nid="'+item.id+'" data-nact="'+a.act+'" style="height:32px;padding:0 12px;font-size:12px;white-space:nowrap">'+a.label+'</div>';
   }).join('');
   return '<div class="natt-card sev-'+item.severity+'">'
-    +'<div style="display:flex;gap:12px">'
-      + notifIconFor(item)
+    +'<div style="display:flex;gap:10px">'
+      + notifAttentionIcon()
       +'<div style="flex:1;min-width:0">'
         +'<div style="font-size:16px;font-weight:700;color:var(--tx);margin-bottom:3px">'+item.title+'</div>'
         +'<div style="font-size:13px;color:var(--t2);line-height:1.5">'+item.desc+'</div>'
       +'</div>'
     +'</div>'
-    +'<div style="display:flex;gap:8px;margin-top:14px">'+actionsHtml+'</div>'
+    +'<div style="display:flex;justify-content:flex-end;gap:8px;margin-top:12px">'+actionsHtml+'</div>'
   +'</div>';
 }
 
