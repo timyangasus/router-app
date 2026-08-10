@@ -3533,15 +3533,23 @@ function devBtn(bg,color,icon,label,extra){
 }
 var DEV_ICON_PATHS={
   laptop:'<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M0 21h24"/>',
-  phone:'<rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/>',
+  phone:'<rect x="7" y="2" width="10" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/>',
+  tablet:'<rect x="3" y="4" width="18" height="16" rx="2"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2.5"/>',
   tv:'<rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/>',
   game:'<rect x="2" y="8" width="20" height="9" rx="4.5"/><path d="M7 10.5v4M5 12.5h4"/><circle cx="15" cy="11.5" r="1"/><circle cx="18" cy="13.5" r="1"/>',
+  speaker:'<rect x="2" y="8" width="20" height="8" rx="4"/><circle cx="7" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="17" cy="12" r="1.3"/>',
+  camera:'<path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/>',
+  lamp:'<path d="M9 2h6l3 7H6z"/><line x1="12" y1="9" x2="12" y2="19"/><line x1="7" y1="22" x2="17" y2="22"/><line x1="12" y1="19" x2="12" y2="22"/>',
+  fan:'<circle cx="12" cy="12" r="9"/><path d="M12 12c0-3.3 2.2-5.5 5.5-5.5M12 12c0 3.3-2.2 5.5-5.5 5.5M12 12c3.3 0 5.5 2.2 5.5 5.5M12 12c-3.3 0-5.5-2.2-5.5-5.5"/>',
+  fridge:'<rect x="6" y="2" width="12" height="20" rx="1.5"/><line x1="6" y1="9" x2="18" y2="9"/><line x1="9" y1="5" x2="9" y2="7"/><line x1="9" y1="12" x2="9" y2="14"/>',
+  dishwasher:'<rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="7" x2="21" y2="7"/><circle cx="12" cy="14" r="5"/><circle cx="12" cy="14" r="1" fill="currentColor" stroke="none"/>',
+  coffee:'<path d="M6 20h12"/><path d="M7 20V9a1 1 0 011-1h8a1 1 0 011 1v11"/><path d="M9 8V5"/><path d="M15 8V5"/><line x1="9" y1="13" x2="15" y2="13"/>',
   iot:'<path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1.5" fill="currentColor" stroke="none"/>',
   unknown:'<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2.5"/>',
 };
 function devIconSvg(type,size,color){
   var p=DEV_ICON_PATHS[type]||DEV_ICON_PATHS.unknown;
-  return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 24 24" fill="none" stroke="'+(color||'var(--is)')+'" stroke-width="1.6" stroke-linecap="round">'+p+'</svg>';
+  return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 24 24" fill="none" style="stroke:'+(color||'var(--is)')+';color:'+(color||'var(--is)')+'" stroke-width="1.6" stroke-linecap="round">'+p+'</svg>';
 }
 function devHeader(d,nodeName,blocked){
   var status=d.status;
@@ -4866,9 +4874,9 @@ var MESH_NODES={
       {name:"Tim's MacBook Pro",band:'5GHz',type:'laptop',status:'online',signal:'good',mac:'A4:CF:99:E2:11:08',ip:'192.168.1.101'},
       {name:'客廳 Apple TV',band:'5GHz',type:'tv',status:'online',signal:'medium',mac:'DC:56:E7:44:AB:02',ip:'192.168.1.110'},
       {name:'PS5',band:'有線',type:'game',status:'online',mac:'3C:E9:26:4A:8B:12',ip:'192.168.1.111'},
-      {name:'Sonos Soundbar',band:'5GHz',type:'iot',status:'online',signal:'good',mac:'B8:27:EB:9C:41:03',ip:'192.168.1.112'},
+      {name:'Sonos Soundbar',band:'5GHz',type:'speaker',status:'online',signal:'good',mac:'B8:27:EB:9C:41:03',ip:'192.168.1.112'},
       {name:'三星 QLED TV',band:'有線',type:'tv',status:'offline',lastSeen:'昨天 22:40',mac:'4C:BB:58:2D:77:1A',ip:'192.168.1.113'},
-      {name:'Nest Cam',band:'2.4GHz',type:'iot',status:'online',signal:'weak',mac:'18:B4:30:5E:22:9F',ip:'192.168.1.121'},
+      {name:'Nest Cam',band:'2.4GHz',type:'camera',status:'online',signal:'weak',mac:'18:B4:30:5E:22:9F',ip:'192.168.1.121'},
     ]
   },
   bedroom:{
@@ -4880,10 +4888,10 @@ var MESH_NODES={
     mac:'AC:9E:17:5D:20:02',
     model:'ASUS ZenWiFi BT10',
     devices:[
-      {name:"Tim's iPad",band:'5GHz',type:'phone',status:'online',signal:'good',mac:'7C:2E:BD:44:11:8A',ip:'192.168.1.151'},
-      {name:'小美的 Kindle',band:'2.4GHz',type:'phone',status:'online',signal:'weak',mac:'A0:C5:89:2F:63:0D',ip:'192.168.1.152'},
-      {name:'智慧檯燈',band:'2.4GHz',type:'iot',status:'online',signal:'medium',mac:'5C:F9:38:AB:14:66',ip:'192.168.1.153'},
-      {name:'空氣清淨機',band:'2.4GHz',type:'iot',status:'online',signal:'weak',mac:'90:9A:4A:1D:E2:77',ip:'192.168.1.154'},
+      {name:"Tim's iPad",band:'5GHz',type:'tablet',status:'online',signal:'good',mac:'7C:2E:BD:44:11:8A',ip:'192.168.1.151'},
+      {name:'小美的 Kindle',band:'2.4GHz',type:'tablet',status:'online',signal:'weak',mac:'A0:C5:89:2F:63:0D',ip:'192.168.1.152'},
+      {name:'智慧檯燈',band:'2.4GHz',type:'lamp',status:'online',signal:'medium',mac:'5C:F9:38:AB:14:66',ip:'192.168.1.153'},
+      {name:'空氣清淨機',band:'2.4GHz',type:'fan',status:'online',signal:'weak',mac:'90:9A:4A:1D:E2:77',ip:'192.168.1.154'},
     ]
   },
   kitchen:{
@@ -4895,10 +4903,10 @@ var MESH_NODES={
     mac:'AC:9E:17:5D:20:03',
     model:'ASUS ZenWiFi BT10',
     devices:[
-      {name:'智慧冰箱',band:'5GHz',type:'iot',status:'online',signal:'good',mac:'6C:AD:F8:11:22:01',ip:'192.168.1.171'},
-      {name:'洗碗機',band:'2.4GHz',type:'iot',status:'online',signal:'good',mac:'6C:AD:F8:11:22:02',ip:'192.168.1.172'},
-      {name:'咖啡機',band:'2.4GHz',type:'iot',status:'offline',lastSeen:'今天 07:15',mac:'6C:AD:F8:11:22:03',ip:'192.168.1.173'},
-      {name:'廚房音箱',band:'2.4GHz',type:'iot',status:'online',signal:'good',mac:'6C:AD:F8:11:22:04',ip:'192.168.1.174'},
+      {name:'智慧冰箱',band:'5GHz',type:'fridge',status:'online',signal:'good',mac:'6C:AD:F8:11:22:01',ip:'192.168.1.171'},
+      {name:'洗碗機',band:'2.4GHz',type:'dishwasher',status:'online',signal:'good',mac:'6C:AD:F8:11:22:02',ip:'192.168.1.172'},
+      {name:'咖啡機',band:'2.4GHz',type:'coffee',status:'offline',lastSeen:'今天 07:15',mac:'6C:AD:F8:11:22:03',ip:'192.168.1.173'},
+      {name:'廚房音箱',band:'2.4GHz',type:'speaker',status:'online',signal:'good',mac:'6C:AD:F8:11:22:04',ip:'192.168.1.174'},
     ]
   }
 };
@@ -4934,24 +4942,21 @@ function toggleMeshDevicePause(nodeId,idx){
   renderNodeDetail(nodeId);
   renderDevicesTab();
 }
-function deviceIconBadge(inner){
-  return '<div style="position:absolute;bottom:-4px;right:-4px;width:18px;height:18px;border-radius:50%;background:var(--w);display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.2)">'+inner+'</div>';
+function deviceIconBadge(inner,bg){
+  return '<div style="position:absolute;bottom:-3px;right:-3px;width:20px;height:20px;border-radius:50%;background:'+bg+';display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.25),0 0 0 2px var(--w)">'+inner+'</div>';
 }
 function deviceSignalBadge(sig){
-  var weak=sig==='weak',poor=sig==='poor',medium=sig==='medium';
-  var activeColor=(weak||poor)?'var(--or)':'var(--ac)';
-  var level=weak?1:poor?2:medium?3:4;
-  var grey='var(--bd)';
-  var cOuter=level>=4?activeColor:grey, cMid=level>=3?activeColor:grey, cInner=level>=2?activeColor:grey, cDot=level>=1?activeColor:grey;
-  return deviceIconBadge('<svg width="12" height="10" viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round">'
-    +'<path d="M1.42 9A16 16 0 0122.58 9" stroke="'+cOuter+'"/>'
-    +'<path d="M5 12.55a11 11 0 0114.08 0" stroke="'+cMid+'"/>'
-    +'<path d="M8.53 16.11a6 6 0 016.95 0" stroke="'+cInner+'"/>'
-    +'<circle cx="12" cy="20" r="1.8" fill="'+cDot+'" stroke="none"/>'
-    +'</svg>');
+  var weak=sig==='weak',poor=sig==='poor';
+  var bg=(weak||poor)?'var(--or)':'var(--ac)';
+  return deviceIconBadge('<svg width="11" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">'
+    +'<path d="M1.42 9A16 16 0 0122.58 9"/>'
+    +'<path d="M5 12.55a11 11 0 0114.08 0"/>'
+    +'<path d="M8.53 16.11a6 6 0 016.95 0"/>'
+    +'<circle cx="12" cy="20" r="1.6" fill="#fff" stroke="none"/>'
+    +'</svg>',bg);
 }
 function devicePortBadge(){
-  return deviceIconBadge('<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="10" rx="2"/><path d="M8 9V6a1 1 0 011-1h6a1 1 0 011 1v3"/><line x1="9" y1="13" x2="9" y2="15"/><line x1="12" y1="13" x2="12" y2="15"/><line x1="15" y1="13" x2="15" y2="15"/></svg>');
+  return deviceIconBadge('<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10v5l-2 3h-6l-2-3z"/><line x1="9" y1="8" x2="9" y2="11"/><line x1="11" y1="8" x2="11" y2="11"/><line x1="13" y1="8" x2="13" y2="11"/><line x1="15" y1="8" x2="15" y2="11"/></svg>','var(--gn)');
 }
 function deviceSubtitle(d,nodeName){
   if(d.status==='unknown')return 'MAC: '+d.mac+' · '+d.band;
@@ -4977,7 +4982,7 @@ function deviceRowHtml(nodeId,idx,d,sigOverride){
   var blockBg=blocked?'#E53E3E1A':'var(--s2)';
   var blockColor=blocked?'var(--rd)':'var(--t2)';
   return '<div class="di2"'+(offline?' style="opacity:.5"':'')+' onclick="openMeshDevice(\''+nodeId+'\','+idx+')">'
-    +'<div class="da">'+devIconSvg(d.type,20,'var(--is)')+badge+'</div>'
+    +'<div class="da"'+(offline?' style="background:var(--s2)"':'')+'>'+devIconSvg(d.type,20,offline?'var(--bd2)':'var(--is)')+badge+'</div>'
     +'<div style="flex:1;min-width:0"><div style="font-size:17px;font-weight:600;color:var(--tx)">'+d.name+'</div><div style="font-size:14px;color:var(--t3);margin-top:2px">'+deviceSubtitleShort(d)+'</div>'+statusLine+'</div>'
     +'<div style="display:flex;gap:8px;flex-shrink:0">'
       +'<div onclick="'+pauseOnclick+'" style="width:36px;height:36px;border-radius:50%;background:'+pauseBg+';color:'+pauseColor+';display:flex;align-items:center;justify-content:center;cursor:'+(blocked?'default':'pointer')+'">'+_svgDevPause+'</div>'
