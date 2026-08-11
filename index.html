@@ -2465,7 +2465,7 @@ body{display:flex;align-items:center;justify-content:center}
     </div>
     <div style="flex:1;overflow-y:auto;background:#fff;padding:32px 20px 24px">
       <div style="display:flex;justify-content:center;margin-bottom:28px">
-        <div style="width:96px;height:96px;border-radius:50%;background:#2E5A8C;display:flex;align-items:center;justify-content:center;font-size:48px" id="fm-step2n-avatar">🧔</div>
+        <div style="width:96px;height:96px;border-radius:50%;background:#2E5A8C;display:flex;align-items:center;justify-content:center" id="fm-step2n-avatar"></div>
       </div>
       <div style="font-size:13px;font-weight:600;color:var(--ac);letter-spacing:.3px;margin-bottom:20px">成員名稱</div>
       <div style="position:relative;margin-bottom:8px">
@@ -5475,7 +5475,7 @@ function fmSelectAge(type){
   _fmNew=Object.assign({},_fmNew,{ageType:type,filterCats:FM_FILTER_CATS[type].slice()});
   var info=fmAgeInfo(type);
   // update step2 name page
-  var av=document.getElementById('fm-step2n-avatar');if(av){av.textContent=info.emoji;av.style.background=info.bgAvatar||'#4878A8';}
+  var av=document.getElementById('fm-step2n-avatar');if(av){av.innerHTML=fmAvatarSvg(46,'#fff');av.style.background=info.bgAvatar||'#4878A8';}
   var t2=document.getElementById('fm-step2n-title');if(t2)t2.textContent=info.label;
   var inp=document.getElementById('fm-name-input');if(inp){inp.value='';inp.style.borderBottom='1.5px solid var(--bd)';}
   var btn=document.getElementById('fm-step2n-next-btn');if(btn){btn.style.background='var(--s2)';btn.style.color='var(--t3)';}
@@ -5824,7 +5824,7 @@ function renderFamilyList(){
         '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>'+
       '</div>'+
       '<div style="display:flex;align-items:center;gap:13px;margin-bottom:12px">'+
-        '<div style="width:50px;height:50px;border-radius:50%;background:rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0">'+info.emoji+'</div>'+
+        '<div style="width:50px;height:50px;border-radius:50%;background:rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0">'+fmAvatarSvg(26,'#fff')+'</div>'+
         '<div style="flex:1;min-width:0">'+
           '<div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:6px">'+m.name+'</div>'+
           '<div style="font-size:12px;color:rgba(255,255,255,.65);margin-bottom:4px">裝置 '+m.devices.length+' 台</div>'+
@@ -5888,6 +5888,22 @@ function fmSaveDevices(){
   renderFamilyList();
 }
 function fmGetMember(id){return FM_MEMBERS.find(function(m){return m.id===id;});}
+function fmAvatarSvg(size,color){
+  color=color||'#fff';
+  return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 24 24" fill="none" stroke="'+color+'" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">'
+    +'<circle cx="6" cy="11" r="1.6"/><circle cx="18" cy="11" r="1.6"/>'
+    +'<circle cx="12" cy="10" r="6"/>'
+    +'<circle cx="9.3" cy="9.3" r=".5" fill="'+color+'" stroke="none"/><circle cx="14.7" cy="9.3" r=".5" fill="'+color+'" stroke="none"/>'
+    +'<path d="M9.5 12c.7.8 1.6 1.2 2.5 1.2s1.8-.4 2.5-1.2"/>'
+    +'<path d="M3 23c0-4.5 4-8 9-8s9 3.5 9 8"/>'
+  +'</svg>';
+}
+function fmRemoveDevice(memberId,devId){
+  var m=fmGetMember(memberId);if(!m)return;
+  m.devices=m.devices.filter(function(d){return d!==devId;});
+  renderFmDetail(m);
+  renderFamilyList();
+}
 function fmDeviceInfo(devId){
   var f=FM_DEVICES.find(function(d){return d.id===devId;});
   return f?{name:f.name,icon:f.icon}:{name:devId,icon:null};
@@ -5902,16 +5918,17 @@ function renderFmDetail(m){
     var di=fmDeviceInfo(devId);
     return '<div style="display:flex;align-items:center;gap:10px;padding:8px 16px 8px 44px">'+
       '<div style="width:30px;height:30px;border-radius:8px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0">'+fmDevIcon(di.icon)+'</div>'+
-      '<div style="font-size:14px;color:var(--tx);font-weight:500">'+di.name+'</div>'+
+      '<div style="flex:1;font-size:14px;color:var(--tx);font-weight:500">'+di.name+'</div>'+
+      '<div onclick="event.stopPropagation();fmRemoveDevice('+m.id+',\''+devId+'\')" style="padding:6px;cursor:pointer;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>'+
     '</div>';
   }).join('');
   el.innerHTML='<div style="display:flex;flex-direction:column;align-items:center;padding:24px 16px 16px">'+
-    '<div style="width:80px;height:80px;border-radius:50%;background:'+(info.bgAvatar||'#3A87C8')+';display:flex;align-items:center;justify-content:center;font-size:40px;margin-bottom:12px">'+info.emoji+'</div>'+
+    '<div style="width:80px;height:80px;border-radius:50%;background:'+(info.bgAvatar||'#3A87C8')+';display:flex;align-items:center;justify-content:center;margin-bottom:12px">'+fmAvatarSvg(40,'#fff')+'</div>'+
     '<div style="font-size:22px;font-weight:700;color:var(--tx);margin-bottom:3px">'+m.name+'</div>'+
-    '<div style="font-size:14px;color:var(--t3)">'+info.label+'・'+info.sublabel+'</div>'+
+    '<div style="font-size:14px;color:var(--t3)">'+info.label+'</div>'+
   '</div>'+
   '<div style="background:var(--w)">'+
-    '<div class="sr" onclick="fmOpenDeviceEdit('+m.id+')" style="cursor:pointer;border-bottom:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">綁定裝置</div></div><span style="font-size:14px;color:var(--t2);margin-right:8px">'+m.devices.length+' 台</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>'+
+    '<div class="sr" onclick="fmOpenDeviceEdit('+m.id+')" style="cursor:pointer;border-bottom:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">受監控裝置</div></div><span style="font-size:14px;color:var(--t2);margin-right:8px">'+m.devices.length+' 台</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>'+
     boundDevicesHtml+
     '<div class="sr" onclick="show(\'sub-fm-time\');renderFmTime(fmGetMember('+m.id+'))" style="cursor:pointer;border-top:1px solid var(--bd)"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">上網時段管理</div><div style="font-size:13px;color:var(--t3);margin-top:2px">'+schedLabel+'</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>'+
     '<div class="sr" onclick="show(\'sub-fm-filter\');renderFmFilter(fmGetMember('+m.id+'))" style="cursor:pointer"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">內容過濾</div></div><span style="font-size:14px;color:var(--t2);margin-right:8px">'+filterLabel+'</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>'+
