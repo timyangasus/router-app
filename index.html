@@ -5933,10 +5933,6 @@ function renderFmDetail(m){
     '<div class="sr" onclick="show(\'sub-fm-time\');renderFmTime(fmGetMember('+m.id+'))" style="cursor:pointer;border-top:1px solid var(--bd)"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">上網時段管理</div><div style="font-size:13px;color:var(--t3);margin-top:2px">'+schedLabel+'</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>'+
     '<div class="sr" onclick="show(\'sub-fm-filter\');renderFmFilter(fmGetMember('+m.id+'))" style="cursor:pointer"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">內容過濾</div></div><span style="font-size:14px;color:var(--t2);margin-right:8px">'+filterLabel+'</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>'+
     '<div class="sr" onclick="show(\'sub-fm-blocked\');renderFmBlocked(fmGetMember('+m.id+'))" style="cursor:pointer;border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">封鎖網站</div></div><span style="font-size:14px;color:var(--t2);margin-right:8px">'+m.blocked.length+' 個</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>'+
-  '</div>'+
-  '<div style="background:var(--w);padding:14px 16px;display:flex;gap:10px;margin-top:10px">'+
-    '<div onclick="fmTogglePause('+m.id+')" style="flex:1;height:44px;border-radius:22px;background:var(--s3);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:var(--t2);cursor:pointer">'+(m.paused?'解除暫停':'暫停網路')+'</div>'+
-    '<div onclick="fmOpenReward('+m.id+')" style="flex:1;height:44px;border-radius:22px;background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:#fff;cursor:pointer">獎勵延長時間</div>'+
   '</div>';
 }
 function renderFmTime(m){
