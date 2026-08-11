@@ -5333,9 +5333,9 @@ function renderMeshDeviceDetail(nodeId,idx){
     infoRows.push(['訊號強度',sigLabel]);
   }
   var suggestHtml=weak?(
-    '<div style="background:var(--obg);border-radius:var(--r);padding:14px;margin-bottom:14px">'
+    '<div style="background:#FFFBEB;border:1.5px solid var(--or);border-radius:var(--r);padding:14px;margin-bottom:14px">'
     +'<div style="font-size:14px;font-weight:700;color:var(--tx);margin-bottom:8px">訊號微弱，建議：</div>'
-    +'<div style="font-size:13px;color:var(--t2);line-height:1.9">'
+    +'<div style="font-size:13px;color:var(--tx);line-height:1.9">'
     +'• 將裝置移到離路由器或節點較近的位置<br>'
     +'• 確認附近沒有微波爐、無線電話等干擾源<br>'
     +'• 執行 Mesh 最佳化，重新選擇最佳連線路徑'
@@ -5343,9 +5343,9 @@ function renderMeshDeviceDetail(nodeId,idx){
   ):'';
   if(body)body.innerHTML='<div style="padding:20px">'
     +devHeader(d,node.name,blocked,paused,nodeId,idx)
+    +suggestHtml
     +devSectionLabel('資訊')
     +devInfoCard(infoRows)
-    +suggestHtml
     +devSectionLabel('即時流量')
     +devTrafficCard()
     +devSectionLabel('頻寬限制')
@@ -5460,7 +5460,6 @@ var FM_FILTER_CATS={
 };
 var FM_MEMBERS=[
   {id:1,name:'Tommy',ageType:'school',devices:['iPhone','iPad'],limitMin:300,usedMin:165,paused:false,rewardMin:0,schedule:{days:['Mon','Tue','Wed','Thu','Fri'],start:'22:00',end:'06:00',allDay:false},filterCats:FM_FILTER_CATS.school.slice(),blocked:['tiktok.com','facebook.com']},
-  {id:2,name:'Dad',  ageType:'adult', devices:['MacBook Pro'],limitMin:0,  usedMin:90, paused:true,  rewardMin:0,schedule:{days:[],start:'22:00',end:'06:00',allDay:false},filterCats:[],blocked:[]},
 ];
 var _fmNew={ageType:'adult',name:'',schedule:{days:[],start:'22:00',end:'06:00',allDay:false},filterCats:[]};
 var _fmActiveId=null;
