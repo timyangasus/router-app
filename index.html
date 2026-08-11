@@ -268,7 +268,7 @@ body{display:flex;align-items:center;justify-content:center}
 @keyframes spin{to{transform:rotate(360deg)}}
 #ai-input:empty::before{content:attr(data-placeholder);color:var(--t3);pointer-events:none}
 .energy-hero{background:linear-gradient(160deg,#74C7FF 0%,#7FD8EE 40%,#A8EDD8 70%,#C2F0E8 100%)}
-.aipro-hero{background:linear-gradient(180deg,#59D37A 0%,#98E7AE 60%,#fff 100%)}
+.aipro-hero{background:linear-gradient(140deg,#1BBFAA,#18B87A)}
 </style>
 </head>
 <body onload="(function(){if(!/iPhone|iPad|iPod/i.test(navigator.userAgent))return;var p=document.querySelector('.phone');var ct=document.querySelector('.ct');var sb=document.querySelector('.sb');var sh=document.querySelector('.shell');if(sh)sh.style.display='none';if(sb)sb.style.display='none';if(p){p.style.cssText='position:fixed;inset:0;width:100vw;height:100dvh;max-width:none;border-radius:0;box-shadow:none;display:flex;flex-direction:column;overflow:hidden;overscroll-behavior:none';}if(ct){ct.style.cssText='flex:1;min-height:0;overflow:hidden;position:relative';}document.documentElement.style.overflow='hidden';document.documentElement.style.overscrollBehavior='none';document.body.style.overflow='hidden';document.body.style.overscrollBehavior='none';document.body.style.height='100dvh';})()">
@@ -408,21 +408,24 @@ body{display:flex;align-items:center;justify-content:center}
             <img src="data:image/png;base64,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" style="width:26px;height:26px;object-fit:contain">
           </div>
           <div style="font-size:20px;font-weight:600;color:#4DA6FF">AI</div>
+          <div onclick="renderAIReport();show('sub-ai-report')" style="width:36px;height:36px;border-radius:50%;background:var(--w);box-shadow:0 2px 8px rgba(0,0,0,.1);display:flex;align-items:center;justify-content:center;position:absolute;right:20px;cursor:pointer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6a1 1 0 011 1v1H8V3a1 1 0 011-1z"/><rect x="5" y="4" width="14" height="18" rx="2"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="14" x2="15" y2="14"/><line x1="9" y1="18" x2="12" y2="18"/></svg>
+          </div>
         </div>
         <!-- AI 助理 -->
         <div class="insight-content" id="ai-content-advisor">
-          <div style="display:flex;flex-direction:column;align-items:center;padding:32px 20px 24px">
+          <div style="display:flex;flex-direction:column;align-items:center;padding:32px 24px 24px">
             <div style="width:100px;height:100px;border-radius:50%;background:#5CAEFF;display:flex;align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 8px 32px rgba(92,174,255,.4)">
               <svg width="48" height="48" viewBox="0 -960 960 960" fill="#fff"><path d="M280-240v-480h80v480h-80ZM440-80v-800h80v800h-80ZM120-400v-160h80v160h-80Zm480 160v-480h80v480h-80Zm160-160v-160h80v160h-80Z"/></svg>
             </div>
             <div style="font-size:17px;font-weight:500;color:var(--t2);text-align:center;line-height:1.5;max-width:280px">以下是我能幫您做的一些事情。</div>
           </div>
-          <div style="display:flex;flex-direction:column;gap:12px;padding:0 16px">
+          <div style="display:flex;flex-direction:column;gap:12px;padding:0 22px">
             <div style="background:var(--s3);border-radius:18px;padding:20px 18px;cursor:pointer" onclick="startAIChat()"><div style="font-size:16px;font-weight:700;color:var(--tx);margin-bottom:6px">診斷您的網路問題。</div><div style="font-size:15px;color:var(--t2);line-height:1.5">詢問網路變慢的原因，或節點無法連線的問題。</div></div>
             <div style="background:var(--s3);border-radius:18px;padding:20px 18px;cursor:pointer" onclick="startAIChat()"><div style="font-size:16px;font-weight:700;color:var(--tx);margin-bottom:6px">引導您完成設定流程。</div><div style="font-size:15px;color:var(--t2);line-height:1.5">需要安裝 Mesh 節點的協助嗎？直接說出來！</div></div>
             <div style="background:var(--s3);border-radius:18px;padding:20px 18px;cursor:pointer" onclick="startAIChat()"><div style="font-size:16px;font-weight:700;color:var(--tx);margin-bottom:6px">協助密碼與安全性設定。</div><div style="font-size:15px;color:var(--t2);line-height:1.5">忘記 Wi-Fi 密碼了嗎？我來幫您找到或重設。</div></div>
           </div>
-          <div style="padding:48px 16px 16px">
+          <div style="padding:48px 22px 16px">
             <div onclick="startAIChat()" style="width:100%;height:52px;background:#4A89E8;border-radius:26px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 24px rgba(74,137,232,.35)"><span style="font-size:18px;font-weight:700;color:#fff">開始使用 AI</span></div>
           </div>
         </div>
@@ -513,7 +516,7 @@ body{display:flex;align-items:center;justify-content:center}
         <div class="sr" onclick="show('sub-routerinfo')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Router Information</div><div style="font-size:14px;color:var(--t3);margin-top:2px">ASUS ZenWiFi BT10</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr" onclick="show('sub-firmware')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Firmware Update</div><div style="font-size:14px;color:var(--t3);margin-top:2px">3.0.0.4.388 可用</div></div><span class="bg bgb" style="margin-right:6px">更新</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr" onclick="show('sub-reboot')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Restart Router</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-        <div class="sr" onclick="show('sub-energy')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Energy Saving</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="show('sub-energy');drawDetailCharts()" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Energy Saving</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr" onclick="show('sub-theme')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">外觀</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr" onclick="show('sub-about')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16" stroke-width="2.5"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">關於</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr" onclick="show('sub-feedback')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">意見回饋</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
@@ -632,6 +635,27 @@ body{display:flex;align-items:center;justify-content:center}
     </div>
   </div>
 
+  <!-- SUB: AI WEEKLY NETWORK REPORT -->
+  <div class="sub" id="sub-ai-report">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="ai-report-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">AI Insight</div>
+      <div id="ai-history-btn" style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;cursor:pointer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg>
+      </div>
+    </div>
+    <div id="ai-report-body" style="flex:1;overflow-y:auto;background:var(--bg);padding:16px 16px 32px"></div>
+  </div>
+
+  <!-- SUB: AI INSIGHT HISTORY -->
+  <div class="sub" id="sub-ai-history">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="ai-history-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">歷史報告</div>
+    </div>
+    <div id="ai-history-body" style="flex:1;overflow-y:auto;background:var(--bg);padding:16px 16px 32px"></div>
+  </div>
+
   <!-- SUB: AI PROTECTION -->
   <div class="sub" id="sub-aipro-detail">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
@@ -639,22 +663,57 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="font-size:17px;font-weight:600;color:var(--tx)">AiProtection</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <div class="aipro-hero" style="height:280px;display:flex;align-items:center;justify-content:center;padding:20px;gap:20px">
-        <div style="position:relative"><svg width="110" height="110" viewBox="0 0 24 24" fill="rgba(255,255,255,.25)" stroke="#fff" stroke-width="1.2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
-        <div><div style="font-size:16px;font-weight:600;color:#fff;opacity:.9;margin-bottom:4px">Security Level</div><div style="font-size:56px;font-weight:700;color:#fff;line-height:1">HIGH</div><div style="font-size:12px;color:rgba(255,255,255,.8);margin-top:4px">Latest update: Today</div><div style="margin-top:16px;width:120px;height:44px;background:#fff;border-radius:22px;display:flex;align-items:center;justify-content:center;cursor:pointer"><span style="font-size:16px;font-weight:600;color:#2E8B57">Scan</span></div></div>
+      <div class="aipro-hero" style="padding:20px 20px 24px;position:relative;overflow:hidden">
+        <div style="position:absolute;top:-30px;right:-20px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.07)"></div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+          <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <div><div style="font-size:18px;font-weight:700;color:#fff">網路安全</div><div style="font-size:13px;color:rgba(255,255,255,.8);margin-top:2px">AiProtection 運作中</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;margin-bottom:16px">
+          <div style="text-align:center"><div style="font-size:26px;font-weight:700;color:#fff">98</div><div style="font-size:11px;color:rgba(255,255,255,.75);margin-top:3px">安全分數</div></div>
+          <div style="text-align:center;border-left:1px solid rgba(255,255,255,.2);border-right:1px solid rgba(255,255,255,.2)"><div style="font-size:26px;font-weight:700;color:#fff">12</div><div style="font-size:11px;color:rgba(255,255,255,.75);margin-top:3px">本週阻擋威脅</div></div>
+          <div style="text-align:center"><div style="font-size:26px;font-weight:700;color:#fff">5</div><div style="font-size:11px;color:rgba(255,255,255,.75);margin-top:3px">本週攔截入侵</div></div>
+        </div>
+        <div style="text-align:center;font-size:12px;color:rgba(255,255,255,.8);margin-bottom:14px">最近更新：今天</div>
+        <div id="aipro-scan-btn" style="width:150px;height:44px;margin:0 auto;background:#fff;border-radius:22px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.15)"><span style="font-size:15px;font-weight:700;color:#18B87A">立即檢查</span></div>
       </div>
       <div style="background:var(--w);margin:12px 16px;border-radius:16px;overflow:hidden;box-shadow:var(--sh)">
         <div style="padding:10px 16px 6px"><span style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.7px;text-transform:uppercase">AiProtection</span></div>
-        <div style="display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid var(--bd)"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Malicious Sites Blocking</div></div><div style="width:44px;height:26px;background:#59D37A;border-radius:13px;position:relative"><div style="position:absolute;width:20px;height:20px;background:#fff;border-radius:50%;top:3px;right:3px"></div></div></div>
-        <div style="display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid var(--bd)"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Advertisement Blocking</div></div><div style="width:44px;height:26px;background:#59D37A;border-radius:13px;position:relative"><div style="position:absolute;width:20px;height:20px;background:#fff;border-radius:50%;top:3px;right:3px"></div></div></div>
-        <div style="display:flex;align-items:center;padding:13px 16px"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Tracker Blocking</div></div><div style="width:44px;height:26px;background:#59D37A;border-radius:13px;position:relative"><div style="position:absolute;width:20px;height:20px;background:#fff;border-radius:50%;top:3px;right:3px"></div></div></div>
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">即時網路防護</div><div style="font-size:12px;color:var(--t3);margin-top:2px">本週已阻擋威脅 12 次</div></div><div class="tg on" id="tg-aipro-realtime"></div></div>
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">雙向 IPS</div><div style="font-size:12px;color:var(--t3);margin-top:2px">本週已攔截入侵嘗試 5 次</div></div><div class="tg on" id="tg-aipro-ips"></div></div>
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">受感染裝置偵測</div><div style="font-size:12px;color:var(--t3);margin-top:2px">已掃描 14 台裝置，未發現異常</div></div><div class="tg on" id="tg-aipro-infected"></div></div>
+        <div class="sr" style="border:none;cursor:pointer" onclick="renderAiproMalsite();show('sub-aipro-malsite')"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">惡意網站封鎖</div><div id="aipro-malsite-count" style="font-size:12px;color:var(--t3);margin-top:2px">已封鎖 2 個網站</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="margin-right:12px"><polyline points="9 18 15 12 9 6"/></svg><div class="tg on" id="tg-aipro-malsite" onclick="event.stopPropagation();this.classList.toggle('on')"></div></div>
       </div>
-      <div style="background:var(--w);margin:0 16px 12px;border-radius:16px;overflow:hidden;box-shadow:var(--sh)">
-        <div style="padding:14px 16px 6px;display:flex;align-items:center;justify-content:space-between"><span style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.7px;text-transform:uppercase">Router Security</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="18 15 12 9 6 15"/></svg></div>
+      <div style="background:var(--w);margin:0 16px 24px;border-radius:16px;overflow:hidden;box-shadow:var(--sh)">
+        <div style="padding:14px 16px 6px;display:flex;align-items:center;justify-content:space-between"><span style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.7px;text-transform:uppercase">路由器安全性</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="18 15 12 9 6 15"/></svg></div>
         <div id="security-rows"></div>
       </div>
-      <div style="background:var(--gbg);margin:0 16px 24px;border-radius:20px;padding:20px;text-align:center"><div style="font-size:14px;font-weight:600;color:var(--gn);margin-bottom:8px">Overall Security Score</div><div style="font-size:48px;font-weight:700;color:var(--gn);line-height:1">98<span style="font-size:20px;opacity:.6"> / 100</span></div></div>
     </div>
+  </div>
+
+  <!-- SUB: AiProtection 惡意網站封鎖 -->
+  <div class="sub" id="sub-aipro-malsite">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="aipro-malsite-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">惡意網站封鎖</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <div style="font-size:13px;color:var(--t3);line-height:1.6;padding:16px 16px 4px">已封鎖的網站將無法從家中任何裝置存取，您也可以手動新增想要封鎖的網站。</div>
+      <span class="sl">已封鎖網站</span>
+      <div id="aipro-malsite-list" style="background:var(--w);margin:0 16px;border-radius:16px;box-shadow:var(--sh);overflow:hidden"></div>
+      <span class="sl">新增封鎖網站</span>
+      <div style="background:var(--w);margin:0 16px;border-radius:16px;box-shadow:var(--sh);padding:12px;display:flex;gap:8px">
+        <input id="aipro-malsite-input" placeholder="輸入網址，例如 example.com" style="flex:1;height:44px;border:1px solid var(--bd);border-radius:var(--r2);padding:0 14px;font-size:14px;font-family:var(--f);color:var(--tx);outline:none;background:var(--s2)"/>
+        <div onclick="addAiproSite()" style="width:60px;height:44px;background:var(--ac);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:600;cursor:pointer">封鎖</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OV: AiProtection 即時檢查 -->
+  <div class="ov" id="ov-aipro-scan" onclick="if(event.target===this)hide('ov-aipro-scan')">
+    <div class="sheet" id="aipro-scan-body"></div>
   </div>
 
   <!-- SUB: WIFI INSIGHT -->
@@ -745,9 +804,8 @@ body{display:flex;align-items:center;justify-content:center}
     <div style="flex:1;min-height:0;overflow-y:auto;background:var(--bg);padding-bottom:20px">
       <div style="display:flex;gap:8px;padding:14px 16px 4px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none" id="notif-tabs">
         <div class="notif-tab on" data-cat="all">全部<span class="notif-tab-dot"></span></div>
-        <div class="notif-tab" data-cat="issue">問題<span class="notif-tab-dot"></span></div>
-        <div class="notif-tab" data-cat="update">更新<span class="notif-tab-dot"></span></div>
         <div class="notif-tab" data-cat="security">安全<span class="notif-tab-dot"></span></div>
+        <div class="notif-tab" data-cat="update">更新<span class="notif-tab-dot"></span></div>
         <div class="notif-tab" data-cat="general">通知<span class="notif-tab-dot"></span></div>
       </div>
       <div id="notif-attention"></div>
@@ -769,16 +827,6 @@ body{display:flex;align-items:center;justify-content:center}
   <!-- OV: general notification summary bottom sheet -->
   <div class="ov" id="ov-notif-summary" onclick="if(event.target===this)hide('ov-notif-summary')">
     <div class="sheet" id="notif-summary-body"></div>
-  </div>
-
-  <!-- SUB: Network Health Report -->
-  <div class="sub" id="sub-notif-report">
-    <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
-    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" id="notif-report-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="font-size:17px;font-weight:600;color:var(--tx)">網路健康報告</div>
-    </div>
-    <div id="notif-report-body" style="flex:1;min-height:0;overflow-y:auto;background:var(--bg);padding:16px;padding-bottom:32px"></div>
   </div>
 
   <!-- SUB: Notification Settings -->
@@ -1227,108 +1275,6 @@ body{display:flex;align-items:center;justify-content:center}
     </div>
   </div>
 
-  <!-- SUB: AiProtection -->
-  <div class="sub" id="sub-aip">
-    <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
-    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" id="aip-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="font-size:17px;font-weight:600;color:var(--tx)">AiProtection</div>
-    </div>
-    <div style="flex:1;overflow-y:auto;background:var(--bg);padding-bottom:24px">
-      <!-- 狀態卡片 -->
-      <div style="background:linear-gradient(140deg,#1BBFAA,#18B87A);margin:12px 16px;border-radius:var(--r);padding:18px;box-shadow:0 4px 20px rgba(24,184,122,.2);position:relative;overflow:hidden">
-        <div style="position:absolute;top:-30px;right:-20px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.07)"></div>
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
-          <div style="width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-          </div>
-          <div>
-            <div style="font-size:16px;font-weight:600;color:#fff">網路安全</div>
-            <div style="font-size:12px;color:rgba(255,255,255,.75);margin-top:2px">AiProtection 運作中</div>
-          </div>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0">
-          <div style="text-align:center">
-            <div style="font-size:24px;font-weight:600;color:#fff">12</div>
-            <div style="font-size:10px;color:rgba(255,255,255,.65);margin-top:2px">今日攔截</div>
-          </div>
-          <div style="text-align:center;border-left:1px solid rgba(255,255,255,.2);border-right:1px solid rgba(255,255,255,.2)">
-            <div style="font-size:24px;font-weight:600;color:#fff">348</div>
-            <div style="font-size:10px;color:rgba(255,255,255,.65);margin-top:2px">本月攔截</div>
-          </div>
-          <div style="text-align:center">
-            <div style="font-size:24px;font-weight:600;color:#fff">0</div>
-            <div style="font-size:10px;color:rgba(255,255,255,.65);margin-top:2px">安全警報</div>
-          </div>
-        </div>
-      </div>
-      <!-- 主開關 -->
-      <div style="background:var(--w);margin:12px 16px 0;border-radius:var(--r);box-shadow:var(--sh)">
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:16px">
-          <div>
-            <div style="font-size:17px;font-weight:600;color:var(--tx)">AiProtection</div>
-            <div style="font-size:12px;color:var(--t3);margin-top:2px">啟用後顯示各項保護細節</div>
-          </div>
-          <div class="tg on" id="tg-aip-master"></div>
-        </div>
-      </div>
-      <!-- 細項（只在 master on 時顯示） -->
-      <div id="aip-details">
-        <span class="sl">保護功能</span>
-        <div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh)">
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd)">
-            <div><div style="font-size:17px;font-weight:600;color:var(--tx)">即時網路防護</div><div style="font-size:14px;color:var(--t3);margin-top:2px">攔截惡意網站與入侵嘗試</div></div>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd)">
-            <div><div style="font-size:17px;font-weight:600;color:var(--tx)">惡意網站封鎖</div><div style="font-size:14px;color:var(--t3);margin-top:2px">防止釣魚與詐騙網站</div></div>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd)">
-            <div><div style="font-size:17px;font-weight:600;color:var(--tx)">雙向 IPS</div><div style="font-size:14px;color:var(--t3);margin-top:2px">偵測並阻止入侵行為</div></div>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd)">
-            <div><div style="font-size:17px;font-weight:600;color:var(--tx)">受感染裝置偵測</div><div style="font-size:14px;color:var(--t3);margin-top:2px">偵測網路內已感染的裝置</div></div>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px">
-            <div><div style="font-size:17px;font-weight:600;color:var(--tx)">廣告攔截</div><div style="font-size:14px;color:var(--t3);margin-top:2px">攔截追蹤器與廣告請求</div></div>
-            <div class="tg on" id="tg-adblock"></div>
-          </div>
-        </div>
-      </div>
-      <!-- 最近攔截 -->
-      <span class="sl">最近攔截記錄</span>
-      <div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh)">
-        <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--bd)">
-          <div style="width:8px;height:8px;border-radius:50%;background:var(--rd);flex-shrink:0"></div>
-          <div style="flex:1;min-width:0">
-            <div style="font-size:13px;font-weight:500;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">malware-site.ru</div>
-            <div style="font-size:11px;color:var(--t3);margin-top:1px">惡意程式下載 · Tim's iPhone</div>
-          </div>
-          <div style="font-size:11px;color:var(--t3);flex-shrink:0">14:22</div>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--bd)">
-          <div style="width:8px;height:8px;border-radius:50%;background:var(--or);flex-shrink:0"></div>
-          <div style="flex:1;min-width:0">
-            <div style="font-size:13px;font-weight:500;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">phishing-login.net</div>
-            <div style="font-size:11px;color:var(--t3);margin-top:1px">釣魚網站 · Tim's MacBook Pro</div>
-          </div>
-          <div style="font-size:11px;color:var(--t3);flex-shrink:0">11:08</div>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;padding:12px 16px">
-          <div style="width:8px;height:8px;border-radius:50%;background:var(--rd);flex-shrink:0"></div>
-          <div style="flex:1;min-width:0">
-            <div style="font-size:13px;font-weight:500;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">botnet-cc.xyz</div>
-            <div style="font-size:11px;color:var(--t3);margin-top:1px">殭屍網路 · 未知裝置</div>
-          </div>
-          <div style="font-size:11px;color:var(--t3);flex-shrink:0">昨天</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- DRAWER -->
   <div class="drawer" id="drawer">
     <div class="drawer-bg" id="drawer-bg"></div>
@@ -1350,31 +1296,31 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="flex:1;overflow-y:auto">
         <div style="padding:10px 0">
           <div style="display:flex;align-items:center;gap:12px;padding:11px 20px;cursor:pointer;background:var(--abg)" id="dr-r1">
-            <div style="width:38px;height:38px;border-radius:10px;background:var(--w);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 1px 4px rgba(0,0,0,.08)">
-              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='%231E3A8A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='14' width='20' height='6' rx='1'/%3E%3Cpath d='M8 17h.01M12 17h.01'/%3E%3Cpath d='M12 14V8M8 11l4-4 4 4'/%3E%3C/svg%3E" width="24" height="24"/>
+            <div style="width:38px;height:38px;border-radius:10px;background:var(--w);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 1px 4px rgba(0,0,0,.08);overflow:hidden">
+              <img id="dr-r1-img" width="30" height="30" style="object-fit:contain"/>
             </div>
             <div style="flex:1;min-width:0">
-              <div style="font-size:14px;font-weight:600;color:var(--ac)">timmmbt7</div>
+              <div style="font-size:14px;font-weight:600;color:var(--ac)">ZenWiFi BT10</div>
               <div style="font-size:11px;color:var(--ac);opacity:.7;margin-top:1px">Home · 目前連線</div>
             </div>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
           <div style="display:flex;align-items:center;gap:12px;padding:11px 20px;cursor:pointer" id="dr-r2">
-            <div style="width:38px;height:38px;border-radius:10px;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='%238A93AA' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='14' width='20' height='6' rx='1'/%3E%3Cpath d='M8 17h.01M12 17h.01'/%3E%3Cpath d='M12 14V8M8 11l4-4 4 4'/%3E%3C/svg%3E" width="24" height="24"/>
+            <div style="width:38px;height:38px;border-radius:10px;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABDCAYAAABqS6DaAAAACXBIWXMAAAsTAAALEwEAmpwYAAAF0mlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgMTAuMC1jMDAwIDc5LmQyMGU0NjYzMCwgMjAyNS8xMi8wOS0wMjoxMToyMyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDI3LjcgKE1hY2ludG9zaCkiIHhtcDpDcmVhdGVEYXRlPSIyMDI2LTA4LTExVDA5OjQ4OjA4KzA4OjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyNi0wOC0xMVQwOTo0OTo1MyswODowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyNi0wOC0xMVQwOTo0OTo1MyswODowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OGFkYTViYjctYjU4OC00YzgwLTljMWYtMmYwMTE0MDc4NDAyIiB4bXBNTTpEb2N1bWVu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" width="30" height="30" style="object-fit:contain"/>
             </div>
             <div style="flex:1;min-width:0">
-              <div style="font-size:17px;font-weight:600;color:var(--tx)">ZenWiFi BT6</div>
+              <div style="font-size:17px;font-weight:600;color:var(--tx)">RT-BE88U</div>
               <div style="font-size:11px;color:var(--t3);margin-top:1px">Home</div>
             </div>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
           <div style="display:flex;align-items:center;gap:12px;padding:11px 20px;cursor:pointer" id="dr-r3">
-            <div style="width:38px;height:38px;border-radius:10px;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='%238A93AA' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='14' width='20' height='6' rx='1'/%3E%3Cpath d='M8 17h.01M12 17h.01'/%3E%3Cpath d='M12 14V8M8 11l4-4 4 4'/%3E%3C/svg%3E" width="24" height="24"/>
+            <div style="width:38px;height:38px;border-radius:10px;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABlCAYAAAC7vkbxAAAACXBIWXMAAAsTAAALEwEAmpwYAAAE9WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgMTAuMC1jMDAwIDc5LmQyMGU0NjYzMCwgMjAyNS8xMi8wOS0wMjoxMToyMyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDI3LjcgKE1hY2ludG9zaCkiIHhtcDpDcmVhdGVEYXRlPSIyMDI2LTA4LTExVDA5OjQ5OjA1KzA4OjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyNi0wOC0xMVQxMzo1MzowNCswODowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyNi0wOC0xMVQxMzo1MzowNCswODowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OWNkNjU2ZDAtMGUzNS00ZjEzLWIxMWUtYTVlMWU0MzA3ZmRiIiB4bXBNTTpEb2N1bWVu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" width="30" height="30" style="object-fit:contain"/>
             </div>
             <div style="flex:1;min-width:0">
-              <div style="font-size:17px;font-weight:600;color:var(--tx)">ZenWiFi ET8</div>
+              <div style="font-size:17px;font-weight:600;color:var(--tx)">ZenWiFi XD4</div>
               <div style="font-size:11px;color:var(--t3);margin-top:1px">Office</div>
             </div>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
@@ -1620,7 +1566,7 @@ body{display:flex;align-items:center;justify-content:center}
 
   <!-- OV: AIMESH DETAIL -->
   <!-- SUB: AiMesh Network Map (full page) -->
-  <div class="sub" id="ov-mesh">
+  <div class="sub" id="ov-mesh" style="bottom:84px">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--bd);flex-shrink:0">
       <div class="bk" id="mesh-map-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
       <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">網路地圖</div>
@@ -1653,7 +1599,7 @@ body{display:flex;align-items:center;justify-content:center}
             </div>
           </div>
           <div style="font-size:14px;font-weight:700;color:var(--tx);margin-top:8px">客廳（主路由器）</div>
-          <div style="font-size:11px;color:var(--t3);margin-top:1px">ZenWiFi BT10(主路由)</div>
+          <div style="font-size:11px;color:var(--t3);margin-top:1px">ZenWiFi BT10</div>
           <div style="font-size:12px;color:var(--gn);margin-top:2px">● 良好</div>
         </div>
         <!-- Fork connectors -->
@@ -1673,7 +1619,7 @@ body{display:flex;align-items:center;justify-content:center}
               </div>
             </div>
             <div style="font-size:13px;font-weight:600;color:var(--tx);margin-top:8px">臥室（節點）</div>
-            <div style="font-size:10.5px;color:var(--t3);margin-top:1px">RT-BE88U(臥室)</div>
+            <div style="font-size:10.5px;color:var(--t3);margin-top:1px">RT-BE88U</div>
             <div style="font-size:11px;color:var(--gn);margin-top:2px">● 良好</div>
           </div>
           <div style="text-align:center;width:47%;cursor:pointer" onclick="openNodeDetail('kitchen')">
@@ -1686,7 +1632,7 @@ body{display:flex;align-items:center;justify-content:center}
               </div>
             </div>
             <div style="font-size:13px;font-weight:600;color:var(--tx);margin-top:8px">廚房（節點）</div>
-            <div style="font-size:10.5px;color:var(--t3);margin-top:1px">ZenWiFi XD4（廚房）</div>
+            <div style="font-size:10.5px;color:var(--t3);margin-top:1px">ZenWiFi XD4</div>
             <div id="mesh-kitchen-status" style="font-size:11px;color:var(--gn);margin-top:2px">● 良好</div>
           </div>
         </div>
@@ -1787,12 +1733,11 @@ body{display:flex;align-items:center;justify-content:center}
           <div style="font-size:16px;font-weight:700;color:#fff">ASUS_Home</div>
           <div style="margin-left:auto;background:rgba(255,255,255,.2);border-radius:10px;padding:3px 10px;font-size:12px;color:#fff;font-weight:600">啟用中</div>
         </div>
-        <div style="display:flex;gap:16px">
+        <div style="display:flex;align-items:flex-end;gap:16px">
           <div style="text-align:center"><div style="font-size:18px;font-weight:700;color:#fff">5</div><div style="font-size:10px;color:rgba(255,255,255,.7);margin-top:1px">GHz</div></div>
-          <div style="width:1px;background:rgba(255,255,255,.2)"></div>
-          <div style="text-align:center"><div style="font-size:18px;font-weight:700;color:#fff">149</div><div style="font-size:10px;color:rgba(255,255,255,.7);margin-top:1px">頻道</div></div>
-          <div style="width:1px;background:rgba(255,255,255,.2)"></div>
+          <div style="width:1px;background:rgba(255,255,255,.2);align-self:stretch"></div>
           <div style="text-align:center"><div style="font-size:18px;font-weight:700;color:#fff">WPA3</div><div style="font-size:10px;color:rgba(255,255,255,.7);margin-top:1px">加密</div></div>
+          <div style="margin-left:auto;text-align:right;font-size:11px;color:rgba(255,255,255,.85);font-family:var(--m);line-height:1.5">192.168.56.1<br>8D:AA:6E:5C:DA</div>
         </div>
       </div>
 
@@ -1872,13 +1817,15 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="background:var(--w)">
         <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">網路名稱（SSID）</div></div><span style="font-size:14px;color:var(--t2);font-weight:500">ASUS_Home_5G</span></div>
         <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">密碼</div></div><span style="font-size:14px;color:var(--t2);font-weight:500;letter-spacing:2px">••••••••</span></div>
-        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">安全加密</div></div><span style="font-size:14px;color:var(--t2)">WPA3-Personal</span></div>
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">安全加密</div></div><span style="font-size:14px;color:var(--t2)">WPA3-Personal</span></div>
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">MAC 位址</div></div><span style="font-size:14px;color:var(--t2);font-family:var(--m)">AC:9E:17:5D:20:01</span></div>
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">IP 位址</div></div><span style="font-size:14px;color:var(--t2);font-family:var(--m)">192.168.1.1</span></div>
       </div>
       <span class="sl">頻段設定</span>
       <div style="background:var(--w)">
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">2.4 GHz</div><div style="font-size:13px;color:var(--t3);margin-top:2px">頻道 6 · 40 MHz</div></div><div class="tg on" id="tg-24g"></div></div>
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">5 GHz</div><div style="font-size:13px;color:var(--t3);margin-top:2px">頻道 149 · 160 MHz</div></div><div class="tg on" id="tg-5g"></div></div>
-        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">6 GHz</div><div style="font-size:13px;color:var(--t3);margin-top:2px">頻道 37 · 320 MHz</div></div><div class="tg on" id="tg-6g"></div></div>
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">2.4 GHz</div><div style="font-size:13px;color:var(--t3);margin-top:2px">40 MHz</div></div><div class="tg on" id="tg-24g"></div></div>
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">5 GHz</div><div style="font-size:13px;color:var(--t3);margin-top:2px">160 MHz</div></div><div class="tg on" id="tg-5g"></div></div>
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">6 GHz</div><div style="font-size:13px;color:var(--t3);margin-top:2px">320 MHz</div></div><div class="tg on" id="tg-6g"></div></div>
       </div>
       <span class="sl">進階</span>
       <div style="background:var(--w)">
@@ -1993,11 +1940,6 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="background:var(--w)">
         <div class="sr" onclick="show('sub-change-pwd')" style="cursor:pointer"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">修改密碼</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Face ID / 密碼鎖</div></div><div class="tg on" id="tg-faceid"></div></div>
-      </div>
-      <span class="sl">通知</span>
-      <div style="background:var(--w)">
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">安全警報</div></div><div class="tg on" id="tg-sec-notif"></div></div>
-        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">韌體更新通知</div></div><div class="tg on" id="tg-fw-notif"></div></div>
       </div>
       <div style="padding:24px 16px">
         <div style="height:50px;border-radius:var(--r2);background:var(--rd);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:#fff;cursor:pointer">登出</div>
@@ -2166,20 +2108,6 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="font-size:13px;color:var(--t3)">勾選裝置後點「套用」，所選裝置將暫停網路存取。</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)" id="pause-list">
-      <!-- Injected by JS -->
-    </div>
-  </div>
-
-  <!-- SUB: 黑名單 -->
-  <div class="sub" id="sub-blacklist">
-    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" id="blacklist-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="font-size:17px;font-weight:600;color:var(--tx)">黑名單</div>
-    </div>
-    <div style="background:var(--w);padding:10px 16px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div style="font-size:13px;color:var(--t3)">加入黑名單的裝置將永久禁止連上網路，直到手動移除。</div>
-    </div>
-    <div style="flex:1;overflow-y:auto;background:var(--bg)" id="blacklist-list">
       <!-- Injected by JS -->
     </div>
   </div>
@@ -3489,6 +3417,7 @@ function show(id){var e=g(id);if(e)e.classList.add('on')}
 function hide(id){var e=g(id);if(e)e.classList.remove('on')}
 function bind(id,fn){var e=g(id);if(e)e.addEventListener('click',fn)}
 function goTab(t){
+  stopDevTrafficSim();
   TABS.forEach(function(x){
     var p=g('pg-'+x),tb=g('tab-'+x);
     if(p)p.classList.remove('on');
@@ -3501,7 +3430,7 @@ function goTab(t){
   if(ct){ct.scrollTop=0;}
   // hide family back when switching tabs normally
   if(t==='family'){var fb=document.getElementById('family-back-btn');if(fb)fb.style.display='none';}
-  ['sub-dev','sub-notif','sub-diag','sub-suggestions','sub-energy','sub-aipro-detail','sub-wifi-insight','sub-theme','sub-main-wifi','sub-reboot','sub-account','sub-led','sub-passwords','sub-pause','sub-scan','sub-mesh-opt','sub-mesh-addnode','sub-adddev','sub-speedtest','sub-traffic','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-ifttt','sub-pro-smarthome','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-report','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-faq','sub-network','sub-network-iot','sub-network-sdn','sub-aura','sub-nightmode','sub-routerinfo','sub-firmware','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-wifiadv','sub-pro-restartsched','sub-pro-energy','sub-node-detail','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','ov-mesh'].forEach(hide);
+  ['sub-dev','sub-notif','sub-diag','sub-suggestions','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-wifi-insight','sub-theme','sub-main-wifi','sub-reboot','sub-account','sub-led','sub-passwords','sub-pause','sub-scan','sub-mesh-opt','sub-mesh-addnode','sub-adddev','sub-speedtest','sub-traffic','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-ifttt','sub-pro-smarthome','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-faq','sub-network','sub-network-iot','sub-network-sdn','sub-aura','sub-nightmode','sub-routerinfo','sub-firmware','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-wifiadv','sub-pro-restartsched','sub-pro-energy','sub-node-detail','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','ov-mesh'].forEach(hide);
   // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
     var bar=document.getElementById('ai-input-bar');
@@ -3521,27 +3450,28 @@ function goTab(t){
 }
 // ── Device detail: shared building blocks (used by openDev + openMeshDevice) ──
 var _svgDevPause='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
+var _svgDevPlay='<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="6 4 20 12 6 20"/></svg>';
 var _svgDevBlock='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>';
 var _svgDevAdd='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>';
 var _chevSm='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>';
 function devSectionLabel(text){
-  return '<div style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.9px;text-transform:uppercase;padding:18px 2px 8px">'+text+'</div>';
+  return '<div style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.9px;text-transform:uppercase;padding:8px 2px 4px">'+text+'</div>';
 }
 function devTrafficCard(){
-  function row(label,color,arrowUp,val,last){
+  function row(label,color,arrowUp,valId,last){
     var icon=arrowUp
       ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="6"/><polyline points="6 12 12 6 18 12"/></svg>'
       : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="4" x2="12" y2="18"/><polyline points="6 12 12 18 18 12"/></svg>';
     return '<div style="display:flex;align-items:center;padding:10px 0;'+(last?'':'border-bottom:1px solid var(--bd)')+'">'
       +'<div style="width:34px;height:34px;border-radius:50%;background:'+color+';display:flex;align-items:center;justify-content:center;flex-shrink:0">'+icon+'</div>'
       +'<div style="flex:1;margin-left:12px;font-size:14px;color:var(--tx);font-weight:500">'+label+'</div>'
-      +'<div style="font-size:14px;font-weight:600;color:var(--tx);font-family:var(--m);margin-right:6px">'+val+'</div>'
+      +'<div id="'+valId+'" style="font-size:14px;font-weight:600;color:var(--tx);font-family:var(--m);margin-right:6px">0.00 Kbps</div>'
       +_chevSm
     +'</div>';
   }
   return '<div style="background:var(--w);border-radius:var(--r);padding:0 14px;margin-bottom:14px;box-shadow:var(--sh)">'
-    +row('下載','var(--ac)',false,'0.00 Kbps',false)
-    +row('上傳','var(--gn)',true,'0.00 Kbps',true)
+    +row('下載','var(--ac)',false,'dev-traf-down',false)
+    +row('上傳','var(--gn)',true,'dev-traf-up',true)
   +'</div>';
 }
 var _nodeBwLimitSet={};
@@ -3601,12 +3531,13 @@ function devHeader(d,nodeName,blocked,paused,nodeId,idx){
   var weak=d.band!=='有線'&&d.signal==='weak';
   var gradient=blocked?'linear-gradient(135deg,#E57373,#EF9A9A)':
     status==='offline'?'linear-gradient(135deg,#AEB7C4,#D2D8E0)':
+    paused?'linear-gradient(135deg,#F5B570,#E8863A)':
     weak?'linear-gradient(135deg,#F5B570,#E8863A)':
     'linear-gradient(135deg,#4A8FE0,#6AAAF0)';
   var pauseDisabled=blocked;
   var actions='<div style="display:flex;justify-content:flex-end;gap:22px;margin-top:20px">'
     +devHeaderAction(_svgDevBlock,blocked?'解除封鎖':'封鎖網路',false,'toggleMeshDeviceBlock(\''+nodeId+'\','+idx+')')
-    +devHeaderAction(_svgDevPause,paused?'解除暫停':'暫停網路',pauseDisabled,'toggleMeshDevicePause(\''+nodeId+'\','+idx+')')
+    +devHeaderAction(paused?_svgDevPlay:_svgDevPause,paused?'解除暫停':'暫停網路',pauseDisabled,'toggleMeshDevicePause(\''+nodeId+'\','+idx+')')
   +'</div>';
   return '<div style="margin-bottom:14px;border-radius:var(--r2);overflow:hidden;position:relative;background:'+gradient+';padding:26px 18px 22px;box-shadow:var(--sh)">'
     +'<div style="display:flex;align-items:center;gap:16px">'
@@ -3624,6 +3555,7 @@ function devHeader(d,nodeName,blocked,paused,nodeId,idx){
 }
 function openDev(type){
   show('sub-dev');
+  stopDevTrafficSim();
   var title=g('dev-title'),body=g('dev-body');
   if(title)title.textContent='陌生裝置';
   if(body)body.innerHTML='<div style="padding:20px">'+
@@ -3646,38 +3578,30 @@ function selAge(el){
 
 // ── Quick Action definitions ──
 var QA_ALL = [
+  {id:'qa-airpt',       icon:'sparkle', label:'AI Insight',       action:'aireport'},
   {id:'qa-wifi',        icon:'wifi',    label:'分享 Wi-Fi',        action:'wifi'},
   {id:'qa-diag',        icon:'search',  label:'網路診斷',          action:'diag'},
-  {id:'qa-pass',        icon:'lock',    label:'查看 Wi-Fi 密碼',    action:'passwords'},
   {id:'qa-speed',       icon:'speed',   label:'網速測試',          action:'speed'},
   {id:'qa-guest',       icon:'users',   label:'訪客網路',          action:'guest'},
   {id:'qa-wifiset',     icon:'wifi2',   label:'Wi-Fi 設定',        action:'wifiset'},
   {id:'qa-iot',         icon:'iot',     label:'IoT 網路',          action:'iot'},
   {id:'qa-meshadd',     icon:'plus',    label:'新增節點',   action:'meshadd'},
   {id:'qa-meshopt',     icon:'mesh',    label:'Mesh 最佳化',        action:'meshopt'},
-  {id:'qa-meshdiag',    icon:'search',  label:'Mesh 診斷',          action:'meshdiag'},
-  {id:'qa-meshstat',    icon:'chart',   label:'查看節點狀態',       action:'meshstat'},
   {id:'qa-family',      icon:'users',   label:'家長監控',           action:'family'},
-  {id:'qa-parental',    icon:'child',   label:'家長監護',          action:'parental'},
   {id:'qa-sched',       icon:'clock',   label:'上網排程',          action:'sched'},
-  {id:'qa-pause',       icon:'pause',   label:'暫停裝置',          action:'pause'},
-  {id:'qa-devmgmt',     icon:'devmgmt', label:'裝置管理',          action:'devmgmt'},
   {id:'qa-aiprotect',   icon:'shield',  label:'AiProtection',      action:'aiprotect'},
-  {id:'qa-blacklist',   icon:'ban',     label:'黑名單',            action:'blacklist'},
-  {id:'qa-instantguard',icon:'shield',  label:'Instant Guard（VPN）',action:'instantguard'},
-  {id:'qa-vpnc',        icon:'lock',    label:'VPN Client',        action:'vpnc'},
-  {id:'qa-vpns',        icon:'lock',    label:'VPN Server',        action:'vpns'},
   {id:'qa-fw',          icon:'upload',  label:'韌體更新',          action:'fw'},
   {id:'qa-reboot',      icon:'reboot',  label:'路由器重新開機',     action:'reboot'},
-  {id:'qa-led',         icon:'led',     label:'LED 開關',          action:'led'},
+  {id:'qa-led',         icon:'led',     label:'系統LED燈號',        action:'led'},
   {id:'qa-backup',      icon:'cloud',   label:'備份／還原設定',     action:'backup'},
 ];
 
 var QA_CATEGORIES = [
-  {name:'網路', emoji:'🌐', ids:['qa-wifi','qa-pass','qa-wifiset','qa-guest','qa-iot','qa-diag','qa-speed']},
-  {name:'AiMesh', emoji:'📡', ids:['qa-meshadd','qa-meshopt','qa-meshdiag','qa-meshstat']},
-  {name:'家庭', emoji:'👨‍👩‍👧', ids:['qa-family','qa-parental','qa-sched','qa-pause','qa-devmgmt']},
-  {name:'安全', emoji:'🔒', ids:['qa-aiprotect','qa-blacklist','qa-instantguard','qa-vpnc','qa-vpns']},
+  {name:'AI', emoji:'✨', ids:['qa-airpt']},
+  {name:'網路', emoji:'🌐', ids:['qa-wifi','qa-wifiset','qa-guest','qa-iot','qa-diag','qa-speed']},
+  {name:'AiMesh', emoji:'📡', ids:['qa-meshadd','qa-meshopt']},
+  {name:'家庭', emoji:'👨‍👩‍👧', ids:['qa-family','qa-sched']},
+  {name:'安全', emoji:'🔒', ids:['qa-aiprotect']},
   {name:'系統', emoji:'⚙️', ids:['qa-fw','qa-reboot','qa-led','qa-backup']},
 ];
 
@@ -3710,6 +3634,7 @@ function qaSvg(icon, color) {
     devmgmt: '<line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6" stroke-width="3"/><line x1="3" y1="12" x2="3.01" y2="12" stroke-width="3"/><line x1="3" y1="18" x2="3.01" y2="18" stroke-width="3"/>',
     led:     '<path d="M9 18h6M10 22h4M12 2a7 7 0 00-7 7c0 2.7 1.5 4.2 2.5 5.7S9 17 9 18h6c0-1 .5-1.5 1.5-3S19 11.7 19 9a7 7 0 00-7-7z"/>',
     cloud:   '<path d="M8 17a4 4 0 01-.6-7.96A5 5 0 0117.9 9.05 3.5 3.5 0 0117 17H8z"/>',
+    sparkle: '<path d="M18.71,9.63c-.08,0-.14-.04-.16-.12-.22-.84-.63-1.56-1.25-2.17s-1.33-1.03-2.17-1.25c-.08-.03-.12-.08-.12-.16,0-.1.04-.15.12-.16.84-.22,1.56-.63,2.17-1.25s1.03-1.33,1.25-2.17c.03-.08.08-.12.16-.12s.14.04.16.12c.22.84.63,1.56,1.25,2.17s1.33,1.03,2.17,1.25c.08.01.12.07.12.16,0,.08-.04.14-.12.16-.84.22-1.56.63-2.17,1.25s-1.03,1.33-1.25,2.17c-.01.08-.07.12-.16.12Z" fill="'+color+'" stroke="none"/><path d="M10.44,22.42c-.21,0-.35-.1-.42-.31-.56-2.12-1.61-3.96-3.16-5.51s-3.38-2.6-5.51-3.16c-.21-.07-.31-.21-.31-.42,0-.24.1-.38.31-.42,2.12-.56,3.96-1.61,5.51-3.16s2.6-3.38,3.16-5.51c.07-.21.21-.31.42-.31s.35.1.42.31c.56,2.12,1.61,3.96,3.16,5.51s3.38,2.6,5.51,3.16c.21.03.31.17.31.42,0,.21-.1.35-.31.42-2.12.56-3.96,1.61-5.51,3.16s-2.6,3.38-3.16,5.51c-.03.21-.17.31-.42.31Z" fill="'+color+'" stroke="none"/>',
   };
   var sz = '17';
   return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="none" stroke="'+color+'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+(paths[icon]||'')+'</svg>';
@@ -3723,33 +3648,10 @@ var _notifData = [];
 
 function notifSeedData(){
   return [
-    {id:'n1', cat:'issue', severity:'critical', status:'unresolved', unread:true,
-      title:'家庭網路已中斷',
-      desc:'可能影響 2 個節點與 8 台裝置，Instant Guard 連線也已中止',
-      cause:'系統判斷根因：Internet／WAN 無法連線',
-      duration:'已持續 12 分鐘', time:'14:20', group:'today',
-      merged:[
-        {label:'Internet', status:'離線'},
-        {label:'臥室節點', status:'離線'},
-        {label:'Door Camera', status:'離線'},
-        {label:'TV', status:'離線'},
-        {label:'Instant Guard', status:'已中斷'}
-      ],
-      actions:[{label:'查看問題',kind:'primary',act:'report'},{label:'開始診斷',kind:'secondary',act:'diag'}]},
-    {id:'n2', cat:'issue', severity:'warning', status:'unresolved', unread:true,
-      title:'書房節點連線不穩',
-      desc:'過去 1 小時已中斷 6 次，可能影響 3 台裝置',
-      duration:'最近一次：3 分鐘前', time:'今天', group:'today', occurrences:6,
-      actions:[{label:'開始診斷',kind:'primary',act:'diag'}]},
-    {id:'n3', cat:'issue', severity:'warning', status:'unresolved', unread:true,
-      title:'韌體更新失敗',
-      desc:'更新至 3.0.0.4.390 時發生錯誤，已自動回復為目前版本',
-      duration:'14:10 發生', time:'14:10', group:'today',
-      actions:[{label:'查看詳情',kind:'primary',act:'report'},{label:'重新嘗試更新',kind:'secondary',act:'fw'}]},
-    {id:'n4', cat:'issue', severity:'resolved', status:'auto-resolved', unread:false,
+    {id:'n4', cat:'issue', severity:'resolved', status:'auto-resolved', unread:true,
       title:'客廳節點連線異常', desc:'14:20 發生．14:36 已恢復', time:'14:36', group:'today',
       tag:'已自動恢復', click:'sheet'},
-    {id:'n5', cat:'update', severity:'info', status:'resolved', unread:false,
+    {id:'n5', cat:'update', severity:'info', status:'resolved', unread:true,
       title:'App 版本更新完成', desc:'已更新至 v5.1.3，修正已知問題。', time:'12:05', group:'today',
       tag:'已完成', click:'sheet'},
     {id:'n6', cat:'general', severity:'info', status:'resolved', unread:true,
@@ -3787,33 +3689,6 @@ function notifSeedData(){
       tag:'已排程', click:'fw'}
   ];
 }
-
-var NOTIF_REPORTS = {
-  n1:{
-    summary:'系統偵測到 WAN 連線中斷，導致整個家庭網路無法存取網際網路，連帶影響 2 個 AiMesh 節點與多台裝置。',
-    causes:['ISP 端連線異常或帳號認證失敗','WAN 纜線或數據機連線鬆脫','路由器 WAN 連接埠異常'],
-    impact:['臥室節點：離線','Door Camera：離線','TV：離線','Instant Guard：已中斷連線','受影響裝置：8 台'],
-    checks:['已確認 WAN 連接埠實體連線','已重新嘗試取得 IP 位址（失敗）','已排除路由器內部硬體異常'],
-    suggestions:['確認數據機／光世代設備電源與連線','重新啟動數據機後再重新啟動路由器','若問題持續，請聯繫網路業者（ISP）確認線路狀態'],
-    actions:[{label:'開始診斷',act:'diag'},{label:'重新啟動路由器',act:'reboot'}]
-  },
-  n2:{
-    summary:'書房節點在過去 1 小時內反覆離線又恢復連線共 6 次，訊號穩定度不佳，可能影響該區域 3 台裝置的使用體驗。',
-    causes:['節點與主路由器之間訊號干擾','Backhaul 頻寬不足或頻道壅塞','節點位置訊號覆蓋不佳'],
-    impact:['受影響裝置：3 台（書房區域）','目前狀態：連線中，但不穩定'],
-    checks:['已檢查節點韌體版本為最新','已檢查 Backhaul 連線頻段','已排除節點硬體異常'],
-    suggestions:['調整書房節點擺放位置，避免障礙物遮蔽','執行 Mesh 最佳化，重新配置頻道','若持續不穩，可考慮增加中繼節點'],
-    actions:[{label:'開始診斷',act:'diag'},{label:'執行 Mesh 最佳化',act:'meshopt'}]
-  },
-  n3:{
-    summary:'路由器嘗試將韌體更新至 3.0.0.4.390 時發生錯誤，系統已自動回復為目前穩定版本，網路服務未中斷。',
-    causes:['更新過程中網路連線不穩定導致下載中斷','韌體檔案驗證失敗','更新過程中斷電或重新啟動'],
-    impact:['目前韌體版本：3.0.0.4.388（穩定運作中）','網路服務：未受影響'],
-    checks:['已確認回復後系統運作正常','已驗證目前韌體版本完整性'],
-    suggestions:['確認網路連線穩定後再重新嘗試更新','避免在更新過程中中斷電源','若持續失敗，可嘗試手動下載韌體更新'],
-    actions:[{label:'重新嘗試更新',act:'fw'}]
-  }
-};
 
 function notifIconFor(item){
   var sev = item.severity||'info';
@@ -3854,37 +3729,14 @@ function renderNotifPage(){
   if(banner) banner.style.display = _notifRouterOffline ? 'block' : 'none';
 
   var cat = _notifCurrentCat;
-  var attentionItems = _notifData.filter(function(e){ return e.cat==='issue' && e.status==='unresolved'; });
-  var showAttention = attentionItems.length && (cat==='all' || cat==='issue');
-  var attentionIds = {};
-  attentionItems.forEach(function(e){ attentionIds[e.id] = true; });
+  var showAttention = false;
 
   var timelineItems = _notifData.filter(function(e){
-    if(attentionIds[e.id]) return false;
     return cat==='all' || e.cat===cat;
   });
 
-  // attention section
   var att = g('notif-attention');
-  if(att){
-    if(showAttention){
-      var html = '<div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 8px">'
-        +'<span style="font-size:15px;font-weight:700;color:var(--tx)">需要處理</span>'
-        +'<span style="font-size:13px;font-weight:700;color:var(--rd)">'+attentionItems.length+' 項</span></div>';
-      attentionItems.forEach(function(item){ html += notifAttentionCard(item); });
-      att.innerHTML = html;
-      att.style.display = 'block';
-      att.querySelectorAll('[data-nact]').forEach(function(btn){
-        btn.addEventListener('click', function(e){
-          e.stopPropagation();
-          notifRunAction(btn.getAttribute('data-nid'), btn.getAttribute('data-nact'));
-        });
-      });
-    } else {
-      att.innerHTML = '';
-      att.style.display = 'none';
-    }
-  }
+  if(att){ att.innerHTML = ''; att.style.display = 'none'; }
 
   // timeline
   var tl = g('notif-timeline');
@@ -3940,25 +3792,6 @@ function updateNotifTabDots(){
   if(allDot) allDot.classList.toggle('on', anyUnread);
 }
 
-function notifAttentionIcon(){
-  return '<div style="width:22px;height:22px;border-radius:50%;background:var(--obg);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">'
-    +'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2.5"/></svg></div>';
-}
-function notifAttentionCard(item){
-  var actionsHtml = (item.actions||[]).map(function(a){
-    return '<div data-nid="'+item.id+'" data-nact="'+a.act+'" style="height:28px;padding:0 12px;border-radius:14px;border:1.5px solid var(--ac);background:transparent;color:var(--ac);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;white-space:nowrap;cursor:pointer">'+a.label+'</div>';
-  }).join('');
-  return '<div class="natt-card sev-'+item.severity+'">'
-    +'<div style="display:flex;gap:10px">'
-      + notifAttentionIcon()
-      +'<div style="flex:1;min-width:0">'
-        +'<div style="font-size:16px;font-weight:700;color:var(--tx);margin-bottom:3px">'+item.title+'</div>'
-        +'<div style="font-size:13px;color:var(--t2);line-height:1.5">'+item.desc+'</div>'
-      +'</div>'
-    +'</div>'
-    +'<div style="display:flex;justify-content:flex-end;gap:8px;margin-top:12px">'+actionsHtml+'</div>'
-  +'</div>';
-}
 
 function notifTimelineRow(item){
   var dot = item.unread ? '<div style="width:8px;height:8px;border-radius:50%;background:var(--ac);flex-shrink:0;margin-top:5px"></div>' : '<div style="width:8px;height:8px;flex-shrink:0;margin-top:5px"></div>';
@@ -3978,7 +3811,6 @@ function notifTimelineRow(item){
 }
 
 function notifRunAction(id, act){
-  if(act==='report'){ notifOpenReport(id); return; }
   if(act==='diag'){ show('sub-diag'); return; }
   if(act==='fw'){ show('sub-fw'); return; }
   if(act==='meshopt'){ window._meshOptFromQuick=true; show('sub-mesh-opt'); return; }
@@ -4004,51 +3836,28 @@ function notifOpenSheet(id){
   if(!item) return;
   var body = g('notif-summary-body');
   if(!body) return;
+  var actionsHtml = (item.actions||[]).map(function(a){
+    var primary = a.kind==='primary';
+    return '<div data-nid="'+item.id+'" data-nact="'+a.act+'" style="flex:1;height:44px;border-radius:var(--r2);'
+      +(primary?'background:var(--ac);color:#fff':'background:var(--s2);color:var(--tx)')
+      +';display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;cursor:pointer">'+a.label+'</div>';
+  }).join('');
   body.innerHTML = '<div class="hdl"></div>'
     +'<div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:14px">'+notifIconFor(item)
     +'<div><div style="font-size:17px;font-weight:700;color:var(--tx);margin-bottom:4px">'+item.title+'</div>'
     +'<div style="font-size:11px;color:var(--t3)">'+item.time+'</div></div></div>'
     +'<div style="font-size:14px;color:var(--t2);line-height:1.7;margin-bottom:18px">'+item.desc+'</div>'
     +(item.tag ? '<span class="ntag ntag-info" style="margin-bottom:14px">'+item.tag+'</span><div style="height:14px"></div>' : '')
+    +(actionsHtml ? '<div style="display:flex;gap:10px;margin-bottom:10px">'+actionsHtml+'</div>' : '')
     +'<div onclick="hide(\'ov-notif-summary\')" style="height:48px;border-radius:var(--r2);background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:var(--tx);cursor:pointer">關閉</div>';
-  show('ov-notif-summary');
-}
-
-function notifOpenReport(id){
-  var item = _notifData.find(function(e){ return e.id===id; });
-  var report = NOTIF_REPORTS[id];
-  var body = g('notif-report-body');
-  if(!item || !report || !body) return;
-  var html = '<div style="background:var(--w);border-radius:16px;padding:18px;margin-bottom:14px;box-shadow:var(--sh)">'
-    +'<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">'+notifIconFor(item)
-    +'<div style="font-size:18px;font-weight:700;color:var(--tx)">'+item.title+'</div></div>'
-    +'<div style="font-size:14px;color:var(--t2);line-height:1.7">'+report.summary+'</div></div>';
-
-  function section(title, list){
-    return '<div style="background:var(--w);border-radius:16px;padding:16px 18px;margin-bottom:12px;box-shadow:var(--sh)">'
-      +'<div style="font-size:13px;font-weight:700;color:var(--t3);letter-spacing:.5px;margin-bottom:10px">'+title+'</div>'
-      +list.map(function(l){ return '<div style="display:flex;gap:8px;font-size:14px;color:var(--tx);line-height:1.6;margin-bottom:6px"><span style="color:var(--t3)">•</span><span>'+l+'</span></div>'; }).join('')
-    +'</div>';
-  }
-  html += section('可能原因', report.causes);
-  html += section('影響範圍', report.impact);
-  html += section('已完成的系統檢查', report.checks);
-  html += section('建議處理順序', report.suggestions);
-
-  html += '<div style="background:linear-gradient(135deg,#5CAEFF,#4A89E8);border-radius:16px;padding:16px 18px;margin-bottom:14px;color:#fff">'
-    +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><svg width="18" height="18" viewBox="0 -960 960 960" fill="#fff"><path d="M280-240v-480h80v480h-80ZM440-80v-800h80v800h-80ZM120-400v-160h80v160h-80Zm480 160v-480h80v480h-80Zm160-160v-160h80v160h-80Z"/></svg><span style="font-size:15px;font-weight:700">AI 協助診斷</span></div>'
-    +'<div style="font-size:13px;line-height:1.6;opacity:.95">AI 已根據系統紀錄完成初步分析，可協助進一步排查或直接執行建議的修復步驟。</div>'
-    +'</div>';
-
-  html += '<div style="display:flex;flex-direction:column;gap:10px;padding-bottom:8px">'
-    + report.actions.map(function(a){ return '<div class="nact-btn nact-primary" style="width:100%" data-nid="'+id+'" data-nact="'+a.act+'">'+a.label+'</div>'; }).join('')
-  +'</div>';
-
-  body.innerHTML = html;
   body.querySelectorAll('[data-nact]').forEach(function(btn){
-    btn.addEventListener('click', function(){ notifRunAction(btn.getAttribute('data-nid'), btn.getAttribute('data-nact')); });
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      hide('ov-notif-summary');
+      notifRunAction(btn.getAttribute('data-nid'), btn.getAttribute('data-nact'));
+    });
   });
-  show('sub-notif-report');
+  show('ov-notif-summary');
 }
 
 function notifMarkAllRead(){
@@ -4066,18 +3875,12 @@ function notifClearCompleted(){
 function updateBellBadge(){
   var badge = g('h-notif-badge');
   if(!badge) return;
-  var critCount = _notifData.filter(function(e){ return e.cat==='issue' && e.status==='unresolved'; }).length;
-  var anyUnread = _notifData.some(function(e){ return e.unread; });
-  if(critCount > 0){
+  var unreadCount = _notifData.filter(function(e){ return e.unread; }).length;
+  if(unreadCount > 0){
     badge.style.display = 'flex';
-    badge.style.background = 'var(--rd)';
-    badge.textContent = critCount > 9 ? '9+' : String(critCount);
-    badge.style.width = ''; badge.style.height='';
-  } else if(anyUnread){
-    badge.style.display = 'flex';
-    badge.style.background = 'var(--ac)';
-    badge.textContent = '';
-    badge.style.width = '10px'; badge.style.height = '10px';
+    badge.style.background = 'var(--or)';
+    badge.textContent = unreadCount > 9 ? '9+' : String(unreadCount);
+    badge.style.width = ''; badge.style.height = '';
   } else {
     badge.style.display = 'none';
   }
@@ -4167,7 +3970,7 @@ function applyNetState(){
   drawBannerCanvas(err);
   var sc = document.querySelector('.sc'); if(sc) sc.style.background = err ? 'linear-gradient(140deg,#F5B570,#E8863A,#DB7328)' : '';
   var meshStatus = g('mesh-summary-status');
-  if(meshStatus){ meshStatus.textContent = err ? '不佳' : '良好'; meshStatus.style.color = err ? 'var(--or)' : 'var(--gn)'; }
+  if(meshStatus){ meshStatus.textContent = err ? '注意' : '良好'; meshStatus.style.color = err ? 'var(--or)' : 'var(--gn)'; }
   var wifiCard = g('wifi-status-card');
   if(wifiCard){
     wifiCard.style.background = err ? 'linear-gradient(140deg,#F5B570,#E8863A,#DB7328)' : 'linear-gradient(140deg,#3B87E0,#6AAAF0)';
@@ -4253,15 +4056,15 @@ function renderQAGrid() {
     if (!item) return;
     var label = item.label.replace(/\n/g, ' ');
     html += '<div data-action="' + item.action + '" style="'
-      + 'background:var(--w);border-radius:14px;padding:18px 16px;'
-      + 'display:flex;flex-direction:row;align-items:center;gap:16px;'
-      + 'cursor:pointer;box-shadow:var(--sh);'
+      + 'background:var(--w);border-radius:14px;padding:16px 14px;'
+      + 'display:flex;flex-direction:row;align-items:center;gap:12px;'
+      + 'cursor:pointer;box-shadow:var(--sh);min-width:0;overflow:hidden;'
       + '">'
-      + '<div style="width:46px;height:46px;border-radius:50%;background:var(--ib);'
+      + '<div style="width:40px;height:40px;border-radius:50%;background:var(--ib);'
       + 'display:flex;align-items:center;justify-content:center;flex-shrink:0;">'
       + qaSvg(item.icon)
       + '</div>'
-      + '<span style="font-size:15px;font-weight:600;color:var(--tx);white-space:nowrap;">'
+      + '<span style="font-size:13.5px;font-weight:600;color:var(--tx);white-space:normal;line-height:1.3;flex:1;min-width:0;">'
       + label
       + '</span>'
       + '</div>';
@@ -4271,29 +4074,20 @@ function renderQAGrid() {
   grid.querySelectorAll('[data-action]').forEach(function(el) {
     el.addEventListener('click', function() {
       var act = el.getAttribute('data-action');
-      if      (act==='wifi')        show('ov-wifi');
+      if      (act==='aireport')    { renderAIReport(); show('sub-ai-report'); }
+      else if (act==='wifi')        show('ov-wifi');
       else if (act==='guest')       show('ov-guest');
       else if (act==='diag')        show('sub-diag');
       else if (act==='wifiset')     show('sub-main-wifi');
-      else if (act==='passwords')   show('sub-passwords');
-      else if (act==='pause')       { buildPauseList(); show('sub-pause'); }
-      else if (act==='blacklist')   { buildBlacklist(); show('sub-blacklist'); }
       else if (act==='fw')          show('sub-fw');
       else if (act==='meshopt')     { window._meshOptFromQuick=true; show('sub-mesh-opt'); }
       else if (act==='meshadd')     { window._meshAddFromQuick=true; show('sub-mesh-addnode'); }
-      else if (act==='meshdiag')    show('sub-diag');
-      else if (act==='meshstat')    show('ov-mesh');
       else if (act==='sched')       show('sub-sched-home');
       else if (act==='reboot')      show('sub-reboot');
       else if (act==='speed')       show('sub-speedtest');
       else if (act==='iot')         goTab('settings');
       else if (act==='family')      { goTab('family'); var fb=document.getElementById('family-back-btn'); if(fb)fb.style.display='flex'; }
-      else if (act==='parental')    { goTab('family'); var fb=document.getElementById('family-back-btn'); if(fb)fb.style.display='flex'; }
-      else if (act==='devmgmt')     { goTab('devices'); var b=document.getElementById('devices-back-btn'); if(b)b.style.display='flex'; }
       else if (act==='aiprotect')   show('sub-aipro-detail');
-      else if (act==='instantguard')show('sub-pro-vpns');
-      else if (act==='vpnc')        show('sub-pro-vpnc');
-      else if (act==='vpns')        show('sub-pro-vpns');
       else if (act==='led')         show('sub-led');
       else if (act==='backup')      show('sub-pro-admin');
     });
@@ -4448,11 +4242,16 @@ function initInfoCards(){
 window.addEventListener('load',function(){
   renderQAGrid();
   renderDevicesTab();
+  renderAiproMalsite();
   notifLoadScenario('default');
   initInfoCards();
   (function(){
     var avatarImg=g('h-avatar-img'),drawerImg=g('drawer-avatar-img');
     if(avatarImg&&drawerImg)drawerImg.src=avatarImg.src;
+  })();
+  (function(){
+    var routerImg=g('router-product-img'),dr1Img=g('dr-r1-img');
+    if(routerImg&&dr1Img)dr1Img.src=routerImg.src;
   })();
   var meshCount=g('mesh-node-count'); if(meshCount) meshCount.textContent=Object.keys(MESH_NODES).length;
   // ── Live traffic numbers (home status card) ──
@@ -4486,7 +4285,12 @@ window.addEventListener('load',function(){
   // devices
   bind('dev-back',function(){
     hide('sub-dev');
-    if(window._devDetailReturnTo){
+    stopDevTrafficSim();
+    if(window._devDetailReturnToAI){
+      window._devDetailReturnToAI=false;
+      show('sub-ai-report');
+    }
+    else if(window._devDetailReturnTo){
       var backTo=window._devDetailReturnTo;
       window._devDetailReturnTo=null;
       renderNodeDetail(backTo);
@@ -4540,7 +4344,6 @@ window.addEventListener('load',function(){
   // notif
   bind('notif-back',function(){hide('sub-notif');});
   bind('notif-more-btn',function(){show('ov-notif-more');});
-  bind('notif-report-back',function(){hide('sub-notif-report');});
   bind('notif-settings-back',function(){hide('sub-notif-settings');});
   bind('notif-impdev-back',function(){hide('sub-notif-impdev');});
   bind('notif-unk',function(){hide('sub-notif');openDev('unknown');});
@@ -4548,7 +4351,18 @@ window.addEventListener('load',function(){
   // AI module bindings
   bind('suggest-back',function(){hide('sub-suggestions');});
   bind('energy-back',function(){hide('sub-energy');});
-  bind('aipro-detail-back',function(){hide('sub-aipro-detail');});
+  bind('ai-report-back',function(){
+    hide('sub-ai-report');
+    if(window._aiReportBackToHistory){window._aiReportBackToHistory=false;show('sub-ai-history');}
+  });
+  bind('ai-history-btn',function(){renderAIHistory();show('sub-ai-history');});
+  bind('ai-history-back',function(){hide('sub-ai-history');});
+  bind('aipro-detail-back',function(){
+    hide('sub-aipro-detail');
+    if(window._aiproBackToAI){window._aiproBackToAI=false;show('sub-ai-report');}
+  });
+  bind('aipro-scan-btn',function(){runAiproScan();});
+  bind('aipro-malsite-back',function(){hide('sub-aipro-malsite');});
   bind('wifi-insight-back',function(){hide('sub-wifi-insight');});
   // hide toolbar when AI input focused (keyboard open)
   document.addEventListener('focusin',function(e){
@@ -4558,7 +4372,7 @@ window.addEventListener('load',function(){
     if(e.target&&e.target.id==='ai-input'){setTimeout(function(){var tb=document.querySelector('.tb');if(tb)tb.style.display='';if(window._updateAIInputBar)window._updateAIInputBar();},150);}
   });
   // security rows
-  var secRows=[['Default username & password','Passed'],['UPnP Service','Passed'],['Web Access from WAN','Passed'],['Ping from WAN','Passed'],['Remote Administration','Passed'],['Firmware Version','Latest Version'],['WiFi Encryption','WPA3 Enabled']];
+  var secRows=[['預設帳號密碼','通過'],['UPnP 服務','通過'],['WAN 端網頁存取','通過'],['WAN 端 Ping 回應','通過'],['遠端管理','通過'],['韌體版本','最新版本'],['Wi-Fi 加密','已啟用 WPA3']];
   var secEl=document.getElementById('security-rows');
   if(secEl){secEl.innerHTML=secRows.map(function(r,i){return '<div style="display:flex;align-items:center;padding:13px 16px;'+(i<secRows.length-1?'border-bottom:1px solid var(--bd)':'')+'"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">'+r[0]+'</div><div style="font-size:12px;color:var(--gn);margin-top:2px;font-weight:500">'+r[1]+'</div></div><div style="width:24px;height:24px;border-radius:50%;background:var(--gbg);display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>';}).join('');}
   // theme sub page
@@ -4690,26 +4504,12 @@ window.addEventListener('load',function(){
     g('stab-general').style.borderBottomColor='transparent';
   });
   bind('s-fw',function(){show('sub-fw');});
-  bind('fw-back',function(){hide('sub-fw');});
-  bind('s-aip',function(){show('sub-aip');});
-  bind('aip-back',function(){hide('sub-aip');});
-  bind('tg-autoupdate',function(){g('tg-autoupdate').classList.toggle('on');});
-  bind('tg-adblock',function(){var e=g('tg-adblock');if(e)e.classList.toggle('on');});
-  bind('tg-aip-master',function(){
-    var tg=g('tg-aip-master');
-    tg.classList.toggle('on');
-    var on=tg.classList.contains('on');
-    var det=g('aip-details');
-    if(det) det.style.display=on?'block':'none';
-    // sync settings row subtitle
-    var sub=document.querySelector('#s-aip .sbd div:last-child, #s-aip div[style*="font-size:12px"]');
-    var rows=document.querySelectorAll('#s-aip div');
-    rows.forEach(function(el){
-      if(el.textContent==='即時保護 · 啟用中'||el.textContent==='尚未啟用'){
-        el.textContent=on?'即時保護 · 啟用中':'尚未啟用';
-      }
-    });
+  bind('fw-back',function(){
+    hide('sub-fw');
+    if(window._fwBackToAI){window._fwBackToAI=false;show('sub-ai-report');}
   });
+  bind('s-aip',function(){renderAiproMalsite();show('sub-aipro-detail');});
+  bind('tg-autoupdate',function(){g('tg-autoupdate').classList.toggle('on');});
   bind('fw-update-btn',function(){
     var btn=g('fw-update-btn');
     if(btn){btn.textContent='更新中…';btn.style.background='var(--t3)';btn.style.cursor='default';}
@@ -4734,7 +4534,6 @@ window.addEventListener('load',function(){
   bind('led-back',function(){hide('sub-led');});
   bind('passwords-back',function(){hide('sub-passwords');});
   bind('pause-back',function(){hide('sub-pause');});
-  bind('blacklist-back',function(){hide('sub-blacklist');});
   bind('node-detail-back',function(){hide('sub-node-detail');if(window._nodeDetailReturnTo==='ov-mesh')show('ov-mesh');});
   bind('node-led-back',function(){hide('sub-node-led');backToNodeDetail();});
   bind('node-aura-back',function(){hide('sub-node-aura');backToNodeDetail();});
@@ -4742,7 +4541,12 @@ window.addEventListener('load',function(){
   bind('node-restart-back',function(){hide('sub-node-restart');backToNodeDetail();});
   bind('node-optimize-back',function(){
     hide('sub-node-optimize');
-    if(window._nodeOptFromWifiIssue){ window._nodeOptFromWifiIssue=false; show('sub-wifi'); }
+    if(window._nodeOptBackToAI){ window._nodeOptBackToAI=false; show('sub-ai-report'); }
+    else if(window._nodeOptFromDeviceDetail){
+      var ctx=window._nodeOptFromDeviceDetail; window._nodeOptFromDeviceDetail=null;
+      renderMeshDeviceDetail(ctx.nodeId,ctx.idx); show('sub-dev');
+    }
+    else if(window._nodeOptFromWifiIssue){ window._nodeOptFromWifiIssue=false; show('sub-wifi'); }
     else backToNodeDetail();
   });
   bind('node-rename-save',function(){
@@ -4900,23 +4704,6 @@ function buildPauseList(){
 }
 function togglePause(idx){_pausedSet[idx]=!_pausedSet[idx];buildPauseList();}
 
-// ── Blacklist ──
-var _blacklistSet={};
-function buildBlacklist(){
-  var el=document.getElementById('blacklist-list');if(!el)return;
-  el.innerHTML='<span class="sl">所有裝置</span><div style="background:var(--w)">'+
-  PAUSE_DEVICES.map(function(d,i){
-    var b=_blacklistSet[i];
-    return '<div style="display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid var(--bd)">'+
-      '<div style="width:42px;height:42px;border-radius:12px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0">'+d.icon+'</div>'+
-      '<div style="flex:1"><div style="font-size:17px;font-weight:600;color:'+(b?'var(--t3)':'var(--tx)')+'">'+d.name+'</div>'+
-      '<div style="font-size:12px;color:var(--t3);margin-top:2px">'+d.band+' · '+d.node+(b?' · <span style="color:var(--rd)">已封鎖</span>':'')+'</div></div>'+
-      '<div onclick="toggleBlacklist('+i+')" style="padding:6px 12px;border-radius:14px;font-size:12px;font-weight:600;cursor:pointer;flex-shrink:0;background:'+(b?'var(--ib)':'#E53E3E1A')+';color:'+(b?'var(--is)':'var(--rd)')+'">'+(b?'解除':'加入黑名單')+'</div>'+
-      '</div>';
-  }).join('')+'</div>';
-}
-function toggleBlacklist(idx){_blacklistSet[idx]=!_blacklistSet[idx];buildBlacklist();}
-
 // ── Mesh node detail ──
 var MESH_NODES={
   living:{
@@ -5050,7 +4837,7 @@ function deviceRowHtml(nodeId,idx,d,sigOverride){
     +'<div style="flex:1;min-width:0"><div style="font-size:17px;font-weight:600;color:var(--tx)">'+deviceDisplayName(d)+'</div>'+(subtitle?'<div style="font-size:14px;color:var(--t3);margin-top:2px">'+subtitle+'</div>':'')+statusLine+'</div>'
     +'<div style="display:flex;gap:8px;flex-shrink:0;align-items:center">'
       +'<div onclick="event.stopPropagation();toggleMeshDeviceBlock(\''+nodeId+'\','+idx+')" style="width:36px;height:36px;border-radius:50%;background:'+blockBg+';color:'+blockColor+';display:flex;align-items:center;justify-content:center;cursor:pointer">'+_svgDevBlock+'</div>'
-      +'<div onclick="'+pauseOnclick+'" style="width:36px;height:36px;border-radius:50%;background:'+pauseBg+';color:'+pauseColor+';display:flex;align-items:center;justify-content:center;cursor:'+(blocked?'default':'pointer')+'">'+_svgDevPause+'</div>'
+      +'<div onclick="'+pauseOnclick+'" style="width:36px;height:36px;border-radius:50%;background:'+pauseBg+';color:'+pauseColor+';display:flex;align-items:center;justify-content:center;cursor:'+(blocked?'default':'pointer')+'">'+(paused?_svgDevPlay:_svgDevPause)+'</div>'
       +'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-left:2px"><polyline points="9 18 15 12 9 6"/></svg>'
     +'</div>'
   +'</div>';
@@ -5277,6 +5064,11 @@ function runNodeRestart(nodeId){
   setTimeout(function(){ hide('sub-node-restart'); body.style.paddingTop=''; backToNodeDetail(); }, 1800);
 }
 function openNodeOptimize(nodeId){ hide('sub-node-detail'); renderNodeOptimize(nodeId); show('sub-node-optimize'); }
+function openNodeOptimizeFromDevice(nodeId,idx){
+  window._nodeOptFromDeviceDetail={nodeId:nodeId,idx:idx};
+  renderNodeOptimize(nodeId);
+  show('sub-node-optimize');
+}
 function renderNodeOptimize(nodeId){
   var n=MESH_NODES[nodeId];if(!n)return;
   g('node-optimize-title').textContent='最佳化';
@@ -5295,7 +5087,12 @@ function runNodeOptimize(nodeId){
   body.innerHTML='<div style="width:40px;height:40px;border-radius:50%;border:3px solid var(--bd);border-top-color:var(--ac);animation:spin 1s linear infinite;margin-bottom:20px"></div><div style="font-size:16px;font-weight:600;color:var(--tx)">最佳化中…</div>';
   setTimeout(function(){
     hide('sub-node-optimize');
-    if(window._nodeOptFromWifiIssue){
+    if(window._nodeOptBackToAI){
+      window._nodeOptBackToAI=false; show('sub-ai-report');
+    } else if(window._nodeOptFromDeviceDetail){
+      var ctx=window._nodeOptFromDeviceDetail; window._nodeOptFromDeviceDetail=null;
+      renderMeshDeviceDetail(ctx.nodeId,ctx.idx); show('sub-dev');
+    } else if(window._nodeOptFromWifiIssue){
       window._nodeOptFromWifiIssue=false;
       resolveWifiIssue('node');
       show('sub-wifi');
@@ -5339,7 +5136,11 @@ function renderMeshDeviceDetail(nodeId,idx){
     +'• 將裝置移到離路由器或節點較近的位置<br>'
     +'• 確認附近沒有微波爐、無線電話等干擾源<br>'
     +'• 執行 Mesh 最佳化，重新選擇最佳連線路徑'
-    +'</div></div>'
+    +'</div>'
+    +'<div style="display:flex;justify-content:flex-end;margin-top:10px">'
+    +'<div onclick="openNodeOptimizeFromDevice(\''+nodeId+'\','+idx+')" style="padding:7px 14px;border-radius:16px;background:var(--or);box-shadow:0 2px 8px rgba(232,134,58,.35);font-size:11px;font-weight:700;color:#fff;cursor:pointer">執行 Mesh 最佳化</div>'
+    +'</div>'
+    +'</div>'
   ):'';
   if(body)body.innerHTML='<div style="padding:20px">'
     +devHeader(d,node.name,blocked,paused,nodeId,idx)
@@ -5351,6 +5152,25 @@ function renderMeshDeviceDetail(nodeId,idx){
     +devSectionLabel('頻寬限制')
     +devBandwidthCard(nodeId,idx)
     +'</div>';
+  startDevTrafficSim(d.status==='online'&&!blocked&&!paused);
+}
+var _devTrafficTimer=null;
+function stopDevTrafficSim(){
+  if(_devTrafficTimer){clearInterval(_devTrafficTimer);_devTrafficTimer=null;}
+}
+function startDevTrafficSim(active){
+  stopDevTrafficSim();
+  var downEl=g('dev-traf-down'),upEl=g('dev-traf-up');
+  if(!downEl||!upEl)return;
+  if(!active){downEl.textContent='0.00 Kbps';upEl.textContent='0.00 Kbps';return;}
+  var downBase=80+Math.random()*400,upBase=20+Math.random()*100;
+  function fmt(v){return v>=1000?(v/1000).toFixed(2)+' Mbps':v.toFixed(2)+' Kbps';}
+  function tick(){
+    downEl.textContent=fmt(Math.max(0,downBase*(0.6+Math.random()*0.8)));
+    upEl.textContent=fmt(Math.max(0,upBase*(0.6+Math.random()*0.8)));
+  }
+  tick();
+  _devTrafficTimer=setInterval(tick,1500);
 }
 function toggleMeshDeviceBlock(nodeId,idx){
   if(!_nodeBlockedSet[nodeId])_nodeBlockedSet[nodeId]={};
@@ -6178,12 +5998,194 @@ function toggleChatContext(){
   if(isOn){tg.dataset.on='0';tg.style.background='var(--bd2)';tg.querySelector('div').style.cssText='position:absolute;width:25px;height:25px;background:#fff;border-radius:50%;top:3px;left:3px;box-shadow:0 1px 3px rgba(0,0,0,.2)';}
   else{tg.dataset.on='1';tg.style.background='var(--ac)';tg.querySelector('div').style.cssText='position:absolute;width:25px;height:25px;background:#fff;border-radius:50%;top:3px;right:3px;box-shadow:0 1px 3px rgba(0,0,0,.2)';}
 }
+// ══════════════════ AI Weekly Network Report ══════════════════
+function aiKpiCard(label,value,sub,color){
+  return '<div style="background:var(--w);border-radius:var(--r);padding:14px;box-shadow:var(--sh)">'
+    +'<div style="font-size:12px;color:var(--t3);margin-bottom:6px">'+label+'</div>'
+    +'<div style="font-size:22px;font-weight:700;color:'+(color||'var(--tx)')+';font-family:var(--m)">'+value+'</div>'
+    +(sub?'<div style="font-size:11.5px;color:var(--t3);margin-top:2px">'+sub+'</div>':'')
+  +'</div>';
+}
+function aiInsightCard(text,btnLabel,onclick,positive){
+  var icon = positive
+    ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'
+    : '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r=".5" fill="var(--ac)" stroke="var(--ac)" stroke-width="1.5"/></svg>';
+  return '<div style="background:var(--w);border-radius:var(--r);padding:14px;margin-bottom:10px;box-shadow:var(--sh)">'
+    +'<div style="display:flex;gap:10px">'
+      +'<div style="width:28px;height:28px;border-radius:50%;background:'+(positive?'var(--gbg)':'var(--abg)')+';display:flex;align-items:center;justify-content:center;flex-shrink:0">'+icon+'</div>'
+      +'<div style="flex:1;font-size:13.5px;color:var(--tx);line-height:1.6">'+text+'</div>'
+    +'</div>'
+    +(btnLabel?'<div style="display:flex;justify-content:flex-end;margin-top:10px"><div onclick="'+onclick+'" style="padding:5px 12px;border-radius:12px;border:1.5px solid var(--ac);color:var(--ac);background:transparent;font-size:12px;font-weight:700;cursor:pointer">'+btnLabel+'</div></div>':'')
+  +'</div>';
+}
+function aiHistoryRow(dateRange,score,status,statusColor,last,onclick){
+  return '<div onclick="'+(onclick||"showToast('歷史週報（Demo）')")+'" style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer;'+(last?'':'border-bottom:1px solid var(--bd)')+'">'
+    +'<div style="font-size:14px;font-weight:600;color:var(--tx)">'+dateRange+'</div>'
+    +'<div style="display:flex;align-items:center;gap:8px">'
+      +'<span style="font-size:13px;color:var(--t3);font-family:var(--m)">'+score+'</span>'
+      +'<span style="font-size:12px;font-weight:700;color:'+statusColor+'">'+status+'</span>'
+      +_chevSm
+    +'</div>'
+  +'</div>';
+}
+var AI_REPORT_CURRENT={
+  dateRange:'8/4 – 8/10',score:92,rating:'良好',
+  cardGradient:'linear-gradient(135deg,#4A8FE0,#6AAAF0)',ratingBg:'rgba(255,255,255,.25)',ratingColor:'#fff',
+  summary:'本週網路穩定，安全無虞。臥室節點夜間較不穩定，建議留意。',
+  kpis:[
+    ['Internet 可用率','99.8%','本週中斷 1 次','var(--gn)'],
+    ['Mesh 穩定度','92%','較上週 -5%','var(--gn)'],
+    ['節點健康度','2 / 3 正常','臥室節點待觀察','var(--tx)'],
+    ['Wi-Fi 覆蓋品質','良好','全屋平均訊號穩定','var(--gn)']
+  ],
+  insights:[
+    ['<b>臥室節點</b>本週離線 4 次，多發生於夜間，可能與訊號干擾有關。','立即執行 Mesh 最佳化',"window._nodeOptBackToAI=true;hide('sub-ai-report');openNodeOptimize('bedroom')",false],
+    ['<b>Nest Cam</b> 訊號持續偏弱，過去 7 天低於一般水準。','查看裝置',"window._devDetailReturnToAI=true;hide('sub-ai-report');openMeshDevice('living',6)",false],
+    ['目前韌體版本並非最新，建議更新以提升穩定性與安全性。','前往更新',"window._fwBackToAI=true;hide('sub-ai-report');show('sub-fw')",false],
+    ['未偵測到重複發生的安全性問題，裝置存取行為維持正常。','','',true]
+  ]
+};
+var AI_REPORT_BAD={
+  dateRange:'7/21 – 7/27',score:62,rating:'待改善',
+  cardGradient:'linear-gradient(135deg,#E8863A,#F5B570)',ratingBg:'rgba(255,255,255,.25)',ratingColor:'#fff',
+  summary:'本週網路不穩定，多次中斷。建議儘快處理設備問題。',
+  kpis:[
+    ['Internet 可用率','92.4%','本週中斷 5 次','var(--or)'],
+    ['Mesh 穩定度','68%','較上週 -24%','var(--rd)'],
+    ['節點健康度','1 / 3 可優化','廚房節點需處理','var(--rd)'],
+    ['Wi-Fi 覆蓋品質','待改善','廚房區域訊號不足','var(--or)']
+  ],
+  insights:[
+    ['<b>廚房節點</b>本週離線 9 次，多次超過 10 分鐘，影響該區域裝置連線。','立即執行 Mesh 最佳化',"window._nodeOptBackToAI=true;hide('sub-ai-report');openNodeOptimize('kitchen')",false],
+    ['AiProtection 本週攔截 5 次惡意連線嘗試，較上週明顯增加。','查看防護狀態',"window._aiproBackToAI=true;hide('sub-ai-report');show('sub-aipro-detail')",false],
+    ['韌體更新過程曾失敗一次，系統已自動回復為原版本。','前往更新',"window._fwBackToAI=true;hide('sub-ai-report');show('sub-fw')",false]
+  ]
+};
+function renderAIReport(data){
+  data=data||AI_REPORT_CURRENT;
+  var body=g('ai-report-body');if(!body)return;
+  var score=data.score,pct=score/100,r=44,circumf=2*Math.PI*r,offset=circumf*(1-pct);
+  var html='';
+  // ① Weekly Summary
+  html+='<div style="background:'+(data.cardGradient||'linear-gradient(135deg,#4A8FE0,#6AAAF0)')+';border-radius:var(--r2);padding:24px 20px;margin-bottom:16px;box-shadow:var(--sh)">'
+    +'<div style="display:flex;align-items:center;gap:6px;margin-bottom:16px">'
+      +'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" style="stroke:none"><path d="M18.71,9.63c-.08,0-.14-.04-.16-.12-.22-.84-.63-1.56-1.25-2.17s-1.33-1.03-2.17-1.25c-.08-.03-.12-.08-.12-.16,0-.1.04-.15.12-.16.84-.22,1.56-.63,2.17-1.25s1.03-1.33,1.25-2.17c.03-.08.08-.12.16-.12s.14.04.16.12c.22.84.63,1.56,1.25,2.17s1.33,1.03,2.17,1.25c.08.01.12.07.12.16,0,.08-.04.14-.12.16-.84.22-1.56.63-2.17,1.25s-1.03,1.33-1.25,2.17c-.01.08-.07.12-.16.12Z" fill="#fff"/><path d="M10.44,22.42c-.21,0-.35-.1-.42-.31-.56-2.12-1.61-3.96-3.16-5.51s-3.38-2.6-5.51-3.16c-.21-.07-.31-.21-.31-.42,0-.24.1-.38.31-.42,2.12-.56,3.96-1.61,5.51-3.16s2.6-3.38,3.16-5.51c.07-.21.21-.31.42-.31s.35.1.42.31c.56,2.12,1.61,3.96,3.16,5.51s3.38,2.6,5.51,3.16c.21.03.31.17.31.42,0,.21-.1.35-.31.42-2.12.56-3.96,1.61-5.51,3.16s-2.6,3.38-3.16,5.51c-.03.21-.17.31-.42.31Z" fill="#fff"/></svg>'
+      +'<span style="font-size:13px;font-weight:600;color:#fff;opacity:.9">AI Insight · '+data.dateRange+'</span>'
+    +'</div>'
+    +'<div style="display:flex;align-items:center;gap:20px;margin-bottom:16px">'
+      +'<div style="position:relative;width:104px;height:104px;flex-shrink:0">'
+        +'<svg width="104" height="104" viewBox="0 0 104 104">'
+          +'<circle cx="52" cy="52" r="'+r+'" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="8"/>'
+          +'<circle cx="52" cy="52" r="'+r+'" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-dasharray="'+circumf.toFixed(1)+'" stroke-dashoffset="'+offset.toFixed(1)+'" transform="rotate(-90 52 52)"/>'
+        +'</svg>'
+        +'<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">'
+          +'<div style="font-size:28px;font-weight:700;color:#fff;line-height:1">'+score+'</div>'
+          +'<div style="font-size:10px;color:rgba(255,255,255,.8);margin-top:1px">/ 100</div>'
+        +'</div>'
+      +'</div>'
+      +'<div style="flex:1">'
+        +'<div style="display:inline-flex;padding:4px 12px;border-radius:12px;background:'+(data.ratingBg||'rgba(255,255,255,.25)')+';color:'+(data.ratingColor||'#fff')+';font-size:13px;font-weight:700;margin-bottom:8px">'+data.rating+'</div>'
+        +'<div style="font-size:13px;color:#fff;line-height:1.7;opacity:.95">'+data.summary+'</div>'
+      +'</div>'
+    +'</div>'
+  +'</div>';
+  // ② Network Health
+  html+='<div style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.9px;text-transform:uppercase;padding:4px 2px 8px">網路健康</div>'
+    +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">'
+      +data.kpis.map(function(k){return aiKpiCard(k[0],k[1],k[2],k[3]);}).join('')
+    +'</div>';
+  // ③ AI 發現與建議（合併，問題下方直接附解決按鈕）
+  html+='<div style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.9px;text-transform:uppercase;padding:4px 2px 8px">AI 發現與建議</div>'
+    +data.insights.map(function(f){return aiInsightCard(f[0],f[1],f[2],f[3]);}).join('');
+  body.innerHTML=html;
+}
+var AI_HISTORY_MONTHS=[
+  {month:'2026年8月',weeks:[
+    {range:'8/4 – 8/10',score:92,status:'良好',color:'var(--gn)',data:'AI_REPORT_CURRENT'},
+    {range:'7/28 – 8/3',score:95,status:'優秀',color:'var(--gn)'},
+    {range:'7/21 – 7/27',score:78,status:'待改善',color:'var(--or)',data:'AI_REPORT_BAD'},
+    {range:'7/14 – 7/20',score:90,status:'良好',color:'var(--gn)'}
+  ]},
+  {month:'2026年7月',weeks:[
+    {range:'7/7 – 7/13',score:93,status:'良好',color:'var(--gn)'},
+    {range:'6/30 – 7/6',score:96,status:'優秀',color:'var(--gn)'},
+    {range:'6/23 – 6/29',score:85,status:'良好',color:'var(--gn)'},
+    {range:'6/16 – 6/22',score:71,status:'待改善',color:'var(--or)'}
+  ]}
+];
+function openAIHistoryWeek(dataName){
+  hide('sub-ai-history');
+  window._aiReportBackToHistory=true;
+  renderAIReport(window[dataName]);
+  show('sub-ai-report');
+}
+function renderAIHistory(){
+  var body=g('ai-history-body');if(!body)return;
+  var html='';
+  AI_HISTORY_MONTHS.forEach(function(m){
+    html+='<div style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.9px;text-transform:uppercase;padding:4px 2px 8px">'+m.month+'</div>'
+      +'<div style="background:var(--w);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;margin-bottom:16px">'
+      +m.weeks.map(function(w,i){return aiHistoryRow(w.range,w.score,w.status,w.color,i===m.weeks.length-1,w.data?"openAIHistoryWeek('"+w.data+"')":null);}).join('')
+      +'</div>';
+  });
+  body.innerHTML=html;
+}
+var AIPRO_BLOCKED_SITES=['malware-site.com','phishing-bank-login.net'];
+function renderAiproMalsite(){
+  var list=g('aipro-malsite-list');if(!list)return;
+  if(!AIPRO_BLOCKED_SITES.length){
+    list.innerHTML='<div style="padding:24px 16px;text-align:center;font-size:13px;color:var(--t3)">尚未封鎖任何網站</div>';
+  } else {
+    list.innerHTML=AIPRO_BLOCKED_SITES.map(function(site,i){
+      return '<div class="sr"'+(i===AIPRO_BLOCKED_SITES.length-1?' style="border:none"':'')+'>'
+        +'<div style="flex:1;font-size:15px;font-weight:500;color:var(--tx);font-family:var(--m)">'+site+'</div>'
+        +'<div onclick="removeAiproSite('+i+')" style="padding:6px;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>'
+      +'</div>';
+    }).join('');
+  }
+  var countEl=g('aipro-malsite-count');
+  if(countEl)countEl.textContent=AIPRO_BLOCKED_SITES.length?('已封鎖 '+AIPRO_BLOCKED_SITES.length+' 個網站'):'尚未封鎖任何網站';
+}
+function addAiproSite(){
+  var input=g('aipro-malsite-input');if(!input)return;
+  var val=input.value.trim().replace(/^https?:\/\//,'').replace(/\/.*$/,'');
+  if(!val)return;
+  AIPRO_BLOCKED_SITES.push(val);
+  input.value='';
+  renderAiproMalsite();
+}
+function removeAiproSite(idx){
+  AIPRO_BLOCKED_SITES.splice(idx,1);
+  renderAiproMalsite();
+}
+function runAiproScan(){
+  var body=g('aipro-scan-body');if(!body)return;
+  body.innerHTML='<div class="hdl"></div>'
+    +'<div style="display:flex;flex-direction:column;align-items:center;padding:24px 12px 8px">'
+    +'<div style="width:40px;height:40px;border-radius:50%;border:3px solid var(--bd);border-top-color:var(--ac);animation:spin 1s linear infinite;margin-bottom:16px"></div>'
+    +'<div style="font-size:16px;font-weight:600;color:var(--tx)">正在檢查網路環境安全性…</div>'
+    +'</div>';
+  show('ov-aipro-scan');
+  setTimeout(function(){
+    var items=['即時網路防護','惡意網站封鎖','雙向 IPS','受感染裝置偵測'];
+    body.innerHTML='<div class="hdl"></div>'
+      +'<div style="display:flex;flex-direction:column;align-items:center;padding:8px 12px 20px">'
+      +'<div style="width:72px;height:72px;border-radius:50%;background:var(--gbg);display:flex;align-items:center;justify-content:center;margin-bottom:16px"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>'
+      +'<div style="font-size:18px;font-weight:700;color:var(--tx);margin-bottom:4px">目前網路環境安全</div>'
+      +'<div style="font-size:13px;color:var(--t3);text-align:center">未發現異常連線或威脅</div>'
+      +'</div>'
+      +'<div style="background:var(--s2);border-radius:14px;padding:4px 14px;margin-bottom:16px">'
+      +items.map(function(t,i){return '<div style="display:flex;align-items:center;justify-content:space-between;padding:11px 0;'+(i<items.length-1?'border-bottom:1px solid var(--bd)':'')+'"><span style="font-size:14px;color:var(--tx)">'+t+'</span><span style="font-size:13px;font-weight:600;color:var(--gn)">正常</span></div>';}).join('')
+      +'</div>'
+      +'<div onclick="hide(\'ov-aipro-scan\')" style="height:48px;border-radius:var(--r2);background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:var(--tx);cursor:pointer">關閉</div>';
+  },1500);
+}
 function drawCharts(){
   (function(){var c=document.getElementById('energy-chart');if(!c||c._drawn)return;c._drawn=true;var dpr=window.devicePixelRatio||1,w=c.offsetWidth||320,h=c.offsetHeight||130;c.width=w*dpr;c.height=h*dpr;var ctx=c.getContext('2d');ctx.scale(dpr,dpr);var data=[85,80,75,90,95,100,100,95,90,85,70,60,55,50,45,50,60,70,80,85,90,88,85,82,80,85,90],now=17,pts=data.length,pad={l:6,r:6,t:10,b:4},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;function xP(i){return pad.l+i*(cw/(pts-1));}function yP(v){return pad.t+ch*(1-v/100);}var g=ctx.createLinearGradient(0,pad.t,0,pad.t+ch);g.addColorStop(0,'rgba(61,139,255,0.22)');g.addColorStop(1,'rgba(61,139,255,0)');ctx.beginPath();ctx.moveTo(xP(0),yP(data[0]));data.forEach(function(v,i){if(i>0)ctx.lineTo(xP(i),yP(v));});ctx.lineTo(xP(pts-1),yP(0));ctx.lineTo(xP(0),yP(0));ctx.closePath();ctx.fillStyle=g;ctx.fill();ctx.strokeStyle='#3D8BFF';ctx.lineWidth=2;ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(xP(0),yP(data[0]));data.forEach(function(v,i){if(i>0)ctx.lineTo(xP(i),yP(v));});ctx.stroke();ctx.strokeStyle='#444';ctx.lineWidth=1;ctx.setLineDash([3,2]);ctx.beginPath();ctx.moveTo(xP(now),pad.t);ctx.lineTo(xP(now),pad.t+ch);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#444';ctx.font='bold 9px system-ui';ctx.textAlign='center';ctx.fillText('Now',xP(now),pad.t-1);})();
   (function(){var c=document.getElementById('wifi-chart');if(!c||c._drawn)return;c._drawn=true;var dpr=window.devicePixelRatio||1,w=c.offsetWidth||320,h=c.offsetHeight||110;c.width=w*dpr;c.height=h*dpr;var ctx=c.getContext('2d');ctx.scale(dpr,dpr);var pts=60,data=[];for(var i=0;i<pts;i++)data.push(20+Math.random()*55+Math.sin(i/4)*15);var pad={l:6,r:6,t:6,b:4},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;function xP(i){return pad.l+i*(cw/(pts-1));}function yP(v){return pad.t+ch*(1-v/100);}var g=ctx.createLinearGradient(0,pad.t,0,pad.t+ch);g.addColorStop(0,'rgba(255,106,106,0.18)');g.addColorStop(1,'rgba(255,106,106,0)');ctx.beginPath();ctx.moveTo(xP(0),yP(data[0]));data.forEach(function(v,i){if(i>0)ctx.lineTo(xP(i),yP(v));});ctx.lineTo(xP(pts-1),yP(0));ctx.lineTo(xP(0),yP(0));ctx.closePath();ctx.fillStyle=g;ctx.fill();ctx.strokeStyle='#FF6A6A';ctx.lineWidth=1.5;ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(xP(0),yP(data[0]));data.forEach(function(v,i){if(i>0)ctx.lineTo(xP(i),yP(v));});ctx.stroke();})();
 }
 function drawDetailCharts(){
-  (function(){var c=document.getElementById('energy-detail-chart');if(!c||c._drawn)return;c._drawn=true;var dpr=window.devicePixelRatio||1,w=c.offsetWidth||320,h=c.offsetHeight||180;c.width=w*dpr;c.height=h*dpr;var ctx=c.getContext('2d');ctx.scale(dpr,dpr);var std=[55,55,55,55,55,55,55,55,55,62,65,65,65,65,14,14,14,14,14,14,14,14,14,14,14],ai=[14,14,14,14,14,14,14,14,14,14,14,14,14,14,22,22,22,22,10,10,10,10,10,10,10],now=18,pts=std.length,pad={l:36,r:10,t:16,b:4},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;function xP(i){return pad.l+i*(cw/(pts-1));}function yP(v){return pad.t+ch*(1-v/100);}ctx.strokeStyle='rgba(200,210,230,.5)';ctx.lineWidth=.8;[0,20,40,60,80,100].forEach(function(v){ctx.beginPath();ctx.moveTo(pad.l,yP(v));ctx.lineTo(pad.l+cw,yP(v));ctx.stroke();});ctx.fillStyle='#999';ctx.font='9px system-ui';ctx.textAlign='right';[0,20,40,60,80,100].forEach(function(v){ctx.fillText(v,pad.l-4,yP(v)+3);});var g=ctx.createLinearGradient(0,pad.t,0,pad.t+ch);g.addColorStop(0,'rgba(74,137,232,0.2)');g.addColorStop(1,'rgba(74,137,232,0.05)');ctx.beginPath();ctx.moveTo(xP(now),yP(ai[now]));for(var i=now;i<pts;i++)ctx.lineTo(xP(i),yP(ai[i]));ctx.lineTo(xP(pts-1),yP(0));ctx.lineTo(xP(now),yP(0));ctx.closePath();ctx.fillStyle=g;ctx.fill();ctx.strokeStyle='#FF8D8D';ctx.lineWidth=2;ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(xP(0),yP(std[0]));std.forEach(function(v,i){if(i>0)ctx.lineTo(xP(i),yP(v));});ctx.stroke();ctx.strokeStyle='#4A89E8';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(xP(0),yP(ai[0]));ai.forEach(function(v,i){if(i>0)ctx.lineTo(xP(i),yP(v));});ctx.stroke();ctx.strokeStyle='#355C9A';ctx.lineWidth=1.5;ctx.setLineDash([3,2]);ctx.beginPath();ctx.moveTo(xP(now),pad.t-4);ctx.lineTo(xP(now),pad.t+ch);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#355C9A';ctx.font='bold 8px system-ui';ctx.textAlign='center';ctx.fillText('Now',xP(now),pad.t-2);})();
+  (function(){var c=document.getElementById('energy-detail-chart');if(!c||c._drawn)return;c._drawn=true;var dpr=window.devicePixelRatio||1,w=c.offsetWidth||320,h=c.offsetHeight||180;c.width=w*dpr;c.height=h*dpr;var ctx=c.getContext('2d');ctx.scale(dpr,dpr);var std=[30,28,26,25,24,26,35,55,68,72,70,65,60,58,55,52,55,62,75,88,92,85,70,50,35],ai=[18,16,14,13,12,13,18,30,42,46,44,40,36,34,32,30,32,38,48,58,60,52,40,26,18],now=18,pts=std.length,pad={l:36,r:10,t:16,b:4},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;function xP(i){return pad.l+i*(cw/(pts-1));}function yP(v){return pad.t+ch*(1-v/100);}function smoothPath(vals,from,to){var p=[];for(var i=from;i<=to;i++)p.push({x:xP(i),y:yP(vals[i])});ctx.moveTo(p[0].x,p[0].y);for(var j=1;j<p.length-1;j++){var xc=(p[j].x+p[j+1].x)/2,yc=(p[j].y+p[j+1].y)/2;ctx.quadraticCurveTo(p[j].x,p[j].y,xc,yc);}ctx.lineTo(p[p.length-1].x,p[p.length-1].y);}ctx.strokeStyle='rgba(200,210,230,.5)';ctx.lineWidth=.8;[0,20,40,60,80,100].forEach(function(v){ctx.beginPath();ctx.moveTo(pad.l,yP(v));ctx.lineTo(pad.l+cw,yP(v));ctx.stroke();});ctx.fillStyle='#999';ctx.font='9px system-ui';ctx.textAlign='right';[0,20,40,60,80,100].forEach(function(v){ctx.fillText(v,pad.l-4,yP(v)+3);});var g=ctx.createLinearGradient(0,pad.t,0,pad.t+ch);g.addColorStop(0,'rgba(74,137,232,0.2)');g.addColorStop(1,'rgba(74,137,232,0.05)');ctx.beginPath();smoothPath(ai,0,pts-1);ctx.lineTo(xP(pts-1),yP(0));ctx.lineTo(xP(0),yP(0));ctx.closePath();ctx.fillStyle=g;ctx.fill();ctx.strokeStyle='#FF8D8D';ctx.lineWidth=2;ctx.lineJoin='round';ctx.lineCap='round';ctx.beginPath();smoothPath(std,0,pts-1);ctx.stroke();ctx.strokeStyle='#4A89E8';ctx.lineWidth=2;ctx.lineJoin='round';ctx.lineCap='round';ctx.beginPath();smoothPath(ai,0,pts-1);ctx.stroke();ctx.strokeStyle='#355C9A';ctx.lineWidth=1.5;ctx.setLineDash([3,2]);ctx.beginPath();ctx.moveTo(xP(now),pad.t-4);ctx.lineTo(xP(now),pad.t+ch);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#355C9A';ctx.font='bold 8px system-ui';ctx.textAlign='center';ctx.fillText('Now',xP(now),pad.t-2);})();
   (function(){var c=document.getElementById('wifi-detail-chart');if(!c||c._drawn)return;c._drawn=true;var dpr=window.devicePixelRatio||1,w=c.offsetWidth||320,h=c.offsetHeight||110;c.width=w*dpr;c.height=h*dpr;var ctx=c.getContext('2d');ctx.scale(dpr,dpr);var pts=60,data=[];for(var i=0;i<pts;i++)data.push(20+Math.random()*55+Math.sin(i/4)*15);var pad={l:6,r:6,t:6,b:4},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;function xP(i){return pad.l+i*(cw/(pts-1));}function yP(v){return pad.t+ch*(1-v/100);}var g=ctx.createLinearGradient(0,pad.t,0,pad.t+ch);g.addColorStop(0,'rgba(255,106,106,0.18)');g.addColorStop(1,'rgba(255,106,106,0)');ctx.beginPath();ctx.moveTo(xP(0),yP(data[0]));data.forEach(function(v,i){if(i>0)ctx.lineTo(xP(i),yP(v));});ctx.lineTo(xP(pts-1),yP(0));ctx.lineTo(xP(0),yP(0));ctx.closePath();ctx.fillStyle=g;ctx.fill();ctx.strokeStyle='#FF6A6A';ctx.lineWidth=1.5;ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(xP(0),yP(data[0]));data.forEach(function(v,i){if(i>0)ctx.lineTo(xP(i),yP(v));});ctx.stroke();})();
 }
 // visualViewport keyboard handler - keep overlay above keyboard
@@ -6217,8 +6219,8 @@ function applyTheme(t){
   });
   var energyHero=document.querySelector('.energy-hero');
   var aiproHero=document.querySelector('.aipro-hero');
-  if(isDark){if(energyHero)energyHero.style.background='linear-gradient(160deg,#1A3A4A 0%,#1E3D3A 50%,#1C2E2A 100%)';if(aiproHero)aiproHero.style.background='linear-gradient(180deg,#1A3D28 0%,#1C3022 60%,#111113 100%)';}
-  else{if(energyHero)energyHero.style.background='linear-gradient(160deg,#74C7FF 0%,#7FD8EE 40%,#A8EDD8 70%,#C2F0E8 100%)';if(aiproHero)aiproHero.style.background='linear-gradient(180deg,#59D37A 0%,#98E7AE 60%,#fff 100%)';}
+  if(isDark){if(energyHero)energyHero.style.background='linear-gradient(160deg,#1A3A4A 0%,#1E3D3A 50%,#1C2E2A 100%)';if(aiproHero)aiproHero.style.background='linear-gradient(140deg,#0F4A40,#0C3B32)';}
+  else{if(energyHero)energyHero.style.background='linear-gradient(160deg,#74C7FF 0%,#7FD8EE 40%,#A8EDD8 70%,#C2F0E8 100%)';if(aiproHero)aiproHero.style.background='linear-gradient(140deg,#1BBFAA,#18B87A)';}
   document.querySelectorAll('.theme-item').forEach(function(c){
     var dot=c.querySelector('[id^="tr-"]');if(!dot)return;
     if(c.dataset.t===t){c.classList.add('on');dot.style.background=vars['--ac'];dot.style.border='2px solid '+vars['--ac'];dot.innerHTML='<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/><\/svg>';}
