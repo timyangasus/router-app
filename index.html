@@ -3586,7 +3586,13 @@ function devIconSvg(type,size,color){
   var p=DEV_ICON_PATHS[type]||DEV_ICON_PATHS.unknown;
   return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 24 24" fill="none" style="stroke:'+(color||'var(--is)')+';color:'+(color||'var(--is)')+'" stroke-width="1.6" stroke-linecap="round">'+p+'</svg>';
 }
-function devHeader(d,nodeName,blocked){
+function devHeaderAction(icon,label,disabled,onclick){
+  return '<div onclick="'+(disabled?'':onclick)+'" style="display:flex;flex-direction:column;align-items:center;gap:5px;cursor:'+(disabled?'default':'pointer')+'">'
+    +'<div style="width:42px;height:42px;border-radius:50%;background:rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;color:#fff;opacity:'+(disabled?.4:1)+'">'+icon+'</div>'
+    +'<span style="font-size:11px;font-weight:600;color:#fff;opacity:'+(disabled?.6:.9)+'">'+label+'</span>'
+  +'</div>';
+}
+function devHeader(d,nodeName,blocked,paused,nodeId,idx){
   var status=d.status;
   var statusText=blocked?'已封鎖':(status==='online'?'線上中':status==='unknown'?'來源不明':'離線中');
   var weak=d.band!=='有線'&&d.signal==='weak';
@@ -3594,15 +3600,24 @@ function devHeader(d,nodeName,blocked){
     status==='offline'?'linear-gradient(135deg,#AEB7C4,#D2D8E0)':
     weak?'linear-gradient(135deg,#F5B570,#E8863A)':
     'linear-gradient(135deg,#4A8FE0,#6AAAF0)';
-  return '<div style="margin-bottom:14px;border-radius:var(--r2);overflow:hidden;position:relative;background:'+gradient+';padding:20px 18px;display:flex;align-items:center;gap:16px;box-shadow:var(--sh)">'
+  var pauseDisabled=blocked;
+  var actions='<div style="display:flex;justify-content:flex-end;gap:22px;margin-top:20px">'
+    +devHeaderAction(_svgDevBlock,blocked?'解除封鎖':'封鎖網路',false,'toggleMeshDeviceBlock(\''+nodeId+'\','+idx+')')
+    +devHeaderAction(_svgDevPause,paused?'解除暫停':'暫停網路',pauseDisabled,'toggleMeshDevicePause(\''+nodeId+'\','+idx+')')
+  +'</div>';
+  return '<div style="margin-bottom:14px;border-radius:var(--r2);overflow:hidden;position:relative;background:'+gradient+';padding:26px 18px 22px;box-shadow:var(--sh)">'
+    +'<div style="display:flex;align-items:center;gap:16px">'
     +'<div style="width:60px;height:60px;border-radius:50%;background:rgba(0,0,0,.3);flex-shrink:0;display:flex;align-items:center;justify-content:center">'+devIconSvg(d.type,26,'#fff')+'</div>'
     +'<div style="flex:1;min-width:0;color:#fff">'
-    +'<div style="font-size:18px;font-weight:700;letter-spacing:-.3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+deviceDisplayName(d)+'</div>'
+    +'<div style="font-size:18px;font-weight:700;letter-spacing:-.3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+deviceDisplayName(d,'#fff')+'</div>'
     +'<div style="font-size:12.5px;opacity:.85;margin-top:4px">'+deviceSubtitle(d,nodeName)+'</div>'
     +'<div style="display:inline-flex;align-items:center;gap:5px;margin-top:6px">'
       +'<span style="width:7px;height:7px;border-radius:50%;background:#fff;opacity:'+(status==='online'&&!blocked?1:.65)+'"></span>'
       +'<span style="font-size:12.5px;color:#fff;opacity:.9">'+statusText+'</span>'
-    +'</div></div></div>';
+    +'</div></div>'
+    +'</div>'
+    +actions
+  +'</div>';
 }
 function openDev(type){
   show('sub-dev');
@@ -4910,6 +4925,7 @@ var MESH_NODES={
     mac:'AC:9E:17:5D:20:01',
     model:'ASUS ZenWiFi BT10',
     devices:[
+      {name:'iPhone 16 (您)',band:'5GHz',type:'phone',status:'online',signal:'good',mac:'7C:2E:BD:44:11:8A',ip:'192.168.1.151',isSelf:true},
       {name:"Tim's MacBook Pro",band:'5GHz',type:'laptop',status:'online',signal:'good',mac:'A4:CF:99:E2:11:08',ip:'192.168.1.101'},
       {name:'客廳 Apple TV',band:'5GHz',type:'tv',status:'online',signal:'medium',mac:'DC:56:E7:44:AB:02',ip:'192.168.1.110'},
       {name:'PS5',band:'有線',type:'game',status:'online',mac:'3C:E9:26:4A:8B:12',ip:'192.168.1.111'},
@@ -4927,7 +4943,6 @@ var MESH_NODES={
     mac:'AC:9E:17:5D:20:02',
     model:'ASUS ZenWiFi BT10',
     devices:[
-      {name:'iPhone 16 (您)',band:'5GHz',type:'phone',status:'online',signal:'good',mac:'7C:2E:BD:44:11:8A',ip:'192.168.1.151',isSelf:true},
       {name:'小美的 Kindle',band:'2.4GHz',type:'tablet',status:'online',signal:'weak',mac:'A0:C5:89:2F:63:0D',ip:'192.168.1.152'},
       {name:'智慧檯燈',band:'2.4GHz',type:'lamp',status:'online',signal:'medium',mac:'5C:F9:38:AB:14:66',ip:'192.168.1.153'},
       {name:'空氣清淨機',band:'2.4GHz',type:'fan',status:'online',signal:'weak',mac:'90:9A:4A:1D:E2:77',ip:'192.168.1.154'},
@@ -5007,12 +5022,11 @@ function deviceSubtitle(d,nodeName){
 function deviceSubtitleShort(d){
   if(d.status==='unknown')return 'MAC: '+d.mac;
   if(d.status==='offline')return '離線 · 最後上線 '+(d.lastSeen||'稍早');
-  if(d.isSelf)return '';
-  return d.band;
+  return '';
 }
-function deviceDisplayName(d){
+function deviceDisplayName(d,youColor){
   var i=d.name.indexOf('(您)');
-  return i<0?d.name:d.name.slice(0,i)+'<span style="color:var(--ac)">'+d.name.slice(i)+'</span>';
+  return i<0?d.name:d.name.slice(0,i)+'<span style="color:'+(youColor||'var(--ac)')+'">'+d.name.slice(i)+'</span>';
 }
 function deviceRowHtml(nodeId,idx,d,sigOverride){
   var blocked=isDeviceBlocked(nodeId,idx);
@@ -5324,15 +5338,8 @@ function renderMeshDeviceDetail(nodeId,idx){
     +'• 執行 Mesh 最佳化，重新選擇最佳連線路徑'
     +'</div></div>'
   ):'';
-  var pauseDisabled=blocked;
-  var pauseBtnBg=pauseDisabled?'var(--s2)':(paused?'var(--ib)':'var(--or)');
-  var pauseBtnColor=pauseDisabled?'var(--bd2)':(paused?'var(--is)':'#fff');
-  var pauseBtnOnclick=pauseDisabled?'':'toggleMeshDevicePause(\''+nodeId+'\','+idx+')';
-  var blockBtnBg=blocked?'var(--ib)':'transparent';
-  var blockBtnBorder=blocked?'transparent':'var(--rd)';
-  var blockBtnColor=blocked?'var(--is)':'var(--rd)';
   if(body)body.innerHTML='<div style="padding:20px">'
-    +devHeader(d,node.name,blocked)
+    +devHeader(d,node.name,blocked,paused,nodeId,idx)
     +devSectionLabel('資訊')
     +devInfoCard(infoRows)
     +suggestHtml
@@ -5340,10 +5347,7 @@ function renderMeshDeviceDetail(nodeId,idx){
     +devTrafficCard()
     +devSectionLabel('頻寬限制')
     +devBandwidthCard(nodeId,idx)
-    +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'
-      +'<div onclick="toggleMeshDeviceBlock(\''+nodeId+'\','+idx+')" style="height:46px;border-radius:var(--r2);display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer;background:'+blockBtnBg+';border:1.5px solid '+blockBtnBorder+';color:'+blockBtnColor+';font-size:13px;font-weight:600">'+_svgDevBlock+'<span>'+(blocked?'解除封鎖':'封鎖網路')+'</span></div>'
-      +'<div onclick="'+pauseBtnOnclick+'" style="height:46px;border-radius:var(--r2);display:flex;align-items:center;justify-content:center;gap:7px;cursor:'+(pauseDisabled?'default':'pointer')+';background:'+pauseBtnBg+';color:'+pauseBtnColor+';font-size:13px;font-weight:600">'+_svgDevPause+'<span>'+(paused?'解除暫停':'暫停網路')+'</span></div>'
-    +'</div></div>';
+    +'</div>';
 }
 function toggleMeshDeviceBlock(nodeId,idx){
   if(!_nodeBlockedSet[nodeId])_nodeBlockedSet[nodeId]={};
