@@ -386,9 +386,6 @@ body{display:flex;align-items:center;justify-content:center}
           <div><div style="font-size:24px;font-weight:600;color:var(--tx);letter-spacing:-.5px">裝置</div><div style="font-size:13px;color:var(--t3);margin-top:2px" id="devices-count-sub">21 台裝置</div></div>
         </div>
         <div style="display:flex;gap:8px">
-          <div style="width:34px;height:34px;background:var(--ib);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer" onclick="openAddDev()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="4" x2="12" y2="20"/><line x1="4" y1="12" x2="20" y2="12"/></svg>
-          </div>
           <div style="width:34px;height:34px;background:var(--ib);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer" id="d-sort-btn">
             <svg width="16" height="16" viewBox="0 -960 960 960" fill="var(--is)"><path d="M320-561h80v287l62-62 58 56-160 160-160-160 58-56 62 62v-287Zm320 160h-80v-287l-64 64-56-56 160-160 160 160-56 56-64-64v287Z"/></svg>
           </div>
@@ -4950,7 +4947,7 @@ function deviceSignalBadge(sig){
   var bg=(weak||poor)?'var(--or)':'var(--ac)';
   var level=weak?1:poor?2:medium?3:4;
   var oOuter=level>=4?1:.35, oMid=level>=3?1:.35, oInner=level>=2?1:.35, oDot=level>=1?1:.35;
-  return deviceIconBadge('<svg width="6" height="5" viewBox="0 0 24 24" fill="none" style="stroke:#fff" stroke-width="2.4" stroke-linecap="round">'
+  return deviceIconBadge('<svg viewBox="0 0 24 24" fill="none" style="width:6px;height:5px;stroke:#fff" stroke-width="2.4" stroke-linecap="round">'
     +'<path d="M1.42 9A16 16 0 0122.58 9" style="opacity:'+oOuter+'"/>'
     +'<path d="M5 12.55a11 11 0 0114.08 0" style="opacity:'+oMid+'"/>'
     +'<path d="M8.53 16.11a6 6 0 016.95 0" style="opacity:'+oInner+'"/>'
@@ -4958,7 +4955,7 @@ function deviceSignalBadge(sig){
     +'</svg>',bg);
 }
 function devicePortBadge(){
-  return deviceIconBadge('<svg width="12" height="12" viewBox="0 0 24 24" style="fill:none;stroke:#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10v5l-2 3h-6l-2-3z"/><line x1="9" y1="8" x2="9" y2="11"/><line x1="11" y1="8" x2="11" y2="11"/><line x1="13" y1="8" x2="13" y2="11"/><line x1="15" y1="8" x2="15" y2="11"/></svg>','var(--gn)');
+  return deviceIconBadge('<svg viewBox="0 0 24 24" style="width:10px;height:10px;fill:none;stroke:#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10v5l-2 3h-6l-2-3z"/><line x1="9" y1="8" x2="9" y2="11"/><line x1="11" y1="8" x2="11" y2="11"/><line x1="13" y1="8" x2="13" y2="11"/><line x1="15" y1="8" x2="15" y2="11"/></svg>','var(--gn)');
 }
 function deviceSubtitle(d,nodeName){
   if(d.status==='unknown')return 'MAC: '+d.mac+' · '+d.band;
