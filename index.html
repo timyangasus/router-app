@@ -4950,7 +4950,7 @@ function deviceSignalBadge(sig){
   var bg=(weak||poor)?'var(--or)':'var(--ac)';
   var level=weak?1:poor?2:medium?3:4;
   var oOuter=level>=4?1:.35, oMid=level>=3?1:.35, oInner=level>=2?1:.35, oDot=level>=1?1:.35;
-  return deviceIconBadge('<svg width="10" height="8" viewBox="0 0 24 24" fill="none" style="stroke:#fff" stroke-width="2.4" stroke-linecap="round">'
+  return deviceIconBadge('<svg width="6" height="5" viewBox="0 0 24 24" fill="none" style="stroke:#fff" stroke-width="2.4" stroke-linecap="round">'
     +'<path d="M1.42 9A16 16 0 0122.58 9" style="opacity:'+oOuter+'"/>'
     +'<path d="M5 12.55a11 11 0 0114.08 0" style="opacity:'+oMid+'"/>'
     +'<path d="M8.53 16.11a6 6 0 016.95 0" style="opacity:'+oInner+'"/>'
