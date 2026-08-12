@@ -2715,6 +2715,7 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="font-size:15px;font-weight:600;color:var(--ac);cursor:pointer">套用</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <div id="infocard-ipv6"></div>
       <span class="sl">連線設定</span>
       <div style="background:var(--w)">
         <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 IPv6</div></div><div class="tg" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
@@ -2739,6 +2740,7 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">VPN</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <div id="infocard-vpn"></div>
       <span class="sl">VPN</span>
       <div style="background:var(--w)">
         <div class="sr" onclick="show('sub-pro-vpns')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">VPN Server</div><div style="font-size:14px;color:var(--t3);margin-top:2px">OpenVPN · 停用</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
@@ -2851,6 +2853,7 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="font-size:14px;font-weight:600;color:var(--ac);cursor:pointer">＋ 新增</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <div id="infocard-macfilter"></div>
       <span class="sl">篩選設定</span>
       <div style="background:var(--w)">
         <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 MAC Filter</div></div><div class="tg" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
@@ -4148,7 +4151,10 @@ var INFO_CARDS = {
   sdn:{title:'什麼是網路設定檔（SDN）？',body:'把家用網路切分成多個獨立的虛擬子網路，各自套用不同的存取權限與頻寬規則。適合想把辦公裝置、遊戲裝置、智慧家電分開管理，但又不想逐台裝置設定的家庭。',version:1},
   wisp:{title:'什麼是 WISP？',body:'讓路由器改用 Wi-Fi 訊號（而非網路線）連上另一個無線基地台取得網際網路。適合租屋、飯店等只能用 Wi-Fi 分享上網，或想延伸既有 Wi-Fi 訊號的情境。',version:1},
   dfs:{title:'什麼是 DFS 頻道？',body:'5GHz 頻段中保留給雷達系統使用的頻道，開放後可讓路由器使用更多頻道、減少鄰近網路互相干擾。少數地區法規或裝置可能不支援，若連線不穩可嘗試關閉。',version:1},
-  mlo:{title:'什麼是 MLO？',body:'Wi-Fi 7 的新技術，能同時使用 2.4／5／6GHz 多個頻段傳輸同一筆資料，降低延遲、提升穩定度。需要路由器與裝置皆支援 Wi-Fi 7 才能生效。',version:1}
+  mlo:{title:'什麼是 MLO？',body:'Wi-Fi 7 的新技術，能同時使用 2.4／5／6GHz 多個頻段傳輸同一筆資料，降低延遲、提升穩定度。需要路由器與裝置皆支援 Wi-Fi 7 才能生效。',version:1},
+  ipv6:{title:'什麼是 IPv6？',body:'新一代網際網路位址格式，提供幾乎無限的位址數量，讓每個裝置都能有獨立的公開位址。多數電信業者已支援，開啟後可能改善部分連線速度與相容性。',version:1},
+  vpn:{title:'什麼是 VPN？',body:'VPN Server 讓您在外面安全連回家中網路；VPN Client 則讓路由器主動連上外部 VPN 服務，全家裝置自動套用。依需求選擇其中一種設定即可。',version:1},
+  macfilter:{title:'什麼是 MAC Filter？',body:'依裝置的 MAC 位址（硬體識別碼）建立允許或封鎖清單，控制哪些裝置可以連上網路。適合想嚴格管控家中網路存取權限的進階使用者。',version:1}
 };
 function infoCardIconSvg(sz){
   return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-7 7c0 2.7 1.5 4.2 2.5 5.7S9 17 9 18h6c0-1 .5-1.5 1.5-3S19 11.7 19 9a7 7 0 00-7-7z"/></svg>';
