@@ -390,7 +390,7 @@ body{display:flex;align-items:center;justify-content:center}
           <div id="devices-back-btn" onclick="goTab('home')" style="display:none;width:32px;height:32px;border-radius:50%;background:var(--ib);align-items:center;justify-content:center;cursor:pointer;flex-shrink:0">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2.2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
           </div>
-          <div><div style="font-size:24px;font-weight:600;color:var(--tx);letter-spacing:-.5px">裝置</div><div style="font-size:13px;color:var(--t3);margin-top:2px" id="devices-count-sub">21 台裝置</div></div>
+          <div><div style="font-size:24px;font-weight:600;color:var(--tx);letter-spacing:-.5px" id="devices-title">連線裝置 (21)</div><div style="font-size:13px;color:var(--t3);margin-top:2px" id="devices-count-sub">連線：18、離線：3</div></div>
         </div>
         <div style="display:flex;gap:8px">
           <div style="width:34px;height:34px;background:var(--ib);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer" id="d-sort-btn">
@@ -4868,14 +4868,12 @@ function renderDevicesTab(){
     var img=g('devgrp-img-'+nodeId),src=g('router-product-img');
     if(img&&src)img.src=src.src;
   });
-  var countEl=g('devices-count-sub');
-  if(countEl){
-    var total=MESH_NODES.living.devices.length+MESH_NODES.bedroom.devices.length+MESH_NODES.kitchen.devices.length;
-    countEl.textContent=total+' 台裝置';
-  }
+  var total=MESH_NODES.living.devices.length+MESH_NODES.bedroom.devices.length+MESH_NODES.kitchen.devices.length;
+  var titleEl=g('devices-title');if(titleEl)titleEl.textContent='連線裝置 ('+total+')';
   var allDevices=MESH_NODES.living.devices.concat(MESH_NODES.bedroom.devices,MESH_NODES.kitchen.devices);
   var onlineCount=allDevices.filter(function(d){return d.status==='online';}).length;
   var offlineCount=allDevices.length-onlineCount;
+  var countEl=g('devices-count-sub');if(countEl)countEl.textContent='連線：'+onlineCount+'、離線：'+offlineCount;
   var onlineEl=g('home-dev-online');if(onlineEl)onlineEl.textContent=onlineCount;
   var offlineEl=g('home-dev-offline');if(offlineEl)offlineEl.textContent=offlineCount;
 }
