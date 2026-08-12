@@ -3713,6 +3713,8 @@ function notifIconFor(item){
   var sev = item.severity||'info';
   var bgMap = {critical:'#FBE2E2', warning:'var(--obg)', info:'var(--abg)', resolved:'var(--gbg)'};
   var strokeMap = {critical:'var(--rd)', warning:'var(--or)', info:'var(--ac)', resolved:'var(--gn)'};
+  var catBgMap = {security:'var(--gbg)', update:'var(--abg)', general:'#EFE7FC'};
+  var catStrokeMap = {security:'var(--gn)', update:'var(--ac)', general:'#8B5CF6'};
   var paths = {
     issue:'<path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2.5"/>',
     update:'<polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/>',
@@ -3722,8 +3724,10 @@ function notifIconFor(item){
   if(item.status==='auto-resolved' || item.status==='resolved'){
     if(item.cat==='issue') paths.issue = '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>';
   }
-  return '<div style="width:36px;height:36px;border-radius:50%;background:'+bgMap[sev]+';display:flex;align-items:center;justify-content:center;flex-shrink:0">'
-    +'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="'+strokeMap[sev]+'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+(paths[item.cat]||paths.general)+'</svg></div>';
+  var bg = catBgMap[item.cat] || bgMap[sev];
+  var stroke = catStrokeMap[item.cat] || strokeMap[sev];
+  return '<div style="width:36px;height:36px;border-radius:50%;background:'+bg+';display:flex;align-items:center;justify-content:center;flex-shrink:0">'
+    +'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="'+stroke+'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+(paths[item.cat]||paths.general)+'</svg></div>';
 }
 
 function notifLoadScenario(name){
