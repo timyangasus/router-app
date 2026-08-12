@@ -5642,8 +5642,10 @@ function renderFamilyList(){
   el.innerHTML=FM_MEMBERS.map(function(m){
     var info=fmAgeInfo(m.ageType);
     var isBlocked=m.paused;
-    var bg=isBlocked?'linear-gradient(145deg,#C47A8A,#D4899A)':'linear-gradient(145deg,#4A8FD4,#5B9EE0)';
+    var hasReward=!isBlocked&&(m.rewardMin||0)>0;
+    var bg=isBlocked?'linear-gradient(145deg,#C47A8A,#D4899A)':hasReward?'linear-gradient(140deg,#1BBFAA,#18B87A)':'linear-gradient(145deg,#4A8FD4,#5B9EE0)';
     var schedLabel=m.schedule&&m.schedule.days&&m.schedule.days.length?m.schedule.start+' – '+m.schedule.end:'未設定';
+    if(hasReward)schedLabel+=' (+'+m.rewardMin+' 分鐘)';
     return '<div onclick="fmOpenDetail('+m.id+')" style="background:'+bg+';border-radius:20px;margin:12px 20px 0;padding:16px 16px 13px;cursor:pointer;position:relative">'+
       '<div onclick="event.stopPropagation();fmDeleteMember('+m.id+')" style="position:absolute;top:13px;right:14px;opacity:.45;padding:4px">'+
         '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>'+
@@ -5676,7 +5678,9 @@ function renderFamilyList(){
         '<div style="width:1px;background:rgba(255,255,255,.2)"></div>'+
         '<div onclick="event.stopPropagation();fmOpenReward('+m.id+')" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer">'+
           '<div style="width:40px;height:40px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center">'+
-            '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>'+
+            (hasReward
+              ?'<svg width="17" height="17" viewBox="0 0 24 24" fill="#fff" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>'
+              :'<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>')+
           '</div>'+
           '<div style="font-size:12px;color:rgba(255,255,255,.85)">獎勵延長</div>'+
         '</div>'+
@@ -5730,8 +5734,15 @@ function fmOpenDetail(id){_fmActiveId=id;var m=fmGetMember(id);if(!m)return;docu
 function renderFmDetail(m){
   var el=document.getElementById('fm-detail-body');if(!el)return;
   var info=fmAgeInfo(m.ageType);
+  var isBlocked=m.paused;
+  var hasReward=!isBlocked&&(m.rewardMin||0)>0;
   var schedLabel=m.schedule&&m.schedule.days&&m.schedule.days.length?(m.schedule.days.join(', ')+' · '+m.schedule.start+'-'+m.schedule.end):'Not Set';
   var filterLabel=m.filterCats&&m.filterCats.length?m.filterCats.length+' categories':'None';
+  var statusHtml=isBlocked
+    ?'<div style="display:inline-flex;align-items:center;gap:5px;margin-top:10px;padding:5px 12px;border-radius:12px;background:#E53E3E1A;color:var(--rd);font-size:13px;font-weight:600"><svg width="13" height="13" viewBox="0 0 24 24" fill="#E53E3E" stroke="none"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>已暫停網路</div>'
+    :hasReward
+    ?'<div style="display:inline-flex;align-items:center;gap:5px;margin-top:10px;padding:5px 12px;border-radius:12px;background:#1BBFAA1A;color:#18B87A;font-size:13px;font-weight:600"><svg width="13" height="13" viewBox="0 0 24 24" fill="#18B87A" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>獎勵延長中 +'+m.rewardMin+' 分鐘</div>'
+    :'<div style="display:inline-flex;align-items:center;gap:5px;margin-top:10px;padding:5px 12px;border-radius:12px;background:var(--s2);color:var(--t3);font-size:13px;font-weight:600">網路狀態正常</div>';
   var boundDevicesHtml=m.devices.map(function(devId){
     var di=fmDeviceInfo(devId);
     return '<div style="display:flex;align-items:center;gap:10px;padding:8px 16px 8px 44px">'+
@@ -5744,6 +5755,7 @@ function renderFmDetail(m){
     '<div style="width:80px;height:80px;border-radius:50%;background:'+(info.bgAvatar||'#3A87C8')+';display:flex;align-items:center;justify-content:center;margin-bottom:12px">'+fmAvatarSvg(40,'#fff')+'</div>'+
     '<div style="font-size:22px;font-weight:700;color:var(--tx);margin-bottom:3px">'+m.name+'</div>'+
     '<div style="font-size:14px;color:var(--t3)">'+info.label+'</div>'+
+    statusHtml+
   '</div>'+
   '<div style="background:var(--w)">'+
     '<div class="sr" onclick="fmOpenDeviceEdit('+m.id+')" style="cursor:pointer;border-bottom:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">受監控裝置</div></div><span style="font-size:14px;color:var(--t2);margin-right:8px">'+m.devices.length+' 台</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>'+
