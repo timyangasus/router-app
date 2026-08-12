@@ -834,11 +834,6 @@ body{display:flex;align-items:center;justify-content:center}
     </div>
   </div>
 
-  <!-- OV: general notification summary bottom sheet -->
-  <div class="ov" id="ov-notif-summary" onclick="if(event.target===this)hide('ov-notif-summary')">
-    <div class="sheet" id="notif-summary-body"></div>
-  </div>
-
   <!-- SUB: Notification Settings -->
   <div class="sub" id="sub-notif-settings">
     <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
@@ -3668,44 +3663,31 @@ var _notifData = [];
 function notifSeedData(){
   return [
     {id:'n4', cat:'issue', severity:'resolved', status:'auto-resolved', unread:true,
-      title:'客廳節點連線異常', desc:'14:20 發生．14:36 已恢復', time:'14:36', group:'today',
-      tag:'已自動恢復', click:'sheet'},
+      title:'客廳節點連線異常', time:'14:36', group:'today', click:'mesh'},
     {id:'n5', cat:'update', severity:'info', status:'resolved', unread:true,
-      title:'App 版本更新完成', desc:'已更新至 v5.1.3，修正已知問題。', time:'12:05', group:'today',
-      tag:'已完成', click:'sheet'},
+      title:'App 版本更新完成', time:'12:05', group:'today', click:'fw'},
     {id:'n6', cat:'general', severity:'info', status:'resolved', unread:true,
-      title:'新裝置加入網路', desc:'「Tim\'s iPhone」首次連上 ASUS_Home。', time:'11:18', group:'today',
-      tag:'操作：確認裝置', click:'devconfirm', arrow:true},
+      title:'新裝置加入網路', time:'11:18', group:'today', click:'devices'},
     {id:'n7', cat:'security', severity:'info', status:'resolved', unread:false,
-      title:'AiProtection 阻擋可疑連線', desc:'封鎖 1 則惡意網站存取嘗試，裝置：Tim\'s MacBook Pro。', time:'09:52', group:'today',
-      click:'sheet'},
+      title:'AiProtection 阻擋可疑連線', time:'09:52', group:'today', click:'aipro'},
     {id:'n8', cat:'general', severity:'info', status:'resolved', unread:false,
-      title:'訪客網路已關閉', desc:'24 小時使用期限已結束。', time:'昨天 22:00', group:'yesterday',
-      click:'guest', arrow:true},
+      title:'訪客網路已關閉', time:'昨天 22:00', group:'yesterday', click:'guest'},
     {id:'n9', cat:'general', severity:'info', status:'resolved', unread:false,
-      title:'Instant Guard 已連線', desc:'Tim\'s iPhone 已透過安全通道連回家庭網路。', time:'昨天 18:22', group:'yesterday',
-      click:'vpns', arrow:true},
+      title:'Instant Guard 已連線', time:'昨天 18:22', group:'yesterday', click:'vpns'},
     {id:'n10', cat:'update', severity:'resolved', status:'resolved', unread:false,
-      title:'安全資料庫已更新', desc:'AiProtection 威脅特徵資料庫已更新至最新版本。', time:'昨天 03:00', group:'yesterday',
-      tag:'已完成', click:'sheet'},
+      title:'安全資料庫已更新', time:'昨天 03:00', group:'yesterday', click:'aipro'},
     {id:'n11', cat:'security', severity:'warning', status:'resolved', unread:false,
-      title:'陌生裝置首次加入網路', desc:'裝置已連上網路，已由使用者確認為個人裝置。', time:'昨天 20:41', group:'yesterday',
-      tag:'已處理', click:'sheet'},
+      title:'陌生裝置首次加入網路', time:'昨天 20:41', group:'yesterday', click:'devices'},
     {id:'n12', cat:'general', severity:'info', status:'resolved', unread:false,
-      title:'Wi-Fi 密碼已變更', desc:'主 Wi-Fi 密碼已更新。', time:'週二 09:15', group:'week',
-      click:'wifiset', arrow:true},
+      title:'Wi-Fi 密碼已變更', time:'週二 09:15', group:'week', click:'wifiset'},
     {id:'n13', cat:'general', severity:'info', status:'resolved', unread:false,
-      title:'AiMesh 節點已恢復', desc:'書房節點已重新連線，訊號穩定。', time:'週一 16:03', group:'week',
-      click:'sheet'},
+      title:'AiMesh 節點已恢復', time:'週一 16:03', group:'week', click:'mesh'},
     {id:'n14', cat:'general', severity:'info', status:'resolved', unread:false,
-      title:'訪客網路已建立', desc:'已建立 24 小時期限的訪客網路。', time:'週一 10:00', group:'week',
-      click:'guest', arrow:true},
+      title:'訪客網路已建立', time:'週一 10:00', group:'week', click:'guest'},
     {id:'n15', cat:'general', severity:'info', status:'resolved', unread:false,
-      title:'系統自動最佳化已完成', desc:'自動最佳化完成，節點連線品質良好。', time:'05/20', group:'earlier',
-      click:'sheet'},
+      title:'系統自動最佳化已完成', time:'05/20', group:'earlier', click:'mesh'},
     {id:'n16', cat:'update', severity:'info', status:'resolved', unread:false,
-      title:'韌體更新已排程', desc:'將於下次系統維護時間自動更新。', time:'05/19', group:'earlier',
-      tag:'已排程', click:'fw'}
+      title:'韌體更新已排程', time:'05/19', group:'earlier', click:'fw'}
   ];
 }
 
@@ -3713,11 +3695,11 @@ function notifIconFor(item){
   var sev = item.severity||'info';
   var bgMap = {critical:'#FBE2E2', warning:'var(--obg)', info:'var(--abg)', resolved:'var(--gbg)'};
   var strokeMap = {critical:'var(--rd)', warning:'var(--or)', info:'var(--ac)', resolved:'var(--gn)'};
-  var catBgMap = {security:'var(--gbg)', update:'var(--abg)', general:'#EFE7FC'};
-  var catStrokeMap = {security:'var(--gn)', update:'var(--ac)', general:'#8B5CF6'};
+  var catBgMap = {security:'var(--gbg)', update:'#DCEAFB', general:'#EFE7FC'};
+  var catStrokeMap = {security:'var(--gn)', update:'#2E76D0', general:'#8B5CF6'};
   var paths = {
     issue:'<path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2.5"/>',
-    update:'<polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/>',
+    update:'<polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>',
     security:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
     general:'<path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/>'
   };
@@ -3817,67 +3799,30 @@ function updateNotifTabDots(){
 
 
 function notifTimelineRow(item){
-  var dot = item.unread ? '<div style="width:8px;height:8px;border-radius:50%;background:var(--ac);flex-shrink:0;margin-top:5px"></div>' : '<div style="width:8px;height:8px;flex-shrink:0;margin-top:5px"></div>';
+  var dot = item.unread ? '<div style="width:8px;height:8px;border-radius:50%;background:var(--ac);flex-shrink:0"></div>' : '<div style="width:8px;height:8px;flex-shrink:0"></div>';
   var titleColor = item.unread ? 'var(--tx)' : 'var(--tx)';
-  var descColor = item.unread ? 'var(--t2)' : 'var(--t3)';
-  var arrow = item.arrow ? '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-top:6px"><polyline points="9 18 15 12 9 6"/></svg>' : '';
-  return '<div class="ntl-row clickable" data-nrow="'+item.id+'">'
+  var arrow = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0"><polyline points="9 18 15 12 9 6"/></svg>';
+  return '<div class="ntl-row clickable" data-nrow="'+item.id+'" style="align-items:center">'
     + dot
     + notifIconFor(item)
-    +'<div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:2px"><div style="font-size:16px;font-weight:600;color:'+titleColor+'">'+item.title+'</div><div style="font-size:10px;color:var(--t3);flex-shrink:0;margin-top:2px">'+item.time+'</div></div>'
-    +'<div style="font-size:12px;color:'+descColor+';line-height:1.5">'+item.desc+'</div>'
-    +'</div>'
+    +'<div style="flex:1;min-width:0;display:flex;justify-content:space-between;align-items:center;gap:8px"><div style="font-size:16px;font-weight:600;color:'+titleColor+'">'+item.title+'</div><div style="font-size:10px;color:var(--t3);flex-shrink:0">'+item.time+'</div></div>'
     + arrow
   +'</div>';
-}
-
-function notifRunAction(id, act){
-  if(act==='diag'){ show('sub-diag'); return; }
-  if(act==='fw'){ show('sub-fw'); return; }
-  if(act==='meshopt'){ window._meshOptFromQuick=true; show('sub-mesh-opt'); return; }
-  if(act==='reboot'){ show('sub-reboot'); return; }
 }
 
 function notifOpenItem(id){
   var item = _notifData.find(function(e){ return e.id===id; });
   if(!item) return;
   item.unread = false;
-  var click = item.click || 'sheet';
+  var click = item.click;
   if(click==='guest'){ show('ov-guest'); }
   else if(click==='wifiset'){ show('sub-main-wifi'); }
   else if(click==='vpns'){ show('sub-pro-vpns'); }
   else if(click==='fw'){ show('sub-fw'); }
-  else if(click==='devconfirm'){ notifOpenSheet(id); }
-  else { notifOpenSheet(id); }
+  else if(click==='devices'){ goTab('devices');var b=document.getElementById('devices-back-btn');if(b)b.style.display='flex'; }
+  else if(click==='aipro'){ show('sub-aipro-detail'); }
+  else if(click==='mesh'){ show('ov-mesh'); }
   updateBellBadge();
-}
-
-function notifOpenSheet(id){
-  var item = _notifData.find(function(e){ return e.id===id; });
-  if(!item) return;
-  var body = g('notif-summary-body');
-  if(!body) return;
-  var actionsHtml = (item.actions||[]).map(function(a){
-    var primary = a.kind==='primary';
-    return '<div data-nid="'+item.id+'" data-nact="'+a.act+'" style="flex:1;height:44px;border-radius:var(--r2);'
-      +(primary?'background:var(--ac);color:#fff':'background:var(--s2);color:var(--tx)')
-      +';display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;cursor:pointer">'+a.label+'</div>';
-  }).join('');
-  body.innerHTML = '<div class="hdl"></div>'
-    +'<div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:14px">'+notifIconFor(item)
-    +'<div><div style="font-size:17px;font-weight:700;color:var(--tx);margin-bottom:4px">'+item.title+'</div>'
-    +'<div style="font-size:11px;color:var(--t3)">'+item.time+'</div></div></div>'
-    +'<div style="font-size:14px;color:var(--t2);line-height:1.7;margin-bottom:18px">'+item.desc+'</div>'
-    +(actionsHtml ? '<div style="display:flex;gap:10px;margin-bottom:10px">'+actionsHtml+'</div>' : '')
-    +'<div onclick="hide(\'ov-notif-summary\')" style="height:48px;border-radius:var(--r2);background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:var(--tx);cursor:pointer">關閉</div>';
-  body.querySelectorAll('[data-nact]').forEach(function(btn){
-    btn.addEventListener('click', function(e){
-      e.stopPropagation();
-      hide('ov-notif-summary');
-      notifRunAction(btn.getAttribute('data-nid'), btn.getAttribute('data-nact'));
-    });
-  });
-  show('ov-notif-summary');
 }
 
 function notifMarkAllRead(){
