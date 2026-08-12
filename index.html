@@ -2436,7 +2436,7 @@ body{display:flex;align-items:center;justify-content:center}
     <div style="flex:1;overflow-y:auto;background:var(--bg);padding:16px 16px 24px">
       <!-- Member identity -->
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
-        <div style="font-size:26px" id="fm-step3-av">🧔</div>
+        <div id="fm-step3-av"></div>
         <div>
           <div style="font-size:16px;font-weight:700;color:var(--ac)" id="fm-step3-name">成人</div>
           <div style="font-size:13px;color:var(--t3)" id="fm-step3-label">18 歲以上</div>
@@ -2493,7 +2493,7 @@ body{display:flex;align-items:center;justify-content:center}
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
       <div style="display:flex;align-items:center;gap:12px;padding:16px 20px 12px;background:var(--w);border-bottom:1px solid var(--bd)">
-        <div style="font-size:30px" id="fm-step4-av">🧔</div>
+        <div id="fm-step4-av"></div>
         <div>
           <div style="font-size:17px;font-weight:700;color:var(--ac)" id="fm-step4-name">成人</div>
           <div style="font-size:13px;color:var(--t3)" id="fm-step4-label">18 歲以上</div>
@@ -5386,7 +5386,7 @@ function fmStep2Next(){
   _fmNew.devices=Object.keys(_fmSelDevs).filter(function(k){return _fmSelDevs[k];});
   // update step3 labels
   var info=fmAgeInfo(_fmNew.ageType);
-  var av3=document.getElementById('fm-step3-av');if(av3)av3.textContent=info.emoji;
+  var av3=document.getElementById('fm-step3-av');if(av3)av3.innerHTML=fmTypeAvatarSvg(_fmNew.ageType,26,'var(--ac)');
   var n3=document.getElementById('fm-step3-name');if(n3)n3.textContent=_fmNew.name;
   var l3=document.getElementById('fm-step3-label');if(l3)l3.textContent=info.sublabel;
   // reset days to today
@@ -5567,7 +5567,7 @@ function fmToggleAllDay(el){
 function fmStep3Next(){
   // go to step4 content block
   var info=fmAgeInfo(_fmNew.ageType);
-  var av4=document.getElementById('fm-step4-av');if(av4)av4.textContent=info.emoji;
+  var av4=document.getElementById('fm-step4-av');if(av4)av4.innerHTML=fmTypeAvatarSvg(_fmNew.ageType,30,'var(--ac)');
   var n4=document.getElementById('fm-step4-name');if(n4)n4.textContent=_fmNew.name;
   var l4=document.getElementById('fm-step4-label');if(l4)l4.textContent=info.sublabel;
   renderFmStep4Cats();
