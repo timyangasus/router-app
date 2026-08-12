@@ -6069,17 +6069,14 @@ function aiHistoryRow(dateRange,score,status,statusColor,last,onclick){
 var AI_REPORT_CURRENT={
   dateRange:'8/4 – 8/10',score:92,rating:'良好',
   cardGradient:'linear-gradient(135deg,#4A8FE0,#6AAAF0)',ratingBg:'rgba(255,255,255,.25)',ratingColor:'#fff',
-  summary:'本週網路穩定，安全無虞。臥室節點夜間較不穩定，建議留意。',
+  summary:'本週網路穩定，安全無虞。',
   kpis:[
     ['Internet 可用率','99.8%','本週中斷 1 次','var(--gn)'],
     ['Mesh 穩定度','92%','較上週 -5%','var(--gn)'],
-    ['節點健康度','2 / 3 正常','臥室節點待觀察','var(--tx)'],
+    ['節點健康度','2 / 3 正常','全部運作正常','var(--gn)'],
     ['Wi-Fi 覆蓋品質','良好','全屋平均訊號穩定','var(--gn)']
   ],
   insights:[
-    ['<b>臥室節點</b>本週離線 4 次，多發生於夜間，可能與訊號干擾有關。','立即執行 Mesh 最佳化',"window._nodeOptBackToAI=true;hide('sub-ai-report');openNodeOptimize('bedroom')",false],
-    ['<b>Nest Cam</b> 訊號持續偏弱，過去 7 天低於一般水準。','查看裝置',"window._devDetailReturnToAI=true;hide('sub-ai-report');openMeshDevice('living',6)",false],
-    ['目前韌體版本並非最新，建議更新以提升穩定性與安全性。','前往更新',"window._fwBackToAI=true;hide('sub-ai-report');show('sub-fw')",false],
     ['未偵測到重複發生的安全性問題，裝置存取行為維持正常。','','',true]
   ]
 };
@@ -6117,6 +6114,7 @@ var AI_REPORT_GOOD={
 };
 function renderAIReport(data){
   data=data||AI_REPORT_CURRENT;
+  var bar=g('ai-input-bar');if(bar)bar.style.display='none';
   var body=g('ai-report-body');if(!body)return;
   var score=data.score,pct=score/100,r=44,circumf=2*Math.PI*r,offset=circumf*(1-pct);
   var html='';
