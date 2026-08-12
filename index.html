@@ -355,13 +355,18 @@ body{display:flex;align-items:center;justify-content:center}
           <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0"><span style="font-size:13px;color:var(--t3)">AiMesh 節點</span><span id="mesh-node-count" style="font-size:15px;font-weight:700;color:var(--tx)">2</span></div>
           <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0"><span style="font-size:13px;color:var(--t3)">網路連線</span><span id="mesh-summary-status" style="font-size:15px;font-weight:700;color:var(--gn)">良好</span></div>
         </div>
-        <div class="card" onclick="goTab('devices');var b=document.getElementById('devices-back-btn');if(b)b.style.display='flex';" style="cursor:pointer;flex:1;margin:0;padding:18px 16px">
-          <div style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.9px;text-transform:uppercase">連線裝置</div>
-          <div style="display:flex;justify-content:center;padding:18px 0">
+        <div class="card" onclick="goTab('devices');var b=document.getElementById('devices-back-btn');if(b)b.style.display='flex';" style="cursor:pointer;flex:1;margin:0;padding:18px 16px;position:relative">
+          <div style="position:absolute;right:-30px;bottom:-55px;width:180px;height:180px;pointer-events:none">
+            <div style="position:absolute;inset:0;border-radius:50%;background:rgba(74,143,224,.05)"></div>
+            <div style="position:absolute;inset:28px;border-radius:50%;background:rgba(74,143,224,.07)"></div>
+            <div style="position:absolute;inset:56px;border-radius:50%;background:rgba(74,143,224,.09)"></div>
+          </div>
+          <div style="position:relative;font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.9px;text-transform:uppercase">連線裝置</div>
+          <div style="position:relative;display:flex;justify-content:center;padding:18px 0">
             <svg width="34" height="34" viewBox="0 -960 960 960" fill="var(--ac)"><path d="M480-540ZM80-160v-80h400v80H80Zm120-120q-33 0-56.5-23.5T120-360v-360q0-33 23.5-56.5T200-800h560q33 0 56.5 23.5T840-720H200v360h280v80H200Zm600 40v-320H640v320h160Zm-180 80q-25 0-42.5-17.5T560-220v-360q0-25 17.5-42.5T620-640h200q25 0 42.5 17.5T880-580v360q0 25-17.5 42.5T820-160H620Zm100-300q13 0 21.5-9t8.5-21q0-13-8.5-21.5T720-520q-12 0-21 8.5t-9 21.5q0 12 9 21t21 9Zm0 60Z"/></svg>
           </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0"><span style="font-size:13px;color:var(--t3)">連線</span><span style="font-size:15px;font-weight:700;color:var(--tx)">7</span></div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0"><span style="font-size:13px;color:var(--t3)">離線</span><span style="font-size:15px;font-weight:700;color:var(--tx)">1</span></div>
+          <div style="position:relative;display:flex;justify-content:space-between;align-items:center;padding:4px 0"><span style="font-size:13px;color:var(--t3)">連線</span><span style="font-size:15px;font-weight:700;color:var(--tx)">7</span></div>
+          <div style="position:relative;display:flex;justify-content:space-between;align-items:center;padding:4px 0"><span style="font-size:13px;color:var(--t3)">離線</span><span style="font-size:15px;font-weight:700;color:var(--tx)">1</span></div>
         </div>
       </div>
       <!-- Quick Actions -->
