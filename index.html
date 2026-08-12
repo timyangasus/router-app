@@ -352,13 +352,15 @@ body{display:flex;align-items:center;justify-content:center}
       </div>
       <!-- AiMesh -->
       <div style="display:flex;gap:10px;padding:20px 16px 0">
-        <div class="card" onclick="show('ov-mesh')" style="cursor:pointer;flex:1;margin:0;padding:18px 16px">
+        <div class="card" onclick="show('ov-mesh')" style="cursor:pointer;flex:1;margin:0;padding:18px 16px;display:flex;flex-direction:column">
           <div style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.9px;text-transform:uppercase">網路地圖</div>
           <div style="display:flex;justify-content:center;padding:18px 0">
             <svg width="34" height="34" viewBox="0 -960 960 960" fill="var(--ac)"><path d="M200-80q-50 0-85-35t-35-85q0-39 22.5-70t57.5-43v-87q0-50 35-85t85-35h160v-127q-35-12-57.5-43T360-760q0-50 35-85t85-35q50 0 85 35t35 85q0 39-22.5 70T520-647v127h160q50 0 85 35t35 85v87q35 12 57.5 43t22.5 70q0 50-35 85t-85 35q-50 0-85-35t-35-85q0-39 22.5-70t57.5-43v-87q0-17-11.5-28.5T680-440H520v127q35 12 57.5 43t22.5 70q0 50-35 85t-85 35q-50 0-85-35t-35-85q0-39 22.5-70t57.5-43v-127H280q-17 0-28.5 11.5T240-400v87q35 12 57.5 43t22.5 70q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T240-200q0-17-11.5-28.5T200-240q-17 0-28.5 11.5T160-200q0 17 11.5 28.5T200-160Zm280 0q17 0 28.5-11.5T520-200q0-17-11.5-28.5T480-240q-17 0-28.5 11.5T440-200q0 17 11.5 28.5T480-160Zm280 0q17 0 28.5-11.5T800-200q0-17-11.5-28.5T760-240q-17 0-28.5 11.5T720-200q0 17 11.5 28.5T760-160ZM480-720q17 0 28.5-11.5T520-760q0-17-11.5-28.5T480-800q-17 0-28.5 11.5T440-760q0 17 11.5 28.5T480-720Z"/></svg>
           </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0"><span style="font-size:13px;color:var(--t3)">AiMesh 節點</span><span id="mesh-node-count" style="font-size:15px;font-weight:700;color:var(--tx)">2</span></div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0"><span style="font-size:13px;color:var(--t3)">網路連線</span><span id="mesh-summary-status" style="font-size:15px;font-weight:700;color:var(--gn)">良好</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0"><span style="font-size:13px;color:var(--t3)">AiMesh 節點</span><span id="mesh-node-count" style="font-size:15px;font-weight:700;color:var(--tx)">2</span></div>
+            <div id="mesh-conn-row" style="display:none;justify-content:space-between;align-items:center;padding:4px 0"><span style="font-size:13px;color:var(--t3)">網路連線</span><span id="mesh-summary-status" style="font-size:15px;font-weight:700;color:var(--gn)">良好</span></div>
+          </div>
         </div>
         <div class="card" onclick="goTab('devices');var b=document.getElementById('devices-back-btn');if(b)b.style.display='flex';" style="cursor:pointer;flex:1;margin:0;padding:18px 16px">
           <div style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.9px;text-transform:uppercase">連線裝置</div>
@@ -3934,6 +3936,8 @@ function applyNetState(){
   var ul = g('home-ul-arrow'); if(ul) ul.style.color = err ? '#FFB4B4' : '#8FD3FF';
   drawBannerCanvas(err);
   var sc = document.querySelector('.sc'); if(sc) sc.style.background = err ? 'linear-gradient(140deg,#F5B570,#E8863A,#DB7328)' : '';
+  var meshConnRow = g('mesh-conn-row');
+  if(meshConnRow) meshConnRow.style.display = err ? 'flex' : 'none';
   var meshStatus = g('mesh-summary-status');
   if(meshStatus){ meshStatus.textContent = err ? '注意' : '良好'; meshStatus.style.color = err ? 'var(--or)' : 'var(--gn)'; }
   var wifiCard = g('wifi-status-card');
