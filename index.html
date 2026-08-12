@@ -6059,15 +6059,31 @@ var AI_REPORT_BAD={
   cardGradient:'linear-gradient(135deg,#E8863A,#F5B570)',ratingBg:'rgba(255,255,255,.25)',ratingColor:'#fff',
   summary:'本週網路不穩定，多次中斷。建議儘快處理設備問題。',
   kpis:[
-    ['Internet 可用率','92.4%','本週中斷 5 次','var(--or)'],
-    ['Mesh 穩定度','68%','較上週 -24%','var(--rd)'],
-    ['節點健康度','1 / 3 可優化','廚房節點需處理','var(--rd)'],
-    ['Wi-Fi 覆蓋品質','待改善','廚房區域訊號不足','var(--or)']
+    ['Internet 可用率','92.4%','本週中斷 5 次','#CA8A04'],
+    ['Mesh 穩定度','68%','較上週 -24%','#CA8A04'],
+    ['節點健康度','1 / 3 可優化','廚房節點需處理','#CA8A04'],
+    ['Wi-Fi 覆蓋品質','待改善','廚房區域訊號不足','#CA8A04']
   ],
   insights:[
     ['<b>廚房節點</b>本週離線 9 次，多次超過 10 分鐘，影響該區域裝置連線。','立即執行 Mesh 最佳化',"window._nodeOptBackToAI=true;hide('sub-ai-report');openNodeOptimize('kitchen')",false],
     ['AiProtection 本週攔截 5 次惡意連線嘗試，較上週明顯增加。','查看防護狀態',"window._aiproBackToAI=true;hide('sub-ai-report');show('sub-aipro-detail')",false],
     ['韌體更新過程曾失敗一次，系統已自動回復為原版本。','前往更新',"window._fwBackToAI=true;hide('sub-ai-report');show('sub-fw')",false]
+  ]
+};
+var AI_REPORT_GOOD={
+  dateRange:'7/28 – 8/3',score:98,rating:'優秀',
+  cardGradient:'linear-gradient(135deg,#4A8FE0,#6AAAF0)',ratingBg:'rgba(255,255,255,.25)',ratingColor:'#fff',
+  summary:'本週網路表現優異，所有節點連線穩定，未發現任何安全性問題。',
+  kpis:[
+    ['Internet 可用率','100%','本週無中斷','var(--gn)'],
+    ['Mesh 穩定度','99%','較上週 +1%','var(--gn)'],
+    ['節點健康度','3 / 3 正常','所有節點運作正常','var(--gn)'],
+    ['Wi-Fi 覆蓋品質','優秀','全屋訊號穩定','var(--gn)']
+  ],
+  insights:[
+    ['所有 AiMesh 節點本週維持穩定連線，無離線紀錄。','','',true],
+    ['未偵測到任何可疑連線或安全性問題，裝置存取行為正常。','','',true],
+    ['目前韌體版本為最新版本，無需更新。','','',true]
   ]
 };
 function renderAIReport(data){
@@ -6077,9 +6093,8 @@ function renderAIReport(data){
   var html='';
   // ① Weekly Summary
   html+='<div style="background:'+(data.cardGradient||'linear-gradient(135deg,#4A8FE0,#6AAAF0)')+';border-radius:var(--r2);padding:24px 20px;margin-bottom:16px;box-shadow:var(--sh)">'
-    +'<div style="display:flex;align-items:center;gap:6px;margin-bottom:16px">'
-      +'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" style="stroke:none"><path d="M18.71,9.63c-.08,0-.14-.04-.16-.12-.22-.84-.63-1.56-1.25-2.17s-1.33-1.03-2.17-1.25c-.08-.03-.12-.08-.12-.16,0-.1.04-.15.12-.16.84-.22,1.56-.63,2.17-1.25s1.03-1.33,1.25-2.17c.03-.08.08-.12.16-.12s.14.04.16.12c.22.84.63,1.56,1.25,2.17s1.33,1.03,2.17,1.25c.08.01.12.07.12.16,0,.08-.04.14-.12.16-.84.22-1.56.63-2.17,1.25s-1.03,1.33-1.25,2.17c-.01.08-.07.12-.16.12Z" fill="#fff"/><path d="M10.44,22.42c-.21,0-.35-.1-.42-.31-.56-2.12-1.61-3.96-3.16-5.51s-3.38-2.6-5.51-3.16c-.21-.07-.31-.21-.31-.42,0-.24.1-.38.31-.42,2.12-.56,3.96-1.61,5.51-3.16s2.6-3.38,3.16-5.51c.07-.21.21-.31.42-.31s.35.1.42.31c.56,2.12,1.61,3.96,3.16,5.51s3.38,2.6,5.51,3.16c.21.03.31.17.31.42,0,.21-.1.35-.31.42-2.12.56-3.96,1.61-5.51,3.16s-2.6,3.38-3.16,5.51c-.03.21-.17.31-.42.31Z" fill="#fff"/></svg>'
-      +'<span style="font-size:13px;font-weight:600;color:#fff;opacity:.9">AI Insight · '+data.dateRange+'</span>'
+    +'<div style="margin-bottom:16px">'
+      +'<span onclick="event.stopPropagation();window._aiReportBackToHistory=false;renderAIHistory();show(\'sub-ai-history\')" style="display:inline-flex;align-items:center;padding:5px 14px;border-radius:14px;background:#0F2A52;color:#fff;font-size:15px;font-weight:700;cursor:pointer">'+data.dateRange+'</span>'
     +'</div>'
     +'<div style="display:flex;align-items:center;gap:20px;margin-bottom:16px">'
       +'<div style="position:relative;width:104px;height:104px;flex-shrink:0">'
@@ -6111,7 +6126,7 @@ function renderAIReport(data){
 var AI_HISTORY_MONTHS=[
   {month:'2026年8月',weeks:[
     {range:'8/4 – 8/10',score:92,status:'良好',color:'var(--gn)',data:'AI_REPORT_CURRENT'},
-    {range:'7/28 – 8/3',score:95,status:'優秀',color:'var(--gn)'},
+    {range:'7/28 – 8/3',score:98,status:'優秀',color:'var(--gn)',data:'AI_REPORT_GOOD'},
     {range:'7/21 – 7/27',score:78,status:'待改善',color:'var(--or)',data:'AI_REPORT_BAD'},
     {range:'7/14 – 7/20',score:90,status:'良好',color:'var(--gn)'}
   ]},
