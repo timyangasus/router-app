@@ -3540,20 +3540,29 @@ function devHeader(d,nodeName,blocked,paused,nodeId,idx){
     weak?'linear-gradient(135deg,#F5B570,#E8863A)':
     'linear-gradient(135deg,#4A8FE0,#6AAAF0)';
   var pauseDisabled=blocked;
-  var actions='<div style="display:flex;justify-content:flex-end;gap:22px;margin-top:20px">'
+  var ripple='<div style="position:absolute;right:-30px;bottom:-55px;width:220px;height:220px;pointer-events:none">'
+    +'<div style="position:absolute;inset:0;border-radius:50%;background:rgba(255,255,255,.05)"></div>'
+    +'<div style="position:absolute;inset:35px;border-radius:50%;background:rgba(255,255,255,.07)"></div>'
+    +'<div style="position:absolute;inset:70px;border-radius:50%;background:rgba(255,255,255,.09)"></div>'
+  +'</div>';
+  var actions='<div style="display:flex;justify-content:flex-end;gap:20px;margin-top:14px;position:relative">'
     +devHeaderAction(_svgDevBlock,blocked?'解除封鎖':'封鎖網路',false,'toggleMeshDeviceBlock(\''+nodeId+'\','+idx+')')
     +devHeaderAction(paused?_svgDevPlay:_svgDevPause,paused?'解除暫停':'暫停網路',pauseDisabled,'toggleMeshDevicePause(\''+nodeId+'\','+idx+')')
   +'</div>';
-  return '<div style="margin-bottom:14px;border-radius:var(--r2);overflow:hidden;position:relative;background:'+gradient+';padding:26px 18px 22px;box-shadow:var(--sh)">'
-    +'<div style="display:flex;align-items:center;gap:16px">'
-    +'<div style="width:60px;height:60px;border-radius:50%;background:rgba(0,0,0,.3);flex-shrink:0;display:flex;align-items:center;justify-content:center">'+devIconSvg(d.type,26,'#fff')+'</div>'
+  return '<div style="margin-bottom:14px;border-radius:var(--r2);overflow:hidden;position:relative;background:'+gradient+';padding:18px 16px 16px;box-shadow:var(--sh)">'
+    +ripple
+    +'<div style="display:flex;align-items:flex-start;gap:14px;position:relative">'
+    +'<div style="width:54px;height:54px;border-radius:50%;background:rgba(0,0,0,.3);flex-shrink:0;display:flex;align-items:center;justify-content:center">'+devIconSvg(d.type,24,'#fff')+'</div>'
     +'<div style="flex:1;min-width:0;color:#fff">'
-    +'<div style="font-size:18px;font-weight:700;letter-spacing:-.3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+deviceDisplayName(d,'#fff')+'</div>'
+    +'<div style="display:flex;align-items:center;gap:8px">'
+      +'<div style="flex:1;min-width:0;font-size:18px;font-weight:700;letter-spacing:-.3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+deviceDisplayName(d,'#fff')+'</div>'
+      +'<div style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.18);border-radius:11px;padding:3px 10px;flex-shrink:0">'
+        +'<span style="width:6px;height:6px;border-radius:50%;background:#fff;opacity:'+(status==='online'&&!blocked?1:.65)+'"></span>'
+        +'<span style="font-size:12.5px;font-weight:600;color:#fff;white-space:nowrap">'+statusText+'</span>'
+      +'</div>'
+    +'</div>'
     +'<div style="font-size:12.5px;opacity:.85;margin-top:4px">'+deviceSubtitle(d,nodeName)+'</div>'
-    +'<div style="display:inline-flex;align-items:center;gap:5px;margin-top:6px">'
-      +'<span style="width:7px;height:7px;border-radius:50%;background:#fff;opacity:'+(status==='online'&&!blocked?1:.65)+'"></span>'
-      +'<span style="font-size:14.5px;font-weight:600;color:#fff;opacity:.9">'+statusText+'</span>'
-    +'</div></div>'
+    +'</div>'
     +'</div>'
     +actions
   +'</div>';
