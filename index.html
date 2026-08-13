@@ -4520,10 +4520,7 @@ function renderNodeDetail(nodeId){
     ];
     html+='<span class="sl">3 項問題需要注意</span>';
     html+='<div style="margin:0 16px 12px;display:flex;flex-direction:column;gap:10px">'
-      +mainIssues.map(function(it){
-        if(_mainIssuesResolved[it[0]]){
-          return '<div style="background:var(--gbg);border-radius:var(--r);padding:14px 16px;display:flex;align-items:center;gap:8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span style="font-size:14px;font-weight:600;color:var(--gn)">'+it[1]+'已排除</span></div>';
-        }
+      +mainIssues.filter(function(it){ return !_mainIssuesResolved[it[0]]; }).map(function(it){
         return '<div style="background:var(--obg);border-radius:var(--r);padding:16px">'
           +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span style="font-size:15px;font-weight:700;color:var(--or)">'+it[1]+'</span></div>'
           +'<div style="font-size:13px;color:var(--t2);line-height:1.6;margin-bottom:10px">'+it[2]+'</div>'
