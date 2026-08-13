@@ -1222,16 +1222,16 @@ body{display:flex;align-items:center;justify-content:center}
     <div style="flex:1;overflow-y:auto;background:var(--bg);padding-bottom:24px">
       <!-- 目前狀態 -->
       <div style="background:var(--w);margin:12px 16px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden">
-        <div style="padding:16px;display:flex;align-items:center;gap:14px">
-          <div style="width:48px;height:48px;border-radius:50%;background:var(--abg);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <div style="padding:16px;display:flex;align-items:center;gap:14px" id="fw-status-row">
+          <div style="width:48px;height:48px;border-radius:50%;background:var(--abg);display:flex;align-items:center;justify-content:center;flex-shrink:0" id="fw-status-icon-wrap">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/></svg>
           </div>
           <div>
-            <div style="font-size:17px;font-weight:600;color:var(--tx)">新版本可用</div>
-            <div style="font-size:13px;color:var(--t3);margin-top:3px">3.0.0.4.388 → <span style="color:var(--ac);font-weight:600">3.0.0.4.390</span></div>
+            <div style="font-size:17px;font-weight:600;color:var(--tx)" id="fw-status-title">新版本可用</div>
+            <div style="font-size:13px;color:var(--t3);margin-top:3px" id="fw-status-sub">3.0.0.4.388 → <span style="color:var(--ac);font-weight:600">3.0.0.4.390</span></div>
           </div>
         </div>
-        <div style="padding:0 16px 14px">
+        <div style="padding:0 16px 14px" id="fw-update-block">
           <div style="background:var(--s2);border-radius:var(--r2);padding:12px 14px;font-size:12px;color:var(--t2);line-height:1.7;margin-bottom:12px">
             <div style="font-weight:600;color:var(--tx);margin-bottom:6px">更新內容</div>
             <div>• 修正 AiMesh 節點連線穩定性問題</div>
@@ -1250,7 +1250,7 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh)">
         <div style="display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--bd)">
           <div style="font-size:14px;color:var(--t3)">韌體版本</div>
-          <div style="font-size:14px;font-weight:500;color:var(--tx);font-family:var(--m)">3.0.0.4.388</div>
+          <div style="font-size:14px;font-weight:500;color:var(--tx);font-family:var(--m)" id="fw-current-version">3.0.0.4.388</div>
         </div>
         <div style="display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--bd)">
           <div style="font-size:14px;color:var(--t3)">型號</div>
@@ -3605,7 +3605,7 @@ function notifSeedData(){
     {id:'n4', cat:'issue', severity:'resolved', status:'auto-resolved', unread:true,
       title:'客廳節點連線異常', time:'2026/08/12  14:36', group:'week', click:'mesh'},
     {id:'n5', cat:'update', severity:'info', status:'resolved', unread:true,
-      title:'App 版本更新完成', time:'2026/08/12  12:05', group:'week', click:'fw'},
+      title:'App 版本更新完成', time:'2026/08/12  12:05', group:'week', click:'fw-latest'},
     {id:'n6', cat:'general', severity:'info', status:'resolved', unread:true,
       title:'新裝置加入網路', time:'2026/08/12  11:18', group:'week', click:'devices'},
     {id:'n7', cat:'security', severity:'info', status:'resolved', unread:false,
@@ -3758,7 +3758,8 @@ function notifOpenItem(id){
   if(click==='guest'){ show('ov-guest'); }
   else if(click==='wifiset'){ show('sub-main-wifi'); }
   else if(click==='vpns'){ show('sub-pro-vpns'); }
-  else if(click==='fw'){ show('sub-fw'); }
+  else if(click==='fw'){ renderFwStatus(false); show('sub-fw'); }
+  else if(click==='fw-latest'){ renderFwStatus(true); show('sub-fw'); }
   else if(click==='devices'){ goTab('devices');var b=document.getElementById('devices-back-btn');if(b)b.style.display='flex'; }
   else if(click==='aipro'){ show('sub-aipro-detail'); }
   else if(click==='mesh'){ show('ov-mesh'); }
@@ -3929,7 +3930,7 @@ function renderQAGrid() {
       else if (act==='guest')       show('ov-guest');
       else if (act==='diag')        show('sub-diag');
       else if (act==='wifiset')     show('sub-main-wifi');
-      else if (act==='fw')          show('sub-fw');
+      else if (act==='fw')          { renderFwStatus(false); show('sub-fw'); }
       else if (act==='meshopt')     { window._meshOptFromQuick=true; show('sub-mesh-opt'); }
       else if (act==='meshadd')     { window._meshAddFromQuick=true; show('sub-mesh-addnode'); }
       else if (act==='sched')       show('sub-sched-home');
@@ -3957,6 +3958,22 @@ function showQAToast(msg){
   t.style.display = 'block';
   clearTimeout(t._hideTimer);
   t._hideTimer = setTimeout(function(){ t.style.display = 'none'; }, 1600);
+}
+function renderFwStatus(isLatest){
+  var iconWrap=g('fw-status-icon-wrap'),title=g('fw-status-title'),sub=g('fw-status-sub'),block=g('fw-update-block'),curVer=g('fw-current-version');
+  if(isLatest){
+    if(iconWrap){iconWrap.style.background='var(--gbg)';iconWrap.innerHTML='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';}
+    if(title)title.textContent='已是最新版本';
+    if(sub)sub.textContent='目前版本 3.0.0.4.390';
+    if(block)block.style.display='none';
+    if(curVer)curVer.textContent='3.0.0.4.390';
+  } else {
+    if(iconWrap){iconWrap.style.background='var(--abg)';iconWrap.innerHTML='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/></svg>';}
+    if(title)title.textContent='新版本可用';
+    if(sub)sub.innerHTML='3.0.0.4.388 → <span style="color:var(--ac);font-weight:600">3.0.0.4.390</span>';
+    if(block)block.style.display='';
+    if(curVer)curVer.textContent='3.0.0.4.388';
+  }
 }
 function showToast(msg){
   var t = g('app-toast');
@@ -4386,7 +4403,7 @@ window.addEventListener('load',function(){
     g('stab-general').style.color='var(--t3)';
     g('stab-general').style.borderBottomColor='transparent';
   });
-  bind('s-fw',function(){show('sub-fw');});
+  bind('s-fw',function(){renderFwStatus(false);show('sub-fw');});
   bind('fw-back',function(){
     hide('sub-fw');
     if(window._fwBackToAI){window._fwBackToAI=false;show('sub-ai-report');}
@@ -5973,7 +5990,7 @@ var AI_REPORT_BAD={
   insights:[
     ['<b>廚房節點</b>本週離線 9 次，多次超過 10 分鐘，影響該區域裝置連線。','立即執行 Mesh 最佳化',"window._nodeOptBackToAI=true;hide('sub-ai-report');openNodeOptimize('kitchen')",false],
     ['AiProtection 本週攔截 5 次惡意連線嘗試，較上週明顯增加。','查看防護狀態',"window._aiproBackToAI=true;hide('sub-ai-report');show('sub-aipro-detail')",false],
-    ['韌體更新過程曾失敗一次，系統已自動回復為原版本。','前往更新',"window._fwBackToAI=true;hide('sub-ai-report');show('sub-fw')",false]
+    ['韌體更新過程曾失敗一次，系統已自動回復為原版本。','前往更新',"window._fwBackToAI=true;hide('sub-ai-report');renderFwStatus(false);show('sub-fw')",false]
   ]
 };
 var AI_REPORT_GOOD={
