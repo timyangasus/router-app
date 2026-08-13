@@ -3700,7 +3700,7 @@ function renderQAEditor() {
   QA_CATEGORIES.forEach(function(cat){
     var items = cat.ids.map(function(id){ return QA_ALL.find(function(x){ return x.id===id; }); }).filter(Boolean);
     if (!items.length) return;
-    html += '<div style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.9px;text-transform:uppercase;padding:14px 20px 8px">'+cat.emoji+' '+cat.name+'</div>';
+    html += '<div style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.9px;text-transform:uppercase;padding:14px 20px 8px">'+cat.name+'</div>';
     html += '<div style="background:var(--w)">';
     items.forEach(function(item, idx){
       var sel = QA_SELECTED.indexOf(item.id) !== -1;
