@@ -312,7 +312,7 @@ body{display:flex;align-items:center;justify-content:center}
       </div>
       <div class="pg-body">
       <!-- Status Card -->
-      <div class="sc" onclick="show('sub-wifi')" style="cursor:pointer">
+      <div class="sc" onclick="openNodeDetail('living')" style="cursor:pointer">
         <canvas id="banner-canvas" style="position:absolute;inset:0;width:100%;height:100%;border-radius:var(--r)"></canvas>
         <div style="position:absolute;right:-60px;bottom:-90px;width:320px;height:320px;pointer-events:none">
           <div style="position:absolute;inset:0;border-radius:50%;background:rgba(255,255,255,.08)"></div>
@@ -338,7 +338,7 @@ body{display:flex;align-items:center;justify-content:center}
                 <div id="home-uptime-text" style="font-size:11px;font-weight:500;color:#fff;opacity:.75;line-height:1.3;margin-top:10px">已運行 12 天 4 小時</div>
                 <div id="home-status-text" style="font-size:19px;font-weight:700;color:#fff;line-height:1.35;margin-top:6px">網路一切正常</div>
                 <div id="home-status-action" style="display:none;justify-content:flex-end;margin-top:10px">
-                  <div onclick="event.stopPropagation();show('sub-wifi')" style="background:#fff;color:var(--rd);border-radius:18px;padding:8px 16px;font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:4px;cursor:pointer">立即查看 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--rd)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+                  <div onclick="event.stopPropagation();openNodeDetail('living')" style="background:#fff;color:var(--rd);border-radius:18px;padding:8px 16px;font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:4px;cursor:pointer">立即查看 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--rd)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
                 </div>
               </div>
               <div style="display:flex;justify-content:flex-end;align-items:baseline;gap:6px;font-size:15px;font-weight:600">
@@ -1722,102 +1722,11 @@ body{display:flex;align-items:center;justify-content:center}
   </div>
 
   <!-- SUB: WIFI SETTINGS -->
-  <div class="sub" id="sub-wifi">
-    <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
-    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div style="display:flex;align-items:center;gap:12px">
-        <div class="bk" id="wifi-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-        <div style="font-size:17px;font-weight:600;color:var(--tx)">Wi-Fi 設定</div>
-      </div>
-      <div style="font-size:14px;color:var(--ac);font-weight:600;cursor:pointer">儲存</div>
-    </div>
-    <div style="flex:1;overflow-y:auto;background:var(--bg);padding-bottom:30px">
-
-      <!-- 狀態卡片 -->
-      <div id="wifi-status-card" style="background:linear-gradient(140deg,#3B87E0,#6AAAF0);margin:14px 16px;border-radius:var(--r);padding:16px 18px;box-shadow:0 4px 16px rgba(59,135,224,.25)">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1.5" fill="#fff" stroke="none"/></svg>
-          <div style="font-size:16px;font-weight:700;color:#fff">ASUS_Home</div>
-          <div style="margin-left:auto;background:rgba(255,255,255,.2);border-radius:10px;padding:3px 10px;font-size:12px;color:#fff;font-weight:600">啟用中</div>
-        </div>
-        <div style="display:flex;align-items:flex-end;gap:16px">
-          <div style="text-align:center"><div style="font-size:18px;font-weight:700;color:#fff">5</div><div style="font-size:10px;color:rgba(255,255,255,.7);margin-top:1px">GHz</div></div>
-          <div style="width:1px;background:rgba(255,255,255,.2);align-self:stretch"></div>
-          <div style="text-align:center"><div style="font-size:18px;font-weight:700;color:#fff">WPA3</div><div style="font-size:10px;color:rgba(255,255,255,.7);margin-top:1px">加密</div></div>
-          <div style="margin-left:auto;text-align:right;font-size:11px;color:rgba(255,255,255,.85);font-family:var(--m);line-height:1.5">192.168.56.1<br>8D:AA:6E:5C:DA</div>
-        </div>
-      </div>
-
-      <!-- 問題卡片（異常時顯示） -->
-      <div id="wifi-issues-card" style="display:none;background:var(--w);margin:14px 16px;border-radius:var(--r);padding:16px 18px;box-shadow:var(--sh)"></div>
-
-      <!-- Wi-Fi 名稱 & 密碼 -->
-      <span class="sl">Wi-Fi 資訊</span>
-      <div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh)">
-        <div style="display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid var(--bd)">
-          <div style="font-size:14px;color:var(--t3);width:60px;flex-shrink:0">名稱</div>
-          <input value="ASUS_Home" style="flex:1;border:none;outline:none;background:transparent;font-size:17px;font-weight:600;color:var(--tx);font-family:var(--f)"/>
-        </div>
-        <div style="display:flex;align-items:center;padding:13px 16px">
-          <div style="font-size:14px;color:var(--t3);width:60px;flex-shrink:0">密碼</div>
-          <input type="password" value="mypassword123" id="wifi-pw" style="flex:1;border:none;outline:none;background:transparent;font-size:17px;font-weight:600;color:var(--tx);font-family:var(--m)"/>
-          <div style="cursor:pointer;color:var(--t3);font-size:12px;padding-left:8px" id="wifi-pw-toggle">顯示</div>
-        </div>
-      </div>
-
-      <!-- 頻段 -->
-      <span class="sl">頻段</span>
-      <div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh)">
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd)">
-          <div>
-            <div style="font-size:17px;font-weight:600;color:var(--tx)">5 GHz</div>
-            <div style="font-size:13px;color:var(--t3);margin-top:2px">高速・短距離</div>
-          </div>
-          <div class="tg on" id="tg-5g"></div>
-        </div>
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd)">
-          <div>
-            <div style="font-size:17px;font-weight:600;color:var(--tx)">2.4 GHz</div>
-            <div style="font-size:13px;color:var(--t3);margin-top:2px">較慢・覆蓋廣</div>
-          </div>
-          <div class="tg on" id="tg-24g"></div>
-        </div>
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px">
-          <div>
-            <div style="font-size:17px;font-weight:600;color:var(--tx)">6 GHz</div>
-            <div style="font-size:13px;color:var(--t3);margin-top:2px">超高速・Wi-Fi 6E</div>
-          </div>
-          <div class="tg on" id="tg-6g"></div>
-        </div>
-      </div>
-
-      <!-- 分享 -->
-      <span class="sl">分享</span>
-      <div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh)">
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;cursor:pointer" id="wifi-share-btn">
-          <div style="display:flex;align-items:center;gap:12px">
-            <div style="width:36px;height:36px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-            </div>
-            <div>
-              <div style="font-size:17px;font-weight:600;color:var(--tx)">分享 Wi-Fi</div>
-              <div style="font-size:13px;color:var(--t3);margin-top:1px">產生 QR Code 讓訪客連線</div>
-            </div>
-          </div>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </div>
-      </div>
-
-
-    </div>
-  </div>
-</div><!-- end phone -->
-
   <!-- SUB: 主 Wi-Fi -->
   <div class="sub" id="sub-main-wifi">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
       <div class="bk" id="main-wifi-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="font-size:17px;font-weight:600;color:var(--tx)">主 Wi-Fi</div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">Wi-Fi 設定</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
       <span class="sl">基本設定</span>
@@ -3948,7 +3857,6 @@ function applyNetState(){
     wifiCard.style.background = err ? 'linear-gradient(140deg,#F5B570,#E8863A,#DB7328)' : 'linear-gradient(140deg,#3B87E0,#6AAAF0)';
     wifiCard.style.boxShadow = err ? '0 4px 16px rgba(219,115,40,.25)' : '0 4px 16px rgba(59,135,224,.25)';
   }
-  renderWifiIssuesCard();
   var kitchenLine=g('mesh-line-kitchen'); if(kitchenLine) kitchenLine.style.background = err ? 'var(--or)' : 'var(--gn)';
   var kitchenStatus=g('mesh-kitchen-status');
   if(kitchenStatus){ kitchenStatus.textContent = err ? '● 不佳' : '● 良好'; kitchenStatus.style.color = err ? 'var(--or)' : 'var(--gn)'; }
@@ -3961,63 +3869,7 @@ function applyNetState(){
 }
 function toggleNetErrorDemo(){
   _netErrorDemo = !_netErrorDemo;
-  if(_netErrorDemo) _wifiIssuesResolved = {};
   applyNetState();
-}
-var WIFI_ISSUES=[
-  {key:'chan',icon:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="1.8" stroke-linecap="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1.5" fill="var(--or)" stroke="none"/></svg>',title:'2.4GHz 頻道壅塞',desc:'偵測到鄰近多個網路使用相同頻道，可能造成訊號互相干擾。',fixLabel:'切換建議頻道'},
-  {key:'node',icon:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="1.8" stroke-linecap="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 012 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>',title:'臥室節點訊號偏弱',desc:'訊號強度接近臨界值，可能影響該區裝置連線品質。',fixLabel:'執行 Mesh 最佳化'},
-  {key:'wpa2',icon:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>',title:'訪客網路使用 WPA2',desc:'加密方式較舊，建議升級以提升安全性。',fixLabel:'升級為 WPA3'}
-];
-var _wifiIssuesResolved={};
-function renderWifiIssuesCard(){
-  var wrap=g('wifi-issues-card');if(!wrap)return;
-  if(!_netErrorDemo){wrap.style.display='none';return;}
-  var remaining=WIFI_ISSUES.filter(function(i){return !_wifiIssuesResolved[i.key];});
-  if(!remaining.length){wrap.style.display='none';return;}
-  wrap.style.display='block';
-  wrap.innerHTML='<div style="font-size:15px;font-weight:700;color:var(--tx);margin-bottom:4px">'+remaining.length+' 項問題需要處理</div>'
-    +remaining.map(function(i,idx){
-      return '<div style="display:flex;align-items:flex-start;gap:12px;padding:12px 0'+(idx<remaining.length-1?';border-bottom:1px solid var(--bd)':'')+'">'
-        +'<div style="width:36px;height:36px;border-radius:50%;background:var(--obg);display:flex;align-items:center;justify-content:center;flex-shrink:0">'+i.icon+'</div>'
-        +'<div style="flex:1"><div style="font-size:15px;font-weight:600;color:var(--tx)">'+i.title+'</div><div style="font-size:13px;color:var(--t2);margin-top:2px;line-height:1.5">'+i.desc+'</div>'
-        +'<div onclick="fixWifiIssue(\''+i.key+'\',this)" style="display:inline-flex;align-items:center;gap:4px;margin-top:8px;padding:6px 12px;background:var(--obg);border-radius:14px;color:var(--or);font-size:13px;font-weight:600;cursor:pointer">'+i.fixLabel+'</div>'
-        +'</div></div>';
-    }).join('');
-}
-function resolveWifiIssue(key){
-  _wifiIssuesResolved[key]=true;
-  var remaining=WIFI_ISSUES.filter(function(i){return !_wifiIssuesResolved[i.key];}).length;
-  if(remaining===0){
-    _netErrorDemo=false;
-    applyNetState();
-  } else {
-    renderWifiIssuesCard();
-  }
-}
-function fixWifiIssue(key,el){
-  if(key==='chan'){ fixWifiIssueChan(el); }
-  else if(key==='node'){ fixWifiIssueNode(); }
-  else if(key==='wpa2'){ fixWifiIssueWpa2(); }
-}
-function fixWifiIssueChan(el){
-  if(el){ el.style.pointerEvents='none'; el.innerHTML='<div style="width:12px;height:12px;border-radius:50%;border:2px solid rgba(0,0,0,.15);border-top-color:var(--or);animation:spin .8s linear infinite"></div>'; }
-  setTimeout(function(){
-    showToast('已切換至5GHz頻道');
-    resolveWifiIssue('chan');
-  },1200);
-}
-function fixWifiIssueNode(){
-  window._nodeOptFromWifiIssue=true;
-  hide('sub-wifi');
-  openNodeOptimize('bedroom');
-}
-function fixWifiIssueWpa2(){
-  window._guestFromWifiIssue=true;
-  hide('sub-wifi');
-  if(!_guestOn) toggleGuest();
-  renderGuestSecurityRow();
-  show('ov-guest');
 }
 function renderQAGrid() {
   var grid = document.getElementById('qa-grid');
@@ -4320,16 +4172,9 @@ window.addEventListener('load',function(){
   });
   // home
   bind('h-wifi',function(){show('ov-wifi');});
-  bind('h-wifirow',function(){show('sub-wifi');});
+  bind('h-wifirow',function(){openNodeDetail('living');});
   bind('h-diag',function(){show('sub-diag');});
   bind('h-devs',function(){goTab('devices');});
-  bind('wifi-back',function(){hide('sub-wifi');});
-  bind('wifi-pw-toggle',function(){
-    var inp=g('wifi-pw');if(!inp)return;
-    var show=inp.type==='password';
-    inp.type=show?'text':'password';
-    g('wifi-pw-toggle').textContent=show?'隱藏':'顯示';
-  });
   bind('tg-5g',function(){g('tg-5g').classList.toggle('on');});
   bind('tg-24g',function(){g('tg-24g').classList.toggle('on');});
   bind('tg-6g',function(){g('tg-6g').classList.toggle('on');});
@@ -4542,7 +4387,6 @@ window.addEventListener('load',function(){
       var ctx=window._nodeOptFromDeviceDetail; window._nodeOptFromDeviceDetail=null;
       renderMeshDeviceDetail(ctx.nodeId,ctx.idx); show('sub-dev');
     }
-    else if(window._nodeOptFromWifiIssue){ window._nodeOptFromWifiIssue=false; show('sub-wifi'); }
     else backToNodeDetail();
   });
   bind('node-rename-save',function(){
@@ -5100,10 +4944,6 @@ function runNodeOptimize(nodeId){
     } else if(window._nodeOptFromDeviceDetail){
       var ctx=window._nodeOptFromDeviceDetail; window._nodeOptFromDeviceDetail=null;
       renderMeshDeviceDetail(ctx.nodeId,ctx.idx); show('sub-dev');
-    } else if(window._nodeOptFromWifiIssue){
-      window._nodeOptFromWifiIssue=false;
-      resolveWifiIssue('node');
-      show('sub-wifi');
     } else {
       backToNodeDetail();
     }
@@ -5927,11 +5767,9 @@ function upgradeGuestWPA3(){
   _guestSecurity='WPA3-Personal';
   renderGuestSecurityRow();
   showToast('已升級為 WPA3');
-  if(window._guestFromWifiIssue) resolveWifiIssue('wpa2');
 }
 function closeGuestOverlay(){
   hide('ov-guest');
-  if(window._guestFromWifiIssue){ window._guestFromWifiIssue=false; show('sub-wifi'); }
 }
 function setGuestTime(el){
   document.querySelectorAll('.guest-time').forEach(function(b){
