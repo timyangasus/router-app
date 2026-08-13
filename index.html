@@ -2989,6 +2989,32 @@ body{display:flex;align-items:center;justify-content:center}
     </div>
   </div>
 
+  <!-- SUB: 備份／還原設定 -->
+  <div class="sub" id="sub-pro-backup">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" onclick="hide('sub-pro-backup')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">備份／還原設定</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <span class="sl">備份設定</span>
+      <div style="background:var(--w)">
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">上次備份</div></div><div style="font-size:14px;color:var(--t2)" id="backup-last-time">尚未備份</div></div>
+      </div>
+      <div style="padding:14px 16px 8px;font-size:13px;color:var(--t2);line-height:1.6">將目前的路由器設定（Wi-Fi、網路、家長監控等）匯出成檔案，方便日後還原或更換裝置時使用。</div>
+      <div style="padding:4px 16px 16px">
+        <div onclick="runBackupNow()" id="backup-now-btn" style="height:48px;border-radius:var(--r2);background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:#fff;cursor:pointer">立即備份</div>
+      </div>
+      <span class="sl">還原設定</span>
+      <div style="background:var(--w)">
+        <div class="sr" onclick="restoreFromFile()" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">從檔案還原</div><div style="font-size:13px;color:var(--t3);margin-top:2px">選擇備份檔案，還原至先前的設定</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <span class="sl">重置</span>
+      <div style="background:var(--w)">
+        <div class="sr" onclick="factoryResetRouter()" style="cursor:pointer;border:none"><div class="sic" style="background:var(--rbg,#FBE2E2)"><svg viewBox="0 0 24 24" stroke="var(--rd)"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--rd)">回復原廠設定</div><div style="font-size:13px;color:var(--t3);margin-top:2px">清除所有設定，恢復至出廠狀態</div></div></div>
+      </div>
+    </div>
+  </div>
+
   <!-- ══ SUB: Wi-Fi Advanced ══ -->
   <div class="sub" id="sub-pro-wifiadv">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
@@ -3349,7 +3375,7 @@ function goTab(t){
   if(ct){ct.scrollTop=0;}
   // hide family back when switching tabs normally
   if(t==='family'){var fb=document.getElementById('family-back-btn');if(fb)fb.style.display='none';}
-  ['sub-dev','sub-notif','sub-diag','sub-suggestions','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-wifi-insight','sub-theme','sub-main-wifi','sub-reboot','sub-account','sub-led','sub-passwords','sub-pause','sub-scan','sub-mesh-opt','sub-mesh-addnode','sub-adddev','sub-speedtest','sub-traffic','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-ifttt','sub-pro-smarthome','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-faq','sub-network','sub-network-iot','sub-network-sdn','sub-aura','sub-nightmode','sub-routerinfo','sub-firmware','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-wifiadv','sub-pro-restartsched','sub-pro-energy','sub-node-detail','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','ov-mesh'].forEach(hide);
+  ['sub-dev','sub-notif','sub-diag','sub-suggestions','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-wifi-insight','sub-theme','sub-main-wifi','sub-reboot','sub-account','sub-led','sub-passwords','sub-pause','sub-scan','sub-mesh-opt','sub-mesh-addnode','sub-adddev','sub-speedtest','sub-traffic','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-pro-ifttt','sub-pro-smarthome','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-faq','sub-network','sub-network-iot','sub-network-sdn','sub-aura','sub-nightmode','sub-routerinfo','sub-firmware','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-wifiadv','sub-pro-restartsched','sub-pro-energy','sub-node-detail','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','ov-mesh'].forEach(hide);
   // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
     var bar=document.getElementById('ai-input-bar');
@@ -3913,7 +3939,7 @@ function renderQAGrid() {
       else if (act==='family')      { goTab('family'); var fb=document.getElementById('family-back-btn'); if(fb)fb.style.display='flex'; }
       else if (act==='aiprotect')   show('sub-aipro-detail');
       else if (act==='led')         show('sub-led');
-      else if (act==='backup')      show('sub-pro-admin');
+      else if (act==='backup')      show('sub-pro-backup');
     });
   });
   // re-check home scroll
@@ -3939,6 +3965,22 @@ function showToast(msg){
   t.style.display = 'block';
   clearTimeout(t._hideTimer);
   t._hideTimer = setTimeout(function(){ t.style.display = 'none'; }, 1800);
+}
+
+function runBackupNow(){
+  var btn=g('backup-now-btn');if(!btn)return;
+  btn.style.pointerEvents='none';btn.textContent='備份中…';
+  setTimeout(function(){
+    btn.textContent='立即備份';btn.style.pointerEvents='';
+    var t=g('backup-last-time');if(t)t.textContent='今天 '+new Date().toTimeString().slice(0,5);
+    showToast('設定已備份');
+  },1000);
+}
+function restoreFromFile(){
+  showToast('請選擇備份檔案（Demo）');
+}
+function factoryResetRouter(){
+  showToast('回復原廠設定（Demo）');
 }
 
 function qaToggle(id){
