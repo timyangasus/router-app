@@ -2430,11 +2430,11 @@ body{display:flex;align-items:center;justify-content:center}
     </div>
   </div>
 
-  <!-- SUB: 每日使用時間 -->
+  <!-- SUB: 上網時段管理 -->
   <div class="sub" id="sub-fm-time">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
       <div class="bk" id="fm-time-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="font-size:17px;font-weight:600;color:var(--tx)">每日使用時間</div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">上網時段管理</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)" id="fm-time-body"><!-- rendered by JS --></div>
   </div>
@@ -2457,11 +2457,11 @@ body{display:flex;align-items:center;justify-content:center}
     <div style="flex:1;overflow-y:auto;background:var(--bg)" id="fm-blocked-body"><!-- rendered by JS --></div>
   </div>
 
-  <!-- SUB: 綁定裝置編輯 -->
+  <!-- SUB: 受監控裝置編輯 -->
   <div class="sub" id="sub-fm-devices">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
       <div class="bk" id="fm-devices-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="font-size:17px;font-weight:600;color:var(--ac)">綁定裝置</div>
+      <div style="font-size:17px;font-weight:600;color:var(--ac)">受監控裝置</div>
       <div onclick="fmSaveDevices()" style="height:32px;padding:0 16px;border-radius:16px;background:var(--ac);display:flex;align-items:center;font-size:14px;font-weight:600;color:#fff;cursor:pointer">儲存</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
@@ -5664,7 +5664,7 @@ function renderFmDetail(m){
     '<div class="sr" onclick="fmOpenDeviceEdit('+m.id+')" style="cursor:pointer;border-bottom:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">受監控裝置</div></div><span style="font-size:14px;color:var(--t2);margin-right:8px">'+m.devices.length+' 台</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>'+
     boundDevicesHtml+
     '<div class="sr" onclick="show(\'sub-fm-time\');renderFmTime(fmGetMember('+m.id+'))" style="cursor:pointer;border-top:1px solid var(--bd)"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">上網時段管理</div><div style="font-size:13px;color:var(--t3);margin-top:2px">'+schedLabel+'</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>'+
-    '<div class="sr" onclick="show(\'sub-fm-filter\');renderFmFilter(fmGetMember('+m.id+'))" style="cursor:pointer"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">內容過濾</div></div><span style="font-size:14px;color:var(--t2);margin-right:8px">'+filterLabel+'</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>'+
+    '<div class="sr" onclick="show(\'sub-fm-filter\');renderFmFilter(fmGetMember('+m.id+'))" style="cursor:pointer"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">網站過濾</div></div><span style="font-size:14px;color:var(--t2);margin-right:8px">'+filterLabel+'</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>'+
     '<div class="sr" onclick="show(\'sub-fm-blocked\');renderFmBlocked(fmGetMember('+m.id+'))" style="cursor:pointer;border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">封鎖網站</div></div><span style="font-size:14px;color:var(--t2);margin-right:8px">'+m.blocked.length+' 個</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>'+
   '</div>';
 }
