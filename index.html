@@ -525,8 +525,8 @@ body{display:flex;align-items:center;justify-content:center}
       </div>
       <span class="sl">系統</span>
       <div style="background:var(--w)">
-        <div class="sr" onclick="show('sub-routerinfo')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Router Information</div><div style="font-size:14px;color:var(--t3);margin-top:2px">ASUS ZenWiFi BT10</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-        <div class="sr" onclick="show('sub-firmware')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Firmware Update</div><div style="font-size:14px;color:var(--t3);margin-top:2px">3.0.0.4.388 可用</div></div><span class="bg bgb" style="margin-right:6px">更新</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="show('sub-routerinfo')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">路由器資訊</div><div style="font-size:14px;color:var(--t3);margin-top:2px">ASUS ZenWiFi BT10</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="renderFwStatus(false);show('sub-fw')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">韌體更新</div><div style="font-size:14px;color:var(--t3);margin-top:2px">3.0.0.4.390 可用</div></div><span class="bg bgb" style="margin-right:6px">更新</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr" onclick="show('sub-reboot')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">重設路由器</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr" onclick="show('sub-energy');drawDetailCharts()" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Energy Saving</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr" onclick="show('sub-theme')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">外觀</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
@@ -1398,11 +1398,11 @@ body{display:flex;align-items:center;justify-content:center}
     </div>
   </div>
 
-  <!-- SUB: Router Information -->
+  <!-- SUB: 路由器資訊 -->
   <div class="sub" id="sub-routerinfo">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
       <div class="bk" id="routerinfo-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="font-size:17px;font-weight:600;color:var(--tx)">Router Information</div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">路由器資訊</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
       <span class="sl">裝置資訊</span>
@@ -1418,34 +1418,6 @@ body{display:flex;align-items:center;justify-content:center}
         <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">WAN MAC 位址</div></div><span style="font-size:14px;color:var(--t2);font-family:var(--m)">A4:CF:99:11:22:34</span></div>
         <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">WAN IP</div></div><span style="font-size:14px;color:var(--t2);font-family:var(--m)">61.220.88.45</span></div>
         <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">運行時間</div></div><span style="font-size:14px;color:var(--t2)">12 天 4 小時</span></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SUB: Firmware Update -->
-  <div class="sub" id="sub-firmware">
-    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" id="firmware-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="font-size:17px;font-weight:600;color:var(--tx)">Firmware Update</div>
-    </div>
-    <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <span class="sl">版本狀態</span>
-      <div style="background:var(--w)">
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">目前版本</div></div><span style="font-size:14px;color:var(--t2)">3.0.0.4.386</span></div>
-        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">可用版本</div></div><span class="bg bgb">3.0.0.4.388</span></div>
-      </div>
-      <span class="sl">更新日誌 · 3.0.0.4.388</span>
-      <div style="background:var(--w);border-radius:var(--r);margin:0 16px;overflow:hidden;box-shadow:var(--sh)">
-        <div style="padding:14px 16px;border-bottom:1px solid var(--bd);font-size:13px;color:var(--t2);line-height:1.6">• 提升系統安全性，修復已知安全漏洞</div>
-        <div style="padding:14px 16px;border-bottom:1px solid var(--bd);font-size:13px;color:var(--t2);line-height:1.6">• 修正 AiMesh 節點連線穩定性問題</div>
-        <div style="padding:14px 16px;font-size:13px;color:var(--t2);line-height:1.6">• 改善 Wi-Fi 6E 頻段效能</div>
-      </div>
-      <div style="padding:16px">
-        <div style="height:48px;border-radius:24px;background:var(--ac);color:#fff;font-size:15px;font-weight:600;display:flex;align-items:center;justify-content:center;cursor:pointer">立即更新</div>
-      </div>
-      <span class="sl">自動更新</span>
-      <div style="background:var(--w)">
-        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">自動安裝更新</div><div style="font-size:13px;color:var(--t3);margin-top:2px">於離峰時段自動下載並安裝</div></div><div class="tg on" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
       </div>
     </div>
   </div>
@@ -3084,7 +3056,7 @@ function goTab(t){
   if(ct){ct.scrollTop=0;}
   // hide family back when switching tabs normally
   if(t==='family'){var fb=document.getElementById('family-back-btn');if(fb)fb.style.display='none';}
-  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-theme','sub-main-wifi','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-faq','sub-network','sub-network-iot','sub-network-sdn','sub-aura','sub-nightmode','sub-routerinfo','sub-firmware','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-wifiadv','sub-pro-restartsched','sub-node-detail','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','ov-mesh'].forEach(hide);
+  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-theme','sub-main-wifi','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-faq','sub-network','sub-network-iot','sub-network-sdn','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-wifiadv','sub-pro-restartsched','sub-node-detail','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','ov-mesh'].forEach(hide);
   // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
     var bar=document.getElementById('ai-input-bar');
@@ -4139,7 +4111,6 @@ window.addEventListener('load',function(){
   bind('aura-back',function(){hide('sub-aura');});
   bind('nightmode-back',function(){hide('sub-nightmode');});
   bind('routerinfo-back',function(){hide('sub-routerinfo');});
-  bind('firmware-back',function(){hide('sub-firmware');});
   bind('wisp-back',function(){hide('sub-wisp');});
   bind('reboot-back',function(){hide('sub-reboot');});
   bind('reboot-back2',function(){hide('sub-reboot');});
