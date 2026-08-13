@@ -3682,6 +3682,8 @@ function renderFwStatus(isLatest){
     if(sub)sub.innerHTML='3.0.0.4.388 → <span style="color:var(--ac);font-weight:600">3.0.0.4.390</span>';
     if(block)block.style.display='';
     if(curVer)curVer.textContent='3.0.0.4.388';
+    var btn=g('fw-update-btn');
+    if(btn){btn.innerHTML='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/></svg>立即更新';btn.style.background='var(--ac)';btn.style.cursor='pointer';btn.style.pointerEvents='';}
   }
 }
 function showToast(msg){
@@ -4119,7 +4121,11 @@ window.addEventListener('load',function(){
   bind('tg-autoupdate',function(){g('tg-autoupdate').classList.toggle('on');});
   bind('fw-update-btn',function(){
     var btn=g('fw-update-btn');
-    if(btn){btn.textContent='更新中…';btn.style.background='var(--t3)';btn.style.cursor='default';}
+    if(btn){btn.innerHTML='<div style="width:14px;height:14px;border-radius:50%;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;animation:spin .8s linear infinite"></div>更新中…';btn.style.background='var(--t3)';btn.style.cursor='default';btn.style.pointerEvents='none';}
+    setTimeout(function(){
+      renderFwStatus(true);
+      showToast('韌體已更新完成');
+    },1800);
   });
   // overlays
   bind('ov-wifi-close',function(){hide('ov-wifi');});
