@@ -1509,16 +1509,16 @@ body{display:flex;align-items:center;justify-content:center}
         <!-- 客廳（主路由器） -->
         <div style="text-align:center;cursor:pointer" onclick="openNodeDetail('living')">
           <div style="position:relative;width:64px;height:64px;margin:0 auto">
-            <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#4A8FE0,#6AAAF0);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(79,99,240,.3)">
+            <div id="mesh-living-avatar" style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#4A8FE0,#6AAAF0);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(79,99,240,.3)">
               <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7v9a1 1 0 01-1 1H5a1 1 0 01-1-1z"/><path d="M9 14a4 4 0 016 0"/><circle cx="12" cy="17" r="1" fill="#fff" stroke="none"/></svg>
             </div>
-            <div style="position:absolute;top:-6px;right:-6px;min-width:24px;height:24px;padding:0 6px;border-radius:12px;background:var(--ac);border:2.5px solid var(--w);display:flex;align-items:center;justify-content:center;box-sizing:border-box">
+            <div id="mesh-living-badge" style="position:absolute;top:-6px;right:-6px;min-width:24px;height:24px;padding:0 6px;border-radius:12px;background:var(--ac);border:2.5px solid var(--w);display:flex;align-items:center;justify-content:center;box-sizing:border-box">
               <span style="font-size:12px;font-weight:800;color:#fff">6</span>
             </div>
           </div>
           <div style="font-size:14px;font-weight:700;color:var(--tx);margin-top:8px">客廳（主路由器）</div>
           <div style="font-size:11px;color:var(--t3);margin-top:1px">ZenWiFi BT10</div>
-          <div style="font-size:12px;color:var(--gn);margin-top:2px">● 良好</div>
+          <div id="mesh-living-status" style="font-size:12px;color:var(--gn);margin-top:2px">● 良好</div>
         </div>
         <!-- Fork connectors -->
         <div style="position:relative;height:86px;margin-top:2px">
@@ -3562,7 +3562,13 @@ function applyNetState(){
   if(kitchenAvatar){ kitchenAvatar.style.background = err ? 'linear-gradient(135deg,#F5B570,#E8863A)' : 'linear-gradient(135deg,#4A8FE0,#6AAAF0)'; kitchenAvatar.style.boxShadow = err ? '0 6px 20px rgba(219,115,40,.35)' : '0 6px 20px rgba(79,99,240,.3)'; }
   var kitchenBadge=g('mesh-kitchen-badge');
   if(kitchenBadge) kitchenBadge.style.background = err ? 'var(--or)' : 'var(--ac)';
-  if(_curNodeId==='kitchen'&&g('sub-node-detail').classList.contains('on')) renderNodeDetail('kitchen');
+  var livingStatus=g('mesh-living-status');
+  if(livingStatus){ livingStatus.textContent = err ? '● 不佳' : '● 良好'; livingStatus.style.color = err ? 'var(--or)' : 'var(--gn)'; }
+  var livingAvatar=g('mesh-living-avatar');
+  if(livingAvatar){ livingAvatar.style.background = err ? 'linear-gradient(135deg,#F5B570,#E8863A)' : 'linear-gradient(135deg,#4A8FE0,#6AAAF0)'; livingAvatar.style.boxShadow = err ? '0 6px 20px rgba(219,115,40,.35)' : '0 6px 20px rgba(79,99,240,.3)'; }
+  var livingBadge=g('mesh-living-badge');
+  if(livingBadge) livingBadge.style.background = err ? 'var(--or)' : 'var(--ac)';
+  if((_curNodeId==='kitchen'||_curNodeId==='living')&&g('sub-node-detail').classList.contains('on')) renderNodeDetail(_curNodeId);
   if(g('pg-devices').classList.contains('on')) renderDevicesTab();
 }
 function toggleNetErrorDemo(){
@@ -4515,7 +4521,7 @@ function renderNodeDetail(nodeId){
   }
   html+='<span class="sl">裝置資訊</span>';
   html+='<div style="background:var(--w);margin:0 16px 12px;border-radius:var(--r);box-shadow:var(--sh)">'
-    +'<div style="display:flex;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd)"><span style="font-size:14px;color:var(--t3)">連線狀況</span><span style="font-size:14px;font-weight:600;color:'+(bad?'var(--or)':'var(--gn)')+'">'+(bad?'訊號不穩定 · Backhaul 5GHz · -68dBm':n.status)+'</span></div>'
+    +'<div style="display:flex;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd)"><span style="font-size:14px;color:var(--t3)">連線狀況</span><span style="font-size:14px;font-weight:600;color:'+(warn?'var(--or)':'var(--gn)')+'">'+(bad?'訊號不穩定 · Backhaul 5GHz · -68dBm':(warn?n.status.replace('連線正常','不佳'):n.status))+'</span></div>'
     +'<div style="display:flex;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd)"><span style="font-size:14px;color:var(--t3)">地點</span><span style="font-size:14px;font-weight:600;color:var(--tx)">'+n.location+'</span></div>'
     +'<div style="display:flex;justify-content:space-between;padding:13px 16px"><span style="font-size:14px;color:var(--t3)">韌體版本</span><span style="font-size:14px;font-weight:600;color:var(--tx)">'+n.firmware+'</span></div>'
     +'</div>';
