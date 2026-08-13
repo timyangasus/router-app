@@ -505,9 +505,9 @@ body{display:flex;align-items:center;justify-content:center}
         <div class="sr" onclick="show('sub-account')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">帳號</div><div style="font-size:14px;color:var(--t3);margin-top:2px">tim@asus.com</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr" style="border:none"><div class="sic"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Face ID / 密碼鎖</div></div><div class="tg on" id="tg6"></div></div>
       </div>
-      <span class="sl">Network</span>
+      <span class="sl">網路</span>
       <div style="background:var(--w)">
-        <div class="sr" onclick="show('sub-network')" style="cursor:pointer;border:none"><div class="sic"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Network</div><div style="font-size:14px;color:var(--t3);margin-top:2px">主網路・IoT・訪客・設定檔</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="renderNetworksList();show('sub-network')" style="cursor:pointer;border:none"><div class="sic"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">網路</div><div id="settings-net-subtitle" style="font-size:14px;color:var(--t3);margin-top:2px">家庭網路・訪客網路・IoT 網路</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
       </div>
       <span class="sl">Lighting</span>
       <div style="background:var(--w)">
@@ -1632,91 +1632,51 @@ body{display:flex;align-items:center;justify-content:center}
     </div>
   </div>
 
-  <!-- SUB: WIFI SETTINGS -->
-  <!-- SUB: 主 Wi-Fi -->
-  <!-- SUB: Network hub -->
+  <!-- SUB: Networks hub -->
   <div class="sub" id="sub-network">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
       <div class="bk" id="network-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="font-size:17px;font-weight:600;color:var(--tx)">Network</div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">網路</div>
+      <div onclick="hide('sub-network');renderNetWizard();show('sub-net-wizard')" style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;cursor:pointer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="4" x2="12" y2="20"/><line x1="4" y1="12" x2="20" y2="12"/></svg>
+      </div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <span class="sl">網路</span>
-      <div style="background:var(--w)">
-        <div class="sr" onclick="show('sub-main-wifi')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Main Network</div><div style="font-size:14px;color:var(--t3);margin-top:2px">ASUS_Home_5G</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-        <div class="sr" onclick="show('sub-network-iot')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">IoT Network</div><div style="font-size:14px;color:var(--t3);margin-top:2px">ASUS_IoT · 啟用中</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-        <div class="sr" onclick="show('ov-guest')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Guest Network</div><div id="guest-status-text" style="font-size:14px;color:var(--t3);margin-top:2px">已停用</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-        <div class="sr" onclick="show('sub-network-sdn')" style="cursor:pointer;border:none"><div class="sic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">SDN 網路設定檔</div><div style="font-size:14px;color:var(--t3);margin-top:2px">3 個設定檔</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-      </div>
+      <div style="padding:16px 20px 6px;font-size:14px;color:var(--t3);line-height:1.6">建立不同用途的 Wi-Fi，讓家人、訪客與智慧裝置使用各自的網路。</div>
+      <div id="networks-list" style="padding:6px 16px 4px;display:flex;flex-direction:column;gap:10px"></div>
+      <div onclick="hide('sub-network');renderNetWizard();show('sub-net-wizard')" style="display:flex;align-items:center;justify-content:center;gap:6px;height:48px;margin:8px 16px 28px;border-radius:14px;border:1.5px dashed var(--bd2);color:var(--ac);font-size:15px;font-weight:600;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>新增網路</div>
     </div>
   </div>
 
-  <!-- SUB: Main Wi-Fi -->
-  <div class="sub" id="sub-main-wifi">
+  <!-- SUB: Create Network Wizard -->
+  <div class="sub" id="sub-net-wizard">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" id="main-wifi-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="font-size:17px;font-weight:600;color:var(--tx)">Wi-Fi 設定</div>
+      <div class="bk" id="net-wizard-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">建立網路</div>
     </div>
-    <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <span class="sl">基本設定</span>
-      <div style="background:var(--w)">
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">網路名稱（SSID）</div></div><span style="font-size:14px;color:var(--t2);font-weight:500">ASUS_Home_5G</span></div>
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">密碼</div></div><span style="font-size:14px;color:var(--t2);font-weight:500;letter-spacing:2px">••••••••</span></div>
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">安全加密</div></div><span style="font-size:14px;color:var(--t2)">WPA3-Personal</span></div>
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">MAC 位址</div></div><span style="font-size:14px;color:var(--t2);font-family:var(--m)">AC:9E:17:5D:20:01</span></div>
-        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">IP 位址</div></div><span style="font-size:14px;color:var(--t2);font-family:var(--m)">192.168.1.1</span></div>
-      </div>
-      <span class="sl">頻段設定</span>
-      <div style="background:var(--w)">
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">2.4 GHz</div><div style="font-size:13px;color:var(--t3);margin-top:2px">40 MHz</div></div><div class="tg on" id="tg-24g"></div></div>
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">5 GHz</div><div style="font-size:13px;color:var(--t3);margin-top:2px">160 MHz</div></div><div class="tg on" id="tg-5g"></div></div>
-        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">6 GHz</div><div style="font-size:13px;color:var(--t3);margin-top:2px">320 MHz</div></div><div class="tg on" id="tg-6g"></div></div>
-      </div>
-      <span class="sl">進階</span>
-      <div style="background:var(--w)">
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Smart Connect</div><div style="font-size:13px;color:var(--t3);margin-top:2px">自動分配最佳頻段</div></div><div class="tg on" id="tg-sc"></div></div>
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Wi-Fi 排程</div><div style="font-size:13px;color:var(--t3);margin-top:2px">未設定</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">隱藏 SSID</div><div style="font-size:13px;color:var(--t3);margin-top:2px">不廣播網路名稱</div></div><div class="tg" id="tg-hide-ssid"></div></div>
-      </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg);padding:22px 16px 32px">
+      <div style="font-size:20px;font-weight:700;color:var(--tx);margin-bottom:16px;padding:0 4px">這個網路主要用途是？</div>
+      <div id="net-wizard-list" style="display:flex;flex-direction:column;gap:10px"></div>
     </div>
   </div>
 
-  <!-- SUB: IoT Network -->
-  <div class="sub" id="sub-network-iot">
+  <!-- SUB: Network Detail (generic template for all network types) -->
+  <div class="sub" id="sub-net-detail">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" id="network-iot-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">IoT Network</div>
+      <div class="bk" id="net-detail-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div id="net-detail-title" style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">網路</div>
     </div>
-    <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <span class="sl">基本設定</span>
-      <div style="background:var(--w)">
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 IoT 網路</div><div style="font-size:13px;color:var(--t3);margin-top:2px">為智慧家電建立獨立網路</div></div><div class="tg on" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">網路名稱（SSID）</div></div><span style="font-size:14px;color:var(--t2);font-weight:500">ASUS_IoT</span></div>
-        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">密碼</div></div><span style="font-size:14px;color:var(--t2);font-weight:500;letter-spacing:2px">••••••••</span></div>
-      </div>
-      <span class="sl">存取權限</span>
-      <div style="background:var(--w)">
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">允許存取網際網路</div></div><div class="tg on" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
-        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">與主網路隔離</div><div style="font-size:13px;color:var(--t3);margin-top:2px">IoT 裝置無法存取手機、電腦等主網路裝置</div></div><div class="tg on" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
-      </div>
-      <div style="padding:16px;font-size:12px;color:var(--t3);text-align:center;line-height:1.6">建議將智慧插座、監視器等 IoT 裝置連接此網路，降低主網路暴露風險。</div>
-    </div>
+    <div id="net-detail-body" style="flex:1;overflow-y:auto;background:var(--bg);padding-bottom:32px"></div>
   </div>
 
-  <!-- SUB: SDN 網路設定檔 -->
-  <div class="sub" id="sub-network-sdn">
-    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" id="network-sdn-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">SDN 網路設定檔</div>
-    </div>
-    <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <div id="infocard-sdn"></div>
-      <span class="sl">設定檔</span>
-      <div style="padding:0 16px">
-        <div style="background:var(--w);border-radius:14px;padding:16px;margin-bottom:12px;box-shadow:var(--sh)"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px"><div style="font-size:16px;font-weight:700;color:var(--tx)">Main</div><span class="bg" style="background:var(--gbg);color:var(--gn)">使用中</span></div><div style="font-size:13px;color:var(--t2)">完整存取權限 · 8 個裝置</div></div>
-        <div style="background:var(--w);border-radius:14px;padding:16px;margin-bottom:12px;box-shadow:var(--sh)"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px"><div style="font-size:16px;font-weight:700;color:var(--tx)">Gaming</div><span class="bg" style="background:var(--gbg);color:var(--gn)">使用中</span></div><div style="font-size:13px;color:var(--t2)">QoS 優先 · 頻寬保障 · 2 個裝置</div></div>
-        <div style="background:var(--w);border-radius:14px;padding:16px;margin-bottom:12px;box-shadow:var(--sh)"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px"><div style="font-size:16px;font-weight:700;color:var(--tx)">IoT</div><span class="bg" style="background:var(--gbg);color:var(--gn)">使用中</span></div><div style="font-size:13px;color:var(--t2)">僅限本機網路 · 隔離存取 · 6 個裝置</div></div>
-        <div style="display:flex;align-items:center;justify-content:center;gap:6px;height:48px;border-radius:14px;border:1.5px dashed var(--bd);color:var(--ac);font-size:15px;font-weight:600;cursor:pointer;margin-bottom:16px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>新增設定檔</div>
+  <!-- OV: Network field edit (SSID / password) -->
+  <div class="ov" id="ov-net-edit" onclick="if(event.target===this)hide('ov-net-edit')">
+    <div class="sheet">
+      <div id="net-edit-title" style="font-size:16px;font-weight:700;color:var(--tx);margin-bottom:14px">編輯</div>
+      <input id="net-edit-input" style="width:100%;height:46px;border:1.5px solid var(--bd);border-radius:10px;padding:0 14px;font-size:16px;color:var(--tx);background:var(--s2);outline:none;font-family:var(--f);box-sizing:border-box;margin-bottom:16px"/>
+      <div style="display:flex;gap:12px">
+        <div onclick="hide('ov-net-edit')" style="flex:1;height:48px;border-radius:var(--r2);background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:var(--t2);cursor:pointer">取消</div>
+        <div id="net-edit-save" style="flex:1;height:48px;border-radius:var(--r2);background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:#fff;cursor:pointer">儲存</div>
       </div>
     </div>
   </div>
@@ -3047,7 +3007,7 @@ function goTab(t){
   if(ct){ct.scrollTop=0;}
   // hide family back when switching tabs normally
   if(t==='family'){var fb=document.getElementById('family-back-btn');if(fb)fb.style.display='none';}
-  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-theme','sub-main-wifi','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-faq','sub-network','sub-network-iot','sub-network-sdn','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-wifiadv','sub-pro-restartsched','sub-node-detail','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','ov-mesh'].forEach(hide);
+  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-faq','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-wifiadv','sub-pro-restartsched','sub-node-detail','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','ov-mesh'].forEach(hide);
   // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
     var bar=document.getElementById('ai-input-bar');
@@ -3427,7 +3387,7 @@ function notifOpenItem(id){
   item.unread = false;
   var click = item.click;
   if(click==='guest'){ show('ov-guest'); }
-  else if(click==='wifiset'){ show('sub-main-wifi'); }
+  else if(click==='wifiset'){ openNetDetail('home'); }
   else if(click==='vpns'){ show('sub-pro-vpns'); }
   else if(click==='fw'){ renderFwStatus(false); show('sub-fw'); }
   else if(click==='fw-latest'){ renderFwStatus(true); show('sub-fw'); }
@@ -3615,7 +3575,7 @@ function renderQAGrid() {
       else if (act==='wifi')        show('ov-wifi');
       else if (act==='guest')       show('ov-guest');
       else if (act==='diag')        show('sub-diag');
-      else if (act==='wifiset')     show('sub-main-wifi');
+      else if (act==='wifiset')     openNetDetail('home');
       else if (act==='fw')          { renderFwStatus(false); show('sub-fw'); }
       else if (act==='meshopt')     { window._meshOptFromQuick=true; show('sub-mesh-opt'); }
       else if (act==='meshadd')     { window._meshAddFromQuick=true; show('sub-mesh-addnode'); }
@@ -3746,7 +3706,6 @@ var INFO_CARDS = {
   vpnc:{title:'什麼是 VPN 用戶端？',body:'讓路由器主動連上外部 VPN 服務，家中所有裝置的網路都會自動透過該 VPN 傳送。想讓全家裝置套用同一組 VPN，而不必逐台裝置設定時使用。',version:1},
   smarthome:{title:'什麼是智慧家庭整合？',body:'讓路由器與智慧音箱（如 Amazon Alexa、Google Home）連動，用語音就能查詢網路狀態或控制部分功能。家中已有智慧音箱時很方便。',version:1},
   qos:{title:'什麼是 QoS 頻寬管理？',body:'依優先順序分配家中網路頻寬，避免重要用途（如視訊會議、遊戲）被其他裝置佔滿頻寬影響。家中人多、裝置多常常同時上網卡頓時可以啟用。',version:1},
-  sdn:{title:'什麼是網路設定檔（SDN）？',body:'把家用網路切分成多個獨立的虛擬子網路，各自套用不同的存取權限與頻寬規則。適合想把辦公裝置、遊戲裝置、智慧家電分開管理，但又不想逐台裝置設定的家庭。',version:1},
   wisp:{title:'什麼是 WISP？',body:'讓路由器改用 Wi-Fi 訊號（而非網路線）連上另一個無線基地台取得網際網路。適合租屋、飯店等只能用 Wi-Fi 分享上網，或想延伸既有 Wi-Fi 訊號的情境。',version:1},
   dfs:{title:'什麼是 DFS 頻道？',body:'5GHz 頻段中保留給雷達系統使用的頻道，開放後可讓路由器使用更多頻道、減少鄰近網路互相干擾。少數地區法規或裝置可能不支援，若連線不穩可嘗試關閉。',version:1},
   mlo:{title:'什麼是 MLO？',body:'Wi-Fi 7 的新技術，能同時使用 2.4／5／6GHz 多個頻段傳輸同一筆資料，降低延遲、提升穩定度。需要路由器與裝置皆支援 Wi-Fi 7 才能生效。',version:1},
@@ -3921,10 +3880,6 @@ window.addEventListener('load',function(){
   bind('h-wifirow',function(){openNodeDetail('living');});
   bind('h-diag',function(){show('sub-diag');});
   bind('h-devs',function(){goTab('devices');});
-  bind('tg-5g',function(){g('tg-5g').classList.toggle('on');});
-  bind('tg-24g',function(){g('tg-24g').classList.toggle('on');});
-  bind('tg-6g',function(){g('tg-6g').classList.toggle('on');});
-
   bind('h-notif',function(){show('sub-notif');});
   bind('h-mesh-detail',function(){show('ov-mesh');});
   bind('mesh-map-back',function(){hide('ov-mesh');});
@@ -4111,10 +4066,19 @@ window.addEventListener('load',function(){
   ['ov-wifi','ov-add','ov-mei','ov-ming'].forEach(function(id){
     bind(id,function(e){if(e.target===g(id))hide(id);});
   });
-  bind('main-wifi-back',function(){hide('sub-main-wifi');});
   bind('network-back',function(){hide('sub-network');});
-  bind('network-iot-back',function(){hide('sub-network-iot');});
-  bind('network-sdn-back',function(){hide('sub-network-sdn');});
+  bind('net-wizard-back',function(){hide('sub-net-wizard');renderNetworksList();show('sub-network');});
+  bind('net-detail-back',function(){hide('sub-net-detail');renderNetworksList();show('sub-network');});
+  bind('net-edit-save',function(){
+    var id=_netEditId,field=_netEditField;if(!id||!field)return;
+    var val=g('net-edit-input').value.trim();
+    if(val){
+      NETWORKS[id][field]=val;
+      if(g('sub-net-detail').classList.contains('on'))renderNetDetail(id);
+      renderNetworksList();
+    }
+    hide('ov-net-edit');
+  });
   bind('aura-back',function(){hide('sub-aura');});
   bind('nightmode-back',function(){hide('sub-nightmode');});
   bind('routerinfo-back',function(){hide('sub-routerinfo');});
@@ -4549,6 +4513,166 @@ function renderNodeDetail(nodeId){
   var bannerImg=g('node-detail-banner-img'),srcImg=g('router-product-img');
   if(bannerImg&&srcImg)bannerImg.src=srcImg.src;
 }
+
+// ══════════ Networks (家庭/訪客/IoT/兒童/VPN/自訂) ══════════
+var NET_TYPE_META={
+  home:  {label:'家庭網路', bg:'#E8F0FC', ink:'#2D6FD1', icon:'<path d="M4 11l8-7 8 7v9a1 1 0 01-1 1H5a1 1 0 01-1-1z"/><path d="M9 14a4 4 0 016 0"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/>'},
+  guest: {label:'訪客網路', bg:'#F1EAFB', ink:'#8B5CF6', icon:'<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>'},
+  iot:   {label:'IoT 網路', bg:'#E1F5EB', ink:'#1C9A6C', icon:'<path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>'},
+  kids:  {label:'兒童網路', bg:'#FCEFDC', ink:'#C2760D', icon:'<circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0116 0v2"/>'},
+  vpn:   {label:'VPN 網路', bg:'#E7EAFB', ink:'#4C5FD6', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>'},
+  custom:{label:'自訂網路', bg:'#ECEEF2', ink:'#6B7280', icon:'<line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="2" y1="14" x2="6" y2="14"/><line x1="10" y1="8" x2="14" y2="8"/><line x1="18" y1="16" x2="22" y2="16"/>'}
+};
+var BAND_LABEL={auto:'Auto','2.4':'2.4GHz','5':'5GHz','6':'6GHz'};
+var NETWORKS={
+  home:  {id:'home', type:'home', name:'家庭網路', ssid:'ASUS_Home', pw:'mypassword123',  band:'auto', enabled:true, locked:true,  connected:12, schedule:'全天',      homeAccess:true,  aimesh:'全部節點'},
+  guest: {id:'guest',type:'guest',name:'訪客網路', ssid:'ASUS_Guest',pw:'guestPass2024', band:'2.4',  enabled:false,locked:false, connected:2,  schedule:'24 小時',   homeAccess:false, aimesh:'全部節點'},
+  iot:   {id:'iot',  type:'iot',  name:'IoT 網路', ssid:'ASUS_IoT',  pw:'iotSecure99',   band:'2.4',  enabled:true, locked:false, connected:8,  schedule:'全天',      homeAccess:false, aimesh:'全部節點'}
+};
+var NET_ORDER=['home','guest','iot'];
+var _netIdSeq=0;
+var NET_SCENARIOS=[
+  {key:'guest', type:'guest', emoji:'👤', title:'訪客',         desc:'給來訪親友一個獨立網路',              name:'訪客網路',     ssidBase:'ASUS_Guest',  band:'2.4',  homeAccess:false, schedule:'24 小時'},
+  {key:'iot',   type:'iot',   emoji:'🏡', title:'智慧家庭',      desc:'讓智慧插座、監視器等裝置更安全',        name:'IoT 網路',     ssidBase:'ASUS_IoT',    band:'2.4',  homeAccess:false, schedule:'全天'},
+  {key:'kids',  type:'kids',  emoji:'👧', title:'小朋友',        desc:'管理孩子的上網時間與內容',             name:'兒童網路',     ssidBase:'ASUS_Kids',   band:'2.4',  homeAccess:true,  schedule:'上學日 07:00–21:00'},
+  {key:'gaming',type:'custom',emoji:'🎮', title:'遊戲',          desc:'優先分配頻寬，降低連線延遲',           name:'遊戲網路',     ssidBase:'ASUS_Gaming', band:'5',    homeAccess:true,  schedule:'全天'},
+  {key:'wfh',   type:'custom',emoji:'💼', title:'居家辦公',      desc:'獨立、穩定的工作連線',                name:'居家辦公網路', ssidBase:'ASUS_Work',   band:'5',    homeAccess:true,  schedule:'全天'},
+  {key:'vpn',   type:'vpn',   emoji:'🔒', title:'VPN 安全連線',  desc:'所有流量透過 VPN，保護連線隱私',       name:'VPN 網路',     ssidBase:'ASUS_VPN',    band:'auto', homeAccess:false, schedule:'全天'},
+  {key:'custom',type:'custom',emoji:'⚙️', title:'自訂',          desc:'自行設定所有細節',                    name:'自訂網路',     ssidBase:'ASUS_Custom', band:'auto', homeAccess:true,  schedule:'全天'}
+];
+function netIconSvg(type,size){
+  var m=NET_TYPE_META[type];
+  return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 24 24" fill="none" stroke="'+m.ink+'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+m.icon+'</svg>';
+}
+function netCardHtml(n){
+  var m=NET_TYPE_META[n.type];
+  var chips=[n.connected+' 台裝置'];
+  if(n.schedule && n.schedule!=='全天') chips.push(n.schedule);
+  return '<div onclick="openNetDetail(\''+n.id+'\')" style="background:var(--w);border-radius:var(--r);padding:16px;display:flex;align-items:center;gap:14px;cursor:pointer;box-shadow:var(--sh)">'
+    +'<div style="width:44px;height:44px;border-radius:50%;background:'+m.bg+';display:flex;align-items:center;justify-content:center;flex-shrink:0">'+netIconSvg(n.type,21)+'</div>'
+    +'<div style="flex:1;min-width:0">'
+      +'<div style="font-size:16px;font-weight:700;color:var(--tx)">'+n.name+'</div>'
+      +'<div style="font-size:13px;color:var(--t3);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+n.ssid+' · '+BAND_LABEL[n.band]+'</div>'
+      +'<div style="font-size:12.5px;color:var(--t3);margin-top:3px">'+chips.join(' · ')+'</div>'
+    +'</div>'
+    +'<div class="tg'+(n.enabled?' on':'')+'" onclick="event.stopPropagation();netToggle(\''+n.id+'\')" style="cursor:'+(n.locked?'default':'pointer')+';opacity:'+(n.locked?'.5':'1')+'"></div>'
+    +'</div>';
+}
+function renderNetworksList(){
+  var el=g('networks-list');if(!el)return;
+  el.innerHTML=NET_ORDER.map(function(id){return netCardHtml(NETWORKS[id]);}).join('');
+  var sub=g('settings-net-subtitle');
+  if(sub) sub.textContent=NET_ORDER.map(function(id){return NETWORKS[id].name;}).join('・');
+}
+function netToggle(id){
+  var n=NETWORKS[id];if(!n||n.locked)return;
+  n.enabled=!n.enabled;
+  renderNetworksList();
+}
+function netWizardOptionHtml(s){
+  return '<div onclick="createNetworkFromScenario(\''+s.key+'\')" style="background:var(--w);border-radius:var(--r);padding:16px;display:flex;align-items:center;gap:14px;cursor:pointer;box-shadow:var(--sh)">'
+    +'<div style="width:40px;height:40px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:19px">'+s.emoji+'</div>'
+    +'<div style="flex:1;min-width:0"><div style="font-size:16px;font-weight:700;color:var(--tx)">'+s.title+'</div><div style="font-size:13px;color:var(--t3);margin-top:2px">'+s.desc+'</div></div>'
+    +'</div>';
+}
+function renderNetWizard(){
+  var el=g('net-wizard-list');if(!el)return;
+  el.innerHTML=NET_SCENARIOS.map(netWizardOptionHtml).join('');
+}
+function createNetworkFromScenario(key){
+  var s=NET_SCENARIOS.filter(function(x){return x.key===key;})[0];if(!s)return;
+  var existing=NET_ORDER.filter(function(id){return NETWORKS[id].name.indexOf(s.name)===0;}).length;
+  var suffix=existing>0?' '+(existing+1):'';
+  var id=s.key+'-'+(++_netIdSeq);
+  NETWORKS[id]={
+    id:id, type:s.type, name:s.name+suffix,
+    ssid:s.ssidBase+(existing>0?String(existing+1):''),
+    pw:'wifi'+Math.floor(1000+Math.random()*9000),
+    band:s.band, enabled:true, locked:false, connected:0,
+    schedule:s.schedule, homeAccess:s.homeAccess, aimesh:'全部節點'
+  };
+  NET_ORDER.push(id);
+  hide('sub-net-wizard');
+  renderNetworksList();
+  openNetDetail(id);
+  showToast('已建立「'+NETWORKS[id].name+'」');
+}
+function openNetDetail(id){
+  window._curNetId=id;
+  hide('sub-network');
+  renderNetDetail(id);
+  show('sub-net-detail');
+}
+function netBandRow(n){
+  var bands=['auto','2.4','5','6'];
+  return '<div style="display:flex;gap:8px;padding:14px 16px">'
+    +bands.map(function(b){
+      var sel=n.band===b;
+      return '<div onclick="netSetBand(\''+n.id+'\',\''+b+'\')" style="flex:1;text-align:center;padding:9px 0;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;background:'+(sel?'var(--ac)':'var(--s2)')+';color:'+(sel?'#fff':'var(--t2)')+'">'+BAND_LABEL[b]+'</div>';
+    }).join('')
+    +'</div>';
+}
+function netSetBand(id,band){
+  NETWORKS[id].band=band;
+  renderNetDetail(id);
+}
+function netToggleEnable(id){ var n=NETWORKS[id];if(!n||n.locked)return; n.enabled=!n.enabled; renderNetDetail(id); }
+function netToggleHomeAccess(id){ NETWORKS[id].homeAccess=!NETWORKS[id].homeAccess; renderNetDetail(id); }
+function netTogglePw(id){
+  var el=g('net-pw-'+id);if(!el)return;
+  var showing=el.getAttribute('data-showing')==='1';
+  el.textContent=showing?'•'.repeat(Math.min(el.getAttribute('data-pw').length,10)):el.getAttribute('data-pw');
+  el.setAttribute('data-showing',showing?'0':'1');
+}
+var _netEditId=null,_netEditField=null;
+function netEditField(id,field){
+  _netEditId=id; _netEditField=field;
+  var n=NETWORKS[id];
+  g('net-edit-title').textContent=field==='ssid'?'編輯 Wi-Fi 名稱':'編輯密碼';
+  g('net-edit-input').value=field==='ssid'?n.ssid:n.pw;
+  show('ov-net-edit');
+}
+function toggleNetMore(){
+  var e=g('net-detail-more');var chev=document.querySelector('#net-more-toggle .chev');
+  var open=e.style.display!=='none';
+  e.style.display=open?'none':'block';
+  if(chev) chev.style.transform=open?'':'rotate(180deg)';
+}
+function renderNetDetail(id){
+  var n=NETWORKS[id];if(!n)return;
+  var m=NET_TYPE_META[n.type];
+  var title=g('net-detail-title');if(title)title.textContent=n.name;
+  var body=g('net-detail-body');if(!body)return;
+  var chev='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>';
+  var html='';
+  html+='<div style="margin:16px 16px 12px;border-radius:var(--r2);padding:16px;background:var(--w);box-shadow:var(--sh);display:flex;align-items:center;gap:12px">'
+    +'<div style="width:48px;height:48px;border-radius:50%;background:'+m.bg+';display:flex;align-items:center;justify-content:center;flex-shrink:0">'+netIconSvg(n.type,23)+'</div>'
+    +'<div style="flex:1;min-width:0"><div style="font-size:17px;font-weight:700;color:var(--tx)">'+n.name+'</div><div style="font-size:13px;color:var(--t3);margin-top:2px">已連線 '+n.connected+' 台裝置</div></div>'
+    +'<span class="bg" style="background:'+(n.enabled?'var(--gbg)':'var(--s2)')+';color:'+(n.enabled?'var(--gn)':'var(--t3)')+'">'+(n.enabled?'啟用中':'已停用')+'</span>'
+    +'</div>';
+  html+='<span class="sl">基本設定</span>';
+  html+='<div style="background:var(--w);margin:0 16px 12px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden">'
+    +'<div class="sr" onclick="netEditField(\''+id+'\',\'ssid\')" style="cursor:pointer"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Wi-Fi 名稱</div></div><span style="font-size:14px;color:var(--t2);font-weight:500">'+n.ssid+'</span>'+chev+'</div>'
+    +'<div class="sr" onclick="netTogglePw(\''+id+'\')" style="cursor:pointer"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">密碼</div></div><span id="net-pw-'+id+'" data-pw="'+n.pw+'" data-showing="0" style="font-size:14px;color:var(--t2);font-weight:500;letter-spacing:2px">'+'•'.repeat(Math.min(n.pw.length,10))+'</span></div>'
+    +'<div class="sr"'+(n.locked?'':' onclick="netToggleEnable(\''+id+'\')" style="cursor:pointer"')+'><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用</div></div><div class="tg'+(n.enabled?' on':'')+'" style="opacity:'+(n.locked?'.5':'1')+'"></div></div>'
+    +'<div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">已連線裝置</div></div><span style="font-size:14px;color:var(--t2)">'+n.connected+' 台</span></div>'
+    +'<div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">使用排程</div></div><span style="font-size:14px;color:var(--t2)">'+n.schedule+'</span>'+chev+'</div>'
+    +'<div class="sr" onclick="netToggleHomeAccess(\''+id+'\')" style="cursor:pointer"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">可存取家中裝置</div></div><div class="tg'+(n.homeAccess?' on':'')+'"></div></div>'
+    +'<div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">AiMesh 同步</div></div><span style="font-size:14px;color:var(--t2)">'+n.aimesh+'</span>'+chev+'</div>'
+    +'<div class="sr" style="border:none;flex-direction:column;align-items:stretch;padding:0"><div style="padding:13px 16px 0"><div style="font-size:17px;font-weight:600;color:var(--tx)">Wi-Fi 頻段</div></div>'+netBandRow(n)+'</div>'
+    +'</div>';
+  html+='<div id="net-more-toggle" onclick="toggleNetMore()" style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px;margin:0 16px 8px;cursor:pointer;color:var(--t3);font-size:14px;font-weight:600">More Options <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="transition:transform .2s"><polyline points="6 9 12 15 18 9"/></svg></div>';
+  html+='<div id="net-detail-more" style="display:none">'
+    +'<div style="background:var(--w);margin:0 16px 24px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden">'
+      +['DNS Server|自動','VPN|未啟用','頻寬限制|無限制','裝置隔離|'+(n.type==='home'?'關閉':'開啟'),'安全模式|WPA3','加密方式|AES','DHCP|自動','MAC Filter|未設定'].map(function(row,i,arr){
+        var parts=row.split('|');
+        return '<div class="sr"'+(i===arr.length-1?' style="border:none"':'')+'><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">'+parts[0]+'</div></div><span style="font-size:14px;color:var(--t2)">'+parts[1]+'</span>'+chev+'</div>';
+      }).join('')
+    +'</div>'
+    +'</div>';
+  body.innerHTML=html;
+}
+
 function openNodeLED(nodeId){ hide('sub-node-detail'); renderNodeLED(nodeId); show('sub-node-led'); }
 function renderNodeLED(nodeId){
   var n=MESH_NODES[nodeId],lt=NODE_LIGHTING[nodeId];if(!n||!lt)return;
