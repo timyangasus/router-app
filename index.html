@@ -1680,6 +1680,31 @@ body{display:flex;align-items:center;justify-content:center}
     </div>
   </div>
 
+  <!-- OV: Network card ⋯ menu -->
+  <div class="ov" id="ov-net-menu" onclick="if(event.target===this)hide('ov-net-menu')">
+    <div class="sheet">
+      <div id="net-menu-title" style="font-size:15px;font-weight:600;color:var(--t3);text-align:center;margin-bottom:14px">網路</div>
+      <div id="net-menu-rename" style="height:52px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:var(--tx);cursor:pointer;border-bottom:1px solid var(--bd)">重新命名</div>
+      <div id="net-menu-delete" style="height:52px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:var(--rd);cursor:pointer">刪除網路</div>
+      <div onclick="hide('ov-net-menu')" style="height:48px;margin-top:16px;border-radius:var(--r2);background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:var(--t2);cursor:pointer">取消</div>
+    </div>
+  </div>
+
+  <!-- OV: Network delete confirm -->
+  <div class="ov" id="ov-net-delete-confirm" onclick="if(event.target===this)hide('ov-net-delete-confirm')">
+    <div class="sheet" style="text-align:center">
+      <div style="width:56px;height:56px;border-radius:50%;background:rgba(229,62,62,.12);display:flex;align-items:center;justify-content:center;margin:0 auto 16px">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--rd)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
+      </div>
+      <div style="font-size:17px;font-weight:700;color:var(--tx);margin-bottom:6px">刪除「<span id="net-delete-name"></span>」？</div>
+      <div style="font-size:13px;color:var(--t3);line-height:1.6;margin-bottom:20px">刪除後，使用此網路的裝置需改用其他 Wi-Fi 重新連線，此動作無法復原。</div>
+      <div style="display:flex;gap:12px">
+        <div onclick="hide('ov-net-delete-confirm')" style="flex:1;height:48px;border-radius:var(--r2);background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:var(--t2);cursor:pointer">取消</div>
+        <div id="net-delete-confirm-btn" style="flex:1;height:48px;border-radius:var(--r2);background:var(--rd);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:#fff;cursor:pointer">刪除</div>
+      </div>
+    </div>
+  </div>
+
   <!-- SUB: 重設路由器 -->
   <div class="sub" id="sub-reboot">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
@@ -4078,6 +4103,9 @@ window.addEventListener('load',function(){
     }
     hide('ov-net-edit');
   });
+  bind('net-menu-rename',function(){ var id=_netMenuId; hide('ov-net-menu'); if(id) netEditField(id,'name'); });
+  bind('net-menu-delete',function(){ netDeleteConfirm(); });
+  bind('net-delete-confirm-btn',function(){ netDeleteExecute(); });
   bind('aura-back',function(){hide('sub-aura');});
   bind('nightmode-back',function(){hide('sub-nightmode');});
   bind('routerinfo-back',function(){hide('sub-routerinfo');});
@@ -4554,14 +4582,19 @@ function netCardHtml(n){
   var m=NET_TYPE_META[n.type];
   var chips=[n.connected+' 台裝置'];
   if(n.schedule && n.schedule!=='全天') chips.push(n.schedule);
-  return '<div onclick="openNetDetail(\''+n.id+'\')" style="background:var(--w);border-radius:var(--r);padding:16px;display:flex;align-items:center;gap:14px;cursor:pointer;box-shadow:var(--sh)">'
+  return '<div onclick="openNetDetail(\''+n.id+'\')" style="background:var(--w);border-radius:var(--r);padding:16px;display:flex;gap:14px;cursor:pointer;box-shadow:var(--sh)">'
     +'<div style="width:44px;height:44px;border-radius:50%;background:'+m.bg+';display:flex;align-items:center;justify-content:center;flex-shrink:0">'+netIconSvg(n.type,21)+'</div>'
     +'<div style="flex:1;min-width:0">'
-      +'<div style="font-size:16px;font-weight:700;color:var(--tx)">'+n.name+'</div>'
+      +'<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px">'
+        +'<div style="font-size:16px;font-weight:700;color:var(--tx);padding-top:1px">'+n.name+'</div>'
+        +'<div onclick="event.stopPropagation();openNetCardMenu(\''+n.id+'\')" style="width:26px;height:26px;margin:-4px -6px 0 0;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0"><svg width="16" height="4" viewBox="0 0 16 4" fill="var(--t3)"><circle cx="2" cy="2" r="2"/><circle cx="8" cy="2" r="2"/><circle cx="14" cy="2" r="2"/></svg></div>'
+      +'</div>'
       +'<div style="font-size:13px;color:var(--t3);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+n.ssid+' · '+BAND_LABEL[n.band]+'</div>'
-      +'<div style="font-size:12.5px;color:var(--t3);margin-top:3px">'+chips.join(' · ')+'</div>'
+      +'<div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px;gap:8px">'
+        +'<span style="font-size:12.5px;color:var(--t3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+chips.join(' · ')+'</span>'
+        +'<div class="tg'+(n.enabled?' on':'')+'" onclick="event.stopPropagation();netToggle(\''+n.id+'\')" style="cursor:pointer;flex-shrink:0"></div>'
+      +'</div>'
     +'</div>'
-    +'<div class="tg'+(n.enabled?' on':'')+'" onclick="event.stopPropagation();netToggle(\''+n.id+'\')" style="cursor:'+(n.locked?'default':'pointer')+';opacity:'+(n.locked?'.5':'1')+'"></div>'
     +'</div>';
 }
 function renderNetworksList(){
@@ -4630,12 +4663,36 @@ function netTogglePw(id){
   el.setAttribute('data-showing',showing?'0':'1');
 }
 var _netEditId=null,_netEditField=null;
+var NET_EDIT_TITLES={ssid:'編輯 Wi-Fi 名稱',pw:'編輯密碼',name:'重新命名網路'};
 function netEditField(id,field){
   _netEditId=id; _netEditField=field;
   var n=NETWORKS[id];
-  g('net-edit-title').textContent=field==='ssid'?'編輯 Wi-Fi 名稱':'編輯密碼';
-  g('net-edit-input').value=field==='ssid'?n.ssid:n.pw;
+  g('net-edit-title').textContent=NET_EDIT_TITLES[field]||'編輯';
+  g('net-edit-input').value=n[field];
   show('ov-net-edit');
+}
+var _netMenuId=null;
+function openNetCardMenu(id){
+  _netMenuId=id;
+  g('net-menu-title').textContent=NETWORKS[id].name;
+  g('net-menu-delete').style.display=id==='home'?'none':'flex';
+  show('ov-net-menu');
+}
+function netDeleteConfirm(){
+  var id=_netMenuId;if(!id)return;
+  hide('ov-net-menu');
+  g('net-delete-name').textContent=NETWORKS[id].name;
+  show('ov-net-delete-confirm');
+}
+function netDeleteExecute(){
+  var id=_netMenuId;if(!id)return;
+  var name=NETWORKS[id].name;
+  delete NETWORKS[id];
+  NET_ORDER=NET_ORDER.filter(function(x){return x!==id;});
+  hide('ov-net-delete-confirm');
+  if(g('sub-net-detail').classList.contains('on')){hide('sub-net-detail');show('sub-network');}
+  renderNetworksList();
+  showToast('已刪除「'+name+'」');
 }
 function toggleNetMore(){
   var e=g('net-detail-more');var chev=document.querySelector('#net-more-toggle .chev');
