@@ -1634,6 +1634,24 @@ body{display:flex;align-items:center;justify-content:center}
 
   <!-- SUB: WIFI SETTINGS -->
   <!-- SUB: 主 Wi-Fi -->
+  <!-- SUB: Network hub -->
+  <div class="sub" id="sub-network">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="network-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">Network</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <span class="sl">網路</span>
+      <div style="background:var(--w)">
+        <div class="sr" onclick="show('sub-main-wifi')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Main Network</div><div style="font-size:14px;color:var(--t3);margin-top:2px">ASUS_Home_5G</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="show('sub-network-iot')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">IoT Network</div><div style="font-size:14px;color:var(--t3);margin-top:2px">ASUS_IoT · 啟用中</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="show('ov-guest')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Guest Network</div><div id="guest-status-text" style="font-size:14px;color:var(--t3);margin-top:2px">已停用</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="show('sub-network-sdn')" style="cursor:pointer;border:none"><div class="sic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">SDN 網路設定檔</div><div style="font-size:14px;color:var(--t3);margin-top:2px">3 個設定檔</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUB: Main Wi-Fi -->
   <div class="sub" id="sub-main-wifi">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
       <div class="bk" id="main-wifi-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
@@ -1659,23 +1677,6 @@ body{display:flex;align-items:center;justify-content:center}
         <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Smart Connect</div><div style="font-size:13px;color:var(--t3);margin-top:2px">自動分配最佳頻段</div></div><div class="tg on" id="tg-sc"></div></div>
         <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Wi-Fi 排程</div><div style="font-size:13px;color:var(--t3);margin-top:2px">未設定</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">隱藏 SSID</div><div style="font-size:13px;color:var(--t3);margin-top:2px">不廣播網路名稱</div></div><div class="tg" id="tg-hide-ssid"></div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SUB: Network hub -->
-  <div class="sub" id="sub-network">
-    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" id="network-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="font-size:17px;font-weight:600;color:var(--tx)">Network</div>
-    </div>
-    <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <span class="sl">網路</span>
-      <div style="background:var(--w)">
-        <div class="sr" onclick="show('sub-main-wifi')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Main Network</div><div style="font-size:14px;color:var(--t3);margin-top:2px">ASUS_Home_5G</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-        <div class="sr" onclick="show('sub-network-iot')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">IoT Network</div><div style="font-size:14px;color:var(--t3);margin-top:2px">ASUS_IoT · 啟用中</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-        <div class="sr" onclick="show('ov-guest')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Guest Network</div><div id="guest-status-text" style="font-size:14px;color:var(--t3);margin-top:2px">已停用</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-        <div class="sr" onclick="show('sub-network-sdn')" style="cursor:pointer;border:none"><div class="sic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">SDN 網路設定檔</div><div style="font-size:14px;color:var(--t3);margin-top:2px">3 個設定檔</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
       </div>
     </div>
   </div>
