@@ -505,9 +505,9 @@ body{display:flex;align-items:center;justify-content:center}
         <div class="sr" onclick="show('sub-account')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">帳號</div><div style="font-size:14px;color:var(--t3);margin-top:2px">tim@asus.com</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr" style="border:none"><div class="sic"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Face ID / 密碼鎖</div></div><div class="tg on" id="tg6"></div></div>
       </div>
-      <span class="sl">網路</span>
+      <span class="sl">WiFi網路</span>
       <div style="background:var(--w)">
-        <div class="sr" onclick="renderNetworksList();show('sub-network')" style="cursor:pointer;border:none"><div class="sic"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">網路</div><div id="settings-net-subtitle" style="font-size:14px;color:var(--t3);margin-top:2px">家庭網路・訪客網路・IoT 網路</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="renderNetworksList();show('sub-network')" style="cursor:pointer;border:none"><div class="sic"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">WiFi網路</div><div id="settings-net-subtitle" style="font-size:14px;color:var(--t3);margin-top:2px">家庭網路・訪客網路・IoT 網路</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
       </div>
       <span class="sl">Lighting</span>
       <div style="background:var(--w)">
@@ -1636,15 +1636,14 @@ body{display:flex;align-items:center;justify-content:center}
   <div class="sub" id="sub-network">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
       <div class="bk" id="network-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">網路</div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">WiFi網路</div>
       <div onclick="hide('sub-network');renderNetWizard();show('sub-net-wizard')" style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;cursor:pointer">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="4" x2="12" y2="20"/><line x1="4" y1="12" x2="20" y2="12"/></svg>
       </div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
       <div style="padding:16px 20px 6px;font-size:14px;color:var(--t3);line-height:1.6">建立不同用途的 Wi-Fi，讓家人、訪客與智慧裝置使用各自的網路。</div>
-      <div id="networks-list" style="padding:6px 16px 4px;display:flex;flex-direction:column;gap:10px"></div>
-      <div onclick="hide('sub-network');renderNetWizard();show('sub-net-wizard')" style="display:flex;align-items:center;justify-content:center;gap:6px;height:48px;margin:8px 16px 28px;border-radius:14px;border:1.5px dashed var(--bd2);color:var(--ac);font-size:15px;font-weight:600;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>新增網路</div>
+      <div id="networks-list" style="padding:6px 16px 24px;display:flex;flex-direction:column;gap:10px"></div>
     </div>
   </div>
 
@@ -4525,20 +4524,27 @@ var NET_TYPE_META={
 };
 var BAND_LABEL={auto:'Auto','2.4':'2.4GHz','5':'5GHz','6':'6GHz'};
 var NETWORKS={
-  home:  {id:'home', type:'home', name:'家庭網路', ssid:'ASUS_Home', pw:'mypassword123',  band:'auto', enabled:true, locked:true,  connected:12, schedule:'全天',      homeAccess:true,  aimesh:'全部節點'},
+  home:  {id:'home', type:'home', name:'家庭網路', ssid:'ASUS_Home', pw:'mypassword123',  band:'auto', enabled:true, locked:false, connected:12, schedule:'全天',      homeAccess:true,  aimesh:'全部節點'},
   guest: {id:'guest',type:'guest',name:'訪客網路', ssid:'ASUS_Guest',pw:'guestPass2024', band:'2.4',  enabled:false,locked:false, connected:2,  schedule:'24 小時',   homeAccess:false, aimesh:'全部節點'},
   iot:   {id:'iot',  type:'iot',  name:'IoT 網路', ssid:'ASUS_IoT',  pw:'iotSecure99',   band:'2.4',  enabled:true, locked:false, connected:8,  schedule:'全天',      homeAccess:false, aimesh:'全部節點'}
 };
 var NET_ORDER=['home','guest','iot'];
 var _netIdSeq=0;
 var NET_SCENARIOS=[
-  {key:'guest', type:'guest', emoji:'👤', title:'訪客',         desc:'給來訪親友一個獨立網路',              name:'訪客網路',     ssidBase:'ASUS_Guest',  band:'2.4',  homeAccess:false, schedule:'24 小時'},
-  {key:'iot',   type:'iot',   emoji:'🏡', title:'智慧家庭',      desc:'讓智慧插座、監視器等裝置更安全',        name:'IoT 網路',     ssidBase:'ASUS_IoT',    band:'2.4',  homeAccess:false, schedule:'全天'},
-  {key:'kids',  type:'kids',  emoji:'👧', title:'小朋友',        desc:'管理孩子的上網時間與內容',             name:'兒童網路',     ssidBase:'ASUS_Kids',   band:'2.4',  homeAccess:true,  schedule:'上學日 07:00–21:00'},
-  {key:'gaming',type:'custom',emoji:'🎮', title:'遊戲',          desc:'優先分配頻寬，降低連線延遲',           name:'遊戲網路',     ssidBase:'ASUS_Gaming', band:'5',    homeAccess:true,  schedule:'全天'},
-  {key:'wfh',   type:'custom',emoji:'💼', title:'居家辦公',      desc:'獨立、穩定的工作連線',                name:'居家辦公網路', ssidBase:'ASUS_Work',   band:'5',    homeAccess:true,  schedule:'全天'},
-  {key:'vpn',   type:'vpn',   emoji:'🔒', title:'VPN 安全連線',  desc:'所有流量透過 VPN，保護連線隱私',       name:'VPN 網路',     ssidBase:'ASUS_VPN',    band:'auto', homeAccess:false, schedule:'全天'},
-  {key:'custom',type:'custom',emoji:'⚙️', title:'自訂',          desc:'自行設定所有細節',                    name:'自訂網路',     ssidBase:'ASUS_Custom', band:'auto', homeAccess:true,  schedule:'全天'}
+  {key:'guest', type:'guest', title:'訪客',         desc:'給來訪親友一個獨立網路',              name:'訪客網路',     ssidBase:'ASUS_Guest',  band:'2.4',  homeAccess:false, schedule:'24 小時',
+    bg:'#F1EAFB', ink:'#8B5CF6', icon:'<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>'},
+  {key:'iot',   type:'iot',   title:'智慧家庭',      desc:'讓智慧插座、監視器等裝置更安全',        name:'IoT 網路',     ssidBase:'ASUS_IoT',    band:'2.4',  homeAccess:false, schedule:'全天',
+    bg:'#E1F5EB', ink:'#1C9A6C', icon:'<path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>'},
+  {key:'kids',  type:'kids',  title:'小朋友',        desc:'管理孩子的上網時間與內容',             name:'兒童網路',     ssidBase:'ASUS_Kids',   band:'2.4',  homeAccess:true,  schedule:'上學日 07:00–21:00',
+    bg:'#FCEFDC', ink:'#C2760D', icon:'<circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0116 0v2"/>'},
+  {key:'gaming',type:'custom',title:'遊戲',          desc:'優先分配頻寬，降低連線延遲',           name:'遊戲網路',     ssidBase:'ASUS_Gaming', band:'5',    homeAccess:true,  schedule:'全天',
+    bg:'#ECEEF2', ink:'#6B7280', icon:'<rect x="2" y="8" width="20" height="9" rx="4.5"/><line x1="7" y1="10.5" x2="7" y2="14.5"/><line x1="5" y1="12.5" x2="9" y2="12.5"/><circle cx="15" cy="11" r="1" fill="currentColor" stroke="none"/><circle cx="17.5" cy="13.5" r="1" fill="currentColor" stroke="none"/>'},
+  {key:'wfh',   type:'custom',title:'居家辦公',      desc:'獨立、穩定的工作連線',                name:'居家辦公網路', ssidBase:'ASUS_Work',   band:'5',    homeAccess:true,  schedule:'全天',
+    bg:'#ECEEF2', ink:'#6B7280', icon:'<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/>'},
+  {key:'vpn',   type:'vpn',   title:'VPN 安全連線',  desc:'所有流量透過 VPN，保護連線隱私',       name:'VPN 網路',     ssidBase:'ASUS_VPN',    band:'auto', homeAccess:false, schedule:'全天',
+    bg:'#E7EAFB', ink:'#4C5FD6', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>'},
+  {key:'custom',type:'custom',title:'自訂',          desc:'自行設定所有細節',                    name:'自訂網路',     ssidBase:'ASUS_Custom', band:'auto', homeAccess:true,  schedule:'全天',
+    bg:'#ECEEF2', ink:'#6B7280', icon:'<line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="2" y1="14" x2="6" y2="14"/><line x1="10" y1="8" x2="14" y2="8"/><line x1="18" y1="16" x2="22" y2="16"/>'}
 ];
 function netIconSvg(type,size){
   var m=NET_TYPE_META[type];
@@ -4571,7 +4577,7 @@ function netToggle(id){
 }
 function netWizardOptionHtml(s){
   return '<div onclick="createNetworkFromScenario(\''+s.key+'\')" style="background:var(--w);border-radius:var(--r);padding:16px;display:flex;align-items:center;gap:14px;cursor:pointer;box-shadow:var(--sh)">'
-    +'<div style="width:40px;height:40px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:19px">'+s.emoji+'</div>'
+    +'<div style="width:40px;height:40px;border-radius:50%;background:'+s.bg+';display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="'+s.ink+'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+s.icon+'</svg></div>'
     +'<div style="flex:1;min-width:0"><div style="font-size:16px;font-weight:700;color:var(--tx)">'+s.title+'</div><div style="font-size:13px;color:var(--t3);margin-top:2px">'+s.desc+'</div></div>'
     +'</div>';
 }
