@@ -599,28 +599,6 @@ body{display:flex;align-items:center;justify-content:center}
     <div class="ti" id="tab-settings"><svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span>設定</span></div>
   </div>
 
-  <!-- SUB: SUGGESTIONS -->
-  <div class="sub" id="sub-suggestions">
-    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" id="suggest-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="font-size:18px;font-weight:600;color:#4DA6FF;flex:1;text-align:center;margin-right:34px">Suggestions</div>
-    </div>
-    <div style="flex:1;overflow-y:auto;background:var(--bg);padding:16px;display:flex;flex-direction:column;gap:12px">
-      <div style="background:var(--w);border-radius:16px;padding:16px;box-shadow:var(--sh)">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><div style="position:relative;width:28px;height:28px;flex-shrink:0"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><div style="position:absolute;top:-2px;right:-2px;width:10px;height:10px;border-radius:50%;background:#F5A623;border:1.5px solid var(--w)"></div></div><div style="font-size:17px;font-weight:700;color:var(--tx)">AiMesh available</div></div>
-        <div style="font-size:14px;color:var(--t3);line-height:1.6;margin-bottom:14px">AiMesh combines more than one ASUS router to form a WiFi system, provides whole-home coverage and centralized management.</div>
-        <div style="display:flex;gap:10px;margin-bottom:10px"><div style="height:34px;padding:0 20px;border-radius:17px;border:1.5px solid var(--bd2);display:flex;align-items:center;font-size:14px;font-weight:500;color:var(--tx);cursor:pointer">Search</div><div style="height:34px;padding:0 20px;border-radius:17px;border:1.5px solid var(--bd2);display:flex;align-items:center;font-size:14px;font-weight:500;color:var(--tx);cursor:pointer">Details</div></div>
-        <div style="font-size:11px;color:var(--t3);text-align:right">Today, 10:07 Wed</div>
-      </div>
-      <div style="background:var(--w);border-radius:16px;padding:16px;box-shadow:var(--sh)">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><div style="font-size:17px;font-weight:700;color:var(--tx)">Register Your Product</div></div>
-        <div style="font-size:14px;color:var(--t3);line-height:1.6;margin-bottom:14px">It is recommended to register your product to access our customer support quickly and easily.</div>
-        <div style="display:flex;gap:10px;margin-bottom:10px"><div style="height:34px;padding:0 20px;border-radius:17px;border:1.5px solid var(--bd2);display:flex;align-items:center;font-size:14px;font-weight:500;color:var(--tx);cursor:pointer">Dismiss</div><div style="height:34px;padding:0 20px;border-radius:17px;background:var(--ac);display:flex;align-items:center;font-size:14px;font-weight:600;color:#fff;cursor:pointer">GO</div></div>
-        <div style="font-size:11px;color:var(--t3);text-align:right">Today, 10:07 Wed</div>
-      </div>
-    </div>
-  </div>
-
   <!-- SUB: ENERGY SAVING -->
   <div class="sub" id="sub-energy">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
@@ -726,39 +704,6 @@ body{display:flex;align-items:center;justify-content:center}
   <!-- OV: AiProtection 即時檢查 -->
   <div class="ov" id="ov-aipro-scan" onclick="if(event.target===this)hide('ov-aipro-scan')">
     <div class="sheet" id="aipro-scan-body"></div>
-  </div>
-
-  <!-- SUB: WIFI INSIGHT -->
-  <div class="sub" id="sub-wifi-insight">
-    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" id="wifi-insight-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="font-size:17px;font-weight:600;color:var(--tx)">WiFi Insight</div>
-    </div>
-    <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <div style="background:var(--s2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:36px 20px 28px">
-        <div style="width:100px;height:100px;border-radius:50%;background:rgba(255,106,106,.15);display:flex;align-items:center;justify-content:center"><svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#FF6A6A" stroke-width="1.8" stroke-linecap="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1.5" fill="#FF6A6A" stroke="none"/></svg></div>
-        <div style="text-align:center"><div style="font-size:18px;font-weight:600;color:var(--tx)">Channel Analysis</div><div style="font-size:13px;color:var(--t3);margin-top:3px">Minor interference detected · Auto-optimized</div><div style="display:inline-flex;margin-top:8px;height:26px;padding:0 14px;border-radius:13px;background:var(--gbg);align-items:center"><span style="font-size:12px;font-weight:600;color:var(--gn)">● Good</span></div></div>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:12px 16px">
-        <div style="background:var(--w);border-radius:14px;padding:14px 10px;text-align:center;box-shadow:var(--sh)"><div style="font-size:11px;color:var(--t3);margin-bottom:4px">Channel</div><div style="font-size:17px;font-weight:700;color:var(--tx)">149</div><div style="font-size:10px;color:var(--gn);margin-top:3px;font-weight:600">Optimal</div></div>
-        <div style="background:var(--w);border-radius:14px;padding:14px 10px;text-align:center;box-shadow:var(--sh)"><div style="font-size:11px;color:var(--t3);margin-bottom:4px">Interference</div><div style="font-size:17px;font-weight:700;color:var(--gn)">12%</div><div style="font-size:10px;color:var(--gn);margin-top:3px;font-weight:600">Low</div></div>
-        <div style="background:var(--w);border-radius:14px;padding:14px 10px;text-align:center;box-shadow:var(--sh)"><div style="font-size:11px;color:var(--t3);margin-bottom:4px">Signal</div><div style="font-size:17px;font-weight:700;color:var(--gn)">92%</div><div style="font-size:10px;color:var(--gn);margin-top:3px;font-weight:600">Excellent</div></div>
-      </div>
-      <div style="background:var(--w);margin:0 16px 12px;border-radius:16px;padding:16px;box-shadow:var(--sh)">
-        <div style="font-size:15px;font-weight:600;color:var(--tx);margin-bottom:2px">Channel Interference History</div>
-        <div style="font-size:12px;color:var(--t3);margin-bottom:10px">Last 60 Minutes</div>
-        <div style="position:relative;height:110px"><canvas id="wifi-detail-chart" style="width:100%;height:100%"></canvas></div>
-        <div style="display:flex;justify-content:space-between;padding:4px 0 0"><span style="font-size:10px;color:var(--t3)">10:17</span><span style="font-size:10px;color:var(--t3)">10:32</span><span style="font-size:10px;color:var(--t3)">10:47</span><span style="font-size:10px;color:var(--t3)">11:02</span><span style="font-size:10px;color:var(--t3)">11:17</span></div>
-      </div>
-      <div style="background:var(--s2);margin:0 16px 12px;border-radius:20px;padding:16px">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="#4DA6FF"><path d="M12 2L9.2 8.8 2 9.7l5.1 4.9L5.8 22 12 18.4 18.2 22l-1.3-7.4 5.1-4.9-7.2-.9z"/></svg><span style="font-size:15px;font-weight:600;color:#4DA6FF">AI Recommendation</span></div>
-        <div style="font-size:14px;color:var(--t2);line-height:1.6">The router detected temporary channel congestion and automatically switched to the optimal channel to maintain network stability.</div>
-      </div>
-      <div style="background:var(--w);margin:0 16px 24px;border-radius:16px;padding:16px;box-shadow:var(--sh);display:flex;align-items:center;justify-content:space-between">
-        <div><div style="font-size:15px;font-weight:600;color:var(--tx)">Overall WiFi Health</div><div style="font-size:12px;color:var(--gn);margin-top:2px;font-weight:500">Excellent</div></div>
-        <div style="font-size:32px;font-weight:700;color:#4DA6FF">95<span style="font-size:14px;color:var(--t3);font-weight:400"> / 100</span></div>
-      </div>
-    </div>
   </div>
 
   <!-- OV: CHAT SETTINGS -->
@@ -1952,104 +1897,6 @@ body{display:flex;align-items:center;justify-content:center}
 
 </div><!-- end phone -->
 
-  <!-- SUB: 查看密碼 -->
-  <div class="sub" id="sub-passwords">
-    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" id="passwords-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="font-size:17px;font-weight:600;color:var(--tx)">密碼管理</div>
-    </div>
-    <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <span class="sl">Wi-Fi 密碼</span>
-      <div style="background:var(--w);border-radius:var(--r);margin:0 16px;overflow:hidden;box-shadow:var(--sh)">
-        <div style="padding:16px">
-          <div style="font-size:12px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px">網路名稱（SSID）</div>
-          <div style="display:flex;align-items:center;gap:10px">
-            <input id="inp-ssid" value="ASUS_Home_5G" style="flex:1;height:42px;border:1.5px solid var(--bd);border-radius:10px;padding:0 12px;font-size:16px;color:var(--tx);background:var(--s2);outline:none;font-family:var(--f)"/>
-            <div onclick="copyVal('inp-ssid')" style="width:42px;height:42px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-            </div>
-          </div>
-        </div>
-        <div style="height:1px;background:var(--bd);margin:0 16px"></div>
-        <div style="padding:16px">
-          <div style="font-size:12px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px">Wi-Fi 密碼</div>
-          <div style="display:flex;align-items:center;gap:10px">
-            <input id="inp-wifi-pwd" type="password" value="MyRouter@2024" style="flex:1;height:42px;border:1.5px solid var(--bd);border-radius:10px;padding:0 12px;font-size:16px;color:var(--tx);background:var(--s2);outline:none;font-family:var(--f)"/>
-            <div onclick="togglePwdVis('inp-wifi-pwd','eye-wifi')" style="width:42px;height:42px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0">
-              <svg id="eye-wifi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            </div>
-          </div>
-        </div>
-        <div style="padding:0 16px 16px">
-          <div id="save-wifi-pwd" style="height:44px;background:var(--ac);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:#fff;cursor:pointer">儲存 Wi-Fi 密碼</div>
-        </div>
-      </div>
-
-      <span class="sl">路由器管理員</span>
-      <div style="background:var(--w);border-radius:var(--r);margin:0 16px;overflow:hidden;box-shadow:var(--sh)">
-        <div style="padding:16px">
-          <div style="font-size:12px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px">管理員帳號</div>
-          <div style="display:flex;align-items:center;gap:10px">
-            <input id="inp-admin-user" value="admin" style="flex:1;height:42px;border:1.5px solid var(--bd);border-radius:10px;padding:0 12px;font-size:16px;color:var(--tx);background:var(--s2);outline:none;font-family:var(--f)"/>
-            <div onclick="copyVal('inp-admin-user')" style="width:42px;height:42px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-            </div>
-          </div>
-        </div>
-        <div style="height:1px;background:var(--bd);margin:0 16px"></div>
-        <div style="padding:16px">
-          <div style="font-size:12px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px">管理員密碼</div>
-          <div style="display:flex;align-items:center;gap:10px">
-            <input id="inp-admin-pwd" type="password" value="Admin@Router1" style="flex:1;height:42px;border:1.5px solid var(--bd);border-radius:10px;padding:0 12px;font-size:16px;color:var(--tx);background:var(--s2);outline:none;font-family:var(--f)"/>
-          </div>
-        </div>
-        <div style="padding:0 16px 16px">
-          <div id="save-admin-pwd" style="height:44px;background:var(--ac);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:#fff;cursor:pointer">儲存管理員密碼</div>
-        </div>
-      </div>
-      <div style="padding:16px;font-size:12px;color:var(--t3);text-align:center;line-height:1.6">修改密碼後需重新連線。請記住新密碼以免無法登入。</div>
-    </div>
-  </div>
-
-  <!-- SUB: 暫停裝置 -->
-  <div class="sub" id="sub-pause">
-    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div style="display:flex;align-items:center;gap:12px">
-        <div class="bk" id="pause-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-        <div style="font-size:17px;font-weight:600;color:var(--tx)">暫停裝置</div>
-      </div>
-      <div id="pause-apply" style="height:32px;padding:0 14px;background:var(--ac);border-radius:16px;display:flex;align-items:center;font-size:14px;font-weight:600;color:#fff;cursor:pointer">套用</div>
-    </div>
-    <div style="background:var(--w);padding:10px 16px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div style="font-size:13px;color:var(--t3)">勾選裝置後點「套用」，所選裝置將暫停網路存取。</div>
-    </div>
-    <div style="flex:1;overflow-y:auto;background:var(--bg)" id="pause-list">
-      <!-- Injected by JS -->
-    </div>
-  </div>
-
-  <!-- SUB: 安全掃描 -->
-  <div class="sub" id="sub-scan">
-    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" id="scan-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="font-size:17px;font-weight:600;color:var(--tx)">安全掃描</div>
-    </div>
-    <div style="flex:1;overflow-y:auto;background:var(--bg);display:flex;flex-direction:column;align-items:center;padding:40px 24px 24px">
-      <div style="width:110px;height:110px;border-radius:50%;background:var(--gbg);display:flex;align-items:center;justify-content:center;margin-bottom:24px">
-        <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="1.6" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-      </div>
-      <div style="font-size:20px;font-weight:600;color:var(--tx);margin-bottom:8px">上次掃描：今天 09:12</div>
-      <div style="font-size:14px;color:var(--gn);font-weight:600;margin-bottom:24px">✓ 未發現威脅</div>
-      <div style="width:100%;background:var(--w);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);margin-bottom:24px">
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--bd)"><span style="font-size:15px;color:var(--tx)">惡意網站封鎖</span><span style="font-size:13px;font-weight:600;color:var(--gn)">啟用中</span></div>
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--bd)"><span style="font-size:15px;color:var(--tx)">入侵防護</span><span style="font-size:13px;font-weight:600;color:var(--gn)">啟用中</span></div>
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--bd)"><span style="font-size:15px;color:var(--tx)">今日封鎖威脅</span><span style="font-size:13px;font-weight:600;color:var(--tx)">1,275 次</span></div>
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px"><span style="font-size:15px;color:var(--tx)">Router Security 評分</span><span style="font-size:13px;font-weight:600;color:var(--ac)">98 / 100</span></div>
-      </div>
-      <div id="scan-start-btn" style="width:100%;height:50px;border-radius:var(--r2);background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:#fff;cursor:pointer">立即掃描</div>
-    </div>
-  </div>
-
   <!-- SUB: Add AiMesh Node -->
   <div class="sub" id="sub-mesh-addnode">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
@@ -3069,80 +2916,6 @@ body{display:flex;align-items:center;justify-content:center}
     </div>
   </div>
 
-  <!-- ══ SUB: Energy Saving ══ -->
-  <div class="sub" id="sub-pro-energy">
-    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" onclick="hide('sub-pro-energy')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">Energy Saving</div>
-      <div style="font-size:15px;font-weight:600;color:var(--ac);cursor:pointer">套用</div>
-    </div>
-    <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <span class="sl">節能模式</span>
-      <div style="background:var(--w)">
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用節能模式</div><div style="font-size:13px;color:var(--t3);margin-top:2px">離峰時段降低功耗</div></div><div class="tg" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">離峰時段</div></div><span style="font-size:14px;color:var(--t2)">02:00 - 06:00</span></div>
-        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">降低無用埠供電</div><div style="font-size:13px;color:var(--t3);margin-top:2px">關閉未插線的網路孔供電</div></div><div class="tg on" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══ SUB: IFTTT ══ -->
-  <div class="sub" id="sub-pro-ifttt">
-    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" onclick="hide('sub-pro-ifttt')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">IFTTT</div>
-    </div>
-    <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <div style="display:flex;flex-direction:column;align-items:center;padding:40px 24px 24px;text-align:center">
-        <div style="width:72px;height:72px;border-radius:20px;background:#000;display:flex;align-items:center;justify-content:center;margin-bottom:16px">
-          <span style="font-size:22px;font-weight:900;color:#fff;font-family:sans-serif;letter-spacing:-1px">ift</span>
-        </div>
-        <div style="font-size:20px;font-weight:700;color:var(--tx);margin-bottom:8px">連結 IFTTT</div>
-        <div style="font-size:14px;color:var(--t3);line-height:1.7;margin-bottom:28px">將路由器事件（裝置連線、網路異常等）與 IFTTT Applet 整合，實現自動化控制。</div>
-        <div style="height:50px;width:100%;max-width:280px;border-radius:25px;background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:#fff;cursor:pointer">連結帳號</div>
-      </div>
-      <span class="sl">可觸發的事件</span>
-      <div style="background:var(--w)">
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:500;color:var(--tx)">新裝置連線</div></div><div style="font-size:13px;color:var(--t3)">停用</div></div>
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:500;color:var(--tx)">裝置離線</div></div><div style="font-size:13px;color:var(--t3)">停用</div></div>
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:500;color:var(--tx)">網路斷線</div></div><div style="font-size:13px;color:var(--t3)">停用</div></div>
-        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:500;color:var(--tx)">安全威脅偵測</div></div><div style="font-size:13px;color:var(--t3)">停用</div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══ SUB: Smart Home ══ -->
-  <div class="sub" id="sub-pro-smarthome">
-    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" onclick="hide('sub-pro-smarthome')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">Smart Home</div>
-    </div>
-    <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <div id="infocard-smarthome"></div>
-      <span class="sl">語音助理整合</span>
-      <div style="background:var(--w)">
-        <div class="sr" style="cursor:pointer"><div style="width:40px;height:40px;border-radius:12px;background:#232F3E;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 013 3v7a3 3 0 01-6 0V5a3 3 0 013-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Amazon Alexa</div><div style="font-size:13px;color:var(--t3);margin-top:1px">「Alexa，暫停家庭 Wi-Fi」</div></div><div style="display:flex;align-items:center;gap:6px"><span style="font-size:13px;color:var(--gn);font-weight:500">已連結</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div></div>
-        <div class="sr" style="cursor:pointer;border:none"><div style="width:40px;height:40px;border-radius:12px;background:#4285F4;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 013 3v7a3 3 0 01-6 0V5a3 3 0 013-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Google Home</div><div style="font-size:13px;color:var(--t3);margin-top:1px">「Hey Google，檢查網路狀態」</div></div><div style="display:flex;align-items:center;gap:6px"><span style="font-size:13px;color:var(--t3)">未連結</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div></div>
-      </div>
-      <span class="sl">支援的操作</span>
-      <div style="background:var(--w)">
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:500;color:var(--tx)">查詢網路狀態</div></div><span class="bg bgg">支援</span></div>
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:500;color:var(--tx)">暫停 / 恢復網路</div></div><span class="bg bgg">支援</span></div>
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:500;color:var(--tx)">查詢連線裝置數量</div></div><span class="bg bgg">支援</span></div>
-        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:500;color:var(--tx)">路由器重新開機</div></div><span class="bg bgg">支援</span></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SUB: 新增裝置 -->
-  <div class="sub" id="sub-adddev">
-    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" onclick="hide('sub-adddev')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">新增裝置</div>
-    </div>
-    <div style="flex:1;overflow-y:auto;background:var(--bg)" id="adddev-body"><!-- Injected by JS --></div>
-  </div>
-
   <!-- SUB: 網速測試 -->
   <div class="sub" id="sub-speedtest">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
@@ -3186,70 +2959,6 @@ body{display:flex;align-items:center;justify-content:center}
         <div class="sr"><div style="flex:1"><div style="font-size:15px;font-weight:500;color:var(--tx)">今天 23:30</div></div><div style="text-align:right"><div style="font-size:13px;color:var(--ac);font-family:var(--m)">↓ 512 Mbps</div><div style="font-size:12px;color:var(--gn);font-family:var(--m)">↑ 128 Mbps</div></div></div>
         <div class="sr"><div style="flex:1"><div style="font-size:15px;font-weight:500;color:var(--tx)">今天 18:12</div></div><div style="text-align:right"><div style="font-size:13px;color:var(--ac);font-family:var(--m)">↓ 498 Mbps</div><div style="font-size:12px;color:var(--gn);font-family:var(--m)">↑ 115 Mbps</div></div></div>
         <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:15px;font-weight:500;color:var(--tx)">昨天 22:05</div></div><div style="text-align:right"><div style="font-size:13px;color:var(--ac);font-family:var(--m)">↓ 480 Mbps</div><div style="font-size:12px;color:var(--gn);font-family:var(--m)">↑ 110 Mbps</div></div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SUB: 流量統計 -->
-  <div class="sub" id="sub-traffic">
-    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" onclick="hide('sub-traffic')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">流量統計</div>
-      <div style="display:flex;gap:1px;background:var(--s3);border-radius:8px;padding:2px">
-        <div id="tr-tab-day" onclick="switchTrafficTab('day')" style="font-size:12px;font-weight:600;padding:4px 10px;border-radius:6px;background:var(--w);color:var(--ac);cursor:pointer">今日</div>
-        <div id="tr-tab-week" onclick="switchTrafficTab('week')" style="font-size:12px;font-weight:600;padding:4px 10px;border-radius:6px;color:var(--t3);cursor:pointer">本週</div>
-        <div id="tr-tab-month" onclick="switchTrafficTab('month')" style="font-size:12px;font-weight:600;padding:4px 10px;border-radius:6px;color:var(--t3);cursor:pointer">本月</div>
-      </div>
-    </div>
-    <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <!-- 總計卡 -->
-      <div style="padding:16px 16px 0;display:flex;gap:10px">
-        <div style="flex:1;background:var(--w);border-radius:16px;padding:14px;box-shadow:var(--sh);text-align:center">
-          <div style="font-size:11px;color:var(--t3);margin-bottom:4px">↓ 總下載</div>
-          <div style="font-size:24px;font-weight:700;color:var(--ac);font-family:var(--m)">38.4</div>
-          <div style="font-size:12px;color:var(--t3)">GB</div>
-        </div>
-        <div style="flex:1;background:var(--w);border-radius:16px;padding:14px;box-shadow:var(--sh);text-align:center">
-          <div style="font-size:11px;color:var(--t3);margin-bottom:4px">↑ 總上傳</div>
-          <div style="font-size:24px;font-weight:700;color:var(--gn);font-family:var(--m)">8.2</div>
-          <div style="font-size:12px;color:var(--t3)">GB</div>
-        </div>
-      </div>
-      <!-- 裝置排行 -->
-      <span class="sl">裝置流量排行</span>
-      <div style="background:var(--w)">
-        <div class="sr">
-          <div style="width:36px;height:36px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M0 21h24"/></svg></div>
-          <div style="flex:1">
-            <div style="font-size:15px;font-weight:600;color:var(--tx)">Tim's MacBook Pro</div>
-            <div style="height:4px;background:var(--s3);border-radius:2px;margin-top:6px"><div style="height:4px;background:var(--ac);border-radius:2px;width:72%"></div></div>
-          </div>
-          <div style="text-align:right;margin-left:10px"><div style="font-size:13px;font-weight:600;color:var(--ac);font-family:var(--m)">18.2 GB</div><div style="font-size:11px;color:var(--t3)">↓16.4 ↑1.8</div></div>
-        </div>
-        <div class="sr">
-          <div style="width:36px;height:36px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg></div>
-          <div style="flex:1">
-            <div style="font-size:15px;font-weight:600;color:var(--tx)">Tim's iPhone</div>
-            <div style="height:4px;background:var(--s3);border-radius:2px;margin-top:6px"><div style="height:4px;background:var(--ac);border-radius:2px;width:38%"></div></div>
-          </div>
-          <div style="text-align:right;margin-left:10px"><div style="font-size:13px;font-weight:600;color:var(--ac);font-family:var(--m)">9.6 GB</div><div style="font-size:11px;color:var(--t3)">↓8.8 ↑0.8</div></div>
-        </div>
-        <div class="sr">
-          <div style="width:36px;height:36px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg></div>
-          <div style="flex:1">
-            <div style="font-size:15px;font-weight:600;color:var(--tx)">客廳 Apple TV</div>
-            <div style="height:4px;background:var(--s3);border-radius:2px;margin-top:6px"><div style="height:4px;background:var(--ac);border-radius:2px;width:22%"></div></div>
-          </div>
-          <div style="text-align:right;margin-left:10px"><div style="font-size:13px;font-weight:600;color:var(--ac);font-family:var(--m)">5.5 GB</div><div style="font-size:11px;color:var(--t3)">↓5.3 ↑0.2</div></div>
-        </div>
-        <div class="sr" style="border:none">
-          <div style="width:36px;height:36px;border-radius:10px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg></div>
-          <div style="flex:1">
-            <div style="font-size:15px;font-weight:600;color:var(--tx)">舊 iPad</div>
-            <div style="height:4px;background:var(--s3);border-radius:2px;margin-top:6px"><div style="height:4px;background:var(--ac);border-radius:2px;width:12%"></div></div>
-          </div>
-          <div style="text-align:right;margin-left:10px"><div style="font-size:13px;font-weight:600;color:var(--ac);font-family:var(--m)">3.1 GB</div><div style="font-size:11px;color:var(--t3)">↓2.9 ↑0.2</div></div>
-        </div>
       </div>
     </div>
   </div>
@@ -3375,7 +3084,7 @@ function goTab(t){
   if(ct){ct.scrollTop=0;}
   // hide family back when switching tabs normally
   if(t==='family'){var fb=document.getElementById('family-back-btn');if(fb)fb.style.display='none';}
-  ['sub-dev','sub-notif','sub-diag','sub-suggestions','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-wifi-insight','sub-theme','sub-main-wifi','sub-reboot','sub-account','sub-led','sub-passwords','sub-pause','sub-scan','sub-mesh-opt','sub-mesh-addnode','sub-adddev','sub-speedtest','sub-traffic','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-pro-ifttt','sub-pro-smarthome','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-faq','sub-network','sub-network-iot','sub-network-sdn','sub-aura','sub-nightmode','sub-routerinfo','sub-firmware','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-wifiadv','sub-pro-restartsched','sub-pro-energy','sub-node-detail','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','ov-mesh'].forEach(hide);
+  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-theme','sub-main-wifi','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-faq','sub-network','sub-network-iot','sub-network-sdn','sub-aura','sub-nightmode','sub-routerinfo','sub-firmware','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-wifiadv','sub-pro-restartsched','sub-node-detail','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','ov-mesh'].forEach(hide);
   // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
     var bar=document.getElementById('ai-input-bar');
@@ -4249,7 +3958,6 @@ window.addEventListener('load',function(){
   bind('notif-unk',function(){hide('sub-notif');openDev('unknown');});
   bind('notif-unk-cta',function(){hide('sub-notif');openDev('unknown');});
   // AI module bindings
-  bind('suggest-back',function(){hide('sub-suggestions');});
   bind('energy-back',function(){hide('sub-energy');});
   bind('ai-report-back',function(){
     hide('sub-ai-report');
@@ -4263,7 +3971,6 @@ window.addEventListener('load',function(){
   });
   bind('aipro-scan-btn',function(){runAiproScan();});
   bind('aipro-malsite-back',function(){hide('sub-aipro-malsite');});
-  bind('wifi-insight-back',function(){hide('sub-wifi-insight');});
   // hide toolbar when AI input focused (keyboard open)
   document.addEventListener('focusin',function(e){
     if(e.target&&e.target.id==='ai-input'){var tb=document.querySelector('.tb');if(tb)tb.style.display='none';}
@@ -4432,8 +4139,6 @@ window.addEventListener('load',function(){
   bind('reboot-back2',function(){hide('sub-reboot');});
   bind('account-back',function(){hide('sub-account');});
   bind('led-back',function(){hide('sub-led');});
-  bind('passwords-back',function(){hide('sub-passwords');});
-  bind('pause-back',function(){hide('sub-pause');});
   bind('node-detail-back',function(){hide('sub-node-detail');if(window._nodeDetailReturnTo==='ov-mesh')show('ov-mesh');});
   bind('node-led-back',function(){hide('sub-node-led');backToNodeDetail();});
   bind('node-aura-back',function(){hide('sub-node-aura');backToNodeDetail();});
@@ -4457,7 +4162,6 @@ window.addEventListener('load',function(){
     }
     hide('ov-node-rename');
   });
-  bind('scan-back',function(){hide('sub-scan');});
   bind('mesh-opt-back',function(){hide('sub-mesh-opt');if(window._meshOptFromQuick){window._meshOptFromQuick=false;goTab('home');}else{show('ov-mesh');}});
   bind('mesh-addnode-back',function(){hide('sub-mesh-addnode');if(window._meshAddFromQuick){window._meshAddFromQuick=false;goTab('home');}else{show('ov-mesh');}});
   bind('change-pwd-back',function(){hide('sub-change-pwd');});
@@ -4779,53 +4483,6 @@ function renderDevicesTab(){
   var countEl=g('devices-count-sub');if(countEl)countEl.textContent='連線：'+onlineCount+'、離線：'+offlineCount;
   var onlineEl=g('home-dev-online');if(onlineEl)onlineEl.textContent=onlineCount;
   var offlineEl=g('home-dev-offline');if(offlineEl)offlineEl.textContent=offlineCount;
-}
-function openAddDev(){ renderAddDevHome(); show('sub-adddev'); }
-function renderAddDevHome(){
-  var body=g('adddev-body');if(!body)return;
-  body.innerHTML='<div style="padding:20px 20px 8px;text-align:center"><div style="font-size:15px;color:var(--t3);line-height:1.7">選擇新增方式，將裝置連接至您的網路。</div></div>'
-    +'<div style="background:var(--w);margin-top:8px">'
-    +'<div class="sr" style="cursor:pointer" onclick="startAddDevQR()"><div style="width:44px;height:44px;border-radius:14px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h.01M14 17h.01M17 14h.01M17 17h.01M20 14h.01M20 17h.01M20 20h.01M17 20h.01M14 20h.01"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">掃描 QR Code</div><div style="font-size:13px;color:var(--t3);margin-top:2px">掃描裝置底部的 QR Code 快速加入</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>'
-    +'<div class="sr" style="cursor:pointer" onclick="startAddDevWifi()"><div style="width:44px;height:44px;border-radius:14px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Wi-Fi 連線</div><div style="font-size:13px;color:var(--t3);margin-top:2px">將裝置連接至 ASUS_Home_5G</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>'
-    +'<div class="sr" style="cursor:pointer;border:none" onclick="startAddDevMAC()"><div style="width:44px;height:44px;border-radius:14px;background:var(--ib);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">手動輸入 MAC</div><div style="font-size:13px;color:var(--t3);margin-top:2px">輸入裝置 MAC 位址手動加入</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>'
-    +'</div>';
-}
-function addDevSpinnerHtml(title,desc){
-  return '<div style="display:flex;flex-direction:column;align-items:center;padding:60px 24px">'
-    +'<div style="width:40px;height:40px;border-radius:50%;border:3px solid var(--bd);border-top-color:var(--ac);animation:spin 1s linear infinite;margin-bottom:20px"></div>'
-    +'<div style="font-size:16px;font-weight:600;color:var(--tx)">'+title+'</div>'
-    +(desc?'<div style="font-size:13px;color:var(--t3);margin-top:6px;text-align:center">'+desc+'</div>':'')
-    +'</div>';
-}
-function startAddDevQR(){
-  g('adddev-body').innerHTML=addDevSpinnerHtml('掃描中…','請將裝置底部的 QR Code 對準鏡頭');
-  setTimeout(function(){ finishAddDev('智慧插座'); },1800);
-}
-function startAddDevWifi(){
-  g('adddev-body').innerHTML=addDevSpinnerHtml('連接中…','正在將裝置加入 ASUS_Home_5G');
-  setTimeout(function(){ finishAddDev('新裝置'); },1800);
-}
-function startAddDevMAC(){
-  g('adddev-body').innerHTML='<div style="padding:24px 20px">'
-    +'<div style="font-size:14px;color:var(--t3);margin-bottom:16px;line-height:1.6">輸入裝置的 MAC 位址，系統會在裝置連上網路後自動加入清單。</div>'
-    +'<input id="adddev-mac-input" placeholder="例如：AC:9E:17:5D:20:0X" style="width:100%;height:46px;border:1.5px solid var(--bd);border-radius:10px;padding:0 14px;font-size:15px;color:var(--tx);background:var(--w);outline:none;font-family:var(--m);box-sizing:border-box;margin-bottom:16px"/>'
-    +'<div onclick="submitAddDevMAC()" style="height:50px;border-radius:var(--r2);background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:#fff;cursor:pointer">新增</div>'
-    +'</div>';
-}
-function submitAddDevMAC(){
-  var input=g('adddev-mac-input');
-  var mac=(input.value||'').trim();
-  if(!mac){ input.style.borderColor='var(--rd)'; return; }
-  g('adddev-body').innerHTML=addDevSpinnerHtml('驗證中…','');
-  setTimeout(function(){ finishAddDev('新裝置 ('+mac+')'); },1200);
-}
-function finishAddDev(name){
-  g('adddev-body').innerHTML='<div style="display:flex;flex-direction:column;align-items:center;padding:50px 24px 24px">'
-    +'<div style="width:64px;height:64px;border-radius:50%;background:var(--gbg);display:flex;align-items:center;justify-content:center;margin-bottom:16px"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>'
-    +'<div style="font-size:17px;font-weight:700;color:var(--tx);margin-bottom:6px">裝置已加入</div>'
-    +'<div style="font-size:13px;color:var(--t3);margin-bottom:28px;text-align:center">'+name+' 已成功連接至您的網路</div>'
-    +'<div onclick="hide(\'sub-adddev\')" style="width:100%;height:50px;border-radius:var(--r2);background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:#fff;cursor:pointer">完成</div>'
-    +'</div>';
 }
 var _curNodeId=null;
 function openNodeDetail(nodeId){
@@ -5533,15 +5190,6 @@ function runSpeedTest(){
   btn.textContent='測速中…';btn.style.background='var(--t3)';btn.style.pointerEvents='none';
   var val=0;var target=Math.floor(Math.random()*200+400);
   var t=setInterval(function(){val+=Math.floor(Math.random()*40+10);if(val>=target){val=target;clearInterval(t);btn.textContent='重新測速';btn.style.background='var(--ac)';btn.style.pointerEvents='';}num.textContent=val;},80);
-}
-function switchTrafficTab(tab){
-  ['day','week','month'].forEach(function(t){
-    var el=document.getElementById('tr-tab-'+t);
-    if(!el)return;
-    var active=t===tab;
-    el.style.background=active?'var(--w)':'transparent';
-    el.style.color=active?'var(--ac)':'var(--t3)';
-  });
 }
 function renderFamilyList(){
   var el=document.getElementById('family-list-body');if(!el)return;
