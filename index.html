@@ -334,7 +334,7 @@ body{display:flex;align-items:center;justify-content:center}
                 <div id="home-uptime-text" style="font-size:11px;font-weight:500;color:#fff;opacity:.75;line-height:1.3;margin-top:10px">已運行 12 天 4 小時</div>
                 <div id="home-status-text" style="font-size:19px;font-weight:700;color:#fff;line-height:1.35;margin-top:6px">網路一切正常</div>
                 <div id="home-status-action" style="display:none;justify-content:flex-end;margin-top:10px">
-                  <div onclick="event.stopPropagation();openNodeDetail('kitchen')" style="background:#fff;color:var(--rd);border-radius:18px;padding:8px 16px;font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:4px;cursor:pointer">立即查看 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--rd)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+                  <div onclick="event.stopPropagation();openNodeDetail('living')" style="background:#fff;color:var(--rd);border-radius:18px;padding:8px 16px;font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:4px;cursor:pointer">立即查看 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--rd)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
                 </div>
               </div>
               <div style="display:flex;justify-content:flex-end;align-items:baseline;gap:6px;font-size:15px;font-weight:600">
@@ -3931,6 +3931,7 @@ window.addEventListener('load',function(){
   bind('aipro-detail-back',function(){
     hide('sub-aipro-detail');
     if(window._aiproBackToAI){window._aiproBackToAI=false;show('sub-ai-report');}
+    else if(window._aiproBackToNode){window._aiproBackToNode=false;backToNodeDetail();}
   });
   bind('aipro-scan-btn',function(){runAiproScan();});
   bind('aipro-malsite-back',function(){hide('sub-aipro-malsite');});
@@ -4077,6 +4078,7 @@ window.addEventListener('load',function(){
   bind('fw-back',function(){
     hide('sub-fw');
     if(window._fwBackToAI){window._fwBackToAI=false;show('sub-ai-report');}
+    else if(window._fwBackToNode){window._fwBackToNode=false;backToNodeDetail();}
   });
   bind('s-aip',function(){renderAiproMalsite();show('sub-aipro-detail');});
   bind('tg-autoupdate',function(){g('tg-autoupdate').classList.toggle('on');});
@@ -4491,6 +4493,23 @@ function renderNodeDetail(nodeId){
       +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span style="font-size:15px;font-weight:700;color:var(--or)">連線品質不佳</span></div>'
       +'<div style="font-size:13px;color:var(--t2);line-height:1.6;margin-bottom:10px">可能原因：與主路由器距離過遠、2.4GHz 頻道壅塞，或連接裝置數量過多，導致訊號不穩定。</div>'
       +'<div onclick="openNodeOptimize(\''+nodeId+'\')" style="display:inline-flex;align-items:center;gap:4px;padding:8px 14px;background:var(--or);color:#fff;border-radius:16px;font-size:13px;font-weight:600;cursor:pointer">立即最佳化</div>'
+      +'</div>';
+  }
+  if(nodeId==='living'&&_netErrorDemo){
+    var mainIssues=[
+      [AI_REPORT_BAD.insights[0][0],AI_REPORT_BAD.insights[0][1],"openNodeOptimize('kitchen')"],
+      [AI_REPORT_BAD.insights[1][0],AI_REPORT_BAD.insights[1][1],"window._aiproBackToNode=true;hide('sub-node-detail');show('sub-aipro-detail')"],
+      [AI_REPORT_BAD.insights[2][0],AI_REPORT_BAD.insights[2][1],"window._fwBackToNode=true;hide('sub-node-detail');renderFwStatus(false);show('sub-fw')"]
+    ];
+    html+='<span class="sl">3 項問題需要注意</span>';
+    html+='<div style="margin:0 16px 12px;display:flex;flex-direction:column;gap:10px">'
+      +mainIssues.map(function(it){
+        return '<div style="background:var(--obg);border-radius:var(--r);padding:16px">'
+          +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>'
+          +'<div style="font-size:13px;color:var(--t2);line-height:1.6;margin-bottom:10px">'+it[0]+'</div>'
+          +'<div onclick="'+it[2]+'" style="display:inline-flex;align-items:center;gap:4px;padding:8px 14px;background:var(--or);color:#fff;border-radius:16px;font-size:13px;font-weight:600;cursor:pointer">'+it[1]+'</div>'
+          +'</div>';
+      }).join('')
       +'</div>';
   }
   html+='<span class="sl">裝置資訊</span>';
