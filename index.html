@@ -125,8 +125,7 @@ body{display:flex;align-items:center;justify-content:center}
 /* reusable expandable info card (Pro Mode advanced-settings pages) */
 .infocard-exp{background:var(--ib);border:1.5px solid rgba(74,143,224,.35);border-radius:14px;padding:14px 16px;margin:14px 16px 8px;box-shadow:var(--sh)}
 .infocard-col{display:flex;align-items:center;gap:8px;background:var(--w);border-radius:12px;padding:10px 14px;margin:14px 16px 8px;box-shadow:var(--sh);cursor:pointer}
-.infocard-ic{width:28px;height:28px;border-radius:50%;background:var(--abg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.infocard-exp .infocard-ic{background:var(--w)}
+.infocard-ic{width:28px;height:28px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .infocard-ic-sm{width:22px;height:22px}
 .infocard-dot{width:8px;height:8px;border-radius:50%;background:var(--rd);flex-shrink:0}
 .infocard-collapse-btn{margin-top:10px;display:flex;align-items:center;justify-content:flex-end;gap:4px;font-size:12px;color:var(--t3);cursor:pointer}
@@ -3732,7 +3731,7 @@ var INFO_CARDS = {
   macfilter:{title:'什麼是 MAC Filter？',what:'依裝置的 MAC 位址（硬體識別碼）建立允許或封鎖清單，控制哪些裝置可以連上網路。',use:'適合想嚴格管控家中網路存取權限的進階使用者。',version:1}
 };
 function infoCardIconSvg(sz){
-  return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-7 7c0 2.7 1.5 4.2 2.5 5.7S9 17 9 18h6c0-1 .5-1.5 1.5-3S19 11.7 19 9a7 7 0 00-7-7z"/></svg>';
+  return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-7 7c0 2.7 1.5 4.2 2.5 5.7S9 17 9 18h6c0-1 .5-1.5 1.5-3S19 11.7 19 9a7 7 0 00-7-7z"/></svg>';
 }
 function renderInfoCard(key){
   var cfg = INFO_CARDS[key];
