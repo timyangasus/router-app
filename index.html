@@ -3736,23 +3736,23 @@ function renderQAEditor() {
 
 // ── Reusable expandable info card (Pro Mode advanced-settings pages) ──
 var INFO_CARDS = {
-  lan:{title:'關於 LAN 設定',body:'設定路由器分配給家中裝置的內部網路位址（IP）與 DHCP 規則。多數家庭不需更動，只有在自訂內網或裝置 IP 衝突時才需要調整。',version:1},
-  wan:{title:'關於 WAN 設定',body:'設定路由器對外連接網際網路業者（ISP）的連線方式。首次安裝路由器、更換電信業者，或斷網需要重新輸入帳密時會用到。',version:1},
-  dns:{title:'什麼是 DNS？',body:'DNS 就像網路的電話簿，負責把網址轉換成裝置看得懂的 IP 位址。想加快上網速度、提升安全隱私，或過濾不良網站時可更換 DNS。',version:1},
-  ddns:{title:'什麼是 DDNS？',body:'讓您用一組固定好記的網址，從外部連回家中經常變動 IP 的路由器。想在外面用手機遠端查看家中監視器或存取檔案時會用到。',version:1},
-  dualwan:{title:'什麼是雙 WAN／網路備援？',body:'讓路由器同時接兩條網路線，主線斷線時自動切換備援，網路不中斷。適合遠距工作、監視系統等對網路穩定度要求高的家庭。',version:1},
-  portfw:{title:'什麼是連接埠轉發？',body:'開放特定連接埠，讓外部網路可以直接連進家中的特定裝置或服務。架設遊戲伺服器、遠端觀看監視器時通常需要設定。',version:1,links:[{label:'常見問題',act:'faq'}]},
-  ipbind:{title:'什麼是 IP 綁定？',body:'將特定裝置的 MAC 位址與固定 IP 綁定，確保每次連線都拿到相同 IP。適合印表機、NAS、監視器等需要固定位址的裝置，避免每次重開機 IP 不同造成連線失敗。',version:1},
-  vpns:{title:'什麼是 VPN 伺服器？',body:'把家用路由器變成安全的連線入口，讓您在外面也能安全連回家中網路，就像人在家一樣。出差旅遊在外想存取家中檔案或保護連線安全時使用。',version:1,links:[{label:'常見問題',act:'faq'}]},
-  vpnc:{title:'什麼是 VPN 用戶端？',body:'讓路由器主動連上外部 VPN 服務，家中所有裝置的網路都會自動透過該 VPN 傳送。想讓全家裝置套用同一組 VPN，而不必逐台裝置設定時使用。',version:1},
-  smarthome:{title:'什麼是智慧家庭整合？',body:'讓路由器與智慧音箱（如 Amazon Alexa、Google Home）連動，用語音就能查詢網路狀態或控制部分功能。家中已有智慧音箱時很方便。',version:1},
-  qos:{title:'什麼是 QoS 頻寬管理？',body:'依優先順序分配家中網路頻寬，避免重要用途（如視訊會議、遊戲）被其他裝置佔滿頻寬影響。家中人多、裝置多常常同時上網卡頓時可以啟用。',version:1},
-  wisp:{title:'什麼是 WISP？',body:'讓路由器改用 Wi-Fi 訊號（而非網路線）連上另一個無線基地台取得網際網路。適合租屋、飯店等只能用 Wi-Fi 分享上網，或想延伸既有 Wi-Fi 訊號的情境。',version:1},
-  dfs:{title:'什麼是 DFS 頻道？',body:'5GHz 頻段中保留給雷達系統使用的頻道，開放後可讓路由器使用更多頻道、減少鄰近網路互相干擾。少數地區法規或裝置可能不支援，若連線不穩可嘗試關閉。',version:1},
-  mlo:{title:'什麼是 MLO？',body:'Wi-Fi 7 的新技術，能同時使用 2.4／5／6GHz 多個頻段傳輸同一筆資料，降低延遲、提升穩定度。需要路由器與裝置皆支援 Wi-Fi 7 才能生效。',version:1},
-  ipv6:{title:'什麼是 IPv6？',body:'新一代網際網路位址格式，提供幾乎無限的位址數量，讓每個裝置都能有獨立的公開位址。多數電信業者已支援，開啟後可能改善部分連線速度與相容性。',version:1},
-  vpn:{title:'什麼是 VPN？',body:'VPN Server 讓您在外面安全連回家中網路；VPN Client 則讓路由器主動連上外部 VPN 服務，全家裝置自動套用。依需求選擇其中一種設定即可。',version:1},
-  macfilter:{title:'什麼是 MAC Filter？',body:'依裝置的 MAC 位址（硬體識別碼）建立允許或封鎖清單，控制哪些裝置可以連上網路。適合想嚴格管控家中網路存取權限的進階使用者。',version:1}
+  lan:{title:'關於 LAN 設定',what:'設定路由器分配給家中裝置的內部網路位址（IP）與 DHCP 規則。',use:'多數家庭不需更動，只有在自訂內網或裝置 IP 衝突時才需要調整。',version:1},
+  wan:{title:'關於 WAN 設定',what:'設定路由器對外連接網際網路業者（ISP）的連線方式。',use:'首次安裝路由器、更換電信業者，或斷網需要重新輸入帳密時會用到。',version:1},
+  dns:{title:'什麼是 DNS？',what:'DNS 就像網路的電話簿，負責把網址轉換成裝置看得懂的 IP 位址。',use:'想加快上網速度、提升安全隱私，或過濾不良網站時可更換 DNS。',version:1},
+  ddns:{title:'什麼是 DDNS？',what:'讓您用一組固定好記的網址，從外部連回家中經常變動 IP 的路由器。',use:'想在外面用手機遠端查看家中監視器或存取檔案時會用到。',version:1},
+  dualwan:{title:'什麼是雙 WAN／網路備援？',what:'讓路由器同時接兩條網路線，主線斷線時自動切換備援，網路不中斷。',use:'適合遠距工作、監視系統等對網路穩定度要求高的家庭。',version:1},
+  portfw:{title:'什麼是連接埠轉發？',what:'開放特定連接埠，讓外部網路可以直接連進家中的特定裝置或服務。',use:'架設遊戲伺服器、遠端觀看監視器時通常需要設定。',version:1,links:[{label:'常見問題',act:'faq'}]},
+  ipbind:{title:'什麼是 IP 綁定？',what:'將特定裝置的 MAC 位址與固定 IP 綁定，確保每次連線都拿到相同 IP。',use:'適合印表機、NAS、監視器等需要固定位址的裝置，避免每次重開機 IP 不同造成連線失敗。',version:1},
+  vpns:{title:'什麼是 VPN 伺服器？',what:'把家用路由器變成安全的連線入口，讓您在外面也能安全連回家中網路，就像人在家一樣。',use:'出差旅遊在外想存取家中檔案或保護連線安全時使用。',version:1,links:[{label:'常見問題',act:'faq'}]},
+  vpnc:{title:'什麼是 VPN 用戶端？',what:'讓路由器主動連上外部 VPN 服務，家中所有裝置的網路都會自動透過該 VPN 傳送。',use:'想讓全家裝置套用同一組 VPN，而不必逐台裝置設定時使用。',version:1},
+  smarthome:{title:'什麼是智慧家庭整合？',what:'讓路由器與智慧音箱（如 Amazon Alexa、Google Home）連動，用語音就能查詢網路狀態或控制部分功能。',use:'家中已有智慧音箱時很方便。',version:1},
+  qos:{title:'什麼是 QoS 頻寬管理？',what:'依優先順序分配家中網路頻寬，避免重要用途（如視訊會議、遊戲）被其他裝置佔滿頻寬影響。',use:'家中人多、裝置多常常同時上網卡頓時可以啟用。',version:1},
+  wisp:{title:'什麼是 WISP？',what:'讓路由器改用 Wi-Fi 訊號（而非網路線）連上另一個無線基地台取得網際網路。',use:'適合租屋、飯店等只能用 Wi-Fi 分享上網，或想延伸既有 Wi-Fi 訊號的情境。',version:1},
+  dfs:{title:'什麼是 DFS 頻道？',what:'5GHz 頻段中保留給雷達系統使用的頻道，開放後可讓路由器使用更多頻道、減少鄰近網路互相干擾。',use:'少數地區法規或裝置可能不支援，若連線不穩可嘗試關閉。',version:1},
+  mlo:{title:'什麼是 MLO？',what:'Wi-Fi 7 的新技術，能同時使用 2.4／5／6GHz 多個頻段傳輸同一筆資料，降低延遲、提升穩定度。',use:'需要路由器與裝置皆支援 Wi-Fi 7 才能生效。',version:1},
+  ipv6:{title:'什麼是 IPv6？',what:'新一代網際網路位址格式，提供幾乎無限的位址數量，讓每個裝置都能有獨立的公開位址。',use:'多數電信業者已支援，開啟後可能改善部分連線速度與相容性。',version:1},
+  vpn:{title:'什麼是 VPN？',what:'VPN Server 讓您在外面安全連回家中網路；VPN Client 則讓路由器主動連上外部 VPN 服務，全家裝置自動套用。',use:'依需求選擇其中一種設定即可。',version:1},
+  macfilter:{title:'什麼是 MAC Filter？',what:'依裝置的 MAC 位址（硬體識別碼）建立允許或封鎖清單，控制哪些裝置可以連上網路。',use:'適合想嚴格管控家中網路存取權限的進階使用者。',version:1}
 };
 function infoCardIconSvg(sz){
   return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-7 7c0 2.7 1.5 4.2 2.5 5.7S9 17 9 18h6c0-1 .5-1.5 1.5-3S19 11.7 19 9a7 7 0 00-7-7z"/></svg>';
@@ -3778,7 +3778,10 @@ function renderInfoCard(key){
         + '<div style="display:flex;align-items:flex-start;gap:10px">'
         + '<div class="infocard-ic">'+infoCardIconSvg(16)+'</div>'
         + '<div style="flex:1"><div style="font-size:14px;font-weight:700;color:var(--tx)">'+cfg.title+'</div>'
-        + '<div style="font-size:13px;color:var(--t2);line-height:1.6;margin-top:4px">'+cfg.body+'</div>'
+        + '<div style="font-size:11px;font-weight:700;color:var(--t3);letter-spacing:.5px;margin-top:8px">功能說明</div>'
+        + '<div style="font-size:13px;color:var(--t2);line-height:1.6;margin-top:2px">'+cfg.what+'</div>'
+        + '<div style="font-size:11px;font-weight:700;color:var(--t3);letter-spacing:.5px;margin-top:10px">使用情境</div>'
+        + '<div style="font-size:13px;color:var(--t2);line-height:1.6;margin-top:2px">'+cfg.use+'</div>'
         + linksHtml()
         + '</div></div>'
         + '<div class="infocard-collapse-btn" data-toggle>收合<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2.5" stroke-linecap="round"><polyline points="18 15 12 9 6 15"/></svg></div>'
