@@ -3947,13 +3947,6 @@ window.addEventListener('load',function(){
   });
   bind('aipro-scan-btn',function(){runAiproScan();});
   bind('aipro-malsite-back',function(){hide('sub-aipro-malsite');});
-  // hide toolbar when AI input focused (keyboard open)
-  document.addEventListener('focusin',function(e){
-    if(e.target&&e.target.id==='ai-input'){var tb=document.querySelector('.tb');if(tb)tb.style.display='none';}
-  });
-  document.addEventListener('focusout',function(e){
-    if(e.target&&e.target.id==='ai-input'){setTimeout(function(){var tb=document.querySelector('.tb');if(tb)tb.style.display='';if(window._updateAIInputBar)window._updateAIInputBar();},150);}
-  });
   // security rows
   var secRows=[['預設帳號密碼','通過'],['UPnP 服務','通過'],['WAN 端網頁存取','通過'],['WAN 端 Ping 回應','通過'],['遠端管理','通過'],['韌體版本','最新版本'],['Wi-Fi 加密','已啟用 WPA3']];
   var secEl=document.getElementById('security-rows');
@@ -5999,7 +5992,9 @@ function drawDetailCharts(){
     var b=getBar();if(!b||b.style.display==='none')return;
     var kbH=window.innerHeight-window.visualViewport.height;
     var tb=document.querySelector('.tb');
-    var tbH=(kbH<50&&tb)?tb.offsetHeight:0;
+    var kbOpen=kbH>=50;
+    if(tb) tb.style.display=kbOpen?'none':'';
+    var tbH=(!kbOpen&&tb)?tb.offsetHeight:0;
     b.style.bottom=(kbH+tbH)+'px';
     var msgs=document.getElementById('ai-chat-messages');
     if(msgs)msgs.scrollTop=msgs.scrollHeight;
