@@ -2788,34 +2788,61 @@ body{display:flex;align-items:center;justify-content:center}
   <div class="sub" id="sub-pro-wifiadv">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
       <div class="bk" onclick="hide('sub-pro-wifiadv')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">Wi-Fi Advanced</div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">Channel / Bandwidth / DFS / MLO</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <span class="sl">Channel</span>
+      <span class="sl">無線電設定</span>
       <div style="background:var(--w)">
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">2.4 GHz</div></div><div style="font-size:14px;color:var(--t2)">頻道 6（自動）</div></div>
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">5 GHz</div></div><div style="font-size:14px;color:var(--t2)">頻道 149（自動）</div></div>
-        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">6 GHz</div></div><div style="font-size:14px;color:var(--t2)">頻道 37（自動）</div></div>
+        <div class="sr" onclick="renderChannelPage();show('sub-pro-channel')" style="cursor:pointer"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Channel</div></div><span id="wifiadv-ch-sub" style="font-size:14px;color:var(--t2)"></span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="margin-left:6px"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="renderBandwidthPage();show('sub-pro-bandwidth')" style="cursor:pointer"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Bandwidth</div></div><span id="wifiadv-bw-sub" style="font-size:14px;color:var(--t2)"></span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="margin-left:6px"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="show('sub-pro-dfs')" style="cursor:pointer"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">DFS</div></div><span id="wifiadv-dfs-sub" style="font-size:14px;color:var(--t2)"></span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="margin-left:6px"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="show('sub-pro-mlo')" style="cursor:pointer;border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">MLO</div></div><span id="wifiadv-mlo-sub" style="font-size:14px;color:var(--t2)"></span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="margin-left:6px"><polyline points="9 18 15 12 9 6"/></svg></div>
       </div>
-      <span class="sl">Bandwidth</span>
-      <div style="background:var(--w)">
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">2.4 GHz</div></div><div style="font-size:14px;color:var(--t2)">20/40 MHz</div></div>
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">5 GHz</div></div><div style="font-size:14px;color:var(--t2)">80 MHz</div></div>
-        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">6 GHz</div></div><div style="font-size:14px;color:var(--t2)">160 MHz</div></div>
-      </div>
-      <span class="sl">DFS</span>
+    </div>
+  </div>
+
+  <!-- SUB: Channel -->
+  <div class="sub" id="sub-pro-channel">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" onclick="hide('sub-pro-channel');renderWifiAdvHub()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">Channel</div>
+    </div>
+    <div id="wifiadv-channel-body" style="flex:1;overflow-y:auto;background:var(--bg)"></div>
+  </div>
+
+  <!-- SUB: Bandwidth -->
+  <div class="sub" id="sub-pro-bandwidth">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" onclick="hide('sub-pro-bandwidth');renderWifiAdvHub()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">Bandwidth</div>
+    </div>
+    <div id="wifiadv-bandwidth-body" style="flex:1;overflow-y:auto;background:var(--bg)"></div>
+  </div>
+
+  <!-- SUB: DFS -->
+  <div class="sub" id="sub-pro-dfs">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" onclick="hide('sub-pro-dfs');renderWifiAdvHub()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">DFS</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
       <div id="infocard-dfs"></div>
       <div style="background:var(--w)">
-        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 DFS 頻道</div><div style="font-size:13px;color:var(--t3);margin-top:2px">5GHz 可使用更多頻道</div></div><div class="tg on" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 DFS 頻道</div><div style="font-size:13px;color:var(--t3);margin-top:2px">5GHz 可使用更多頻道</div></div><div class="tg on" id="tg-dfs" onclick="this.classList.toggle('on');renderWifiAdvHub()" style="cursor:pointer"></div></div>
       </div>
-      <span class="sl">MLO</span>
+    </div>
+  </div>
+
+  <!-- SUB: MLO -->
+  <div class="sub" id="sub-pro-mlo">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" onclick="hide('sub-pro-mlo');renderWifiAdvHub()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">MLO</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
       <div id="infocard-mlo"></div>
       <div style="background:var(--w)">
-        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 MLO</div><div style="font-size:13px;color:var(--t3);margin-top:2px">需裝置支援 Wi-Fi 7</div></div><div class="tg" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
-      </div>
-      <span class="sl">160 MHz</span>
-      <div style="background:var(--w)">
-        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 160 MHz 頻寬</div><div style="font-size:13px;color:var(--t3);margin-top:2px">提升傳輸速度，但可能縮短覆蓋範圍</div></div><div class="tg" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 MLO</div><div style="font-size:13px;color:var(--t3);margin-top:2px">需裝置支援 Wi-Fi 7</div></div><div class="tg" id="tg-mlo" onclick="this.classList.toggle('on');renderWifiAdvHub()" style="cursor:pointer"></div></div>
       </div>
     </div>
   </div>
@@ -3022,7 +3049,7 @@ function goTab(t){
   if(ct){ct.scrollTop=0;}
   // hide family back when switching tabs normally
   if(t==='family'){var fb=document.getElementById('family-back-btn');if(fb)fb.style.display='none';}
-  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-wifiadv','sub-pro-restartsched','sub-node-detail','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','ov-mesh'].forEach(hide);
+  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-wifiadv','sub-pro-channel','sub-pro-bandwidth','sub-pro-dfs','sub-pro-mlo','sub-pro-restartsched','sub-node-detail','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','ov-mesh'].forEach(hide);
   // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
     var bar=document.getElementById('ai-input-bar');
@@ -3778,6 +3805,69 @@ function initInfoCards(){
   Object.keys(INFO_CARDS).forEach(renderInfoCard);
 }
 
+// ══════════ Wi-Fi Advanced: Channel / Bandwidth ══════════
+var BAND_LABEL2={'2.4':'2.4 GHz','5':'5 GHz','6':'6 GHz'};
+var CH_OPTIONS={'2.4':[1,6,11],'5':[36,44,149,157,165],'6':[5,21,37,53,69]};
+var BW_OPTIONS={'2.4':['20','40'],'5':['20','40','80','160'],'6':['20','40','80','160','320']};
+var WIFI_ADV={
+  ch:{'2.4':{auto:true,val:6},'5':{auto:true,val:149},'6':{auto:true,val:37}},
+  bw:{'2.4':'40','5':'80','6':'160'}
+};
+function renderWifiAdvHub(){
+  var chSub=g('wifiadv-ch-sub');
+  if(chSub) chSub.textContent=['2.4','5','6'].map(function(b){var c=WIFI_ADV.ch[b];return c.auto?'自動':('頻道 '+c.val);}).join(' · ');
+  var bwSub=g('wifiadv-bw-sub');
+  if(bwSub) bwSub.textContent=['2.4','5','6'].map(function(b){return WIFI_ADV.bw[b]+'MHz';}).join(' · ');
+  var dfsSub=g('wifiadv-dfs-sub');
+  if(dfsSub){var t=g('tg-dfs');dfsSub.textContent=(t&&t.classList.contains('on'))?'啟用中':'已停用';}
+  var mloSub=g('wifiadv-mlo-sub');
+  if(mloSub){var t2=g('tg-mlo');mloSub.textContent=(t2&&t2.classList.contains('on'))?'啟用中':'已停用';}
+}
+function netBandRow2(band,sel,onclick){
+  return '<div onclick="'+onclick+'" style="flex:1;text-align:center;padding:9px 0;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;background:'+(sel?'var(--ac)':'var(--s2)')+';color:'+(sel?'#fff':'var(--t2)')+'">'+band+'</div>';
+}
+function renderChannelPage(){
+  var body=g('wifiadv-channel-body');if(!body)return;
+  var html='<div style="padding:16px 20px 4px;font-size:14px;color:var(--t3);line-height:1.6">選擇自動由系統挑選訊號最佳的頻道，或手動指定固定頻道。</div>';
+  ['2.4','5','6'].forEach(function(band){
+    var c=WIFI_ADV.ch[band];
+    html+='<span class="sl">'+BAND_LABEL2[band]+'</span>';
+    html+='<div style="background:var(--w);margin:0 16px 12px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden">'
+      +'<div class="sr"'+(c.auto?' style="border:none"':'')+'><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">自動選擇頻道</div></div><div class="tg'+(c.auto?' on':'')+'" onclick="chToggleAuto(\''+band+'\')" style="cursor:pointer"></div></div>'
+      +(c.auto?'':'<div style="padding:14px 16px;display:flex;gap:8px;flex-wrap:wrap">'
+        +CH_OPTIONS[band].map(function(n){return netBandRow2('頻道 '+n,c.val===n,'chSetVal(\''+band+'\','+n+')').replace('flex:1;','flex:0 0 auto;min-width:64px;');}).join('')
+        +'</div>')
+      +'</div>';
+  });
+  body.innerHTML=html;
+}
+function chToggleAuto(band){
+  WIFI_ADV.ch[band].auto=!WIFI_ADV.ch[band].auto;
+  renderChannelPage();
+  renderWifiAdvHub();
+}
+function chSetVal(band,val){
+  WIFI_ADV.ch[band].val=val;
+  renderChannelPage();
+  renderWifiAdvHub();
+}
+function renderBandwidthPage(){
+  var body=g('wifiadv-bandwidth-body');if(!body)return;
+  var html='<div style="padding:16px 20px 4px;font-size:14px;color:var(--t3);line-height:1.6">頻寬越寬傳輸速度越快，但可能縮短覆蓋範圍或增加鄰近網路干擾。</div>';
+  ['2.4','5','6'].forEach(function(band){
+    html+='<span class="sl">'+BAND_LABEL2[band]+'</span>';
+    html+='<div style="background:var(--w);margin:0 16px 12px;border-radius:var(--r);box-shadow:var(--sh);padding:14px 16px;display:flex;gap:8px">'
+      +BW_OPTIONS[band].map(function(v){return netBandRow2(v+'MHz',WIFI_ADV.bw[band]===v,'bwSetVal(\''+band+'\',\''+v+'\')');}).join('')
+      +'</div>';
+  });
+  body.innerHTML=html;
+}
+function bwSetVal(band,val){
+  WIFI_ADV.bw[band]=val;
+  renderBandwidthPage();
+  renderWifiAdvHub();
+}
+
 var DRAWER_ROUTERS={
   r1:{name:'ZenWiFi BT10',location:'Home',img:'dr-r1-img'},
   r2:{name:'RT-BE88U',location:'Home',img:'dr-r2-img'},
@@ -3805,6 +3895,7 @@ window.addEventListener('load',function(){
   renderAiproMalsite();
   notifLoadScenario('default');
   initInfoCards();
+  renderWifiAdvHub();
   (function(){
     var avatarImg=g('h-avatar-img'),drawerImg=g('drawer-avatar-img');
     if(avatarImg&&drawerImg)drawerImg.src=avatarImg.src;
