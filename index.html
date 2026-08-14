@@ -129,7 +129,6 @@ body{display:flex;align-items:center;justify-content:center}
 .infocard-exp .infocard-ic{background:var(--w)}
 .infocard-ic-sm{width:22px;height:22px}
 .infocard-dot{width:8px;height:8px;border-radius:50%;background:var(--rd);flex-shrink:0}
-.infocard-link{font-size:13px;font-weight:600;color:var(--ac);cursor:pointer;display:flex;align-items:center;gap:2px}
 .infocard-collapse-btn{margin-top:10px;display:flex;align-items:center;justify-content:flex-end;gap:4px;font-size:12px;color:var(--t3);cursor:pointer}
 /* notification category tabs */
 #notif-tabs::-webkit-scrollbar{display:none}
@@ -1433,28 +1432,6 @@ body{display:flex;align-items:center;justify-content:center}
       </div>
       <div style="padding:16px">
         <div style="height:48px;border-radius:24px;border:1.5px solid var(--ac);color:var(--ac);font-size:15px;font-weight:600;display:flex;align-items:center;justify-content:center;cursor:pointer">重新掃描附近網路</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SUB: FAQ -->
-  <div class="sub" id="sub-faq">
-    <div class="sb"><div class="sb-t">9:41</div><div class="sb-r"><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="22" height="12" rx="3" stroke="var(--tx)" stroke-opacity=".3"/><rect x="1.5" y="1.5" width="17" height="10" rx="2" fill="var(--tx)"/></svg></div></div>
-    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" id="faq-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="font-size:17px;font-weight:600;color:var(--tx)">常見問題</div>
-    </div>
-    <div style="flex:1;overflow-y:auto;background:var(--bg);padding-bottom:30px">
-      <span class="sl">連線問題</span>
-      <div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden">
-        <div style="padding:14px 16px;border-bottom:1px solid var(--bd)"><div style="font-size:15px;font-weight:600;color:var(--tx);margin-bottom:4px">為什麼我的網路突然中斷？</div><div style="font-size:13px;color:var(--t3);line-height:1.6">請確認數據機與路由器的實體連線是否正常，並嘗試重新啟動路由器。若問題持續，請聯繫網路業者確認線路狀態。</div></div>
-        <div style="padding:14px 16px;border-bottom:1px solid var(--bd)"><div style="font-size:15px;font-weight:600;color:var(--tx);margin-bottom:4px">AiMesh 節點離線該怎麼辦？</div><div style="font-size:13px;color:var(--t3);line-height:1.6">請確認節點電源與主路由器訊號範圍，可嘗試將節點移至訊號較佳的位置，或執行 Mesh 最佳化。</div></div>
-        <div style="padding:14px 16px;border-bottom:none"><div style="font-size:15px;font-weight:600;color:var(--tx);margin-bottom:4px">忘記 Wi-Fi 密碼怎麼辦？</div><div style="font-size:13px;color:var(--t3);line-height:1.6">可於「設定 → Wi-Fi 設定」查看或重設目前的 Wi-Fi 密碼。</div></div>
-      </div>
-      <span class="sl">帳號與 App</span>
-      <div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden">
-        <div style="padding:14px 16px;border-bottom:1px solid var(--bd)"><div style="font-size:15px;font-weight:600;color:var(--tx);margin-bottom:4px">如何新增家庭成員？</div><div style="font-size:13px;color:var(--t3);line-height:1.6">請至「家庭」頁籤點擊右上角新增按鈕，即可建立成員並指定裝置。</div></div>
-        <div style="padding:14px 16px;border-bottom:none"><div style="font-size:15px;font-weight:600;color:var(--tx);margin-bottom:4px">找不到我要的功能怎麼辦？</div><div style="font-size:13px;color:var(--t3);line-height:1.6">歡迎透過「意見回饋」告訴我們，我們會持續優化 App 功能。</div></div>
       </div>
     </div>
   </div>
@@ -3046,7 +3023,7 @@ function goTab(t){
   if(ct){ct.scrollTop=0;}
   // hide family back when switching tabs normally
   if(t==='family'){var fb=document.getElementById('family-back-btn');if(fb)fb.style.display='none';}
-  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-faq','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-wifiadv','sub-pro-restartsched','sub-node-detail','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','ov-mesh'].forEach(hide);
+  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-wifiadv','sub-pro-restartsched','sub-node-detail','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','ov-mesh'].forEach(hide);
   // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
     var bar=document.getElementById('ai-input-bar');
@@ -3741,9 +3718,9 @@ var INFO_CARDS = {
   dns:{title:'什麼是 DNS？',what:'DNS 就像網路的電話簿，負責把網址轉換成裝置看得懂的 IP 位址。',use:'想加快上網速度、提升安全隱私，或過濾不良網站時可更換 DNS。',version:1},
   ddns:{title:'什麼是 DDNS？',what:'讓您用一組固定好記的網址，從外部連回家中經常變動 IP 的路由器。',use:'想在外面用手機遠端查看家中監視器或存取檔案時會用到。',version:1},
   dualwan:{title:'什麼是雙 WAN／網路備援？',what:'讓路由器同時接兩條網路線，主線斷線時自動切換備援，網路不中斷。',use:'適合遠距工作、監視系統等對網路穩定度要求高的家庭。',version:1},
-  portfw:{title:'什麼是連接埠轉發？',what:'開放特定連接埠，讓外部網路可以直接連進家中的特定裝置或服務。',use:'架設遊戲伺服器、遠端觀看監視器時通常需要設定。',version:1,links:[{label:'常見問題',act:'faq'}]},
+  portfw:{title:'什麼是連接埠轉發？',what:'開放特定連接埠，讓外部網路可以直接連進家中的特定裝置或服務。',use:'架設遊戲伺服器、遠端觀看監視器時通常需要設定。',version:1},
   ipbind:{title:'什麼是 IP 綁定？',what:'將特定裝置的 MAC 位址與固定 IP 綁定，確保每次連線都拿到相同 IP。',use:'適合印表機、NAS、監視器等需要固定位址的裝置，避免每次重開機 IP 不同造成連線失敗。',version:1},
-  vpns:{title:'什麼是 VPN 伺服器？',what:'把家用路由器變成安全的連線入口，讓您在外面也能安全連回家中網路，就像人在家一樣。',use:'出差旅遊在外想存取家中檔案或保護連線安全時使用。',version:1,links:[{label:'常見問題',act:'faq'}]},
+  vpns:{title:'什麼是 VPN 伺服器？',what:'把家用路由器變成安全的連線入口，讓您在外面也能安全連回家中網路，就像人在家一樣。',use:'出差旅遊在外想存取家中檔案或保護連線安全時使用。',version:1},
   vpnc:{title:'什麼是 VPN 用戶端？',what:'讓路由器主動連上外部 VPN 服務，家中所有裝置的網路都會自動透過該 VPN 傳送。',use:'想讓全家裝置套用同一組 VPN，而不必逐台裝置設定時使用。',version:1},
   smarthome:{title:'什麼是智慧家庭整合？',what:'讓路由器與智慧音箱（如 Amazon Alexa、Google Home）連動，用語音就能查詢網路狀態或控制部分功能。',use:'家中已有智慧音箱時很方便。',version:1},
   qos:{title:'什麼是 QoS 頻寬管理？',what:'依優先順序分配家中網路頻寬，避免重要用途（如視訊會議、遊戲）被其他裝置佔滿頻寬影響。',use:'家中人多、裝置多常常同時上網卡頓時可以啟用。',version:1},
@@ -3766,23 +3743,16 @@ function renderInfoCard(key){
   var expanded = seenVersion === 0;
   var hasUpdate = seenVersion > 0 && seenVersion < cfg.version;
   function markSeen(){ localStorage.setItem(seenKey, String(cfg.version)); }
-  function linksHtml(){
-    if(!cfg.links || !cfg.links.length) return '';
-    return '<div style="display:flex;gap:16px;margin-top:10px">' + cfg.links.map(function(l){
-      return '<div class="infocard-link" data-act="'+l.act+'">'+l.label+'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>';
-    }).join('') + '</div>';
-  }
   function draw(){
     if(expanded){
       el.innerHTML = '<div class="infocard-exp">'
         + '<div style="display:flex;align-items:flex-start;gap:10px">'
         + '<div class="infocard-ic">'+infoCardIconSvg(16)+'</div>'
         + '<div style="flex:1"><div style="font-size:14px;font-weight:700;color:var(--tx)">'+cfg.title+'</div>'
-        + '<div style="font-size:11px;font-weight:700;color:var(--t3);letter-spacing:.5px;margin-top:8px">功能說明</div>'
-        + '<div style="font-size:13px;color:var(--t2);line-height:1.6;margin-top:2px">'+cfg.what+'</div>'
-        + '<div style="font-size:11px;font-weight:700;color:var(--t3);letter-spacing:.5px;margin-top:10px">使用情境</div>'
-        + '<div style="font-size:13px;color:var(--t2);line-height:1.6;margin-top:2px">'+cfg.use+'</div>'
-        + linksHtml()
+        + '<div style="display:inline-flex;align-items:center;padding:2px 8px;border-radius:9px;background:rgba(0,0,0,.2);color:#fff;font-size:10px;font-weight:700;letter-spacing:.3px;margin-top:8px">功能說明</div>'
+        + '<div style="font-size:13px;color:var(--t2);line-height:1.6;margin-top:4px">'+cfg.what+'</div>'
+        + '<div style="display:inline-flex;align-items:center;padding:2px 8px;border-radius:9px;background:rgba(0,0,0,.2);color:#fff;font-size:10px;font-weight:700;letter-spacing:.3px;margin-top:10px">使用情境</div>'
+        + '<div style="font-size:13px;color:var(--t2);line-height:1.6;margin-top:4px">'+cfg.use+'</div>'
         + '</div></div>'
         + '<div class="infocard-collapse-btn" data-toggle>收合<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2.5" stroke-linecap="round"><polyline points="18 15 12 9 6 15"/></svg></div>'
         + '</div>';
@@ -3802,12 +3772,6 @@ function renderInfoCard(key){
         draw();
       };
     }
-    el.querySelectorAll('.infocard-link').forEach(function(le){
-      le.onclick = function(e){
-        e.stopPropagation();
-        if(le.getAttribute('data-act')==='faq') show('sub-faq');
-      };
-    });
   }
   draw();
 }
@@ -4064,7 +4028,6 @@ window.addEventListener('load',function(){
   // Feedback
   bind('fb-back',function(){hide('sub-feedback');});
   bind('about-back',function(){hide('sub-about');});
-  bind('faq-back',function(){hide('sub-faq');});
   bind('stab-general',function(){
     g('settings-general').style.display='block';
     g('settings-pro').style.display='none';
