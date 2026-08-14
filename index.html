@@ -5911,7 +5911,7 @@ var AI_REPORT_GOOD={
     ['目前韌體版本為最新版本，無需更新。','','',true]
   ]
 };
-function renderAIReport(data){
+function renderAIReport(data,isHistorical){
   data=data||AI_REPORT_CURRENT;
   var bar=g('ai-input-bar');if(bar)bar.style.display='none';
   var body=g('ai-report-body');if(!body)return;
@@ -5946,7 +5946,7 @@ function renderAIReport(data){
     +'</div>';
   // ③ AI 發現與建議（合併，問題下方直接附解決按鈕）
   html+='<div style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.9px;text-transform:uppercase;padding:4px 2px 8px">AI 發現與建議</div>'
-    +data.insights.map(function(f){return aiInsightCard(f[0],f[1],f[2],f[3]);}).join('');
+    +data.insights.map(function(f){return aiInsightCard(f[0],isHistorical?'':f[1],f[2],f[3]);}).join('');
   body.innerHTML=html;
 }
 var AI_HISTORY_MONTHS=[
@@ -5966,7 +5966,7 @@ var AI_HISTORY_MONTHS=[
 function openAIHistoryWeek(dataName){
   hide('sub-ai-history');
   window._aiReportBackToHistory=true;
-  renderAIReport(window[dataName]);
+  renderAIReport(window[dataName],true);
   show('sub-ai-report');
 }
 function renderAIHistory(){
