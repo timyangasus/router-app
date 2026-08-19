@@ -3211,7 +3211,6 @@ var QA_ALL = [
   {id:'qa-diag',        icon:'search',  label:'網路診斷',          action:'diag'},
   {id:'qa-speed',       icon:'speed',   label:'網速測試',          action:'speed'},
   {id:'qa-guest',       icon:'users',   label:'訪客網路',          action:'guest'},
-  {id:'qa-wifiset',     icon:'wifi2',   label:'Wi-Fi 設定',        action:'wifiset'},
   {id:'qa-networks',    icon:'wifi2',   label:'WiFi網路',          action:'networks'},
   {id:'qa-meshadd',     icon:'plus',    label:'新增節點',   action:'meshadd'},
   {id:'qa-meshopt',     icon:'mesh',    label:'Mesh 最佳化',        action:'meshopt'},
@@ -3226,7 +3225,7 @@ var QA_ALL = [
 
 var QA_CATEGORIES = [
   {name:'AI', emoji:'✨', ids:['qa-airpt']},
-  {name:'網路', emoji:'🌐', ids:['qa-wifi','qa-wifiset','qa-networks','qa-guest','qa-diag','qa-speed']},
+  {name:'網路', emoji:'🌐', ids:['qa-wifi','qa-networks','qa-guest','qa-diag','qa-speed']},
   {name:'AiMesh', emoji:'📡', ids:['qa-meshadd','qa-meshopt']},
   {name:'家庭', emoji:'👨‍👩‍👧', ids:['qa-family','qa-sched']},
   {name:'安全', emoji:'🔒', ids:['qa-aiprotect']},
@@ -3234,7 +3233,7 @@ var QA_CATEGORIES = [
 ];
 
 // Default selected
-var QA_SELECTED = ['qa-wifi','qa-diag','qa-speed','qa-family'];
+var QA_SELECTED = ['qa-networks','qa-diag','qa-speed','qa-family'];
 
 function qaSvg(icon, color) {
   color = color || 'var(--is)';
@@ -3618,7 +3617,6 @@ function renderQAGrid() {
       else if (act==='wifi')        show('ov-wifi');
       else if (act==='guest')       show('ov-guest');
       else if (act==='diag')        show('sub-diag');
-      else if (act==='wifiset')     openNetDetail('home');
       else if (act==='networks')    { renderNetworksList(); show('sub-network'); }
       else if (act==='fw')          { renderFwStatus(false); show('sub-fw'); }
       else if (act==='meshopt')     { window._meshOptFromQuick=true; show('sub-mesh-opt'); }
