@@ -2920,70 +2920,13 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="font-size:15px;font-weight:600;color:var(--ac);cursor:pointer">套用</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <div id="infocard-qos"></div>
       <span class="sl">基本設定</span>
       <div style="background:var(--w)">
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 QoS</div><div style="font-size:13px;color:var(--t3);margin-top:2px">依優先權管理各裝置頻寬分配</div></div><div class="tg" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
-        <div class="sr" style="border:none;cursor:pointer" onclick="renderQosModeList();show('sub-pro-qosmode')"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">QoS 模式</div></div><div style="display:flex;align-items:center;gap:6px"><div id="qos-mode-subtitle" style="font-size:14px;color:var(--t2)">尚未設定</div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 QoS</div><div style="font-size:13px;color:var(--t3);margin-top:2px">依優先權管理各裝置頻寬分配</div></div><div class="tg" onclick="toggleQosEnable(this)" style="cursor:pointer"></div></div>
       </div>
-      <span class="sl">頻寬設定</span>
-      <div style="background:var(--w)">
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">WAN 下載頻寬</div><div style="font-size:13px;color:var(--t3);margin-top:2px">輸入您的網路方案速度</div></div><div style="font-size:14px;color:var(--t2);font-family:var(--m)">500 Mbps</div></div>
-        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">WAN 上傳頻寬</div></div><div style="font-size:14px;color:var(--t2);font-family:var(--m)">200 Mbps</div></div>
-      </div>
-      <span class="sl">流量優先權</span>
-      <div style="background:var(--w)">
-        <div class="sr">
-          <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">遊戲與串流</div><div style="font-size:13px;color:var(--t3);margin-top:2px">低延遲優先</div></div>
-          <div style="display:flex;gap:4px;align-items:center">
-            <div style="width:10px;height:18px;border-radius:2px;background:var(--ac)"></div>
-            <div style="width:10px;height:18px;border-radius:2px;background:var(--ac)"></div>
-            <div style="width:10px;height:18px;border-radius:2px;background:var(--ac)"></div>
-            <div style="width:10px;height:18px;border-radius:2px;background:var(--s3)"></div>
-            <div style="width:10px;height:18px;border-radius:2px;background:var(--s3)"></div>
-          </div>
-        </div>
-        <div class="sr">
-          <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">影音通話</div><div style="font-size:13px;color:var(--t3);margin-top:2px">視訊會議、VoIP</div></div>
-          <div style="display:flex;gap:4px;align-items:center">
-            <div style="width:10px;height:18px;border-radius:2px;background:var(--ac)"></div>
-            <div style="width:10px;height:18px;border-radius:2px;background:var(--ac)"></div>
-            <div style="width:10px;height:18px;border-radius:2px;background:var(--ac)"></div>
-            <div style="width:10px;height:18px;border-radius:2px;background:var(--s3)"></div>
-            <div style="width:10px;height:18px;border-radius:2px;background:var(--s3)"></div>
-          </div>
-        </div>
-        <div class="sr">
-          <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">一般瀏覽</div><div style="font-size:13px;color:var(--t3);margin-top:2px">網頁、社群媒體</div></div>
-          <div style="display:flex;gap:4px;align-items:center">
-            <div style="width:10px;height:18px;border-radius:2px;background:var(--ac)"></div>
-            <div style="width:10px;height:18px;border-radius:2px;background:var(--ac)"></div>
-            <div style="width:10px;height:18px;border-radius:2px;background:var(--s3)"></div>
-            <div style="width:10px;height:18px;border-radius:2px;background:var(--s3)"></div>
-            <div style="width:10px;height:18px;border-radius:2px;background:var(--s3)"></div>
-          </div>
-        </div>
-        <div class="sr" style="border:none">
-          <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">檔案下載</div><div style="font-size:13px;color:var(--t3);margin-top:2px">P2P、大型更新</div></div>
-          <div style="display:flex;gap:4px;align-items:center">
-            <div style="width:10px;height:18px;border-radius:2px;background:var(--ac)"></div>
-            <div style="width:10px;height:18px;border-radius:2px;background:var(--s3)"></div>
-            <div style="width:10px;height:18px;border-radius:2px;background:var(--s3)"></div>
-            <div style="width:10px;height:18px;border-radius:2px;background:var(--s3)"></div>
-            <div style="width:10px;height:18px;border-radius:2px;background:var(--s3)"></div>
-          </div>
-        </div>
-      </div>
+      <span class="sl">QoS 模式</span>
+      <div style="background:var(--w)" id="qosmode-list-inline"></div>
     </div>
-  </div>
-
-  <!-- SUB: QoS 模式選擇 -->
-  <div class="sub" id="sub-pro-qosmode">
-    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" onclick="hide('sub-pro-qosmode')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">QoS 模式</div>
-    </div>
-    <div style="flex:1;overflow-y:auto;background:var(--w)" id="qosmode-list"></div>
   </div>
 
   <!-- Time Picker Overlay — at end of phone so it's above all subs in DOM order -->
@@ -3053,7 +2996,7 @@ function goTab(t){
   if(ct){ct.scrollTop=0;}
   // hide family back when switching tabs normally
   if(t==='family'){var fb=document.getElementById('family-back-btn');if(fb)fb.style.display='none';}
-  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-qosmode','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-wifiadv','sub-pro-channel','sub-pro-bandwidth','sub-pro-dfs','sub-pro-mlo','sub-pro-restartsched','sub-node-detail','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','ov-mesh'].forEach(hide);
+  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-wifiadv','sub-pro-channel','sub-pro-bandwidth','sub-pro-dfs','sub-pro-mlo','sub-pro-restartsched','sub-node-detail','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','ov-mesh'].forEach(hide);
   // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
     var bar=document.getElementById('ai-input-bar');
@@ -3292,16 +3235,21 @@ function qosModeRow(m,divider){
       :'<div style="width:22px;height:22px;border-radius:50%;border:2px solid var(--bd2);flex-shrink:0"></div>')
   +'</div>';
 }
-function renderQosModeList(){
-  var el=document.getElementById('qosmode-list');if(!el)return;
-  el.innerHTML='<div style="padding:20px 20px 8px;font-size:17px;font-weight:700;color:var(--ac);line-height:1.5">請選擇一個您想要優先處理的應用程式。</div>'
-    +'<div>'+QOS_MODES.map(function(m,i){return qosModeRow(m,i<QOS_MODES.length-1);}).join('')+'</div>';
+var _qosEnabled=false;
+function renderQosModeListInline(){
+  var el=document.getElementById('qosmode-list-inline');if(!el)return;
+  el.innerHTML=QOS_MODES.map(function(m,i){return qosModeRow(m,i<QOS_MODES.length-1);}).join('');
+  el.style.opacity=_qosEnabled?'1':'.45';
+  el.style.pointerEvents=_qosEnabled?'':'none';
 }
 function selectQosMode(id){
   _qosModeSelected=id;
-  renderQosModeList();
-  var sub=document.getElementById('qos-mode-subtitle');
-  if(sub){var m=QOS_MODES.find(function(x){return x.id===id;});sub.textContent=m?m.title:'尚未設定';}
+  renderQosModeListInline();
+}
+function toggleQosEnable(el){
+  el.classList.toggle('on');
+  _qosEnabled=el.classList.contains('on');
+  renderQosModeListInline();
 }
 
 // ══════════════════ Notification System V2 ══════════════════
@@ -3932,6 +3880,7 @@ window.addEventListener('load',function(){
   notifLoadScenario('default');
   initInfoCards();
   renderWifiAdvHub();
+  renderQosModeListInline();
   (function(){
     var avatarImg=g('h-avatar-img'),drawerImg=g('drawer-avatar-img');
     if(avatarImg&&drawerImg)drawerImg.src=avatarImg.src;
