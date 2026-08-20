@@ -505,7 +505,8 @@ body{display:flex;align-items:center;justify-content:center}
       </div>
       <span class="sl">WiFi網路</span>
       <div style="background:var(--w)">
-        <div class="sr" onclick="renderNetworksList();show('sub-network')" style="cursor:pointer;border:none"><div class="sic"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">WiFi網路</div><div id="settings-net-subtitle" style="font-size:14px;color:var(--t3);margin-top:2px">家庭網路・訪客網路・IoT 網路</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="renderNetworksList();show('sub-network')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">WiFi網路</div><div id="settings-net-subtitle" style="font-size:14px;color:var(--t3);margin-top:2px">家庭網路・訪客網路・IoT 網路</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="show('sub-pro-qos')" style="cursor:pointer;border:none"><div class="sic"><svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6" stroke-width="3"/><line x1="3" y1="12" x2="3.01" y2="12" stroke-width="3"/><line x1="3" y1="18" x2="3.01" y2="18" stroke-width="3"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">QoS 頻寬管理</div><div style="font-size:14px;color:var(--t3);margin-top:2px">停用</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
       </div>
       <span class="sl">Lighting</span>
       <div style="background:var(--w)">
@@ -546,7 +547,6 @@ body{display:flex;align-items:center;justify-content:center}
         <span class="sl">Network Rules</span>
         <div style="background:var(--w)">
           <div class="sr" onclick="show('sub-pro-firewall')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Firewall</div><div style="font-size:14px;color:var(--t3);margin-top:2px">啟用中</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-          <div class="sr" onclick="show('sub-pro-qos')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6" stroke-width="3"/><line x1="3" y1="12" x2="3.01" y2="12" stroke-width="3"/><line x1="3" y1="18" x2="3.01" y2="18" stroke-width="3"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">QoS 頻寬管理</div><div style="font-size:14px;color:var(--t3);margin-top:2px">停用</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
           <div class="sr" onclick="show('sub-pro-macfilter')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">MAC Filter</div><div style="font-size:14px;color:var(--t3);margin-top:2px">停用</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
           <div class="sr" onclick="show('sub-pro-portfw')" style="cursor:pointer;border:none"><div class="sic"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Port Forwarding</div><div style="font-size:14px;color:var(--t3);margin-top:2px">3 條規則已啟用</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         </div>
@@ -2924,7 +2924,7 @@ body{display:flex;align-items:center;justify-content:center}
       <span class="sl">基本設定</span>
       <div style="background:var(--w)">
         <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 QoS</div><div style="font-size:13px;color:var(--t3);margin-top:2px">依優先權管理各裝置頻寬分配</div></div><div class="tg" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
-        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">QoS 模式</div></div><div style="display:flex;align-items:center;gap:6px"><div style="font-size:14px;color:var(--t2)">自動</div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+        <div class="sr" style="border:none;cursor:pointer" onclick="renderQosModeList();show('sub-pro-qosmode')"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">QoS 模式</div></div><div style="display:flex;align-items:center;gap:6px"><div id="qos-mode-subtitle" style="font-size:14px;color:var(--t2)">尚未設定</div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div></div>
       </div>
       <span class="sl">頻寬設定</span>
       <div style="background:var(--w)">
@@ -2974,12 +2974,16 @@ body{display:flex;align-items:center;justify-content:center}
           </div>
         </div>
       </div>
-      <span class="sl">裝置頻寬限制</span>
-      <div style="background:var(--w)">
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用裝置限速</div><div style="font-size:13px;color:var(--t3);margin-top:2px">為個別裝置設定最高頻寬</div></div><div class="tg" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
-        <div class="sr" style="border:none;cursor:pointer"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--ac)">設定裝置限速規則</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-      </div>
     </div>
+  </div>
+
+  <!-- SUB: QoS 模式選擇 -->
+  <div class="sub" id="sub-pro-qosmode">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" onclick="hide('sub-pro-qosmode')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">QoS 模式</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--w)" id="qosmode-list"></div>
   </div>
 
   <!-- Time Picker Overlay — at end of phone so it's above all subs in DOM order -->
@@ -3049,7 +3053,7 @@ function goTab(t){
   if(ct){ct.scrollTop=0;}
   // hide family back when switching tabs normally
   if(t==='family'){var fb=document.getElementById('family-back-btn');if(fb)fb.style.display='none';}
-  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-wifiadv','sub-pro-channel','sub-pro-bandwidth','sub-pro-dfs','sub-pro-mlo','sub-pro-restartsched','sub-node-detail','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','ov-mesh'].forEach(hide);
+  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-qosmode','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-wifiadv','sub-pro-channel','sub-pro-bandwidth','sub-pro-dfs','sub-pro-mlo','sub-pro-restartsched','sub-node-detail','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','ov-mesh'].forEach(hide);
   // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
     var bar=document.getElementById('ai-input-bar');
@@ -3212,6 +3216,7 @@ var QA_ALL = [
   {id:'qa-speed',       icon:'speed',   label:'網速測試',          action:'speed'},
   {id:'qa-guest',       icon:'users',   label:'訪客網路',          action:'guest'},
   {id:'qa-networks',    icon:'wifi2',   label:'WiFi網路',          action:'networks'},
+  {id:'qa-qos',         icon:'devmgmt', label:'QoS 頻寬管理',       action:'qos'},
   {id:'qa-meshadd',     icon:'plus',    label:'新增節點',   action:'meshadd'},
   {id:'qa-meshopt',     icon:'mesh',    label:'Mesh 最佳化',        action:'meshopt'},
   {id:'qa-family',      icon:'users',   label:'家長監控',           action:'family'},
@@ -3225,7 +3230,7 @@ var QA_ALL = [
 
 var QA_CATEGORIES = [
   {name:'AI', emoji:'✨', ids:['qa-airpt']},
-  {name:'網路', emoji:'🌐', ids:['qa-wifi','qa-networks','qa-guest','qa-diag','qa-speed']},
+  {name:'網路', emoji:'🌐', ids:['qa-wifi','qa-networks','qa-qos','qa-guest','qa-diag','qa-speed']},
   {name:'AiMesh', emoji:'📡', ids:['qa-meshadd','qa-meshopt']},
   {name:'家庭', emoji:'👨‍👩‍👧', ids:['qa-family','qa-sched']},
   {name:'安全', emoji:'🔒', ids:['qa-aiprotect']},
@@ -3265,6 +3270,38 @@ function qaSvg(icon, color) {
   };
   var sz = '17';
   return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="none" stroke="'+color+'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+(paths[icon]||'')+'</svg>';
+}
+
+// ══════════════════ QoS Mode selection ══════════════════
+var QOS_MODES=[
+  {id:'game',title:'遊戲',desc:'LOL、AOV、Switch、XBOX、PUBG、Free Fire、Dota 2...',icon:'<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="4"/><path d="M7 10.5v4M5 12.5h4"/><circle cx="15" cy="11.5" r="1" fill="var(--ac)" stroke="none"/><circle cx="18" cy="13.5" r="1" fill="var(--ac)" stroke="none"/></svg>'},
+  {id:'stream',title:'影音直播串流',desc:'Youtube、Vimeo、iTunes、Hulu、Netflix、Spotify 等。',icon:'<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4 4 0 01-1-7.9A5.5 5.5 0 0117 8a4.5 4.5 0 01.5 9H7z"/><polygon points="10.5 11.5 10.5 15 14 13.2" fill="var(--ac)" stroke="none"/></svg>'},
+  {id:'homework',title:'居家工作',desc:'VoIP、即時訊息、郵件服務 等。',icon:'<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7v9a1 1 0 01-1 1H5a1 1 0 01-1-1z"/><rect x="9" y="13" width="6" height="5" rx="1"/><path d="M11 13v-1a1 1 0 011-1h0a1 1 0 011 1v1"/></svg>'},
+  {id:'homelearn',title:'居家學習',desc:'TED、LinkedIn Learning、51Talk、VIPKID 等。',icon:'<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7v9a1 1 0 01-1 1H5a1 1 0 01-1-1z"/><path d="M8.5 15l3.5-1.7 3.5 1.7-3.5 1.7z"/><path d="M9 15.8v1.8c0 .6 1.3 1.2 3 1.2s3-.6 3-1.2v-1.8"/></svg>'},
+  {id:'browse',title:'網頁瀏覽',desc:'Flickr、Twitter、Facebook、Tumblr、Google Toolbar 等。',icon:'<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>'},
+  {id:'transfer',title:'資料傳輸',desc:'uTorrent、BitTorrent、Dropbox、4Shared、FTP 應用程...',icon:'<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 012-2h4l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9.5 14a2.5 2.5 0 014.6-1.4M14.5 12a2.5 2.5 0 01-4.6 1.4"/><polyline points="13.6 11.9 14.1 12.6 13.4 13.1"/><polyline points="10.4 14.1 9.9 13.4 10.6 12.9"/></svg>'},
+];
+var _qosModeSelected=null;
+function qosModeRow(m,divider){
+  var sel=_qosModeSelected===m.id;
+  return '<div onclick="selectQosMode(\''+m.id+'\')" style="display:flex;align-items:center;gap:16px;padding:16px 20px;cursor:pointer;background:'+(sel?'var(--abg)':'transparent')+(divider?';border-bottom:1px solid var(--bd)':'')+'">'
+    +'<div style="width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center">'+m.icon+'</div>'
+    +'<div style="flex:1;min-width:0"><div style="font-size:17px;font-weight:700;color:var(--tx)">'+m.title+'</div><div style="font-size:13px;color:var(--t3);margin-top:3px;line-height:1.4">'+m.desc+'</div></div>'
+    +(sel
+      ?'<div style="width:22px;height:22px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>'
+      :'<div style="width:22px;height:22px;border-radius:50%;border:2px solid var(--bd2);flex-shrink:0"></div>')
+  +'</div>';
+}
+function renderQosModeList(){
+  var el=document.getElementById('qosmode-list');if(!el)return;
+  el.innerHTML='<div style="padding:20px 20px 8px;font-size:17px;font-weight:700;color:var(--ac);line-height:1.5">請選擇一個您想要優先處理的應用程式。</div>'
+    +'<div>'+QOS_MODES.map(function(m,i){return qosModeRow(m,i<QOS_MODES.length-1);}).join('')+'</div>';
+}
+function selectQosMode(id){
+  _qosModeSelected=id;
+  renderQosModeList();
+  var sub=document.getElementById('qos-mode-subtitle');
+  if(sub){var m=QOS_MODES.find(function(x){return x.id===id;});sub.textContent=m?m.title:'尚未設定';}
 }
 
 // ══════════════════ Notification System V2 ══════════════════
@@ -3618,6 +3655,7 @@ function renderQAGrid() {
       else if (act==='guest')       show('ov-guest');
       else if (act==='diag')        show('sub-diag');
       else if (act==='networks')    { renderNetworksList(); show('sub-network'); }
+      else if (act==='qos')         show('sub-pro-qos');
       else if (act==='fw')          { renderFwStatus(false); show('sub-fw'); }
       else if (act==='meshopt')     { window._meshOptFromQuick=true; show('sub-mesh-opt'); }
       else if (act==='meshadd')     { window._meshAddFromQuick=true; show('sub-mesh-addnode'); }
