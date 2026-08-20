@@ -981,9 +981,14 @@ body{display:flex;align-items:center;justify-content:center}
             <div style="width:34px;height:34px;border-radius:50%;background:var(--gbg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
             <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Mesh 節點通訊</div><div style="font-size:12px;color:var(--t3);margin-top:2px">全部正常</div></div>
           </div>
-          <div style="display:flex;gap:14px;align-items:center;padding:13px 16px;border-bottom:1px solid var(--bd)">
-            <div style="width:34px;height:34px;border-radius:50%;background:var(--obg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="2.5" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2.5"/></svg></div>
-            <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">2.4GHz 頻道干擾</div><div style="font-size:12px;color:var(--or);margin-top:2px">頻道 6 有干擾，建議切換</div></div>
+          <div style="padding:13px 16px;border-bottom:1px solid var(--bd)">
+            <div style="display:flex;gap:14px;align-items:center">
+              <div style="width:34px;height:34px;border-radius:50%;background:var(--obg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="2.5" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2.5"/></svg></div>
+              <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">2.4GHz 頻道干擾</div><div style="font-size:12px;color:var(--or);margin-top:2px">頻道 6 有干擾，建議切換</div></div>
+            </div>
+            <div onclick="show('sub-diag-fix')" style="margin-top:10px;margin-left:48px;height:38px;border-radius:19px;border:1.5px solid var(--or);display:flex;align-items:center;justify-content:center;gap:6px;color:var(--or);font-size:13px;font-weight:600;cursor:pointer">
+              如何解決 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
           </div>
           <div style="display:flex;gap:14px;align-items:center;padding:13px 16px">
             <div style="width:34px;height:34px;border-radius:50%;background:var(--gbg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
@@ -1034,6 +1039,33 @@ body{display:flex;align-items:center;justify-content:center}
         </div>
       </div>
 
+    </div>
+  </div>
+
+  <!-- SUB: Diagnostic fix - 2.4GHz channel interference -->
+  <div class="sub" id="sub-diag-fix">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="diag-fix-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="font-size:18px;font-weight:600;color:var(--tx)">如何解決</div>
+    </div>
+    <div style="flex:1;min-height:0;overflow-y:auto;background:var(--bg);padding:16px 16px 32px">
+      <div style="background:var(--w);border-radius:var(--r);padding:18px;box-shadow:var(--sh);margin-bottom:16px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--obg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="2.5" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2.5"/></svg></div>
+          <div style="font-size:17px;font-weight:700;color:var(--tx)">2.4GHz 頻道干擾</div>
+        </div>
+        <div style="font-size:14px;color:var(--t3);line-height:1.7">目前使用的頻道 6 附近有其他 Wi-Fi 網路或裝置造成干擾，可能導致連線不穩定或速度下降。建議切換至干擾較少的頻道。</div>
+      </div>
+      <span class="sl">建議步驟</span>
+      <div style="background:var(--w);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;margin-bottom:16px">
+        <div style="display:flex;align-items:center;padding:13px 14px;border-bottom:1px solid var(--bd)">
+          <div style="flex:1;font-size:15px;font-weight:600;color:var(--tx)">自動選擇頻道</div>
+          <div class="tg on" style="pointer-events:none"></div>
+        </div>
+        <div style="padding:13px 14px;border-bottom:1px solid var(--bd);font-size:13px;color:var(--t3);line-height:1.6">開啟後，路由器會自動掃描並切換至干擾最少的頻道（建議頻道：1、6 或 11）。</div>
+        <div style="display:flex;align-items:center;padding:13px 14px"><div style="flex:1;font-size:14px;color:var(--t3)">建議頻道</div><div style="font-size:14px;font-weight:600;color:var(--tx);font-family:var(--m)">頻道 11</div></div>
+      </div>
+      <div id="diag-fix-apply-btn" style="height:52px;background:var(--ac);border-radius:26px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:600;cursor:pointer;box-shadow:0 6px 20px rgba(74,143,224,.4)">立即套用建議設定</div>
     </div>
   </div>
 
@@ -1476,7 +1508,7 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="padding:44px 20px 20px">
         <!-- Internet -->
         <div style="text-align:center;margin-bottom:4px">
-          <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#E3F0FC,#C0DCFA);display:flex;align-items:center;justify-content:center;margin:0 auto;box-shadow:0 4px 16px rgba(79,99,240,.15)">
+          <div style="width:64px;height:64px;border-radius:50%;background:var(--w);border:2px solid #B8D4F5;display:flex;align-items:center;justify-content:center;margin:0 auto;box-sizing:border-box">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
           </div>
           <div style="font-size:13px;font-weight:500;color:var(--tx);margin-top:7px">Internet</div>
@@ -2961,6 +2993,12 @@ body{display:flex;align-items:center;justify-content:center}
 
   <!-- AI Chat Keyboard-Aware Overlay: input only, always above keyboard -->
   <div id="ai-input-bar" style="display:none;position:absolute;left:0;right:0;bottom:0;z-index:999">
+    <div id="ai-suggest-chips" style="display:flex;gap:8px;overflow-x:auto;padding:10px 16px 0;background:var(--w)">
+      <div class="ai-chip" onclick="sendAISuggestion('網路速度變慢')" style="flex-shrink:0;height:34px;padding:0 16px;border-radius:17px;border:1.5px solid var(--bd2);display:flex;align-items:center;font-size:13px;font-weight:500;color:var(--tx);cursor:pointer;white-space:nowrap">網路速度變慢</div>
+      <div class="ai-chip" onclick="sendAISuggestion('設定家長監控')" style="flex-shrink:0;height:34px;padding:0 16px;border-radius:17px;border:1.5px solid var(--bd2);display:flex;align-items:center;font-size:13px;font-weight:500;color:var(--tx);cursor:pointer;white-space:nowrap">設定家長監控</div>
+      <div class="ai-chip" onclick="sendAISuggestion('Wi-Fi 密碼忘記了')" style="flex-shrink:0;height:34px;padding:0 16px;border-radius:17px;border:1.5px solid var(--bd2);display:flex;align-items:center;font-size:13px;font-weight:500;color:var(--tx);cursor:pointer;white-space:nowrap">Wi-Fi 密碼忘記了</div>
+      <div class="ai-chip" onclick="sendAISuggestion('如何新增 AiMesh 節點')" style="flex-shrink:0;height:34px;padding:0 16px;border-radius:17px;border:1.5px solid var(--bd2);display:flex;align-items:center;font-size:13px;font-weight:500;color:var(--tx);cursor:pointer;white-space:nowrap">如何新增 AiMesh 節點</div>
+    </div>
     <div style="background:var(--w);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:10px 16px 14px">
       <div style="display:flex;align-items:flex-end;gap:8px">
         <div onclick="showToast('附件功能開發中')" style="width:36px;height:36px;border-radius:50%;border:1.5px solid var(--bd2);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;color:var(--t2);font-size:22px;font-weight:300">+</div>
@@ -2997,7 +3035,7 @@ function goTab(t){
   if(ct){ct.scrollTop=0;}
   // hide family back when switching tabs normally
   if(t==='family'){var fb=document.getElementById('family-back-btn');if(fb)fb.style.display='none';}
-  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-wifiadv','sub-pro-channel','sub-pro-bandwidth','sub-pro-dfs','sub-pro-mlo','sub-pro-restartsched','sub-node-detail','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','ov-mesh'].forEach(hide);
+  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-wifiadv','sub-pro-channel','sub-pro-bandwidth','sub-pro-dfs','sub-pro-mlo','sub-pro-restartsched','sub-node-detail','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','sub-diag-fix','ov-mesh'].forEach(hide);
   // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
     var bar=document.getElementById('ai-input-bar');
@@ -3025,10 +3063,8 @@ function devSectionLabel(text){
   return '<div style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.9px;text-transform:uppercase;padding:8px 2px 4px">'+text+'</div>';
 }
 function devTrafficCard(){
-  function row(label,color,arrowUp,valId,last){
-    var icon=arrowUp
-      ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="6"/><polyline points="6 12 12 6 18 12"/></svg>'
-      : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="4" x2="12" y2="18"/><polyline points="6 12 12 18 18 12"/></svg>';
+  function row(label,color,valId,last){
+    var icon='<div style="width:8px;height:8px;border-radius:50%;background:#fff"></div>';
     return '<div style="display:flex;align-items:center;padding:10px 0;'+(last?'':'border-bottom:1px solid var(--bd)')+'">'
       +'<div style="width:34px;height:34px;border-radius:50%;background:'+color+';display:flex;align-items:center;justify-content:center;flex-shrink:0">'+icon+'</div>'
       +'<div style="flex:1;margin-left:12px;font-size:14px;color:var(--tx);font-weight:500">'+label+'</div>'
@@ -3037,8 +3073,8 @@ function devTrafficCard(){
     +'</div>';
   }
   return '<div style="background:var(--w);border-radius:var(--r);padding:0 14px;margin-bottom:14px;box-shadow:var(--sh)">'
-    +row('下載','var(--ac)',false,'dev-traf-down',false)
-    +row('上傳','var(--gn)',true,'dev-traf-up',true)
+    +row('下載','var(--ac)','dev-traf-down',false)
+    +row('上傳','var(--gn)','dev-traf-up',true)
   +'</div>';
 }
 var _nodeBwLimitSet={};
@@ -3050,12 +3086,25 @@ function toggleDevBwLimit(nodeId,idx){
   _nodeBwLimitSet[nodeId][idx]=!_nodeBwLimitSet[nodeId][idx];
   renderMeshDeviceDetail(nodeId,idx);
 }
+var _nodeBwLimitVal={};
+function devBwLimitInput(nodeId,idx,dir,label,def){
+  if(!_nodeBwLimitVal[nodeId])_nodeBwLimitVal[nodeId]={};
+  if(!_nodeBwLimitVal[nodeId][idx])_nodeBwLimitVal[nodeId][idx]={};
+  if(_nodeBwLimitVal[nodeId][idx][dir]==null)_nodeBwLimitVal[nodeId][idx][dir]=def;
+  var val=_nodeBwLimitVal[nodeId][idx][dir];
+  return '<div style="display:flex;align-items:center;padding:13px 14px;border-bottom:1px solid var(--bd)">'
+    +'<div style="flex:1;font-size:14px;color:var(--t3)">'+label+'</div>'
+    +'<input type="number" min="1" value="'+val+'" oninput="_nodeBwLimitVal[\''+nodeId+'\']['+idx+'][\''+dir+'\']=this.value" style="width:60px;height:32px;border:1.5px solid var(--bd);border-radius:8px;padding:0 8px;font-size:14px;font-weight:500;color:var(--tx);font-family:var(--m);text-align:right;outline:none;background:var(--s2)">'
+    +'<span style="font-size:14px;color:var(--t3);margin-left:6px">Mbps</span>'
+  +'</div>';
+}
 function devBandwidthCard(nodeId,idx){
   var limited=isDevBwLimited(nodeId,idx);
   return '<div style="background:var(--w);border-radius:var(--r);margin-bottom:14px;box-shadow:var(--sh);overflow:hidden">'
-    +'<div style="display:flex;align-items:center;padding:13px 14px;border-bottom:1px solid var(--bd)"><div style="flex:1;font-size:15px;font-weight:600;color:var(--tx)">啟用頻寬限制</div><div class="tg'+(limited?' on':'')+'" onclick="toggleDevBwLimit(\''+nodeId+'\','+idx+')" style="cursor:pointer"></div></div>'
-    +'<div style="display:flex;align-items:center;padding:13px 14px;border-bottom:1px solid var(--bd);cursor:pointer"><div style="flex:1;font-size:14px;color:var(--t3)">上傳頻寬</div><div style="font-size:14px;font-weight:500;color:var(--tx);font-family:var(--m);margin-right:6px">'+(limited?'20 Mbps':'無限制')+'</div>'+_chevSm+'</div>'
-    +'<div style="display:flex;align-items:center;padding:13px 14px;cursor:pointer"><div style="flex:1;font-size:14px;color:var(--t3)">下載頻寬</div><div style="font-size:14px;font-weight:500;color:var(--tx);font-family:var(--m);margin-right:6px">'+(limited?'50 Mbps':'無限制')+'</div>'+_chevSm+'</div>'
+    +'<div style="display:flex;align-items:center;padding:13px 14px;'+(limited?'border-bottom:1px solid var(--bd)':'')+'"><div style="flex:1;font-size:15px;font-weight:600;color:var(--tx)">啟用頻寬限制</div><div class="tg'+(limited?' on':'')+'" onclick="toggleDevBwLimit(\''+nodeId+'\','+idx+')" style="cursor:pointer"></div></div>'
+    +(limited
+      ? devBwLimitInput(nodeId,idx,'up','上傳頻寬',20)+devBwLimitInput(nodeId,idx,'down','下載頻寬',50).replace('border-bottom:1px solid var(--bd);','')
+      : '')
   +'</div>';
 }
 function devInfoCard(rows){
@@ -4228,6 +4277,11 @@ window.addEventListener('load',function(){
     diagShowState(isVisible?'diag-idle':'diag-hist');
   });
   bind('diag-start-btn',function(){startDiag();});
+  bind('diag-fix-back',function(){hide('sub-diag-fix');});
+  bind('diag-fix-apply-btn',function(){
+    showToast('已套用建議設定，頻道已切換至 11');
+    hide('sub-diag-fix');
+  });
   bind('diag-done-btn',function(){diagShowState('diag-idle');});
   bind('diag-retry-btn',function(){startDiag();});
 
@@ -5777,6 +5831,16 @@ function sendAIMessage(){
   var txt=input.textContent.trim();if(!txt)return;
   appendUserMsg(txt);input.textContent='';
   appendAIMsg(getAIReply(txt));
+  hideAISuggestChips();
+}
+function sendAISuggestion(text){
+  appendUserMsg(text);
+  appendAIMsg(getAIReply(text));
+  hideAISuggestChips();
+}
+function hideAISuggestChips(){
+  var chips=document.getElementById('ai-suggest-chips');
+  if(chips)chips.style.display='none';
 }
 function appendUserMsg(text){
   var msgs=document.getElementById('ai-chat-messages');if(!msgs)return;
@@ -5807,7 +5871,8 @@ var AI_RESPONSES=[
   {keys:['密碼','password','wifi','wi-fi','忘記'],reply:'Two ways to find your Wi-Fi password:\n1. App: Settings → Wi-Fi Settings → Show Password\n2. Reset: Settings → Wi-Fi Settings → Edit'},
   {keys:['裝置','連不上','connect','device'],reply:'Let me help diagnose:\n• Check the Devices tab\n• Make sure MAC filtering isn\'t blocking it\n• Try forgetting the network and reconnecting'},
   {keys:['安全','protection','威脅'],reply:'AiProtection is running ✅\nToday: Blocked 1,275 • Filtered 377 • Scanned 122\nSecurity Score: 98/100 🛡️'},
-  {keys:['省電','energy'],reply:'AI Energy Saving is active ⚡\nPower saved: 23% today\nReduced ~15W vs standard mode'}
+  {keys:['省電','energy'],reply:'AI Energy Saving is active ⚡\nPower saved: 23% today\nReduced ~15W vs standard mode'},
+  {keys:['家長監控','parental','兒童','孩子'],reply:'Setting up parental controls:\n1. Go to Home → 家長監控\n2. Add a family member and assign their devices\n3. Set internet time schedules or content filters for them'}
 ];
 var AI_DEFAULT='Let me check your router settings...\n1. Try restarting (Settings → Reboot Router)\n2. Update firmware\n3. Run Network Diagnostic\n\nAnything else I can help with? 😊';
 function getAIReply(text){
