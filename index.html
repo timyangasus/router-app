@@ -5835,6 +5835,16 @@ function aiInsightCard(text,btnLabel,onclick,positive){
     +(btnLabel?'<div style="display:flex;justify-content:flex-end;margin-top:10px"><div onclick="'+onclick+'" style="padding:5px 12px;border-radius:12px;border:1.5px solid var(--ac);color:var(--ac);background:transparent;font-size:12px;font-weight:700;cursor:pointer">'+btnLabel+'</div></div>':'')
   +'</div>';
 }
+var _svgSparkleFill='<path d="M18.71,9.63c-.08,0-.14-.04-.16-.12-.22-.84-.63-1.56-1.25-2.17s-1.33-1.03-2.17-1.25c-.08-.03-.12-.08-.12-.16,0-.1.04-.15.12-.16.84-.22,1.56-.63,2.17-1.25s1.03-1.33,1.25-2.17c.03-.08.08-.12.16-.12s.14.04.16.12c.22.84.63,1.56,1.25,2.17s1.33,1.03,2.17,1.25c.08.01.12.07.12.16,0,.08-.04.14-.12.16-.84.22-1.56.63-2.17,1.25s-1.03,1.33-1.25,2.17c-.01.08-.07.12-.16.12Z"/><path d="M10.44,22.42c-.21,0-.35-.1-.42-.31-.56-2.12-1.61-3.96-3.16-5.51s-3.38-2.6-5.51-3.16c-.21-.07-.31-.21-.31-.42,0-.24.1-.38.31-.42,2.12-.56,3.96-1.61,5.51-3.16s2.6-3.38,3.16-5.51c.07-.21.21-.31.42-.31s.35.1.42.31c.56,2.12,1.61,3.96,3.16,5.51s3.38,2.6,5.51,3.16c.21.03.31.17.31.42,0,.21-.1.35-.31.42-2.12.56-3.96,1.61-5.51,3.16s-2.6,3.38-3.16,5.51c-.03.21-.17.31-.42.31Z"/>';
+function aiPredictionCard(text,btnLabel,onclick){
+  return '<div style="background:linear-gradient(135deg,#F7F5FE,#FBFAFF);border:1px solid #E4DAFC;border-radius:var(--r);padding:14px;margin-bottom:10px">'
+    +'<div style="display:flex;gap:10px">'
+      +'<div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#8B7CF0,#B39DFF);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff">'+_svgSparkleFill+'</svg></div>'
+      +'<div style="flex:1;font-size:13.5px;color:var(--tx);line-height:1.6">'+text+'</div>'
+    +'</div>'
+    +(btnLabel?'<div style="display:flex;justify-content:flex-end;margin-top:10px"><div onclick="'+onclick+'" style="padding:5px 12px;border-radius:12px;border:1.5px solid #8B7CF0;color:#7C5CE0;background:transparent;font-size:12px;font-weight:700;cursor:pointer">'+btnLabel+'</div></div>':'')
+  +'</div>';
+}
 function aiHistoryRow(dateRange,score,status,statusColor,last,onclick){
   return '<div onclick="'+(onclick||"showToast('歷史週報（Demo）')")+'" style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer;'+(last?'':'border-bottom:1px solid var(--bd)')+'">'
     +'<div style="font-size:14px;font-weight:600;color:var(--tx)">'+dateRange+'</div>'
@@ -5857,6 +5867,11 @@ var AI_REPORT_CURRENT={
   ],
   insights:[
     ['未偵測到重複發生的安全性問題，裝置存取行為維持正常。','','',true]
+  ],
+  predictions:[
+    ['Mesh 穩定度本週下降 5%，若持續此趨勢，未來 1–2 週內<b>廚房節點</b>可能開始出現連線不穩定的情況，建議提前執行 Mesh 最佳化以維持涵蓋品質。','立即執行 Mesh 最佳化',"hide('sub-ai-report');openNodeOptimize('kitchen')"],
+    ['偵測到家中連線裝置數持續增加，預期下個月尖峰時段頻寬需求將上升，建議提前規劃並啟用 QoS 頻寬管理。','前往設定 QoS',"hide('sub-ai-report');show('sub-pro-qos')"],
+    ['近 4 週安全性事件呈下降趨勢，預期本月網路安全風險將維持在低點，AiProtection 防護狀態良好。','','']
   ]
 };
 var AI_REPORT_BAD={
@@ -5927,6 +5942,11 @@ function renderAIReport(data,isHistorical){
   // ③ AI 發現與建議（合併，問題下方直接附解決按鈕）
   html+='<div style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.9px;text-transform:uppercase;padding:4px 2px 8px">AI 發現與建議</div>'
     +data.insights.map(function(f){return aiInsightCard(f[0],isHistorical?'':f[1],f[2],f[3]);}).join('');
+  // ④ AI 預測與建議（前瞻性，僅在有資料且非歷史週報時顯示）
+  if(!isHistorical&&data.predictions&&data.predictions.length){
+    html+='<div style="display:flex;align-items:center;gap:6px;padding:16px 2px 8px"><svg width="13" height="13" viewBox="0 0 24 24" fill="#8B7CF0">'+_svgSparkleFill+'</svg><span style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.9px;text-transform:uppercase">AI 預測與建議</span></div>'
+      +data.predictions.map(function(p){return aiPredictionCard(p[0],p[1],p[2]);}).join('');
+  }
   body.innerHTML=html;
 }
 var AI_HISTORY_MONTHS=[
