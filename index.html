@@ -2993,11 +2993,11 @@ body{display:flex;align-items:center;justify-content:center}
 
   <!-- AI Chat Keyboard-Aware Overlay: input only, always above keyboard -->
   <div id="ai-input-bar" style="display:none;position:absolute;left:0;right:0;bottom:0;z-index:999">
-    <div id="ai-suggest-chips" style="display:flex;gap:8px;overflow-x:auto;padding:10px 16px 0;background:var(--w)">
-      <div class="ai-chip" onclick="sendAISuggestion('網路速度變慢')" style="flex-shrink:0;height:34px;padding:0 16px;border-radius:17px;border:1.5px solid var(--bd2);display:flex;align-items:center;font-size:13px;font-weight:500;color:var(--tx);cursor:pointer;white-space:nowrap">網路速度變慢</div>
-      <div class="ai-chip" onclick="sendAISuggestion('設定家長監控')" style="flex-shrink:0;height:34px;padding:0 16px;border-radius:17px;border:1.5px solid var(--bd2);display:flex;align-items:center;font-size:13px;font-weight:500;color:var(--tx);cursor:pointer;white-space:nowrap">設定家長監控</div>
-      <div class="ai-chip" onclick="sendAISuggestion('Wi-Fi 密碼忘記了')" style="flex-shrink:0;height:34px;padding:0 16px;border-radius:17px;border:1.5px solid var(--bd2);display:flex;align-items:center;font-size:13px;font-weight:500;color:var(--tx);cursor:pointer;white-space:nowrap">Wi-Fi 密碼忘記了</div>
-      <div class="ai-chip" onclick="sendAISuggestion('如何新增 AiMesh 節點')" style="flex-shrink:0;height:34px;padding:0 16px;border-radius:17px;border:1.5px solid var(--bd2);display:flex;align-items:center;font-size:13px;font-weight:500;color:var(--tx);cursor:pointer;white-space:nowrap">如何新增 AiMesh 節點</div>
+    <div id="ai-suggest-chips" style="display:flex;gap:6px;overflow-x:auto;padding:8px 16px 0;background:var(--w)">
+      <div class="ai-chip" onclick="sendAISuggestion('網路速度變慢')" style="flex-shrink:0;height:26px;padding:0 12px;border-radius:13px;border:1px solid var(--bd2);display:flex;align-items:center;font-size:11.5px;font-weight:500;color:var(--tx);cursor:pointer;white-space:nowrap">網路速度變慢</div>
+      <div class="ai-chip" onclick="sendAISuggestion('設定家長監控')" style="flex-shrink:0;height:26px;padding:0 12px;border-radius:13px;border:1px solid var(--bd2);display:flex;align-items:center;font-size:11.5px;font-weight:500;color:var(--tx);cursor:pointer;white-space:nowrap">設定家長監控</div>
+      <div class="ai-chip" onclick="sendAISuggestion('Wi-Fi 密碼忘記了')" style="flex-shrink:0;height:26px;padding:0 12px;border-radius:13px;border:1px solid var(--bd2);display:flex;align-items:center;font-size:11.5px;font-weight:500;color:var(--tx);cursor:pointer;white-space:nowrap">Wi-Fi 密碼忘記了</div>
+      <div class="ai-chip" onclick="sendAISuggestion('如何新增 AiMesh 節點')" style="flex-shrink:0;height:26px;padding:0 12px;border-radius:13px;border:1px solid var(--bd2);display:flex;align-items:center;font-size:11.5px;font-weight:500;color:var(--tx);cursor:pointer;white-space:nowrap">如何新增 AiMesh 節點</div>
     </div>
     <div style="background:var(--w);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:10px 16px 14px">
       <div style="display:flex;align-items:flex-end;gap:8px">
@@ -3063,18 +3063,19 @@ function devSectionLabel(text){
   return '<div style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.9px;text-transform:uppercase;padding:8px 2px 4px">'+text+'</div>';
 }
 function devTrafficCard(){
-  function row(label,color,valId,last){
-    var icon='<div style="width:8px;height:8px;border-radius:50%;background:#fff"></div>';
+  function row(label,color,arrowUp,valId,last){
+    var icon=arrowUp
+      ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="6"/><polyline points="6 12 12 6 18 12"/></svg>'
+      : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="4" x2="12" y2="18"/><polyline points="6 12 12 18 18 12"/></svg>';
     return '<div style="display:flex;align-items:center;padding:10px 0;'+(last?'':'border-bottom:1px solid var(--bd)')+'">'
       +'<div style="width:34px;height:34px;border-radius:50%;background:'+color+';display:flex;align-items:center;justify-content:center;flex-shrink:0">'+icon+'</div>'
       +'<div style="flex:1;margin-left:12px;font-size:14px;color:var(--tx);font-weight:500">'+label+'</div>'
-      +'<div id="'+valId+'" style="font-size:14px;font-weight:600;color:var(--tx);font-family:var(--m);margin-right:6px">0.00 Kbps</div>'
-      +_chevSm
+      +'<div id="'+valId+'" style="font-size:14px;font-weight:600;color:var(--tx);font-family:var(--m)">0.00 Kbps</div>'
     +'</div>';
   }
   return '<div style="background:var(--w);border-radius:var(--r);padding:0 14px;margin-bottom:14px;box-shadow:var(--sh)">'
-    +row('下載','var(--ac)','dev-traf-down',false)
-    +row('上傳','var(--gn)','dev-traf-up',true)
+    +row('下載','var(--ac)',false,'dev-traf-down',false)
+    +row('上傳','var(--gn)',true,'dev-traf-up',true)
   +'</div>';
 }
 var _nodeBwLimitSet={};
