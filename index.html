@@ -4772,19 +4772,17 @@ function renderNodeDetail(nodeId){
       }).join('')
       +'</div>';
   }
-  html+='<span class="sl">裝置資訊</span>';
+  var lightCount=(lt.led?1:0)+(lt.auraEnabled?1:0)+(lt.nmEnabled?1:0);
+  html+='<span class="sl">裝置管理</span>';
   html+='<div style="background:var(--w);margin:0 16px 12px;border-radius:var(--r);box-shadow:var(--sh)">'
     +'<div style="display:flex;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd)"><span style="font-size:14px;color:var(--t3)">連線狀況</span><span style="font-size:14px;font-weight:600;color:var(--tx)">'+(bad?'訊號不穩定 · Backhaul 5GHz · -68dBm':(warn?n.status.replace('連線正常 · ','不佳 · '):n.status.replace('連線正常 · ','')))+'</span></div>'
     +'<div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd);cursor:pointer" onclick="openNodeLocation(\''+nodeId+'\')"><span style="font-size:14px;color:var(--t3)">地點</span><span style="display:flex;align-items:center;gap:6px"><span style="font-size:14px;font-weight:600;color:var(--tx)">'+n.location+'</span>'+chev+'</span></div>'
-    +'<div style="display:flex;justify-content:space-between;padding:13px 16px"><span style="font-size:14px;color:var(--t3)">韌體版本</span><span style="font-size:14px;font-weight:600;color:var(--tx)">'+n.firmware+'</span></div>'
+    +'<div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--bd);cursor:pointer" onclick="openNodeLighting(\''+nodeId+'\')"><span style="font-size:14px;color:var(--t3)">燈光效果</span><span style="display:flex;align-items:center;gap:6px"><span style="font-size:14px;font-weight:600;color:var(--tx)">'+(lightCount>0?'開啟':'關閉')+'</span>'+chev+'</span></div>'
+    +'<div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;cursor:pointer" onclick="window._fwBackToNode=true;hide(\'sub-node-detail\');renderFwStatus(false);show(\'sub-fw\')"><span style="font-size:14px;color:var(--t3)">韌體版本</span><span style="display:flex;align-items:center;gap:6px"><span style="font-size:14px;font-weight:600;color:var(--tx)">'+n.firmware+'</span>'+chev+'</span></div>'
     +'</div>';
   html+='<span class="sl">連線裝置 ('+n.devices.length+')</span>';
-  html+='<div style="background:var(--w);margin:0 16px 12px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden">'
+  html+='<div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden">'
     +n.devices.map(function(d,i){return deviceRowHtml(nodeId,i,d,bad?(i%2===0?'weak':'poor'):null);}).join('')
-    +'</div>';
-  var lightCount=(lt.led?1:0)+(lt.auraEnabled?1:0)+(lt.nmEnabled?1:0);
-  html+='<div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh)">'
-    +'<div class="sr" style="border:none;cursor:pointer" onclick="openNodeLighting(\''+nodeId+'\')"><div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">燈光效果</div></div><span style="font-size:13px;color:var(--t3);margin-right:6px">'+(lightCount+' 項啟用中')+'</span>'+chev+'</div>'
     +'</div>';
   body.innerHTML=html;
   var bannerImg=g('node-detail-banner-img'),srcImg=g('router-product-img');
