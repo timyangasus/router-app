@@ -1663,7 +1663,8 @@ body{display:flex;align-items:center;justify-content:center}
   <div class="sub" id="sub-node-location">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
       <div class="bk" id="node-location-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx);text-align:center;margin-right:36px">位置</div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx);text-align:center">位置</div>
+      <div id="node-location-done" style="font-size:16px;font-weight:600;color:var(--ac);cursor:pointer;flex-shrink:0">完成</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--w)" id="node-location-list"><!-- Injected by JS --></div>
   </div>
@@ -3413,10 +3414,10 @@ function renderNodeLocationList(nodeId){
   el.innerHTML=NODE_LOCATIONS.map(function(loc,i){return nodeLocationRow(nodeId,loc,i<NODE_LOCATIONS.length-1);}).join('');
 }
 function selectNodeLocation(nodeId,name){
-  if(MESH_NODES[nodeId])MESH_NODES[nodeId].location=name;
-  hide('sub-node-location');
-  renderNodeDetail(nodeId);
-  show('sub-node-detail');
+  var n=MESH_NODES[nodeId];if(!n)return;
+  n.location=name;
+  n.name=name;
+  renderNodeLocationList(nodeId);
 }
 function openNodeLocation(nodeId){
   hide('sub-node-detail');
@@ -4346,6 +4347,7 @@ window.addEventListener('load',function(){
   bind('node-detail-back',function(){hide('sub-node-detail');if(window._nodeDetailReturnTo==='ov-mesh')show('ov-mesh');});
   bind('node-led-back',function(){hide('sub-node-led');backToNodeDetail();});
   bind('node-location-back',function(){hide('sub-node-location');backToNodeDetail();});
+  bind('node-location-done',function(){hide('sub-node-location');backToNodeDetail();});
   bind('node-aura-back',function(){hide('sub-node-aura');backToNodeDetail();});
   bind('node-nightmode-back',function(){hide('sub-node-nightmode');backToNodeDetail();});
   bind('node-restart-back',function(){hide('sub-node-restart');backToNodeDetail();});
