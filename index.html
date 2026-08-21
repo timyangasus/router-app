@@ -1668,18 +1668,6 @@ body{display:flex;align-items:center;justify-content:center}
     <div style="flex:1;overflow-y:auto;background:var(--w)" id="node-location-list"><!-- Injected by JS --></div>
   </div>
 
-  <!-- OV: Node rename -->
-  <div class="ov" id="ov-node-rename" onclick="if(event.target===this)hide('ov-node-rename')">
-    <div class="sheet">
-      <div style="font-size:16px;font-weight:700;color:var(--tx);margin-bottom:14px">重新命名節點</div>
-      <input id="node-rename-input" style="width:100%;height:46px;border:1.5px solid var(--bd);border-radius:10px;padding:0 14px;font-size:16px;color:var(--tx);background:var(--s2);outline:none;font-family:var(--f);box-sizing:border-box;margin-bottom:16px"/>
-      <div style="display:flex;gap:12px">
-        <div onclick="hide('ov-node-rename')" style="flex:1;height:48px;border-radius:var(--r2);background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:var(--t2);cursor:pointer">取消</div>
-        <div id="node-rename-save" style="flex:1;height:48px;border-radius:var(--r2);background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:#fff;cursor:pointer">儲存</div>
-      </div>
-    </div>
-  </div>
-
   <!-- SUB: Networks hub -->
   <div class="sub" id="sub-network">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
@@ -4370,15 +4358,6 @@ window.addEventListener('load',function(){
     }
     else backToNodeDetail();
   });
-  bind('node-rename-save',function(){
-    var id=_renameNodeId;if(!id)return;
-    var val=g('node-rename-input').value.trim();
-    if(val){
-      MESH_NODES[id].name=val;
-      if(g('sub-node-detail').classList.contains('on'))renderNodeDetail(id);
-    }
-    hide('ov-node-rename');
-  });
   bind('mesh-opt-back',function(){hide('sub-mesh-opt');if(window._meshOptFromQuick){window._meshOptFromQuick=false;goTab('home');}else{show('ov-mesh');}});
   bind('mesh-addnode-back',function(){hide('sub-mesh-addnode');if(window._meshAddFromQuick){window._meshAddFromQuick=false;goTab('home');}else{show('ov-mesh');}});
   bind('change-pwd-back',function(){hide('sub-change-pwd');});
@@ -4738,7 +4717,7 @@ function renderNodeDetail(nodeId){
     +'<div style="width:60px;height:60px;border-radius:50%;background:rgba(0,0,0,.3);flex-shrink:0;display:flex;align-items:center;justify-content:center"><img id="node-detail-banner-img" style="width:46px;height:46px;object-fit:contain"></div>'
     +'<div style="flex:1;min-width:0;color:#fff">'
     +'<div style="display:flex;align-items:center;gap:8px">'
-      +'<div style="flex:1;min-width:0;display:flex;align-items:center;gap:6px"><span style="font-size:18px;font-weight:700;letter-spacing:-.3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+n.name+'</span><div onclick="openNodeRename(\''+nodeId+'\')" style="cursor:pointer;padding:2px;flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 013 3L12 15l-4 1 1-4z"/></svg></div></div>'
+      +'<div style="flex:1;min-width:0;display:flex;align-items:center;gap:6px"><span style="font-size:18px;font-weight:700;letter-spacing:-.3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+n.name+'</span><div onclick="openNodeLocation(\''+nodeId+'\')" style="cursor:pointer;padding:2px;flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 013 3L12 15l-4 1 1-4z"/></svg></div></div>'
       +'<div style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.18);border-radius:11px;padding:3px 10px;flex-shrink:0"><span style="width:6px;height:6px;border-radius:50%;background:#fff;opacity:'+(warn?.65:1)+'"></span><span style="font-size:12.5px;font-weight:600;color:#fff;white-space:nowrap">'+(bad?'訊號不佳':(warn?'需要注意':'連線正常'))+'</span></div>'
     +'</div>'
     +'<div style="font-size:12px;opacity:.8;margin-top:4px;letter-spacing:.2px">'+n.model+'</div>'
@@ -5102,13 +5081,6 @@ function runNodeOptimize(nodeId){
     }
     showToast('最佳化完成，訊號品質已提升');
   }, 1500);
-}
-var _renameNodeId=null;
-function openNodeRename(nodeId){
-  _renameNodeId=nodeId;
-  var n=MESH_NODES[nodeId];if(!n)return;
-  g('node-rename-input').value=n.name;
-  show('ov-node-rename');
 }
 function openMeshDevice(nodeId,idx){
   var fromNodeDetail=g('sub-node-detail').classList.contains('on');
