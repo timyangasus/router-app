@@ -5934,22 +5934,25 @@ function appendAIMsg(msg){
   setTimeout(function(){
     msgs.removeChild(typing);
     var bubble=document.createElement('div');
-    bubble.style.cssText='align-self:flex-start;background:var(--s3);color:var(--tx);border-radius:18px 18px 18px 4px;padding:14px 18px;font-size:16px;max-width:86%;line-height:1.5;word-break:break-word;white-space:pre-wrap';
+    bubble.style.cssText='align-self:flex-start;background:var(--s3);color:var(--tx);border-radius:18px 18px 18px 4px;padding:14px 18px;font-size:16px;max-width:86%;line-height:1.5';
     msgs.appendChild(bubble);msgs.scrollTop=msgs.scrollHeight;
+    var textEl=document.createElement('div');
+    textEl.style.cssText='word-break:break-word;white-space:pre-wrap';
+    bubble.appendChild(textEl);
     var i=0;
     function tick(){
       if(i>=text.length){
-        bubble.textContent=text;
+        textEl.textContent=text;
         if(action){
           var btn=document.createElement('div');
           btn.setAttribute('onclick',action.onclick);
-          btn.style.cssText='align-self:flex-start;margin-top:2px;display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:16px;background:var(--ac);color:#fff;font-size:14px;font-weight:600;cursor:pointer';
-          btn.innerHTML=action.label+' <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
-          msgs.appendChild(btn);msgs.scrollTop=msgs.scrollHeight;
+          btn.style.cssText='margin-top:10px;display:inline-flex;align-items:center;gap:4px;padding:6px 12px;border-radius:13px;border:1.3px solid var(--ac);background:transparent;color:var(--ac);font-size:12.5px;font-weight:600;cursor:pointer';
+          btn.innerHTML=action.label+' <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
+          bubble.appendChild(btn);msgs.scrollTop=msgs.scrollHeight;
         }
         return;
       }
-      i+=Math.min(4,text.length-i);bubble.textContent=text.substring(0,i)+'▌';msgs.scrollTop=msgs.scrollHeight;setTimeout(tick,16);
+      i+=Math.min(4,text.length-i);textEl.textContent=text.substring(0,i)+'▌';msgs.scrollTop=msgs.scrollHeight;setTimeout(tick,16);
     }
     tick();
   },delay);
