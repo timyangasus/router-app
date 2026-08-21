@@ -3038,7 +3038,7 @@ body{display:flex;align-items:center;justify-content:center}
 
   <!-- AI Chat Keyboard-Aware Overlay: input only, always above keyboard -->
   <div id="ai-input-bar" style="display:none;position:absolute;left:0;right:0;bottom:0;z-index:999">
-    <div id="ai-suggest-chips" style="display:flex;gap:6px;overflow-x:auto;padding:6px 16px 0;background:var(--w)">
+    <div id="ai-suggest-chips" style="display:flex;gap:6px;overflow-x:auto;padding:8px 16px 12px;background:var(--w)">
       <div class="ai-chip" onclick="sendAISuggestion('網路速度變慢')" style="flex-shrink:0;height:23px;padding:0 11px;border-radius:12px;border:1px solid var(--bd);display:flex;align-items:center;font-size:11px;font-weight:500;color:var(--t3);cursor:pointer;white-space:nowrap">網路速度變慢</div>
       <div class="ai-chip" onclick="sendAISuggestion('設定家長監控')" style="flex-shrink:0;height:23px;padding:0 11px;border-radius:12px;border:1px solid var(--bd);display:flex;align-items:center;font-size:11px;font-weight:500;color:var(--t3);cursor:pointer;white-space:nowrap">設定家長監控</div>
       <div class="ai-chip" onclick="sendAISuggestion('Wi-Fi 密碼忘記了')" style="flex-shrink:0;height:23px;padding:0 11px;border-radius:12px;border:1px solid var(--bd);display:flex;align-items:center;font-size:11px;font-weight:500;color:var(--t3);cursor:pointer;white-space:nowrap">Wi-Fi 密碼忘記了</div>
@@ -5923,7 +5923,8 @@ function appendUserMsg(text){
   el.style.cssText='align-self:flex-end;background:linear-gradient(135deg,#7BAAF7,#5B8DEE);color:#fff;border-radius:18px 18px 4px 18px;padding:14px 18px;font-size:16px;max-width:82%;line-height:1.5;word-break:break-word';
   el.textContent=text;msgs.appendChild(el);msgs.scrollTop=msgs.scrollHeight;
 }
-function appendAIMsg(text){
+function appendAIMsg(msg){
+  var text=msg.reply, action=msg.action;
   var msgs=document.getElementById('ai-chat-messages');if(!msgs)return;
   var typing=document.createElement('div');
   typing.style.cssText='align-self:flex-start;background:var(--s3);border-radius:18px 18px 18px 4px;padding:14px 16px;display:flex;gap:5px;align-items:center';
@@ -5936,24 +5937,39 @@ function appendAIMsg(text){
     bubble.style.cssText='align-self:flex-start;background:var(--s3);color:var(--tx);border-radius:18px 18px 18px 4px;padding:14px 18px;font-size:16px;max-width:86%;line-height:1.5;word-break:break-word;white-space:pre-wrap';
     msgs.appendChild(bubble);msgs.scrollTop=msgs.scrollHeight;
     var i=0;
-    function tick(){if(i>=text.length){bubble.textContent=text;return;}i+=Math.min(4,text.length-i);bubble.textContent=text.substring(0,i)+'▌';msgs.scrollTop=msgs.scrollHeight;setTimeout(tick,16);}
+    function tick(){
+      if(i>=text.length){
+        bubble.textContent=text;
+        if(action){
+          var btn=document.createElement('div');
+          btn.setAttribute('onclick',action.onclick);
+          btn.style.cssText='align-self:flex-start;margin-top:2px;display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:16px;background:var(--ac);color:#fff;font-size:14px;font-weight:600;cursor:pointer';
+          btn.innerHTML=action.label+' <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
+          msgs.appendChild(btn);msgs.scrollTop=msgs.scrollHeight;
+        }
+        return;
+      }
+      i+=Math.min(4,text.length-i);bubble.textContent=text.substring(0,i)+'▌';msgs.scrollTop=msgs.scrollHeight;setTimeout(tick,16);
+    }
     tick();
   },delay);
 }
 var AI_RESPONSES=[
-  {keys:['慢','slow','速度','lag','斷線','不穩','restarting','internet'],reply:'Got it. Here are a few steps you can try:\n1. Check for Device Overload\n2. Too many devices connected? Try disconnecting a few.\n3. Test Wired Connection'},
-  {keys:['mesh','節點','node','aimesh'],reply:'Setting up AiMesh is easy:\n1. Reset the second router (hold Reset 5 sec)\n2. Go to Home → AiMesh → Add Node\n3. Wait for scan, then tap Connect'},
-  {keys:['密碼','password','wifi','wi-fi','忘記'],reply:'Two ways to find your Wi-Fi password:\n1. App: Settings → Wi-Fi Settings → Show Password\n2. Reset: Settings → Wi-Fi Settings → Edit'},
-  {keys:['裝置','連不上','connect','device'],reply:'Let me help diagnose:\n• Check the Devices tab\n• Make sure MAC filtering isn\'t blocking it\n• Try forgetting the network and reconnecting'},
-  {keys:['安全','protection','威脅'],reply:'AiProtection is running ✅\nToday: Blocked 1,275 • Filtered 377 • Scanned 122\nSecurity Score: 98/100 🛡️'},
-  {keys:['省電','energy'],reply:'AI Energy Saving is active ⚡\nPower saved: 23% today\nReduced ~15W vs standard mode'},
-  {keys:['家長監控','parental','兒童','孩子'],reply:'Setting up parental controls:\n1. Go to Home → 家長監控\n2. Add a family member and assign their devices\n3. Set internet time schedules or content filters for them'}
+  {keys:['慢','slow','速度','lag','斷線','不穩','重開機','internet'],reply:'了解，您可以先試試以下步驟：\n1. 檢查是否有裝置佔用大量頻寬\n2. 連線裝置太多？試著先斷開幾台\n3. 改用有線連接測試看看',
+    action:{label:'立即測速',onclick:"show('sub-speedtest')"}},
+  {keys:['mesh','節點','node','aimesh','最佳化','optimi'],reply:'AiMesh 節點設定很簡單：\n1. 長按第二台路由器的 Reset 鍵 5 秒\n2. 到「首頁 → AiMesh → 新增節點」\n3. 等待掃描完成後點擊連接\n\n也可以直接執行 Mesh 最佳化，自動調整節點連線與頻道。',
+    action:{label:'立即執行 Mesh 最佳化',onclick:"show('sub-mesh-opt')"}},
+  {keys:['密碼','password','wifi','wi-fi','忘記'],reply:'兩種方式可以找回 Wi-Fi 密碼：\n1. App 內：設定 → WiFi網路 → 顯示密碼\n2. 重設：設定 → WiFi網路 → 編輯密碼'},
+  {keys:['裝置','連不上','connect','device'],reply:'讓我幫您診斷：\n• 檢查「裝置」分頁確認連線狀態\n• 確認 MAC 過濾沒有封鎖該裝置\n• 試著忘記此網路後重新連接'},
+  {keys:['安全','protection','威脅'],reply:'AiProtection 目前運作中 ✅\n今日已阻擋威脅 12 次・過濾 377 次・掃描 122 台裝置\n安全分數：98/100 🛡️'},
+  {keys:['省電','energy'],reply:'Energy Saving 目前已啟用 ⚡\n今日省電 23%，比標準模式減少約 15W 耗電'},
+  {keys:['家長監控','parental','兒童','孩子'],reply:'設定家長監控的步驟：\n1. 到「首頁 → 家長監控」\n2. 新增家庭成員並指定其裝置\n3. 為該成員設定上網時段或內容篩選'}
 ];
-var AI_DEFAULT='Let me check your router settings...\n1. Try restarting (Settings → Reboot Router)\n2. Update firmware\n3. Run Network Diagnostic\n\nAnything else I can help with? 😊';
+var AI_DEFAULT='讓我檢查一下您的路由器設定...\n1. 可以先試試重啟路由器（設定 → 重啟路由器）\n2. 確認韌體是否為最新版本\n3. 執行網路診斷找出問題\n\n還有其他需要協助的地方嗎？😊';
 function getAIReply(text){
   var lower=text.toLowerCase();
-  for(var i=0;i<AI_RESPONSES.length;i++){var keys=AI_RESPONSES[i].keys;for(var j=0;j<keys.length;j++){if(lower.indexOf(keys[j])!==-1)return AI_RESPONSES[i].reply;}}
-  return AI_DEFAULT;
+  for(var i=0;i<AI_RESPONSES.length;i++){var keys=AI_RESPONSES[i].keys;for(var j=0;j<keys.length;j++){if(lower.indexOf(keys[j])!==-1)return {reply:AI_RESPONSES[i].reply,action:AI_RESPONSES[i].action||null};}}
+  return {reply:AI_DEFAULT,action:null};
 }
 function toggleChatContext(){
   var tg=document.getElementById('tg-chat-context');if(!tg)return;
