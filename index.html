@@ -537,11 +537,11 @@ body{display:flex;align-items:center;justify-content:center}
         <div class="sr" onclick="renderNetworksList();show('sub-network')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">WiFi網路</div><div id="settings-net-subtitle" style="font-size:14px;color:var(--t3);margin-top:2px">家庭網路・訪客網路・IoT 網路</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr" onclick="show('sub-pro-qos')" style="cursor:pointer;border:none"><div class="sic"><svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6" stroke-width="3"/><line x1="3" y1="12" x2="3.01" y2="12" stroke-width="3"/><line x1="3" y1="18" x2="3.01" y2="18" stroke-width="3"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">QoS 頻寬管理</div><div style="font-size:14px;color:var(--t3);margin-top:2px">啟用中 · 遊戲</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
       </div>
-      <span class="sl">Lighting</span>
+      <span class="sl">燈光設定</span>
       <div style="background:var(--w)">
         <div class="sr" onclick="show('sub-led')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">LED</div></div><div class="tg on" id="tg5"></div></div>
         <div class="sr" onclick="show('sub-aura')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Aura RGB</div><div style="font-size:14px;color:var(--t3);margin-top:2px">彩虹效果 · 啟用中</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-        <div class="sr" onclick="show('sub-nightmode')" style="cursor:pointer;border:none"><div class="sic"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Night Mode</div><div style="font-size:14px;color:var(--t3);margin-top:2px">22:00 - 07:00</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="show('sub-nightmode')" style="cursor:pointer;border:none"><div class="sic"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">夜間模式</div><div style="font-size:14px;color:var(--t3);margin-top:2px">22:00 - 07:00</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
       </div>
       <span class="sl">安全與隱私</span>
       <div style="background:var(--w)">
@@ -552,7 +552,7 @@ body{display:flex;align-items:center;justify-content:center}
         <div class="sr" onclick="show('sub-routerinfo')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">路由器資訊</div><div style="font-size:14px;color:var(--t3);margin-top:2px">ASUS ZenWiFi BT10</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr" onclick="renderFwStatus(false);show('sub-fw')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">韌體更新</div><div style="font-size:14px;color:var(--t3);margin-top:2px">3.0.0.4.390 可用</div></div><span class="bg bgb" style="margin-right:6px">更新</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr" onclick="show('sub-reboot')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">重啟路由器</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-        <div class="sr" onclick="show('sub-energy');drawDetailCharts()" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Energy Saving</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="show('sub-energy');drawDetailCharts()" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">節能模式</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr" onclick="show('sub-theme')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">外觀</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr" onclick="show('sub-about')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16" stroke-width="2.5"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">關於</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr" onclick="show('sub-feedback')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">意見回饋</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
@@ -563,43 +563,53 @@ body{display:flex;align-items:center;justify-content:center}
 
       <!-- Advanced settings (pro) -->
       <div id="settings-pro" style="display:none">
-        <span class="sl">Internet</span>
+        <span class="sl">網際網路</span>
         <div style="background:var(--w)">
           <div class="sr" onclick="show('sub-pro-wan')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">WAN</div><div style="font-size:14px;color:var(--t3);margin-top:2px">PPPoE · 動態 IP</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="sr" onclick="show('sub-pro-dualwan')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 00-2 2v3m0 8v3a2 2 0 002 2h3m8 0h3a2 2 0 002-2v-3m0-8V5a2 2 0 00-2-2h-3"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Dual WAN／網路備援</div><div style="font-size:14px;color:var(--t3);margin-top:2px">停用</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
           <div class="sr" onclick="show('sub-pro-lan')" style="cursor:pointer" id="sp-lan"><div class="sic"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6" stroke-width="3"/><line x1="6" y1="18" x2="6.01" y2="18" stroke-width="3"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">LAN</div><div style="font-size:14px;color:var(--t3);margin-top:2px">192.168.1.1 / 255.255.255.0</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
           <div class="sr" onclick="show('sub-pro-ipv6')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">IPv6</div><div style="font-size:14px;color:var(--t3);margin-top:2px">停用</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-          <div class="sr" onclick="show('sub-pro-vpn')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">VPN</div><div style="font-size:14px;color:var(--t3);margin-top:2px">Server 停用 · Client 未連線</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
           <div class="sr" onclick="show('sub-pro-ddns')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0"/><path d="M3.6 9h16.8M3.6 15h16.8M11.5 3a17 17 0 000 18M12.5 3a17 17 0 010 18"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">DDNS</div><div style="font-size:14px;color:var(--t3);margin-top:2px">your-home.asuscomm.com · 啟用</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
           <div class="sr" onclick="show('sub-wisp')" style="cursor:pointer;border:none"><div class="sic"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">WISP</div><div style="font-size:14px;color:var(--t3);margin-top:2px">停用</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         </div>
 
-        <span class="sl">Network Rules</span>
+        <span class="sl">VPN</span>
+        <div style="background:var(--w)">
+          <div class="sr" onclick="show('sub-pro-vpnfusion')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">VPN Fusion</div><div style="font-size:14px;color:var(--t3);margin-top:2px">依裝置分流 · 停用</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="sr" onclick="show('sub-pro-vpns')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">VPN Server</div><div style="font-size:14px;color:var(--t3);margin-top:2px">停用</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="sr" onclick="show('sub-pro-vpnc')" style="cursor:pointer;border:none"><div class="sic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">VPN Client／設定檔</div><div style="font-size:14px;color:var(--t3);margin-top:2px">未連線 · 2 個設定檔</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+
+        <span class="sl">安全與流量</span>
         <div style="background:var(--w)">
           <div class="sr" onclick="show('sub-pro-firewall')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Firewall</div><div style="font-size:14px;color:var(--t3);margin-top:2px">啟用中</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="sr" onclick="show('sub-pro-qos')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6" stroke-width="3"/><line x1="3" y1="12" x2="3.01" y2="12" stroke-width="3"/><line x1="3" y1="18" x2="3.01" y2="18" stroke-width="3"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">QoS 頻寬管理</div><div style="font-size:14px;color:var(--t3);margin-top:2px">啟用中 · 遊戲</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
           <div class="sr" onclick="show('sub-pro-macfilter')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">MAC Filter</div><div style="font-size:14px;color:var(--t3);margin-top:2px">停用</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
           <div class="sr" onclick="show('sub-pro-portfw')" style="cursor:pointer;border:none"><div class="sic"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Port Forwarding</div><div style="font-size:14px;color:var(--t3);margin-top:2px">3 條規則已啟用</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         </div>
 
-        <span class="sl">Wi-Fi Advanced</span>
+        <span class="sl">進階Wi-Fi</span>
         <div style="background:var(--w)">
-          <div class="sr" onclick="show('sub-pro-wifiadv')" style="cursor:pointer;border:none"><div class="sic"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">無線網路</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="sr" onclick="renderChannelBwHub();show('sub-pro-channelbw')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M4 15v-3M8 18v-9M12 20v-13M16 18V9M20 15v-3"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">頻道與頻寬</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="sr" onclick="renderMloAdvHub();show('sub-pro-mloadv')" style="cursor:pointer;border:none"><div class="sic"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">MLO及各頻段進階設定</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         </div>
 
-        <span class="sl">System</span>
+        <span class="sl">系統管理</span>
         <div style="background:var(--w)">
-          <div class="sr" onclick="show('sub-pro-restartsched')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Restart Schedule</div><div style="font-size:14px;color:var(--t3);margin-top:2px">停用</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="sr" onclick="show('sub-pro-restartsched')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">重新啟動排程</div><div style="font-size:14px;color:var(--t3);margin-top:2px">停用</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
           <div class="sr" onclick="show('sub-pro-syslog')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">系統記錄</div><div style="font-size:14px;color:var(--t3);margin-top:2px">一般記錄</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-          <div class="sr" onclick="show('sub-pro-admin')" style="cursor:pointer;border-bottom:none"><div class="sic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">介面管理</div><div style="font-size:14px;color:var(--t3);margin-top:2px">HTTP / HTTPS</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="sr" onclick="show('sub-pro-admin')" style="cursor:pointer;border-bottom:none"><div class="sic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">管理介面</div><div style="font-size:14px;color:var(--t3);margin-top:2px">HTTP / HTTPS</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         </div>
 
-        <div style="background:var(--w);border-radius:16px;padding:18px 16px;margin:16px 20px 24px;box-shadow:var(--sh)">
+        <span class="sl">完整底層設定</span>
+        <div style="background:var(--w);border-radius:16px;padding:18px 16px;margin:0 20px 24px;box-shadow:var(--sh)">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
             <div style="width:34px;height:34px;border-radius:50%;background:var(--abg);display:flex;align-items:center;justify-content:center;flex-shrink:0">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
             </div>
-            <div style="font-size:15px;font-weight:700;color:var(--tx)">需要更多進階功能？</div>
+            <div style="font-size:15px;font-weight:700;color:var(--tx)">前往Web GUI</div>
           </div>
-          <div style="font-size:13px;color:var(--t2);line-height:1.6;margin-bottom:14px">部分專業網路設定僅提供於路由器網頁管理介面。如需使用更多進階功能或專業設定，請透過瀏覽器前往網頁版操作。</div>
+          <div style="font-size:13px;color:var(--t2);line-height:1.6;margin-bottom:14px">部分專業網路設定僅提供於路由器網頁管理介面。如需使用更多進階功能或完整底層設定，請透過瀏覽器前往網頁版操作。</div>
           <div onclick="window.open('http://router.asus.com','_blank')" style="display:flex;align-items:center;justify-content:center;gap:6px;height:44px;border-radius:22px;border:1.5px solid var(--ac);cursor:pointer">
             <span style="font-size:14px;font-weight:600;color:var(--ac)">前往網頁版設定</span>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -625,13 +635,13 @@ body{display:flex;align-items:center;justify-content:center}
   <div class="sub" id="sub-energy">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
       <div class="bk" id="energy-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="font-size:17px;font-weight:600;color:var(--tx)">Energy Saving</div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">節能模式</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
       <div style="padding:16px 20px 4px;font-size:14px;color:var(--t3);line-height:1.6">在不影響網路品質的情況下，於使用量較低的時段自動降低耗電。</div>
       <div class="energy-hero" style="padding:36px 24px 28px;display:flex;flex-direction:column;align-items:center">
         <div style="width:88px;height:88px;border-radius:50%;background:rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;margin-bottom:20px"><svg width="48" height="48" viewBox="0 0 24 24" fill="#fff"><path d="M12 2 L13.5 10.5 L22 12 L13.5 13.5 L12 22 L10.5 13.5 L2 12 L10.5 10.5 Z"/></svg></div>
-        <div style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:0 4px"><span style="font-size:18px;font-weight:700;color:#1a1a1a">Energy Saving</span><div class="tg on" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
+        <div style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:0 4px"><span style="font-size:18px;font-weight:700;color:#1a1a1a">節能模式</span><div class="tg on" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
       </div>
       <div style="background:var(--w);margin:12px 16px;border-radius:16px;padding:16px;box-shadow:var(--sh)">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><span style="font-size:17px;font-weight:600;color:var(--tx)">Power Saving</span><div style="display:flex;align-items:baseline;gap:2px"><span style="font-size:28px;font-weight:700;color:var(--ac)">23</span><span style="font-size:14px;color:var(--ac);font-weight:500">%</span></div></div>
@@ -1645,7 +1655,7 @@ body{display:flex;align-items:center;justify-content:center}
   <div class="sub" id="sub-node-nightmode">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
       <div class="bk" id="node-nightmode-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="font-size:17px;font-weight:600;color:var(--tx)" id="node-nightmode-title">Night Mode</div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)" id="node-nightmode-title">夜間模式</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)" id="node-nightmode-body"><!-- Injected by JS --></div>
   </div>
@@ -1885,13 +1895,13 @@ body{display:flex;align-items:center;justify-content:center}
   <div class="sub" id="sub-nightmode">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
       <div class="bk" id="nightmode-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="font-size:17px;font-weight:600;color:var(--tx)">Night Mode</div>
+      <div style="font-size:17px;font-weight:600;color:var(--tx)">夜間模式</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
       <div style="padding:16px 20px 4px;font-size:14px;color:var(--t3);line-height:1.6">指定時段自動關閉燈號，避免夜間燈光影響睡眠。</div>
       <span class="sl">排程</span>
       <div style="background:var(--w)">
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 Night Mode</div></div><div class="tg on" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用夜間模式</div></div><div class="tg on" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
         <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">開始時間</div></div><span style="font-size:14px;color:var(--t2)">22:00</span></div>
         <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">結束時間</div></div><span style="font-size:14px;color:var(--t2)">07:00</span></div>
       </div>
@@ -2515,7 +2525,7 @@ body{display:flex;align-items:center;justify-content:center}
   <div class="sub" id="sub-pro-dualwan">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
       <div class="bk" onclick="hide('sub-pro-dualwan')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">Dual WAN</div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">Dual WAN／網路備援</div>
       <div style="font-size:15px;font-weight:600;color:var(--ac);cursor:pointer">套用</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
@@ -2770,7 +2780,7 @@ body{display:flex;align-items:center;justify-content:center}
   <div class="sub" id="sub-pro-vpnc">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
       <div class="bk" onclick="hide('sub-pro-vpnc')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">VPN Client</div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">VPN Client／設定檔</div>
       <div style="font-size:14px;font-weight:600;color:var(--ac);cursor:pointer">＋ 新增</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
@@ -2868,19 +2878,17 @@ body{display:flex;align-items:center;justify-content:center}
     </div>
   </div>
 
-  <!-- ══ SUB: Wi-Fi Advanced ══ -->
-  <div class="sub" id="sub-pro-wifiadv">
+  <!-- ══ SUB: 頻道與頻寬 ══ -->
+  <div class="sub" id="sub-pro-channelbw">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" onclick="hide('sub-pro-wifiadv')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">無線網路</div>
+      <div class="bk" onclick="hide('sub-pro-channelbw')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">頻道與頻寬</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <div style="padding:16px 20px 6px;font-size:14px;color:var(--t3);line-height:1.6">調整路由器 Wi-Fi 頻道、頻寬與進階無線功能。</div>
+      <div style="padding:16px 20px 6px;font-size:14px;color:var(--t3);line-height:1.6">調整各頻段使用的 Wi-Fi 頻道與頻寬。</div>
       <div style="background:var(--w)">
-        <div class="sr" onclick="renderChannelPage();show('sub-pro-channel')" style="cursor:pointer"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Channel</div></div><span id="wifiadv-ch-sub" style="font-size:14px;color:var(--t2)"></span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="margin-left:6px"><polyline points="9 18 15 12 9 6"/></svg></div>
-        <div class="sr" onclick="renderBandwidthPage();show('sub-pro-bandwidth')" style="cursor:pointer"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Bandwidth</div></div><span id="wifiadv-bw-sub" style="font-size:14px;color:var(--t2)"></span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="margin-left:6px"><polyline points="9 18 15 12 9 6"/></svg></div>
-        <div class="sr" onclick="show('sub-pro-dfs')" style="cursor:pointer"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">DFS</div></div><span id="wifiadv-dfs-sub" style="font-size:14px;color:var(--t2)"></span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="margin-left:6px"><polyline points="9 18 15 12 9 6"/></svg></div>
-        <div class="sr" onclick="show('sub-pro-mlo')" style="cursor:pointer;border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">MLO</div></div><span id="wifiadv-mlo-sub" style="font-size:14px;color:var(--t2)"></span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="margin-left:6px"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="renderChannelPage();show('sub-pro-channel')" style="cursor:pointer"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">頻道</div></div><span id="wifiadv-ch-sub" style="font-size:14px;color:var(--t2)"></span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="margin-left:6px"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="renderBandwidthPage();show('sub-pro-bandwidth')" style="cursor:pointer;border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">頻寬</div></div><span id="wifiadv-bw-sub" style="font-size:14px;color:var(--t2)"></span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="margin-left:6px"><polyline points="9 18 15 12 9 6"/></svg></div>
       </div>
     </div>
   </div>
@@ -2888,8 +2896,8 @@ body{display:flex;align-items:center;justify-content:center}
   <!-- SUB: Channel -->
   <div class="sub" id="sub-pro-channel">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" onclick="hide('sub-pro-channel');renderWifiAdvHub()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">Channel</div>
+      <div class="bk" onclick="hide('sub-pro-channel');renderChannelBwHub()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">頻道</div>
     </div>
     <div id="wifiadv-channel-body" style="flex:1;overflow-y:auto;background:var(--bg)"></div>
   </div>
@@ -2897,22 +2905,37 @@ body{display:flex;align-items:center;justify-content:center}
   <!-- SUB: Bandwidth -->
   <div class="sub" id="sub-pro-bandwidth">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" onclick="hide('sub-pro-bandwidth');renderWifiAdvHub()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">Bandwidth</div>
+      <div class="bk" onclick="hide('sub-pro-bandwidth');renderChannelBwHub()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">頻寬</div>
     </div>
     <div id="wifiadv-bandwidth-body" style="flex:1;overflow-y:auto;background:var(--bg)"></div>
+  </div>
+
+  <!-- ══ SUB: MLO及各頻段進階設定 ══ -->
+  <div class="sub" id="sub-pro-mloadv">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" onclick="hide('sub-pro-mloadv')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">MLO及各頻段進階設定</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <div style="padding:16px 20px 6px;font-size:14px;color:var(--t3);line-height:1.6">多連結操作（MLO）與各頻段的進階無線功能，建議僅在了解影響後調整。</div>
+      <div style="background:var(--w)">
+        <div class="sr" onclick="show('sub-pro-dfs')" style="cursor:pointer"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">DFS</div></div><span id="wifiadv-dfs-sub" style="font-size:14px;color:var(--t2)"></span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="margin-left:6px"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="show('sub-pro-mlo')" style="cursor:pointer;border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">MLO</div></div><span id="wifiadv-mlo-sub" style="font-size:14px;color:var(--t2)"></span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="margin-left:6px"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+    </div>
   </div>
 
   <!-- SUB: DFS -->
   <div class="sub" id="sub-pro-dfs">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" onclick="hide('sub-pro-dfs');renderWifiAdvHub()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div class="bk" onclick="hide('sub-pro-dfs');renderMloAdvHub()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
       <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">DFS</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
       <div id="infocard-dfs"></div>
       <div style="background:var(--w)">
-        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 DFS 頻道</div><div style="font-size:13px;color:var(--t3);margin-top:2px">5GHz 可使用更多頻道</div></div><div class="tg on" id="tg-dfs" onclick="this.classList.toggle('on');renderWifiAdvHub()" style="cursor:pointer"></div></div>
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 DFS 頻道</div><div style="font-size:13px;color:var(--t3);margin-top:2px">5GHz 可使用更多頻道</div></div><div class="tg on" id="tg-dfs" onclick="this.classList.toggle('on');renderMloAdvHub()" style="cursor:pointer"></div></div>
       </div>
     </div>
   </div>
@@ -2920,14 +2943,36 @@ body{display:flex;align-items:center;justify-content:center}
   <!-- SUB: MLO -->
   <div class="sub" id="sub-pro-mlo">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
-      <div class="bk" onclick="hide('sub-pro-mlo');renderWifiAdvHub()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div class="bk" onclick="hide('sub-pro-mlo');renderMloAdvHub()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
       <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">MLO</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
       <div id="infocard-mlo"></div>
       <div style="background:var(--w)">
-        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 MLO</div><div style="font-size:13px;color:var(--t3);margin-top:2px">需裝置支援 Wi-Fi 7</div></div><div class="tg" id="tg-mlo" onclick="this.classList.toggle('on');renderWifiAdvHub()" style="cursor:pointer"></div></div>
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 MLO</div><div style="font-size:13px;color:var(--t3);margin-top:2px">需裝置支援 Wi-Fi 7</div></div><div class="tg" id="tg-mlo" onclick="this.classList.toggle('on');renderMloAdvHub()" style="cursor:pointer"></div></div>
       </div>
+    </div>
+  </div>
+
+  <!-- ══ SUB: VPN Fusion ══ -->
+  <div class="sub" id="sub-pro-vpnfusion">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" onclick="hide('sub-pro-vpnfusion')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">VPN Fusion</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <div id="infocard-vpnfusion"></div>
+      <span class="sl">總開關</span>
+      <div style="background:var(--w)">
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 VPN Fusion</div><div style="font-size:13px;color:var(--t3);margin-top:2px">依裝置或群組指定要使用哪個 VPN 連線</div></div><div class="tg" id="tg-vpnfusion" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
+      </div>
+      <span class="sl">分流規則</span>
+      <div style="background:var(--w);margin:0 16px 12px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden">
+        <div class="sr" style="border-bottom:1px solid var(--bd)"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">所有裝置</div><div style="font-size:13px;color:var(--t3);margin-top:2px">預設路由</div></div><span class="bg" style="background:var(--s2);color:var(--t2)">未指定</span></div>
+        <div class="sr" style="border-bottom:1px solid var(--bd)"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Tim's MacBook Pro</div><div style="font-size:13px;color:var(--t3);margin-top:2px">單一裝置</div></div><span class="bg bgb">Work VPN</span></div>
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">IoT 網路</div><div style="font-size:13px;color:var(--t3);margin-top:2px">整個網路</div></div><span class="bg" style="background:var(--s2);color:var(--t2)">未指定</span></div>
+      </div>
+      <div style="padding:0 16px 24px"><div onclick="showToast('示範功能，尚未開放新增規則')" style="display:flex;align-items:center;justify-content:center;gap:6px;height:44px;border-radius:22px;border:1.5px dashed var(--bd2);cursor:pointer"><span style="font-size:14px;font-weight:600;color:var(--t2)">+ 新增分流規則</span></div></div>
     </div>
   </div>
 
@@ -3090,7 +3135,7 @@ function goTab(t){
   if(ct){ct.scrollTop=0;}
   // hide family back when switching tabs normally
   if(t==='family'){var fb=document.getElementById('family-back-btn');if(fb)fb.style.display='none';}
-  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-wifiadv','sub-pro-channel','sub-pro-bandwidth','sub-pro-dfs','sub-pro-mlo','sub-pro-restartsched','sub-node-detail','sub-node-lighting','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','sub-node-location','sub-diag-fix','sub-language','ov-mesh'].forEach(hide);
+  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-channelbw','sub-pro-channel','sub-pro-bandwidth','sub-pro-mloadv','sub-pro-dfs','sub-pro-mlo','sub-pro-vpnfusion','sub-pro-restartsched','sub-node-detail','sub-node-lighting','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','sub-node-location','sub-diag-fix','sub-language','ov-mesh'].forEach(hide);
   // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
     var bar=document.getElementById('ai-input-bar');
@@ -3924,7 +3969,8 @@ var INFO_CARDS = {
   mlo:{title:'什麼是 MLO？',what:'Wi-Fi 7 的新技術，能同時使用 2.4／5／6GHz 多個頻段傳輸同一筆資料，降低延遲、提升穩定度。',use:'需要路由器與裝置皆支援 Wi-Fi 7 才能生效。',version:1},
   ipv6:{title:'什麼是 IPv6？',what:'新一代網際網路位址格式，提供幾乎無限的位址數量，讓每個裝置都能有獨立的公開位址。',use:'多數電信業者已支援，開啟後可能改善部分連線速度與相容性。',version:1},
   vpn:{title:'什麼是 VPN？',what:'VPN Server 讓您在外面安全連回家中網路；VPN Client 則讓路由器主動連上外部 VPN 服務，全家裝置自動套用。',use:'依需求選擇其中一種設定即可。',version:1},
-  macfilter:{title:'什麼是 MAC Filter？',what:'依裝置的 MAC 位址（硬體識別碼）建立允許或封鎖清單，控制哪些裝置可以連上網路。',use:'適合想嚴格管控家中網路存取權限的進階使用者。',version:1}
+  macfilter:{title:'什麼是 MAC Filter？',what:'依裝置的 MAC 位址（硬體識別碼）建立允許或封鎖清單，控制哪些裝置可以連上網路。',use:'適合想嚴格管控家中網路存取權限的進階使用者。',version:1},
+  vpnfusion:{title:'什麼是 VPN Fusion？',what:'可同時連接多個 VPN，並依裝置或群組指定各自走哪一個 VPN，而不是全家共用同一條。',use:'例如只想讓工作筆電走公司 VPN，其他裝置維持一般連線時很實用。',version:1}
 };
 function infoCardIconSvg(sz){
   return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-7 7c0 2.7 1.5 4.2 2.5 5.7S9 17 9 18h6c0-1 .5-1.5 1.5-3S19 11.7 19 9a7 7 0 00-7-7z"/></svg>';
@@ -3982,11 +4028,13 @@ var WIFI_ADV={
   ch:{'2.4':{auto:true,val:6},'5':{auto:true,val:149},'6':{auto:true,val:37}},
   bw:{'2.4':'40','5':'80','6':'160'}
 };
-function renderWifiAdvHub(){
+function renderChannelBwHub(){
   var chSub=g('wifiadv-ch-sub');
   if(chSub) chSub.textContent=['2.4','5','6'].map(function(b){var c=WIFI_ADV.ch[b];return c.auto?'自動':('頻道 '+c.val);}).join(' · ');
   var bwSub=g('wifiadv-bw-sub');
   if(bwSub) bwSub.textContent=['2.4','5','6'].map(function(b){return WIFI_ADV.bw[b]+'MHz';}).join(' · ');
+}
+function renderMloAdvHub(){
   var dfsSub=g('wifiadv-dfs-sub');
   if(dfsSub){var t=g('tg-dfs');dfsSub.textContent=(t&&t.classList.contains('on'))?'啟用中':'已停用';}
   var mloSub=g('wifiadv-mlo-sub');
@@ -4013,12 +4061,12 @@ function renderChannelPage(){
 function chToggleAuto(band){
   WIFI_ADV.ch[band].auto=!WIFI_ADV.ch[band].auto;
   renderChannelPage();
-  renderWifiAdvHub();
+  renderChannelBwHub();
 }
 function chSetVal(band,val){
   WIFI_ADV.ch[band].val=val;
   renderChannelPage();
-  renderWifiAdvHub();
+  renderChannelBwHub();
 }
 function renderBandwidthPage(){
   var body=g('wifiadv-bandwidth-body');if(!body)return;
@@ -4034,7 +4082,7 @@ function renderBandwidthPage(){
 function bwSetVal(band,val){
   WIFI_ADV.bw[band]=val;
   renderBandwidthPage();
-  renderWifiAdvHub();
+  renderChannelBwHub();
 }
 
 var DRAWER_ROUTERS={
@@ -4064,7 +4112,8 @@ window.addEventListener('load',function(){
   renderAiproMalsite();
   notifLoadScenario('default');
   initInfoCards();
-  renderWifiAdvHub();
+  renderChannelBwHub();
+  renderMloAdvHub();
   renderQosModeListInline();
   (function(){
     var avatarImg=g('h-avatar-img'),drawerImg=g('drawer-avatar-img');
@@ -4719,7 +4768,7 @@ function renderNodeLighting(nodeId){
   var html='<div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden">'
     +'<div class="sr" style="border-bottom:1px solid var(--bd);cursor:pointer" onclick="openNodeLED(\''+nodeId+'\')"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">LED</div></div><span style="font-size:13px;color:var(--t3);margin-right:6px">'+(lt.led?'開啟':'關閉')+'</span>'+chev+'</div>'
     +'<div class="sr" style="border-bottom:1px solid var(--bd);cursor:pointer" onclick="openNodeAura(\''+nodeId+'\')"><div class="sic"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Aura RGB</div></div><span style="font-size:13px;color:var(--t3);margin-right:6px">'+(lt.auraEnabled?'啟用中':'停用')+'</span>'+chev+'</div>'
-    +'<div class="sr" style="border:none;cursor:pointer" onclick="openNodeNightMode(\''+nodeId+'\')"><div class="sic"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Night Mode</div></div><span style="font-size:13px;color:var(--t3);margin-right:6px">'+(lt.nmEnabled?'啟用中':'停用')+'</span>'+chev+'</div>'
+    +'<div class="sr" style="border:none;cursor:pointer" onclick="openNodeNightMode(\''+nodeId+'\')"><div class="sic"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">夜間模式</div></div><span style="font-size:13px;color:var(--t3);margin-right:6px">'+(lt.nmEnabled?'啟用中':'停用')+'</span>'+chev+'</div>'
     +'</div>';
   body.innerHTML=html;
 }
@@ -5028,11 +5077,11 @@ function renderNodeAura(nodeId){
 function openNodeNightMode(nodeId){ hide('sub-node-lighting'); renderNodeNightMode(nodeId); show('sub-node-nightmode'); }
 function renderNodeNightMode(nodeId){
   var n=MESH_NODES[nodeId],lt=NODE_LIGHTING[nodeId];if(!n||!lt)return;
-  g('node-nightmode-title').textContent=n.name+' · Night Mode';
+  g('node-nightmode-title').textContent=n.name+' · 夜間模式';
   g('node-nightmode-body').innerHTML=
     '<span class="sl">排程</span>'
     +'<div style="background:var(--w)">'
-    +'<div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 Night Mode</div></div><div class="tg'+(lt.nmEnabled?' on':'')+'" onclick="this.classList.toggle(\'on\')" style="cursor:pointer"></div></div>'
+    +'<div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用夜間模式</div></div><div class="tg'+(lt.nmEnabled?' on':'')+'" onclick="this.classList.toggle(\'on\')" style="cursor:pointer"></div></div>'
     +'<div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">開始時間</div></div><span style="font-size:14px;color:var(--t2)">'+lt.nmStart+'</span></div>'
     +'<div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">結束時間</div></div><span style="font-size:14px;color:var(--t2)">'+lt.nmEnd+'</span></div>'
     +'</div>'
@@ -6015,7 +6064,7 @@ var AI_RESPONSES=[
   {keys:['密碼','password','wifi','wi-fi','忘記'],reply:'兩種方式可以找回 Wi-Fi 密碼：\n1. App 內：設定 → WiFi網路 → 顯示密碼\n2. 重設：設定 → WiFi網路 → 編輯密碼'},
   {keys:['裝置','連不上','connect','device'],reply:'讓我幫您診斷：\n• 檢查「裝置」分頁確認連線狀態\n• 確認 MAC 過濾沒有封鎖該裝置\n• 試著忘記此網路後重新連接'},
   {keys:['安全','protection','威脅'],reply:'AiProtection 目前運作中 ✅\n今日已阻擋威脅 12 次・過濾 377 次・掃描 122 台裝置\n安全分數：98/100 🛡️'},
-  {keys:['省電','energy'],reply:'Energy Saving 目前已啟用 ⚡\n今日省電 23%，比標準模式減少約 15W 耗電'},
+  {keys:['省電','energy'],reply:'節能模式目前已啟用 ⚡\n今日省電 23%，比標準模式減少約 15W 耗電'},
   {keys:['家長監控','parental','兒童','孩子'],reply:'設定家長監控的步驟：\n1. 到「首頁 → 家長監控」\n2. 新增家庭成員並指定其裝置\n3. 為該成員設定上網時段或內容篩選'}
 ];
 var AI_DEFAULT='讓我檢查一下您的路由器設定...\n1. 可以先試試重啟路由器（設定 → 重啟路由器）\n2. 確認韌體是否為最新版本\n3. 執行網路診斷找出問題\n\n還有其他需要協助的地方嗎？😊';
