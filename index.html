@@ -532,9 +532,9 @@ body{display:flex;align-items:center;justify-content:center}
         <div class="sr" onclick="renderLanguageList();show('sub-language')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">語言</div><div id="settings-lang-subtitle" style="font-size:14px;color:var(--t3);margin-top:2px">繁體中文</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr" style="border:none"><div class="sic"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Face ID / 密碼鎖</div></div><div class="tg on" id="tg6"></div></div>
       </div>
-      <span class="sl">WiFi網路</span>
+      <span class="sl">Wi-Fi 網路</span>
       <div style="background:var(--w)">
-        <div class="sr" onclick="renderNetworksList();show('sub-network')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">WiFi網路</div><div id="settings-net-subtitle" style="font-size:14px;color:var(--t3);margin-top:2px">家庭網路・訪客網路・IoT 網路</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" onclick="renderNetworksList();show('sub-network')" style="cursor:pointer"><div class="sic"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9A16 16 0 0122.58 9"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--is)" stroke="none"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Wi-Fi 網路</div><div id="settings-net-subtitle" style="font-size:14px;color:var(--t3);margin-top:2px">家庭網路・訪客網路・IoT 網路</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="sr" onclick="show('sub-pro-qos')" style="cursor:pointer;border:none"><div class="sic"><svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6" stroke-width="3"/><line x1="3" y1="12" x2="3.01" y2="12" stroke-width="3"/><line x1="3" y1="18" x2="3.01" y2="18" stroke-width="3"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">QoS 頻寬管理</div><div style="font-size:14px;color:var(--t3);margin-top:2px">啟用中 · 遊戲</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
       </div>
       <span class="sl">燈光設定</span>
@@ -1691,7 +1691,7 @@ body{display:flex;align-items:center;justify-content:center}
   <div class="sub" id="sub-network">
     <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
       <div class="bk" id="network-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">WiFi網路</div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">Wi-Fi 網路</div>
       <div onclick="hide('sub-network');renderNetWizard();show('sub-net-wizard')" style="width:34px;height:34px;border-radius:50%;background:var(--ib);display:flex;align-items:center;justify-content:center;cursor:pointer">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="4" x2="12" y2="20"/><line x1="4" y1="12" x2="20" y2="12"/></svg>
       </div>
@@ -3308,7 +3308,7 @@ var QA_ALL = [
   {id:'qa-diag',        icon:'search',  label:'網路診斷',          action:'diag'},
   {id:'qa-speed',       icon:'speed',   label:'網速測試',          action:'speed'},
   {id:'qa-guest',       icon:'users',   label:'訪客網路',          action:'guest'},
-  {id:'qa-networks',    icon:'wifi2',   label:'WiFi網路',          action:'networks'},
+  {id:'qa-networks',    icon:'wifi2',   label:'Wi-Fi 網路',          action:'networks'},
   {id:'qa-qos',         icon:'devmgmt', label:'QoS 頻寬管理',       action:'qos'},
   {id:'qa-meshadd',     icon:'plus',    label:'新增節點',   action:'meshadd'},
   {id:'qa-meshopt',     icon:'mesh',    label:'Mesh 最佳化',        action:'meshopt'},
@@ -6060,7 +6060,7 @@ var AI_RESPONSES=[
     action:{label:'立即測速',onclick:"show('sub-speedtest')"}},
   {keys:['mesh','節點','node','aimesh','最佳化','optimi'],reply:'AiMesh 節點設定很簡單：\n1. 長按第二台路由器的 Reset 鍵 5 秒\n2. 到「首頁 → AiMesh → 新增節點」\n3. 等待掃描完成後點擊連接\n\n也可以直接執行 Mesh 最佳化，自動調整節點連線與頻道。',
     action:{label:'立即執行 Mesh 最佳化',onclick:"show('sub-mesh-opt')"}},
-  {keys:['密碼','password','wifi','wi-fi','忘記'],reply:'兩種方式可以找回 Wi-Fi 密碼：\n1. App 內：設定 → WiFi網路 → 顯示密碼\n2. 重設：設定 → WiFi網路 → 編輯密碼'},
+  {keys:['密碼','password','wifi','wi-fi','忘記'],reply:'兩種方式可以找回 Wi-Fi 密碼：\n1. App 內：設定 → Wi-Fi 網路 → 顯示密碼\n2. 重設：設定 → Wi-Fi 網路 → 編輯密碼'},
   {keys:['裝置','連不上','connect','device'],reply:'讓我幫您診斷：\n• 檢查「裝置」分頁確認連線狀態\n• 確認 MAC 過濾沒有封鎖該裝置\n• 試著忘記此網路後重新連接'},
   {keys:['安全','protection','威脅'],reply:'AiProtection 目前運作中 ✅\n今日已阻擋威脅 12 次・過濾 377 次・掃描 122 台裝置\n安全分數：98/100 🛡️'},
   {keys:['省電','energy'],reply:'節能模式目前已啟用 ⚡\n今日省電 23%，比標準模式減少約 15W 耗電'},
