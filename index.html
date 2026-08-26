@@ -704,7 +704,7 @@ body{display:flex;align-items:center;justify-content:center}
           <div style="text-align:center"><div id="aipro-ips-num" style="font-size:26px;font-weight:700;color:#fff">5</div><div style="font-size:11px;color:rgba(255,255,255,.75);margin-top:3px">本週攔截入侵</div></div>
         </div>
         <div style="text-align:center;font-size:12px;color:rgba(255,255,255,.8);margin-bottom:14px">最近更新：今天</div>
-        <div id="aipro-scan-btn" style="width:150px;height:44px;margin:0 auto;background:#fff;border-radius:22px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.15)"><span style="font-size:15px;font-weight:700;color:#18B87A">立即檢查</span></div>
+        <div id="aipro-scan-btn" style="width:150px;height:44px;margin:0 auto;background:#fff;border-radius:22px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.15)"><span id="aipro-scan-btn-text" style="font-size:15px;font-weight:700;color:var(--gn)">立即檢查</span></div>
       </div>
       <div id="aipro-alert-wrap"></div>
       <div style="background:var(--w);margin:12px 16px;border-radius:16px;overflow:hidden;box-shadow:var(--sh)">
@@ -4506,9 +4506,7 @@ window.addEventListener('load',function(){
   bind('qos-priority-back',function(){hide('sub-qos-priority');});
   bind('qos-mode-picker-back',function(){hide('sub-qos-mode-picker');});
   // security rows
-  var secRows=[['預設帳號密碼','通過'],['UPnP 服務','通過'],['WAN 端網頁存取','通過'],['WAN 端 Ping 回應','通過'],['遠端管理','通過'],['韌體版本','最新版本'],['Wi-Fi 加密','已啟用 WPA3']];
-  var secEl=document.getElementById('security-rows');
-  if(secEl){secEl.innerHTML=secRows.map(function(r,i){return '<div style="display:flex;align-items:center;padding:13px 16px;'+(i<secRows.length-1?'border-bottom:1px solid var(--bd)':'')+'"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">'+r[0]+'</div><div style="font-size:12px;color:var(--gn);margin-top:2px;font-weight:500">'+r[1]+'</div></div><div style="width:24px;height:24px;border-radius:50%;background:var(--gbg);display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>';}).join('');}
+  renderSecurityRows();
   // theme sub page
   bind('theme-back',function(){hide('sub-theme');});
   document.querySelectorAll('.theme-item').forEach(function(el){
@@ -6614,6 +6612,27 @@ function renderAiproQuickStatus(){
     ? '<div style="background:var(--obg);border-radius:var(--r);padding:16px;display:flex;align-items:center;gap:12px"><div style="width:44px;height:44px;border-radius:50%;background:rgba(232,156,26,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div><div style="font-size:16px;font-weight:700;color:var(--tx)">網路安全</div><div style="font-size:13px;color:var(--or);margin-top:2px">發現 1 個安全問題</div></div></div>'
     : '<div style="background:var(--gbg);border-radius:var(--r);padding:16px;display:flex;align-items:center;gap:12px"><div style="width:44px;height:44px;border-radius:50%;background:rgba(24,184,122,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div><div style="font-size:16px;font-weight:700;color:var(--tx)">網路安全</div><div style="font-size:13px;color:var(--gn);margin-top:2px">目前未發現安全問題</div></div></div>';
 }
+function renderSecurityRows(){
+  var bad=_netErrorDemo && !_mainIssuesResolved.aiprotect;
+  var secRows=[
+    ['預設帳號密碼','通過',true],
+    ['UPnP 服務',bad?'建議停用':'通過',!bad],
+    ['WAN 端網頁存取','通過',true],
+    ['WAN 端 Ping 回應','通過',true],
+    ['遠端管理',bad?'建議停用':'通過',!bad],
+    ['韌體版本','最新版本',true],
+    ['Wi-Fi 加密','已啟用 WPA3',true]
+  ];
+  var secEl=document.getElementById('security-rows');
+  if(!secEl)return;
+  secEl.innerHTML=secRows.map(function(r,i){
+    var ok=r[2];
+    var icon=ok
+      ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>'
+      : '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+    return '<div style="display:flex;align-items:center;padding:13px 16px;'+(i<secRows.length-1?'border-bottom:1px solid var(--bd)':'')+'"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">'+r[0]+'</div><div style="font-size:12px;color:'+(ok?'var(--gn)':'var(--or)')+';margin-top:2px;font-weight:500">'+r[1]+'</div></div><div style="width:24px;height:24px;border-radius:50%;background:'+(ok?'var(--gbg)':'var(--obg)')+';display:flex;align-items:center;justify-content:center">'+icon+'</div></div>';
+  }).join('');
+}
 function aiproHeroGradient(bad){
   if(bad) return _curTheme==='dark' ? 'linear-gradient(140deg,#7A4319,#5C3210)' : 'linear-gradient(135deg,#E8863A,#F5B570)';
   return _curTheme==='dark' ? 'linear-gradient(140deg,#0F4A40,#0C3B32)' : 'linear-gradient(140deg,#1BBFAA,#18B87A)';
@@ -6630,6 +6649,8 @@ function renderAiproDetail(){
     infectedSub.textContent=bad?'已掃描 14 台裝置，發現 1 台疑似遭感染':'已掃描 14 台裝置，未發現異常';
     infectedSub.style.color=bad?'var(--or)':'var(--t3)';
   }
+  var scanBtnText=g('aipro-scan-btn-text'); if(scanBtnText) scanBtnText.style.color=bad?'var(--or)':'var(--gn)';
+  renderSecurityRows();
   var alertWrap=g('aipro-alert-wrap');
   if(alertWrap) alertWrap.innerHTML=bad
     ? '<div style="background:var(--obg);margin:12px 16px 0;border-radius:var(--r);padding:16px">'
