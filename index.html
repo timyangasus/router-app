@@ -3097,10 +3097,50 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="padding:16px 20px 4px;font-size:14px;color:var(--t3);line-height:1.6">優先保障遊戲、視訊或工作裝置的網路速度，避免其他裝置佔用頻寬影響體驗。</div>
       <span class="sl">基本設定</span>
       <div style="background:var(--w)">
-        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 QoS</div><div style="font-size:13px;color:var(--t3);margin-top:2px">依優先權管理各裝置頻寬分配</div></div><div class="tg on" onclick="toggleQosEnable(this)" style="cursor:pointer"></div></div>
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 QoS</div><div style="font-size:13px;color:var(--t3);margin-top:2px">依優先權管理各裝置頻寬分配</div></div><div class="tg on tg-qos-enable" onclick="toggleQosEnable()" style="cursor:pointer"></div></div>
       </div>
       <span class="sl">QoS 模式</span>
-      <div style="background:var(--w)" id="qosmode-list-inline"></div>
+      <div style="background:var(--w)" class="qosmode-list-inline"></div>
+      <span class="sl">頻寬設定</span>
+      <div style="background:var(--w)">
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">自動偵測網路頻寬</div></div><div class="tg on" id="tg-qos-bwauto" onclick="toggleQosBwAuto(this)" style="cursor:pointer"></div></div>
+      </div>
+      <div style="background:var(--w)" id="qos-bw-detail"></div>
+      <span class="sl">裝置優先權</span>
+      <div style="background:var(--w)" id="qos-priority-main-row"></div>
+      <span class="sl">QoS 狀態</span>
+      <div style="background:var(--w)" id="qos-status-body"></div>
+    </div>
+  </div>
+
+  <!-- SUB: QoS 裝置優先權管理 -->
+  <div class="sub" id="sub-qos-priority">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="qos-priority-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">裝置優先權</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <div style="padding:16px 20px 4px;font-size:14px;color:var(--t3);line-height:1.6">優先權較高的裝置，將優先取得頻寬。</div>
+      <div style="background:var(--w)" id="qos-priority-list"></div>
+    </div>
+  </div>
+
+  <!-- SUB: QoS（常用操作簡化版） -->
+  <div class="sub" id="sub-qa-qos">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="qa-qos-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">QoS 頻寬管理</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <span class="sl">基本設定</span>
+      <div style="background:var(--w)">
+        <div class="sr" style="border:none"><div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.8" stroke-linecap="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6" stroke-width="3"/><line x1="3" y1="12" x2="3.01" y2="12" stroke-width="3"/><line x1="3" y1="18" x2="3.01" y2="18" stroke-width="3"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 QoS</div></div><div class="tg on tg-qos-enable" onclick="toggleQosEnable()" style="cursor:pointer"></div></div>
+      </div>
+      <span class="sl">QoS 模式</span>
+      <div style="background:var(--w)" class="qosmode-list-inline"></div>
+      <div style="background:var(--w);margin:20px 16px 24px;border-radius:var(--r);box-shadow:var(--sh)">
+        <div class="sr" style="border:none;cursor:pointer" onclick="hide('sub-qa-qos');show('sub-pro-qos')"><div style="flex:1"><div style="font-size:15px;font-weight:500;color:var(--t2)">更多設定</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
     </div>
   </div>
 
@@ -3180,7 +3220,7 @@ function goTab(t){
   if(ct){ct.scrollTop=0;}
   // hide family back when switching tabs normally
   if(t==='family'){var fb=document.getElementById('family-back-btn');if(fb)fb.style.display='none';}
-  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-qa-aiprotect','sub-qa-vpn','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-channelbw','sub-pro-channel','sub-pro-bandwidth','sub-pro-mloadv','sub-pro-dfs','sub-pro-mlo','sub-pro-vpnfusion','sub-pro-restartsched','sub-node-detail','sub-node-lighting','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','sub-node-location','sub-diag-fix','sub-language','ov-mesh'].forEach(hide);
+  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-qa-aiprotect','sub-qa-vpn','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-qa-qos','sub-qos-priority','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-channelbw','sub-pro-channel','sub-pro-bandwidth','sub-pro-mloadv','sub-pro-dfs','sub-pro-mlo','sub-pro-vpnfusion','sub-pro-restartsched','sub-node-detail','sub-node-lighting','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','sub-node-location','sub-diag-fix','sub-language','ov-mesh'].forEach(hide);
   // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
     var bar=document.getElementById('ai-input-bar');
@@ -3435,19 +3475,93 @@ function qosModeRow(m,divider){
 }
 var _qosEnabled=true;
 function renderQosModeListInline(){
-  var el=document.getElementById('qosmode-list-inline');if(!el)return;
-  el.innerHTML=QOS_MODES.map(function(m,i){return qosModeRow(m,i<QOS_MODES.length-1);}).join('');
-  el.style.opacity=_qosEnabled?'1':'.45';
-  el.style.pointerEvents=_qosEnabled?'':'none';
+  var html=QOS_MODES.map(function(m,i){return qosModeRow(m,i<QOS_MODES.length-1);}).join('');
+  document.querySelectorAll('.qosmode-list-inline').forEach(function(el){
+    el.innerHTML=html;
+    el.style.opacity=_qosEnabled?'1':'.45';
+    el.style.pointerEvents=_qosEnabled?'':'none';
+  });
 }
 function selectQosMode(id){
   _qosModeSelected=id;
   renderQosModeListInline();
+  renderQosStatus();
 }
-function toggleQosEnable(el){
-  el.classList.toggle('on');
-  _qosEnabled=el.classList.contains('on');
+function toggleQosEnable(){
+  _qosEnabled=!_qosEnabled;
+  document.querySelectorAll('.tg-qos-enable').forEach(function(t){t.classList.toggle('on',_qosEnabled);});
   renderQosModeListInline();
+}
+var _qosBwAuto=true;
+var _qosBwVal={down:'500',up:'100'};
+function toggleQosBwAuto(el){
+  el.classList.toggle('on');
+  _qosBwAuto=el.classList.contains('on');
+  renderQosBwDetail();
+}
+function qosBwInput(dir,label){
+  return '<div class="sr" style="border:none"><div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">'+label+'</div>'
+    +'<input type="number" min="1" value="'+_qosBwVal[dir]+'" placeholder="例如：'+(dir==='down'?'500':'100')+'" oninput="_qosBwVal[\''+dir+'\']=this.value;renderQosStatus()" style="width:70px;height:36px;border:1.5px solid var(--bd);border-radius:8px;padding:0 8px;font-size:14px;font-weight:500;color:var(--tx);font-family:var(--m);text-align:right;outline:none;background:var(--s2)">'
+    +'<span style="font-size:14px;color:var(--t3);margin-left:8px">Mbps</span>'
+  +'</div>';
+}
+function renderQosBwDetail(){
+  var el=g('qos-bw-detail');if(!el)return;
+  el.innerHTML=_qosBwAuto
+    ? '<div class="sr"><span style="flex:1;font-size:14px;color:var(--t3)">目前偵測下載頻寬</span><span style="font-size:14px;font-weight:600;color:var(--tx)">'+_qosBwVal.down+' Mbps</span></div>'
+      +'<div class="sr" style="border:none"><span style="flex:1;font-size:14px;color:var(--t3)">目前偵測上傳頻寬</span><span style="font-size:14px;font-weight:600;color:var(--tx)">'+_qosBwVal.up+' Mbps</span></div>'
+    : qosBwInput('down','下載頻寬')+qosBwInput('up','上傳頻寬');
+  renderQosStatus();
+}
+var QOS_PRIORITY_LABELS={highest:'最高',high:'高',normal:'一般'};
+var QOS_PRIORITY_DEVICES=[
+  {name:'PS5',priority:'highest'},
+  {name:"Tim's MacBook Pro",priority:'high'},
+  {name:'客廳 Apple TV',priority:'normal'},
+  {name:'iPhone 16 (您)',priority:'normal'},
+  {name:'Sonos Soundbar',priority:'normal'}
+];
+function qosPriorityCount(){
+  return QOS_PRIORITY_DEVICES.filter(function(d){return d.priority!=='normal';}).length;
+}
+function qosPriorityRow(d,i,divider){
+  return '<div class="sr" style="'+(divider?'':'border:none')+'"><div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">'+d.name+'</div>'
+    +'<div style="display:flex;gap:6px">'
+    +['highest','high','normal'].map(function(p){
+      var sel=d.priority===p;
+      return '<div onclick="setQosPriority('+i+',\''+p+'\')" style="padding:6px 12px;border-radius:14px;font-size:12px;font-weight:600;cursor:pointer;background:'+(sel?'var(--ac)':'var(--s2)')+';color:'+(sel?'#fff':'var(--t2)')+'">'+QOS_PRIORITY_LABELS[p]+'</div>';
+    }).join('')
+    +'</div></div>';
+}
+function renderQosPriorityList(){
+  var el=g('qos-priority-list');if(!el)return;
+  el.innerHTML=QOS_PRIORITY_DEVICES.map(function(d,i){return qosPriorityRow(d,i,i<QOS_PRIORITY_DEVICES.length-1);}).join('');
+}
+function setQosPriority(i,p){
+  QOS_PRIORITY_DEVICES[i].priority=p;
+  renderQosPriorityList();
+  renderQosPriorityMainRow();
+  renderQosStatus();
+}
+function openQosPriority(){
+  renderQosPriorityList();
+  show('sub-qos-priority');
+}
+function renderQosPriorityMainRow(){
+  var el=g('qos-priority-main-row');if(!el)return;
+  el.innerHTML='<div class="sr" style="border:none;cursor:pointer" onclick="openQosPriority()"><div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">管理優先裝置</div><span style="font-size:14px;color:var(--t3);margin-right:6px">'+qosPriorityCount()+' 台</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>';
+}
+function renderQosStatus(){
+  var el=g('qos-status-body');if(!el)return;
+  var mode=QOS_MODES.filter(function(m){return m.id===_qosModeSelected;})[0];
+  el.innerHTML='<div class="sr"><span style="flex:1;font-size:14px;color:var(--t3)">目前模式</span><span style="font-size:14px;font-weight:600;color:var(--tx)">'+(mode?mode.title:'-')+'</span></div>'
+    +'<div class="sr"><span style="flex:1;font-size:14px;color:var(--t3)">下載頻寬</span><span style="font-size:14px;font-weight:600;color:var(--tx)">'+_qosBwVal.down+' Mbps</span></div>'
+    +'<div class="sr"><span style="flex:1;font-size:14px;color:var(--t3)">上傳頻寬</span><span style="font-size:14px;font-weight:600;color:var(--tx)">'+_qosBwVal.up+' Mbps</span></div>'
+    +'<div class="sr" style="border:none"><span style="flex:1;font-size:14px;color:var(--t3)">優先裝置</span><span style="font-size:14px;font-weight:600;color:var(--tx)">'+qosPriorityCount()+' 台</span></div>';
+}
+function openQaQos(){
+  renderQosModeListInline();
+  show('sub-qa-qos');
 }
 
 // ══════════════════ Language selection (demo only) ══════════════════
@@ -3880,7 +3994,7 @@ function renderQAGrid() {
       else if (act==='guest')       show('ov-guest');
       else if (act==='diag')        show('sub-diag');
       else if (act==='networks')    { renderNetworksList(); show('sub-network'); }
-      else if (act==='qos')         show('sub-pro-qos');
+      else if (act==='qos')         openQaQos();
       else if (act==='fw')          { renderFwStatus(false); show('sub-fw'); }
       else if (act==='meshopt')     { window._meshOptFromQuick=true; show('sub-mesh-opt'); }
       else if (act==='meshadd')     { window._meshAddFromQuick=true; show('sub-mesh-addnode'); }
@@ -4163,6 +4277,9 @@ window.addEventListener('load',function(){
   renderChannelBwHub();
   renderMloAdvHub();
   renderQosModeListInline();
+  renderQosBwDetail();
+  renderQosPriorityMainRow();
+  renderQosStatus();
   (function(){
     var avatarImg=g('h-avatar-img'),drawerImg=g('drawer-avatar-img');
     if(avatarImg&&drawerImg)drawerImg.src=avatarImg.src;
@@ -4275,6 +4392,8 @@ window.addEventListener('load',function(){
   bind('aipro-malsite-back',function(){hide('sub-aipro-malsite');});
   bind('qa-aiprotect-back',function(){hide('sub-qa-aiprotect');});
   bind('qa-vpn-back',function(){hide('sub-qa-vpn');});
+  bind('qa-qos-back',function(){hide('sub-qa-qos');});
+  bind('qos-priority-back',function(){hide('sub-qos-priority');});
   // security rows
   var secRows=[['預設帳號密碼','通過'],['UPnP 服務','通過'],['WAN 端網頁存取','通過'],['WAN 端 Ping 回應','通過'],['遠端管理','通過'],['韌體版本','最新版本'],['Wi-Fi 加密','已啟用 WPA3']];
   var secEl=document.getElementById('security-rows');
