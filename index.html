@@ -696,21 +696,22 @@ body{display:flex;align-items:center;justify-content:center}
           <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
           </div>
-          <div><div style="font-size:18px;font-weight:700;color:#fff">網路安全</div><div style="font-size:13px;color:rgba(255,255,255,.8);margin-top:2px">AiProtection 運作中</div></div>
+          <div><div style="font-size:18px;font-weight:700;color:#fff">網路安全</div><div id="aipro-hero-sub" style="font-size:13px;color:rgba(255,255,255,.8);margin-top:2px">AiProtection 運作中</div></div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;margin-bottom:16px">
-          <div style="text-align:center"><div style="font-size:26px;font-weight:700;color:#fff">98</div><div style="font-size:11px;color:rgba(255,255,255,.75);margin-top:3px">安全分數</div></div>
-          <div style="text-align:center;border-left:1px solid rgba(255,255,255,.2);border-right:1px solid rgba(255,255,255,.2)"><div style="font-size:26px;font-weight:700;color:#fff">12</div><div style="font-size:11px;color:rgba(255,255,255,.75);margin-top:3px">本週阻擋威脅</div></div>
-          <div style="text-align:center"><div style="font-size:26px;font-weight:700;color:#fff">5</div><div style="font-size:11px;color:rgba(255,255,255,.75);margin-top:3px">本週攔截入侵</div></div>
+          <div style="text-align:center"><div id="aipro-score" style="font-size:26px;font-weight:700;color:#fff">98</div><div style="font-size:11px;color:rgba(255,255,255,.75);margin-top:3px">安全分數</div></div>
+          <div style="text-align:center;border-left:1px solid rgba(255,255,255,.2);border-right:1px solid rgba(255,255,255,.2)"><div id="aipro-blocked-num" style="font-size:26px;font-weight:700;color:#fff">12</div><div style="font-size:11px;color:rgba(255,255,255,.75);margin-top:3px">本週阻擋威脅</div></div>
+          <div style="text-align:center"><div id="aipro-ips-num" style="font-size:26px;font-weight:700;color:#fff">5</div><div style="font-size:11px;color:rgba(255,255,255,.75);margin-top:3px">本週攔截入侵</div></div>
         </div>
         <div style="text-align:center;font-size:12px;color:rgba(255,255,255,.8);margin-bottom:14px">最近更新：今天</div>
         <div id="aipro-scan-btn" style="width:150px;height:44px;margin:0 auto;background:#fff;border-radius:22px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.15)"><span style="font-size:15px;font-weight:700;color:#18B87A">立即檢查</span></div>
       </div>
+      <div id="aipro-alert-wrap"></div>
       <div style="background:var(--w);margin:12px 16px;border-radius:16px;overflow:hidden;box-shadow:var(--sh)">
         <div style="padding:10px 16px 6px"><span style="font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.7px;text-transform:uppercase">AiProtection</span></div>
         <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">即時網路防護</div><div style="font-size:12px;color:var(--t3);margin-top:2px">本週已阻擋威脅 12 次</div></div><div class="tg on" id="tg-aipro-realtime"></div></div>
         <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">雙向 IPS</div><div style="font-size:12px;color:var(--t3);margin-top:2px">本週已攔截入侵嘗試 5 次</div></div><div class="tg on" id="tg-aipro-ips"></div></div>
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">受感染裝置偵測</div><div style="font-size:12px;color:var(--t3);margin-top:2px">已掃描 14 台裝置，未發現異常</div></div><div class="tg on" id="tg-aipro-infected"></div></div>
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">受感染裝置偵測</div><div id="aipro-infected-sub" style="font-size:12px;color:var(--t3);margin-top:2px">已掃描 14 台裝置，未發現異常</div></div><div class="tg on" id="tg-aipro-infected"></div></div>
         <div class="sr" style="border:none;cursor:pointer" onclick="renderAiproMalsite();show('sub-aipro-malsite')"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">惡意網站封鎖</div><div id="aipro-malsite-count" style="font-size:12px;color:var(--t3);margin-top:2px">已封鎖 2 個網站</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round" style="margin-right:12px"><polyline points="9 18 15 12 9 6"/></svg><div class="tg on" id="tg-aipro-malsite" onclick="event.stopPropagation();this.classList.toggle('on')"></div></div>
       </div>
       <div style="background:var(--w);margin:0 16px 24px;border-radius:16px;overflow:hidden;box-shadow:var(--sh)">
@@ -753,7 +754,7 @@ body{display:flex;align-items:center;justify-content:center}
         <div onclick="runAiproScan()" style="height:48px;border-radius:var(--r2);background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:#fff;cursor:pointer">立即掃描</div>
       </div>
       <div style="background:var(--w);margin:0 16px 24px;border-radius:var(--r);box-shadow:var(--sh)">
-        <div class="sr" style="border:none;cursor:pointer" onclick="hide('sub-qa-aiprotect');show('sub-aipro-detail')"><div style="flex:1"><div style="font-size:15px;font-weight:500;color:var(--t2)">更多設定</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="sr" style="border:none;cursor:pointer" onclick="hide('sub-qa-aiprotect');renderAiproDetail();show('sub-aipro-detail')"><div style="flex:1"><div style="font-size:15px;font-weight:500;color:var(--t2)">更多設定</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
       </div>
     </div>
   </div>
@@ -3911,7 +3912,7 @@ function notifOpenItem(id){
   else if(click==='fw'){ renderFwStatus(false); show('sub-fw'); }
   else if(click==='fw-latest'){ renderFwStatus(true); show('sub-fw'); }
   else if(click==='devices'){ goTab('devices');var b=document.getElementById('devices-back-btn');if(b)b.style.display='flex'; }
-  else if(click==='aipro'){ show('sub-aipro-detail'); }
+  else if(click==='aipro'){ renderAiproDetail();show('sub-aipro-detail'); }
   else if(click==='mesh'){ show('ov-mesh'); }
   updateBellBadge();
 }
@@ -4011,6 +4012,7 @@ function drawBannerCanvas(isError){
   ctx.fillRect(0, 0, w, h);
 }
 var _netErrorDemo = false;
+var _curTheme = 'light';
 var _mainIssuesResolved = {kitchen:false,aiprotect:false,fw:false};
 var _netErrorIcons = {
   ok: '<polyline points="20 6 9 17 4 12"/>',
@@ -4057,6 +4059,8 @@ function applyNetState(){
   if(livingBadge) livingBadge.style.background = err ? 'var(--or)' : 'var(--ac)';
   if((_curNodeId==='kitchen'||_curNodeId==='living')&&g('sub-node-detail').classList.contains('on')) renderNodeDetail(_curNodeId);
   if(g('pg-devices').classList.contains('on')) renderDevicesTab();
+  if(g('sub-aipro-detail').classList.contains('on')) renderAiproDetail();
+  renderAiproQuickStatus();
 }
 function toggleNetErrorDemo(){
   _netErrorDemo = !_netErrorDemo;
@@ -4638,7 +4642,7 @@ window.addEventListener('load',function(){
     if(window._fwBackToAI){window._fwBackToAI=false;show('sub-ai-report');}
     else if(window._fwBackToNode){window._fwBackToNode=false;backToNodeDetail();}
   });
-  bind('s-aip',function(){renderAiproMalsite();show('sub-aipro-detail');});
+  bind('s-aip',function(){renderAiproMalsite();renderAiproDetail();show('sub-aipro-detail');});
   bind('tg-autoupdate',function(){g('tg-autoupdate').classList.toggle('on');});
   bind('fw-update-btn',function(){
     var btn=g('fw-update-btn');
@@ -5083,7 +5087,7 @@ function renderNodeDetail(nodeId){
   if(nodeId==='living'&&_netErrorDemo){
     var mainIssues=[
       ['kitchen','廚房節點離線',AI_REPORT_BAD.insights[0][0],AI_REPORT_BAD.insights[0][1],"openNodeOptimize('kitchen')"],
-      ['aiprotect','偵測到安全威脅',AI_REPORT_BAD.insights[1][0],AI_REPORT_BAD.insights[1][1],"window._aiproBackToNode=true;hide('sub-node-detail');show('sub-aipro-detail')"],
+      ['aiprotect','偵測到安全威脅',AI_REPORT_BAD.insights[1][0],AI_REPORT_BAD.insights[1][1],"window._aiproBackToNode=true;hide('sub-node-detail');renderAiproDetail();show('sub-aipro-detail')"],
       ['fw','韌體更新失敗',AI_REPORT_BAD.insights[2][0],AI_REPORT_BAD.insights[2][1],"window._fwBackToNode=true;hide('sub-node-detail');renderFwStatus(false);show('sub-fw')"]
     ];
     html+='<span class="sl">3 項問題需要注意</span>';
@@ -6477,7 +6481,7 @@ var AI_REPORT_BAD={
   ],
   insights:[
     ['<b>廚房節點</b>本週離線 9 次，多次超過 10 分鐘，影響該區域裝置連線。','立即執行 Mesh 最佳化',"window._nodeOptBackToAI=true;hide('sub-ai-report');openNodeOptimize('kitchen')",false],
-    ['AiProtection 本週攔截 5 次惡意連線嘗試，較上週明顯增加。','查看防護狀態',"window._aiproBackToAI=true;hide('sub-ai-report');show('sub-aipro-detail')",false],
+    ['AiProtection 本週攔截 5 次惡意連線嘗試，較上週明顯增加。','查看防護狀態',"window._aiproBackToAI=true;hide('sub-ai-report');renderAiproDetail();show('sub-aipro-detail')",false],
     ['韌體更新過程曾失敗一次，系統已自動回復為原版本。','前往更新',"window._fwBackToAI=true;hide('sub-ai-report');renderFwStatus(false);show('sub-fw')",false]
   ]
 };
@@ -6610,6 +6614,30 @@ function renderAiproQuickStatus(){
     ? '<div style="background:var(--obg);border-radius:var(--r);padding:16px;display:flex;align-items:center;gap:12px"><div style="width:44px;height:44px;border-radius:50%;background:rgba(232,156,26,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div><div style="font-size:16px;font-weight:700;color:var(--tx)">網路安全</div><div style="font-size:13px;color:var(--or);margin-top:2px">發現 1 個安全問題</div></div></div>'
     : '<div style="background:var(--gbg);border-radius:var(--r);padding:16px;display:flex;align-items:center;gap:12px"><div style="width:44px;height:44px;border-radius:50%;background:rgba(24,184,122,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div><div style="font-size:16px;font-weight:700;color:var(--tx)">網路安全</div><div style="font-size:13px;color:var(--gn);margin-top:2px">目前未發現安全問題</div></div></div>';
 }
+function aiproHeroGradient(bad){
+  if(bad) return _curTheme==='dark' ? 'linear-gradient(140deg,#7A4319,#5C3210)' : 'linear-gradient(135deg,#E8863A,#F5B570)';
+  return _curTheme==='dark' ? 'linear-gradient(140deg,#0F4A40,#0C3B32)' : 'linear-gradient(140deg,#1BBFAA,#18B87A)';
+}
+function renderAiproDetail(){
+  var bad=_netErrorDemo && !_mainIssuesResolved.aiprotect;
+  var hero=document.querySelector('.aipro-hero'); if(hero) hero.style.background=aiproHeroGradient(bad);
+  var sub=g('aipro-hero-sub'); if(sub) sub.textContent=bad?'偵測到安全威脅':'AiProtection 運作中';
+  var score=g('aipro-score'); if(score) score.textContent=bad?62:98;
+  var blocked=g('aipro-blocked-num'); if(blocked) blocked.textContent=bad?17:12;
+  var ips=g('aipro-ips-num'); if(ips) ips.textContent=bad?9:5;
+  var infectedSub=g('aipro-infected-sub');
+  if(infectedSub){
+    infectedSub.textContent=bad?'已掃描 14 台裝置，發現 1 台疑似遭感染':'已掃描 14 台裝置，未發現異常';
+    infectedSub.style.color=bad?'var(--or)':'var(--t3)';
+  }
+  var alertWrap=g('aipro-alert-wrap');
+  if(alertWrap) alertWrap.innerHTML=bad
+    ? '<div style="background:var(--obg);margin:12px 16px 0;border-radius:var(--r);padding:16px">'
+      +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span style="font-size:15px;font-weight:700;color:var(--or)">偵測到安全威脅</span></div>'
+      +'<div style="font-size:13px;color:var(--t2);line-height:1.6">'+AI_REPORT_BAD.insights[1][0]+'</div>'
+      +'</div>'
+    : '';
+}
 var VPN_QA_PROFILES=[
   {name:'Work VPN', proto:'OpenVPN'},
   {name:'Home Lab', proto:'WireGuard'}
@@ -6706,6 +6734,7 @@ function runAiproScan(){
   setTimeout(function(){
     if(_netErrorDemo){ _mainIssuesResolved.aiprotect=true; checkMainIssuesCleared(); }
     renderAiproQuickStatus();
+    renderAiproDetail();
     var items=['即時網路防護','惡意網站封鎖','雙向 IPS','受感染裝置偵測'];
     body.innerHTML='<div class="hdl"></div>'
       +'<div style="display:flex;flex-direction:column;align-items:center;padding:8px 12px 20px">'
@@ -6752,6 +6781,7 @@ var DARK_VARS={'--bg':'#111113','--w':'#1C1C1E','--s2':'#2C2C2E','--s3':'#3A3A3C
 var LIGHT_VARS={'--bg':'#F4F6FB','--w':'#fff','--s2':'#F0F2F8','--s3':'#E6E9F4','--bd':'#E4E8F2','--bd2':'#CDD3E8','--tx':'#0C1120','--t2':'#46526E','--t3':'#8A93AA','--sh':'0 2px 12px rgba(44,62,120,.08)','--ib':'rgba(74,143,224,.12)','--is':'#4A8FE0','--abg':'rgba(74,143,224,.12)','--gbg':'rgba(52,199,89,.12)','--gn':'#34C759','--obg':'rgba(255,149,0,.12)','--or':'#FF9500','--rd':'#FF3B30','--ac':'#4A8FE0'};
 function applyTheme(t){
   var isDark=t==='dark';
+  _curTheme=t;
   var vars=isDark?DARK_VARS:LIGHT_VARS;
   var phone=document.querySelector('.phone');
   Object.keys(vars).forEach(function(k){
@@ -6760,8 +6790,9 @@ function applyTheme(t){
   });
   var energyHero=document.querySelector('.energy-hero');
   var aiproHero=document.querySelector('.aipro-hero');
-  if(isDark){if(energyHero)energyHero.style.background='linear-gradient(160deg,#1A3A4A 0%,#1E3D3A 50%,#1C2E2A 100%)';if(aiproHero)aiproHero.style.background='linear-gradient(140deg,#0F4A40,#0C3B32)';}
-  else{if(energyHero)energyHero.style.background='linear-gradient(160deg,#74C7FF 0%,#7FD8EE 40%,#A8EDD8 70%,#C2F0E8 100%)';if(aiproHero)aiproHero.style.background='linear-gradient(140deg,#1BBFAA,#18B87A)';}
+  if(isDark){if(energyHero)energyHero.style.background='linear-gradient(160deg,#1A3A4A 0%,#1E3D3A 50%,#1C2E2A 100%)';}
+  else{if(energyHero)energyHero.style.background='linear-gradient(160deg,#74C7FF 0%,#7FD8EE 40%,#A8EDD8 70%,#C2F0E8 100%)';}
+  if(aiproHero) aiproHero.style.background=aiproHeroGradient(_netErrorDemo && !_mainIssuesResolved.aiprotect);
   document.querySelectorAll('.theme-item').forEach(function(c){
     var dot=c.querySelector('[id^="tr-"]');if(!dot)return;
     if(c.dataset.t===t){c.classList.add('on');dot.style.background=vars['--ac'];dot.style.border='2px solid '+vars['--ac'];dot.innerHTML='<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/><\/svg>';}
