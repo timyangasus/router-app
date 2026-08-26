@@ -743,8 +743,11 @@ body{display:flex;align-items:center;justify-content:center}
         <div class="sr" style="border:none"><div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">AiProtection 防護</div></div><div class="tg on" id="tg-qa-aiprotect" onclick="this.classList.toggle('on')"></div></div>
       </div>
       <div id="qa-aiprotect-status" style="margin:0 16px 20px"></div>
-      <div style="padding:0 16px 24px">
+      <div style="padding:0 16px 12px">
         <div onclick="runAiproScan()" style="height:48px;border-radius:var(--r2);background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:#fff;cursor:pointer">立即掃描</div>
+      </div>
+      <div style="background:var(--w);margin:0 16px 24px;border-radius:var(--r);box-shadow:var(--sh)">
+        <div class="sr" style="border:none;cursor:pointer" onclick="hide('sub-qa-aiprotect');show('sub-aipro-detail')"><div style="flex:1"><div style="font-size:15px;font-weight:500;color:var(--t2)">更多設定</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
       </div>
     </div>
   </div>
