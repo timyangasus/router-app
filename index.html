@@ -3101,19 +3101,19 @@ body{display:flex;align-items:center;justify-content:center}
           </div>
           <div style="flex:1;background:var(--w);border-radius:14px;padding:14px;text-align:center;box-shadow:var(--sh)">
             <div style="font-size:11px;color:var(--t3);margin-bottom:4px">↑ 上傳</div>
-            <div style="font-size:22px;font-weight:700;color:var(--gn);font-family:var(--m)">128</div>
+            <div id="sp-ul-num" style="font-size:22px;font-weight:700;color:var(--gn);font-family:var(--m)">128</div>
             <div style="font-size:11px;color:var(--t3)">Mbps</div>
           </div>
           <div style="flex:1;background:var(--w);border-radius:14px;padding:14px;text-align:center;box-shadow:var(--sh)">
             <div style="font-size:11px;color:var(--t3);margin-bottom:4px">⊡ 延遲</div>
-            <div style="font-size:22px;font-weight:700;color:var(--or);font-family:var(--m)">12</div>
+            <div id="sp-lat-num" style="font-size:22px;font-weight:700;color:var(--or);font-family:var(--m)">12</div>
             <div style="font-size:11px;color:var(--t3)">ms</div>
           </div>
         </div>
         <div id="sp-btn" onclick="runSpeedTest()" style="height:50px;width:200px;border-radius:25px;background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:#fff;cursor:pointer;box-shadow:0 4px 16px rgba(74,137,232,.35)">
           重新測速
         </div>
-        <div style="font-size:12px;color:var(--t3);margin-top:12px">上次測試：今天 23:30</div>
+        <div id="sp-last-time" style="font-size:12px;color:var(--t3);margin-top:12px">上次測試：今天 23:30</div>
       </div>
       <!-- 歷史記錄 -->
       <span class="sl">測速記錄</span>
@@ -3121,6 +3121,44 @@ body{display:flex;align-items:center;justify-content:center}
         <div class="sr"><div style="flex:1"><div style="font-size:15px;font-weight:500;color:var(--tx)">今天 23:30</div></div><div style="text-align:right"><div style="font-size:13px;color:var(--ac);font-family:var(--m)">↓ 512 Mbps</div><div style="font-size:12px;color:var(--gn);font-family:var(--m)">↑ 128 Mbps</div></div></div>
         <div class="sr"><div style="flex:1"><div style="font-size:15px;font-weight:500;color:var(--tx)">今天 18:12</div></div><div style="text-align:right"><div style="font-size:13px;color:var(--ac);font-family:var(--m)">↓ 498 Mbps</div><div style="font-size:12px;color:var(--gn);font-family:var(--m)">↑ 115 Mbps</div></div></div>
         <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:15px;font-weight:500;color:var(--tx)">昨天 22:05</div></div><div style="text-align:right"><div style="font-size:13px;color:var(--ac);font-family:var(--m)">↓ 480 Mbps</div><div style="font-size:12px;color:var(--gn);font-family:var(--m)">↑ 110 Mbps</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUB: 網速測試結果 -->
+  <div class="sub" id="sub-speedtest-result">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" onclick="hide('sub-speedtest-result')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">測速結果</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <div style="padding:32px 20px 20px;display:flex;flex-direction:column;align-items:center">
+        <div id="spr-icon-circle" style="width:76px;height:76px;border-radius:50%;background:var(--gbg);display:flex;align-items:center;justify-content:center;margin-bottom:16px">
+          <svg id="spr-icon" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div id="spr-title" style="font-size:20px;font-weight:700;color:var(--tx);margin-bottom:6px">網速良好</div>
+        <div id="spr-desc" style="font-size:14px;color:var(--t3);line-height:1.6;text-align:center;max-width:280px;margin-bottom:24px">您的網路連線穩定，速度符合正常水準</div>
+        <div style="display:flex;gap:12px;width:100%;max-width:320px;margin-bottom:20px">
+          <div style="flex:1;background:var(--w);border-radius:14px;padding:14px;text-align:center;box-shadow:var(--sh)">
+            <div style="font-size:11px;color:var(--t3);margin-bottom:4px">↓ 下載</div>
+            <div id="spr-dl-num" style="font-size:20px;font-weight:700;color:var(--ac);font-family:var(--m)">512</div>
+            <div style="font-size:11px;color:var(--t3)">Mbps</div>
+          </div>
+          <div style="flex:1;background:var(--w);border-radius:14px;padding:14px;text-align:center;box-shadow:var(--sh)">
+            <div style="font-size:11px;color:var(--t3);margin-bottom:4px">↑ 上傳</div>
+            <div id="spr-ul-num" style="font-size:20px;font-weight:700;color:var(--gn);font-family:var(--m)">128</div>
+            <div style="font-size:11px;color:var(--t3)">Mbps</div>
+          </div>
+          <div style="flex:1;background:var(--w);border-radius:14px;padding:14px;text-align:center;box-shadow:var(--sh)">
+            <div style="font-size:11px;color:var(--t3);margin-bottom:4px">⊡ 延遲</div>
+            <div id="spr-lat-num" style="font-size:20px;font-weight:700;color:var(--or);font-family:var(--m)">12</div>
+            <div style="font-size:11px;color:var(--t3)">ms</div>
+          </div>
+        </div>
+      </div>
+      <div id="spr-suggest-wrap" style="padding:0 20px"></div>
+      <div style="padding:8px 20px 28px;display:flex;justify-content:center">
+        <div onclick="retrySpeedTest()" style="height:50px;width:200px;border-radius:25px;background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:#fff;cursor:pointer;box-shadow:0 4px 16px rgba(74,137,232,.35)">重新測試</div>
       </div>
     </div>
   </div>
@@ -3270,7 +3308,7 @@ function goTab(t){
   if(ct){ct.scrollTop=0;}
   // hide family back when switching tabs normally
   if(t==='family'){var fb=document.getElementById('family-back-btn');if(fb)fb.style.display='none';}
-  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-qa-aiprotect','sub-qa-vpn','sub-qa-led','sub-led-manage','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-qa-qos','sub-qos-priority','sub-qos-mode-picker','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-channelbw','sub-pro-channel','sub-pro-bandwidth','sub-pro-mloadv','sub-pro-dfs','sub-pro-mlo','sub-pro-vpnfusion','sub-pro-restartsched','sub-node-detail','sub-node-lighting','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','sub-node-location','sub-diag-fix','sub-language','ov-mesh'].forEach(hide);
+  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-qa-aiprotect','sub-qa-vpn','sub-qa-led','sub-led-manage','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-speedtest-result','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-qa-qos','sub-qos-priority','sub-qos-mode-picker','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-channelbw','sub-pro-channel','sub-pro-bandwidth','sub-pro-mloadv','sub-pro-dfs','sub-pro-mlo','sub-pro-vpnfusion','sub-pro-restartsched','sub-node-detail','sub-node-lighting','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','sub-node-location','sub-diag-fix','sub-language','ov-mesh'].forEach(hide);
   // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
     var bar=document.getElementById('ai-input-bar');
@@ -5905,8 +5943,59 @@ function runSpeedTest(){
   var num=document.getElementById('sp-num');
   if(!btn||!num)return;
   btn.textContent='測速中…';btn.style.background='var(--t3)';btn.style.pointerEvents='none';
-  var val=0;var target=Math.floor(Math.random()*200+400);
-  var t=setInterval(function(){val+=Math.floor(Math.random()*40+10);if(val>=target){val=target;clearInterval(t);btn.textContent='重新測速';btn.style.background='var(--ac)';btn.style.pointerEvents='';}num.textContent=val;},80);
+  var bad=_netErrorDemo;
+  var target=bad?Math.floor(Math.random()*60+30):Math.floor(Math.random()*200+400);
+  var ulVal=bad?Math.floor(Math.random()*20+5):Math.floor(Math.random()*70+80);
+  var latVal=bad?Math.floor(Math.random()*90+60):Math.floor(Math.random()*15+5);
+  var val=0;
+  var t=setInterval(function(){
+    val+=Math.max(1,Math.floor(target/12));
+    if(val>=target){
+      val=target;clearInterval(t);
+      btn.textContent='重新測速';btn.style.background='var(--ac)';btn.style.pointerEvents='';
+      var ulEl=document.getElementById('sp-ul-num'); if(ulEl) ulEl.textContent=ulVal;
+      var latEl=document.getElementById('sp-lat-num'); if(latEl) latEl.textContent=latVal;
+      var lastEl=document.getElementById('sp-last-time'); if(lastEl) lastEl.textContent='上次測試：剛剛';
+      renderSpeedResult(target,ulVal,latVal,bad);
+      show('sub-speedtest-result');
+    }
+    num.textContent=val;
+  },80);
+}
+function renderSpeedResult(dl,ul,lat,bad){
+  g('spr-dl-num').textContent=dl;
+  g('spr-ul-num').textContent=ul;
+  g('spr-lat-num').textContent=lat;
+  var circle=g('spr-icon-circle'),icon=g('spr-icon'),title=g('spr-title'),desc=g('spr-desc'),wrap=g('spr-suggest-wrap');
+  if(bad){
+    circle.style.background='var(--obg)';
+    icon.setAttribute('stroke','var(--or)');
+    icon.innerHTML=_netErrorIcons.warn;
+    title.textContent='網速不佳';
+    title.style.color='var(--or)';
+    desc.textContent='偵測到目前網速低於正常水準，可能影響瀏覽、串流或遊戲體驗';
+    wrap.innerHTML='<div style="background:#FFFBEB;border:1.5px solid var(--or);border-radius:var(--r);padding:14px;margin-bottom:8px">'
+      +'<div style="font-size:14px;font-weight:700;color:var(--tx);margin-bottom:8px">建議方案</div>'
+      +'<div style="font-size:13px;color:var(--tx);line-height:1.9">'
+      +'• 重新啟動路由器或數據機<br>'
+      +'• 確認連線裝置數量是否過多，避免同時佔用頻寬<br>'
+      +'• 將裝置移到離路由器或 AiMesh 節點較近的位置<br>'
+      +'• 啟用 QoS 頻寬管理，優先保障重要裝置頻寬'
+      +'</div></div>';
+  }else{
+    circle.style.background='var(--gbg)';
+    icon.setAttribute('stroke','var(--gn)');
+    icon.innerHTML=_netErrorIcons.ok;
+    title.textContent='網速良好';
+    title.style.color='var(--tx)';
+    desc.textContent='您的網路連線穩定，速度符合正常水準';
+    wrap.innerHTML='';
+  }
+}
+function retrySpeedTest(){
+  hide('sub-speedtest-result');
+  show('sub-speedtest');
+  runSpeedTest();
 }
 function renderFamilyList(){
   var el=document.getElementById('family-list-body');if(!el)return;
