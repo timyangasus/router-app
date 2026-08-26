@@ -752,6 +752,32 @@ body{display:flex;align-items:center;justify-content:center}
     </div>
   </div>
 
+  <!-- SUB: VPN（常用操作簡化版） -->
+  <div class="sub" id="sub-qa-vpn">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="qa-vpn-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">VPN</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <div style="background:var(--w);margin:16px 16px 12px;border-radius:var(--r);box-shadow:var(--sh)">
+        <div class="sr" style="border:none"><div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">VPN 連線</div></div><div class="tg" id="tg-qa-vpn" onclick="toggleQaVpn()"></div></div>
+      </div>
+      <div style="background:var(--w);margin:0 16px 24px;border-radius:var(--r);box-shadow:var(--sh)" id="qa-vpn-current"></div>
+      <div style="background:var(--w);margin:0 16px 24px;border-radius:var(--r);box-shadow:var(--sh)">
+        <div class="sr" style="border:none;cursor:pointer" onclick="hide('sub-qa-vpn');show('sub-pro-vpnc')"><div style="flex:1"><div style="font-size:15px;font-weight:500;color:var(--t2)">更多設定</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OV: VPN 常用操作 - 選擇設定檔 -->
+  <div class="ov" id="ov-qa-vpn-profile" onclick="if(event.target===this)hide('ov-qa-vpn-profile')">
+    <div class="sheet">
+      <div class="hdl"></div>
+      <div style="font-size:18px;font-weight:600;color:var(--tx);margin-bottom:16px">選擇 VPN 設定檔</div>
+      <div id="qa-vpn-profile-list"></div>
+    </div>
+  </div>
+
   <!-- OV: AiProtection 即時檢查 -->
   <div class="ov" id="ov-aipro-scan" onclick="if(event.target===this)hide('ov-aipro-scan')">
     <div class="sheet" id="aipro-scan-body"></div>
@@ -3154,7 +3180,7 @@ function goTab(t){
   if(ct){ct.scrollTop=0;}
   // hide family back when switching tabs normally
   if(t==='family'){var fb=document.getElementById('family-back-btn');if(fb)fb.style.display='none';}
-  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-qa-aiprotect','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-channelbw','sub-pro-channel','sub-pro-bandwidth','sub-pro-mloadv','sub-pro-dfs','sub-pro-mlo','sub-pro-vpnfusion','sub-pro-restartsched','sub-node-detail','sub-node-lighting','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','sub-node-location','sub-diag-fix','sub-language','ov-mesh'].forEach(hide);
+  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-qa-aiprotect','sub-qa-vpn','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-channelbw','sub-pro-channel','sub-pro-bandwidth','sub-pro-mloadv','sub-pro-dfs','sub-pro-mlo','sub-pro-vpnfusion','sub-pro-restartsched','sub-node-detail','sub-node-lighting','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','sub-node-location','sub-diag-fix','sub-language','ov-mesh'].forEach(hide);
   // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
     var bar=document.getElementById('ai-input-bar');
@@ -3339,6 +3365,7 @@ var QA_ALL = [
   {id:'qa-reboot',      icon:'reboot',  label:'重啟路由器',     action:'reboot'},
   {id:'qa-led',         icon:'led',     label:'系統LED燈號',        action:'led'},
   {id:'qa-backup',      icon:'cloud',   label:'備份／還原設定',     action:'backup'},
+  {id:'qa-vpn',         icon:'vpn',     label:'VPN',                action:'vpn'},
 ];
 
 var QA_CATEGORIES = [
@@ -3370,6 +3397,7 @@ function qaSvg(icon, color) {
     bell:    '<path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/>',
     upload:  '<polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/>',
     shield:  '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>',
+    vpn:     '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
     mesh:    '<circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="12" y1="8" x2="5" y2="16"/><line x1="12" y1="8" x2="19" y2="16"/>',
     reboot:  '<polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/>',
     speed:   '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42"/>',
@@ -3863,6 +3891,7 @@ function renderQAGrid() {
       else if (act==='aiprotect')   openQaAiprotect();
       else if (act==='led')         show('sub-led');
       else if (act==='backup')      show('sub-pro-backup');
+      else if (act==='vpn')         openQaVpn();
     });
   });
   // re-check home scroll
@@ -4245,6 +4274,7 @@ window.addEventListener('load',function(){
   bind('aipro-scan-btn',function(){runAiproScan();});
   bind('aipro-malsite-back',function(){hide('sub-aipro-malsite');});
   bind('qa-aiprotect-back',function(){hide('sub-qa-aiprotect');});
+  bind('qa-vpn-back',function(){hide('sub-qa-vpn');});
   // security rows
   var secRows=[['預設帳號密碼','通過'],['UPnP 服務','通過'],['WAN 端網頁存取','通過'],['WAN 端 Ping 回應','通過'],['遠端管理','通過'],['韌體版本','最新版本'],['Wi-Fi 加密','已啟用 WPA3']];
   var secEl=document.getElementById('security-rows');
@@ -6302,6 +6332,47 @@ function renderAiproQuickStatus(){
   el.innerHTML = hasIssue
     ? '<div style="background:var(--obg);border-radius:var(--r);padding:16px;display:flex;align-items:center;gap:12px"><div style="width:44px;height:44px;border-radius:50%;background:rgba(232,156,26,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div><div style="font-size:16px;font-weight:700;color:var(--tx)">網路安全</div><div style="font-size:13px;color:var(--or);margin-top:2px">發現 1 個安全問題</div></div></div>'
     : '<div style="background:var(--gbg);border-radius:var(--r);padding:16px;display:flex;align-items:center;gap:12px"><div style="width:44px;height:44px;border-radius:50%;background:rgba(24,184,122,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div><div style="font-size:16px;font-weight:700;color:var(--tx)">網路安全</div><div style="font-size:13px;color:var(--gn);margin-top:2px">目前未發現安全問題</div></div></div>';
+}
+var VPN_QA_PROFILES=[
+  {name:'Work VPN', proto:'OpenVPN'},
+  {name:'Home Lab', proto:'WireGuard'}
+];
+var _vpnQaConnected=false;
+var _vpnQaActiveIdx=0;
+function openQaVpn(){
+  var t=g('tg-qa-vpn');if(t)t.classList.toggle('on',_vpnQaConnected);
+  renderQaVpnStatus();
+  show('sub-qa-vpn');
+}
+function toggleQaVpn(){
+  _vpnQaConnected=!_vpnQaConnected;
+  var t=g('tg-qa-vpn');if(t)t.classList.toggle('on',_vpnQaConnected);
+  renderQaVpnStatus();
+}
+function renderQaVpnStatus(){
+  var el=g('qa-vpn-current');if(!el)return;
+  var p=VPN_QA_PROFILES[_vpnQaActiveIdx];
+  el.innerHTML='<div class="sr" style="border:none;cursor:pointer" onclick="show(\'ov-qa-vpn-profile\');renderQaVpnProfileList()">'
+    +'<div style="flex:1"><div style="font-size:13px;color:var(--t3)">目前連線</div><div style="font-size:17px;font-weight:600;color:var(--tx);margin-top:2px">'+p.name+'</div></div>'
+    +'<div style="display:flex;align-items:center;gap:6px"><span style="font-size:13px;font-weight:600;color:'+(_vpnQaConnected?'var(--gn)':'var(--t3)')+'">'+(_vpnQaConnected?'已連線':'未連線')+'</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>'
+    +'</div>';
+}
+function qaVpnProfileRow(p,i,divider){
+  var sel=i===_vpnQaActiveIdx;
+  return '<div onclick="selectQaVpnProfile('+i+')" style="display:flex;align-items:center;padding:16px 4px;cursor:pointer;'+(divider?'border-bottom:1px solid var(--bd)':'')+'">'
+    +'<div style="flex:1"><div style="font-size:17px;font-weight:500;color:var(--tx)">'+p.name+'</div><div style="font-size:12px;color:var(--t3);margin-top:2px">'+p.proto+'</div></div>'
+    +(sel?'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>':'')
+  +'</div>';
+}
+function renderQaVpnProfileList(){
+  var el=g('qa-vpn-profile-list');if(!el)return;
+  el.innerHTML=VPN_QA_PROFILES.map(function(p,i){return qaVpnProfileRow(p,i,i<VPN_QA_PROFILES.length-1);}).join('');
+}
+function selectQaVpnProfile(i){
+  _vpnQaActiveIdx=i;
+  renderQaVpnProfileList();
+  renderQaVpnStatus();
+  hide('ov-qa-vpn-profile');
 }
 function runAiproScan(){
   var body=g('aipro-scan-body');if(!body)return;
