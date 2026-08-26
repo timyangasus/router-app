@@ -778,6 +778,24 @@ body{display:flex;align-items:center;justify-content:center}
     </div>
   </div>
 
+  <!-- SUB: LED（常用操作簡化版） -->
+  <div class="sub" id="sub-qa-led">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="qa-led-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">LED</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <div style="background:var(--w);margin:16px 16px 24px;border-radius:var(--r);box-shadow:var(--sh)">
+        <div class="sr" style="border-bottom:1px solid var(--bd)"><div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-7 7c0 2.7 1.5 4.2 2.5 5.7S9 17 9 18h6c0-1 .5-1.5 1.5-3S19 11.7 19 9a7 7 0 00-7-7z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">LED 燈光</div></div><div class="tg on tg-led-enable" onclick="toggleLedEnable()" style="cursor:pointer"></div></div>
+        <div class="sr" style="border-bottom:1px solid var(--bd)"><div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Aura</div></div><div class="tg on tg-aura-enable" onclick="toggleAuraEnable()" style="cursor:pointer"></div></div>
+        <div class="sr" style="border:none"><div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Night Mode</div></div><div class="tg on tg-nightmode-enable" onclick="toggleNightmodeEnable()" style="cursor:pointer"></div></div>
+      </div>
+      <div style="background:var(--w);margin:0 16px 24px;border-radius:var(--r);box-shadow:var(--sh)">
+        <div class="sr" style="border:none;cursor:pointer" onclick="hide('sub-qa-led');show('sub-led')"><div style="flex:1"><div style="font-size:15px;font-weight:500;color:var(--t2)">更多設定</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+    </div>
+  </div>
+
   <!-- OV: AiProtection 即時檢查 -->
   <div class="ov" id="ov-aipro-scan" onclick="if(event.target===this)hide('ov-aipro-scan')">
     <div class="sheet" id="aipro-scan-body"></div>
@@ -1880,7 +1898,7 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="padding:16px 20px 4px;font-size:14px;color:var(--t3);line-height:1.6">燈號顏色代表路由器目前的運作狀態，需要安靜的環境時可以關閉。</div>
       <span class="sl">燈號控制</span>
       <div style="background:var(--w)">
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">LED 燈號</div><div style="font-size:13px;color:var(--t3);margin-top:2px">開啟時路由器正常運作</div></div><div class="tg on" id="tg-led-main"></div></div>
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">LED 燈號</div><div style="font-size:13px;color:var(--t3);margin-top:2px">開啟時路由器正常運作</div></div><div class="tg on tg-led-enable" id="tg-led-main" onclick="toggleLedEnable()" style="cursor:pointer"></div></div>
         <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">夜間自動關閉</div><div style="font-size:13px;color:var(--t3);margin-top:2px">指定時段關閉燈號</div></div><div class="tg" id="tg-led-night"></div></div>
       </div>
       <span class="sl">排程</span>
@@ -1907,7 +1925,7 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="padding:16px 20px 4px;font-size:14px;color:var(--t3);line-height:1.6">自訂路由器的燈光效果與顏色，也可以跟其他 Aura Sync 裝置同步變化。</div>
       <span class="sl">燈光效果</span>
       <div style="background:var(--w)">
-        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 Aura RGB</div></div><div class="tg on" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 Aura RGB</div></div><div class="tg on tg-aura-enable" onclick="toggleAuraEnable()" style="cursor:pointer"></div></div>
       </div>
       <div style="padding:14px 16px;display:flex;gap:10px;overflow-x:auto">
         <div style="flex-shrink:0;width:76px;height:76px;border-radius:14px;background:var(--w);box-shadow:0 0 0 2px var(--ac) inset;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px"><div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#FF3B30,#FF9500,#59D37A,#0A84FF,#AF52DE)"></div><div style="font-size:11px;font-weight:600;color:var(--tx)">彩虹</div></div>
@@ -1946,7 +1964,7 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="padding:16px 20px 4px;font-size:14px;color:var(--t3);line-height:1.6">指定時段自動關閉燈號，避免夜間燈光影響睡眠。</div>
       <span class="sl">排程</span>
       <div style="background:var(--w)">
-        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用夜間模式</div></div><div class="tg on" onclick="this.classList.toggle('on')" style="cursor:pointer"></div></div>
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用夜間模式</div></div><div class="tg on tg-nightmode-enable" onclick="toggleNightmodeEnable()" style="cursor:pointer"></div></div>
         <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">開始時間</div></div><span style="font-size:14px;color:var(--t2)">22:00</span></div>
         <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">結束時間</div></div><span style="font-size:14px;color:var(--t2)">07:00</span></div>
       </div>
@@ -3231,7 +3249,7 @@ function goTab(t){
   if(ct){ct.scrollTop=0;}
   // hide family back when switching tabs normally
   if(t==='family'){var fb=document.getElementById('family-back-btn');if(fb)fb.style.display='none';}
-  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-qa-aiprotect','sub-qa-vpn','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-qa-qos','sub-qos-priority','sub-qos-mode-picker','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-channelbw','sub-pro-channel','sub-pro-bandwidth','sub-pro-mloadv','sub-pro-dfs','sub-pro-mlo','sub-pro-vpnfusion','sub-pro-restartsched','sub-node-detail','sub-node-lighting','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','sub-node-location','sub-diag-fix','sub-language','ov-mesh'].forEach(hide);
+  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-qa-aiprotect','sub-qa-vpn','sub-qa-led','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-qa-qos','sub-qos-priority','sub-qos-mode-picker','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-channelbw','sub-pro-channel','sub-pro-bandwidth','sub-pro-mloadv','sub-pro-dfs','sub-pro-mlo','sub-pro-vpnfusion','sub-pro-restartsched','sub-node-detail','sub-node-lighting','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','sub-node-location','sub-diag-fix','sub-language','ov-mesh'].forEach(hide);
   // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
     var bar=document.getElementById('ai-input-bar');
@@ -4029,7 +4047,7 @@ function renderQAGrid() {
       else if (act==='speed')       show('sub-speedtest');
       else if (act==='family')      { goTab('family'); var fb=document.getElementById('family-back-btn'); if(fb)fb.style.display='flex'; }
       else if (act==='aiprotect')   openQaAiprotect();
-      else if (act==='led')         show('sub-led');
+      else if (act==='led')         openQaLed();
       else if (act==='backup')      show('sub-pro-backup');
       else if (act==='vpn')         openQaVpn();
     });
@@ -4419,6 +4437,7 @@ window.addEventListener('load',function(){
   bind('aipro-malsite-back',function(){hide('sub-aipro-malsite');});
   bind('qa-aiprotect-back',function(){hide('sub-qa-aiprotect');});
   bind('qa-vpn-back',function(){hide('sub-qa-vpn');});
+  bind('qa-led-back',function(){hide('sub-qa-led');});
   bind('qa-qos-back',function(){hide('sub-qa-qos');});
   bind('qos-priority-back',function(){hide('sub-qos-priority');});
   bind('qos-mode-picker-back',function(){hide('sub-qos-mode-picker');});
@@ -6484,6 +6503,27 @@ var VPN_QA_PROFILES=[
   {name:'Work VPN', proto:'OpenVPN'},
   {name:'Home Lab', proto:'WireGuard'}
 ];
+var _ledEnabled=true;
+var _auraEnabled=true;
+var _nightmodeEnabled=true;
+function toggleLedEnable(){
+  _ledEnabled=!_ledEnabled;
+  document.querySelectorAll('.tg-led-enable').forEach(function(t){t.classList.toggle('on',_ledEnabled);});
+}
+function toggleAuraEnable(){
+  _auraEnabled=!_auraEnabled;
+  document.querySelectorAll('.tg-aura-enable').forEach(function(t){t.classList.toggle('on',_auraEnabled);});
+}
+function toggleNightmodeEnable(){
+  _nightmodeEnabled=!_nightmodeEnabled;
+  document.querySelectorAll('.tg-nightmode-enable').forEach(function(t){t.classList.toggle('on',_nightmodeEnabled);});
+}
+function openQaLed(){
+  document.querySelectorAll('.tg-led-enable').forEach(function(t){t.classList.toggle('on',_ledEnabled);});
+  document.querySelectorAll('.tg-aura-enable').forEach(function(t){t.classList.toggle('on',_auraEnabled);});
+  document.querySelectorAll('.tg-nightmode-enable').forEach(function(t){t.classList.toggle('on',_nightmodeEnabled);});
+  show('sub-qa-led');
+}
 var _vpnQaConnected=false;
 var _vpnQaActiveIdx=0;
 function openQaVpn(){
