@@ -3100,7 +3100,7 @@ body{display:flex;align-items:center;justify-content:center}
         <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">啟用 QoS</div><div style="font-size:13px;color:var(--t3);margin-top:2px">依優先權管理各裝置頻寬分配</div></div><div class="tg on tg-qos-enable" onclick="toggleQosEnable()" style="cursor:pointer"></div></div>
       </div>
       <span class="sl">QoS 模式</span>
-      <div style="background:var(--w)" class="qosmode-list-inline"></div>
+      <div style="background:var(--w)" id="qos-mode-summary-row"></div>
       <span class="sl">頻寬設定</span>
       <div style="background:var(--w)">
         <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">自動偵測網路頻寬</div></div><div class="tg on" id="tg-qos-bwauto" onclick="toggleQosBwAuto(this)" style="cursor:pointer"></div></div>
@@ -3110,6 +3110,17 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="background:var(--w)" id="qos-priority-main-row"></div>
       <span class="sl">QoS 狀態</span>
       <div style="background:var(--w)" id="qos-status-body"></div>
+    </div>
+  </div>
+
+  <!-- SUB: QoS 模式選擇 -->
+  <div class="sub" id="sub-qos-mode-picker">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="qos-mode-picker-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">QoS 模式</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <div style="background:var(--w)" class="qosmode-list-inline"></div>
     </div>
   </div>
 
@@ -3220,7 +3231,7 @@ function goTab(t){
   if(ct){ct.scrollTop=0;}
   // hide family back when switching tabs normally
   if(t==='family'){var fb=document.getElementById('family-back-btn');if(fb)fb.style.display='none';}
-  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-qa-aiprotect','sub-qa-vpn','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-qa-qos','sub-qos-priority','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-channelbw','sub-pro-channel','sub-pro-bandwidth','sub-pro-mloadv','sub-pro-dfs','sub-pro-mlo','sub-pro-vpnfusion','sub-pro-restartsched','sub-node-detail','sub-node-lighting','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','sub-node-location','sub-diag-fix','sub-language','ov-mesh'].forEach(hide);
+  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-qa-aiprotect','sub-qa-vpn','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-qa-qos','sub-qos-priority','sub-qos-mode-picker','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-channelbw','sub-pro-channel','sub-pro-bandwidth','sub-pro-mloadv','sub-pro-dfs','sub-pro-mlo','sub-pro-vpnfusion','sub-pro-restartsched','sub-node-detail','sub-node-lighting','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','sub-node-location','sub-diag-fix','sub-language','ov-mesh'].forEach(hide);
   // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
     var bar=document.getElementById('ai-input-bar');
@@ -3485,12 +3496,27 @@ function renderQosModeListInline(){
 function selectQosMode(id){
   _qosModeSelected=id;
   renderQosModeListInline();
+  renderQosModeSummaryRow();
   renderQosStatus();
+  if(g('sub-qos-mode-picker').classList.contains('on'))hide('sub-qos-mode-picker');
 }
 function toggleQosEnable(){
   _qosEnabled=!_qosEnabled;
   document.querySelectorAll('.tg-qos-enable').forEach(function(t){t.classList.toggle('on',_qosEnabled);});
   renderQosModeListInline();
+  renderQosModeSummaryRow();
+}
+function renderQosModeSummaryRow(){
+  var el=g('qos-mode-summary-row');if(!el)return;
+  var mode=QOS_MODES.filter(function(m){return m.id===_qosModeSelected;})[0];
+  el.innerHTML='<div class="sr" style="border:none;cursor:pointer"><div style="width:32px;height:32px;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-right:14px">'+(mode?mode.icon:'')+'</div><div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">'+(mode?mode.title:'-')+'</div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>';
+  el.querySelector('.sr').onclick=openQosModePicker;
+  el.style.opacity=_qosEnabled?'1':'.45';
+  el.style.pointerEvents=_qosEnabled?'':'none';
+}
+function openQosModePicker(){
+  renderQosModeListInline();
+  show('sub-qos-mode-picker');
 }
 var _qosBwAuto=true;
 var _qosBwVal={down:'500',up:'100'};
@@ -4277,6 +4303,7 @@ window.addEventListener('load',function(){
   renderChannelBwHub();
   renderMloAdvHub();
   renderQosModeListInline();
+  renderQosModeSummaryRow();
   renderQosBwDetail();
   renderQosPriorityMainRow();
   renderQosStatus();
@@ -4394,6 +4421,7 @@ window.addEventListener('load',function(){
   bind('qa-vpn-back',function(){hide('sub-qa-vpn');});
   bind('qa-qos-back',function(){hide('sub-qa-qos');});
   bind('qos-priority-back',function(){hide('sub-qos-priority');});
+  bind('qos-mode-picker-back',function(){hide('sub-qos-mode-picker');});
   // security rows
   var secRows=[['預設帳號密碼','通過'],['UPnP 服務','通過'],['WAN 端網頁存取','通過'],['WAN 端 Ping 回應','通過'],['遠端管理','通過'],['韌體版本','最新版本'],['Wi-Fi 加密','已啟用 WPA3']];
   var secEl=document.getElementById('security-rows');
