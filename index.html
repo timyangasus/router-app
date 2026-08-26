@@ -732,6 +732,23 @@ body{display:flex;align-items:center;justify-content:center}
     </div>
   </div>
 
+  <!-- SUB: AiProtection（常用操作簡化版） -->
+  <div class="sub" id="sub-qa-aiprotect">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="qa-aiprotect-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">AiProtection</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <div style="background:var(--w);margin:16px 16px 12px;border-radius:var(--r);box-shadow:var(--sh)">
+        <div class="sr" style="border:none"><div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="var(--is)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">AiProtection 防護</div></div><div class="tg on" id="tg-qa-aiprotect" onclick="this.classList.toggle('on')"></div></div>
+      </div>
+      <div id="qa-aiprotect-status" style="margin:0 16px 20px"></div>
+      <div style="padding:0 16px 24px">
+        <div onclick="runAiproScan()" style="height:48px;border-radius:var(--r2);background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:#fff;cursor:pointer">立即掃描</div>
+      </div>
+    </div>
+  </div>
+
   <!-- OV: AiProtection 即時檢查 -->
   <div class="ov" id="ov-aipro-scan" onclick="if(event.target===this)hide('ov-aipro-scan')">
     <div class="sheet" id="aipro-scan-body"></div>
@@ -3134,7 +3151,7 @@ function goTab(t){
   if(ct){ct.scrollTop=0;}
   // hide family back when switching tabs normally
   if(t==='family'){var fb=document.getElementById('family-back-btn');if(fb)fb.style.display='none';}
-  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-channelbw','sub-pro-channel','sub-pro-bandwidth','sub-pro-mloadv','sub-pro-dfs','sub-pro-mlo','sub-pro-vpnfusion','sub-pro-restartsched','sub-node-detail','sub-node-lighting','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','sub-node-location','sub-diag-fix','sub-language','ov-mesh'].forEach(hide);
+  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-qa-aiprotect','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-channelbw','sub-pro-channel','sub-pro-bandwidth','sub-pro-mloadv','sub-pro-dfs','sub-pro-mlo','sub-pro-vpnfusion','sub-pro-restartsched','sub-node-detail','sub-node-lighting','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','sub-node-location','sub-diag-fix','sub-language','ov-mesh'].forEach(hide);
   // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
     var bar=document.getElementById('ai-input-bar');
@@ -3840,7 +3857,7 @@ function renderQAGrid() {
       else if (act==='reboot')      show('sub-reboot');
       else if (act==='speed')       show('sub-speedtest');
       else if (act==='family')      { goTab('family'); var fb=document.getElementById('family-back-btn'); if(fb)fb.style.display='flex'; }
-      else if (act==='aiprotect')   show('sub-aipro-detail');
+      else if (act==='aiprotect')   openQaAiprotect();
       else if (act==='led')         show('sub-led');
       else if (act==='backup')      show('sub-pro-backup');
     });
@@ -4224,6 +4241,7 @@ window.addEventListener('load',function(){
   });
   bind('aipro-scan-btn',function(){runAiproScan();});
   bind('aipro-malsite-back',function(){hide('sub-aipro-malsite');});
+  bind('qa-aiprotect-back',function(){hide('sub-qa-aiprotect');});
   // security rows
   var secRows=[['預設帳號密碼','通過'],['UPnP 服務','通過'],['WAN 端網頁存取','通過'],['WAN 端 Ping 回應','通過'],['遠端管理','通過'],['韌體版本','最新版本'],['Wi-Fi 加密','已啟用 WPA3']];
   var secEl=document.getElementById('security-rows');
@@ -6271,6 +6289,17 @@ function removeAiproSite(idx){
   AIPRO_BLOCKED_SITES.splice(idx,1);
   renderAiproMalsite();
 }
+function openQaAiprotect(){
+  renderAiproQuickStatus();
+  show('sub-qa-aiprotect');
+}
+function renderAiproQuickStatus(){
+  var el=g('qa-aiprotect-status');if(!el)return;
+  var hasIssue=_netErrorDemo && !_mainIssuesResolved.aiprotect;
+  el.innerHTML = hasIssue
+    ? '<div style="background:var(--obg);border-radius:var(--r);padding:16px;display:flex;align-items:center;gap:12px"><div style="width:44px;height:44px;border-radius:50%;background:rgba(232,156,26,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div><div style="font-size:16px;font-weight:700;color:var(--tx)">網路安全</div><div style="font-size:13px;color:var(--or);margin-top:2px">發現 1 個安全問題</div></div></div>'
+    : '<div style="background:var(--gbg);border-radius:var(--r);padding:16px;display:flex;align-items:center;gap:12px"><div style="width:44px;height:44px;border-radius:50%;background:rgba(24,184,122,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div><div style="font-size:16px;font-weight:700;color:var(--tx)">網路安全</div><div style="font-size:13px;color:var(--gn);margin-top:2px">目前未發現安全問題</div></div></div>';
+}
 function runAiproScan(){
   var body=g('aipro-scan-body');if(!body)return;
   body.innerHTML='<div class="hdl"></div>'
@@ -6281,6 +6310,7 @@ function runAiproScan(){
   show('ov-aipro-scan');
   setTimeout(function(){
     if(_netErrorDemo){ _mainIssuesResolved.aiprotect=true; checkMainIssuesCleared(); }
+    renderAiproQuickStatus();
     var items=['即時網路防護','惡意網站封鎖','雙向 IPS','受感染裝置偵測'];
     body.innerHTML='<div class="hdl"></div>'
       +'<div style="display:flex;flex-direction:column;align-items:center;padding:8px 12px 20px">'
