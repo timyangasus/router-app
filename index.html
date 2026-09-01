@@ -810,13 +810,15 @@ body{display:flex;align-items:center;justify-content:center}
       <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">韌體更新</div>
     </div>
     <div style="flex:1;overflow-y:auto;background:var(--bg)">
-      <div id="qa-fw-status" style="margin:16px 16px 20px"></div>
+      <div id="qa-fw-status" style="margin:16px 16px 12px"></div>
+      <div style="padding:0 16px 20px;display:flex;justify-content:center">
+        <div id="qa-fw-check-btn" onclick="checkFwUpdate('qa-fw-check-btn')" style="height:44px;padding:0 20px;border-radius:22px;border:1.5px solid var(--ac);display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+          <span style="font-size:14px;font-weight:600;color:var(--ac)">檢查更新</span>
+        </div>
+      </div>
       <div style="background:var(--w);margin:0 16px 20px;border-radius:var(--r);box-shadow:var(--sh)">
         <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">目前版本</div></div><div id="qa-fw-current-version" style="font-size:14px;font-weight:500;color:var(--t3);font-family:var(--m)">3.0.0.4.390</div></div>
-      </div>
-      <div style="background:var(--w);margin:0 16px 24px;border-radius:var(--r);box-shadow:var(--sh)">
-        <div class="sr" style="border-bottom:1px solid var(--bd)"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">自動更新</div></div><div class="tg on tg-fw-autoupdate" onclick="toggleFwAutoUpdate()" style="cursor:pointer"></div></div>
-        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">預約更新</div></div><div class="tg on tg-fw-schedule" onclick="toggleFwSchedule()" style="cursor:pointer"></div></div>
       </div>
       <div style="background:var(--w);margin:0 16px 24px;border-radius:var(--r);box-shadow:var(--sh)">
         <div class="sr" style="border:none;cursor:pointer" onclick="hide('sub-qa-fw');renderFwStatus(_fwIsLatest);show('sub-fw')"><div style="flex:1"><div style="font-size:15px;font-weight:500;color:var(--t2)">更多設定</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
@@ -1345,6 +1347,12 @@ body{display:flex;align-items:center;justify-content:center}
             立即更新
           </div>
         </div>
+        <div style="padding:0 16px 16px;display:flex;justify-content:center">
+          <div id="fw-check-btn" onclick="checkFwUpdate('fw-check-btn')" style="height:44px;padding:0 20px;border-radius:22px;border:1.5px solid var(--ac);display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+            <span style="font-size:14px;font-weight:600;color:var(--ac)">檢查更新</span>
+          </div>
+        </div>
       </div>
       <!-- 目前版本 -->
       <span class="sl">目前版本</span>
@@ -1361,6 +1369,13 @@ body{display:flex;align-items:center;justify-content:center}
           <div style="font-size:14px;color:var(--t3)">上次更新</div>
           <div style="font-size:17px;font-weight:600;color:var(--tx)">2025/12/04</div>
         </div>
+      </div>
+      <!-- 更新項目 -->
+      <span class="sl">更新項目</span>
+      <div style="background:var(--w);margin:0 16px;border-radius:var(--r);box-shadow:var(--sh)">
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">3.0.0.4.388</div><div style="font-size:13px;color:var(--t3);margin-top:2px">修正 AiMesh 節點連線穩定性問題</div></div><div style="font-size:12px;color:var(--t3)">2025/12/04</div></div>
+        <div class="sr"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">3.0.0.4.386</div><div style="font-size:13px;color:var(--t3);margin-top:2px">強化 WPA3 安全性</div></div><div style="font-size:12px;color:var(--t3)">2025/10/12</div></div>
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">3.0.0.4.380</div><div style="font-size:13px;color:var(--t3);margin-top:2px">初始安裝版本</div></div><div style="font-size:12px;color:var(--t3)">2025/08/01</div></div>
       </div>
       <!-- 自動更新 -->
       <span class="sl">設定</span>
@@ -4179,6 +4194,19 @@ function renderQaFwStatus(){
     ? '<div style="background:var(--gbg);border-radius:var(--r);padding:16px;display:flex;align-items:center;gap:12px"><div style="width:44px;height:44px;border-radius:50%;background:rgba(24,184,122,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div><div style="font-size:16px;font-weight:700;color:var(--tx)">已是最新版本</div><div style="font-size:13px;color:var(--gn);margin-top:2px">目前版本 3.0.0.4.390</div></div></div>'
     : '<div style="background:var(--abg);border-radius:var(--r);padding:16px;display:flex;align-items:center;gap:12px"><div style="width:44px;height:44px;border-radius:50%;background:rgba(74,143,224,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/></svg></div><div><div style="font-size:16px;font-weight:700;color:var(--tx)">有新版本可用</div><div style="font-size:13px;color:var(--ac);margin-top:2px">3.0.0.4.388 → 3.0.0.4.390</div></div></div>';
   var v=g('qa-fw-current-version'); if(v) v.textContent=_fwIsLatest?'3.0.0.4.390':'3.0.0.4.388';
+}
+function checkFwUpdate(btnId){
+  var btn=g(btnId);
+  if(!btn)return;
+  var origHtml=btn.innerHTML;
+  btn.style.pointerEvents='none';
+  btn.innerHTML='<div style="width:14px;height:14px;border-radius:50%;border:2px solid var(--bd2);border-top-color:var(--ac);animation:spin .8s linear infinite"></div><span style="font-size:14px;font-weight:600;color:var(--ac)">檢查中…</span>';
+  setTimeout(function(){
+    renderFwStatus(_fwIsLatest);
+    btn.innerHTML=origHtml;
+    btn.style.pointerEvents='';
+    showToast(_fwIsLatest?'已是最新版本':'發現新版本可用');
+  },900);
 }
 function toggleFwAutoUpdate(){
   document.querySelectorAll('.tg-fw-autoupdate').forEach(function(t){t.classList.toggle('on');});
