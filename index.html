@@ -803,6 +803,27 @@ body{display:flex;align-items:center;justify-content:center}
     </div>
   </div>
 
+  <!-- SUB: 韌體更新（常用操作簡化版） -->
+  <div class="sub" id="sub-qa-fw">
+    <div style="background:var(--w);padding:12px 20px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bd);flex-shrink:0">
+      <div class="bk" id="qa-fw-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div style="flex:1;font-size:17px;font-weight:600;color:var(--tx)">韌體更新</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;background:var(--bg)">
+      <div id="qa-fw-status" style="margin:16px 16px 20px"></div>
+      <div style="background:var(--w);margin:0 16px 20px;border-radius:var(--r);box-shadow:var(--sh)">
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">目前版本</div></div><div id="qa-fw-current-version" style="font-size:14px;font-weight:500;color:var(--t3);font-family:var(--m)">3.0.0.4.390</div></div>
+      </div>
+      <div style="background:var(--w);margin:0 16px 24px;border-radius:var(--r);box-shadow:var(--sh)">
+        <div class="sr" style="border-bottom:1px solid var(--bd)"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">自動更新</div></div><div class="tg on tg-fw-autoupdate" onclick="toggleFwAutoUpdate()" style="cursor:pointer"></div></div>
+        <div class="sr" style="border:none"><div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">預約更新</div></div><div class="tg on tg-fw-schedule" onclick="toggleFwSchedule()" style="cursor:pointer"></div></div>
+      </div>
+      <div style="background:var(--w);margin:0 16px 24px;border-radius:var(--r);box-shadow:var(--sh)">
+        <div class="sr" style="border:none;cursor:pointer" onclick="hide('sub-qa-fw');renderFwStatus(_fwIsLatest);show('sub-fw')"><div style="flex:1"><div style="font-size:15px;font-weight:500;color:var(--t2)">更多設定</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+    </div>
+  </div>
+
   <!-- OV: AiProtection 即時檢查 -->
   <div class="ov" id="ov-aipro-scan" onclick="if(event.target===this)hide('ov-aipro-scan')">
     <div class="sheet" id="aipro-scan-body"></div>
@@ -1349,14 +1370,14 @@ body{display:flex;align-items:center;justify-content:center}
             <div style="font-size:17px;font-weight:600;color:var(--tx)">自動更新</div>
             <div style="font-size:14px;color:var(--t3);margin-top:2px">每週自動安裝最新安全更新</div>
           </div>
-          <div class="tg on" id="tg-autoupdate"></div>
+          <div class="tg on tg-fw-autoupdate" onclick="toggleFwAutoUpdate()" style="cursor:pointer"></div>
         </div>
         <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px">
           <div>
-            <div style="font-size:17px;font-weight:600;color:var(--tx)">預約更新時間</div>
-            <div style="font-size:14px;color:var(--t3);margin-top:2px">凌晨 03:00（低用量時段）</div>
+            <div style="font-size:17px;font-weight:600;color:var(--tx)">預約更新</div>
+            <div style="font-size:14px;color:var(--t3);margin-top:2px">凌晨 03:00（低用量時段）自動安裝</div>
           </div>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          <div class="tg on tg-fw-schedule" onclick="toggleFwSchedule()" style="cursor:pointer"></div>
         </div>
       </div>
     </div>
@@ -3309,7 +3330,7 @@ function goTab(t){
   if(ct){ct.scrollTop=0;}
   // hide family back when switching tabs normally
   if(t==='family'){var fb=document.getElementById('family-back-btn');if(fb)fb.style.display='none';}
-  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-qa-aiprotect','sub-qa-vpn','sub-qa-led','sub-led-manage','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-speedtest-result','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-qa-qos','sub-qos-priority','sub-qos-mode-picker','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-channelbw','sub-pro-channel','sub-pro-bandwidth','sub-pro-mloadv','sub-pro-dfs','sub-pro-mlo','sub-pro-vpnfusion','sub-pro-restartsched','sub-node-detail','sub-node-lighting','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','sub-node-location','sub-diag-fix','sub-language','ov-mesh'].forEach(hide);
+  ['sub-dev','sub-notif','sub-diag','sub-energy','sub-ai-report','sub-ai-history','sub-aipro-detail','sub-aipro-malsite','sub-qa-aiprotect','sub-qa-vpn','sub-qa-led','sub-led-manage','sub-theme','sub-reboot','sub-account','sub-led','sub-mesh-opt','sub-mesh-addnode','sub-speedtest','sub-speedtest-result','sub-qa-fw','sub-sched-home','sub-wifi-sched','sub-dev-sched','sub-dev-sched-time','sub-change-pwd','sub-pro-lan','sub-pro-wan','sub-pro-dns','sub-pro-ddns','sub-pro-dualwan','sub-pro-portfw','sub-pro-ipbind','sub-pro-qos','sub-qa-qos','sub-qos-priority','sub-qos-mode-picker','sub-pro-wifi24','sub-pro-wifi5','sub-pro-wifi6','sub-pro-vpns','sub-pro-vpnc','sub-pro-syslog','sub-pro-admin','sub-pro-backup','sub-fm-step1','sub-fm-step2name','sub-fm-step2','sub-fm-step3','sub-fm-step4','sub-fm-devices','sub-fm-detail','sub-fm-time','sub-fm-filter','sub-fm-blocked','sub-family-quick','sub-notif-settings','sub-notif-impdev','sub-feedback','sub-about','sub-network','sub-net-wizard','sub-net-detail','sub-aura','sub-nightmode','sub-routerinfo','sub-wisp','sub-pro-ipv6','sub-pro-vpn','sub-pro-firewall','sub-pro-macfilter','sub-pro-channelbw','sub-pro-channel','sub-pro-bandwidth','sub-pro-mloadv','sub-pro-dfs','sub-pro-mlo','sub-pro-vpnfusion','sub-pro-restartsched','sub-node-detail','sub-node-lighting','sub-node-led','sub-node-aura','sub-node-nightmode','sub-node-restart','sub-node-optimize','sub-node-location','sub-diag-fix','sub-language','ov-mesh'].forEach(hide);
   // hide AI input bar when leaving insight tab, restore when returning
   if(t!=='insight'){
     var bar=document.getElementById('ai-input-bar');
@@ -4102,7 +4123,7 @@ function renderQAGrid() {
       else if (act==='diag')        show('sub-diag');
       else if (act==='networks')    { renderNetworksList(); show('sub-network'); }
       else if (act==='qos')         openQaQos();
-      else if (act==='fw')          { renderFwStatus(false); show('sub-fw'); }
+      else if (act==='fw')          openQaFw();
       else if (act==='meshopt')     { window._meshOptFromQuick=true; show('sub-mesh-opt'); }
       else if (act==='meshadd')     { window._meshAddFromQuick=true; show('sub-mesh-addnode'); }
       else if (act==='sched')       show('sub-sched-home');
@@ -4131,7 +4152,9 @@ function showQAToast(msg){
   clearTimeout(t._hideTimer);
   t._hideTimer = setTimeout(function(){ t.style.display = 'none'; }, 1600);
 }
+var _fwIsLatest=true;
 function renderFwStatus(isLatest){
+  _fwIsLatest=isLatest;
   var iconWrap=g('fw-status-icon-wrap'),title=g('fw-status-title'),sub=g('fw-status-sub'),block=g('fw-update-block'),curVer=g('fw-current-version');
   if(isLatest){
     if(iconWrap){iconWrap.style.background='var(--gbg)';iconWrap.innerHTML='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';}
@@ -4148,6 +4171,24 @@ function renderFwStatus(isLatest){
     var btn=g('fw-update-btn');
     if(btn){btn.innerHTML='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/></svg>立即更新';btn.style.background='var(--ac)';btn.style.cursor='pointer';btn.style.pointerEvents='';}
   }
+  renderQaFwStatus();
+}
+function renderQaFwStatus(){
+  var el=g('qa-fw-status');if(!el)return;
+  el.innerHTML = _fwIsLatest
+    ? '<div style="background:var(--gbg);border-radius:var(--r);padding:16px;display:flex;align-items:center;gap:12px"><div style="width:44px;height:44px;border-radius:50%;background:rgba(24,184,122,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div><div style="font-size:16px;font-weight:700;color:var(--tx)">已是最新版本</div><div style="font-size:13px;color:var(--gn);margin-top:2px">目前版本 3.0.0.4.390</div></div></div>'
+    : '<div style="background:var(--abg);border-radius:var(--r);padding:16px;display:flex;align-items:center;gap:12px"><div style="width:44px;height:44px;border-radius:50%;background:rgba(74,143,224,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/></svg></div><div><div style="font-size:16px;font-weight:700;color:var(--tx)">有新版本可用</div><div style="font-size:13px;color:var(--ac);margin-top:2px">3.0.0.4.388 → 3.0.0.4.390</div></div></div>';
+  var v=g('qa-fw-current-version'); if(v) v.textContent=_fwIsLatest?'3.0.0.4.390':'3.0.0.4.388';
+}
+function toggleFwAutoUpdate(){
+  document.querySelectorAll('.tg-fw-autoupdate').forEach(function(t){t.classList.toggle('on');});
+}
+function toggleFwSchedule(){
+  document.querySelectorAll('.tg-fw-schedule').forEach(function(t){t.classList.toggle('on');});
+}
+function openQaFw(){
+  renderQaFwStatus();
+  show('sub-qa-fw');
 }
 function showToast(msg){
   var t = g('app-toast');
@@ -4641,7 +4682,7 @@ window.addEventListener('load',function(){
     else if(window._fwBackToNode){window._fwBackToNode=false;backToNodeDetail();}
   });
   bind('s-aip',function(){renderAiproMalsite();renderAiproDetail();show('sub-aipro-detail');});
-  bind('tg-autoupdate',function(){g('tg-autoupdate').classList.toggle('on');});
+  bind('qa-fw-back',function(){hide('sub-qa-fw');});
   bind('fw-update-btn',function(){
     var btn=g('fw-update-btn');
     if(btn){btn.innerHTML='<div style="width:14px;height:14px;border-radius:50%;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;animation:spin .8s linear infinite"></div>更新中…';btn.style.background='var(--t3)';btn.style.cursor='default';btn.style.pointerEvents='none';}
