@@ -4715,7 +4715,7 @@ window.addEventListener('load',function(){
   function renderNetDiagSteps(statuses, failInfo){
     var rows=NET_DIAG_STEPS.map(function(step,i){
       var st=statuses[i], circle, statusHtml;
-      var pendingCircle='<div style="position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:#F1F2F4;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;font-weight:700;color:var(--t2)">'+(i+1)+'</div>';
+      var pendingCircle='<div style="position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:#DFE1E6;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;font-weight:700;color:var(--t2)">'+(i+1)+'</div>';
       if(st==='ok'){
         circle='<div style="position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:var(--gn);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>';
         statusHtml='<span style="font-size:13px;font-weight:500;color:var(--gn)">正常</span>';
