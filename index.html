@@ -4729,6 +4729,9 @@ window.addEventListener('load',function(){
       } else if(st==='fail'){
         circle='<div style="position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:var(--or);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><line x1="12" y1="7" x2="12" y2="13"/><line x1="12" y1="16.8" x2="12.01" y2="16.8" stroke-width="3.6"/></svg></div>';
         statusTxt='連線異常'; statusColor='var(--or)';
+      } else if(st==='checking'){
+        circle='<div style="position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:var(--abg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><div style="width:15px;height:15px;border-radius:50%;border:2px solid var(--bd2);border-top-color:var(--ac);animation:spin .7s linear infinite"></div></div>';
+        statusTxt='檢查中…'; statusColor='var(--ac)';
       } else {
         circle='<div style="position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;font-weight:700;color:var(--t3)">'+(i+1)+'</div>';
         statusTxt='未檢查'; statusColor='var(--t3)';
@@ -4796,6 +4799,10 @@ window.addEventListener('load',function(){
       }
       var stepKey=NET_DIAG_STEPS[i].key;
       var shouldFail=failKey && stepKey===failKey;
+      // Random per-step check time: usually quick, occasionally noticeably longer.
+      var checkTime=180+Math.random()*1400;
+      statuses[i]='checking';
+      renderNetDiagSteps(statuses);
       setTimeout(function(){
         statuses[i]=shouldFail?'fail':'ok';
         var failInfo=shouldFail?NET_DIAG_FAILS[failKey]:null;
@@ -4806,7 +4813,7 @@ window.addEventListener('load',function(){
           return;
         }
         i++; next();
-      },650);
+      },checkTime);
     }
     next();
   }
