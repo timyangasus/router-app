@@ -996,11 +996,11 @@ body{display:flex;align-items:center;justify-content:center}
         <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px">
           <div id="diag-hero-icon" style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;flex-shrink:0"></div>
           <div style="flex:1;min-width:0;text-align:left">
-            <div id="diag-hero-title" style="font-size:18px;font-weight:700;color:#fff;margin-bottom:4px">檢查您的網路連線</div>
+            <div id="diag-hero-title" style="font-size:18px;font-weight:700;color:#fff;margin-bottom:4px">診斷您的網路連線</div>
             <div id="diag-hero-sub" style="font-size:13px;color:rgba(255,255,255,.88);line-height:1.5">從您的裝置開始，依序檢查各項連線</div>
           </div>
         </div>
-        <div id="diag-hero-btn" style="width:100%;height:48px;background:#fff;border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;cursor:pointer;color:var(--ac);box-shadow:0 4px 14px rgba(0,0,0,.12)">開始診斷</div>
+        <div id="diag-hero-btn" style="width:100%;height:48px;background:#fff;border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;cursor:pointer;color:var(--ac);box-shadow:0 4px 14px rgba(0,0,0,.12)">開始</div>
       </div>
     </div>
 
@@ -4769,7 +4769,7 @@ window.addEventListener('load',function(){
   function renderNetDiagIdle(){
     _netDiagBusy=false;
     renderNetDiagSteps(['pending','pending','pending','pending']);
-    renderNetDiagHero('idle',{title:'檢查您的網路連線',sub:'從您的裝置開始，依序檢查各項連線',btnText:'開始診斷'});
+    renderNetDiagHero('idle',{title:'診斷您的網路連線',sub:'從您的裝置開始，依序檢查各項連線',btnText:'開始'});
   }
 
   function runNetDiag(){
@@ -4780,7 +4780,7 @@ window.addEventListener('load',function(){
     var failKey=(_netDiagRun%2===0)?'router':null;
     var statuses=['pending','pending','pending','pending'];
     renderNetDiagSteps(statuses);
-    renderNetDiagHero('running',{title:'檢查您的網路連線',sub:'診斷中，請稍候…',btnText:'診斷中…',disabled:true});
+    renderNetDiagHero('running',{title:'診斷您的網路連線',sub:'診斷中，請稍候…',btnText:'診斷中…',disabled:true});
 
     var i=0;
     function next(){
