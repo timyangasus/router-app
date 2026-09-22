@@ -4729,8 +4729,8 @@ window.addEventListener('load',function(){
         circle=pendingCircle;
         statusHtml='<span style="font-size:13px;font-weight:500;color:var(--t3)">未檢查</span>';
       }
-      var clickable=step.key!=='device';
-      var row='<div'+(clickable?' onclick="jumpNetDiagFail(\''+step.key+'\')"':'')+' style="position:relative;z-index:1;display:flex;align-items:center;gap:14px;padding:20px 16px'+(clickable?';cursor:pointer':'')+'">'
+      var jumpKey=step.key==='device'?'device_wifi':step.key;
+      var row='<div onclick="jumpNetDiagFail(\''+jumpKey+'\')" style="position:relative;z-index:1;display:flex;align-items:center;gap:14px;padding:20px 16px;cursor:pointer">'
         +circle
         +'<div style="flex:1;font-size:16px;font-weight:600;color:var(--tx)">'+step.label+'</div>'
         +statusHtml
