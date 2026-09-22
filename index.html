@@ -4737,8 +4737,7 @@ window.addEventListener('load',function(){
         circle=pendingCircle;
         statusHtml='<span style="font-size:13px;font-weight:500;color:var(--t3)">未檢查</span>';
       }
-      var last=(i===NET_DIAG_STEPS.length-1);
-      var row='<div style="position:relative;z-index:1;display:flex;align-items:center;gap:14px;padding:12px 16px'+(last?'':';border-bottom:1px solid var(--bd)')+'">'
+      var row='<div style="position:relative;z-index:1;display:flex;align-items:center;gap:14px;padding:20px 16px">'
         +circle
         +'<div style="flex:1;font-size:16px;font-weight:600;color:var(--tx)">'+step.label+'</div>'
         +statusHtml
@@ -4752,7 +4751,7 @@ window.addEventListener('load',function(){
       return row;
     }).join('');
     var html='<div style="position:relative">'
-      +'<div style="position:absolute;left:32px;top:28px;bottom:28px;width:2px;background:var(--bd);z-index:0"></div>'
+      +'<div style="position:absolute;left:32px;top:36px;bottom:36px;width:2px;background:var(--bd);z-index:0"></div>'
       +rows
     +'</div>';
     var el=g('diag-steps'); if(el) el.innerHTML=html;
