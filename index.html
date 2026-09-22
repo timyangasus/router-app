@@ -4698,10 +4698,10 @@ window.addEventListener('load',function(){
     internet:   {step:'internet',heroTitle:'無法連上網際網路',   title:'您的網路服務供應商似乎出了點問題',   desc:'請與您的網路服務供應商聯繫，以修正網路連線問題'}
   };
   var NET_DIAG_GRADIENT={
-    idle:   'linear-gradient(140deg,#90BFF5,#4D95EA,#3B87E0)',
-    running:'linear-gradient(140deg,#90BFF5,#4D95EA,#3B87E0)',
-    success:'linear-gradient(150deg,#3FCDB4,#1FAE93)',
-    fail:   'linear-gradient(140deg,#F5B570,#E8863A,#DB7328)'
+    idle:   'linear-gradient(180deg,#3B87E0 0%,#6AAAF0 45%,#EAF1FC 100%)',
+    running:'linear-gradient(180deg,#3B87E0 0%,#6AAAF0 45%,#EAF1FC 100%)',
+    success:'linear-gradient(180deg,#1FAE93 0%,#4FCDB2 45%,#E7F7F2 100%)',
+    fail:   'linear-gradient(180deg,#DB7328 0%,#EFA45C 45%,#FDF1E4 100%)'
   };
   var _netDiagRun=0;
   var _netDiagBusy=false;
@@ -4715,7 +4715,7 @@ window.addEventListener('load',function(){
   function renderNetDiagSteps(statuses, failInfo){
     var rows=NET_DIAG_STEPS.map(function(step,i){
       var st=statuses[i], circle, statusHtml;
-      var pendingCircle='<div style="position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;font-weight:700;color:var(--t3)">'+(i+1)+'</div>';
+      var pendingCircle='<div style="position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:var(--w);border:1.5px solid var(--bd2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;font-weight:700;color:var(--t2)">'+(i+1)+'</div>';
       if(st==='ok'){
         circle='<div style="position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:var(--gn);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>';
         statusHtml='<span style="font-size:13px;font-weight:500;color:var(--gn)">正常</span>';
