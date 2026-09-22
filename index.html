@@ -4776,8 +4776,13 @@ window.addEventListener('load',function(){
     if(_netDiagBusy) return;
     _netDiagBusy=true;
     _netDiagRun++;
-    // Demo alternates: 1st run succeeds end-to-end, 2nd run fails at the router step, and so on.
-    var failKey=(_netDiagRun%2===0)?'router':null;
+    // Demo alternates: 1st run succeeds end-to-end, 2nd run fails, and so on — and on a
+    // failing run, which one of the 4 connections fails is randomized (only one at a time).
+    var failKey=null;
+    if(_netDiagRun%2===0){
+      var failStep=NET_DIAG_STEPS[Math.floor(Math.random()*NET_DIAG_STEPS.length)].key;
+      failKey=(failStep==='device')?(Math.random()<0.5?'device_wifi':'device_net'):failStep;
+    }
     var statuses=['pending','pending','pending','pending'];
     renderNetDiagSteps(statuses);
     renderNetDiagHero('running',{title:'診斷您的網路連線',sub:'診斷中，請稍候…',btnText:'診斷中…',disabled:true});
@@ -4790,7 +4795,7 @@ window.addEventListener('load',function(){
         return;
       }
       var stepKey=NET_DIAG_STEPS[i].key;
-      var shouldFail=failKey && stepKey===failKey;
+      var shouldFail=failKey && NET_DIAG_FAILS[failKey].step===stepKey;
       // Random per-step check time: usually quick, occasionally noticeably longer.
       var checkTime=180+Math.random()*1400;
       statuses[i]='checking';
