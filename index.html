@@ -4729,7 +4729,8 @@ window.addEventListener('load',function(){
         circle=pendingCircle;
         statusHtml='<span style="font-size:13px;font-weight:500;color:var(--t3)">未檢查</span>';
       }
-      var row='<div style="position:relative;z-index:1;display:flex;align-items:center;gap:14px;padding:20px 16px">'
+      var clickable=step.key!=='device';
+      var row='<div'+(clickable?' onclick="jumpNetDiagFail(\''+step.key+'\')"':'')+' style="position:relative;z-index:1;display:flex;align-items:center;gap:14px;padding:20px 16px'+(clickable?';cursor:pointer':'')+'">'
         +circle
         +'<div style="flex:1;font-size:16px;font-weight:600;color:var(--tx)">'+step.label+'</div>'
         +statusHtml
@@ -4772,17 +4773,27 @@ window.addEventListener('load',function(){
     renderNetDiagHero('idle',{title:'診斷您的網路連線',sub:'從您的裝置開始，依序檢查各項連線',btnText:'開始'});
   }
 
+  // Demo helper: click the 華碩路由器/數據機/網際網路 step to jump straight to that
+  // failure scenario (steps before it show ok, steps after stay pending).
+  window.jumpNetDiagFail=function(failKey){
+    if(_netDiagBusy) return;
+    var failInfo=NET_DIAG_FAILS[failKey];
+    var failIndex=NET_DIAG_STEPS.findIndex(function(s){return s.key===failInfo.step;});
+    var statuses=NET_DIAG_STEPS.map(function(s,idx){
+      return idx<failIndex?'ok':(idx===failIndex?'fail':'pending');
+    });
+    renderNetDiagSteps(statuses, failInfo);
+    renderNetDiagHero('fail',{title:failInfo.heroTitle,sub:'請依下方步驟排除，再重新診斷',btnText:'重新診斷'});
+  };
+
   function runNetDiag(){
     if(_netDiagBusy) return;
     _netDiagBusy=true;
     _netDiagRun++;
-    // Demo alternates: 1st run succeeds end-to-end, 2nd run fails, and so on — and on a
-    // failing run, which one of the 4 connections fails is randomized (only one at a time).
-    var failKey=null;
-    if(_netDiagRun%2===0){
-      var failStep=NET_DIAG_STEPS[Math.floor(Math.random()*NET_DIAG_STEPS.length)].key;
-      failKey=(failStep==='device')?(Math.random()<0.5?'device_wifi':'device_net'):failStep;
-    }
+    // Demo alternates: 1st run succeeds end-to-end, 2nd run fails at the first failure
+    // (router) by default — click a step below (router/modem/internet) to jump to that
+    // failure directly instead.
+    var failKey=(_netDiagRun%2===0)?'router':null;
     var statuses=['pending','pending','pending','pending'];
     renderNetDiagSteps(statuses);
     renderNetDiagHero('running',{title:'診斷您的網路連線',sub:'診斷中，請稍候…',btnText:'診斷中…',disabled:true});
