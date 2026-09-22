@@ -1001,137 +1001,17 @@ body{display:flex;align-items:center;justify-content:center}
     <!-- scrollable body -->
     <div style="flex:1;min-height:0;overflow-y:auto;background:var(--bg)">
 
-      <!-- IDLE state -->
-      <div id="diag-idle">
-        <div style="display:flex;flex-direction:column;align-items:center;padding:56px 32px 40px">
-          <!-- speed ring idle -->
-          <div style="position:relative;width:200px;height:200px;margin-bottom:28px">
-            <svg width="200" height="200" viewBox="0 0 200 200" style="position:absolute;inset:0">
-              <circle cx="100" cy="100" r="84" fill="none" stroke="var(--s3)" stroke-width="10"/>
-              <circle cx="100" cy="100" r="84" fill="none" stroke="var(--ac)" stroke-width="10"
-                stroke-linecap="round" stroke-dasharray="528" stroke-dashoffset="528"
-                transform="rotate(-90 100 100)" style="opacity:.2"/>
-            </svg>
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-              <div style="font-size:13px;color:var(--t3);font-weight:500;margin-top:4px">點擊開始</div>
-            </div>
-          </div>
-          <div style="font-size:22px;font-weight:600;color:var(--tx);margin-bottom:8px">網路診斷</div>
-          <div style="font-size:14px;color:var(--t3);text-align:center;line-height:1.7;margin-bottom:36px">檢測網際網路連線、DNS 解析、<br>Mesh 節點及端點速度</div>
-          <div id="diag-start-btn" style="width:200px;height:52px;background:var(--ac);border-radius:26px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:600;cursor:pointer;box-shadow:0 6px 20px rgba(74,143,224,.4)">開始診斷</div>
+      <!-- Network Diagnostic: dynamic hero + connection-chain steps -->
+      <div id="diag-main">
+        <div id="diag-hero" style="margin:20px 16px 22px;border-radius:var(--r);padding:34px 24px 28px;background:linear-gradient(140deg,#90BFF5,#4D95EA,#3B87E0);display:flex;flex-direction:column;align-items:center;text-align:center;box-shadow:var(--sh);transition:background .5s ease">
+          <div id="diag-hero-icon" style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;margin-bottom:18px"></div>
+          <div id="diag-hero-title" style="font-size:20px;font-weight:700;color:#fff;margin-bottom:8px">檢查您的網路連線</div>
+          <div id="diag-hero-sub" style="font-size:13px;color:rgba(255,255,255,.88);line-height:1.7;margin-bottom:26px;max-width:260px">從您的裝置開始，依序檢查各項連線</div>
+          <div id="diag-hero-btn" style="min-width:170px;height:48px;padding:0 22px;background:#fff;border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;cursor:pointer;color:var(--ac);box-shadow:0 4px 14px rgba(0,0,0,.12)">開始診斷</div>
         </div>
-      </div>
-
-      <!-- RUNNING state -->
-      <div id="diag-running" style="display:none">
-        <div style="display:flex;flex-direction:column;align-items:center;padding:40px 20px 28px">
-          <!-- animated speed ring -->
-          <div style="position:relative;width:200px;height:200px;margin-bottom:20px">
-            <svg width="200" height="200" viewBox="0 0 200 200" style="position:absolute;inset:0">
-              <circle cx="100" cy="100" r="84" fill="none" stroke="var(--s3)" stroke-width="10"/>
-              <circle id="diag-ring" cx="100" cy="100" r="84" fill="none" stroke="var(--ac)" stroke-width="10"
-                stroke-linecap="round" stroke-dasharray="528" stroke-dashoffset="528"
-                transform="rotate(-90 100 100)" style="transition:stroke-dashoffset .6s cubic-bezier(.4,0,.2,1)"/>
-            </svg>
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
-              <div id="diag-speed-val" style="font-size:38px;font-weight:300;color:var(--tx);letter-spacing:-1px;line-height:1">—</div>
-              <div id="diag-speed-unit" style="font-size:13px;color:var(--t3);margin-top:4px">Mbps</div>
-            </div>
-          </div>
-          <div id="diag-label" style="font-size:14px;color:var(--t3);font-weight:500;margin-bottom:24px">準備中…</div>
-          <!-- checklist -->
-          <div style="width:100%;background:var(--w);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden">
-            <div class="diag-item" data-i="0" style="display:flex;align-items:center;gap:14px;padding:13px 16px;border-bottom:1px solid var(--bd)">
-              <div class="diag-icon" style="width:34px;height:34px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg></div>
-              <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">網際網路連線</div></div>
-              <div class="diag-status" style="font-size:13px;color:var(--t3)">等待中</div>
-            </div>
-            <div class="diag-item" data-i="1" style="display:flex;align-items:center;gap:14px;padding:13px 16px;border-bottom:1px solid var(--bd)">
-              <div class="diag-icon" style="width:34px;height:34px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15 15 0 000 20"/></svg></div>
-              <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">DNS 解析</div></div>
-              <div class="diag-status" style="font-size:13px;color:var(--t3)">等待中</div>
-            </div>
-            <div class="diag-item" data-i="2" style="display:flex;align-items:center;gap:14px;padding:13px 16px;border-bottom:1px solid var(--bd)">
-              <div class="diag-icon" style="width:34px;height:34px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><path d="M5 12.55a11 11 0 0114 0"/><path d="M1 9a16 16 0 0122 0"/><path d="M8.5 16a6 6 0 017 0"/><circle cx="12" cy="20" r="1" fill="var(--t3)" stroke="none"/></svg></div>
-              <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Mesh 節點通訊</div></div>
-              <div class="diag-status" style="font-size:13px;color:var(--t3)">等待中</div>
-            </div>
-            <div class="diag-item" data-i="3" style="display:flex;align-items:center;gap:14px;padding:13px 16px;border-bottom:1px solid var(--bd)">
-              <div class="diag-icon" style="width:34px;height:34px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><path d="M5 12.55a11 11 0 0114 0"/><path d="M8.5 16a6 6 0 017 0"/><circle cx="12" cy="20" r="1" fill="var(--t3)" stroke="none"/></svg></div>
-              <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">2.4GHz 頻道</div></div>
-              <div class="diag-status" style="font-size:13px;color:var(--t3)">等待中</div>
-            </div>
-            <div class="diag-item" data-i="4" style="display:flex;align-items:center;gap:14px;padding:13px 16px">
-              <div class="diag-icon" style="width:34px;height:34px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2" stroke-linecap="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg></div>
-              <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">端點速度測試</div></div>
-              <div class="diag-status" style="font-size:13px;color:var(--t3)">等待中</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- RESULT state (shown as overlay sheet on top) -->
-      <div id="diag-result" style="display:none;padding:0 16px 40px">
-        <!-- summary -->
-        <div style="display:flex;flex-direction:column;align-items:center;padding:36px 0 24px">
-          <div style="width:80px;height:80px;border-radius:50%;background:var(--obg);display:flex;align-items:center;justify-content:center;margin-bottom:14px">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2.5"/></svg>
-          </div>
-          <div style="font-size:22px;font-weight:600;color:var(--tx)">發現 1 項問題</div>
-          <div style="font-size:13px;color:var(--t3);margin-top:6px">4 項正常 · 1 項需要處理</div>
-        </div>
-        <!-- speed summary cards -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
-          <div style="background:var(--w);border-radius:var(--r2);padding:14px 16px;box-shadow:var(--sh)">
-            <div style="font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:6px">下載速度</div>
-            <div style="font-size:28px;font-weight:300;color:var(--tx);line-height:1">512<span style="font-size:13px;color:var(--t3);margin-left:3px">Mbps</span></div>
-          </div>
-          <div style="background:var(--w);border-radius:var(--r2);padding:14px 16px;box-shadow:var(--sh)">
-            <div style="font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:6px">上傳速度</div>
-            <div style="font-size:28px;font-weight:300;color:var(--tx);line-height:1">128<span style="font-size:13px;color:var(--t3);margin-left:3px">Mbps</span></div>
-          </div>
-          <div style="background:var(--w);border-radius:var(--r2);padding:14px 16px;box-shadow:var(--sh)">
-            <div style="font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:6px">延遲</div>
-            <div style="font-size:28px;font-weight:300;color:var(--tx);line-height:1">8<span style="font-size:13px;color:var(--t3);margin-left:3px">ms</span></div>
-          </div>
-          <div style="background:var(--w);border-radius:var(--r2);padding:14px 16px;box-shadow:var(--sh)">
-            <div style="font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:6px">封包遺失</div>
-            <div style="font-size:28px;font-weight:300;color:var(--gn);line-height:1">0<span style="font-size:13px;color:var(--t3);margin-left:3px">%</span></div>
-          </div>
-        </div>
-        <!-- check results -->
-        <div style="background:var(--w);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;margin-bottom:16px">
-          <div style="display:flex;gap:14px;align-items:center;padding:13px 16px;border-bottom:1px solid var(--bd)">
-            <div style="width:34px;height:34px;border-radius:50%;background:var(--gbg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">網際網路連線</div><div style="font-size:12px;color:var(--t3);margin-top:2px">正常</div></div>
-          </div>
-          <div style="display:flex;gap:14px;align-items:center;padding:13px 16px;border-bottom:1px solid var(--bd)">
-            <div style="width:34px;height:34px;border-radius:50%;background:var(--gbg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">DNS 解析</div><div style="font-size:12px;color:var(--t3);margin-top:2px">正常 · 8 ms</div></div>
-          </div>
-          <div style="display:flex;gap:14px;align-items:center;padding:13px 16px;border-bottom:1px solid var(--bd)">
-            <div style="width:34px;height:34px;border-radius:50%;background:var(--gbg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">Mesh 節點通訊</div><div style="font-size:12px;color:var(--t3);margin-top:2px">全部正常</div></div>
-          </div>
-          <div style="padding:13px 16px;border-bottom:1px solid var(--bd)">
-            <div style="display:flex;gap:14px;align-items:center">
-              <div style="width:34px;height:34px;border-radius:50%;background:var(--obg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="2.5" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2.5"/></svg></div>
-              <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">2.4GHz 頻道干擾</div><div style="font-size:12px;color:var(--or);margin-top:2px">頻道 6 有干擾，建議切換</div></div>
-            </div>
-            <div onclick="show('sub-diag-fix')" style="margin-top:10px;margin-left:48px;height:38px;border-radius:19px;border:1.5px solid var(--or);display:flex;align-items:center;justify-content:center;gap:6px;color:var(--or);font-size:13px;font-weight:600;cursor:pointer">
-              如何解決 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-            </div>
-          </div>
-          <div style="display:flex;gap:14px;align-items:center;padding:13px 16px">
-            <div style="width:34px;height:34px;border-radius:50%;background:var(--gbg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div style="flex:1"><div style="font-size:17px;font-weight:600;color:var(--tx)">端點速度測試</div><div style="font-size:12px;color:var(--t3);margin-top:2px">下載 512 Mbps · 上傳 128 Mbps</div></div>
-          </div>
-        </div>
-        <!-- buttons: 重新診斷(left,outlined) 完成(right,filled) -->
-        <div style="display:flex;gap:10px">
-          <div id="diag-retry-btn" style="flex:1;height:48px;border-radius:var(--r2);border:1.5px solid var(--ac);display:flex;align-items:center;justify-content:center;color:var(--ac);font-size:15px;font-weight:600;cursor:pointer">重新診斷</div>
-          <div id="diag-done-btn" style="flex:1;height:48px;background:var(--ac);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;font-weight:600;cursor:pointer">完成</div>
+        <div style="padding:4px 20px 32px">
+          <div style="font-size:13px;font-weight:600;color:var(--t3);margin-bottom:12px">連線檢查</div>
+          <div id="diag-steps" style="background:var(--w);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden"></div>
         </div>
       </div>
 
@@ -4782,100 +4662,153 @@ window.addEventListener('load',function(){
   bind('ov-guest-close',function(){closeGuestOverlay();});
   bind('h-guest',function(){show('ov-guest');});
   bind('ov-diag-close',function(){});
-  // sub-diag
+  // sub-diag (Network Diagnostic)
   function diagShowState(s){
-    ['diag-idle','diag-running','diag-result','diag-hist'].forEach(function(id){
+    ['diag-main','diag-hist'].forEach(function(id){
       var el=document.getElementById(id);
       if(el) el.style.display=(id===s)?'block':'none';
     });
   }
   bind('diag-back',function(){
-    diagShowState('diag-idle');
+    renderNetDiagIdle();
+    diagShowState('diag-main');
     hide('sub-diag');
   });
   bind('diag-hist-btn',function(){
     var hist=document.getElementById('diag-hist');
     if(!hist)return;
     var isVisible=hist.style.display==='block';
-    diagShowState(isVisible?'diag-idle':'diag-hist');
+    diagShowState(isVisible?'diag-main':'diag-hist');
   });
-  bind('diag-start-btn',function(){startDiag();});
+  bind('diag-hero-btn',function(){runNetDiag();});
   bind('diag-fix-back',function(){hide('sub-diag-fix');});
   bind('diag-fix-apply-btn',function(){
     showToast('已套用建議設定，頻道已切換至 11');
     hide('sub-diag-fix');
   });
   bind('language-back',function(){hide('sub-language');});
-  bind('diag-done-btn',function(){diagShowState('diag-idle');});
-  bind('diag-retry-btn',function(){startDiag();});
 
-  function startDiag(){
-    diagShowState('diag-running');
-    var ring=document.getElementById('diag-ring');
-    var speedVal=document.getElementById('diag-speed-val');
-    var speedUnit=document.getElementById('diag-speed-unit');
-    var label=document.getElementById('diag-label');
-    if(!ring)return;
-    ring.style.strokeDashoffset='528';
-    if(speedVal) speedVal.textContent='—';
-    if(label) label.textContent='準備中…';
-    var items=document.querySelectorAll('#diag-running .diag-item');
-    items.forEach(function(el){
-      el.querySelector('.diag-status').textContent='等待中';
-      el.querySelector('.diag-status').style.color='var(--t3)';
-      var ic=el.querySelector('.diag-icon');
-      ic.style.background='var(--s2)';
-    });
+  // ── Network Diagnostic: connection-chain flow (裝置 → 路由器 → 數據機 → 網際網路) ──
+  var NET_DIAG_STEPS=[
+    {key:'device',   label:'您的裝置'},
+    {key:'router',   label:'華碩路由器'},
+    {key:'modem',    label:'數據機'},
+    {key:'internet', label:'網際網路'}
+  ];
+  // Copy per NETWORK_DIAGNOSTIC_TYPE (failure categories reference table)
+  var NET_DIAG_FAILS={
+    device_wifi:{step:'device',  heroTitle:'無法連上您的裝置',   title:'無線網路已關閉',                  desc:'請開啟您裝置的無線網路'},
+    device_net: {step:'device',  heroTitle:'無法連上您的裝置',   title:'請啟用您行動裝置的無線網路',        desc:'請確認您的華碩路由器是開啟的狀態、且您的裝置連線到正確的無線網路'},
+    router:     {step:'router',  heroTitle:'無法連上華碩路由器', title:'華碩路由器似乎是離線狀態',          desc:'請確認您的華碩路由器是開啟的狀態、且您的裝置連線到正確的無線網路'},
+    modem:      {step:'modem',   heroTitle:'無法連上數據機',     title:'數據機似乎是離線狀態',              desc:'請確認您的數據機是開啟的狀態、且所有的線路都有正確連接'},
+    internet:   {step:'internet',heroTitle:'無法連上網際網路',   title:'您的網路服務供應商似乎出了點問題',   desc:'請與您的網路服務供應商聯繫，以修正網路連線問題'}
+  };
+  var NET_DIAG_GRADIENT={
+    idle:   'linear-gradient(140deg,#90BFF5,#4D95EA,#3B87E0)',
+    running:'linear-gradient(140deg,#90BFF5,#4D95EA,#3B87E0)',
+    success:'linear-gradient(150deg,#3FCDB4,#1FAE93)',
+    fail:   'linear-gradient(140deg,#F5B570,#E8863A,#DB7328)'
+  };
+  var _netDiagRun=0;
+  var _netDiagBusy=false;
 
-    var steps=[
-      {pct:20,label:'檢測網際網路連線…', i:0, ok:true,  status:'正常'},
-      {pct:40,label:'檢測 DNS 解析…',    i:1, ok:true,  status:'正常'},
-      {pct:60,label:'檢測 Mesh 節點…',   i:2, ok:true,  status:'正常'},
-      {pct:75,label:'檢測無線頻道…',     i:3, ok:false, status:'干擾'},
-      {pct:100,label:'端點速度測試…',    i:4, ok:true,  status:'完成', speed:true}
-    ];
-    var s=0;
+  function netDiagIcon(kind){
+    if(kind==='ok') return '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    if(kind==='fail') return '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.8" stroke-linecap="round"><line x1="12" y1="7" x2="12" y2="13.5"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="3.4"/></svg>';
+    return '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>';
+  }
+
+  function renderNetDiagSteps(statuses, failInfo){
+    var rows=NET_DIAG_STEPS.map(function(step,i){
+      var st=statuses[i], circle, statusTxt, statusColor;
+      if(st==='ok'){
+        circle='<div style="position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:var(--gn);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>';
+        statusTxt='正常'; statusColor='var(--gn)';
+      } else if(st==='fail'){
+        circle='<div style="position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:var(--or);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><line x1="12" y1="7" x2="12" y2="13"/><line x1="12" y1="16.8" x2="12.01" y2="16.8" stroke-width="3.6"/></svg></div>';
+        statusTxt='連線異常'; statusColor='var(--or)';
+      } else {
+        circle='<div style="position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;font-weight:700;color:var(--t3)">'+(i+1)+'</div>';
+        statusTxt='未檢查'; statusColor='var(--t3)';
+      }
+      var last=(i===NET_DIAG_STEPS.length-1);
+      var row='<div style="position:relative;z-index:1;display:flex;align-items:center;gap:14px;padding:12px 16px'+(last?'':';border-bottom:1px solid var(--bd)')+'">'
+        +circle
+        +'<div style="flex:1;font-size:16px;font-weight:600;color:var(--tx)">'+step.label+'</div>'
+        +'<div style="font-size:13px;font-weight:500;color:'+statusColor+'">'+statusTxt+'</div>'
+      +'</div>';
+      if(st==='fail' && failInfo){
+        row+='<div style="position:relative;z-index:1;margin:0 16px 14px 62px;background:#FFFBEB;border:1.5px solid var(--or);border-radius:var(--r2);padding:12px 14px">'
+          +'<div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:4px">'+failInfo.title+'</div>'
+          +'<div style="font-size:12.5px;color:var(--t2);line-height:1.6">'+failInfo.desc+'</div>'
+        +'</div>';
+      }
+      return row;
+    }).join('');
+    var html='<div style="position:relative">'
+      +'<div style="position:absolute;left:32px;top:28px;bottom:28px;width:2px;background:var(--bd);z-index:0"></div>'
+      +rows
+    +'</div>';
+    var el=g('diag-steps'); if(el) el.innerHTML=html;
+  }
+
+  function renderNetDiagHero(state, opts){
+    opts=opts||{};
+    var hero=g('diag-hero'), icon=g('diag-hero-icon'), title=g('diag-hero-title'), sub=g('diag-hero-sub'), btn=g('diag-hero-btn');
+    if(!hero) return;
+    hero.style.background=NET_DIAG_GRADIENT[state];
+    var accent=state==='success'?'var(--gn)':(state==='fail'?'var(--or)':'var(--ac)');
+    if(icon) icon.innerHTML=state==='success'?netDiagIcon('ok'):state==='fail'?netDiagIcon('fail'):netDiagIcon('search');
+    if(title) title.textContent=opts.title||'';
+    if(sub) sub.innerHTML=opts.sub||'';
+    if(btn){
+      btn.textContent=opts.btnText||'';
+      btn.style.color=accent;
+      btn.style.opacity=opts.disabled?'.6':'1';
+      btn.style.pointerEvents=opts.disabled?'none':'';
+    }
+  }
+
+  function renderNetDiagIdle(){
+    _netDiagBusy=false;
+    renderNetDiagSteps(['pending','pending','pending','pending']);
+    renderNetDiagHero('idle',{title:'檢查您的網路連線',sub:'從您的裝置開始，依序檢查各項連線',btnText:'開始診斷'});
+  }
+
+  function runNetDiag(){
+    if(_netDiagBusy) return;
+    _netDiagBusy=true;
+    _netDiagRun++;
+    // Demo alternates: 1st run succeeds end-to-end, 2nd run fails at the router step, and so on.
+    var failKey=(_netDiagRun%2===0)?'router':null;
+    var statuses=['pending','pending','pending','pending'];
+    renderNetDiagSteps(statuses);
+    renderNetDiagHero('running',{title:'檢查您的網路連線',sub:'診斷中，請稍候…',btnText:'診斷中…',disabled:true});
+
+    var i=0;
     function next(){
-      if(s>=steps.length){
-        setTimeout(function(){ diagShowState('diag-result'); },400);
+      if(i>=NET_DIAG_STEPS.length){
+        _netDiagBusy=false;
+        renderNetDiagHero('success',{title:'網路連線正常',sub:'網路連線正常運作中，好好享受網際網路吧。',btnText:'重新診斷'});
         return;
       }
-      var step=steps[s];
-      ring.style.strokeDashoffset=528-(528*step.pct/100);
-      if(label) label.textContent=step.label;
-
-      var item=items[step.i];
-      var ic=item.querySelector('.diag-icon');
-      var st=item.querySelector('.diag-status');
-      st.textContent='檢測中…'; st.style.color='var(--ac)';
-      ic.style.background='var(--abg)';
-
-      // speed test animation for last step
-      if(step.speed){
-        if(speedUnit) speedUnit.textContent='Mbps';
-        var spd=0; var target=512;
-        var ticker=setInterval(function(){
-          spd=Math.min(spd+Math.round(Math.random()*60+20),target);
-          if(speedVal) speedVal.textContent=spd;
-          if(spd>=target){ clearInterval(ticker); }
-        },80);
-      }
-
+      var stepKey=NET_DIAG_STEPS[i].key;
+      var shouldFail=failKey && stepKey===failKey;
       setTimeout(function(){
-        if(step.ok){
-          ic.style.background='var(--gbg)';
-          ic.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>';
-          st.textContent='正常'; st.style.color='var(--gn)';
-        } else {
-          ic.style.background='var(--obg)';
-          ic.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="2.5" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/></svg>';
-          st.textContent='問題'; st.style.color='var(--or)';
+        statuses[i]=shouldFail?'fail':'ok';
+        var failInfo=shouldFail?NET_DIAG_FAILS[failKey]:null;
+        renderNetDiagSteps(statuses, failInfo);
+        if(shouldFail){
+          _netDiagBusy=false;
+          renderNetDiagHero('fail',{title:failInfo.heroTitle,sub:'請依下方步驟排除，再重新診斷',btnText:'重新診斷'});
+          return;
         }
-        s++; setTimeout(next,300);
-      },step.speed?1200:800);
+        i++; next();
+      },650);
     }
-    setTimeout(next,200);
+    next();
   }
+  renderNetDiagIdle();
   bind('ov-add-ok',function(){hide('ov-add');});
   bind('ov-add-x',function(){hide('ov-add');});
   bind('ov-mei-close',function(){hide('ov-mei');});
