@@ -4705,6 +4705,7 @@ window.addEventListener('load',function(){
   };
   var _netDiagRun=0;
   var _netDiagBusy=false;
+  var _netDiagState='idle';
 
   function netDiagIcon(kind){
     if(kind==='ok') return '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
@@ -4730,7 +4731,8 @@ window.addEventListener('load',function(){
         statusHtml='<span style="font-size:13px;font-weight:500;color:var(--t3)">未檢查</span>';
       }
       var jumpKey=step.key==='device'?'device_wifi':step.key;
-      var row='<div onclick="jumpNetDiagFail(\''+jumpKey+'\')" style="position:relative;z-index:1;display:flex;align-items:center;gap:14px;padding:17px 16px;cursor:pointer">'
+      var clickable=_netDiagState==='fail';
+      var row='<div'+(clickable?' onclick="jumpNetDiagFail(\''+jumpKey+'\')"':'')+' style="position:relative;z-index:1;display:flex;align-items:center;gap:14px;padding:17px 16px'+(clickable?';cursor:pointer':'')+'">'
         +circle
         +'<div style="flex:1;font-size:16px;font-weight:600;color:var(--tx)">'+step.label+'</div>'
         +statusHtml
@@ -4752,6 +4754,7 @@ window.addEventListener('load',function(){
 
   function renderNetDiagHero(state, opts){
     opts=opts||{};
+    _netDiagState=state;
     var hero=g('diag-hero'), icon=g('diag-hero-icon'), title=g('diag-hero-title'), sub=g('diag-hero-sub'), btn=g('diag-hero-btn');
     if(!hero) return;
     hero.style.background=NET_DIAG_GRADIENT[state];
@@ -4769,8 +4772,8 @@ window.addEventListener('load',function(){
 
   function renderNetDiagIdle(){
     _netDiagBusy=false;
-    renderNetDiagSteps(['pending','pending','pending','pending']);
     renderNetDiagHero('idle',{title:'診斷您的網路連線',sub:'從您的裝置開始，依序檢查各項連線',btnText:'開始'});
+    renderNetDiagSteps(['pending','pending','pending','pending']);
   }
 
   // Demo helper: click the 華碩路由器/數據機/網際網路 step to jump straight to that
@@ -4795,8 +4798,8 @@ window.addEventListener('load',function(){
     // failure directly instead.
     var failKey=(_netDiagRun%2===0)?'router':null;
     var statuses=['pending','pending','pending','pending'];
-    renderNetDiagSteps(statuses);
     renderNetDiagHero('running',{title:'診斷您的網路連線',sub:'診斷中，請稍候…',btnText:'診斷中…',disabled:true});
+    renderNetDiagSteps(statuses);
 
     var i=0;
     function next(){
@@ -4814,12 +4817,13 @@ window.addEventListener('load',function(){
       setTimeout(function(){
         statuses[i]=shouldFail?'fail':'ok';
         var failInfo=shouldFail?NET_DIAG_FAILS[failKey]:null;
-        renderNetDiagSteps(statuses, failInfo);
         if(shouldFail){
           _netDiagBusy=false;
           renderNetDiagHero('fail',{title:failInfo.heroTitle,sub:'請依下方步驟排除，再重新診斷',btnText:'重新診斷'});
+          renderNetDiagSteps(statuses, failInfo);
           return;
         }
+        renderNetDiagSteps(statuses, failInfo);
         i++; next();
       },checkTime);
     }
