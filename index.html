@@ -4722,25 +4722,26 @@ window.addEventListener('load',function(){
 
   function renderNetDiagSteps(statuses, failInfo){
     var rows=NET_DIAG_STEPS.map(function(step,i){
-      var st=statuses[i], circle, statusTxt, statusColor;
+      var st=statuses[i], circle, statusHtml;
+      var pendingCircle='<div style="position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;font-weight:700;color:var(--t3)">'+(i+1)+'</div>';
       if(st==='ok'){
         circle='<div style="position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:var(--gn);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>';
-        statusTxt='正常'; statusColor='var(--gn)';
+        statusHtml='<span style="font-size:13px;font-weight:500;color:var(--gn)">正常</span>';
       } else if(st==='fail'){
         circle='<div style="position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:var(--or);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><line x1="12" y1="7" x2="12" y2="13"/><line x1="12" y1="16.8" x2="12.01" y2="16.8" stroke-width="3.6"/></svg></div>';
-        statusTxt='連線異常'; statusColor='var(--or)';
+        statusHtml='<span style="font-size:13px;font-weight:500;color:var(--or)">連線異常</span>';
       } else if(st==='checking'){
-        circle='<div style="position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:var(--abg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><div style="width:15px;height:15px;border-radius:50%;border:2px solid var(--bd2);border-top-color:var(--ac);animation:spin .7s linear infinite"></div></div>';
-        statusTxt='未檢查'; statusColor='var(--t3)';
+        circle=pendingCircle;
+        statusHtml='<div style="width:16px;height:16px;border-radius:50%;border:2px solid var(--bd2);border-top-color:var(--t3);animation:spin .7s linear infinite"></div>';
       } else {
-        circle='<div style="position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;font-weight:700;color:var(--t3)">'+(i+1)+'</div>';
-        statusTxt='未檢查'; statusColor='var(--t3)';
+        circle=pendingCircle;
+        statusHtml='<span style="font-size:13px;font-weight:500;color:var(--t3)">未檢查</span>';
       }
       var last=(i===NET_DIAG_STEPS.length-1);
       var row='<div style="position:relative;z-index:1;display:flex;align-items:center;gap:14px;padding:12px 16px'+(last?'':';border-bottom:1px solid var(--bd)')+'">'
         +circle
         +'<div style="flex:1;font-size:16px;font-weight:600;color:var(--tx)">'+step.label+'</div>'
-        +'<div style="font-size:13px;font-weight:500;color:'+statusColor+'">'+statusTxt+'</div>'
+        +statusHtml
       +'</div>';
       if(st==='fail' && failInfo){
         row+='<div style="position:relative;z-index:1;margin:0 16px 14px 62px;background:#FFFBEB;border:1.5px solid var(--or);border-radius:var(--r2);padding:12px 14px">'
