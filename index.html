@@ -1010,7 +1010,7 @@ body{display:flex;align-items:center;justify-content:center}
       <!-- Network Diagnostic: connection-chain steps -->
       <div id="diag-main">
         <div style="padding:20px 20px 32px">
-          <div style="font-size:13px;font-weight:600;color:var(--t3);margin-bottom:12px">連線檢查</div>
+          <div onclick="show('ov-diag-demo')" style="font-size:13px;font-weight:600;color:var(--t3);margin-bottom:12px;cursor:pointer">連線檢查</div>
           <div id="diag-steps"></div>
         </div>
       </div>
@@ -1052,6 +1052,31 @@ body{display:flex;align-items:center;justify-content:center}
         </div>
       </div>
 
+    </div>
+  </div>
+
+  <!-- Demo picker: hidden trigger, tap "連線檢查" label to open -->
+  <div class="ov" id="ov-diag-demo" onclick="if(event.target===this)hide('ov-diag-demo')">
+    <div class="sheet">
+      <div class="hdl"></div>
+      <div style="font-size:18px;font-weight:600;color:var(--tx);text-align:center;margin-bottom:4px">切換診斷情境</div>
+      <div style="font-size:13px;color:var(--t3);text-align:center;margin-bottom:18px">Demo 用，選擇要展示的畫面</div>
+      <div onclick="hide('ov-diag-demo');netDiagDemoJump('success')" style="display:flex;align-items:center;gap:12px;padding:14px 4px;border-bottom:1px solid var(--bd);cursor:pointer">
+        <div style="width:34px;height:34px;border-radius:50%;background:#3DBBAF;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div style="font-size:16px;font-weight:600;color:var(--tx)">都正常</div>
+      </div>
+      <div onclick="hide('ov-diag-demo');netDiagDemoJump('fail')" style="display:flex;align-items:center;gap:12px;padding:14px 4px;border-bottom:1px solid var(--bd);cursor:pointer">
+        <div style="width:34px;height:34px;border-radius:50%;background:#D95B47;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></div>
+        <div style="font-size:16px;font-weight:600;color:var(--tx)">有錯誤 ✕</div>
+      </div>
+      <div onclick="hide('ov-diag-demo');netDiagDemoJump('mixed')" style="display:flex;align-items:center;gap:12px;padding:14px 4px;border-bottom:1px solid var(--bd);cursor:pointer">
+        <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#FF9643 50%,#D95B47 50%);display:flex;align-items:center;justify-content:center;flex-shrink:0"></div>
+        <div style="font-size:16px;font-weight:600;color:var(--tx)">錯誤＋不穩</div>
+      </div>
+      <div onclick="hide('ov-diag-demo');netDiagDemoJump('warn')" style="display:flex;align-items:center;gap:12px;padding:14px 4px;cursor:pointer">
+        <div style="width:34px;height:34px;border-radius:50%;background:#FF9643;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><line x1="12" y1="7" x2="12" y2="13"/><line x1="12" y1="16.8" x2="12.01" y2="16.8" stroke-width="3.6"/></svg></div>
+        <div style="font-size:16px;font-weight:600;color:var(--tx)">不穩 ！</div>
+      </div>
     </div>
   </div>
 
@@ -4798,6 +4823,34 @@ window.addEventListener('load',function(){
     });
     renderNetDiagSteps(statuses, failInfo);
     renderNetDiagHero('fail',{title:failInfo.heroTitle,sub:'請依下方步驟排除，再重新診斷',btnText:'重新診斷'});
+  };
+
+  // Demo picker (hidden trigger on the 連線檢查 label): jump straight to one of the
+  // 4 canned scenarios without replaying the check animation.
+  window.netDiagDemoJump=function(kind){
+    if(_netDiagBusy) return;
+    var statuses, failInfo=null, heroState, heroOpts;
+    if(kind==='success'){
+      statuses=['ok','ok','ok','ok'];
+      heroState='success';
+      heroOpts={title:'網路連線正常',sub:'網路連線正常運作中，好好享受網際網路吧。',btnText:'重新診斷'};
+    } else if(kind==='fail'){
+      statuses=['ok','fail','pending','pending'];
+      failInfo=NET_DIAG_FAILS.router;
+      heroState='fail';
+      heroOpts={title:failInfo.heroTitle,sub:'請依下方步驟排除，再重新診斷',btnText:'重新診斷'};
+    } else if(kind==='mixed'){
+      statuses=['ok','warn','fail','pending'];
+      failInfo=NET_DIAG_FAILS.modem;
+      heroState='fail';
+      heroOpts={title:failInfo.heroTitle,sub:'請依下方步驟排除，再重新診斷',btnText:'重新診斷'};
+    } else {
+      statuses=['ok','warn','ok','ok'];
+      heroState='warn';
+      heroOpts={title:NET_DIAG_STEPS[1].label+'連線不穩',sub:'部分連線不穩定，建議稍後重新診斷',btnText:'重新診斷'};
+    }
+    renderNetDiagHero(heroState, heroOpts);
+    renderNetDiagSteps(statuses, failInfo);
   };
 
   // Each step is simulated as 3 ping attempts: 3/3 ok → 正常 (continue), 1-2/3 ok →
