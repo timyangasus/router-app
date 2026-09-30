@@ -4736,6 +4736,8 @@ window.addEventListener('load',function(){
   var _netDiagRun=0;
   var _netDiagBusy=false;
   var _netDiagState='idle';
+  var _netDiagStatuses=['pending','pending','pending','pending'];
+  var NET_DIAG_FAIL_KEY_BY_STEP={device:'device_wifi',router:'router',modem:'modem',internet:'internet'};
 
   function netDiagIcon(kind){
     if(kind==='ok') return '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
@@ -4764,9 +4766,8 @@ window.addEventListener('load',function(){
         circle=pendingCircle;
         statusHtml='<span style="font-size:13px;font-weight:500;color:var(--t3)">未檢查</span>';
       }
-      var jumpKey=step.key==='device'?'device_wifi':step.key;
-      var clickable=_netDiagState==='fail';
-      var row='<div'+(clickable?' onclick="jumpNetDiagFail(\''+jumpKey+'\')"':'')+' style="position:relative;z-index:1;display:flex;align-items:center;gap:14px;padding:17px 16px'+(clickable?';cursor:pointer':'')+'">'
+      var clickable=_netDiagState==='fail'||_netDiagState==='warn';
+      var row='<div'+(clickable?' onclick="cycleNetDiagStep('+i+')"':'')+' style="position:relative;z-index:1;display:flex;align-items:center;gap:14px;padding:17px 16px'+(clickable?';cursor:pointer':'')+'">'
         +circle
         +'<div style="flex:1;font-size:16px;font-weight:600;color:var(--tx)">'+step.label+'</div>'
         +statusHtml
@@ -4808,49 +4809,57 @@ window.addEventListener('load',function(){
 
   function renderNetDiagIdle(){
     _netDiagBusy=false;
+    _netDiagStatuses=['pending','pending','pending','pending'];
     renderNetDiagHero('idle',{title:'診斷您的網路連線',sub:'從您的裝置開始，依序檢查各項連線',btnText:'開始'});
-    renderNetDiagSteps(['pending','pending','pending','pending']);
+    renderNetDiagSteps(_netDiagStatuses);
   }
 
-  // Demo helper: click the 華碩路由器/數據機/網際網路 step to jump straight to that
-  // failure scenario (steps before it show ok, steps after stay pending).
-  window.jumpNetDiagFail=function(failKey){
+  // Renders whatever _netDiagStatuses currently holds: fail wins (shows that step's
+  // callout), otherwise any warn(s) show the unstable hero, otherwise success.
+  function renderNetDiagFromStatuses(){
+    var failIdx=_netDiagStatuses.indexOf('fail');
+    var failInfo=failIdx>=0?NET_DIAG_FAILS[NET_DIAG_FAIL_KEY_BY_STEP[NET_DIAG_STEPS[failIdx].key]]:null;
+    if(failInfo){
+      renderNetDiagHero('fail',{title:failInfo.heroTitle,sub:'請依下方步驟排除，再重新診斷',btnText:'重新診斷'});
+      renderNetDiagSteps(_netDiagStatuses, failInfo);
+      return;
+    }
+    var warnCount=_netDiagStatuses.filter(function(s){return s==='warn';}).length;
+    if(warnCount===0){
+      renderNetDiagHero('success',{title:'網路連線正常',sub:'網路連線正常運作中，好好享受網際網路吧。',btnText:'重新診斷'});
+      renderNetDiagSteps(_netDiagStatuses);
+      return;
+    }
+    var warnLabel=warnCount===1
+      ? NET_DIAG_STEPS[_netDiagStatuses.indexOf('warn')].label+'連線不穩'
+      : '部分網路連線不穩定';
+    renderNetDiagHero('warn',{title:warnLabel,sub:'部分連線不穩定，建議稍後重新診斷',btnText:'重新診斷'});
+    renderNetDiagSteps(_netDiagStatuses);
+  }
+
+  // Demo helper: click any of the 4 steps to cycle its status 正常→連線不穩→連線異常→
+  // 正常, mixing and matching freely (only one step can be 連線異常 at a time so the
+  // callout copy stays unambiguous; 連線不穩 can apply to several steps at once).
+  window.cycleNetDiagStep=function(index){
     if(_netDiagBusy) return;
-    var failInfo=NET_DIAG_FAILS[failKey];
-    var failIndex=NET_DIAG_STEPS.findIndex(function(s){return s.key===failInfo.step;});
-    var statuses=NET_DIAG_STEPS.map(function(s,idx){
-      return idx<failIndex?'ok':(idx===failIndex?'fail':'pending');
-    });
-    renderNetDiagSteps(statuses, failInfo);
-    renderNetDiagHero('fail',{title:failInfo.heroTitle,sub:'請依下方步驟排除，再重新診斷',btnText:'重新診斷'});
+    var order=['ok','warn','fail'];
+    var next=order[(order.indexOf(_netDiagStatuses[index])+1)%3];
+    if(next==='fail'){
+      _netDiagStatuses=_netDiagStatuses.map(function(s,i){return (i!==index && s==='fail')?'ok':s;});
+    }
+    _netDiagStatuses[index]=next;
+    renderNetDiagFromStatuses();
   };
 
   // Demo picker (hidden trigger on the 連線檢查 label): jump straight to one of the
   // 4 canned scenarios without replaying the check animation.
   window.netDiagDemoJump=function(kind){
     if(_netDiagBusy) return;
-    var statuses, failInfo=null, heroState, heroOpts;
-    if(kind==='success'){
-      statuses=['ok','ok','ok','ok'];
-      heroState='success';
-      heroOpts={title:'網路連線正常',sub:'網路連線正常運作中，好好享受網際網路吧。',btnText:'重新診斷'};
-    } else if(kind==='fail'){
-      statuses=['ok','fail','pending','pending'];
-      failInfo=NET_DIAG_FAILS.router;
-      heroState='fail';
-      heroOpts={title:failInfo.heroTitle,sub:'請依下方步驟排除，再重新診斷',btnText:'重新診斷'};
-    } else if(kind==='mixed'){
-      statuses=['ok','warn','fail','pending'];
-      failInfo=NET_DIAG_FAILS.modem;
-      heroState='fail';
-      heroOpts={title:failInfo.heroTitle,sub:'請依下方步驟排除，再重新診斷',btnText:'重新診斷'};
-    } else {
-      statuses=['ok','warn','ok','ok'];
-      heroState='warn';
-      heroOpts={title:NET_DIAG_STEPS[1].label+'連線不穩',sub:'部分連線不穩定，建議稍後重新診斷',btnText:'重新診斷'};
-    }
-    renderNetDiagHero(heroState, heroOpts);
-    renderNetDiagSteps(statuses, failInfo);
+    if(kind==='success') _netDiagStatuses=['ok','ok','ok','ok'];
+    else if(kind==='fail') _netDiagStatuses=['ok','fail','pending','pending'];
+    else if(kind==='mixed') _netDiagStatuses=['ok','warn','fail','pending'];
+    else _netDiagStatuses=['ok','warn','ok','ok'];
+    renderNetDiagFromStatuses();
   };
 
   // Each step is simulated as 3 ping attempts: 3/3 ok → 正常 (continue), 1-2/3 ok →
@@ -4859,8 +4868,8 @@ window.addEventListener('load',function(){
   // and a mixed run (router unstable, then modem fails and stops the chain).
   var NET_DIAG_DEMO_SCENARIOS=[
     {outcomes:['ok','ok','ok','ok']},
-    {outcomes:['ok','fail','pending','pending'], failKey:'router'},
-    {outcomes:['ok','warn','fail','pending'], failKey:'modem'}
+    {outcomes:['ok','fail','pending','pending']},
+    {outcomes:['ok','warn','fail','pending']}
   ];
 
   function runNetDiag(){
@@ -4868,38 +4877,27 @@ window.addEventListener('load',function(){
     _netDiagBusy=true;
     _netDiagRun++;
     var scenario=NET_DIAG_DEMO_SCENARIOS[(_netDiagRun-1)%NET_DIAG_DEMO_SCENARIOS.length];
-    var statuses=['pending','pending','pending','pending'];
+    var statuses=_netDiagStatuses=['pending','pending','pending','pending'];
     renderNetDiagHero('running',{title:'診斷您的網路連線',sub:'診斷中，請稍候…',btnText:'診斷中…',disabled:true});
     renderNetDiagSteps(statuses);
 
     var i=0;
-    function finish(){
-      _netDiagBusy=false;
-      var warnCount=statuses.filter(function(s){return s==='warn';}).length;
-      if(warnCount===0){
-        renderNetDiagHero('success',{title:'網路連線正常',sub:'網路連線正常運作中，好好享受網際網路吧。',btnText:'重新診斷'});
+    function next(){
+      if(i>=NET_DIAG_STEPS.length || scenario.outcomes[i]==='pending'){
+        _netDiagBusy=false;
+        renderNetDiagFromStatuses();
         return;
       }
-      var warnLabel=warnCount===1
-        ? NET_DIAG_STEPS[statuses.indexOf('warn')].label+'連線不穩'
-        : '部分網路連線不穩定';
-      renderNetDiagHero('warn',{title:warnLabel,sub:'部分連線不穩定，建議稍後重新診斷',btnText:'重新診斷'});
-    }
-    function next(){
-      if(i>=NET_DIAG_STEPS.length){ finish(); return; }
       var outcome=scenario.outcomes[i];
-      if(outcome==='pending'){ finish(); return; }
       // Random per-step check time: usually quick, occasionally noticeably longer.
       var checkTime=180+Math.random()*1400;
       statuses[i]='checking';
       renderNetDiagSteps(statuses);
       setTimeout(function(){
         statuses[i]=outcome;
-        var failInfo=outcome==='fail'?NET_DIAG_FAILS[scenario.failKey]:null;
         if(outcome==='fail'){
           _netDiagBusy=false;
-          renderNetDiagHero('fail',{title:failInfo.heroTitle,sub:'請依下方步驟排除，再重新診斷',btnText:'重新診斷'});
-          renderNetDiagSteps(statuses, failInfo);
+          renderNetDiagFromStatuses();
           return;
         }
         renderNetDiagSteps(statuses);
