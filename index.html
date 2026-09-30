@@ -4689,27 +4689,33 @@ window.addEventListener('load',function(){
     {key:'modem',    label:'數據機'},
     {key:'internet', label:'網際網路'}
   ];
-  // Copy per NETWORK_DIAGNOSTIC_TYPE (failure categories reference table)
+  // Copy per NETWORK_DIAGNOSTIC_TYPE (failure categories reference table + Figma)
   var NET_DIAG_FAILS={
     device_wifi:{step:'device',  heroTitle:'無法連上您的裝置',   title:'無線網路已關閉',                  desc:'請開啟您裝置的無線網路'},
     device_net: {step:'device',  heroTitle:'無法連上您的裝置',   title:'請啟用您行動裝置的無線網路',        desc:'請確認您的華碩路由器是開啟的狀態、且您的裝置連線到正確的無線網路'},
     router:     {step:'router',  heroTitle:'無法連上華碩路由器', title:'華碩路由器似乎是離線狀態',          desc:'請確認您的華碩路由器是開啟的狀態、且您的裝置連線到正確的無線網路'},
-    modem:      {step:'modem',   heroTitle:'無法連上數據機',     title:'數據機似乎是離線狀態',              desc:'請確認您的數據機是開啟的狀態、且所有的線路都有正確連接'},
+    modem:      {step:'modem',   heroTitle:'數據機連線異常',     title:'請檢查數據機電源與線路',            desc:'請確認數據機已開機，且與華碩路由器之間的網路線已正確連接'},
     internet:   {step:'internet',heroTitle:'無法連上網際網路',   title:'您的網路服務供應商似乎出了點問題',   desc:'請與您的網路服務供應商聯繫，以修正網路連線問題'}
   };
+  var NET_DIAG_WARN_DESC='此段連線不穩定，可能影響上網體驗';
   var NET_DIAG_GRADIENT={
-    idle:   'linear-gradient(180deg,#3B87E0 0%,#6AAAF0 38%,#B9D9FB 72%,#F4F6FB 100%)',
-    running:'linear-gradient(180deg,#3B87E0 0%,#6AAAF0 38%,#B9D9FB 72%,#F4F6FB 100%)',
-    success:'linear-gradient(180deg,#1FAE93 0%,#4FCDB2 38%,#B7E9DD 72%,#F4F6FB 100%)',
-    fail:   'linear-gradient(180deg,#DB7328 0%,#EFA45C 38%,#FBD9AE 72%,#F4F6FB 100%)'
+    idle:   'linear-gradient(180deg,#56B7FF 0%,#7CC6FF 38%,#C7E7FF 72%,#F4F6FB 100%)',
+    running:'linear-gradient(180deg,#56B7FF 0%,#7CC6FF 38%,#C7E7FF 72%,#F4F6FB 100%)',
+    success:'linear-gradient(180deg,#3DBBAF 0%,#6BCCC4 38%,#C3EAE6 72%,#F4F6FB 100%)',
+    warn:   'linear-gradient(180deg,#FAAD68 0%,#FBC08C 38%,#FDE4C9 72%,#F4F6FB 100%)',
+    fail:   'linear-gradient(180deg,#E37B69 0%,#EB9C8E 38%,#F6D2CB 72%,#F4F6FB 100%)'
   };
+  var NET_DIAG_OK_COLOR='#3DBBAF';
+  var NET_DIAG_WARN_COLOR='#FF9643';
+  var NET_DIAG_FAIL_COLOR='#D95B47';
   var _netDiagRun=0;
   var _netDiagBusy=false;
   var _netDiagState='idle';
 
   function netDiagIcon(kind){
     if(kind==='ok') return '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
-    if(kind==='fail') return '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"><line x1="12" y1="6" x2="12" y2="14"/><line x1="12" y1="17.6" x2="12.01" y2="17.6" stroke-width="4.4"/></svg>';
+    if(kind==='warn') return '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"><line x1="12" y1="6" x2="12" y2="14"/><line x1="12" y1="17.6" x2="12.01" y2="17.6" stroke-width="4.4"/></svg>';
+    if(kind==='fail') return '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>';
     return '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>';
   }
 
@@ -4718,11 +4724,14 @@ window.addEventListener('load',function(){
       var st=statuses[i], circle, statusHtml;
       var pendingCircle='<div style="position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:#DFE1E6;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;font-weight:700;color:var(--t2)">'+(i+1)+'</div>';
       if(st==='ok'){
-        circle='<div style="position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:var(--gn);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>';
-        statusHtml='<span style="font-size:13px;font-weight:500;color:var(--gn)">正常</span>';
+        circle='<div style="position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:'+NET_DIAG_OK_COLOR+';display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>';
+        statusHtml='<span style="font-size:13px;font-weight:500;color:'+NET_DIAG_OK_COLOR+'">正常</span>';
+      } else if(st==='warn'){
+        circle='<div style="position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:'+NET_DIAG_WARN_COLOR+';display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><line x1="12" y1="7" x2="12" y2="13"/><line x1="12" y1="16.8" x2="12.01" y2="16.8" stroke-width="3.6"/></svg></div>';
+        statusHtml='<span style="font-size:13px;font-weight:500;color:'+NET_DIAG_WARN_COLOR+'">連線不穩</span>';
       } else if(st==='fail'){
-        circle='<div style="position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:var(--or);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><line x1="12" y1="7" x2="12" y2="13"/><line x1="12" y1="16.8" x2="12.01" y2="16.8" stroke-width="3.6"/></svg></div>';
-        statusHtml='<span style="font-size:13px;font-weight:500;color:var(--or)">連線異常</span>';
+        circle='<div style="position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:'+NET_DIAG_FAIL_COLOR+';display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><line x1="7" y1="7" x2="17" y2="17"/><line x1="17" y1="7" x2="7" y2="17"/></svg></div>';
+        statusHtml='<span style="font-size:13px;font-weight:500;color:'+NET_DIAG_FAIL_COLOR+'">連線異常</span>';
       } else if(st==='checking'){
         circle=pendingCircle;
         statusHtml='<div style="width:16px;height:16px;border-radius:50%;border:2px solid var(--bd2);border-top-color:var(--t3);animation:spin .7s linear infinite"></div>';
@@ -4738,10 +4747,12 @@ window.addEventListener('load',function(){
         +statusHtml
       +'</div>';
       if(st==='fail' && failInfo){
-        row+='<div style="position:relative;z-index:1;margin:0 16px 14px 62px;background:#FFFBEB;border:1.5px solid var(--or);border-radius:var(--r2);padding:12px 14px">'
+        row+='<div style="position:relative;z-index:1;margin:0 16px 14px 62px;background:#FDF1EF;border:1.5px solid '+NET_DIAG_FAIL_COLOR+';border-radius:var(--r2);padding:12px 14px">'
           +'<div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:4px">'+failInfo.title+'</div>'
           +'<div style="font-size:12.5px;color:var(--t2);line-height:1.6">'+failInfo.desc+'</div>'
         +'</div>';
+      } else if(st==='warn'){
+        row+='<div style="position:relative;z-index:1;margin:2px 16px 14px 62px;font-size:12.5px;color:var(--t3);line-height:1.6">'+NET_DIAG_WARN_DESC+'</div>';
       }
       return row;
     }).join('');
@@ -4758,8 +4769,8 @@ window.addEventListener('load',function(){
     var hero=g('diag-hero'), icon=g('diag-hero-icon'), title=g('diag-hero-title'), sub=g('diag-hero-sub'), btn=g('diag-hero-btn');
     if(!hero) return;
     hero.style.background=NET_DIAG_GRADIENT[state];
-    var accent=state==='success'?'var(--gn)':(state==='fail'?'var(--or)':'var(--ac)');
-    if(icon) icon.innerHTML=state==='success'?netDiagIcon('ok'):state==='fail'?netDiagIcon('fail'):netDiagIcon('search');
+    var accent=state==='success'?NET_DIAG_OK_COLOR:state==='warn'?NET_DIAG_WARN_COLOR:state==='fail'?NET_DIAG_FAIL_COLOR:'var(--ac)';
+    if(icon) icon.innerHTML=state==='success'?netDiagIcon('ok'):state==='warn'?netDiagIcon('warn'):state==='fail'?netDiagIcon('fail'):netDiagIcon('search');
     if(title) title.textContent=opts.title||'';
     if(sub) sub.innerHTML=opts.sub||'';
     if(btn){
@@ -4789,41 +4800,56 @@ window.addEventListener('load',function(){
     renderNetDiagHero('fail',{title:failInfo.heroTitle,sub:'請依下方步驟排除，再重新診斷',btnText:'重新診斷'});
   };
 
+  // Each step is simulated as 3 ping attempts: 3/3 ok → 正常 (continue), 1-2/3 ok →
+  // 連線不穩 (warn, continue), 0/3 ok → 連線異常 (fail, stop). Demo cycles through 3
+  // canned outcomes on repeated 開始/重新診斷 presses: success, a hard failure (router),
+  // and a mixed run (router unstable, then modem fails and stops the chain).
+  var NET_DIAG_DEMO_SCENARIOS=[
+    {outcomes:['ok','ok','ok','ok']},
+    {outcomes:['ok','fail','pending','pending'], failKey:'router'},
+    {outcomes:['ok','warn','fail','pending'], failKey:'modem'}
+  ];
+
   function runNetDiag(){
     if(_netDiagBusy) return;
     _netDiagBusy=true;
     _netDiagRun++;
-    // Demo alternates: 1st run succeeds end-to-end, 2nd run fails at the first failure
-    // (router) by default — click a step below (router/modem/internet) to jump to that
-    // failure directly instead.
-    var failKey=(_netDiagRun%2===0)?'router':null;
+    var scenario=NET_DIAG_DEMO_SCENARIOS[(_netDiagRun-1)%NET_DIAG_DEMO_SCENARIOS.length];
     var statuses=['pending','pending','pending','pending'];
     renderNetDiagHero('running',{title:'診斷您的網路連線',sub:'診斷中，請稍候…',btnText:'診斷中…',disabled:true});
     renderNetDiagSteps(statuses);
 
     var i=0;
-    function next(){
-      if(i>=NET_DIAG_STEPS.length){
-        _netDiagBusy=false;
+    function finish(){
+      _netDiagBusy=false;
+      var warnCount=statuses.filter(function(s){return s==='warn';}).length;
+      if(warnCount===0){
         renderNetDiagHero('success',{title:'網路連線正常',sub:'網路連線正常運作中，好好享受網際網路吧。',btnText:'重新診斷'});
         return;
       }
-      var stepKey=NET_DIAG_STEPS[i].key;
-      var shouldFail=failKey && NET_DIAG_FAILS[failKey].step===stepKey;
+      var warnLabel=warnCount===1
+        ? NET_DIAG_STEPS[statuses.indexOf('warn')].label+'連線不穩'
+        : '部分網路連線不穩定';
+      renderNetDiagHero('warn',{title:warnLabel,sub:'部分連線不穩定，建議稍後重新診斷',btnText:'重新診斷'});
+    }
+    function next(){
+      if(i>=NET_DIAG_STEPS.length){ finish(); return; }
+      var outcome=scenario.outcomes[i];
+      if(outcome==='pending'){ finish(); return; }
       // Random per-step check time: usually quick, occasionally noticeably longer.
       var checkTime=180+Math.random()*1400;
       statuses[i]='checking';
       renderNetDiagSteps(statuses);
       setTimeout(function(){
-        statuses[i]=shouldFail?'fail':'ok';
-        var failInfo=shouldFail?NET_DIAG_FAILS[failKey]:null;
-        if(shouldFail){
+        statuses[i]=outcome;
+        var failInfo=outcome==='fail'?NET_DIAG_FAILS[scenario.failKey]:null;
+        if(outcome==='fail'){
           _netDiagBusy=false;
           renderNetDiagHero('fail',{title:failInfo.heroTitle,sub:'請依下方步驟排除，再重新診斷',btnText:'重新診斷'});
           renderNetDiagSteps(statuses, failInfo);
           return;
         }
-        renderNetDiagSteps(statuses, failInfo);
+        renderNetDiagSteps(statuses);
         i++; next();
       },checkTime);
     }
